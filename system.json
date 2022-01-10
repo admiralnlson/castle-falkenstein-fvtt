@@ -2,7 +2,7 @@
   "name": "castle-falkenstein",
   "title": "Castle Falkenstein",
   "description": "The Castle Falkenstein system for FoundryVTT!",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "minimumCoreVersion": "0.8.6",
   "compatibleCoreVersion": "9",
   "author": "admiralnlson",
