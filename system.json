@@ -24,10 +24,7 @@
   ],
   "gridDistance": 5,
   "gridUnits": "ft",
-  "primaryTokenAttribute": "health",
-  "secondaryTokenAttribute": "power",
-  "url": "",
-  "manifest": "",
-  "download": "",
-  "license": "LICENSE.txt"
+  "url": "https://github.com/admiralnlson/castle-falkenstein-foundryvtt",
+  "manifest": "https://raw.githubusercontent.com/admiralnlson/castle-falkenstein-foundryvtt/master/system.json",
+  "download": "https://github.com/admiralnlson/castle-falkenstein-foundryvtt/archive/refs/heads/master.zip"
 }
