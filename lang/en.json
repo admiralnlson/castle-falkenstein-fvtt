@@ -1,0 +1,22 @@
+{
+  "CASTLE_FALKENSTEIN.AbilityStr": "Strength",
+  "CASTLE_FALKENSTEIN.AbilityCon": "Constitution",
+  "CASTLE_FALKENSTEIN.AbilityDex": "Dexterity",
+  "CASTLE_FALKENSTEIN.AbilityInt": "Intelligence",
+  "CASTLE_FALKENSTEIN.AbilityWis": "Wisdom",
+  "CASTLE_FALKENSTEIN.AbilityCha": "Charisma",
+
+  "CASTLE_FALKENSTEIN.AbilityStrAbbr": "str",
+  "CASTLE_FALKENSTEIN.AbilityConAbbr": "con",
+  "CASTLE_FALKENSTEIN.AbilityDexAbbr": "dex",
+  "CASTLE_FALKENSTEIN.AbilityIntAbbr": "int",
+  "CASTLE_FALKENSTEIN.AbilityWisAbbr": "wis",
+  "CASTLE_FALKENSTEIN.AbilityChaAbbr": "cha",
+
+  "CASTLE_FALKENSTEIN.EffectCreate": "Create Effect",
+  "CASTLE_FALKENSTEIN.EffectToggle": "Toggle Effect",
+  "CASTLE_FALKENSTEIN.EffectEdit": "Edit Effect",
+  "CASTLE_FALKENSTEIN.EffectDelete": "Delete Effect",
+
+  "CASTLE_FALKENSTEIN.Add": "Add"
+}
