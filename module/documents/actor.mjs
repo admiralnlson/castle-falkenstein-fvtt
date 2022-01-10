@@ -31,7 +31,7 @@ export class CastleFalkensteinActor extends Actor {
   prepareDerivedData() {
     const actorData = this.data;
     const data = actorData.data;
-    const flags = actorData.flags.castle-falkenstein || {};
+    const flags = actorData.flags.CastleFalkenstein || {};
 
     // Make separate methods for each Actor type (character, npc, etc.) to keep
     // things organized.

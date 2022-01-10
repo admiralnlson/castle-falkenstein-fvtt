@@ -30,7 +30,7 @@ Hooks.once('init', async function() {
    * @type {String}
    */
   CONFIG.Combat.initiative = {
-    formula: "1d20 + @abilities.dex.mod",
+    formula: "1d20",
     decimals: 2
   };
 
@@ -101,7 +101,7 @@ async function createItemMacro(data, slot) {
       type: "script",
       img: item.img,
       command: command,
-      flags: { "castle-falkenstein.itemMacro": true }
+      flags: { "CastleFalkenstein.itemMacro": true }
     });
   }
   game.user.assignHotbarMacro(macro, slot);
