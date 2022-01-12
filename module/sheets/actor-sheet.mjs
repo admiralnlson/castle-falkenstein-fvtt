@@ -13,7 +13,7 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
       template: "systems/castle-falkenstein/templates/actor/actor-sheet.html",
       width: 600,
       height: 600,
-      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "features" }]
+      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "abilities" }]
     });
   }
 
@@ -67,10 +67,8 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
    * @return {undefined}
    */
   _prepareCharacterData(context) {
-    // Handle ability scores.
-    for (let [k, v] of Object.entries(context.data.abilities)) {
-      v.label = game.i18n.localize(CONFIG.CASTLE_FALKENSTEIN.abilities[k]) ?? k;
-    }
+
+    // Nothing so far
   }
 
   /**
@@ -82,8 +80,8 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
    */
   _prepareItems(context) {
     // Initialize containers.
+    const abilities = [];
     const gear = [];
-    const features = [];
     const spells = {
       0: [],
       1: [],
@@ -100,13 +98,13 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
     // Iterate through items, allocating to containers
     for (let i of context.items) {
       i.img = i.img || DEFAULT_TOKEN;
-      // Append to gear.
-      if (i.type === 'item') {
-        gear.push(i);
+      // Append to abilities.
+      if (i.type === 'ability') {
+        abilities.push(i);
       }
-      // Append to features.
-      else if (i.type === 'feature') {
-        features.push(i);
+      // Append to gear.
+      else if (i.type === 'item') {
+        gear.push(i);
       }
       // Append to spells.
       else if (i.type === 'spell') {
@@ -118,7 +116,7 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
 
     // Assign and return
     context.gear = gear;
-    context.features = features;
+    context.abilities = abilities;
     context.spells = spells;
   }
 

@@ -7,9 +7,9 @@
   return loadTemplates([
 
     // Actor partials.
-    "systems/castle-falkenstein/templates/actor/parts/actor-features.html",
-    "systems/castle-falkenstein/templates/actor/parts/actor-items.html",
+    "systems/castle-falkenstein/templates/actor/parts/actor-abilities.html",
     "systems/castle-falkenstein/templates/actor/parts/actor-spells.html",
+    "systems/castle-falkenstein/templates/actor/parts/actor-items.html",
     "systems/castle-falkenstein/templates/actor/parts/actor-effects.html",
   ]);
 };

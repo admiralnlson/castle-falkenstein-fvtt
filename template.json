@@ -22,26 +22,6 @@
         "level": {
           "value": 1
         }
-      },
-      "abilities": {
-        "str": {
-          "value": 10
-        },
-        "dex": {
-          "value": 10
-        },
-        "con": {
-          "value": 10
-        },
-        "int": {
-          "value": 10
-        },
-        "wis": {
-          "value": 10
-        },
-        "cha": {
-          "value": 10
-        }
       }
     },
     "npc": {
@@ -50,20 +30,20 @@
     }
   },
   "Item": {
-    "types": ["item", "feature", "spell"],
+    "types": ["ability", "spell", "item"],
     "templates": {
       "base": {
         "description": ""
       }
     },
+    "ability": {
+      "templates": ["base"]
+    },
     "item": {
       "templates": ["base"],
       "quantity": 1,
       "weight": 0,
-      "formula": "d20 + @str.mod + ceil(@lvl / 2)"
-    },
-    "feature": {
-      "templates": ["base"]
+      "formula": "d20"
     },
     "spell": {
       "templates": ["base"],
