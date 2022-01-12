@@ -46,8 +46,7 @@
       "formula": "d20"
     },
     "spell": {
-      "templates": ["base"],
-      "spellLevel": 1
+      "templates": ["base"]
     }
   }
 }

@@ -82,18 +82,7 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
     // Initialize containers.
     const abilities = [];
     const gear = [];
-    const spells = {
-      0: [],
-      1: [],
-      2: [],
-      3: [],
-      4: [],
-      5: [],
-      6: [],
-      7: [],
-      8: [],
-      9: []
-    };
+    const spells = [];
 
     // Iterate through items, allocating to containers
     for (let i of context.items) {
@@ -108,9 +97,7 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
       }
       // Append to spells.
       else if (i.type === 'spell') {
-        if (i.data.spellLevel != undefined) {
-          spells[i.data.spellLevel].push(i);
-        }
+        spells.push(i);
       }
     }
 
