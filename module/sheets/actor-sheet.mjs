@@ -17,10 +17,12 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
     });
   }
 
-  /** @override */
-  get template() {
-    return `systems/castle-falkenstein/templates/actor/actor-${this.actor.data.type}-sheet.html`;
-  }
+//  /**
+//   * @override
+//   */
+//  get template() {
+//    return `systems/castle-falkenstein/templates/actor/actor-${this.actor.data.type}-sheet.html`;
+//  }
 
   /* -------------------------------------------- */
 
@@ -39,16 +41,7 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
     context.data = actorData.data;
     context.flags = actorData.flags;
 
-    // Prepare character data and items.
-    if (actorData.type == 'character') {
-      this._prepareItems(context);
-      this._prepareCharacterData(context);
-    }
-
-    // Prepare NPC data and items.
-    if (actorData.type == 'npc') {
-      this._prepareItems(context);
-    }
+    this._prepareItems(context);
 
     // Add roll data for TinyMCE editors.
     context.rollData = context.actor.getRollData();
@@ -56,19 +49,12 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
     // Prepare active effects
     context.effects = prepareActiveEffectCategories(this.actor.effects);
 
+    // Conditionals
+    context.userHasObserverOrOwnerAccess = game.user.isGM || (this.actor.visible && !this.actor.limited);
+
+    console.log("context.userHasNoOrLimitedAccess = " + context.userHasNoOrLimitedAccess);
+
     return context;
-  }
-
-  /**
-   * Organize and classify Items for Character sheets.
-   *
-   * @param {Object} actorData The actor to prepare.
-   *
-   * @return {undefined}
-   */
-  _prepareCharacterData(context) {
-
-    // Nothing so far
   }
 
   /**

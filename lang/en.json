@@ -1,4 +1,6 @@
 {
+  "CASTLE_FALKENSTEIN.SystemTitle": "Castle Falkenstein",
+
   "CASTLE_FALKENSTEIN.EffectCreate": "Create Effect",
   "CASTLE_FALKENSTEIN.EffectToggle": "Toggle Effect",
   "CASTLE_FALKENSTEIN.EffectEdit": "Edit Effect",
@@ -6,7 +8,11 @@
 
   "CASTLE_FALKENSTEIN.Add": "Add",
 
+  "CASTLE_FALKENSTEIN.Description": "Description",
+  "CASTLE_FALKENSTEIN.Diary": "Diary",
   "CASTLE_FALKENSTEIN.Abilities": "Abilities",
+  "CASTLE_FALKENSTEIN.Gear": "Gear",
+  "CASTLE_FALKENSTEIN.Spells": "Spells",
 
   "CASTLE_FALKENSTEIN.AbilityPoor": "Poor",
   "CASTLE_FALKENSTEIN.AbilityAverage": "Average",
@@ -20,8 +26,5 @@
   "CASTLE_FALKENSTEIN.AbilityGoodAbbr": "GD",
   "CASTLE_FALKENSTEIN.AbilityGreatAbbr": "GR",
   "CASTLE_FALKENSTEIN.AbilityExceptionalAbbr": "EXC",
-  "CASTLE_FALKENSTEIN.AbilityExtraordinaryAbbr": "EXT",
-
-  "CASTLE_FALKENSTEIN.Diary": "Diary"
-
+  "CASTLE_FALKENSTEIN.AbilityExtraordinaryAbbr": "EXT"
 }
