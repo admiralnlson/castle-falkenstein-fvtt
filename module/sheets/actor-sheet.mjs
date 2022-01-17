@@ -51,6 +51,7 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
 
     // Conditionals
     context.userHasObserverOrOwnerAccess = game.user.isGM || (this.actor.visible && !this.actor.limited);
+    context.userIsGM = game.user.isGM;
 
     console.log("context.userHasNoOrLimitedAccess = " + context.userHasNoOrLimitedAccess);
 

@@ -9,9 +9,10 @@
   "CASTLE_FALKENSTEIN.Add": "Ajouter",
 
   "CASTLE_FALKENSTEIN.Description": "Description",
+  "CASTLE_FALKENSTEIN.HostNotes": "Notes de l'Hôte",
   "CASTLE_FALKENSTEIN.Diary": "Journal",
   "CASTLE_FALKENSTEIN.Abilities": "Talents",
-  "CASTLE_FALKENSTEIN.Gear": "'Equipement'",
+  "CASTLE_FALKENSTEIN.Gear": "Équipement",
   "CASTLE_FALKENSTEIN.Spells": "Sorts",
 
   "CASTLE_FALKENSTEIN.AbilityPoor": "Faible",
