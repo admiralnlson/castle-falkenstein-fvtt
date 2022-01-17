@@ -1,23 +1,32 @@
 export const CASTLE_FALKENSTEIN = {};
 
 /**
- * The set of Ability Scores used within the sytem.
+ * The set of Abilities  used within the sytem.
  * @type {Object}
  */
- CASTLE_FALKENSTEIN.abilityLevels = {
-  "PR": "CASTLE_FALKENSTEIN.AbilityPoor",
-  "AV": "CASTLE_FALKENSTEIN.AbilityAverage",
-  "GD": "CASTLE_FALKENSTEIN.AbilityGood",
-  "GR": "CASTLE_FALKENSTEIN.AbilityGreat",
-  "EXC": "CASTLE_FALKENSTEIN.AbilityExceptional",
-  "EXT": "CASTLE_FALKENSTEIN.AbilityExtraordinary"
-};
-
-CASTLE_FALKENSTEIN.abilityLevelAbbreviations = {
-  "PR": "CASTLE_FALKENSTEIN.AbilityPoorAbbr",
-  "AV": "CASTLE_FALKENSTEIN.AbilityAverageAbbr",
-  "GD": "CASTLE_FALKENSTEIN.AbilityGoodAbbr",
-  "GR": "CASTLE_FALKENSTEIN.AbilityGreatAbbr",
-  "EXC": "CASTLE_FALKENSTEIN.AbilityExceptionalAbbr",
-  "EXT": "CASTLE_FALKENSTEIN.AbilityExtraordinaryAbbr"
-};
+CASTLE_FALKENSTEIN.abilityLevels = {
+  "Poor": {
+    "full": "CASTLE_FALKENSTEIN.AbilityPoor",
+    "abbr": "CASTLE_FALKENSTEIN.AbilityPoorAbbr"
+  },
+  "Average": {
+    "full": "CASTLE_FALKENSTEIN.AbilityAverage",
+    "abbr": "CASTLE_FALKENSTEIN.AbilityAverageAbbr"
+  },
+  "Good": {
+    "full": "CASTLE_FALKENSTEIN.AbilityGood",
+    "abbr": "CASTLE_FALKENSTEIN.AbilityGoodAbbr"
+  },
+  "Great": {
+    "full": "CASTLE_FALKENSTEIN.AbilityGreat",
+    "abbr": "CASTLE_FALKENSTEIN.AbilityGreatAbbr"
+  },
+  "Exceptional": {
+    "full": "CASTLE_FALKENSTEIN.AbilityExceptional",
+    "abbr": "CASTLE_FALKENSTEIN.AbilityExceptionalAbbr"
+  },
+  "Extraordinary": {
+    "full": "CASTLE_FALKENSTEIN.AbilityExtraordinary",
+    "abbr": "CASTLE_FALKENSTEIN.AbilityExtraordinaryAbbr"
+  }
+}

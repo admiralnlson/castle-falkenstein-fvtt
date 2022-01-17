@@ -4,7 +4,9 @@
  */
 export class CastleFalkensteinActor extends Actor {
 
-  /** @override */
+  /**
+   * @override
+   */
   prepareData() {
     // Prepare data for the actor. Calling the super version of this executes
     // the following, in order: data reset (to clear active effects),
@@ -13,10 +15,12 @@ export class CastleFalkensteinActor extends Actor {
     super.prepareData();
   }
 
-  /** @override */
+  /**
+   * @override
+   * Prepare data related to this Document itself, before any embedded Documents or derived data is computed.
+   */
   prepareBaseData() {
-    // Data modifications in this step occur before processing embedded
-    // documents or derived data.
+    // Data modifications in this step occur before processing embedded documents or derived data.
   }
 
   /**
@@ -33,59 +37,16 @@ export class CastleFalkensteinActor extends Actor {
     const data = actorData.data;
     const flags = actorData.flags.CastleFalkenstein || {};
 
-    // Make separate methods for each Actor type (character, npc, etc.) to keep
-    // things organized.
-    this._prepareCharacterData(actorData);
-    this._prepareNpcData(actorData);
   }
 
   /**
-   * Prepare Character type specific data
-   */
-  _prepareCharacterData(actorData) {
-    if (actorData.type !== 'character') return;
-
-    // Make modifications to character data here.
-  }
-
-  /**
-   * Prepare NPC type specific data.
-   */
-  _prepareNpcData(actorData) {
-    if (actorData.type !== 'npc') return;
-
-    // Make modifications to NPC data here.
-  }
-
-  /**
-   * Override getRollData() that's supplied to rolls.
+   * @override
+   * Prepare a data object which defines the data schema used by dice roll commands against this Actor.
    */
   getRollData() {
     const data = super.getRollData();
 
-    // Prepare character roll data.
-    this._getCharacterRollData(data);
-    this._getNpcRollData(data);
-
     return data;
-  }
-
-  /**
-   * Prepare character roll data.
-   */
-  _getCharacterRollData(data) {
-    if (this.data.type !== 'character') return;
-
-    // Process character data here.
-  }
-
-  /**
-   * Prepare NPC roll data.
-   */
-  _getNpcRollData(data) {
-    if (this.data.type !== 'npc') return;
-
-    // Process additional NPC data here.
   }
 
 }
