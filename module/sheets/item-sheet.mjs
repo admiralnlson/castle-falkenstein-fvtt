@@ -1,3 +1,5 @@
+import { CASTLE_FALKENSTEIN } from "../helpers/config.mjs";
+
 /**
  * Extend the basic ItemSheet with some very simple modifications
  * @extends {ItemSheet}
@@ -8,8 +10,8 @@ export class CastleFalkensteinItemSheet extends ItemSheet {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: ["castle-falkenstein", "sheet", "item"],
-      width: 520,
-      height: 480,
+      width: 450,
+      height: 90,
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }]
     });
   }
@@ -18,11 +20,11 @@ export class CastleFalkensteinItemSheet extends ItemSheet {
   get template() {
     const path = "systems/castle-falkenstein/templates/item";
     // Return a single sheet for all item types.
-    // return `${path}/item-sheet.html`;
+    // return `${path}/item-sheet.hbs`;
 
     // Alternatively, you could use the following return statement to do a
-    // unique item sheet by type, like `weapon-sheet.html`.
-    return `${path}/item-${this.item.data.type}-sheet.html`;
+    // unique item sheet by type, like `weapon-sheet.hbs`.
+    return `${path}/item-${this.item.data.type}-sheet.hbs`;
   }
 
   /* -------------------------------------------- */
@@ -45,6 +47,10 @@ export class CastleFalkensteinItemSheet extends ItemSheet {
     // Add the actor's data to context.data for easier access, as well as flags.
     context.data = itemData.data;
     context.flags = itemData.flags;
+
+    context.CASTLE_FALKENSTEIN = CASTLE_FALKENSTEIN;
+
+    console.log(context);
 
     return context;
   }

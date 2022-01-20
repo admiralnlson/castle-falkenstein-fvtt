@@ -15,6 +15,9 @@
   "CASTLE_FALKENSTEIN.Gear": "Gear",
   "CASTLE_FALKENSTEIN.Spells": "Spells",
 
+  "CASTLE_FALKENSTEIN.AbilityLevel": "I am",
+  "CASTLE_FALKENSTEIN.AbilityName": "in",
+
   "CASTLE_FALKENSTEIN.AbilityPoor": "Poor",
   "CASTLE_FALKENSTEIN.AbilityAverage": "Average",
   "CASTLE_FALKENSTEIN.AbilityGood": "Good",
@@ -27,5 +30,15 @@
   "CASTLE_FALKENSTEIN.AbilityGoodAbbr": "GD",
   "CASTLE_FALKENSTEIN.AbilityGreatAbbr": "GR",
   "CASTLE_FALKENSTEIN.AbilityExceptionalAbbr": "EXC",
-  "CASTLE_FALKENSTEIN.AbilityExtraordinaryAbbr": "EXT"
+  "CASTLE_FALKENSTEIN.AbilityExtraordinaryAbbr": "EXT",
+
+  "CASTLE_FALKENSTEIN.Suit": "Suit",
+  "CASTLE_FALKENSTEIN.Spades": "Spades",
+  "CASTLE_FALKENSTEIN.SpadesFortuneDeckDescription": "Social and Status-Related Feats.",
+  "CASTLE_FALKENSTEIN.Hearts": "Hearts",
+  "CASTLE_FALKENSTEIN.HeartsFortuneDeckDescription": "Emotional and Romantic Feats.",
+  "CASTLE_FALKENSTEIN.Diamonds": "Diamonds",
+  "CASTLE_FALKENSTEIN.DiamondsFortuneDeckDescription": "Mental and Intellectual Feats.",
+  "CASTLE_FALKENSTEIN.Clubs": "Clubs",
+  "CASTLE_FALKENSTEIN.ClubsFortuneDeckDescription": "Physical Feats."
 }

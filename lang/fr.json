@@ -15,6 +15,9 @@
   "CASTLE_FALKENSTEIN.Gear": "Équipement",
   "CASTLE_FALKENSTEIN.Spells": "Sorts",
 
+  "CASTLE_FALKENSTEIN.AbilityLevel": "Je suis",
+  "CASTLE_FALKENSTEIN.AbilityName": "en",
+
   "CASTLE_FALKENSTEIN.AbilityPoor": "Faible",
   "CASTLE_FALKENSTEIN.AbilityAverage": "Moyen",
   "CASTLE_FALKENSTEIN.AbilityGood": "Bon",
@@ -27,5 +30,15 @@
   "CASTLE_FALKENSTEIN.AbilityGoodAbbr": "BON",
   "CASTLE_FALKENSTEIN.AbilityGreatAbbr": "EXC",
   "CASTLE_FALKENSTEIN.AbilityExceptionalAbbr": "MAG",
-  "CASTLE_FALKENSTEIN.AbilityExtraordinaryAbbr": "PRO"
+  "CASTLE_FALKENSTEIN.AbilityExtraordinaryAbbr": "PRO",
+
+  "CASTLE_FALKENSTEIN.Suit": "Couleur",
+  "CASTLE_FALKENSTEIN.Spades": "pique",
+  "CASTLE_FALKENSTEIN.SpadesFortuneDeckDescription": "Prouesses sociales ou en rapport avec le statut social.",
+  "CASTLE_FALKENSTEIN.Hearts": "coeur",
+  "CASTLE_FALKENSTEIN.HeartsFortuneDeckDescription": "Prouesses romantiques et centrées sur les émotions.",
+  "CASTLE_FALKENSTEIN.Diamonds": "carreau",
+  "CASTLE_FALKENSTEIN.DiamondsFortuneDeckDescription": "Prouesses intellectuelles et mentales.",
+  "CASTLE_FALKENSTEIN.Clubs": "trèfle",
+  "CASTLE_FALKENSTEIN.ClubsFortuneDeckDescription": "Prouesses physiques."
 }

@@ -1,0 +1,27 @@
+<ol class="items-list">
+  <li class="item flexrow items-header">
+    <div class="ability-roll"></div>
+    <div class="ability-level">{{localize 'CASTLE_FALKENSTEIN.AbilityLevel'}}</div>
+    <div class="ability-name">{{localize 'CASTLE_FALKENSTEIN.AbilityName'}}</div>
+    <div class="item-controls">
+      <a class="item-control item-create" title="Create item" data-type="ability"><i class="fas fa-plus"></i> {{localize 'CASTLE_FALKENSTEIN.Add'}}</a>
+    </div>
+  </li>
+  {{#each abilities as |item id|}}
+    <li class="item flexrow" data-item-id="{{item._id}}">
+      <div class="ability-roll">
+        <a class="rollable" data-roll-type="item">👁</a>
+      </div>
+      <div class="ability-level">
+        {{localize item.data.levelI18nKey}}
+      </div>
+      <div class="ability-name">
+        <h4>{{item.name}} [<span style="color:{{item.data.suitColor}}">{{item.data.suitSymbol}}</span>]</h4>
+      </div>
+      <div class="item-controls">
+        <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+        <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+      </div>
+    </li>
+  {{/each}}
+</ol>

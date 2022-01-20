@@ -25,15 +25,6 @@ Hooks.once('init', async function() {
   // Add custom constants for configuration.
   CONFIG.CASTLE_FALKENSTEIN = CASTLE_FALKENSTEIN;
 
-  /**
-   * Set an initiative formula for the system
-   * @type {String}
-   */
-  CONFIG.Combat.initiative = {
-    formula: "1d20",
-    decimals: 2
-  };
-
   // Define custom Document classes
   CONFIG.Actor.documentClass = CastleFalkensteinActor;
   CONFIG.Item.documentClass = CastleFalkensteinItem;

@@ -1,3 +1,4 @@
+import {CASTLE_FALKENSTEIN} from "../helpers/config.mjs";
 import {onManageActiveEffect, prepareActiveEffectCategories} from "../helpers/effects.mjs";
 
 /**
@@ -10,19 +11,12 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: ["castle-falkenstein", "sheet", "actor"],
-      template: "systems/castle-falkenstein/templates/actor/actor-sheet.html",
+      template: "systems/castle-falkenstein/templates/actor/actor-sheet.hbs",
       width: 600,
       height: 600,
-      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "abilities" }]
+      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }]
     });
   }
-
-//  /**
-//   * @override
-//   */
-//  get template() {
-//    return `systems/castle-falkenstein/templates/actor/actor-${this.actor.data.type}-sheet.html`;
-//  }
 
   /* -------------------------------------------- */
 
@@ -53,8 +47,6 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
     context.userHasObserverOrOwnerAccess = game.user.isGM || (this.actor.visible && !this.actor.limited);
     context.userIsGM = game.user.isGM;
 
-    console.log("context.userHasNoOrLimitedAccess = " + context.userHasNoOrLimitedAccess);
-
     return context;
   }
 
@@ -76,6 +68,9 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
       i.img = i.img || DEFAULT_TOKEN;
       // Append to abilities.
       if (i.type === 'ability') {
+        i.data.levelI18nKey = CASTLE_FALKENSTEIN.abilityLevels[i.data.level].full;
+        i.data.suitSymbol = CASTLE_FALKENSTEIN.cardSuits[i.data.suit].symbol;
+        i.data.suitColor = CASTLE_FALKENSTEIN.cardSuits[i.data.suit].color;
         abilities.push(i);
       }
       // Append to gear.

@@ -25,13 +25,14 @@
       }
     },
     "ability": {
-      "templates": ["base"]
+      "templates": ["base"],
+      "level" : "AV",
+      "suit": "?"
     },
     "item": {
       "templates": ["base"],
       "quantity": 1,
-      "weight": 0,
-      "formula": "d20"
+      "weight": 0
     },
     "spell": {
       "templates": ["base"]
