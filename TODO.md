@@ -1,4 +1,5 @@
 # TODO list
++ Compendium with the standard abilities, or add them all to the default to the Abilities tab
 + Add ability level and suit to Ability chat message (I have ...)
 + Make properties of items directly editable in the char sheet without the user having to open the dedicated item sheet
 + Sections for Cash//Money
