@@ -11,10 +11,8 @@
   "CASTLE_FALKENSTEIN.Description": "Description",
   "CASTLE_FALKENSTEIN.HostNotes": "Notes de l'Hôte",
   "CASTLE_FALKENSTEIN.Diary": "Journal",
-  "CASTLE_FALKENSTEIN.Abilities": "Talents",
-  "CASTLE_FALKENSTEIN.Gear": "Équipement",
-  "CASTLE_FALKENSTEIN.Spells": "Sorts",
 
+  "CASTLE_FALKENSTEIN.Abilities": "Talents",
   "CASTLE_FALKENSTEIN.AbilityLevel": "Je suis",
   "CASTLE_FALKENSTEIN.AbilityName": "en",
 
@@ -40,5 +38,17 @@
   "CASTLE_FALKENSTEIN.Diamonds": "carreau",
   "CASTLE_FALKENSTEIN.DiamondsFortuneDeckDescription": "Prouesses intellectuelles et mentales.",
   "CASTLE_FALKENSTEIN.Clubs": "trèfle",
-  "CASTLE_FALKENSTEIN.ClubsFortuneDeckDescription": "Prouesses physiques."
+  "CASTLE_FALKENSTEIN.ClubsFortuneDeckDescription": "Prouesses physiques.",
+
+  "CASTLE_FALKENSTEIN.Weapons": "Armes",
+  "CASTLE_FALKENSTEIN.EffectiveRange": "Portée Effective",
+  "CASTLE_FALKENSTEIN.Magazine": "Munitions",
+  "CASTLE_FALKENSTEIN.WoundsPartial": "Wounds (Partial)",
+  "CASTLE_FALKENSTEIN.WoundsFull": "Wounds (Partial)",
+  "CASTLE_FALKENSTEIN.WoundsHigh": "Wounds (High)",
+  "CASTLE_FALKENSTEIN.WeaponRangeUnitAbbr": "yds",
+
+  "CASTLE_FALKENSTEIN.Possessions": "Possessions",
+
+  "CASTLE_FALKENSTEIN.Spells": "Sorts"
 }

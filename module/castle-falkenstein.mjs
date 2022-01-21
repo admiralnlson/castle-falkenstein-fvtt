@@ -3,7 +3,10 @@ import { CastleFalkensteinActor } from "./documents/actor.mjs";
 import { CastleFalkensteinItem } from "./documents/item.mjs";
 // Import sheet classes.
 import { CastleFalkensteinActorSheet } from "./sheets/actor-sheet.mjs";
-import { CastleFalkensteinItemSheet } from "./sheets/item-sheet.mjs";
+import { CastleFalkensteinAbilitySheet } from "./sheets/item-ability-sheet.mjs";
+import { CastleFalkensteinPossessionSheet } from "./sheets/item-possession-sheet.mjs";
+import { CastleFalkensteinSpellSheet } from "./sheets/item-spell-sheet.mjs";
+import { CastleFalkensteinWeaponSheet } from "./sheets/item-weapon-sheet.mjs";
 // Import helper/utility classes and constants.
 import { preloadHandlebarsTemplates } from "./helpers/templates.mjs";
 import { CASTLE_FALKENSTEIN } from "./helpers/config.mjs";
@@ -33,7 +36,10 @@ Hooks.once('init', async function() {
   Actors.unregisterSheet("core", ActorSheet);
   Actors.registerSheet("castle-falkenstein", CastleFalkensteinActorSheet, { makeDefault: true });
   Items.unregisterSheet("core", ItemSheet);
-  Items.registerSheet("castle-falkenstein", CastleFalkensteinItemSheet, { makeDefault: true });
+  Items.registerSheet("castle-falkenstein", CastleFalkensteinAbilitySheet, { types: ["ability"], makeDefault: true });
+  Items.registerSheet("castle-falkenstein", CastleFalkensteinPossessionSheet, { types: ["possession"], makeDefault: true });
+  Items.registerSheet("castle-falkenstein", CastleFalkensteinSpellSheet, { types: ["spell"], makeDefault: true });
+  Items.registerSheet("castle-falkenstein", CastleFalkensteinWeaponSheet, { types: ["weapon"], makeDefault: true });
 
   // Preload Handlebars templates.
   return preloadHandlebarsTemplates();

@@ -11,12 +11,10 @@
   "CASTLE_FALKENSTEIN.Description": "Description",
   "CASTLE_FALKENSTEIN.HostNotes": "Host notes",
   "CASTLE_FALKENSTEIN.Diary": "Diary",
-  "CASTLE_FALKENSTEIN.Abilities": "Abilities",
-  "CASTLE_FALKENSTEIN.Gear": "Gear",
-  "CASTLE_FALKENSTEIN.Spells": "Spells",
 
-  "CASTLE_FALKENSTEIN.AbilityLevel": "I am",
-  "CASTLE_FALKENSTEIN.AbilityName": "in",
+  "CASTLE_FALKENSTEIN.Abilities": "Abilities",
+  "CASTLE_FALKENSTEIN.AbilityLevel": "I have",
+  "CASTLE_FALKENSTEIN.AbilityName": "",
 
   "CASTLE_FALKENSTEIN.AbilityPoor": "Poor",
   "CASTLE_FALKENSTEIN.AbilityAverage": "Average",
@@ -40,5 +38,17 @@
   "CASTLE_FALKENSTEIN.Diamonds": "Diamonds",
   "CASTLE_FALKENSTEIN.DiamondsFortuneDeckDescription": "Mental and Intellectual Feats.",
   "CASTLE_FALKENSTEIN.Clubs": "Clubs",
-  "CASTLE_FALKENSTEIN.ClubsFortuneDeckDescription": "Physical Feats."
+  "CASTLE_FALKENSTEIN.ClubsFortuneDeckDescription": "Physical Feats.",
+
+  "CASTLE_FALKENSTEIN.Weapons": "Weapons",
+  "CASTLE_FALKENSTEIN.EffectiveRange": "Effective Range",
+  "CASTLE_FALKENSTEIN.Magazine": "Magazine",
+  "CASTLE_FALKENSTEIN.WoundsPartial": "Wounds (Partial)",
+  "CASTLE_FALKENSTEIN.WoundsFull": "Wounds (Partial)",
+  "CASTLE_FALKENSTEIN.WoundsHigh": "Wounds (High)",
+  "CASTLE_FALKENSTEIN.WeaponRangeUnitAbbr": "yds",
+
+  "CASTLE_FALKENSTEIN.Possessions": "Possessions",
+  
+  "CASTLE_FALKENSTEIN.Spells": "Spells"
 }

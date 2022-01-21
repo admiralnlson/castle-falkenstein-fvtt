@@ -11,7 +11,7 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: ["castle-falkenstein", "sheet", "actor"],
-      template: "systems/castle-falkenstein/templates/actor/actor-sheet.hbs",
+      template: "systems/castle-falkenstein/templates/actor-sheet.hbs",
       width: 600,
       height: 600,
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }]
@@ -45,7 +45,7 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
 
     // Conditionals
     context.userHasObserverOrOwnerAccess = game.user.isGM || (this.actor.visible && !this.actor.limited);
-    context.userIsGM = game.user.isGM;
+    context.userIsHost = game.user.isGM;
 
     return context;
   }
@@ -60,7 +60,8 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
   _prepareItems(context) {
     // Initialize containers.
     const abilities = [];
-    const gear = [];
+    const weapons = [];
+    const possessions = [];
     const spells = [];
 
     // Iterate through items, allocating to containers
@@ -74,8 +75,11 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
         abilities.push(i);
       }
       // Append to gear.
-      else if (i.type === 'item') {
-        gear.push(i);
+      else if (i.type === 'weapon') {
+        weapons.push(i);
+      }
+      else if (i.type === 'possessions') {
+        possessions.push(i);
       }
       // Append to spells.
       else if (i.type === 'spell') {
@@ -84,8 +88,9 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
     }
 
     // Assign and return
-    context.gear = gear;
     context.abilities = abilities;
+    context.weapons = weapons;
+    context.possessions = possessions;
     context.spells = spells;
   }
 

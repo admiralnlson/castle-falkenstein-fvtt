@@ -7,9 +7,9 @@
   return loadTemplates([
 
     // Actor partials.
-    "systems/castle-falkenstein/templates/actor/parts/actor-abilities.hbs",
-    "systems/castle-falkenstein/templates/actor/parts/actor-spells.hbs",
-    "systems/castle-falkenstein/templates/actor/parts/actor-items.hbs",
-    "systems/castle-falkenstein/templates/actor/parts/actor-effects.hbs",
+    "systems/castle-falkenstein/templates/parts/actor-abilities.hbs",
+    "systems/castle-falkenstein/templates/parts/actor-possessions.hbs",
+    "systems/castle-falkenstein/templates/parts/actor-spells.hbs",
+    "systems/castle-falkenstein/templates/parts/actor-weapons.hbs",
   ]);
 };

@@ -18,7 +18,7 @@
     }
   },
   "Item": {
-    "types": ["ability", "spell", "item"],
+    "types": ["ability", "weapon", "possession", "spell"],
     "templates": {
       "base": {
         "description": ""
@@ -29,10 +29,16 @@
       "level" : "AV",
       "suit": "?"
     },
-    "item": {
+    "weapon": {
       "templates": ["base"],
-      "quantity": 1,
-      "weight": 0
+      "effectiveRange": 0,
+      "magazine": 1,
+      "wounds_partial": 0,
+      "wounds_full": 0,
+      "wounds_high": 0
+    },
+    "possession": {
+      "templates": ["base"]
     },
     "spell": {
       "templates": ["base"]

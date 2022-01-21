@@ -1,30 +1,22 @@
 import { CASTLE_FALKENSTEIN } from "../helpers/config.mjs";
 
 /**
- * Extend the basic ItemSheet with some very simple modifications
+ * Sheet for the 'weapon' item type.
  * @extends {ItemSheet}
  */
-export class CastleFalkensteinItemSheet extends ItemSheet {
+export class CastleFalkensteinWeaponSheet extends ItemSheet {
 
-  /** @override */
+  /**
+   * @override
+   */
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: ["castle-falkenstein", "sheet", "item"],
-      width: 450,
-      height: 90,
+      template: "systems/castle-falkenstein/templates/item-weapon-sheet.hbs",
+      width: 600,
+      height: 400,
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }]
     });
-  }
-
-  /** @override */
-  get template() {
-    const path = "systems/castle-falkenstein/templates/item";
-    // Return a single sheet for all item types.
-    // return `${path}/item-sheet.hbs`;
-
-    // Alternatively, you could use the following return statement to do a
-    // unique item sheet by type, like `weapon-sheet.hbs`.
-    return `${path}/item-${this.item.data.type}-sheet.hbs`;
   }
 
   /* -------------------------------------------- */
@@ -49,8 +41,6 @@ export class CastleFalkensteinItemSheet extends ItemSheet {
     context.flags = itemData.flags;
 
     context.CASTLE_FALKENSTEIN = CASTLE_FALKENSTEIN;
-
-    console.log(context);
 
     return context;
   }
