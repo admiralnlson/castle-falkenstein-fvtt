@@ -78,7 +78,7 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
       else if (i.type === 'weapon') {
         weapons.push(i);
       }
-      else if (i.type === 'possessions') {
+      else if (i.type === 'possession') {
         possessions.push(i);
       }
       // Append to spells.
