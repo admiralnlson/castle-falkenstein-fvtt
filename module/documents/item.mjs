@@ -1,3 +1,5 @@
+import {CASTLE_FALKENSTEIN} from "../helpers/config.mjs";
+
 /**
  * Extend the basic Item with some very simple modifications.
  * @extends {Item}
@@ -36,32 +38,40 @@ export class CastleFalkensteinItem extends Item {
     // Initialize chat data.
     const speaker = ChatMessage.getSpeaker({ actor: this.actor });
     const rollMode = game.settings.get('core', 'rollMode');
-    const label = `[${item.type}] ${item.name}`;
+    let flavor = `[${item.type}]`;
+    let content = `${item.name}<hr/>`
+                + `${item.data.description}`;
 
-    // If there's no roll data, send a chat message.
-    if (!this.data.data.formula) {
-      ChatMessage.create({
-        speaker: speaker,
-        rollMode: rollMode,
-        flavor: label,
-        content: item.data.description ?? ''
-      });
+    // change label based on item type
+    if (item.type == 'ability') {
+      flavor = `[${game.i18n.localize("CASTLE_FALKENSTEIN.Ability")}]`;
+      const levelI18nKey = CASTLE_FALKENSTEIN.abilityLevels[item.data.level].full;
+      const suitSymbol = CASTLE_FALKENSTEIN.cardSuits[item.data.suit].symbol;
+      const suitColor = CASTLE_FALKENSTEIN.cardSuits[item.data.suit].color;
+      content = `${game.i18n.localize("CASTLE_FALKENSTEIN.AbilityLevelInSentence")}${game.i18n.localize(levelI18nKey)} `
+              + `${game.i18n.localize("CASTLE_FALKENSTEIN.AbilityNameInSentence")}${item.name} `
+              + `[<span style="color:${suitColor}">${suitSymbol}</span>].`;
+    } else if (item.type == 'possession') {
+      flavor = `[${game.i18n.localize("CASTLE_FALKENSTEIN.Possession")}]`;
+      // default content
+    } else if (item.type == 'spell') {
+      flavor = `[${game.i18n.localize("CASTLE_FALKENSTEIN.Spell")}]`;
+      const suitSymbol = CASTLE_FALKENSTEIN.cardSuits[item.data.suit].symbol;
+      const suitColor = CASTLE_FALKENSTEIN.cardSuits[item.data.suit].color;
+      content = `${item.name} [<span style="color:${suitColor}">${suitSymbol}</span>]<hr/>`
+            + `${game.i18n.localize("CASTLE_FALKENSTEIN.SpellThaumicLevel")}: ${item.data.level}<br/>`
+            + `${item.data.description}`;
+    } else {
+      // default flavor & content
     }
-    // Otherwise, create a roll and send a chat message from it.
-    else {
-      // Retrieve roll data.
-      const rollData = this.getRollData();
-
-      // Invoke the roll and submit it to chat.
-      const roll = new Roll(rollData.item.formula, rollData);
-      // If you need to store the value first, uncomment the next line.
-      // let result = await roll.roll({async: true});
-      roll.toMessage({
-        speaker: speaker,
-        rollMode: rollMode,
-        flavor: label,
-      });
-      return roll;
-    }
+ 
+ 
+    // Post message to chat
+    ChatMessage.create({
+      speaker: speaker,
+      rollMode: rollMode,
+      flavor: flavor,
+      content: content
+    });
   }
 }

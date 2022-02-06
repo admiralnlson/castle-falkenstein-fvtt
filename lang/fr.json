@@ -1,20 +1,22 @@
 {
   "CASTLE_FALKENSTEIN.SystemTitle": "Château Falkenstein",
 
-  "CASTLE_FALKENSTEIN.EffectCreate": "Créer un effet",
-  "CASTLE_FALKENSTEIN.EffectToggle": "Activer/désactiver l'effet",
-  "CASTLE_FALKENSTEIN.EffectEdit": "Éditer l'effet",
-  "CASTLE_FALKENSTEIN.EffectDelete": "Supprimer l'effet",
+  "CASTLE_FALKENSTEIN.MaxHealth": "Santé",
+  "CASTLE_FALKENSTEIN.Wounds": "Blessures",
 
   "CASTLE_FALKENSTEIN.Add": "Ajouter",
 
   "CASTLE_FALKENSTEIN.Description": "Description",
-  "CASTLE_FALKENSTEIN.HostNotes": "Notes de l'Hôte",
+
   "CASTLE_FALKENSTEIN.Diary": "Journal",
 
   "CASTLE_FALKENSTEIN.Abilities": "Talents",
-  "CASTLE_FALKENSTEIN.AbilityLevel": "Je suis",
-  "CASTLE_FALKENSTEIN.AbilityName": "en",
+  "CASTLE_FALKENSTEIN.Ability": "Talent",
+  "CASTLE_FALKENSTEIN.AbilityLevel": "Niveau",
+  "CASTLE_FALKENSTEIN.AbilityName": "Nom",
+  "CASTLE_FALKENSTEIN.AbilitySuit": "Couleur",
+  "CASTLE_FALKENSTEIN.AbilityLevelInSentence": "Je suis ",
+  "CASTLE_FALKENSTEIN.AbilityNameInSentence": "en ",
 
   "CASTLE_FALKENSTEIN.AbilityPoor": "Faible",
   "CASTLE_FALKENSTEIN.AbilityAverage": "Moyen",
@@ -32,13 +34,13 @@
 
   "CASTLE_FALKENSTEIN.Suit": "Couleur",
   "CASTLE_FALKENSTEIN.Spades": "pique",
-  "CASTLE_FALKENSTEIN.SpadesFortuneDeckDescription": "Prouesses sociales ou en rapport avec le statut social.",
+  "CASTLE_FALKENSTEIN.SpadesFortuneDesc": "Prouesses sociales ou en rapport avec le statut social.",
   "CASTLE_FALKENSTEIN.Hearts": "coeur",
-  "CASTLE_FALKENSTEIN.HeartsFortuneDeckDescription": "Prouesses romantiques et centrées sur les émotions.",
+  "CASTLE_FALKENSTEIN.HeartsFortuneDesc": "Prouesses romantiques et centrées sur les émotions.",
   "CASTLE_FALKENSTEIN.Diamonds": "carreau",
-  "CASTLE_FALKENSTEIN.DiamondsFortuneDeckDescription": "Prouesses intellectuelles et mentales.",
+  "CASTLE_FALKENSTEIN.DiamondsFortuneDesc": "Prouesses intellectuelles et mentales.",
   "CASTLE_FALKENSTEIN.Clubs": "trèfle",
-  "CASTLE_FALKENSTEIN.ClubsFortuneDeckDescription": "Prouesses physiques.",
+  "CASTLE_FALKENSTEIN.ClubsFortuneDesc": "Prouesses physiques.",
 
   "CASTLE_FALKENSTEIN.Weapons": "Armes",
   "CASTLE_FALKENSTEIN.EffectiveRange": "Portée Effective",
@@ -49,6 +51,15 @@
   "CASTLE_FALKENSTEIN.WeaponRangeUnitAbbr": "yds",
 
   "CASTLE_FALKENSTEIN.Possessions": "Possessions",
+  "CASTLE_FALKENSTEIN.Possession": "Possession",
+  "CASTLE_FALKENSTEIN.PossessionName": "Nom",
 
-  "CASTLE_FALKENSTEIN.Spells": "Sorts"
+  "CASTLE_FALKENSTEIN.Spells": "Sorts",
+  "CASTLE_FALKENSTEIN.Spell": "Sort",
+  "CASTLE_FALKENSTEIN.SpellName": "Nom",
+  "CASTLE_FALKENSTEIN.SpellAspect": "Aspect",
+  "CASTLE_FALKENSTEIN.SpellNameAndAspect": "Sort",
+  "CASTLE_FALKENSTEIN.SpellThaumicLevel": "Niveau thaumique",
+
+  "CASTLE_FALKENSTEIN.HostNotes": "Notes de l'Hôte"
 }

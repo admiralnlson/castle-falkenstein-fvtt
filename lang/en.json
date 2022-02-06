@@ -1,20 +1,22 @@
 {
   "CASTLE_FALKENSTEIN.SystemTitle": "Castle Falkenstein",
 
-  "CASTLE_FALKENSTEIN.EffectCreate": "Create Effect",
-  "CASTLE_FALKENSTEIN.EffectToggle": "Toggle Effect",
-  "CASTLE_FALKENSTEIN.EffectEdit": "Edit Effect",
-  "CASTLE_FALKENSTEIN.EffectDelete": "Delete Effect",
+  "CASTLE_FALKENSTEIN.MaxHealth": "Health",
+  "CASTLE_FALKENSTEIN.Wounds": "Wounds",
 
   "CASTLE_FALKENSTEIN.Add": "Add",
 
   "CASTLE_FALKENSTEIN.Description": "Description",
-  "CASTLE_FALKENSTEIN.HostNotes": "Host notes",
+
   "CASTLE_FALKENSTEIN.Diary": "Diary",
 
   "CASTLE_FALKENSTEIN.Abilities": "Abilities",
-  "CASTLE_FALKENSTEIN.AbilityLevel": "I have",
-  "CASTLE_FALKENSTEIN.AbilityName": "",
+  "CASTLE_FALKENSTEIN.Ability": "Ability",
+  "CASTLE_FALKENSTEIN.AbilityLevel": "Level",
+  "CASTLE_FALKENSTEIN.AbilityName": "Name",
+  "CASTLE_FALKENSTEIN.AbilitySuit": "Suit",
+  "CASTLE_FALKENSTEIN.AbilityLevelInSentence": "I have ",
+  "CASTLE_FALKENSTEIN.AbilityNameInSentence": " ",
 
   "CASTLE_FALKENSTEIN.AbilityPoor": "Poor",
   "CASTLE_FALKENSTEIN.AbilityAverage": "Average",
@@ -32,13 +34,13 @@
 
   "CASTLE_FALKENSTEIN.Suit": "Suit",
   "CASTLE_FALKENSTEIN.Spades": "Spades",
-  "CASTLE_FALKENSTEIN.SpadesFortuneDeckDescription": "Social and Status-Related Feats.",
+  "CASTLE_FALKENSTEIN.SpadesFortuneDesc": "Social and Status-related Feats.",
   "CASTLE_FALKENSTEIN.Hearts": "Hearts",
-  "CASTLE_FALKENSTEIN.HeartsFortuneDeckDescription": "Emotional and Romantic Feats.",
+  "CASTLE_FALKENSTEIN.HeartsFortuneDesc": "Emotional and Romantic Feats.",
   "CASTLE_FALKENSTEIN.Diamonds": "Diamonds",
-  "CASTLE_FALKENSTEIN.DiamondsFortuneDeckDescription": "Mental and Intellectual Feats.",
+  "CASTLE_FALKENSTEIN.DiamondsFortuneDesc": "Mental and Intellectual Feats.",
   "CASTLE_FALKENSTEIN.Clubs": "Clubs",
-  "CASTLE_FALKENSTEIN.ClubsFortuneDeckDescription": "Physical Feats.",
+  "CASTLE_FALKENSTEIN.ClubsFortuneDesc": "Physical Feats.",
 
   "CASTLE_FALKENSTEIN.Weapons": "Weapons",
   "CASTLE_FALKENSTEIN.EffectiveRange": "Effective Range",
@@ -49,6 +51,15 @@
   "CASTLE_FALKENSTEIN.WeaponRangeUnitAbbr": "yds",
 
   "CASTLE_FALKENSTEIN.Possessions": "Possessions",
+  "CASTLE_FALKENSTEIN.Possession": "Possession",
+  "CASTLE_FALKENSTEIN.PossessionName": "Name",
   
-  "CASTLE_FALKENSTEIN.Spells": "Spells"
+  "CASTLE_FALKENSTEIN.Spells": "Spells",
+  "CASTLE_FALKENSTEIN.Spell": "Spell",
+  "CASTLE_FALKENSTEIN.SpellName": "Name",
+  "CASTLE_FALKENSTEIN.SpellAspect": "Aspect",
+  "CASTLE_FALKENSTEIN.SpellNameAndAspect": "Spell",
+  "CASTLE_FALKENSTEIN.SpellThaumicLevel": "Thaumic Level",
+
+  "CASTLE_FALKENSTEIN.HostNotes": "Host notes"
 }

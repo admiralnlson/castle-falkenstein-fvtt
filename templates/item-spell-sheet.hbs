@@ -1,15 +1,25 @@
 <form class="{{cssClass}}" autocomplete="off">
+
   <header class="sheet-header">
-    <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
     <div class="header-fields">
-      <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
+      <div class="flexcol">
+        <div class="spell-sheet-header-line">
+          <label class="resource-label">{{localize 'CASTLE_FALKENSTEIN.Spell'}}:</label>
+          <input class="spell-sheet-name-value" name="name" type="text" value="{{item.name}}" placeholder="Name" />
+          <select name="data.suit">
+            {{selectOptions CASTLE_FALKENSTEIN.cardSuitSymbols selected=data.suit localize=false}}
+          </select>
+          <span class="spell-sheet-header-sep"> </span>
+          <label class="resource-label">{{localize 'CASTLE_FALKENSTEIN.SpellThaumicLevel'}}:</label>
+          <input class="spell-sheet-thaumic-level-value" name="data.level" type="number" min="0" value="{{data.level}}" placeholder="" />
+        </div>
+      </div>
     </div>
   </header>
 
   {{!-- Sheet Tab Navigation --}}
   <nav class="sheet-tabs tabs" data-group="primary">
-    <a class="item" data-tab="description">Description</a>
-    <a class="item" data-tab="attributes">Attributes</a>
+    <a class="tab-link" data-tab="description">Description</a>
   </nav>
 
   {{!-- Sheet Body --}}
@@ -17,12 +27,9 @@
 
     {{!-- Description Tab --}}
     <div class="tab" data-group="primary" data-tab="description">
+      {{!-- To render inline rolls in a TinyMCE editor, you need to pass the parent actor's (if any) roll data to the rollData prop. --}}
       {{editor content=data.description target="data.description" rollData=rollData button=true owner=owner editable=editable}}
     </div>
 
-    {{!-- Attributes Tab --}}
-    <div class="tab attributes" data-group="primary" data-tab="attributes">
-      {{!-- As you add new fields, add them in here! --}}
-    </div>
   </section>
 </form>

@@ -44,7 +44,7 @@ CASTLE_FALKENSTEIN.cardSuits = {
     "name": "CASTLE_FALKENSTEIN.Unset",
     "fortuneDeckDescription": "?",
     "symbol": "?",
-    "color": "red"
+    "color": "gray"
   },
   "spades": {
     "name": "CASTLE_FALKENSTEIN.Spades",

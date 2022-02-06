@@ -1,15 +1,19 @@
 <form class="{{cssClass}}" autocomplete="off">
+
   <header class="sheet-header">
-    <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
     <div class="header-fields">
-      <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
+      <div class="flexcol">
+        <div class="flexrow nowrapflex">
+          <label class="resource-label sheet-possession-label">{{localize 'CASTLE_FALKENSTEIN.Possession'}}:</label>
+          <input class="sheet-possession-value" name="name" type="text" value="{{item.name}}" placeholder="Name" />
+        </div>
+      </div>
     </div>
   </header>
 
   {{!-- Sheet Tab Navigation --}}
   <nav class="sheet-tabs tabs" data-group="primary">
-    <a class="item" data-tab="description">Description</a>
-    <a class="item" data-tab="attributes">Attributes</a>
+    <a class="tab-link" data-tab="description">Description</a>
   </nav>
 
   {{!-- Sheet Body --}}
@@ -21,8 +25,5 @@
       {{editor content=data.description target="data.description" rollData=rollData button=true owner=owner editable=editable}}
     </div>
 
-    {{!-- Attributes Tab --}}
-    <div class="tab attributes" data-group="primary" data-tab="attributes">
-    </div>
   </section>
 </form>

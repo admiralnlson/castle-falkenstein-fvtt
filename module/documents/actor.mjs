@@ -6,25 +6,6 @@ export class CastleFalkensteinActor extends Actor {
 
   /**
    * @override
-   */
-  prepareData() {
-    // Prepare data for the actor. Calling the super version of this executes
-    // the following, in order: data reset (to clear active effects),
-    // prepareBaseData(), prepareEmbeddedDocuments() (including active effects),
-    // prepareDerivedData().
-    super.prepareData();
-  }
-
-  /**
-   * @override
-   * Prepare data related to this Document itself, before any embedded Documents or derived data is computed.
-   */
-  prepareBaseData() {
-    // Data modifications in this step occur before processing embedded documents or derived data.
-  }
-
-  /**
-   * @override
    * Augment the basic actor data with additional dynamic data. Typically,
    * you'll want to handle most of your calculated/derived data in this step.
    * Data calculated in this step should generally not exist in template.json
@@ -48,5 +29,4 @@ export class CastleFalkensteinActor extends Actor {
 
     return data;
   }
-
 }

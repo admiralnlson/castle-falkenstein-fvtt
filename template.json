@@ -10,7 +10,8 @@
         },
         "description": "",
         "hostNotes": "",
-        "diary": ""
+        "diary": "",
+        "wounds": ""
       }
     },
     "character": {
@@ -41,7 +42,9 @@
       "templates": ["base"]
     },
     "spell": {
-      "templates": ["base"]
+      "templates": ["base"],
+      "level" : "0",
+      "suit": "?"
     }
   }
 }

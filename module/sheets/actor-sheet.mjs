@@ -1,5 +1,4 @@
 import {CASTLE_FALKENSTEIN} from "../helpers/config.mjs";
-import {onManageActiveEffect, prepareActiveEffectCategories} from "../helpers/effects.mjs";
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -22,10 +21,7 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
 
   /** @override */
   getData() {
-    // Retrieve the data structure from the base sheet. You can inspect or log
-    // the context variable to see the structure, but some key properties for
-    // sheets are the actor object, the data object, whether or not it's
-    // editable, the items array, and the effects array.
+    // Retrieve the data structure from the base sheet.
     const context = super.getData();
 
     // Use a safe clone of the actor data for further operations.
@@ -39,9 +35,6 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
 
     // Add roll data for TinyMCE editors.
     context.rollData = context.actor.getRollData();
-
-    // Prepare active effects
-    context.effects = prepareActiveEffectCategories(this.actor.effects);
 
     // Conditionals
     context.userHasObserverOrOwnerAccess = game.user.isGM || (this.actor.visible && !this.actor.limited);
@@ -74,15 +67,18 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
         i.data.suitColor = CASTLE_FALKENSTEIN.cardSuits[i.data.suit].color;
         abilities.push(i);
       }
-      // Append to gear.
+      // Append to weapons.
       else if (i.type === 'weapon') {
         weapons.push(i);
       }
+      // Append to possessions.
       else if (i.type === 'possession') {
         possessions.push(i);
       }
       // Append to spells.
       else if (i.type === 'spell') {
+        i.data.suitSymbol = CASTLE_FALKENSTEIN.cardSuits[i.data.suit].symbol;
+        i.data.suitColor = CASTLE_FALKENSTEIN.cardSuits[i.data.suit].color;
         spells.push(i);
       }
     }
@@ -121,9 +117,6 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
       item.delete();
       li.slideUp(200, () => this.render(false));
     });
-
-    // Active Effect management
-    html.find(".effect-control").click(ev => onManageActiveEffect(ev, this.actor));
 
     // Rollable abilities.
     html.find('.rollable').click(this._onRoll.bind(this));

@@ -220,7 +220,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: flex-start;
   margin-bottom: 10px;
 }
@@ -252,6 +252,13 @@
   flex: 0;
 }
 
+/*.castle-falkenstein .sheet-tabs .tab-link {
+}*/
+
+.castle-falkenstein .sheet-tabs .active {
+  font-weight: bold;
+}
+
 .castle-falkenstein .sheet-body,
 .castle-falkenstein .sheet-body .tab,
 .castle-falkenstein .sheet-body .tab .editor {
@@ -268,6 +275,19 @@
 
 .castle-falkenstein .resource-label {
   font-weight: bold;
+}
+
+.castle-falkenstein .health-and-wounds {
+  height: 45px;
+}
+
+.castle-falkenstein .health {
+  flex: 0 1 min-content;
+  text-align: center;
+}
+
+.castle-falkenstein .wounds {
+  flex: 1 0 auto;
 }
 
 .castle-falkenstein .items-header {
@@ -292,7 +312,9 @@
   font-weight: bold;
 }
 
-.castle-falkenstein .items-list .ability-roll {
+.castle-falkenstein .items-list .ability-roll,
+.castle-falkenstein .items-list .possession-roll,
+.castle-falkenstein .items-list .spell-roll {
   text-align: center;
   flex: 0 0 30px;
 }
@@ -301,8 +323,57 @@
   flex: 1 1 100px;
 }
 
-.castle-falkenstein .ability-name {
+.castle-falkenstein .items-list .spell-level {
+  flex: 0 0 120px;
+  text-align: center;
+}
+
+.castle-falkenstein .spell-sheet-name-and-aspect {
+  flex: 1 1 auto;
+}
+
+.castle-falkenstein .spell-sheet-thaumic-level {
+  flex: 0 1 auto;
+}
+
+.castle-falkenstein .spell-sheet-name-value {
+  width: 200px;
+}
+
+.castle-falkenstein .spell-sheet-header-sep {
+  display: inline-block;
+  width: 5px;
+}
+
+.castle-falkenstein .spell-sheet-thaumic-level-value {
+  width: 25px;
+  text-align: center;
+}
+
+.castle-falkenstein .ability-name,
+.castle-falkenstein .possession-name,
+.castle-falkenstein .spell-name {
   flex: 5 0 100px;
+}
+
+.castle-falkenstein .flexrow {
+  align-items: center;
+}
+
+.castle-falkenstein .nowrapflex {
+  flex-wrap: nowrap;
+}
+
+.castle-falkenstein .flexrowsep {
+  flex: 0 0 10px;
+}
+
+.castle-falkenstein .sheet-possession-label {
+  flex: 0 0 auto;
+}
+
+.castle-falkenstein .sheet-possession-value {
+  flex: 1 0 max-content;
 }
 
 .castle-falkenstein .items-list {
@@ -339,7 +410,7 @@
 
 .castle-falkenstein .items-list .item-controls {
   display: flex;
-  flex: 0 0 100px;
+  flex: 0 0 70px;
   justify-content: flex-end;
 }
 
@@ -391,22 +462,4 @@
 .castle-falkenstein .items-list .items-header .item-name {
   padding-left: 5px;
   text-align: left;
-}
-
-.castle-falkenstein .item-formula {
-  flex: 0 0 200px;
-  padding: 0 8px;
-}
-
-.castle-falkenstein .effects .item .effect-source,
-.castle-falkenstein .effects .item .effect-duration,
-.castle-falkenstein .effects .item .effect-controls {
-  text-align: center;
-  border-left: 1px solid #c9c7b8;
-  border-right: 1px solid #c9c7b8;
-  font-size: 12px;
-}
-
-.castle-falkenstein .effects .item .effect-controls {
-  border: none;
 }
