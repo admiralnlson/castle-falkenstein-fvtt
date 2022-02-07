@@ -3,15 +3,15 @@
   <header class="sheet-header">
     <div class="header-fields">
       <div class="flexcol">
-        <div class="spell-sheet-header-line">
+        <div class="grid grid-5col spell-sheet-header">
           <label class="resource-label">{{localize 'CASTLE_FALKENSTEIN.Spell'}}:</label>
-          <input class="spell-sheet-name-value" name="name" type="text" value="{{item.name}}" placeholder="Name" />
+          <input name="name" type="text" value="{{item.name}}" placeholder="Name" />
           <select name="data.suit">
             {{selectOptions CASTLE_FALKENSTEIN.cardSuitSymbols selected=data.suit localize=false}}
           </select>
-          <span class="spell-sheet-header-sep"> </span>
+          <span></span>
           <label class="resource-label">{{localize 'CASTLE_FALKENSTEIN.SpellThaumicLevel'}}:</label>
-          <input class="spell-sheet-thaumic-level-value" name="data.level" type="number" min="0" value="{{data.level}}" placeholder="" />
+          <input class="thaumic-level" name="data.level" type="number" min="0" value="{{data.level}}" placeholder="" />
         </div>
       </div>
     </div>

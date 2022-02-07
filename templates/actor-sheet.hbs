@@ -5,15 +5,13 @@
     <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
     <div class="header-fields">
       <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
-      <div class="flexrow health-and-wounds">
+      <div class="grid-2col health-and-wounds">
         {{#if userHasObserverOrOwnerAccess}}
-          <div class="health">
+          <div class="health flexcol">
             <label for="data.health.max" class="resource-label">{{localize 'CASTLE_FALKENSTEIN.MaxHealth'}}</label>
             <input type="number" name="data.health.max" value="{{data.health.max}}" data-dtype="Number"/>
           </div>
-          <div class="flexrowsep">
-          </div>
-          <div class="wounds">
+          <div class="wounds flexcol">
             <label for="data.wounds" class="resource-label">{{localize 'CASTLE_FALKENSTEIN.Wounds'}}</label>
             <input type="text" name="data.wounds" value="{{data.wounds}}" data-dtype="Text"/>
           </div>

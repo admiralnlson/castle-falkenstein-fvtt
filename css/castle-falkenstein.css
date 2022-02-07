@@ -4,6 +4,10 @@
   font-family: "Roboto", sans-serif;
 }
 
+.castle-falkenstein input {
+  width: auto;
+}
+
 .rollable:hover, .rollable:focus {
   color: #000;
   text-shadow: 0 0 10px red;
@@ -16,7 +20,6 @@
   grid-column: span 2 / span 2;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
-  margin: 10px 0;
   padding: 0;
 }
 
@@ -203,12 +206,20 @@
   text-align: center;
 }
 
-/* Styles limited to castle-falkenstein sheets */
-.castle-falkenstein {
-  /* ----------------------------------------- */
-  /*  Items Lists                              */
-  /* ----------------------------------------- */
-  /* Example style for CastleFalkenstein (can be removed if not needed) */
+.nowrapflex {
+  flex-wrap: nowrap;
+}
+
+.castle-falkenstein .flexrowsep {
+  flex: 0 0 10px;
+}
+
+
+.castle-falkenstein .window-title,
+.castle-falkenstein input {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .castle-falkenstein .item-form {
@@ -252,9 +263,6 @@
   flex: 0;
 }
 
-/*.castle-falkenstein .sheet-tabs .tab-link {
-}*/
-
 .castle-falkenstein .sheet-tabs .active {
   font-weight: bold;
 }
@@ -269,25 +277,28 @@
   background: #fff;
 }
 
-.castle-falkenstein .tox .tox-edit-area {
-  padding: 0 8px;
-}
-
 .castle-falkenstein .resource-label {
   font-weight: bold;
 }
 
 .castle-falkenstein .health-and-wounds {
   height: 45px;
+  grid-template-columns: 40px 1fr;
 }
 
 .castle-falkenstein .health {
-  flex: 0 1 min-content;
   text-align: center;
 }
 
-.castle-falkenstein .wounds {
-  flex: 1 0 auto;
+.castle-falkenstein .items-list .ability-roll,
+.castle-falkenstein .items-list .possession-roll,
+.castle-falkenstein .items-list .spell-roll {
+  text-align: center;
+  flex: 0 0 30px;
+}
+
+.castle-falkenstein .items-list .ability-level {
+  flex: 1 1 100px;
 }
 
 .castle-falkenstein .items-header {
@@ -310,70 +321,6 @@
 
 .castle-falkenstein .items-list .items-header {
   font-weight: bold;
-}
-
-.castle-falkenstein .items-list .ability-roll,
-.castle-falkenstein .items-list .possession-roll,
-.castle-falkenstein .items-list .spell-roll {
-  text-align: center;
-  flex: 0 0 30px;
-}
-
-.castle-falkenstein .items-list .ability-level {
-  flex: 1 1 100px;
-}
-
-.castle-falkenstein .items-list .spell-level {
-  flex: 0 0 120px;
-  text-align: center;
-}
-
-.castle-falkenstein .spell-sheet-name-and-aspect {
-  flex: 1 1 auto;
-}
-
-.castle-falkenstein .spell-sheet-thaumic-level {
-  flex: 0 1 auto;
-}
-
-.castle-falkenstein .spell-sheet-name-value {
-  width: 200px;
-}
-
-.castle-falkenstein .spell-sheet-header-sep {
-  display: inline-block;
-  width: 5px;
-}
-
-.castle-falkenstein .spell-sheet-thaumic-level-value {
-  width: 25px;
-  text-align: center;
-}
-
-.castle-falkenstein .ability-name,
-.castle-falkenstein .possession-name,
-.castle-falkenstein .spell-name {
-  flex: 5 0 100px;
-}
-
-.castle-falkenstein .flexrow {
-  align-items: center;
-}
-
-.castle-falkenstein .nowrapflex {
-  flex-wrap: nowrap;
-}
-
-.castle-falkenstein .flexrowsep {
-  flex: 0 0 10px;
-}
-
-.castle-falkenstein .sheet-possession-label {
-  flex: 0 0 auto;
-}
-
-.castle-falkenstein .sheet-possession-value {
-  flex: 1 0 max-content;
 }
 
 .castle-falkenstein .items-list {
@@ -462,4 +409,41 @@
 .castle-falkenstein .items-list .items-header .item-name {
   padding-left: 5px;
   text-align: left;
+}
+
+.castle-falkenstein .inlineblock {
+  display: inline-block;
+}
+
+.castle-falkenstein.actor .sheet-header,
+.castle-falkenstein.item .sheet-header {
+  padding: 2px;
+}
+
+.castle-falkenstein.item .sheet-body {
+  height: calc(100% - 79px);
+}
+
+.castle-falkenstein.item .ability-sheet-header {
+  align-items: center;
+  grid-template-columns: auto 1fr auto 2fr auto;
+}
+
+.castle-falkenstein.item .possession-sheet-header {
+  align-items: center;
+  grid-template-columns: auto 1fr;
+}
+
+.castle-falkenstein.item .spell-sheet-header {
+  align-items: center;
+  grid-template-columns: auto 1fr 40px 5px auto 25px;
+}
+
+.castle-falkenstein.item .spell-sheet-header .thaumic-level {
+  text-align: center;
+}
+
+.chat-message .message-header .message-sender {
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
