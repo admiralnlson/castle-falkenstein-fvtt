@@ -300,6 +300,14 @@
 .castle-falkenstein .items-list .ability-level {
   flex: 1 1 100px;
 }
+.castle-falkenstein .items-list .ability-name {
+  flex: 1 1 300px;
+}
+
+.castle-falkenstein .items-list .spell-level {
+  flex: 0 0 120px;
+  text-align: center;
+}
 
 .castle-falkenstein .items-header {
   height: 28px;
