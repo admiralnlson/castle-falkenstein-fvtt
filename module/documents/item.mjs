@@ -46,9 +46,11 @@ export class CastleFalkensteinItem extends Item {
     if (item.type == 'ability') {
       flavor = `[${game.i18n.localize("CASTLE_FALKENSTEIN.Ability")}]`;
       const levelI18nKey = CASTLE_FALKENSTEIN.abilityLevels[item.data.level].full;
+      const levelValue = CASTLE_FALKENSTEIN.abilityLevels[item.data.level].value;
       const suitSymbol = CASTLE_FALKENSTEIN.cardSuits[item.data.suit].symbol;
       const suitColor = CASTLE_FALKENSTEIN.cardSuits[item.data.suit].color;
       content = `${game.i18n.localize("CASTLE_FALKENSTEIN.AbilityLevelInSentence")}${game.i18n.localize(levelI18nKey)} `
+              + `[${levelValue}] `
               + `${game.i18n.localize("CASTLE_FALKENSTEIN.AbilityNameInSentence")}${item.name} `
               + `[<span style="color:${suitColor}">${suitSymbol}</span>].`;
     } else if (item.type == 'possession') {

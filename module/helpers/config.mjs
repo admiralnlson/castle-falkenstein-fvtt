@@ -7,32 +7,39 @@ export const CASTLE_FALKENSTEIN = {};
 CASTLE_FALKENSTEIN.abilityLevels = {
   "PR": {
     "full": "CASTLE_FALKENSTEIN.AbilityPoor",
-    "abbr": "CASTLE_FALKENSTEIN.AbilityPoorAbbr"
+    "abbr": "CASTLE_FALKENSTEIN.AbilityPoorAbbr",
+    "value": 2
   },
   "AV": {
     "full": "CASTLE_FALKENSTEIN.AbilityAverage",
-    "abbr": "CASTLE_FALKENSTEIN.AbilityAverageAbbr"
+    "abbr": "CASTLE_FALKENSTEIN.AbilityAverageAbbr",
+    "value": 4
   },
   "GD": {
     "full": "CASTLE_FALKENSTEIN.AbilityGood",
-    "abbr": "CASTLE_FALKENSTEIN.AbilityGoodAbbr"
+    "abbr": "CASTLE_FALKENSTEIN.AbilityGoodAbbr",
+    "value": 6
   },
   "GR": {
     "full": "CASTLE_FALKENSTEIN.AbilityGreat",
-    "abbr": "CASTLE_FALKENSTEIN.AbilityGreatAbbr"
+    "abbr": "CASTLE_FALKENSTEIN.AbilityGreatAbbr",
+    "value": 8
   },
   "EXC": {
     "full": "CASTLE_FALKENSTEIN.AbilityExceptional",
-    "abbr": "CASTLE_FALKENSTEIN.AbilityExceptionalAbbr"
+    "abbr": "CASTLE_FALKENSTEIN.AbilityExceptionalAbbr",
+    "value": 10
   },
   "EXT": {
     "full": "CASTLE_FALKENSTEIN.AbilityExtraordinary",
-    "abbr": "CASTLE_FALKENSTEIN.AbilityExtraordinaryAbbr"
+    "abbr": "CASTLE_FALKENSTEIN.AbilityExtraordinaryAbbr",
+    "value": 12
   }
 };
 
-CASTLE_FALKENSTEIN.abilityFullLevels = Object.fromEntries(Object.entries(CASTLE_FALKENSTEIN.abilityLevels).map(([key, value]) => [key, value.full]));
-CASTLE_FALKENSTEIN.abilityAbbrLevels = Object.fromEntries(Object.entries(CASTLE_FALKENSTEIN.abilityLevels).map(([key, value]) => [key, value.abbr]));
+CASTLE_FALKENSTEIN.abilityFullLevels = Object.fromEntries(Object.entries(CASTLE_FALKENSTEIN.abilityLevels).map(([key, level]) => [key, level.full]));
+CASTLE_FALKENSTEIN.abilityAbbrLevels = Object.fromEntries(Object.entries(CASTLE_FALKENSTEIN.abilityLevels).map(([key, level]) => [key, level.abbr]));
+CASTLE_FALKENSTEIN.abilityValues = Object.fromEntries(Object.entries(CASTLE_FALKENSTEIN.abilityLevels).map(([key, level]) => [key, level.value]));
 
 
 /**
@@ -72,5 +79,4 @@ CASTLE_FALKENSTEIN.cardSuits = {
   }
 };
 
-CASTLE_FALKENSTEIN.cardSuitSymbols = Object.fromEntries(Object.entries(CASTLE_FALKENSTEIN.cardSuits).map(([key, value]) => [key, value.symbol]));
 CASTLE_FALKENSTEIN.cardSuitSymbols = Object.fromEntries(Object.entries(CASTLE_FALKENSTEIN.cardSuits).map(([key, value]) => [key, value.symbol]));
