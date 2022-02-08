@@ -14,7 +14,7 @@ export class CastleFalkensteinPossessionSheet extends ItemSheet {
       classes: ["castle-falkenstein", "sheet", "item"],
       template: "systems/castle-falkenstein/templates/item-possession-sheet.hbs",
       width: 460,
-      height: 400,
+      height: 300,
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }]
     });
   }

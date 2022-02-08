@@ -14,7 +14,7 @@ export class CastleFalkensteinAbilitySheet extends ItemSheet {
       classes: ["castle-falkenstein", "sheet", "item"],
       template: "systems/castle-falkenstein/templates/item-ability-sheet.hbs",
       width: 460,
-      height: 400,
+      height: 300,
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }]
     });
   }

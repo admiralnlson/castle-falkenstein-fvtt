@@ -1,18 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
-/* Global styles */
-.window-app {
-  font-family: "Roboto", sans-serif;
-}
-
-.castle-falkenstein input {
-  width: auto;
-}
-
-.rollable:hover, .rollable:focus {
-  color: #000;
-  text-shadow: 0 0 10px red;
-  cursor: pointer;
-}
+/* Generic formatting stuff */
 
 .grid,
 .grid-2col {
@@ -58,180 +44,24 @@
   grid-template-columns: repeat(9, minmax(0, 1fr));
 }
 
-.grid-10col {
-  grid-column: span 10 / span 10;
-  grid-template-columns: repeat(10, minmax(0, 1fr));
+/* Base */ 
+
+.castle-falkenstein .window-content {
+  height: 100%;
+  padding: 5px;
+  overflow-y: hidden;
 }
 
-.grid-11col {
-  grid-column: span 11 / span 11;
-  grid-template-columns: repeat(11, minmax(0, 1fr));
-}
-
-.grid-12col {
-  grid-column: span 12 / span 12;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-}
-
-.grid-start-2 {
-  grid-column-start: 2;
-}
-
-.grid-start-3 {
-  grid-column-start: 3;
-}
-
-.grid-start-4 {
-  grid-column-start: 4;
-}
-
-.grid-start-5 {
-  grid-column-start: 5;
-}
-
-.grid-start-6 {
-  grid-column-start: 6;
-}
-
-.grid-start-7 {
-  grid-column-start: 7;
-}
-
-.grid-start-8 {
-  grid-column-start: 8;
-}
-
-.grid-start-9 {
-  grid-column-start: 9;
-}
-
-.grid-start-10 {
-  grid-column-start: 10;
-}
-
-.grid-start-11 {
-  grid-column-start: 11;
-}
-
-.grid-start-12 {
-  grid-column-start: 12;
-}
-
-.grid-span-2 {
-  grid-column-end: span 2;
-}
-
-.grid-span-3 {
-  grid-column-end: span 3;
-}
-
-.grid-span-4 {
-  grid-column-end: span 4;
-}
-
-.grid-span-5 {
-  grid-column-end: span 5;
-}
-
-.grid-span-6 {
-  grid-column-end: span 6;
-}
-
-.grid-span-7 {
-  grid-column-end: span 7;
-}
-
-.grid-span-8 {
-  grid-column-end: span 8;
-}
-
-.grid-span-9 {
-  grid-column-end: span 9;
-}
-
-.grid-span-10 {
-  grid-column-end: span 10;
-}
-
-.grid-span-11 {
-  grid-column-end: span 11;
-}
-
-.grid-span-12 {
-  grid-column-end: span 12;
-}
-
-.flex-group-center,
-.flex-group-left,
-.flex-group-right {
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.flex-group-left {
-  justify-content: flex-start;
-  text-align: left;
-}
-
-.flex-group-right {
-  justify-content: flex-end;
-  text-align: right;
-}
-
-.flexshrink {
-  flex: 0;
-}
-
-.flex-between {
-  justify-content: space-between;
-}
-
-.flexlarge {
-  flex: 2;
-}
-
-.align-left {
-  justify-content: flex-start;
-  text-align: left;
-}
-
-.align-right {
-  justify-content: flex-end;
-  text-align: right;
-}
-
-.align-center {
-  justify-content: center;
-  text-align: center;
-}
-
-.nowrapflex {
-  flex-wrap: nowrap;
-}
-
-.castle-falkenstein .flexrowsep {
-  flex: 0 0 10px;
-}
-
-
-.castle-falkenstein .window-title,
-.castle-falkenstein input {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-.castle-falkenstein .item-form {
-  font-family: "Roboto", sans-serif;
+.castle-falkenstein form {
+  height: 100%;
 }
 
 .castle-falkenstein .sheet-header {
-  flex: 0 auto;
+  flex: 0 0 120px;
   overflow: hidden;
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   justify-content: flex-start;
   margin-bottom: 10px;
 }
@@ -244,6 +74,7 @@
 
 .castle-falkenstein .sheet-header .header-fields {
   flex: 1;
+  /*---removed from original--- height: 100px;*/
 }
 
 .castle-falkenstein .sheet-header h1.charname {
@@ -259,54 +90,68 @@
   margin: 0;
 }
 
-.castle-falkenstein .sheet-tabs {
-  flex: 0;
+.castle-falkenstein .resource {
+  width: 50%;
+  height: 40px;
+  margin-top: 10px;
+  float: left;
+  text-align: center;
+}
+
+.castle-falkenstein .resource input {
+  width: 100px;
+  height: 28px;
+}
+
+.castle-falkenstein .tabs {
+  flex: 0 0 40px;
+  border-top: 1px solid #AAA;
+  border-bottom: 1px solid #AAA;
+}
+
+.castle-falkenstein .tabs .item {
+  line-height: 40px;
+  font-weight: bold;
+}
+
+.castle-falkenstein .tabs .item.active {
+  text-decoration: underline;
+  text-shadow: none;
+}
+
+.castle-falkenstein .sheet-body {
+  overflow: hidden;
+}
+
+.castle-falkenstein .sheet-body .tab {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.castle-falkenstein .editor,
+.castle-falkenstein .editor-content {
+  height: 100%;
+}
+
+.castle-falkenstein .rollable:hover, .rollable:focus {
+  color: #000;
+  text-shadow: 0 0 10px red;
+  cursor: pointer;
+}
+
+.castle-falkenstein .window-title,
+.castle-falkenstein input {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .castle-falkenstein .sheet-tabs .active {
   font-weight: bold;
 }
 
-.castle-falkenstein .sheet-body,
-.castle-falkenstein .sheet-body .tab,
-.castle-falkenstein .sheet-body .tab .editor {
-  height: 100%;
-}
-
-.castle-falkenstein .tox .tox-editor-container {
-  background: #fff;
-}
-
 .castle-falkenstein .resource-label {
   font-weight: bold;
-}
-
-.castle-falkenstein .health-and-wounds {
-  height: 45px;
-  grid-template-columns: 40px 1fr;
-}
-
-.castle-falkenstein .health {
-  text-align: center;
-}
-
-.castle-falkenstein .items-list .ability-roll,
-.castle-falkenstein .items-list .possession-roll,
-.castle-falkenstein .items-list .spell-roll {
-  text-align: center;
-  flex: 0 0 30px;
-}
-
-.castle-falkenstein .items-list .ability-level {
-  flex: 1 1 100px;
-}
-.castle-falkenstein .items-list .ability-name {
-  flex: 1 1 300px;
-}
-
-.castle-falkenstein .items-list .spell-level {
-  flex: 0 0 115px;
-  text-align: center;
 }
 
 .castle-falkenstein .items-header {
@@ -428,9 +273,39 @@
   padding: 2px;
 }
 
-.castle-falkenstein.item .sheet-body {
-  height: calc(100% - 79px);
+/* Really Castle Falkenstein system specific */
+
+.castle-falkenstein .health-and-wounds {
+  height: 45px;
+  grid-template-columns: 40px 1fr;
 }
+
+.castle-falkenstein .health {
+  text-align: center;
+}
+
+/* item lists */
+
+.castle-falkenstein .items-list .ability-roll,
+.castle-falkenstein .items-list .possession-roll,
+.castle-falkenstein .items-list .spell-roll {
+  text-align: center;
+  flex: 0 0 30px;
+}
+
+.castle-falkenstein .items-list .ability-level {
+  flex: 1 1 100px;
+}
+.castle-falkenstein .items-list .ability-name {
+  flex: 1 1 300px;
+}
+
+.castle-falkenstein .items-list .spell-level {
+  flex: 0 0 115px;
+  text-align: center;
+}
+
+/* item sheets */
 
 .castle-falkenstein.item .ability-sheet-header {
   align-items: center;
@@ -450,6 +325,12 @@
 .castle-falkenstein.item .spell-sheet-header .thaumic-level {
   text-align: center;
 }
+
+.castle-falkenstein.item .sheet-body {
+  height: calc(100% - 76px); /* will need to be adjusted for either of the item sheets if their headers are no longer one-liners */
+}
+
+/* chat message fix */
 
 .chat-message .message-header .message-sender {
   text-overflow: ellipsis;

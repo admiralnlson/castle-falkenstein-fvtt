@@ -13,8 +13,8 @@ export class CastleFalkensteinWeaponSheet extends ItemSheet {
     return mergeObject(super.defaultOptions, {
       classes: ["castle-falkenstein", "sheet", "item"],
       template: "systems/castle-falkenstein/templates/item-weapon-sheet.hbs",
-      width: 600,
-      height: 400,
+      width: 460,
+      height: 300,
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }]
     });
   }
