@@ -13,12 +13,12 @@ The following permissions are defined on it:
 | Sheet element    | Limited | Observer | Owner  | Host (GM) |
 |------------------|:-------:|:--------:|:------:|:---------:|
 | Name             | Read    | Read     | Update | Update    |
-| Health & Wound   | -       | -        | Update | Update    |
+| Health & Wound   | -       | Read     | Update | Update    |
 | Description      | Read    | Read     | Update | Update    |
-| Diary            | -       | -        | Update | Update    |
-| Abilities        | -       | -        | Update | Update    |
-| Possessions      | -       | -        | Update | Update    |
-| Spells           | -       | -        | Update | Update    |
+| Diary            | -       | Read     | Update | Update    |
+| Abilities        | -       | Read     | Update | Update    |
+| Possessions      | -       | Read     | Update | Update    |
+| Spells           | -       | Read     | Update | Update    |
 | Host Notes       | -       | -        | -      | Update    |
 
 ### Diaries as actual Journal Entries

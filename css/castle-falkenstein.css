@@ -133,6 +133,13 @@
   height: 100%;
 }
 
+/* fix for firefox obnoxiously large scrollbar. Not sure why it's so much different from Chrome's. */
+/* FIXME Firefox users may actually prefer the thick bar + thin bar isn't great for accessibility. */
+/* TODO See if FoundryVTT intentionally makes it thin or its a Chrome default. */
+html * {
+  scrollbar-width: thin !important;
+}
+
 .castle-falkenstein .rollable:hover, .rollable:focus {
   color: #000;
   text-shadow: 0 0 10px red;
