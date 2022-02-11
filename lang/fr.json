@@ -1,5 +1,29 @@
 {
   "CASTLE_FALKENSTEIN.SystemTitle": "Château Falkenstein",
+  "CASTLE_FALKENSTEIN.ConfigureSystem": "Configurer le système",
+  "CASTLE_FALKENSTEIN.SystemSettings": "Paramétrages du système",
+  "castle-falkenstein": {
+    "settings": {
+      "name": "Paramètres du système",
+      "label": "Paramétrer le système Château Falkenstein",
+      "fortuneDeck": {
+        "name": "Jeu du destin",
+        "hint": "Le paquet de cartes faisant office de Jeu du destin."
+      },
+      "fortuneDiscardPile": {
+        "name": "Défausse du Jeu du destin",
+        "hint": "La pile dans laquelle les cartes du Jeu du destin sont déposées une fois jouées."
+      },
+      "sorceryDeck": {
+        "name": "Jeu de sorcellerie",
+        "hint": "Le paquet de cartes faisant office de Jeu de sorcellerie."
+      },
+      "sorceryDiscardPile": {
+        "name": "Défausse du Jeu de sorcellerie",
+        "hint": "La pile dans laquelle les cartes du Jeu de sorcellerie sont déposées une fois jouées ou défaussées."
+      }
+    }
+  },
 
   "CASTLE_FALKENSTEIN.MaxHealth": "Santé",
   "CASTLE_FALKENSTEIN.Wounds": "Blessures",

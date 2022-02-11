@@ -1,5 +1,27 @@
 {
-  "CASTLE_FALKENSTEIN.SystemTitle": "Castle Falkenstein",
+  "castle-falkenstein": {
+    "system": "Castle Falkenstein",
+    "settings": {
+      "name": "System settings",
+      "label": "Configure the Castle Falkenstein system",
+      "fortuneDeck": {
+        "name": "Fortune Deck",
+        "hint": "The cards Deck which represents the Fortune Deck."
+      },
+      "fortuneDiscardPile": {
+        "name": "Fortune Deck discard pile",
+        "hint": "The cards Pile in which Fortune Deck cards are dropped when played."
+      },
+      "sorceryDeck": {
+        "name": "Sorcery Deck",
+        "hint": "The deck from which Sorcery cards are drawn."
+      },
+      "sorceryDiscardPile": {
+        "name": "Sorcery Deck discard pile",
+        "hint": "The cards Pile in which Sorcery Deck cards are dropped when played or discarded."
+      }
+    }
+  },
 
   "CASTLE_FALKENSTEIN.MaxHealth": "Health",
   "CASTLE_FALKENSTEIN.Wounds": "Wounds",
