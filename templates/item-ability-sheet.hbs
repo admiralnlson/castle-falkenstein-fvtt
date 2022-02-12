@@ -4,14 +4,14 @@
     <div class="header-fields">
       <div class="flexcol">
         <div class="grid grid-5col ability-sheet-header">
-          <label class="resource-label">{{localize 'CASTLE_FALKENSTEIN.AbilityLevelInSentence'}}</label>
+          <label class="resource-label">{{localize 'castle-falkenstein.abilityLevelInSentence'}}</label>
           <select name="data.level">
             {{selectOptions CASTLE_FALKENSTEIN.abilityFullLevels selected=data.level localize=true}}
           </select>
-          <label class="resource-label">{{localize 'CASTLE_FALKENSTEIN.AbilityNameInSentence'}}</label>
+          <label class="resource-label">{{localize 'castle-falkenstein.abilityNameInSentence'}}</label>
           <input name="name" type="text" value="{{item.name}}" placeholder="Name"/>
           <select name="data.suit">
-            {{selectOptions CASTLE_FALKENSTEIN.cardSuitSymbols selected=data.suit localize=false}}
+            {{selectOptions CASTLE_FALKENSTEIN.cardSuitsSymbols selected=data.suit localize=false}}
           </select>
         </div>
       </div>

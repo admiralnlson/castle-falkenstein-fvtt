@@ -8,11 +8,11 @@
       <div class="grid-2col health-and-wounds">
         {{#if userHasObserverOrOwnerAccess}}
           <div class="health flexcol">
-            <label for="data.health.max" class="resource-label">{{localize 'CASTLE_FALKENSTEIN.MaxHealth'}}</label>
+            <label for="data.health.max" class="resource-label">{{localize 'castle-falkenstein.maxHealth'}}</label>
             <input type="number" name="data.health.max" value="{{data.health.max}}" data-dtype="Number"/>
           </div>
           <div class="wounds flexcol">
-            <label for="data.wounds" class="resource-label">{{localize 'CASTLE_FALKENSTEIN.Wounds'}}</label>
+            <label for="data.wounds" class="resource-label">{{localize 'castle-falkenstein.wounds'}}</label>
             <input type="text" name="data.wounds" value="{{data.wounds}}" data-dtype="Text"/>
           </div>
         {{/if}}
@@ -23,15 +23,15 @@
   {{!-- Sheet Tab Navigation --}}
   <nav class="sheet-tabs tabs" data-group="primary">
     {{!-- Default tab is specified in actor-sheet.mjs --}}
-    <a class="tab-link" data-tab="description">{{localize 'CASTLE_FALKENSTEIN.Description'}}</a>
+    <a class="tab-link" data-tab="description">{{localize 'castle-falkenstein.description'}}</a>
     {{#if userHasObserverOrOwnerAccess}}
-      <a class="tab-link" data-tab="diary">{{localize 'CASTLE_FALKENSTEIN.Diary'}}</a>
-      <a class="tab-link" data-tab="abilities">{{localize 'CASTLE_FALKENSTEIN.Abilities'}}</a>
-      <a class="tab-link" data-tab="possessions">{{localize 'CASTLE_FALKENSTEIN.Possessions'}}</a>
-      <a class="tab-link" data-tab="spells">{{localize 'CASTLE_FALKENSTEIN.Spells'}}</a>
+      <a class="tab-link" data-tab="diary">{{localize 'castle-falkenstein.diary'}}</a>
+      <a class="tab-link" data-tab="abilities">{{localize 'castle-falkenstein.abilities'}}</a>
+      <a class="tab-link" data-tab="possessions">{{localize 'castle-falkenstein.possessions'}}</a>
+      <a class="tab-link" data-tab="spells">{{localize 'castle-falkenstein.spells'}}</a>
     {{/if}}
     {{#if userIsHost}}
-      <a class="tab-link" data-tab="host-notes">{{localize 'CASTLE_FALKENSTEIN.HostNotes'}}</a>
+      <a class="tab-link" data-tab="host-notes">{{localize 'castle-falkenstein.hostNotes'}}</a>
     {{/if}}
   </nav>
 

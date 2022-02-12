@@ -4,13 +4,13 @@
     <div class="header-fields">
       <div class="flexcol">
         <div class="grid grid-5col spell-sheet-header">
-          <label class="resource-label">{{localize 'CASTLE_FALKENSTEIN.Spell'}}:</label>
+          <label class="resource-label">{{localize 'castle-falkenstein.spell'}}:</label>
           <input name="name" type="text" value="{{item.name}}" placeholder="Name" />
           <select name="data.suit">
-            {{selectOptions CASTLE_FALKENSTEIN.cardSuitSymbols selected=data.suit localize=false}}
+            {{selectOptions CASTLE_FALKENSTEIN.cardSuitsSymbols selected=data.suit localize=false}}
           </select>
           <span></span>
-          <label class="resource-label">{{localize 'CASTLE_FALKENSTEIN.SpellThaumicLevel'}}:</label>
+          <label class="resource-label">{{localize 'castle-falkenstein.spellThaumicLevel'}}:</label>
           <input class="thaumic-level" name="data.level" type="number" min="0" value="{{data.level}}" placeholder="" />
         </div>
       </div>

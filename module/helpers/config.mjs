@@ -4,35 +4,35 @@ export const CASTLE_FALKENSTEIN = {};
  * The set of Abilities  used within the sytem.
  * @type {Object}
  */
-CASTLE_FALKENSTEIN.abilityLevels = {
+ CASTLE_FALKENSTEIN.abilityLevels = {
   "PR": {
-    "full": "CASTLE_FALKENSTEIN.AbilityPoor",
-    "abbr": "CASTLE_FALKENSTEIN.AbilityPoorAbbr",
+    "full": "castle-falkenstein.abilityPoor",
+    "abbr": "castle-falkenstein.abilityPoorAbbr",
     "value": 2
   },
   "AV": {
-    "full": "CASTLE_FALKENSTEIN.AbilityAverage",
-    "abbr": "CASTLE_FALKENSTEIN.AbilityAverageAbbr",
+    "full": "castle-falkenstein.abilityAverage",
+    "abbr": "castle-falkenstein.abilityAverageAbbr",
     "value": 4
   },
   "GD": {
-    "full": "CASTLE_FALKENSTEIN.AbilityGood",
-    "abbr": "CASTLE_FALKENSTEIN.AbilityGoodAbbr",
+    "full": "castle-falkenstein.abilityGood",
+    "abbr": "castle-falkenstein.abilityGoodAbbr",
     "value": 6
   },
   "GR": {
-    "full": "CASTLE_FALKENSTEIN.AbilityGreat",
-    "abbr": "CASTLE_FALKENSTEIN.AbilityGreatAbbr",
+    "full": "castle-falkenstein.abilityGreat",
+    "abbr": "castle-falkenstein.abilityGreatAbbr",
     "value": 8
   },
   "EXC": {
-    "full": "CASTLE_FALKENSTEIN.AbilityExceptional",
-    "abbr": "CASTLE_FALKENSTEIN.AbilityExceptionalAbbr",
+    "full": "castle-falkenstein.abilityExceptional",
+    "abbr": "castle-falkenstein.abilityExceptionalAbbr",
     "value": 10
   },
   "EXT": {
-    "full": "CASTLE_FALKENSTEIN.AbilityExtraordinary",
-    "abbr": "CASTLE_FALKENSTEIN.AbilityExtraordinaryAbbr",
+    "full": "castle-falkenstein.abilityExtraordinary",
+    "abbr": "castle-falkenstein.abilityExtraordinaryAbbr",
     "value": 12
   }
 };
@@ -46,37 +46,37 @@ CASTLE_FALKENSTEIN.abilityValues = Object.fromEntries(Object.entries(CASTLE_FALK
  * The set of card suits used within the sytem.
  * @type {Object}
  */
-CASTLE_FALKENSTEIN.cardSuits = {
+ CASTLE_FALKENSTEIN.cardSuits = {
   "?": {
-    "name": "CASTLE_FALKENSTEIN.Unset",
+    "name": "?",
     "fortuneDeckDescription": "?",
     "symbol": "?",
     "color": "gray"
   },
   "spades": {
-    "name": "CASTLE_FALKENSTEIN.Spades",
-    "fortuneDeckDescription": "CASTLE_FALKENSTEIN.SpadesFortuneDeckDescription",
+    "name": "castle-falkenstein.cards.spades",
+    "fortuneDeckDescription": "castle-falkenstein.cards.spadesFortuneDeckDescription",
     "symbol": "♠",
     "color": "black"
   },
   "hearts": {
-    "name": "CASTLE_FALKENSTEIN.Hearts",
-    "fortuneDeckDescription": "CASTLE_FALKENSTEIN.HeartsFortuneDeckDescription",
+    "name": "castle-falkenstein.cards.hearts",
+    "fortuneDeckDescription": "castle-falkenstein.cards.heartsFortuneDeckDescription",
     "symbol": "♥",
     "color": "red"
   },
   "diamonds": {
-    "name": "CASTLE_FALKENSTEIN.Diamonds",
-    "fortuneDeckDescription": "CASTLE_FALKENSTEIN.DiamondsFortuneDeckDescription",
+    "name": "castle-falkenstein.cards.diamonds",
+    "fortuneDeckDescription": "castle-falkenstein.cards.diamondsFortuneDeckDescription",
     "symbol": "♦",
     "color": "red"
   },
   "clubs": {
-    "name": "CASTLE_FALKENSTEIN.Clubs",
-    "fortuneDeckDescription": "CASTLE_FALKENSTEIN.ClubsFortuneDeckDescription",
+    "name": "castle-falkenstein.cards.clubs",
+    "fortuneDeckDescription": "castle-falkenstein.cards.clubsFortuneDeckDescription",
     "symbol": "♣",
     "color": "black"
   }
 };
 
-CASTLE_FALKENSTEIN.cardSuitSymbols = Object.fromEntries(Object.entries(CASTLE_FALKENSTEIN.cardSuits).map(([key, value]) => [key, value.symbol]));
+CASTLE_FALKENSTEIN.cardSuitsSymbols = Object.fromEntries(Object.entries(CASTLE_FALKENSTEIN.cardSuits).map(([key, value]) => [key, value.symbol]));

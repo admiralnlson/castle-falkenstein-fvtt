@@ -27,51 +27,42 @@ export default class CastleFalkenstein {
   });
 
   static get settingDefinitions() {
-    const deckSetting = {
-      type: String, default: "",
-      getChoices: () => ({
-        "": "",
-        ...Object.fromEntries(
-          game.cards
-            .filter(stack => stack.type === "deck")
-            .map(stack => [stack.id, stack.name])
-        )
-      })
-    };
 
-    const pileSetting = {
-      type: String, default: "",
+    const cardStackSelect = (stackType) => { return {
+      type: String,
+      default: "",
       getChoices: () => ({
         "": "",
         ...Object.fromEntries(
           game.cards
-            .filter(stack => stack.type === "pile")
+            .filter(stack => stack.type === stackType)
             .map(stack => [stack.id, stack.name])
         )
       })
-    };
+    }};
 
     return {
-      fortuneDeck: deckSetting,
-      fortuneDiscardPile: pileSetting,
-      sorceryDeck: deckSetting,
-      sorceryDiscardPile: pileSetting
+      fortuneDeck: cardStackSelect("deck"),
+      fortuneDiscardPile: cardStackSelect("pile"),
+      sorceryDeck: cardStackSelect("deck"),
+      sorceryDiscardPile: cardStackSelect("pile")
     };
   }
 
   static get fortuneDeck() {
     return game.cards.get(this.settings.fortuneDeck);
   }
-  static get sorceryDeck() {
-    return game.cards.get(this.settings.sorceryDeck);
-  }
   static get fortuneDiscardPile() {
     return game.cards.get(this.settings.fortuneDiscardPile);
+  }
+  static get sorceryDeck() {
+    return game.cards.get(this.settings.sorceryDeck);
   }
   static get sorceryDiscardPile() {
     return game.cards.get(this.settings.sorceryDiscardPile);
   }
 
+  
   /**
    * Re-renders all CastleFalkenstein sheets to allow settings to take effect.
    *
@@ -90,6 +81,7 @@ export default class CastleFalkenstein {
    * @static
    * @memberof CastleFalkenstein
    */
+  
   static async refreshSheetsAll() {
     if (game.user.isGM) await game.socket.emit(this.socketName, {
       command: "refreshSheets"
@@ -97,21 +89,12 @@ export default class CastleFalkenstein {
 
     this.refreshSheets();
   }
-
-  /**
-   * Display the sheet for the card specified in the data
-   *
-   * @static
-   * @param {{ pile: string, card: string }} data - Ids of the card and its container
-   * @memberof CastleFalkenstein
-   */
-  static async showCard(data) {
-    game.cards.get(data.pile)?.cards?.get(data.card)?.sheet?.render(true)
-  }
-
+  
   static onInit() {
     this.registerSettings();
     this.registerSheets();
+
+    game.CastleFalkenstein = CastleFalkenstein;
 
     // Add custom constants for configuration.
     CONFIG.CASTLE_FALKENSTEIN = CASTLE_FALKENSTEIN;
@@ -124,7 +107,7 @@ export default class CastleFalkenstein {
   static async onReady() {
     await this.preLoadTemplates();
 
-    Hooks.on("hotbarDrop", (bar, data, slot) => createItemMacro(data, slot));
+    Hooks.on("hotbarDrop", (hotbar, data, slot) => this.createItemMacro(data, slot));
 
     // Event listener to close all context menus when the user clicks outside of them.
     document.addEventListener("click", event => {
@@ -223,13 +206,13 @@ export default class CastleFalkenstein {
   }
 
   /**
-   * The name of the web socket for this module
+   * The name of the web socket for this system
    *
    * @static
    * @memberof CastleFalkenstein
    */
   static get socketName() {
-    return `module.${this.name}`;
+    return `system.${this.name}`;
   }
 
   /**
@@ -250,14 +233,12 @@ export default class CastleFalkenstein {
 }
 
 /* -------------------------------------------- */
-/*  Declare Hookslpers                          */
+/*  Declare Hooks                               */
 /* -------------------------------------------- */
 
 Hooks.on("init", CastleFalkenstein.onInit.bind(CastleFalkenstein));
 
 Hooks.on("ready", CastleFalkenstein.onReady.bind(CastleFalkenstein));
-
-window.CastleFalkenstein = CastleFalkenstein;
 
 /* -------------------------------------------- */
 /*  Handlebars Helpers                          */

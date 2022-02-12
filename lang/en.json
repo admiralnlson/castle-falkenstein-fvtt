@@ -1,87 +1,92 @@
 {
   "castle-falkenstein": {
     "system": "Castle Falkenstein",
+
     "settings": {
       "name": "System settings",
       "label": "Configure the Castle Falkenstein system",
       "fortuneDeck": {
         "name": "Fortune Deck",
-        "hint": "The cards Deck which represents the Fortune Deck."
+        "hint": "The cards deck which represents the Fortune Deck."
       },
       "fortuneDiscardPile": {
         "name": "Fortune Deck discard pile",
-        "hint": "The cards Pile in which Fortune Deck cards are dropped when played."
+        "hint": "The cards pile in which Fortune Deck cards go when played."
       },
       "sorceryDeck": {
         "name": "Sorcery Deck",
-        "hint": "The deck from which Sorcery cards are drawn."
+        "hint": "The cards deck from which Sorcery cards are drawn."
       },
       "sorceryDiscardPile": {
         "name": "Sorcery Deck discard pile",
-        "hint": "The cards Pile in which Sorcery Deck cards are dropped when played or discarded."
+        "hint": "The cards pile in which Sorcery Deck cards go when played or discarded."
       }
-    }
-  },
+    },
 
-  "CASTLE_FALKENSTEIN.MaxHealth": "Health",
-  "CASTLE_FALKENSTEIN.Wounds": "Wounds",
+    "add": "Add",
 
-  "CASTLE_FALKENSTEIN.Add": "Add",
+    "description": "Description",
 
-  "CASTLE_FALKENSTEIN.Description": "Description",
+    "diary": "Diary",
 
-  "CASTLE_FALKENSTEIN.Diary": "Diary",
+    "abilities": "Abilities",
+    "ability": "Ability",
+    "abilityLevel": "Level",
+    "abilityName": "Name",
+    "abilitySuit": "Suit",
+    "abilityLevelInSentence": "I have ",
+    "abilityNameInSentence": " ",
 
-  "CASTLE_FALKENSTEIN.Abilities": "Abilities",
-  "CASTLE_FALKENSTEIN.Ability": "Ability",
-  "CASTLE_FALKENSTEIN.AbilityLevel": "Level",
-  "CASTLE_FALKENSTEIN.AbilityName": "Name",
-  "CASTLE_FALKENSTEIN.AbilitySuit": "Suit",
-  "CASTLE_FALKENSTEIN.AbilityLevelInSentence": "I have ",
-  "CASTLE_FALKENSTEIN.AbilityNameInSentence": " ",
+    "abilityPoor": "Poor",
+    "abilityAverage": "Average",
+    "abilityGood": "Good",
+    "abilityGreat": "Great",
+    "abilityExceptional": "Exceptional",
+    "abilityExtraordinary": "Extraordinary",
 
-  "CASTLE_FALKENSTEIN.AbilityPoor": "Poor",
-  "CASTLE_FALKENSTEIN.AbilityAverage": "Average",
-  "CASTLE_FALKENSTEIN.AbilityGood": "Good",
-  "CASTLE_FALKENSTEIN.AbilityGreat": "Great",
-  "CASTLE_FALKENSTEIN.AbilityExceptional": "Exceptional",
-  "CASTLE_FALKENSTEIN.AbilityExtraordinary": "Extraordinary",
+    "abilityPoorAbbr": "PR",
+    "abilityAverageAbbr": "AV",
+    "abilityGoodAbbr": "GD",
+    "abilityGreatAbbr": "GR",
+    "abilityExceptionalAbbr": "EXC",
+    "abilityExtraordinaryAbbr": "EXT",
 
-  "CASTLE_FALKENSTEIN.AbilityPoorAbbr": "PR",
-  "CASTLE_FALKENSTEIN.AbilityAverageAbbr": "AV",
-  "CASTLE_FALKENSTEIN.AbilityGoodAbbr": "GD",
-  "CASTLE_FALKENSTEIN.AbilityGreatAbbr": "GR",
-  "CASTLE_FALKENSTEIN.AbilityExceptionalAbbr": "EXC",
-  "CASTLE_FALKENSTEIN.AbilityExtraordinaryAbbr": "EXT",
+    "cards": {
+      "suit": "Suit",
+      "spades": "Spades",
+      "spadesFortuneDesc": "Social and Status-related Feats.",
+      "hearts": "Hearts",
+      "heartsFortuneDesc": "Emotional and Romantic Feats.",
+      "diamonds": "Diamonds",
+      "diamondsFortuneDesc": "Mental and Intellectual Feats.",
+      "clubs": "Clubs",
+      "clubsFortuneDesc": "Physical Feats."
+    },
 
-  "CASTLE_FALKENSTEIN.Suit": "Suit",
-  "CASTLE_FALKENSTEIN.Spades": "Spades",
-  "CASTLE_FALKENSTEIN.SpadesFortuneDesc": "Social and Status-related Feats.",
-  "CASTLE_FALKENSTEIN.Hearts": "Hearts",
-  "CASTLE_FALKENSTEIN.HeartsFortuneDesc": "Emotional and Romantic Feats.",
-  "CASTLE_FALKENSTEIN.Diamonds": "Diamonds",
-  "CASTLE_FALKENSTEIN.DiamondsFortuneDesc": "Mental and Intellectual Feats.",
-  "CASTLE_FALKENSTEIN.Clubs": "Clubs",
-  "CASTLE_FALKENSTEIN.ClubsFortuneDesc": "Physical Feats.",
+    "weapons": {
+      "plural":"Weapons",
+      "effectiveRange": "Effective Range",
+      "rangeUnitAbbr": "yds",
+      "magazine": "Magazine",
+      "woundsPartial": "Wounds (Partial)",
+      "woundsFull": "Wounds (Partial)",
+      "woundsHigh": "Wounds (High)"
+    },
 
-  "CASTLE_FALKENSTEIN.Weapons": "Weapons",
-  "CASTLE_FALKENSTEIN.EffectiveRange": "Effective Range",
-  "CASTLE_FALKENSTEIN.Magazine": "Magazine",
-  "CASTLE_FALKENSTEIN.WoundsPartial": "Wounds (Partial)",
-  "CASTLE_FALKENSTEIN.WoundsFull": "Wounds (Partial)",
-  "CASTLE_FALKENSTEIN.WoundsHigh": "Wounds (High)",
-  "CASTLE_FALKENSTEIN.WeaponRangeUnitAbbr": "yds",
+    "maxHealth": "Health",
+    "wounds": "Wounds",
 
-  "CASTLE_FALKENSTEIN.Possessions": "Possessions",
-  "CASTLE_FALKENSTEIN.Possession": "Possession",
-  "CASTLE_FALKENSTEIN.PossessionName": "Name",
-  
-  "CASTLE_FALKENSTEIN.Spells": "Spells",
-  "CASTLE_FALKENSTEIN.Spell": "Spell",
-  "CASTLE_FALKENSTEIN.SpellName": "Name",
-  "CASTLE_FALKENSTEIN.SpellAspect": "Aspect",
-  "CASTLE_FALKENSTEIN.SpellNameAndAspect": "Spell",
-  "CASTLE_FALKENSTEIN.SpellThaumicLevel": "Thaumic Level",
+    "possessions": "Possessions",
+    "possession": "Possession",
+    "possessionName": "Name",
+    
+    "spells": "Spells",
+    "spell": "Spell",
+    "spellName": "Name",
+    "spellAspect": "Aspect",
+    "spellNameAndAspect": "Spell",
+    "spellThaumicLevel": "Thaumic Level",
 
-  "CASTLE_FALKENSTEIN.HostNotes": "Host notes"
+    "hostNotes": "Host notes"
+  }
 }

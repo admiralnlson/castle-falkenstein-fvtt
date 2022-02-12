@@ -1,9 +1,7 @@
 {
-  "CASTLE_FALKENSTEIN.SystemTitle": "Château Falkenstein",
-  "CASTLE_FALKENSTEIN.ConfigureSystem": "Configurer le système",
-  "CASTLE_FALKENSTEIN.SystemSettings": "Paramétrages du système",
   "castle-falkenstein": {
     "settings": {
+
       "name": "Paramètres du système",
       "label": "Paramétrer le système Château Falkenstein",
       "fortuneDeck": {
@@ -12,7 +10,7 @@
       },
       "fortuneDiscardPile": {
         "name": "Défausse du Jeu du destin",
-        "hint": "La pile dans laquelle les cartes du Jeu du destin sont déposées une fois jouées."
+        "hint": "La pile dans laquelle les cartes du Jeu du destin vont une fois jouées."
       },
       "sorceryDeck": {
         "name": "Jeu de sorcellerie",
@@ -20,70 +18,74 @@
       },
       "sorceryDiscardPile": {
         "name": "Défausse du Jeu de sorcellerie",
-        "hint": "La pile dans laquelle les cartes du Jeu de sorcellerie sont déposées une fois jouées ou défaussées."
+        "hint": "La pile dans laquelle les cartes du Jeu de sorcellerie vont une fois jouées ou défaussées."
       }
-    }
-  },
+    },
+    
+    "add": "Ajouter",
 
-  "CASTLE_FALKENSTEIN.MaxHealth": "Santé",
-  "CASTLE_FALKENSTEIN.Wounds": "Blessures",
+    "description": "Description",
 
-  "CASTLE_FALKENSTEIN.Add": "Ajouter",
+    "diary": "Journal",
 
-  "CASTLE_FALKENSTEIN.Description": "Description",
+    "abilities": "Talents",
+    "ability": "Talent",
+    "abilityLevel": "Niveau",
+    "abilityName": "Nom",
+    "abilitySuit": "Couleur",
+    "abilityLevelInSentence": "Je suis ",
+    "abilityNameInSentence": "en ",
 
-  "CASTLE_FALKENSTEIN.Diary": "Journal",
+    "abilityPoor": "Faible",
+    "abilityAverage": "Moyen",
+    "abilityGood": "Bon",
+    "abilityGreat": "Excellent",
+    "abilityExceptional": "Magistral",
+    "abilityExtraordinary": "Prodigieux",
 
-  "CASTLE_FALKENSTEIN.Abilities": "Talents",
-  "CASTLE_FALKENSTEIN.Ability": "Talent",
-  "CASTLE_FALKENSTEIN.AbilityLevel": "Niveau",
-  "CASTLE_FALKENSTEIN.AbilityName": "Nom",
-  "CASTLE_FALKENSTEIN.AbilitySuit": "Couleur",
-  "CASTLE_FALKENSTEIN.AbilityLevelInSentence": "Je suis ",
-  "CASTLE_FALKENSTEIN.AbilityNameInSentence": "en ",
+    "abilityPoorAbbr": "FAI",
+    "abilityAverageAbbr": "MOY",
+    "abilityGoodAbbr": "BON",
+    "abilityGreatAbbr": "EXC",
+    "abilityExceptionalAbbr": "MAG",
+    "abilityExtraordinaryAbbr": "PRO",
 
-  "CASTLE_FALKENSTEIN.AbilityPoor": "Faible",
-  "CASTLE_FALKENSTEIN.AbilityAverage": "Moyen",
-  "CASTLE_FALKENSTEIN.AbilityGood": "Bon",
-  "CASTLE_FALKENSTEIN.AbilityGreat": "Excellent",
-  "CASTLE_FALKENSTEIN.AbilityExceptional": "Magistral",
-  "CASTLE_FALKENSTEIN.AbilityExtraordinary": "Prodigieux",
+    "cards": {
+      "suit": "Couleur",
+      "spades": "pique",
+      "spadesFortuneDesc": "Prouesses sociales ou en rapport avec le statut social.",
+      "hearts": "coeur",
+      "heartsFortuneDesc": "Prouesses romantiques et centrées sur les émotions.",
+      "diamonds": "carreau",
+      "diamondsFortuneDesc": "Prouesses intellectuelles et mentales.",
+      "clubs": "trèfle",
+      "clubsFortuneDesc": "Prouesses physiques."
+    },
 
-  "CASTLE_FALKENSTEIN.AbilityPoorAbbr": "FAI",
-  "CASTLE_FALKENSTEIN.AbilityAverageAbbr": "MOY",
-  "CASTLE_FALKENSTEIN.AbilityGoodAbbr": "BON",
-  "CASTLE_FALKENSTEIN.AbilityGreatAbbr": "EXC",
-  "CASTLE_FALKENSTEIN.AbilityExceptionalAbbr": "MAG",
-  "CASTLE_FALKENSTEIN.AbilityExtraordinaryAbbr": "PRO",
+    "weapons": {
+      "plural": "Armes",
+      "effectiveRange": "Portée Effective",
+      "rangeUnitAbbr": "yds",
+      "magazine": "Munitions",
+      "woundsPartial": "Wounds (Partial)",
+      "woundsFull": "Wounds (Partial)",
+      "woundsHigh": "Wounds (High)"
+    },
 
-  "CASTLE_FALKENSTEIN.Suit": "Couleur",
-  "CASTLE_FALKENSTEIN.Spades": "pique",
-  "CASTLE_FALKENSTEIN.SpadesFortuneDesc": "Prouesses sociales ou en rapport avec le statut social.",
-  "CASTLE_FALKENSTEIN.Hearts": "coeur",
-  "CASTLE_FALKENSTEIN.HeartsFortuneDesc": "Prouesses romantiques et centrées sur les émotions.",
-  "CASTLE_FALKENSTEIN.Diamonds": "carreau",
-  "CASTLE_FALKENSTEIN.DiamondsFortuneDesc": "Prouesses intellectuelles et mentales.",
-  "CASTLE_FALKENSTEIN.Clubs": "trèfle",
-  "CASTLE_FALKENSTEIN.ClubsFortuneDesc": "Prouesses physiques.",
+    "maxHealth": "Santé",
+    "wounds": "Blessures",
 
-  "CASTLE_FALKENSTEIN.Weapons": "Armes",
-  "CASTLE_FALKENSTEIN.EffectiveRange": "Portée Effective",
-  "CASTLE_FALKENSTEIN.Magazine": "Munitions",
-  "CASTLE_FALKENSTEIN.WoundsPartial": "Wounds (Partial)",
-  "CASTLE_FALKENSTEIN.WoundsFull": "Wounds (Partial)",
-  "CASTLE_FALKENSTEIN.WoundsHigh": "Wounds (High)",
-  "CASTLE_FALKENSTEIN.WeaponRangeUnitAbbr": "yds",
+    "possessions": "Possessions",
+    "possession": "Possession",
+    "possessionName": "Nom",
 
-  "CASTLE_FALKENSTEIN.Possessions": "Possessions",
-  "CASTLE_FALKENSTEIN.Possession": "Possession",
-  "CASTLE_FALKENSTEIN.PossessionName": "Nom",
+    "spells": "Sorts",
+    "spell": "Sort",
+    "spellName": "Nom",
+    "spellAspect": "Aspect",
+    "spellNameAndAspect": "Sort",
+    "spellThaumicLevel": "Niveau thaumique",
 
-  "CASTLE_FALKENSTEIN.Spells": "Sorts",
-  "CASTLE_FALKENSTEIN.Spell": "Sort",
-  "CASTLE_FALKENSTEIN.SpellName": "Nom",
-  "CASTLE_FALKENSTEIN.SpellAspect": "Aspect",
-  "CASTLE_FALKENSTEIN.SpellNameAndAspect": "Sort",
-  "CASTLE_FALKENSTEIN.SpellThaumicLevel": "Niveau thaumique",
-
-  "CASTLE_FALKENSTEIN.HostNotes": "Notes de l'Hôte"
+    "hostNotes": "Notes de l'Hôte"
+  }
 }

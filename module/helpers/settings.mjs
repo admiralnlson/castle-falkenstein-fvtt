@@ -1,12 +1,6 @@
 import CastleFalkenstein from "../castle-falkenstein.mjs";
 
-/**
- * A form for inputting CastleFalkenstein settings.
- *
- * @export
- * @class CastleFalkensteinSettings
- * @extends {FormApplication}
- */
+// A form for inputting CastleFalkenstein settings.
 export default class CastleFalkensteinSettings extends FormApplication {
 
 	static get defaultOptions() {
@@ -87,7 +81,10 @@ export default class CastleFalkensteinSettings extends FormApplication {
 	// Handles form submission.
 	async _onSubmit(...args) {
 		const ret = await super._onSubmit(...args);
-		await CastleFalkenstein.refreshSheetsAll();
+
+		// Don't believe this is necessary yet.
+		// await CastleFalkenstein.refreshSheetsAll();
+
 		return ret;
 	}
 
@@ -96,15 +93,5 @@ export default class CastleFalkensteinSettings extends FormApplication {
 		event.preventDefault();
 		const action = event.currentTarget.dataset.action;
 		if (this[action]) this[action](event);
-	}
-
-	// Attach event handlers to the application.
-	activateListeners(html) {
-		super.activateListeners(html);
-		html = html[0];
-		
-		html.querySelectorAll("[data-action]").forEach(button => {
-			button.addEventListener("click", this._onButtonClick.bind(this));
-		});
 	}
 }
