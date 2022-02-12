@@ -2,32 +2,50 @@
   "castle-falkenstein": {
     "system": "Castle Falkenstein",
 
+    "fortune": {
+      "deck": "Fortune Deck",
+      "hand": "Fortune - {character}",
+      "spadesDesc": "Social and Status-related Feats.",
+      "heartsDesc": "Emotional and Romantic Feats.",
+      "diamondsDesc": "Mental and Intellectual Feats.",
+      "clubsDesc": "Physical Feats."
+    },
+
+    "sorcery": {
+      "deck": "Jeu de sorcellerie",
+      "hand": "Sorcery - {character}",
+      "spadesDesc": "Social and Status-related Feats.",
+      "heartsDesc": "Emotional and Romantic Feats.",
+      "diamondsDesc": "Mental and Intellectual Feats.",
+      "clubsDesc": "Physical Feats."
+    },
+
     "settings": {
       "name": "System settings",
       "label": "Configure the Castle Falkenstein system",
-      "fortuneDeck": {
-        "name": "Fortune Deck",
-        "hint": "The cards deck which represents the Fortune Deck."
-      },
-      "fortuneDiscardPile": {
-        "name": "Fortune Deck discard pile",
-        "hint": "The cards pile in which Fortune Deck cards go when played."
-      },
-      "sorceryDeck": {
-        "name": "Sorcery Deck",
-        "hint": "The cards deck from which Sorcery cards are drawn."
-      },
-      "sorceryDiscardPile": {
-        "name": "Sorcery Deck discard pile",
-        "hint": "The cards pile in which Sorcery Deck cards go when played or discarded."
-      }
+      "deckHint": "The cards deck which represents the {deck}.",
+      "discardPile": "{deck} discard pile",
+      "discardPileHint": "The cards pile in which {deck} cards go when played."
+    },
+
+    "performFeat": {
+      "title": "Perform a Feat"
+    },
+
+    "castSpell": {
+      "title": "Cast a Spell"
     },
 
     "description": "Description",
 
     "diary": "Diary",
 
-    "add": "Add",
+    "item": {
+      "add": "Add",
+      "displayInChat": "Display in chat",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
 
     "abilities": "Abilities",
     "ability": "Ability",
@@ -54,13 +72,9 @@
     "cards": {
       "suit": "Suit",
       "spades": "Spades",
-      "spadesFortuneDesc": "Social and Status-related Feats.",
       "hearts": "Hearts",
-      "heartsFortuneDesc": "Emotional and Romantic Feats.",
       "diamonds": "Diamonds",
-      "diamondsFortuneDesc": "Mental and Intellectual Feats.",
-      "clubs": "Clubs",
-      "clubsFortuneDesc": "Physical Feats."
+      "clubs": "Clubs"
     },
 
     "weapons": {

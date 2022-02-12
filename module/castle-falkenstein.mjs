@@ -15,7 +15,9 @@ export default class CastleFalkenstein {
 
   static get name() { return "castle-falkenstein"; }
 
-  // Convenience proxy getter for CastleFalkenstein settings.
+  /**
+   * Convenience proxy getter for CastleFalkenstein settings.
+   */
   static settings = new Proxy({}, {
     get: function (target, key) {
       try { return game.settings.get(CastleFalkenstein.name, key); }
@@ -109,10 +111,7 @@ export default class CastleFalkenstein {
 
     Hooks.on("hotbarDrop", (hotbar, data, slot) => this.createItemMacro(data, slot));
 
-    // Event listener to close all context menus when the user clicks outside of them.
-    document.addEventListener("click", event => {
-      document.querySelectorAll(".castle-falkenstein .card").forEach(card => card.classList.remove("show-ctx"));
-    });
+    Hooks.on("updateActor", (actor, data, options) => actor.onUpdate(data, options));
 
     game.socket.on(this.socketName, this._onSocketMessage.bind(this));
 

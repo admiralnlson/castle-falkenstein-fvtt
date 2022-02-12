@@ -2,7 +2,6 @@ import {CASTLE_FALKENSTEIN} from "../helpers/config.mjs";
 
 /**
  * Extend the basic Item with some very simple modifications.
- * @extends {Item}
  */
 export class CastleFalkensteinItem extends Item {
   /**
@@ -16,7 +15,6 @@ export class CastleFalkensteinItem extends Item {
 
   /**
    * Prepare a data object which is passed to any Roll formulas which are created related to this Item
-   * @private
    */
    getRollData() {
     // If present, return the actor's roll data.
@@ -29,38 +27,52 @@ export class CastleFalkensteinItem extends Item {
 
   /**
    * Handle clickable rolls.
-   * @param {Event} event   The originating click event
-   * @private
    */
-   async roll() {
-    const item = this.data;
+  async roll() {
+    const itemData = this.data;
+
+    if (itemData.type == 'ability') {
+      this.actor?.performFeat(this);
+    } else if (itemData.type == 'spell') {
+      this.actor?.castSpell(this);
+    } else {
+      // default (other item types, if any)
+      displayInChat();
+    }
+  }
+
+  /**
+   * Show the item in chat.
+   */
+  async displayInChat() {
+    const itemData = this.data;
 
     // Initialize chat data.
     const speaker = ChatMessage.getSpeaker({ actor: this.actor });
     const rollMode = game.settings.get('core', 'rollMode');
-    let flavor = `[${item.type}]`;
-    let content = `${item.name}<hr/>`
-                + `${item.data.description}`;
+    let flavor = `[${itemData.type}]`;
+    let content = `${itemData.name}<hr/>`
+                + `${itemData.data.description}`;
 
     // change label based on item type
-    if (item.type == 'ability') {
+    if (itemData.type == 'ability') {
       flavor = `[${game.i18n.localize("castle-falkenstein.ability")}]`;
-      const levelI18nKey = CASTLE_FALKENSTEIN.abilityLevels[item.data.level].full;
-      const levelValue = CASTLE_FALKENSTEIN.abilityLevels[item.data.level].value;
+      const levelI18nKey = CASTLE_FALKENSTEIN.abilityLevels[itemData.data.level].full;
+      const levelValue = CASTLE_FALKENSTEIN.abilityLevels[itemData.data.level].value;
       content = `${game.i18n.localize("castle-falkenstein.abilityLevelInSentence")}${game.i18n.localize(levelI18nKey)} `
               + `[${levelValue}] `
-              + `${game.i18n.localize("castle-falkenstein.abilityNameInSentence")}${item.name} `
-              + `[<i class="cf-cards-generic-${item.data.suit}"></i>].`;
-    } else if (item.type == 'possession') {
+              + `${game.i18n.localize("castle-falkenstein.abilityNameInSentence")}${itemData.name} `
+              + `[<i class="cf-cards-generic-${itemData.data.suit}"></i>].`;
+    } else if (itemData.type == 'possession') {
       flavor = `[${game.i18n.localize("castle-falkenstein.possession")}]`;
       // default content
-    } else if (item.type == 'spell') {
+    } else if (itemData.type == 'spell') {
       flavor = `[${game.i18n.localize("castle-falkenstein.spell")}]`;
-      content = `${item.name} [<i class="cf-cards-generic-${item.data.suit}"></i>]<hr/>`
-            + `${game.i18n.localize("castle-falkenstein.spellThaumicLevel")}: ${item.data.level}<br/>`
-            + `${item.data.description}`;
+      content = `${itemData.name} [<i class="cf-cards-generic-${itemData.data.suit}"></i>]<hr/>`
+            + `${game.i18n.localize("castle-falkenstein.spellThaumicLevel")}: ${itemData.data.level}<br/>`
+            + `${itemData.data.description}`;
     } else {
-      // default flavor & content
+      // default (other item types, if any)
     }
  
  

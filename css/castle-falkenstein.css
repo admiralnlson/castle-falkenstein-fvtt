@@ -1,4 +1,4 @@
-/* cards font imports */
+/* cards fonts */
 
 @import "./cf-cards-generic.css";
 [class*='cf-cards-generic-']:before {
@@ -318,9 +318,8 @@ html * {
 
 /* item lists */
 
-.castle-falkenstein .items-list .ability-roll,
-.castle-falkenstein .items-list .possession-roll,
-.castle-falkenstein .items-list .spell-roll {
+.castle-falkenstein .items-list .ability-perform-feat,
+.castle-falkenstein .items-list .spell-cast {
   text-align: center;
   flex: 0 0 30px;
 }

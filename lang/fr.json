@@ -2,33 +2,48 @@
   "castle-falkenstein": {
     "system": "Château Falkenstein",
 
-    "settings": {
+    "fortune": {
+      "deck": "Jeu du destin",
+      "hand": "Destin - {character}",
+      "spadesDesc": "Prouesses sociales ou en rapport avec le statut social.",
+      "heartsDesc": "Prouesses romantiques et centrées sur les émotions.",
+      "diamondsDesc": "Prouesses intellectuelles et mentales.",
+      "clubsDesc": "Prouesses physiques."
+    },
 
+    "sorcery": {
+      "deck": "Jeu de sorcellerie",
+      "hand": "Sorcellerie - {character}"
+    },
+
+    "settings": {
       "name": "Paramètres du système",
       "label": "Paramétrer le système Château Falkenstein",
-      "fortuneDeck": {
-        "name": "Jeu du destin",
-        "hint": "Le paquet de cartes faisant office de Jeu du destin."
-      },
-      "fortuneDiscardPile": {
-        "name": "Défausse du Jeu du destin",
-        "hint": "La pile dans laquelle les cartes du Jeu du destin vont une fois jouées."
-      },
-      "sorceryDeck": {
-        "name": "Jeu de sorcellerie",
-        "hint": "Le paquet de cartes faisant office de Jeu de sorcellerie."
-      },
-      "sorceryDiscardPile": {
-        "name": "Défausse du Jeu de sorcellerie",
-        "hint": "La pile dans laquelle les cartes du Jeu de sorcellerie vont une fois jouées ou défaussées."
-      }
+      "deckHint": "Le paquet de cartes faisant office de {deck}.",
+      "discardPile": "Défausse du {deck}",
+      "discardPileHint": "La pile dans laquelle les cartes du {deck} vont une fois jouées ou défaussées."
     },
     
+    "performFeat": {
+      "title": "Accomplir une prouesse"
+    },
+
+    
+    "castSpell": {
+      "title": "Lancer un sort"
+    },
+
+
     "description": "Description",
 
     "diary": "Journal",
 
-    "add": "Ajouter",
+    "item": {
+      "add": "Ajouter",
+      "displayInChat": "Afficher dans le tchat",
+      "edit": "Éditer",
+      "delete": "Supprimer"
+    },
 
     "abilities": "Talents",
     "ability": "Talent",
@@ -55,13 +70,9 @@
     "cards": {
       "suit": "Couleur",
       "spades": "pique",
-      "spadesFortuneDesc": "Prouesses sociales ou en rapport avec le statut social.",
       "hearts": "coeur",
-      "heartsFortuneDesc": "Prouesses romantiques et centrées sur les émotions.",
       "diamonds": "carreau",
-      "diamondsFortuneDesc": "Prouesses intellectuelles et mentales.",
-      "clubs": "trèfle",
-      "clubsFortuneDesc": "Prouesses physiques."
+      "clubs": "trèfle"
     },
 
     "weapons": {

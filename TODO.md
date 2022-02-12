@@ -1,9 +1,10 @@
 #MosCoW
-🔥Urgent, `[M]`ust, `[S]`hould, `[C]`ould, `[W]`on't
+`[M]`ust, `[S]`hould, `[C]`ould, `[W]`on't
+🔥 Personal project maintainer GM needs
 
-+ `[🔥]` **Fortune and Sorcery hands** as embedded in Characters, accessible via links in the Character sheet.
++ `[M🔥]` **Fortune and Sorcery hands** as embedded in Characters, accessible via links in the Character sheet.
 
-+ `[🔥]` Ability **Perform Feat** menu to each Ability entry
++ `[M🔥]` Ability **Perform Feat** menu to each Ability entry
   + Allow to select cards to play (0-4), and results in a chat message showing:
     + total score
     + detail (feat + cards)
@@ -11,7 +12,7 @@
   + Remove 'Play' control from Fortune Cards (all cards if implemented at the same time as "Cast Spell" below)
   + as a collapsible, the ranges of difficulties for which it is a Fumble, Failure, Partial Success, Full Success and High Success
 
-+ `[🔥]` Add a **Cast Spell** menu to each Spell entry
++ `[M🔥]` Add a **Cast Spell** menu to each Spell entry
   + player (or GM) can choose spell definitions
   + player (or GM) can cancel an onging spell, which discards all their Power cards
   + At each Power card drawn, produce a chat message showing the advancement toward the ongoing spell (based on its Aspect)
@@ -31,13 +32,23 @@
         + if yes, then (ask if OK to) convert them to .webp to limit bandwidth/storage usage
         + if not, then assume GM will download the deck on their own and has put it in a specific Data/ folder
 
-+ `[S]` Compendium with Abilities from CF corebook
-+ `[S]` Fill new Character Sheet with all Abilities (as documented in the core book)
-+ `[C]` Compendium with Abilities listed in sourcebooks
 
-+ `[🔥]` Compendium with Lorebooks from CF corebook
-+ `[C]` Compendium with Spells listed in sourcebooks
-+ `[C]` Shortcut to load all spells from an Occult Book (as documented in the core book)
++ Compendium with Abilities listed in CF corebook
++ `[M]` English
++ Compendium with Abilities listed in CF sourcebooks
+  + `[C]` English
+  + `[C]` French
++ `[M]` Shortcut to load Abilities from a Compendium (must not introduce duplicates, but may fix incorrect suit assignments)
+
++ One compendium per Lorebook listed in CF corebook
+  + `[M]` English
+  + `[M🔥]` French
++ One Compendium per Lorebook listed in sourcebooks
+  + `[C]` English
+  + `[C]` French
++ `[M]` Shortcut to load Spells from a Compendium (must not introduce duplicates, but may fix incorrect suit assignments)
+
++ `[S]` Shortcut in Settings to delete all empty Castle Falkenstein hands (useful when many hands created for NPCs).
 
 + `[S]` Weapons list and sheet (under 'Possessions' or dedicated tab)
 
