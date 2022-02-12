@@ -44,24 +44,24 @@ export class CastleFalkensteinItem extends Item {
 
     // change label based on item type
     if (item.type == 'ability') {
-      flavor = `[${game.i18n.localize("CASTLE_FALKENSTEIN.Ability")}]`;
+      flavor = `[${game.i18n.localize("castle-falkenstein.ability")}]`;
       const levelI18nKey = CASTLE_FALKENSTEIN.abilityLevels[item.data.level].full;
       const levelValue = CASTLE_FALKENSTEIN.abilityLevels[item.data.level].value;
       const suitSymbol = CASTLE_FALKENSTEIN.cardSuits[item.data.suit].symbol;
       const suitColor = CASTLE_FALKENSTEIN.cardSuits[item.data.suit].color;
-      content = `${game.i18n.localize("CASTLE_FALKENSTEIN.AbilityLevelInSentence")}${game.i18n.localize(levelI18nKey)} `
+      content = `${game.i18n.localize("castle-falkenstein.abilityLevelInSentence")}${game.i18n.localize(levelI18nKey)} `
               + `[${levelValue}] `
-              + `${game.i18n.localize("CASTLE_FALKENSTEIN.AbilityNameInSentence")}${item.name} `
+              + `${game.i18n.localize("castle-falkenstein.abilityNameInSentence")}${item.name} `
               + `[<span style="color:${suitColor}">${suitSymbol}</span>].`;
     } else if (item.type == 'possession') {
-      flavor = `[${game.i18n.localize("CASTLE_FALKENSTEIN.Possession")}]`;
+      flavor = `[${game.i18n.localize("castle-falkenstein.possession")}]`;
       // default content
     } else if (item.type == 'spell') {
-      flavor = `[${game.i18n.localize("CASTLE_FALKENSTEIN.Spell")}]`;
+      flavor = `[${game.i18n.localize("castle-falkenstein.spell")}]`;
       const suitSymbol = CASTLE_FALKENSTEIN.cardSuits[item.data.suit].symbol;
       const suitColor = CASTLE_FALKENSTEIN.cardSuits[item.data.suit].color;
       content = `${item.name} [<span style="color:${suitColor}">${suitSymbol}</span>]<hr/>`
-            + `${game.i18n.localize("CASTLE_FALKENSTEIN.SpellThaumicLevel")}: ${item.data.level}<br/>`
+            + `${game.i18n.localize("castle-falkenstein.spellThaumicLevel")}: ${item.data.level}<br/>`
             + `${item.data.description}`;
     } else {
       // default flavor & content

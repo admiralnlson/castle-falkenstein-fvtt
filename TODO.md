@@ -3,7 +3,8 @@
 
 + `[M]` System setting to declare: **Fortune deck**
 + `[M]` System setting to declare: **Sorcery deck**
-+ `[M]` System setting to declare: **Discard pile** or create it automatically.
++ `[M]` System setting to declare: **Fortune discard pile** or create it automatically.
++ `[M]` System setting to declare: **Sorcery discard pile** or create it automatically.
 + `[M]` **Fortune and Sorcery hands** as embedded in Characters, accessible via links in the Character sheet.
   + Hide "Pass" control from non-GMs
   + Character Fortune hands:
@@ -20,6 +21,9 @@
         + if not, then assume GM will download the deck on their own and has put it in a specific Data/ folder
 
 + `[S]` Fortune hand for the Host
+
++ `[C]` Ensure Fortune and Sorcery Decks are different before accepting new settings.
++ `[C]` Ensure Fortune and Sorcery discard piles are different before accepting new settings.
 
 + `[C]` Deactivate Fortune hand of NPCs (leave Sorcery hands since each NPC should still be able to cast independently in theory)
 
