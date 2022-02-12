@@ -1,3 +1,28 @@
+/* cards font imports */
+
+@import "./cf-cards-generic.css";
+[class*='cf-cards-generic-']:before {
+  font-size: 18px;
+}
+.cf-cards-generic-spades:before,
+.cf-cards-generic-hearts:before,
+.cf-cards-generic-diamonds:before,
+.cf-cards-generic-clubs:before {
+  font-size: 12px;
+  vertical-align: -2px;
+}
+
+.cf-cards-generic-spades:before,
+.cf-cards-generic-clubs:before {
+  color: black;
+  vertical-align: -2px;
+}
+
+.cf-cards-generic-hearts:before,
+.cf-cards-generic-diamonds:before {
+  color: red;
+}
+
 /* Generic formatting stuff */
 
 .grid,

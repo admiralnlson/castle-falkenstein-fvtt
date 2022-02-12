@@ -1,5 +1,7 @@
 {
   "castle-falkenstein": {
+    "system": "Château Falkenstein",
+
     "settings": {
 
       "name": "Paramètres du système",
@@ -22,11 +24,11 @@
       }
     },
     
-    "add": "Ajouter",
-
     "description": "Description",
 
     "diary": "Journal",
+
+    "add": "Ajouter",
 
     "abilities": "Talents",
     "ability": "Talent",

@@ -1,33 +1,9 @@
 #MosCoW
-`[M]`ust, `[S]`hould, `[C]`ould, `[W]`on't
+🔥Urgent, `[M]`ust, `[S]`hould, `[C]`ould, `[W]`on't
 
-+ `[M]` System setting to declare: **Fortune deck**
-+ `[M]` System setting to declare: **Sorcery deck**
-+ `[M]` System setting to declare: **Fortune discard pile** or create it automatically.
-+ `[M]` System setting to declare: **Sorcery discard pile** or create it automatically.
-+ `[M]` **Fortune and Sorcery hands** as embedded in Characters, accessible via links in the Character sheet.
-  + Hide "Pass" control from non-GMs
-  + Character Fortune hands:
-    + Replace "Draw" control with **Draw Fortune** control (fills hand back to 4 from )
-    + `[C]` Deactivate Fortune hand of NPCs (leave Sorcery hands since each NPC should still be able to cast independently in theory)
-  + Character Sorcery hands:
-    + Replace "Draw" control with **Draw power** control (draw 1 card from Sorcery deck)
-  + Fortune cards:
-  + Remove Card "Play" control
++ `[🔥]` **Fortune and Sorcery hands** as embedded in Characters, accessible via links in the Character sheet.
 
-+ `[M]` Add  'Fortune Deck' as a deck preset
-    + Ask Talsorian if OK to add the card images directly within the game system
-        + if yes, then (ask if OK to) convert them to .webp to limit bandwidth/storage usage
-        + if not, then assume GM will download the deck on their own and has put it in a specific Data/ folder
-
-+ `[S]` Fortune hand for the Host
-
-+ `[C]` Ensure Fortune and Sorcery Decks are different before accepting new settings.
-+ `[C]` Ensure Fortune and Sorcery discard piles are different before accepting new settings.
-
-+ `[C]` Deactivate Fortune hand of NPCs (leave Sorcery hands since each NPC should still be able to cast independently in theory)
-
-+ `[M]` Ability **Perform Feat** menu to each Ability entry
++ `[🔥]` Ability **Perform Feat** menu to each Ability entry
   + Allow to select cards to play (0-4), and results in a chat message showing:
     + total score
     + detail (feat + cards)
@@ -35,24 +11,45 @@
   + Remove 'Play' control from Fortune Cards (all cards if implemented at the same time as "Cast Spell" below)
   + as a collapsible, the ranges of difficulties for which it is a Fumble, Failure, Partial Success, Full Success and High Success
 
-+ `[M]` Add a **Cast Spell** menu to each Spell entry
++ `[🔥]` Add a **Cast Spell** menu to each Spell entry
   + player (or GM) can choose spell definitions
   + player (or GM) can cancel an onging spell, which discards all their Power cards
   + At each Power card drawn, produce a chat message showing the advancement toward the ongoing spell (based on its Aspect)
     + Add chat message to trigger the effect (which discards all cards from the player hand).
   + Remove 'Play' control from Fortune Cards (all cards if implemented at the same time as "Perform Feat" above)
 
-+ `[S]` Weapons list and sheet (under 'Possessions' or dedicated tab)
++ `[M]` Align Hands/Cards/Pile layout with system
+  + Remove default Play, Pass (except maybe for GMs), Discard, Reset controls
+  + Fortune hands:
+    + replace "Draw" control with **Draw Fortune** control (fills hand back to 4 from )
+  + Sorcery hands:
+    + replace "Draw" control with **Draw power** control (draw 1 card from Sorcery deck)
+    + add Discard control for cards in Sorcery hands
+
++ `[M]` Add 'Fortune Deck' as a deck preset
+    + Ask Talsorian if OK to add the card images directly within the game system
+        + if yes, then (ask if OK to) convert them to .webp to limit bandwidth/storage usage
+        + if not, then assume GM will download the deck on their own and has put it in a specific Data/ folder
 
 + `[S]` Compendium with Abilities from CF corebook
 + `[S]` Fill new Character Sheet with all Abilities (as documented in the core book)
 + `[C]` Compendium with Abilities listed in sourcebooks
 
-+ `[S]` Compendium with Lorebooks from CF corebook
++ `[🔥]` Compendium with Lorebooks from CF corebook
 + `[C]` Compendium with Spells listed in sourcebooks
 + `[C]` Shortcut to load all spells from an Occult Book (as documented in the core book)
 
-+ `[S]` If feasible, Red color for hearts and diamonds in 'select' controls.
++ `[S]` Weapons list and sheet (under 'Possessions' or dedicated tab)
+
++ `[S]` If feasible, improve suit display in 'select' controls.
+
++ `[S]` Fortune hand for the Host
+
++ `[C]` Ensure Fortune and Sorcery Decks are different before accepting new settings.
++ `[C]` Ensure Fortune and Sorcery discard piles are different before accepting new settings.
++ `[C]` Replace Fortune/Sorcery discard pile selection system setting with **Automatic creation of discard piles**
+
++ `[C]` Deactivate Fortune hand of NPCs (leave Sorcery hands since each NPC should still be able to cast independently in theory)
 
 + Possessions:
   + `[S]` Weapons list and sheet (under 'Possessions' or new tab)

@@ -23,11 +23,11 @@
       }
     },
 
-    "add": "Add",
-
     "description": "Description",
 
     "diary": "Diary",
+
+    "add": "Add",
 
     "abilities": "Abilities",
     "ability": "Ability",
