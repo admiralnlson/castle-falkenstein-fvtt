@@ -58,8 +58,9 @@ export class CastleFalkensteinActor extends Actor {
 
   async hand(handType) {
     if (!this.data.data.hands[handType] || !game.cards.get(this.data.data.hands[handType])) {
+      const handId = (await this.createHand(handType)).id;
       await this.update({
-        [`data.hands.${handType}`]: await this.createHand(handType).id
+        [`data.hands.${handType}`]: handId
       });
     }
     return game.cards.get(this.data.data.hands[handType]);

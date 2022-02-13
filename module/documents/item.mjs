@@ -32,12 +32,12 @@ export class CastleFalkensteinItem extends Item {
     const itemData = this.data;
 
     if (itemData.type == 'ability') {
-      this.actor?.performFeat(this);
+      await this.actor?.performFeat(this);
     } else if (itemData.type == 'spell') {
-      this.actor?.castSpell(this);
+      await this.actor?.castSpell(this);
     } else {
       // default (other item types, if any)
-      displayInChat();
+      await displayInChat();
     }
   }
 

@@ -29,7 +29,8 @@
     },
 
     "performFeat": {
-      "title": "Perform a Feat"
+      "title": "Perform a Feat",
+      "score": "Score"
     },
 
     "castSpell": {

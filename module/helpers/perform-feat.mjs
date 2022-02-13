@@ -1,4 +1,4 @@
-import CastleFalkenstein from "../castle-falkenstein.mjs";
+import { CASTLE_FALKENSTEIN } from "../helpers/config.mjs";
 
 // A form for performing a Feat.
 export default class CastleFalkensteinPerformFeat extends FormApplication {
@@ -22,9 +22,33 @@ export default class CastleFalkensteinPerformFeat extends FormApplication {
    */
   constructor(object = {}, options = {}) {
     super(object, options);
-    this.item = object;
-    this.actor = object.actor;
+    this.ability = object;
+    this.character = object.actor;
     this.fortuneHand = game.cards.get(object.actor.data.data.hands.fortune);
+
+    // reset checked status. We don't want it to persist between forms.
+    for (const card of this.fortuneHand.cards) {
+      card.data.checked = false;
+    }
+  }
+
+  computeScore() {
+    let score = CASTLE_FALKENSTEIN.abilityLevels[this.ability.data.data.level].value;
+
+    // Based on core rules, variants not supposed (yet?)
+    for (const card of this.fortuneHand.cards) {
+      const cardData = card.data;
+      if (cardData.checked) {
+        // Based on core rules, variants not supposed (yet?)
+        if (cardData.suit == this.ability.data.data.suit || cardData.suit == "joker") {
+          score += cardData.value;
+        } else {
+          score += 1;
+        }
+      }
+    }
+
+    return score;
   }
 
   /**
@@ -32,13 +56,27 @@ export default class CastleFalkensteinPerformFeat extends FormApplication {
    */
   async getData() {
     return {
-      //cards: this.fortuneHand.data.
+      abilityData: this.ability.data,
+      levelI18nLabel: game.i18n.localize(CASTLE_FALKENSTEIN.abilityLevels[this.ability.data.data.level].full),
+      levelValue: CASTLE_FALKENSTEIN.abilityLevels[this.ability.data.data.level].value,
+      cards: this.fortuneHand.data.cards,
+      score: this.computeScore()
     }
   }
 
-	/** @override */
+  /** @override */
   activateListeners(html) {
-    //html.find('.').click(event => this._onClickToggleFilter(event));
+    html.find('.perform-feat-card-select').click(event => this.onClickCardSelect(event));
+  }
+
+  onClickCardSelect(event) {
+
+    const cardId = event.currentTarget.name;
+    const checked = event.currentTarget.checked;
+
+    this.fortuneHand.cards.get(cardId).data.checked = checked;
+
+    this.render(); // rerenders the FormApp with the new data.
   }
 
   /**
@@ -46,6 +84,8 @@ export default class CastleFalkensteinPerformFeat extends FormApplication {
    */
   async _updateObject(event, formData) {
     // normal updateObject stuff
+
+    //await this.fortuneHand.update
 
     this.render(); // rerenders the FormApp with the new data.
   }

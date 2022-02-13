@@ -2,6 +2,10 @@
 `[M]`ust, `[S]`hould, `[C]`ould, `[W]`on't
 🔥 Personal project maintainer GM needs
 
++ `[M]` Add flags to castle-falkenstein generated Hands, so they can be cleaned up later
+
++ `[M]` Replace Ability sentence bits with actual single sentence in i18n, to support languages which have different sentence ordering.
+
 + `[M🔥]` **Fortune and Sorcery hands** as embedded in Characters, accessible via links in the Character sheet.
 
 + `[M🔥]` Ability **Perform Feat** menu to each Ability entry
