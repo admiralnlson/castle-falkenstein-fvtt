@@ -115,7 +115,7 @@ export default class CastleFalkenstein {
 
     game.socket.on(this.socketName, this._onSocketMessage.bind(this));
 
-    console.log(game.i18n.localize("castle-falkenstein.console.log.ready"));
+    console.log('Castle Falkenstein | Ready.');
   }
 
   static registerSettings() {

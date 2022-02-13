@@ -4,7 +4,7 @@
 
     "fortune": {
       "deck": "Jeu du destin",
-      "hand": "Destin - {character}",
+      "hand": "{character} - Destin",
       "spadesDesc": "Prouesses sociales ou en rapport avec le statut social.",
       "heartsDesc": "Prouesses romantiques et centrées sur les émotions.",
       "diamondsDesc": "Prouesses intellectuelles et mentales.",
@@ -13,7 +13,7 @@
 
     "sorcery": {
       "deck": "Jeu de sorcellerie",
-      "hand": "Sorcellerie - {character}"
+      "hand": "{character} - Sorcellerie"
     },
 
     "settings": {
@@ -24,8 +24,10 @@
       "discardPileHint": "La pile dans laquelle les cartes du {deck} vont une fois jouées ou défaussées."
     },
     
-    "performFeat": {
-      "title": "Accomplir une prouesse",
+    "feat": {
+      "feat": "Prouesse",
+      "perform": "Accomplir une prouesse",
+      "complementWithCards": "Compléter avec des cartes",
       "score": "Score"
     },
 

@@ -41,11 +41,12 @@ export class CastleFalkensteinActor extends Actor {
   }
 
   async createHand(handType) {
+
     const stacksConfig = [{
       type: "hand",
       name: this.computeHandName(handType),
       displayCount: true,
-      folder: null
+      folder: null,
     }];
 
     const stacks = await Cards.createDocuments(stacksConfig);
@@ -58,9 +59,14 @@ export class CastleFalkensteinActor extends Actor {
 
   async hand(handType) {
     if (!this.data.data.hands[handType] || !game.cards.get(this.data.data.hands[handType])) {
-      const handId = (await this.createHand(handType)).id;
+      const hand = await this.createHand(handType);
       await this.update({
-        [`data.hands.${handType}`]: handId
+        [`data.hands.${handType}`]: hand.id
+      });
+
+      await hand.setFlag('castle-falkenstein', 'handProperties', {
+        type: handType,
+        actor: this.id
       });
     }
     return game.cards.get(this.data.data.hands[handType]);
@@ -100,7 +106,7 @@ export class CastleFalkensteinActor extends Actor {
     }
 
     // TODO
-    console.log("hands.fortune = " + fortuneHand.id);
+    console.log('Castle Falkenstein | hands.fortune = ' + fortuneHand.id);
 
     let performFeat = new CastleFalkensteinPerformFeat(item);
     performFeat.render(true);
@@ -126,7 +132,7 @@ export class CastleFalkensteinActor extends Actor {
     }
 
     // TODO
-    console.log("hands.sorcery = " + sorceryHand.id);
+    console.log('Castle Falkenstein | hands.sorcery = ' + sorceryHand.id);
   }
 
   /** */

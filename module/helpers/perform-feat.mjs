@@ -6,7 +6,7 @@ export default class CastleFalkensteinPerformFeat extends FormApplication {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       id: "castle-falkenstein-perform-feat",
-      title: game.i18n.localize("castle-falkenstein.performFeat.title"),
+      title: game.i18n.localize("castle-falkenstein.feat.perform"),
       template: "./systems/castle-falkenstein/templates/perform-feat.hbs",
       classes: ["castle-falkenstein-perform-feat", "sheet"],
       width: 500,
@@ -35,7 +35,6 @@ export default class CastleFalkensteinPerformFeat extends FormApplication {
   computeScore() {
     let score = CASTLE_FALKENSTEIN.abilityLevels[this.ability.data.data.level].value;
 
-    // Based on core rules, variants not supposed (yet?)
     for (const card of this.fortuneHand.cards) {
       const cardData = card.data;
       if (cardData.checked) {
@@ -83,11 +82,42 @@ export default class CastleFalkensteinPerformFeat extends FormApplication {
    * @override
    */
   async _updateObject(event, formData) {
-    // normal updateObject stuff
+    
+    // play the cards played
 
-    //await this.fortuneHand.update
+    let idsOfCardPlayed = [];
+    for (const card of this.fortuneHand.cards) {
+      const cardData = card.data;
+      if (cardData.checked) {
+        idsOfCardPlayed.push(card.id);
+      }
+    }
 
-    this.render(); // rerenders the FormApp with the new data.
+    const score = this.computeScore();
+
+    await this.fortuneHand.pass(game.CastleFalkenstein.fortuneDiscardPile, idsOfCardPlayed, {}, 'pass', false);
+  
+    // TODO produce chat message
+
+    // Initialize chat data.
+    const speaker = ChatMessage.getSpeaker({ actor: this.character });
+    const rollMode = game.settings.get('core', 'rollMode');
+    let flavor = `[${game.i18n.localize("castle-falkenstein.feat.feat")}]`;
+    let content = `${this.ability.name}<hr/>`
+                + `${game.i18n.localize("castle-falkenstein.feat.score")}: ${score}`;
+
+    // TODO use 'idsOfCardPlayed' here to complete the message
+
+    // Post message to chat
+    ChatMessage.create({
+      speaker: speaker,
+      rollMode: rollMode,
+      flavor: flavor,
+      content: content
+    });
+
+    // rerenders the FormApp with the new data.
+    this.render();
   }
 
 }

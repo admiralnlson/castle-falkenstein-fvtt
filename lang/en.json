@@ -4,7 +4,7 @@
 
     "fortune": {
       "deck": "Fortune Deck",
-      "hand": "Fortune - {character}",
+      "hand": "{character} - Fortune",
       "spadesDesc": "Social and Status-related Feats.",
       "heartsDesc": "Emotional and Romantic Feats.",
       "diamondsDesc": "Mental and Intellectual Feats.",
@@ -13,7 +13,7 @@
 
     "sorcery": {
       "deck": "Jeu de sorcellerie",
-      "hand": "Sorcery - {character}",
+      "hand": "{character} - Sorcery",
       "spadesDesc": "Social and Status-related Feats.",
       "heartsDesc": "Emotional and Romantic Feats.",
       "diamondsDesc": "Mental and Intellectual Feats.",
@@ -28,8 +28,10 @@
       "discardPileHint": "The cards pile in which {deck} cards go when played."
     },
 
-    "performFeat": {
-      "title": "Perform a Feat",
+    "feat": {
+      "feat": "Feat",
+      "perform": "Perform a Feat",
+      "complementWithCards": "Complement with cards",
       "score": "Score"
     },
 

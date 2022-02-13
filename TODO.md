@@ -2,8 +2,6 @@
 `[M]`ust, `[S]`hould, `[C]`ould, `[W]`on't
 🔥 Personal project maintainer GM needs
 
-+ `[M]` Add flags to castle-falkenstein generated Hands, so they can be cleaned up later
-
 + `[M]` Replace Ability sentence bits with actual single sentence in i18n, to support languages which have different sentence ordering.
 
 + `[M🔥]` **Fortune and Sorcery hands** as embedded in Characters, accessible via links in the Character sheet.
@@ -13,7 +11,6 @@
     + total score
     + detail (feat + cards)
     + collapsible section or GM-only with ranges for which the Feat is a Fumble, Failure, Partial Success, Full Success and High Success (if 'display of Dwarf variant Difficulty levels' is enable in the settings)
-  + Remove 'Play' control from Fortune Cards (all cards if implemented at the same time as "Cast Spell" below)
   + as a collapsible, the ranges of difficulties for which it is a Fumble, Failure, Partial Success, Full Success and High Success
 
 + `[M🔥]` Add a **Cast Spell** menu to each Spell entry
@@ -26,8 +23,9 @@
 + `[M]` Align Hands/Cards/Pile layout with system
   + Remove default Play, Pass (except maybe for GMs), Discard, Reset controls
   + Fortune hands:
-    + replace "Draw" control with **Draw Fortune** control (fills hand back to 4 from )
+    + replace "Draw" control with **Draw Fortune** control (fills hand back to 4 from Fortune Deck)
   + Sorcery hands:
+    + Remove 'Play' control from Fortune Cards (all cards if implemented at the same time as " Spell" below)
     + replace "Draw" control with **Draw power** control (draw 1 card from Sorcery deck)
     + add Discard control for cards in Sorcery hands
 
