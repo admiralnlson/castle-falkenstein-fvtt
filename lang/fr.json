@@ -2,9 +2,11 @@
   "castle-falkenstein": {
     "system": "Château Falkenstein",
 
+    "character": "Personnage",
+
     "fortune": {
       "deck": "Jeu du destin",
-      "hand": "{character} - Destin",
+      "hand": "Destin - {character}",
       "spadesDesc": "Prouesses sociales ou en rapport avec le statut social.",
       "heartsDesc": "Prouesses romantiques et centrées sur les émotions.",
       "diamondsDesc": "Prouesses intellectuelles et mentales.",
@@ -13,7 +15,7 @@
 
     "sorcery": {
       "deck": "Jeu de sorcellerie",
-      "hand": "{character} - Sorcellerie"
+      "hand": "Sorcellerie - {character}"
     },
 
     "settings": {
@@ -28,14 +30,10 @@
       "feat": "Prouesse",
       "perform": "Accomplir une prouesse",
       "complementWithCards": "Compléter avec des cartes",
+      "cardsPlayed": "Carte(s) jouée(s)",
+      "noCardsPlayed": "Pas de carte jouée",
       "score": "Score"
     },
-
-    
-    "castSpell": {
-      "title": "Lancer un sort"
-    },
-
 
     "description": "Description",
 
@@ -48,27 +46,28 @@
       "delete": "Supprimer"
     },
 
-    "abilities": "Talents",
-    "ability": "Talent",
-    "abilityLevel": "Niveau",
-    "abilityName": "Nom",
-    "abilitySuit": "Couleur",
-    "abilityLevelInSentence": "Je suis ",
-    "abilityNameInSentence": "en ",
-
-    "abilityPoor": "Faible",
-    "abilityAverage": "Moyen",
-    "abilityGood": "Bon",
-    "abilityGreat": "Excellent",
-    "abilityExceptional": "Magistral",
-    "abilityExtraordinary": "Prodigieux",
-
-    "abilityPoorAbbr": "FAI",
-    "abilityAverageAbbr": "MOY",
-    "abilityGoodAbbr": "BON",
-    "abilityGreatAbbr": "EXC",
-    "abilityExceptionalAbbr": "MAG",
-    "abilityExtraordinaryAbbr": "PRO",
+    "ability": {
+      "abilities": "Talents",
+      "ability": "Talent",
+      "level": "Niveau",
+      "name": "Nom",
+      "levelNameSeparator": " en ",
+      "suit": "Couleur",
+  
+      "poor": "Faible",
+      "average": "Moyen",
+      "good": "Bon",
+      "great": "Excellent",
+      "exceptional": "Magistral",
+      "extraordinary": "Prodigieux",
+  
+      "poorAbbr": "PR",
+      "averageAbbr": "AV",
+      "goodAbbr": "GD",
+      "greatAbbr": "GR",
+      "exceptionalAbbr": "EXC",
+      "extraordinaryAbbr": "EXT"
+    },
 
     "cards": {
       "suit": "Couleur",
@@ -78,8 +77,9 @@
       "clubs": "trèfle"
     },
 
-    "weapons": {
-      "plural": "Armes",
+    "weapon": {
+      "weapons": "Armes",
+      "weapon": "Arme",
       "effectiveRange": "Portée Effective",
       "rangeUnitAbbr": "yds",
       "magazine": "Munitions",
@@ -91,16 +91,20 @@
     "maxHealth": "Santé",
     "wounds": "Blessures",
 
-    "possessions": "Possessions",
-    "possession": "Possession",
-    "possessionName": "Nom",
+    "possession": {
+      "possessions": "Possessions",
+      "possession": "Possession"
+    },
 
-    "spells": "Sorts",
-    "spell": "Sort",
-    "spellName": "Nom",
-    "spellAspect": "Aspect",
-    "spellNameAndAspect": "Sort",
-    "spellThaumicLevel": "Niveau thaumique",
+    "spell": {
+      "spells": "Sorts",
+      "spell": "Sort",
+      "castASpell": "Lancer un sort",
+      "name": "Nom",
+      "aspect": "Aspect",
+      "nameAndAspect": "Sort",
+      "thaumicLevel": "Niveau thaumique"
+    },
 
     "hostNotes": "Notes de l'Hôte"
   }

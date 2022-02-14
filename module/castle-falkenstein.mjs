@@ -139,12 +139,32 @@ export default class CastleFalkenstein {
 
   static registerSheets() {
     Actors.unregisterSheet("core", ActorSheet);
-    Actors.registerSheet("castle-falkenstein", CastleFalkensteinActorSheet, { makeDefault: true });
+    Actors.registerSheet("castle-falkenstein", CastleFalkensteinActorSheet, { 
+      label: game.i18n.localize("castle-falkenstein.system") + " | " + game.i18n.localize("castle-falkenstein.character"),
+      makeDefault: true
+    });
+
     Items.unregisterSheet("core", ItemSheet);
-    Items.registerSheet("castle-falkenstein", CastleFalkensteinAbilitySheet, { types: ["ability"], makeDefault: true });
-    Items.registerSheet("castle-falkenstein", CastleFalkensteinPossessionSheet, { types: ["possession"], makeDefault: true });
-    Items.registerSheet("castle-falkenstein", CastleFalkensteinSpellSheet, { types: ["spell"], makeDefault: true });
-    Items.registerSheet("castle-falkenstein", CastleFalkensteinWeaponSheet, { types: ["weapon"], makeDefault: true });
+    Items.registerSheet("castle-falkenstein", CastleFalkensteinAbilitySheet, {
+      types: ["ability"],
+      label: game.i18n.localize("castle-falkenstein.system") + " | " + game.i18n.localize("castle-falkenstein.ability.ability"),
+      makeDefault: true
+    });
+    Items.registerSheet("castle-falkenstein", CastleFalkensteinPossessionSheet, {
+      types: ["possession"],
+      label: game.i18n.localize("castle-falkenstein.system") + " | " + game.i18n.localize("castle-falkenstein.possession.possession"),
+      makeDefault: true
+    });
+    Items.registerSheet("castle-falkenstein", CastleFalkensteinWeaponSheet, {
+      types: ["weapon"],
+      label: game.i18n.localize("castle-falkenstein.system") + " | " + game.i18n.localize("castle-falkenstein.weapon.weapon"),
+      makeDefault: true
+    });
+    Items.registerSheet("castle-falkenstein", CastleFalkensteinSpellSheet, {
+      types: ["spell"],
+      label: game.i18n.localize("castle-falkenstein.system") + " | " + game.i18n.localize("castle-falkenstein.spell.spell"),
+      makeDefault: true
+    });
   }
 
   // Load all the templates for handlebars partials.

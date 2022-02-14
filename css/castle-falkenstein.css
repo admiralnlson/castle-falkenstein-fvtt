@@ -242,7 +242,7 @@ html * {
 
 .castle-falkenstein .items-list .item-controls {
   display: flex;
-  flex: 0 0 70px;
+  flex: 0 0 75px;
   justify-content: flex-end;
 }
 
@@ -341,6 +341,10 @@ html * {
 .castle-falkenstein.item .ability-sheet-header {
   align-items: center;
   grid-template-columns: auto 1fr auto 2fr auto;
+}
+
+.castle-falkenstein.item .ability-sheet-header .ability-level {
+  text-align: right;
 }
 
 .castle-falkenstein.item .possession-sheet-header {

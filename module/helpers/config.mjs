@@ -6,33 +6,33 @@ export const CASTLE_FALKENSTEIN = {};
  */
  CASTLE_FALKENSTEIN.abilityLevels = {
   "PR": {
-    "full": "castle-falkenstein.abilityPoor",
-    "abbr": "castle-falkenstein.abilityPoorAbbr",
+    "full": "castle-falkenstein.ability.poor",
+    "abbr": "castle-falkenstein.ability.poorAbbr",
     "value": 2
   },
   "AV": {
-    "full": "castle-falkenstein.abilityAverage",
-    "abbr": "castle-falkenstein.abilityAverageAbbr",
+    "full": "castle-falkenstein.ability.average",
+    "abbr": "castle-falkenstein.ability.averageAbbr",
     "value": 4
   },
   "GD": {
-    "full": "castle-falkenstein.abilityGood",
-    "abbr": "castle-falkenstein.abilityGoodAbbr",
+    "full": "castle-falkenstein.ability.good",
+    "abbr": "castle-falkenstein.ability.goodAbbr",
     "value": 6
   },
   "GR": {
-    "full": "castle-falkenstein.abilityGreat",
-    "abbr": "castle-falkenstein.abilityGreatAbbr",
+    "full": "castle-falkenstein.ability.great",
+    "abbr": "castle-falkenstein.ability.greatAbbr",
     "value": 8
   },
   "EXC": {
-    "full": "castle-falkenstein.abilityExceptional",
-    "abbr": "castle-falkenstein.abilityExceptionalAbbr",
+    "full": "castle-falkenstein.ability.exceptional",
+    "abbr": "castle-falkenstein.ability.exceptionalAbbr",
     "value": 10
   },
   "EXT": {
-    "full": "castle-falkenstein.abilityExtraordinary",
-    "abbr": "castle-falkenstein.abilityExtraordinaryAbbr",
+    "full": "castle-falkenstein.ability.extraordinary",
+    "abbr": "castle-falkenstein.ability.extraordinaryAbbr",
     "value": 12
   }
 };

@@ -2,9 +2,11 @@
   "castle-falkenstein": {
     "system": "Castle Falkenstein",
 
+    "character": "Character",
+
     "fortune": {
       "deck": "Fortune Deck",
-      "hand": "{character} - Fortune",
+      "hand": "Fortune - {character}",
       "spadesDesc": "Social and Status-related Feats.",
       "heartsDesc": "Emotional and Romantic Feats.",
       "diamondsDesc": "Mental and Intellectual Feats.",
@@ -13,7 +15,7 @@
 
     "sorcery": {
       "deck": "Jeu de sorcellerie",
-      "hand": "{character} - Sorcery",
+      "hand": "Sorcery - {character}",
       "spadesDesc": "Social and Status-related Feats.",
       "heartsDesc": "Emotional and Romantic Feats.",
       "diamondsDesc": "Mental and Intellectual Feats.",
@@ -32,11 +34,9 @@
       "feat": "Feat",
       "perform": "Perform a Feat",
       "complementWithCards": "Complement with cards",
+      "cardsPlayed": "Card(s) played",
+      "noCardsPlayed": "No cards played",
       "score": "Score"
-    },
-
-    "castSpell": {
-      "title": "Cast a Spell"
     },
 
     "description": "Description",
@@ -50,27 +50,28 @@
       "delete": "Delete"
     },
 
-    "abilities": "Abilities",
-    "ability": "Ability",
-    "abilityLevel": "Level",
-    "abilityName": "Name",
-    "abilitySuit": "Suit",
-    "abilityLevelInSentence": "I have ",
-    "abilityNameInSentence": " ",
-
-    "abilityPoor": "Poor",
-    "abilityAverage": "Average",
-    "abilityGood": "Good",
-    "abilityGreat": "Great",
-    "abilityExceptional": "Exceptional",
-    "abilityExtraordinary": "Extraordinary",
-
-    "abilityPoorAbbr": "PR",
-    "abilityAverageAbbr": "AV",
-    "abilityGoodAbbr": "GD",
-    "abilityGreatAbbr": "GR",
-    "abilityExceptionalAbbr": "EXC",
-    "abilityExtraordinaryAbbr": "EXT",
+    "ability": {
+      "abilities": "Abilities",
+      "ability": "Ability",
+      "level": "Level",
+      "levelNameSeparator": " ",
+      "name": "Name",
+      "suit": "Suit",
+  
+      "poor": "Poor",
+      "average": "Average",
+      "good": "Good",
+      "great": "Great",
+      "exceptional": "Exceptional",
+      "extraordinary": "Extraordinary",
+  
+      "poorAbbr": "PR",
+      "averageAbbr": "AV",
+      "goodAbbr": "GD",
+      "greatAbbr": "GR",
+      "exceptionalAbbr": "EXC",
+      "extraordinaryAbbr": "EXT"
+    },
 
     "cards": {
       "suit": "Suit",
@@ -80,8 +81,9 @@
       "clubs": "Clubs"
     },
 
-    "weapons": {
-      "plural":"Weapons",
+    "weapon": {
+      "weapons":"Weapons",
+      "weapon":"Weapon",
       "effectiveRange": "Effective Range",
       "rangeUnitAbbr": "yds",
       "magazine": "Magazine",
@@ -93,16 +95,20 @@
     "maxHealth": "Health",
     "wounds": "Wounds",
 
-    "possessions": "Possessions",
-    "possession": "Possession",
-    "possessionName": "Name",
+    "possession": {
+      "possessions": "Possessions",
+      "possession": "Possession"
+    },
     
-    "spells": "Spells",
-    "spell": "Spell",
-    "spellName": "Name",
-    "spellAspect": "Aspect",
-    "spellNameAndAspect": "Spell",
-    "spellThaumicLevel": "Thaumic Level",
+    "spell": {
+      "spells": "Spells",
+      "spell": "Spell",
+      "castASpell": "Cast a Spell",
+      "name": "Name",
+      "aspect": "Aspect",
+      "nameAndAspect": "Spell",
+      "thaumicLevel": "Thaumic Level"
+    },
 
     "hostNotes": "Host notes"
   }

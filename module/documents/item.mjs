@@ -56,15 +56,14 @@ export class CastleFalkensteinItem extends Item {
 
     // change label based on item type
     if (itemData.type == 'ability') {
-      flavor = `[${game.i18n.localize("castle-falkenstein.ability")}]`;
+      flavor = `[${game.i18n.localize("castle-falkenstein.ability.ability")}]`;
       const levelI18nKey = CASTLE_FALKENSTEIN.abilityLevels[itemData.data.level].full;
       const levelValue = CASTLE_FALKENSTEIN.abilityLevels[itemData.data.level].value;
-      content = `${game.i18n.localize("castle-falkenstein.abilityLevelInSentence")}${game.i18n.localize(levelI18nKey)} `
-              + `[${levelValue}] `
-              + `${game.i18n.localize("castle-falkenstein.abilityNameInSentence")}${itemData.name} `
-              + `[<i class="cf-cards-generic-${itemData.data.suit}"></i>].`;
+      content = `${game.i18n.localize(levelI18nKey)} [${levelValue}]`
+              + `${game.i18n.localize("castle-falkenstein.ability.levelNameSeparator")}`
+              + `${itemData.name} [<i class="cf-cards-generic-${itemData.data.suit}"></i>]`;
     } else if (itemData.type == 'possession') {
-      flavor = `[${game.i18n.localize("castle-falkenstein.possession")}]`;
+      flavor = `[${game.i18n.localize("castle-falkenstein.possession.possession")}]`;
       // default content
     } else if (itemData.type == 'spell') {
       flavor = `[${game.i18n.localize("castle-falkenstein.spell")}]`;

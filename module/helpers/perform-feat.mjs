@@ -9,12 +9,20 @@ export default class CastleFalkensteinPerformFeat extends FormApplication {
       title: game.i18n.localize("castle-falkenstein.feat.perform"),
       template: "./systems/castle-falkenstein/templates/perform-feat.hbs",
       classes: ["castle-falkenstein-perform-feat", "sheet"],
-      width: 500,
+      width: 250,
       height: "auto",
       closeOnSubmit: true,
       submitOnClose: false,
       resizable: true
     });
+  }
+
+  setCardChecked(card, checked) {
+    (card.data.data.volatile ??= {}).checked = checked;
+  }
+
+  getCardChecked(card) {
+    return card.data.data.volatile.checked;
   }
 
   /**
@@ -28,7 +36,7 @@ export default class CastleFalkensteinPerformFeat extends FormApplication {
 
     // reset checked status. We don't want it to persist between forms.
     for (const card of this.fortuneHand.cards) {
-      card.data.checked = false;
+      this.setCardChecked(card, false);
     }
   }
 
@@ -36,9 +44,9 @@ export default class CastleFalkensteinPerformFeat extends FormApplication {
     let score = CASTLE_FALKENSTEIN.abilityLevels[this.ability.data.data.level].value;
 
     for (const card of this.fortuneHand.cards) {
-      const cardData = card.data;
-      if (cardData.checked) {
+      if (this.getCardChecked(card)) {
         // Based on core rules, variants not supposed (yet?)
+        const cardData = card.data;
         if (cardData.suit == this.ability.data.data.suit || cardData.suit == "joker") {
           score += cardData.value;
         } else {
@@ -69,11 +77,9 @@ export default class CastleFalkensteinPerformFeat extends FormApplication {
   }
 
   onClickCardSelect(event) {
-
     const cardId = event.currentTarget.name;
     const checked = event.currentTarget.checked;
-
-    this.fortuneHand.cards.get(cardId).data.checked = checked;
+    this.setCardChecked(this.fortuneHand.cards.get(cardId), checked);
 
     this.render(); // rerenders the FormApp with the new data.
   }
@@ -83,28 +89,44 @@ export default class CastleFalkensteinPerformFeat extends FormApplication {
    */
   async _updateObject(event, formData) {
     
-    // play the cards played
-
-    let idsOfCardPlayed = [];
-    for (const card of this.fortuneHand.cards) {
-      const cardData = card.data;
-      if (cardData.checked) {
-        idsOfCardPlayed.push(card.id);
-      }
-    }
+    // log the cards played, and compute score before they are discarded
 
     const score = this.computeScore();
 
-    await this.fortuneHand.pass(game.CastleFalkenstein.fortuneDiscardPile, idsOfCardPlayed, {}, 'pass', false);
+    let cardsPlayed = [];
+    for (const card of this.fortuneHand.cards) {
+      if (this.getCardChecked(card)) {
+        cardsPlayed.push(card);
+      }
+    }
+
+    // discard the cards
+    await this.fortuneHand.pass(game.CastleFalkenstein.fortuneDiscardPile, cardsPlayed.map((card) => { return card.id; }), {chatNotification: false});
   
+    //
     // TODO produce chat message
+    //
 
     // Initialize chat data.
     const speaker = ChatMessage.getSpeaker({ actor: this.character });
     const rollMode = game.settings.get('core', 'rollMode');
-    let flavor = `[${game.i18n.localize("castle-falkenstein.feat.feat")}]`;
-    let content = `${this.ability.name}<hr/>`
-                + `${game.i18n.localize("castle-falkenstein.feat.score")}: ${score}`;
+    const flavor = `[${game.i18n.localize("castle-falkenstein.feat.feat")}]`;
+    const levelI18nKey = game.i18n.localize(CASTLE_FALKENSTEIN.abilityLevels[this.ability.data.data.level].full);
+    const levelValue = CASTLE_FALKENSTEIN.abilityLevels[this.ability.data.data.level].value;
+    let content = `${this.ability.name} [<i class="cf-cards-generic-${this.ability.data.data.suit}"></i>]`
+               + `${game.i18n.localize("castle-falkenstein.ability.levelNameSeparator")}`
+               + `${game.i18n.localize(levelI18nKey)} [${levelValue}]`;
+    content += '<hr/>';
+    if (cardsPlayed.length > 0) {
+      content += `${game.i18n.localize("castle-falkenstein.feat.cardsPlayed")}:<ul>`;
+      cardsPlayed.forEach(card => {
+        content += `<li>${card.name}</li>`;
+      });
+      content += '</ul>';
+    } else {
+      content += game.i18n.localize("castle-falkenstein.feat.noCardsPlayed");
+    }
+    content += `<hr/>${game.i18n.localize("castle-falkenstein.feat.score")}: ${score}`;
 
     // TODO use 'idsOfCardPlayed' here to complete the message
 

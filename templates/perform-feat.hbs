@@ -1,15 +1,13 @@
 <form class="flexcol" autocomplete="off">
 	<section class="content">
     <div>
-      {{localize 'castle-falkenstein.abilityLevelInSentence'}}{{levelI18nLabel}} [{{levelValue}}] {{localize 'castle-falkenstein.abilityNameInSentence'}}{{abilityData.name}} [<i class="cf-cards-generic-{{abilityData.data.suit}}"></i>].
-    </div>
-		<div class="perform-feat-cards">
+      {{levelI18nLabel}} [{{levelValue}}]{{localize 'castle-falkenstein.ability.levelNameSeparator'}}{{abilityData.name}} [<i class="cf-cards-generic-{{abilityData.data.suit}}"></i>]
+      <hr />
       {{localize 'castle-falkenstein.feat.complementWithCards'}}:<br />
       {{#each cards as |item id|}}
-        <input class="perform-feat-card-select" type="checkbox" {{checked item.data.checked}} name="{{item.id}}"><label for="{{item.name}}">{{item.name}}</label><br />
+        <input class="perform-feat-card-select" type="checkbox" {{checked item.data.data.volatile.checked}} name="{{item.id}}"><label for="{{item.name}}">{{item.name}}</label><br />
       {{/each}}
-		</div>
-    <div class="perform-feat-score">
+      <hr />
       {{localize 'castle-falkenstein.feat.score'}}: {{score}}
     </div>
 	</section>

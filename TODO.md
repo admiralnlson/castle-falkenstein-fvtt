@@ -2,7 +2,6 @@
 `[M]`ust, `[S]`hould, `[C]`ould, `[W]`on't
 🔥 Personal project maintainer GM needs
 
-+ `[M]` Replace Ability sentence bits with actual single sentence in i18n, to support languages which have different sentence ordering.
 
 + `[M🔥]` **Fortune and Sorcery hands** as embedded in Characters, accessible via links in the Character sheet.
 
@@ -15,7 +14,7 @@
 
 + `[M🔥]` Add a **Cast Spell** menu to each Spell entry
   + player (or GM) can choose spell definitions
-  + player (or GM) can cancel an onging spell, which discards all their Power cards
+  + player (or GM) can cancel an ongoing spell, which discards all their Power cards
   + At each Power card drawn, produce a chat message showing the advancement toward the ongoing spell (based on its Aspect)
     + Add chat message to trigger the effect (which discards all cards from the player hand).
   + Remove 'Play' control from Fortune Cards (all cards if implemented at the same time as "Perform Feat" above)
