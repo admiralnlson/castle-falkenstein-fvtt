@@ -78,6 +78,20 @@ export default class CastleFalkensteinPerformFeat extends FormApplication {
     this.render(); // rerenders the FormApp with the new data.
   }
 
+  static onRenderChatMessage(chatMessage, html, messageData) {
+    html.find(".feat-chat-ranges-button").click(event => {
+      console.log("Castle Falkenstein | .feat-chat-ranges-button clicked");
+
+      let button = event.currentTarget;
+      var content = button.nextElementSibling;
+      if (content.style.display === "block") {
+        content.style.display = "none";
+      } else {
+        content.style.display = "block";
+      }
+    });
+  }
+
   /**
    * @override
    */
@@ -107,7 +121,7 @@ export default class CastleFalkensteinPerformFeat extends FormApplication {
     const levelValue = CASTLE_FALKENSTEIN.abilityLevels[this.ability.data.data.level].value;
     let content = `${game.i18n.localize(levelI18nKey)} [${levelValue}]`
                 + `${game.i18n.localize("castle-falkenstein.ability.levelNameSeparator")}`
-                + `${this.ability.name} [<i class="cf-cards-generic-${this.ability.data.data.suit}"></i>]`;
+                + `<b>${this.ability.name}</b> [<i class="cf-cards-generic-${this.ability.data.data.suit}"></i>]`;
     content += '<hr/>';
     if (idsOfCardsPlayed.length > 0) {
       content += `${game.i18n.localize("castle-falkenstein.feat.cardsPlayed")}:<ul>`;
@@ -120,9 +134,25 @@ export default class CastleFalkensteinPerformFeat extends FormApplication {
     } else {
       content += game.i18n.localize("castle-falkenstein.feat.noCardsPlayed");
     }
-    content += `<hr/>${game.i18n.localize("castle-falkenstein.feat.score")}: ${this.computeScore()}`;
+    const total = this.computeScore();
+    content += `<hr/>${game.i18n.localize("castle-falkenstein.feat.total")}: <button type="button" class="feat-chat-ranges-button">${total}</button>`;
 
-    // TODO use 'idsOfCardPlayed' here to complete the message
+    const highSuccessMax = Math.floor(total/2);
+    const fullSuccessMax = Math.floor(total*2/3);
+    const fumbleMin = Math.round((total+0.6)*2);
+    content += '<div class="feat-chat-ranges-collapsible">'
+         //  + '  <hr />'
+             + '  <div class="grid-2col feat-chat-ranges">'
+             + `    <span class="feat-chat-range">0-${highSuccessMax}</span><span>${game.i18n.localize("castle-falkenstein.feat.highSuccess")}</span>`;
+    if (total > 2) { // when total is 2 (FAI with no cards), a full success is impossible
+      content += `    <span class="feat-chat-range">${highSuccessMax+1}-${fullSuccessMax}</span><span>${game.i18n.localize("castle-falkenstein.feat.fullSuccess")}</span>`
+    }
+    content += `    <span class="feat-chat-range">${fullSuccessMax+1}-${total}</span><span>${game.i18n.localize("castle-falkenstein.feat.partialSuccess")}</span>`
+             + `    <span class="feat-chat-range">${total+1}-${fumbleMin-1}</span><span>${game.i18n.localize("castle-falkenstein.feat.failure")}</span>`
+             + `    <span class="feat-chat-range">${fumbleMin}+</span><span>${game.i18n.localize("castle-falkenstein.feat.fumble")}</span>`
+             + '  </div>'
+             + '</div>';
+
 
     // Post message to chat
     ChatMessage.create({

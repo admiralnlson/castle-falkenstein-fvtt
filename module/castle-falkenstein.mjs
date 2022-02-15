@@ -10,6 +10,7 @@ import { CastleFalkensteinWeaponSheet } from "./sheets/item-weapon-sheet.mjs";
 // Import helper/utility classes and constants.
 import { CASTLE_FALKENSTEIN } from "./helpers/config.mjs";
 import CastleFalkensteinSettings from "./helpers/settings.mjs";
+import CastleFalkensteinPerformFeat from "./helpers/perform-feat.mjs";
 
 export default class CastleFalkenstein {
 
@@ -118,6 +119,10 @@ export default class CastleFalkenstein {
     game.socket.on(this.socketName, this._onSocketMessage.bind(this));
 
     console.log('Castle Falkenstein | Ready.');
+  }
+
+  static async onRenderChatMessage(chatMessage, html, messageData) {
+    CastleFalkensteinPerformFeat.onRenderChatMessage(chatMessage, html, messageData);
   }
 
   static registerSettings() {
@@ -260,6 +265,8 @@ export default class CastleFalkenstein {
 Hooks.on("init", CastleFalkenstein.onInit.bind(CastleFalkenstein));
 
 Hooks.on("ready", CastleFalkenstein.onReady.bind(CastleFalkenstein));
+
+Hooks.on("renderChatMessage", CastleFalkenstein.onRenderChatMessage.bind(CastleFalkenstein));
 
 /* -------------------------------------------- */
 /*  Handlebars Helpers                          */

@@ -36,7 +36,12 @@
       "complementWithCards": "Complement with cards",
       "cardsPlayed": "Card(s) played",
       "noCardsPlayed": "No cards played",
-      "score": "Score"
+      "total": "Total",
+      "highSuccess": "High Success",
+      "fullSuccess": "Full Success",
+      "partialSuccess": "Partial Success",
+      "failure": "Failure",
+      "fumble": "Fumble"
     },
 
     "description": "Description",

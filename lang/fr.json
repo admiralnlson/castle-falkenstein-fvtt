@@ -32,7 +32,12 @@
       "complementWithCards": "Compléter avec des cartes",
       "cardsPlayed": "Carte(s) jouée(s)",
       "noCardsPlayed": "Pas de carte jouée",
-      "score": "Score"
+      "total": "Total",
+      "highSuccess": "Magnifique succès",
+      "fullSuccess": "Franc succès",
+      "partialSuccess": "Succès partiel",
+      "failure": "Échec",
+      "fumble": "Maladresse"
     },
 
     "description": "Description",
