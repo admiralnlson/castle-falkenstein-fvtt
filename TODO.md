@@ -2,8 +2,8 @@
 `[M]`ust, `[S]`hould, `[C]`ould, `[W]`on't
 🔥 Personal project maintainer GM needs
 
-
-+ `[M🔥]` **Fortune and Sorcery hands** as embedded in Characters, accessible via links in the Character sheet.
++ `[M🔥]` give character owner(s) permissions on their hands (if they exist) also
+  + listen to permission changes on characters to adapt permissions on the hand accordingly.
 
 + `[M🔥]` Ability **Perform Feat** menu to each Ability entry
   + Allow to select cards to play (0-4), and results in a chat message showing:

@@ -93,8 +93,8 @@ export default class CastleFalkenstein {
   }
   
   static onInit() {
-    this.registerSettings();
-    this.registerSheets();
+    //this.registerSettings();
+    //this.registerSheets();
 
     game.CastleFalkenstein = CastleFalkenstein;
 
@@ -107,7 +107,9 @@ export default class CastleFalkenstein {
   }
 
   static async onReady() {
+    this.registerSettings();
     await this.preLoadTemplates();
+    this.registerSheets();
 
     Hooks.on("hotbarDrop", (hotbar, data, slot) => this.createItemMacro(data, slot));
 

@@ -4,8 +4,8 @@
       {{levelI18nLabel}} [{{levelValue}}]{{localize 'castle-falkenstein.ability.levelNameSeparator'}}{{abilityData.name}} [<i class="cf-cards-generic-{{abilityData.data.suit}}"></i>]
       <hr />
       {{localize 'castle-falkenstein.feat.complementWithCards'}}:<br />
-      {{#each cards as |item id|}}
-        <input class="perform-feat-card-select" type="checkbox" {{checked item.data.data.volatile.checked}} name="{{item.id}}"><label for="{{item.name}}">{{item.name}}</label><br />
+      {{#each wrappedCards as |wrappedCard id|}}
+        <input class="perform-feat-card-select" type="checkbox" {{wrappedCard.checked}} name="{{wrappedCard.card.id}}"><label for="{{wrappedCard.card.name}}">{{wrappedCard.card.name}}</label><br />
       {{/each}}
       <hr />
       {{localize 'castle-falkenstein.feat.score'}}: {{score}}
