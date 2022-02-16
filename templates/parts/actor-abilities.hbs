@@ -10,13 +10,13 @@
   {{#each abilities as |item id|}}
     <li class="item flexrow" data-item-id="{{item._id}}">
       <div class="ability-perform-feat">
-        <a class="rollable" data-roll-type="item"><i class="cf-cards-generic-hand"></i></a>
+        <a class="rollable" data-roll-type="item"><i class="cf-poker-hand"></i></a>
       </div>
       <div class="ability-level">
         {{localize item.data.levelI18nKey}}
       </div>
       <div class="ability-name">
-        {{item.name}} [<i class="cf-cards-generic-{{item.data.suit}}"></i>]
+        {{item.name}} [<i class="cf-{{item.data.suit}}"></i>]
       </div>
       <div class="item-controls">
         <a class="item-control item-show" title="{{localize 'castle-falkenstein.item.displayInChat'}}"><i class="fas fa-eye"></i></a>

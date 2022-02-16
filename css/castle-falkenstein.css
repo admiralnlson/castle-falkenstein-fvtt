@@ -1,25 +1,24 @@
 /* cards fonts */
 
-@import "./cf-cards-generic.css";
-[class*='cf-cards-generic-']:before {
+@import "./cf-cards.css";
+[class*='cf-']:before {
   font-size: 18px;
 }
-.cf-cards-generic-spades:before,
-.cf-cards-generic-hearts:before,
-.cf-cards-generic-diamonds:before,
-.cf-cards-generic-clubs:before {
+.cf-spades:before,
+.cf-hearts:before,
+.cf-diamonds:before,
+.cf-clubs:before {
   font-size: 12px;
   vertical-align: -2px;
 }
 
-.cf-cards-generic-spades:before,
-.cf-cards-generic-clubs:before {
+.cf-spades:before,
+.cf-clubs:before {
   color: black;
-  vertical-align: -2px;
 }
 
-.cf-cards-generic-hearts:before,
-.cf-cards-generic-diamonds:before {
+.cf-hearts:before,
+.cf-diamonds:before {
   color: red;
 }
 
@@ -371,12 +370,35 @@ html * {
 
 /* chat messages */
 
+.chat-message .cards-played {
+  display: flex;
+  justify-content: center;
+}
+
+.chat-message .cards-played .card-played::before {
+  font-size: 300%;
+}
+
+.chat-message .card-played:not(.correct-suit)::before {
+  color: gray;
+}
+
+.chat-message .feat-chat-ranges-button {
+  cursor: pointer;
+}
+
 .chat-message .feat-chat-ranges {
   width: 70%;
   margin: 0 auto;
   grid-template-columns: max-content max-content;
-  justify-content: space-evenly;
+  justify-content: center;
   gap: 2px;
+  grid-column-gap: 10px;
+  padding-top: 5px;
+}
+
+.chat-message .feat-chat-range {
+  text-align: center;
 }
 
 .chat-message div.feat-chat-ranges-collapsible {

@@ -121,21 +121,21 @@ export default class CastleFalkensteinPerformFeat extends FormApplication {
     const levelValue = CASTLE_FALKENSTEIN.abilityLevels[this.ability.data.data.level].value;
     let content = `${game.i18n.localize(levelI18nKey)} [${levelValue}]`
                 + `${game.i18n.localize("castle-falkenstein.ability.levelNameSeparator")}`
-                + `<b>${this.ability.name}</b> [<i class="cf-cards-generic-${this.ability.data.data.suit}"></i>]`;
-    content += '<hr/>';
+                + `<b>${this.ability.name}</b> [<i class="cf-${this.ability.data.data.suit}"></i>]`;
+    content += '<hr/><div class="cards-played">';
     if (idsOfCardsPlayed.length > 0) {
-      content += `${game.i18n.localize("castle-falkenstein.feat.cardsPlayed")}:<ul>`;
       this.wrappedCards.forEach(w => {
         if (w.checked) {
-          content += `<li>${w.card.name}</li>`;
+          const suitHighlight = (w.card.data.suit == this.ability.data.data.suit || w.card.data.suit == 'joker') ? 'correct-suit' : '';
+          content += `<span class="card-played ${suitHighlight} cf-card-${w.card.data.value}-${w.card.data.suit}"></span>`;
         }
       });
-      content += '</ul>';
     } else {
       content += game.i18n.localize("castle-falkenstein.feat.noCardsPlayed");
     }
+    content += '</div>';
     const total = this.computeScore();
-    content += `<hr/>${game.i18n.localize("castle-falkenstein.feat.total")}: <button type="button" class="feat-chat-ranges-button">${total}</button>`;
+    content += `<hr/><button type="button" class="feat-chat-ranges-button">${total}</button>`;
 
     const highSuccessMax = Math.floor(total/2);
     const fullSuccessMax = Math.floor(total*2/3);

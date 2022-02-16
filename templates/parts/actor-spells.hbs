@@ -10,10 +10,10 @@
   {{#each spells as |item id|}}
     <li class="item flexrow" data-item-id="{{item._id}}">
       <div class="spell-cast">
-        <a class="rollable" data-roll-type="item"><i class="cf-cards-generic-hand"></i></a>
+        <a class="rollable" data-roll-type="item"><i class="cf-poker-hand"></i></a>
       </div>
       <div class="spell-name">
-        {{item.name}} [<i class="cf-cards-generic-{{item.data.suit}}"></i>]
+        {{item.name}} [<i class="cf-{{item.data.suit}}"></i>]
       </div>
       <div class="spell-level">
         {{item.data.level}}

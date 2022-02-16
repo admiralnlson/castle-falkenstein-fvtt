@@ -61,13 +61,13 @@ export class CastleFalkensteinItem extends Item {
       const levelValue = CASTLE_FALKENSTEIN.abilityLevels[itemData.data.level].value;
       content = `${game.i18n.localize(levelI18nKey)} [${levelValue}]`
               + `${game.i18n.localize("castle-falkenstein.ability.levelNameSeparator")}`
-              + `${itemData.name} [<i class="cf-cards-generic-${itemData.data.suit}"></i>]`;
+              + `${itemData.name} [<i class="cf-${itemData.data.suit}"></i>]`;
     } else if (itemData.type == 'possession') {
       flavor = `[${game.i18n.localize("castle-falkenstein.possession.possession")}]`;
       // default content
     } else if (itemData.type == 'spell') {
       flavor = `[${game.i18n.localize("castle-falkenstein.spell")}]`;
-      content = `${itemData.name} [<i class="cf-cards-generic-${itemData.data.suit}"></i>]<hr/>`
+      content = `${itemData.name} [<i class="cf-${itemData.data.suit}"></i>]<hr/>`
             + `${game.i18n.localize("castle-falkenstein.spellThaumicLevel")}: ${itemData.data.level}<br/>`
             + `${itemData.data.description}`;
     } else {
