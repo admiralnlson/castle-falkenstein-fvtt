@@ -27,8 +27,7 @@ In this case, theJournal entry should be drag-and-dropped into the Character She
 
 ## Release notes
 
-TODO
+See 
 
-## Say thanks by buying me a coffee
-If you enjoying using this FoundryVTT system, you make express thanks by buying me a coffee:
-<script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Support Me on Ko-fi', '#29abe0', 'X8X6ALDNQ');kofiwidget2.draw();</script> 
+## Thanking the author
+If this FoundryVTT system is useful to you and you want to say thanks, you may [leave a comment or even buy me coffee](https://ko-fi.com/admiralnlson).
