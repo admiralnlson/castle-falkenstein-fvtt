@@ -27,12 +27,14 @@ export default class CastleFalkensteinPerformFeat extends FormApplication {
     this.fortuneHand = game.cards.get(object.actor.data.data.hands.fortune);
     this.wrappedCards = [];
     for (const card of this.fortuneHand.cards) {
+      console.log("Castle Falkenstein | card sort info = " + card.data.sort);
       this.wrappedCards.push({
         card: card,
         correctSuit: (card.data.suit == this.ability.data.data.suit || card.data.suit == 'joker') ? 'correct-suit' : '',
         checked: ""
       });
     }
+    this.wrappedCards.sort((a, b) => (a.card.data.sort > b.card.data.sort) ? 1 : -1);
   }
 
   computeTotal() {

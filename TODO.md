@@ -49,8 +49,6 @@
 
 + `[S]` Weapons list (under 'Possessions' or dedicated tab), dedicated sheet and chat message
 
-+ `[S]` If technically feasible, improve suit display in 'select' controls by using the cf-cards font.
-
 + `[S]` Fortune hand for the Host
 
 + `[C]` Ensure Fortune and Sorcery Decks are different before accepting new settings.
