@@ -368,17 +368,49 @@ html * {
   text-align: right !important;
 }
 
-/* chat messages */
+/* perform-feat and cast-spell */
 
+.castle-falkenstein .cards-played,
 .chat-message .cards-played {
   display: flex;
   justify-content: center;
+  gap: 5px;
 }
 
+.castle-falkenstein .feat-card-played-button {
+  width: min-content;
+  padding: 0;
+  margin: 0;
+  font-family: revert;
+  line-height: normal;
+  background: transparent;
+  cursor: pointer;
+  padding-top: 2px;
+  border: 0;
+  border-bottom: 2px ridge transparent; /* changed upon select, see below */
+}
+
+.castle-falkenstein .feat-card-played-button.card-selected {
+  border-bottom: 2px ridge gray;
+}
+
+.castle-falkenstein .perform-feat-total {
+  width: 100%;
+  margin-bottom: 5px;
+  background: rgba(255, 255, 240, 0.8);
+  border: 1px solid var(--color-border-light-primary);
+  border-radius: 3px;
+  font-size: var(--font-size-14);
+  line-height: 28px;
+  text-align: center;
+}
+
+.castle-falkenstein .cards-played .card-played::before,
 .chat-message .cards-played .card-played::before {
   font-size: 300%;
 }
 
+.castle-falkenstein .card-played:not(.correct-suit)::before,
 .chat-message .card-played:not(.correct-suit)::before {
   color: gray;
 }
@@ -410,4 +442,9 @@ html * {
 .chat-message .message-header .message-sender {
   text-overflow: ellipsis;
   overflow: hidden;
+}
+
+/* buttons - fix - they remain highlighted out of hover just because they're in focus, this is annoying */
+.castle-falkenstein button:focus {
+  box-shadow: none;
 }

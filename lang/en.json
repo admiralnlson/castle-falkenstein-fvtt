@@ -33,7 +33,6 @@
     "feat": {
       "feat": "Feat",
       "perform": "Perform a Feat",
-      "complementWithCards": "Complement with cards",
       "noCardsPlayed": "No cards played",
       "total": "Total",
       "highSuccess": "High Success",

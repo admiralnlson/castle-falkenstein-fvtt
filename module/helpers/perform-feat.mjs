@@ -8,7 +8,7 @@ export default class CastleFalkensteinPerformFeat extends FormApplication {
       id: "castle-falkenstein-perform-feat",
       title: game.i18n.localize("castle-falkenstein.feat.perform"),
       template: "./systems/castle-falkenstein/templates/perform-feat.hbs",
-      classes: ["castle-falkenstein-perform-feat", "sheet"],
+      classes: ["castle-falkenstein castle-falkenstein-perform-feat", "sheet"],
       width: 300,
       height: "auto",
       closeOnSubmit: true,
@@ -29,26 +29,27 @@ export default class CastleFalkensteinPerformFeat extends FormApplication {
     for (const card of this.fortuneHand.cards) {
       this.wrappedCards.push({
         card: card,
+        correctSuit: (card.data.suit == this.ability.data.data.suit || card.data.suit == 'joker') ? 'correct-suit' : '',
         checked: ""
       });
     }
   }
 
-  computeScore() {
-    let score = CASTLE_FALKENSTEIN.abilityLevels[this.ability.data.data.level].value;
+  computeTotal() {
+    let total = CASTLE_FALKENSTEIN.abilityLevels[this.ability.data.data.level].value;
 
     for (const w of this.wrappedCards) {
       if (w.checked) {
         // Core rules only, variants not supported (yet?)
         if (w.card.data.suit == this.ability.data.data.suit || w.card.data.suit == "joker") {
-          score += w.card.data.value;
+          total += w.card.data.value;
         } else {
-          score += 1;
+          total += 1;
         }
       }
     }
 
-    return score;
+    return total;
   }
 
   /**
@@ -60,20 +61,19 @@ export default class CastleFalkensteinPerformFeat extends FormApplication {
       levelI18nLabel: game.i18n.localize(CASTLE_FALKENSTEIN.abilityLevels[this.ability.data.data.level].full),
       levelValue: CASTLE_FALKENSTEIN.abilityLevels[this.ability.data.data.level].value,
       wrappedCards: this.wrappedCards,
-      score: this.computeScore()
+      total: this.computeTotal()
     }
   }
 
   /** @override */
   activateListeners(html) {
-    html.find('.perform-feat-card-select').click(event => this.onClickCardSelect(event));
+    html.find('.feat-card-played-button').click(event => this.onClickCardSelect(event));
   }
 
   onClickCardSelect(event) {
     const cardId = event.currentTarget.name;
-    const checked = event.currentTarget.checked;
     const w = this.wrappedCards.find(w => {return w.card.id == cardId});
-    w.checked = checked ? "checked" : "";
+    w.checked = (w.checked == "card-selected") ? "" : "card-selected";
 
     this.render(); // rerenders the FormApp with the new data.
   }
@@ -97,7 +97,7 @@ export default class CastleFalkensteinPerformFeat extends FormApplication {
    */
   async _updateObject(event, formData) {
     
-    // log the cards played, and compute score before they are discarded
+    // log the cards played, and compute total before they are discarded
 
     let idsOfCardsPlayed = [];
     for (const w of this.wrappedCards) {
@@ -126,15 +126,14 @@ export default class CastleFalkensteinPerformFeat extends FormApplication {
     if (idsOfCardsPlayed.length > 0) {
       this.wrappedCards.forEach(w => {
         if (w.checked) {
-          const suitHighlight = (w.card.data.suit == this.ability.data.data.suit || w.card.data.suit == 'joker') ? 'correct-suit' : '';
-          content += `<span class="card-played ${suitHighlight} cf-card-${w.card.data.value}-${w.card.data.suit}"></span>`;
+          content += `<span class="card-played ${w.correctSuit} cf-card-${w.card.data.value}-${w.card.data.suit}"></span>`;
         }
       });
     } else {
       content += game.i18n.localize("castle-falkenstein.feat.noCardsPlayed");
     }
     content += '</div>';
-    const total = this.computeScore();
+    const total = this.computeTotal();
     content += `<hr/><button type="button" class="feat-chat-ranges-button">${total}</button>`;
 
     const highSuccessMax = Math.floor(total/2);

@@ -3,12 +3,14 @@
     <div>
       {{levelI18nLabel}} [{{levelValue}}]{{localize 'castle-falkenstein.ability.levelNameSeparator'}}{{abilityData.name}} [<i class="cf-{{abilityData.data.suit}}"></i>]
       <hr />
-      {{localize 'castle-falkenstein.feat.complementWithCards'}}:<br />
-      {{#each wrappedCards as |wrappedCard id|}}
-        <input class="perform-feat-card-select" type="checkbox" {{wrappedCard.checked}} name="{{wrappedCard.card.id}}"><label for="{{wrappedCard.card.name}}">{{wrappedCard.card.name}}</label><br />
-      {{/each}}
+      <div class="cards-played">
+        {{#each wrappedCards as |wrappedCard id|}}
+          {{!-- <input class="perform-feat-card-select" type="checkbox" {{wrappedCard.checked}} name="{{wrappedCard.card.id}}"><label for="{{wrappedCard.card.name}}">{{wrappedCard.card.name}}</label><br /> --}}
+          <button type="button" name="{{wrappedCard.card.id}}" class="feat-card-played-button card-played {{wrappedCard.checked}} {{wrappedCard.correctSuit}} cf-card-{{wrappedCard.card.data.value}}-{{wrappedCard.card.data.suit}}"></button>
+        {{/each}}
+      </div>
       <hr />
-      {{localize 'castle-falkenstein.feat.total'}}: {{score}}
+      <div class="perform-feat-total">{{total}}</div>
     </div>
 	</section>
 	<footer class="sheet-footer flexrow">
