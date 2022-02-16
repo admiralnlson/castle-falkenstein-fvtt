@@ -50,27 +50,27 @@ CASTLE_FALKENSTEIN.abilityValues = Object.fromEntries(Object.entries(CASTLE_FALK
   "?": {
     "name": "?",
     "fortuneDeckDescription": "?",
-    "symbol": "?"
+    "symbol": "&nbsp;?" // unmapped in "cf cards" font
   },
   "spades": {
     "name": "castle-falkenstein.cards.spades",
     "fortuneDeckDescription": "castle-falkenstein.cards.spadesFortuneDeckDescription",
-    "symbol": "♤"
+    "symbol": "'" // as defined in "cf cards" font
   },
   "hearts": {
     "name": "castle-falkenstein.cards.hearts",
     "fortuneDeckDescription": "castle-falkenstein.cards.heartsFortuneDeckDescription",
-    "symbol": "♡"
+    "symbol": "("  // as defined in "cf cards" font
   },
   "diamonds": {
     "name": "castle-falkenstein.cards.diamonds",
     "fortuneDeckDescription": "castle-falkenstein.cards.diamondsFortuneDeckDescription",
-    "symbol": "♢"
+    "symbol": ")"  // as defined in "cf cards" font
   },
   "clubs": {
     "name": "castle-falkenstein.cards.clubs",
     "fortuneDeckDescription": "castle-falkenstein.cards.clubsFortuneDeckDescription",
-    "symbol": "♧"
+    "symbol": "*"  // as defined in "cf cards" font
   }
 };
 

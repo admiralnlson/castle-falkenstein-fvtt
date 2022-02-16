@@ -5,19 +5,29 @@
 + `[M🔥]` give character owner(s) permissions on their hands (if they exist) also
   + listen to permission changes on characters to adapt permissions on the hand accordingly.
 
-+ `[M🔥]` Ability **Perform Feat** menu to each Ability entry
-  + Allow to select cards to play (0-4), and results in a chat message showing:
-    + total score
-    + detail (feat + cards)
-    + collapsible section or GM-only with ranges for which the Feat is a Fumble, Failure, Partial Success, Full Success and High Success (if 'display of Dwarf variant Difficulty levels' is enable in the settings)
-  + as a collapsible, the ranges of difficulties for which it is a Fumble, Failure, Partial Success, Full Success and High Success
-
 + `[M🔥]` Add a **Cast Spell** menu to each Spell entry
   + player (or GM) can choose spell definitions
   + player (or GM) can cancel an ongoing spell, which discards all their Power cards
   + At each Power card drawn, produce a chat message showing the advancement toward the ongoing spell (based on its Aspect)
     + Add chat message to trigger the effect (which discards all cards from the player hand).
   + Remove 'Play' control from Fortune Cards (all cards if implemented at the same time as "Perform Feat" above)
+
++ One compendium per Lorebook listed in CF corebook
+  + `[M]` English
+  + `[M🔥]` French
++ One Compendium per Lorebook listed in sourcebooks
+  + `[C]` English
+  + `[C]` French
++ `[M]` Shortcut to load Spells from a Compendium (must not introduce duplicates, but may fix incorrect suit assignments)
+
++ Compendium with Abilities listed in CF corebook
++ `[M]` English
++ Compendium with Abilities listed in CF sourcebooks
+  + `[C]` English
+  + `[C]` French
++ `[M]` Shortcut to load Abilities from a Compendium (must not introduce duplicates, but may fix incorrect suit assignments)
+
++ `[M]` display an error when using a feat/spell which does not have a proper suit defined.
 
 + `[M]` Align Hands/Cards/Pile layout with system
   + Remove default Play, Pass (except maybe for GMs), Discard, Reset controls
@@ -33,27 +43,13 @@
         + if yes, then (ask if OK to) convert them to .webp to limit bandwidth/storage usage
         + if not, then assume GM will download the deck on their own and has put it in a specific Data/ folder
 
-
-+ Compendium with Abilities listed in CF corebook
-+ `[M]` English
-+ Compendium with Abilities listed in CF sourcebooks
-  + `[C]` English
-  + `[C]` French
-+ `[M]` Shortcut to load Abilities from a Compendium (must not introduce duplicates, but may fix incorrect suit assignments)
-
-+ One compendium per Lorebook listed in CF corebook
-  + `[M]` English
-  + `[M🔥]` French
-+ One Compendium per Lorebook listed in sourcebooks
-  + `[C]` English
-  + `[C]` French
-+ `[M]` Shortcut to load Spells from a Compendium (must not introduce duplicates, but may fix incorrect suit assignments)
-
 + `[S]` Shortcut in Settings to delete all empty Castle Falkenstein hands (useful when many hands created for NPCs).
 
-+ `[S]` Weapons list and sheet (under 'Possessions' or dedicated tab)
++ `[S]` Support official variation which gives half-value to cards from an another suit
 
-+ `[S]` If feasible, improve suit display in 'select' controls.
++ `[S]` Weapons list (under 'Possessions' or dedicated tab), dedicated sheet and chat message
+
++ `[S]` If technically feasible, improve suit display in 'select' controls by using the cf-cards font.
 
 + `[S]` Fortune hand for the Host
 

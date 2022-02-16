@@ -10,7 +10,7 @@
           </select>
           <label class="resource-label">{{localize 'castle-falkenstein.ability.name'}}</label>
           <input name="name" type="text" value="{{item.name}}" placeholder="Name"/>
-          <select name="data.suit">
+          <select name="data.suit" class="suit-select">
             {{selectOptions CASTLE_FALKENSTEIN.cardSuitsSymbols selected=data.suit localize=false}}
           </select>
         </div>

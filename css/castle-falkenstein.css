@@ -353,7 +353,7 @@ html * {
 
 .castle-falkenstein.item .spell-sheet-header {
   align-items: center;
-  grid-template-columns: auto 1fr 40px 5px auto 25px;
+  grid-template-columns: auto 1fr auto 5px auto 25px;
 }
 
 .castle-falkenstein.item .spell-sheet-header .thaumic-level {
@@ -366,6 +366,16 @@ html * {
 
 .castle-falkenstein span.feat-chat-range {
   text-align: right !important;
+}
+
+.castle-falkenstein .suit-select {
+  text-align: center;
+}
+
+.castle-falkenstein .suit-select {
+  font-family: 'cf cards';
+  text-align: left;
+
 }
 
 /* perform-feat and cast-spell */
