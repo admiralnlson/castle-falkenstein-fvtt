@@ -21,9 +21,14 @@
     "settings": {
       "name": "Paramètres du système",
       "label": "Paramétrer le système Château Falkenstein",
-      "deckHint": "Le paquet de cartes faisant office de {deck}.",
-      "discardPile": "Défausse du {deck}",
-      "discardPileHint": "La pile dans laquelle les cartes du {deck} vont une fois jouées ou défaussées."
+      "fortuneDeck.name": "Jeu du destin",
+      "fortuneDeck.hint": "Le paquet de cartes faisant office de Jeu du destin.",
+      "fortuneDiscardPile.name": "Défausse du Jeu du destin",
+      "fortuneDiscardPile.hint": "La pile dans laquelle les cartes du Jeu du destin vont une fois jouées.",
+      "sorceryDeck.name": "Jeu de sorcellerie",
+      "sorceryDeck.hint": "Le paquet de cartes faisant office de Jeu de sorcellerie.",
+      "sorceryDiscardPile.name": "Défausse du Jeu de sorcellerie",
+      "sorceryDiscardPile.hint": "La pile dans laquelle les cartes du Jeu de sorcellerie vont une fois jouées ou défaussées."
     },
     
     "feat": {

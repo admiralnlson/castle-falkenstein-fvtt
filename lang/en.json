@@ -14,20 +14,21 @@
     },
 
     "sorcery": {
-      "deck": "Jeu de sorcellerie",
-      "hand": "Sorcery - {character}",
-      "spadesDesc": "Social and Status-related Feats.",
-      "heartsDesc": "Emotional and Romantic Feats.",
-      "diamondsDesc": "Mental and Intellectual Feats.",
-      "clubsDesc": "Physical Feats."
+      "deck": "Sorcery Deck",
+      "hand": "Sorcery - {character}"
     },
 
     "settings": {
       "name": "System settings",
       "label": "Configure the Castle Falkenstein system",
-      "deckHint": "The cards deck which represents the {deck}.",
-      "discardPile": "{deck} discard pile",
-      "discardPileHint": "The cards pile in which {deck} cards go when played."
+      "fortuneDeck.name": "Fortune Deck",
+      "fortuneDeck.hint": "The cards deck which represents the Fortune Deck.",
+      "fortuneDiscardPile.name": "Forturne Deck discard pile",
+      "fortuneDiscardPile.hint": "The cards pile in which Fortune Deck cards go when played.",
+      "sorceryDeck.name": "Sorcery Deck",
+      "sorceryDeck.hint": "The cards deck which represents the Sorcery Deck.",
+      "sorceryDiscardPile.name": "Sorcery Deck discard pile",
+      "sorceryDiscardPile.hint": "The cards pile in which Sorcery Deck cards go when played or discarded."
     },
 
     "feat": {

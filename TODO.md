@@ -44,13 +44,11 @@
 
 + `[S]` Weapons list (under 'Possessions' or dedicated tab), dedicated sheet and chat message
 
-+ `[S]` Fortune hand for the Host
-
 + `[C]` Ensure Fortune and Sorcery Decks are different before accepting new settings.
 + `[C]` Ensure Fortune and Sorcery discard piles are different before accepting new settings.
 + `[C]` Replace Fortune/Sorcery discard pile selection system setting with **Automatic creation of discard piles**
 
-+ `[C]` Deactivate Fortune hand of NPCs (leave Sorcery hands since each NPC should still be able to cast independently in theory)
++ `[S]` Fortune hand for the Host, which NPCs (PCs not owned by a player) use
 
 + `[S]` Monarch Deck & Pile controls to reset the pile and shuffle the deck in one go.
 
