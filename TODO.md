@@ -52,6 +52,8 @@
 
 + `[C]` Deactivate Fortune hand of NPCs (leave Sorcery hands since each NPC should still be able to cast independently in theory)
 
++ `[S]` Monarch Deck & Pile controls to reset the pile and shuffle the deck in one go.
+
 + Possessions:
   + `[S]` Weapons list and sheet (under 'Possessions' or new tab)
   + `[C]` 'on me' / 'location' property

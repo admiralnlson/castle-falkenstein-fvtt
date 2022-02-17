@@ -386,6 +386,21 @@ html * {
   color: red;
 }
 
+/* Monarch display tweak (necessary until https://github.com/zeel01/monarch/issues/38 is solved and discard button can be fully hidden on fortune cards) */
+
+.monarch-hand .card-hud .card-controls {
+  padding: 0 !important;
+}
+
+.monarch-hand .card-hud .card-control.discard-card[data-disabled] {
+  display: none !important;
+}
+
+/* Monarch display tweak */
+
+.monarch .card.show-ctx .context-menu {
+  display: none !important;
+}
 
 /* perform-feat and cast-spell */
 

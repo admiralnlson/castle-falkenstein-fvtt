@@ -143,12 +143,11 @@ export default class CastleFalkenstein {
           class: "draw-cards",
           onclick: async (event, app, hand) =>  {
             const handProperties = await hand.getFlag("castle-falkenstein", "handProperties");
-            const handType = handProperties.type;
-            if (handType == "fortune") {
+            if (handProperties.type == "fortune") {
               if (hand.cards.size < 4) {
                 hand.draw(CastleFalkenstein.fortuneDeck, 4 - hand.cards.size, {chatNotification: false});
               }
-            } else if (handType == "sorcery") {
+            } else if (handProperties.type == "sorcery") {
               hand.draw(CastleFalkenstein.sorceryDeck, 1); //, {chatNotification: false});
             }
           }
@@ -158,16 +157,19 @@ export default class CastleFalkenstein {
         tooltip: "castle-falkenstein.cards.discard",
         icon: "cf-card-discard",
         class: "discard-card",
+        /* FIXME Cannot 'hide' CardControls in Monarch yet (https://github.com/zeel01/monarch/issues/38).
+                 For the time being, the Discard control will be 'disabled' only in Fortune hands.
+        hide: (card, container) => {
+          const handProperties = container.getFlag("castle-falkenstein", "handProperties");
+          return handProperties.type != "sorcery";
+        },*/
         disabled: (card, container) => {
           const handProperties = container.getFlag("castle-falkenstein", "handProperties");
-          const handType = handProperties.type;
-          console.log("Castle Falkenstein | handType != 'sorcery' = " + (handType != "sorcery"));
-          return handType != "sorcery";
+          return handProperties.type != "sorcery";
         },
         onclick: async (event, card, container) => {
           const handProperties = await container.getFlag("castle-falkenstein", "handProperties");
-          const handType = handProperties.type;
-          if (handType == "sorcery") {
+          if (handProperties.type == "sorcery") {
             card.pass(CastleFalkenstein.sorceryDiscardPile);
           }
         }
