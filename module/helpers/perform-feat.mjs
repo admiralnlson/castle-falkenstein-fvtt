@@ -24,9 +24,9 @@ export default class CastleFalkensteinPerformFeat extends FormApplication {
     super(object, options);
     this.ability = object;
     this.character = object.actor;
-    this.fortuneHand = game.cards.get(object.actor.data.data.hands.fortune);
+    this.hand = game.cards.get(object.actor.data.data.hands.fortune);
     this.wrappedCards = [];
-    for (const card of this.fortuneHand.cards) {
+    for (const card of this.hand.cards) {
       console.log("Castle Falkenstein | card sort info = " + card.data.sort);
       this.wrappedCards.push({
         card: card,
@@ -109,7 +109,7 @@ export default class CastleFalkensteinPerformFeat extends FormApplication {
     }
 
     // discard the cards
-    await this.fortuneHand.pass(game.CastleFalkenstein.fortuneDiscardPile, idsOfCardsPlayed, {chatNotification: false});
+    await this.hand.pass(game.CastleFalkenstein.fortuneDiscardPile, idsOfCardsPlayed, {chatNotification: false});
   
     //
     // TODO produce chat message

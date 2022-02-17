@@ -375,8 +375,17 @@ html * {
 .castle-falkenstein .suit-select {
   font-family: 'cf cards';
   text-align: left;
-
 }
+
+.castle-falkenstein .suit-select *:nth-child(1) {
+  color: gray;
+}
+
+.castle-falkenstein .suit-select *:nth-child(3),
+.castle-falkenstein .suit-select *:nth-child(4) {
+  color: red;
+}
+
 
 /* perform-feat and cast-spell */
 

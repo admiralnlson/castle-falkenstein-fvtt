@@ -81,7 +81,9 @@
       "spades": "Spades",
       "hearts": "Hearts",
       "diamonds": "Diamonds",
-      "clubs": "Clubs"
+      "clubs": "Clubs",
+      "draw": "Draw",
+      "discard": "Discard"
     },
 
     "weapon": {

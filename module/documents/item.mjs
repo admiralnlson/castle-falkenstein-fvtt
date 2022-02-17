@@ -66,9 +66,9 @@ export class CastleFalkensteinItem extends Item {
       flavor = `[${game.i18n.localize("castle-falkenstein.possession.possession")}]`;
       // default content
     } else if (itemData.type == 'spell') {
-      flavor = `[${game.i18n.localize("castle-falkenstein.spell")}]`;
+      flavor = `[${game.i18n.localize("castle-falkenstein.spell.spell")}]`;
       content = `${itemData.name} [<i class="cf-${itemData.data.suit}"></i>]<hr/>`
-            + `${game.i18n.localize("castle-falkenstein.spellThaumicLevel")}: ${itemData.data.level}<br/>`
+            + `${game.i18n.localize("castle-falkenstein.spell.thaumicLevel")}: ${itemData.data.level}<br/>`
             + `${itemData.data.description}`;
     } else {
       // default (other item types, if any)

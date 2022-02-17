@@ -50,6 +50,7 @@ export class CastleFalkensteinActor extends Actor {
     }];
 
     const stacks = await Cards.createDocuments(stacksConfig);
+
     if (stacks.length > 0) {
       return stacks[0];
     } else {

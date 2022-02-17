@@ -116,6 +116,65 @@ export default class CastleFalkenstein {
 
     Hooks.on("updateActor", (actor, data, options) => actor.onUpdate(data, options));
 
+    Hooks.on("getMonarchCardComponents", (monarch, components) => {
+
+      // Remove Monarch default standalone card components
+      while (components.badges.length > 0) { components.badges.pop(); }
+      while (components.markers.length > 0) { components.markers.pop(); }
+      while (components.contextMenu.length > 0) { components.contextMenu.pop(); }
+      while (components.controls.length > 0) { components.controls.pop(); }
+
+    });
+
+    Hooks.on("getMonarchHandComponents", (monarch, components) => {
+
+      // Remove Monarch default components
+      while (components.badges.length > 0) { components.badges.pop(); }
+      while (components.markers.length > 0) { components.markers.pop(); }
+      while (components.contextMenu.length > 0) { components.contextMenu.pop(); }
+      while (components.controls.length > 0) { components.controls.pop(); }
+      while (components.appControls.length > 0) { components.appControls.pop(); }
+
+      // Add Castle Falkenstein-relevant components
+
+      components.appControls.push({
+          label: "castle-falkenstein.cards.draw",
+          icon: "fas fa-plus",
+          class: "draw-cards",
+          onclick: async (event, app, hand) =>  {
+            const handProperties = await hand.getFlag("castle-falkenstein", "handProperties");
+            const handType = handProperties.type;
+            if (handType == "fortune") {
+              if (hand.cards.size < 4) {
+                hand.draw(CastleFalkenstein.fortuneDeck, 4 - hand.cards.size, {chatNotification: false});
+              }
+            } else if (handType == "sorcery") {
+              hand.draw(CastleFalkenstein.sorceryDeck, 1); //, {chatNotification: false});
+            }
+          }
+      });
+
+      components.controls.push({
+        tooltip: "castle-falkenstein.cards.discard",
+        icon: "cf-card-discard",
+        class: "discard-card",
+        disabled: (card, container) => {
+          const handProperties = container.getFlag("castle-falkenstein", "handProperties");
+          const handType = handProperties.type;
+          console.log("Castle Falkenstein | handType != 'sorcery' = " + (handType != "sorcery"));
+          return handType != "sorcery";
+        },
+        onclick: async (event, card, container) => {
+          const handProperties = await container.getFlag("castle-falkenstein", "handProperties");
+          const handType = handProperties.type;
+          if (handType == "sorcery") {
+            card.pass(CastleFalkenstein.sorceryDiscardPile);
+          }
+        }
+      });
+
+    });
+
     game.socket.on(this.socketName, this._onSocketMessage.bind(this));
 
     console.log('Castle Falkenstein | Ready.');
