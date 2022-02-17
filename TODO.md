@@ -1,7 +1,8 @@
-#MosCoW
-`[M]`ust, `[S]`hould, `[C]`ould, `[W]`on't
-🔥 Personal project maintainer GM needs
-
+# MosCoW
+## Legend
++ `[M]`ust, `[S]`hould, `[C]`ould, `[W]`on't
++ `[🔥]` Personal project maintainer GM needs
+## Evolutions
 + `[M🔥]` give character owner(s) permissions on their hands (if they exist) also
   + listen to permission changes on characters to adapt permissions on the hand accordingly.
 
@@ -21,7 +22,8 @@
 + `[M]` Shortcut to load Spells from a Compendium (must not introduce duplicates, but may fix incorrect suit assignments)
 
 + Compendium with Abilities listed in CF corebook
-+ `[M]` English
+  + `[M]` English
+  + `[M]` French
 + Compendium with Abilities listed in CF sourcebooks
   + `[C]` English
   + `[C]` French
@@ -29,14 +31,7 @@
 
 + `[M]` display an error when using a feat/spell which does not have a proper suit defined.
 
-+ `[M]` Align Hands/Cards/Pile layout with system
-  + Remove default Play, Pass (except maybe for GMs), Discard, Reset controls
-  + Fortune hands:
-    + replace "Draw" control with **Draw Fortune** control (fills hand back to 4 from Fortune Deck)
-  + Sorcery hands:
-    + Remove 'Play' control from Fortune Cards (all cards if implemented at the same time as " Spell" below)
-    + replace "Draw" control with **Draw power** control (draw 1 card from Sorcery deck)
-    + add Discard control for cards in Sorcery hands
++ `[M]` display an error (at onReady and Settings submit times) if Fortune/Sorcery decks/discard-piles are not defined or have been deleted.
 
 + `[M]` Add 'Fortune Deck' as a deck preset
     + Ask Talsorian if OK to add the card images directly within the game system
