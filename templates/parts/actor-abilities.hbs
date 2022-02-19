@@ -1,8 +1,8 @@
 <ol class="items-list">
   <li class="item flexrow items-header">
     <div class="ability-perform-feat"></div>
-    <div class="ability-level">{{localize 'castle-falkenstein.ability.level'}}</div>
     <div class="ability-name">{{localize 'castle-falkenstein.ability.ability'}}</div>
+    <div class="ability-level">{{localize 'castle-falkenstein.ability.level'}}</div>
     <div class="item-controls">
       <a class="item-control item-create" title="{{localize 'castle-falkenstein.item.add'}}" data-type="ability"><i class="fas fa-plus"></i> {{localize 'castle-falkenstein.item.add'}}</a>
     </div>
@@ -12,11 +12,11 @@
       <div class="ability-perform-feat">
         <a class="rollable" data-roll-type="item"><i class="cf-poker-hand"></i></a>
       </div>
-      <div class="ability-level">
-        {{localize item.data.levelI18nKey}}
-      </div>
       <div class="ability-name">
         {{item.name}} [<i class="cf-{{item.data.suit}}"></i>]
+      </div>
+      <div class="ability-level">
+        {{localize item.data.levelI18nKey}}
       </div>
       <div class="item-controls">
         <a class="item-control item-show" title="{{localize 'castle-falkenstein.item.displayInChat'}}"><i class="fas fa-eye"></i></a>

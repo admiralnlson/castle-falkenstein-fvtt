@@ -148,7 +148,7 @@ export default class CastleFalkenstein {
                 hand.draw(CastleFalkenstein.fortuneDeck, 4 - hand.cards.size, {chatNotification: false});
               }
             } else if (handProperties.type == "sorcery") {
-              hand.draw(CastleFalkenstein.sorceryDeck, 1); //, {chatNotification: false});
+              hand.draw(CastleFalkenstein.sorceryDeck, 1);
             }
           }
       });
@@ -178,6 +178,12 @@ export default class CastleFalkenstein {
     });
 
     game.socket.on(this.socketName, this._onSocketMessage.bind(this));
+
+    if (game.user.isGM) {
+      // TODO FIXME do not display this always
+      // TODO FIXME add i18n
+      ui.notifications.warn("Make sure Fortune/Sorcery deck and discard piles are correctly defined in the settings");
+    }
 
     console.log('Castle Falkenstein | Ready.');
   }
