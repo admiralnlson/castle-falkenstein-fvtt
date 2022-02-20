@@ -105,6 +105,12 @@ export default class CastleFalkenstein {
     // Define custom Document classes
     CONFIG.Actor.documentClass = CastleFalkensteinActor;
     CONFIG.Item.documentClass = CastleFalkensteinItem;
+
+    CONFIG.Cards.presets.castleFalkensteinDeck = {
+      type: "deck",
+      label: "castle-falkenstein.system",
+      src: "systems/castle-falkenstein/cards/deck-preset.json"
+    };
   }
 
   static async onReady() {

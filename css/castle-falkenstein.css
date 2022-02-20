@@ -4,23 +4,6 @@
 [class*='cf-']:before {
   font-size: 18px;
 }
-.cf-spades:before,
-.cf-hearts:before,
-.cf-diamonds:before,
-.cf-clubs:before {
-  font-size: 12px;
-  vertical-align: -2px;
-}
-
-.cf-spades:before,
-.cf-clubs:before {
-  color: black;
-}
-
-.cf-hearts:before,
-.cf-diamonds:before {
-  color: red;
-}
 
 /* Generic formatting stuff */
 
@@ -368,20 +351,38 @@ html * {
   text-align: right !important;
 }
 
+.castle-falkenstein .suit-symbol-spades,
+.chat-message .suit-symbol-spades,
+.castle-falkenstein .suit-symbol-hearts,
+.chat-message .suit-symbol-hearts,
+.castle-falkenstein .suit-symbol-diamonds,
+.chat-message .suit-symbol-diamonds,
+.castle-falkenstein .suit-symbol-clubs,
+.chat-message .suit-symbol-clubs,
 .castle-falkenstein .suit-select {
-  text-align: center;
+  font-size: 130%;
 }
 
-.castle-falkenstein .suit-select {
-  font-family: 'cf cards';
-  text-align: left;
-}
-
+.castle-falkenstein .suit-symbol--,
+.chat-message span.suit-symbol--,
 .castle-falkenstein .suit-select *:nth-child(1) {
   color: gray;
 }
 
+.castle-falkenstein .suit-symbol-spades,
+.chat-message .suit-symbol-spades,
+.castle-falkenstein .suit-select *:nth-child(2),
+.castle-falkenstein .suit-symbol-clubs,
+.chat-message .suit-symbol-clubs,
+.castle-falkenstein .suit-select *:nth-child(5) {
+  color: black;
+}
+
+.castle-falkenstein .suit-symbol-hearts,
+.chat-message .suit-symbol-hearts,
 .castle-falkenstein .suit-select *:nth-child(3),
+.castle-falkenstein .suit-symbol-diamonds,
+.chat-message .suit-symbol-diamonds,
 .castle-falkenstein .suit-select *:nth-child(4) {
   color: red;
 }

@@ -59,15 +59,17 @@ export class CastleFalkensteinItem extends Item {
       flavor = `[${game.i18n.localize("castle-falkenstein.ability.ability")}]`;
       const levelI18nKey = CASTLE_FALKENSTEIN.abilityLevels[itemData.data.level].full;
       const levelValue = CASTLE_FALKENSTEIN.abilityLevels[itemData.data.level].value;
+      const suitSymbol = CASTLE_FALKENSTEIN.cardSuitsSymbols[itemData.data.suit];
       content = `${game.i18n.localize(levelI18nKey)} [${levelValue}]`
               + `${game.i18n.localize("castle-falkenstein.ability.levelNameSeparator")}`
-              + `${itemData.name} [<i class="cf-${itemData.data.suit}"></i>]`;
+              + `${itemData.name} [<span class="suit-symbol-${itemData.data.suit}">${suitSymbol}</span>]`;
     } else if (itemData.type == 'possession') {
       flavor = `[${game.i18n.localize("castle-falkenstein.possession.possession")}]`;
       // default content
     } else if (itemData.type == 'spell') {
       flavor = `[${game.i18n.localize("castle-falkenstein.spell.spell")}]`;
-      content = `${itemData.name} [<i class="cf-${itemData.data.suit}"></i>]<hr/>`
+      const suitSymbol = CASTLE_FALKENSTEIN.cardSuitsSymbols[itemData.data.suit];
+      content = `${itemData.name} [<span class="suit-symbol-${itemData.data.suit}">${suitSymbol}</span>]<hr/>`
             + `${game.i18n.localize("castle-falkenstein.spell.thaumicLevel")}: ${itemData.data.level}<br/>`
             + `${itemData.data.description}`;
     } else {

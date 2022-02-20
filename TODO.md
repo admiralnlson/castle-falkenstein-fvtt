@@ -1,8 +1,11 @@
 # MosCoW
+
 ## Legend
+
 + `[M]`ust, `[S]`hould, `[C]`ould, `[W]`on't
 + `[🔥]` Personal project maintainer GM needs
 + RTG = R. Talsorian Games
+
 ## Evolutions
 
 + `[M🔥]` Add a **Cast Spell** menu to each Spell entry
@@ -11,6 +14,19 @@
   + At each Power card drawn, produce a chat message showing the advancement toward the ongoing spell (based on its Aspect)
     + Add chat message to trigger the effect (which discards all cards from the player hand).
   + Remove 'Play' control from Fortune Cards (all cards if implemented at the same time as "Perform Feat" above)
+
++ `[M]` Add a toast when there is no Deck to draw from (applicable to both Fortune and Sorcery).
++ `[M]` Add a toast when there is no Discard pile to pass to (applicable to both Fortune and Sorcery).
+
++ `[M]` on Ready, programmatically activate Monarch for hands (if Monarch is present)
++ `[M]` on Ready, programmatically activate RTUC for hands (if RTUC is present)
+
++ `[M]` Consider upgrading permissions on Fortune/Sorcery decks and discard piles automatically (or at least ask the GM if they want to)
++ `[M]` Consider (adding a button in the Settings to) create the Fortune/Sorcery decks and discard piles automatically.
+
++ `[M]` Prevent error "User <playername> lacks permission to create new Cards", by either
+  + creating hands for player-owned characters which automatically following (Assitant-)GM actions (player made owner of a character)
+  + figuring out how to delegate this to the GM programmatically (socket)
 
 + `[M]` give character owner(s) permissions on their hands (when they are created or when characters change permissions).
   + listen to permission changes on characters to adapt permissions on the hand accordingly.

@@ -13,7 +13,7 @@
         <a class="rollable" data-roll-type="item"><i class="cf-poker-hand"></i></a>
       </div>
       <div class="ability-name">
-        {{item.name}} [<i class="cf-{{item.data.suit}}"></i>]
+        {{item.name}} [<span class="suit-symbol-{{item.data.suit}}">{{item.data.suitSymbol}}</span>]
       </div>
       <div class="ability-level">
         {{localize item.data.levelI18nKey}}

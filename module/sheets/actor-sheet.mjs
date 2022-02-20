@@ -59,10 +59,10 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
 
     // Iterate through items, allocating to containers
     for (let i of context.items) {
-      i.img = i.img || DEFAULT_TOKEN;
       // Append to abilities.
       if (i.type === 'ability') {
         i.data.levelI18nKey = CASTLE_FALKENSTEIN.abilityLevels[i.data.level].full;
+        i.data.suitSymbol = CASTLE_FALKENSTEIN.cardSuitsSymbols[i.data.suit];
         abilities.push(i);
       }
       // Append to weapons.
@@ -75,6 +75,7 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
       }
       // Append to spells.
       else if (i.type === 'spell') {
+        i.data.suitSymbol = CASTLE_FALKENSTEIN.cardSuitsSymbols[i.data.suit];
         spells.push(i);
       }
     }

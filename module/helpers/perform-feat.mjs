@@ -60,6 +60,7 @@ export default class CastleFalkensteinPerformFeat extends FormApplication {
   async getData() {
     return {
       abilityData: this.ability.data,
+      abilitySuitSymbol: CASTLE_FALKENSTEIN.cardSuitsSymbols[this.ability.data.data.suit],
       levelI18nLabel: game.i18n.localize(CASTLE_FALKENSTEIN.abilityLevels[this.ability.data.data.level].full),
       levelValue: CASTLE_FALKENSTEIN.abilityLevels[this.ability.data.data.level].value,
       wrappedCards: this.wrappedCards,
@@ -121,14 +122,15 @@ export default class CastleFalkensteinPerformFeat extends FormApplication {
     const flavor = `[${game.i18n.localize("castle-falkenstein.feat.feat")}]`;
     const levelI18nKey = game.i18n.localize(CASTLE_FALKENSTEIN.abilityLevels[this.ability.data.data.level].full);
     const levelValue = CASTLE_FALKENSTEIN.abilityLevels[this.ability.data.data.level].value;
+    const suitSymbol = CASTLE_FALKENSTEIN.cardSuitsSymbols[this.ability.data.data.suit];
     let content = `${game.i18n.localize(levelI18nKey)} [${levelValue}]`
                 + `${game.i18n.localize("castle-falkenstein.ability.levelNameSeparator")}`
-                + `<b>${this.ability.name}</b> [<i class="cf-${this.ability.data.data.suit}"></i>]`;
+                + `<b>${this.ability.name}</b> [<span class="suit-symbol-${this.ability.data.data.suit}">${suitSymbol}</span>]`;
     content += '<hr/><div class="cards-played">';
     if (idsOfCardsPlayed.length > 0) {
       this.wrappedCards.forEach(w => {
         if (w.checked) {
-          content += `<span class="card-played ${w.correctSuit} cf-card-${w.card.data.value}-${w.card.data.suit}"></span>`;
+          content += `<span class="card-played ${w.correctSuit} cf-card-${w.card.data.value}-${w.card.data.suit}"</span>`;
         }
       });
     } else {
