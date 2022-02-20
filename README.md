@@ -4,26 +4,28 @@ This system is for playing [Castle Falkenstein](https://rtalsoriangames.com/cast
 ## Supported languages
 + English
 + French
+
 Please submit translation files for other languages as [Issues](https://github.com/admiralnlson/castle-falkenstein-foundryvtt/issues) or [Pull Requests](https://github.com/admiralnlson/castle-falkenstein-foundryvtt/pulls). See examples at [./lang/ folder](./lang/)).
 
 ## System Configuration
 Before you can use this system, you need to create some decks and card piles within FoundryVTT:
 
-| Create               | Required player permissions                          |
-|----------------------|------------------------------------------------------|
-| Fortune Deck         | Limited                                              |
-| Fortune discard pile | Observer (relevant for Sorcerer/Dragon players only) |
-| Fortune Deck         | Limited                                              |
-| Sorcery discard pile | Observer (relevant for Sorcerer/Dragon players only) |
+|To create             |Type |Player permissions to define                          |
+|:---------------------|:----|:-----------------------------------------------------|
+| Fortune Deck         |Deck | Limited                                              |
+| Fortune discard pile |Pile | Observer                                             |
+| Fortune Deck         |Deck | Limited (relevant for Sorcerer/Dragon players only)  |
+| Sorcery discard pile |Pile | Observer (relevant for Sorcerer/Dragon players only) |
 
 Once done, go to `Configure Settings > System Settings > Castle Falkenstein` to associate these 4 deck/piles to the Castle Falkenstein system.
 
 (N.B. this manual process may very well be automated in a future version.)
 
-### New Europa-styled cards
-This system is pre-configured to use the 'Castle Falkstein' deck avaible free-of-charge on [R. Talsorian Games's website](https://rtalsoriangames.com/2020/07/24/falkenstein-friday-the-fortune-deck/).
-In order to use it, make sure you download the ZIP file and extract into this folder: `{your FoundryVTT's Data/ directory}/cards/RTG-CF-FortuneDeck/`.
-Then use the preset within FoundryVTT:
+### New Europa-stylized deck
+This system is pre-configured to support the New Europa-stylized deck avaible free-of-charge on [R. Talsorian Games's website](https://rtalsoriangames.com/2020/07/24/falkenstein-friday-the-fortune-deck/).
+
+In order to use it, make sure you download the ZIP file and extract the .jpg images into this folder: `{your FoundryVTT's Data/ directory}/cards/RTG-CF-FortuneDeck/`.
+Once done, you may then use the dedicated preset within FoundryVTT:
 
 ![](./images/deck-preset.jpg)
 
@@ -53,7 +55,7 @@ General recommendation for the Host:
 
 ### Alternative: Diaries as 📖 Journal Entries
 To reinforce the notion of character diaries being a part of the world, the Host may elect to use dedicated 📖 Journal Entries for each Player Character's (or NPC's) Diary.
-In this case, the 📖 Journal Entry should probably be drag-and-dropped into the Journal tab of the Character Sheet afterwards, for easier access by the player or Host.
+In this case, the 📖 Journal Entry should probably be drag-and-dropped into the Journal tab of the Character Sheet afterwards, for easier access by the player and Host.
 
 ## Card hands
 It is highly recommended that you use the Castle Falkenstein FoundryVTT system with a Cards UI enhancement module.
@@ -78,5 +80,3 @@ Do not address issues you're facing with this system to R. Talsorian Games, they
 
 ## Thanking the author
 If this FoundryVTT system is useful to you and you want to say thanks, you may [leave a comment or even buy me coffee](https://ko-fi.com/admiralnlson).
-
-## 
