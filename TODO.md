@@ -1,8 +1,8 @@
-# MosCoW
+# TODO
 
 ## Legend
 
-+ `[M]`ust, `[S]`hould, `[C]`ould, `[W]`on't
++ MoSCoW: `[M]`ust, `[S]`hould, `[C]`ould, `[W]`on't
 + `[🔥]` Personal project maintainer GM needs
 + RTG = R. Talsorian Games
 
@@ -46,21 +46,21 @@
   + warn at onReady if a player connects and does not have access to the fortune deck --> add this to README explaining that it is for people who manage multiple tables, etc.
   + add i18n
 
-+ One compendium per Lorebook listed in CF corebook
++ One data pack per Lorebook listed in CF corebook
   + `[M]` English
   + `[M]` French (exists already but kept private until potential permission granted by RTG)
-+ One Compendium per Lorebook listed in sourcebooks
++ One data pack per Lorebook listed in sourcebooks
   + `[C]` English
   + `[C]` French
-+ `[M]` Shortcut to load Spells from a Compendium (must not introduce duplicates, but may fix incorrect suit assignments)
++ `[M]` Shortcut to load Spells from a data pack (must not introduce duplicates, but may fix incorrect suit assignments)
 
-+ Compendium with Abilities listed in CF corebook
++ Data pack for Abilities listed in CF corebook
   + `[M]` English
   + `[M]` French (exists already but kept private until potential permission granted by RTG)
-+ Compendium with Abilities listed in CF sourcebooks
++ Data pack for Abilities listed in CF sourcebooks
   + `[C]` English
   + `[C]` French
-+ `[M]` Shortcut to load Abilities from a Compendium (must not introduce duplicates, but may fix incorrect suit assignments)
++ `[M]` Shortcut to load Abilities from a data pack (must not introduce duplicates, but may fix incorrect suit assignments)
 
 + `[M]` display an error when using a feat/spell which does not have a proper suit defined.
 
