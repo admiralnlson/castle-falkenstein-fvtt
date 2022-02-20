@@ -10,41 +10,46 @@
 
 + `[M🔥]` Add a **Cast Spell** menu to each Spell entry
   + player (or GM) can choose spell definitions
-  + player (or GM) can cancel an ongoing spell, which discards all their Power cards
-  + At each Power card drawn, produce a chat message showing the advancement toward the ongoing spell (based on its Aspect)
+  + player (or GM) can cancel an ongoing spell, which discards all their Sorcery cards
+  + At each Sorcery card drawn, produce a chat message showing the advancement toward the ongoing spell (based on its Aspect)
     + Add chat message to trigger the effect (which discards all cards from the player hand).
-  + Remove 'Play' control from Fortune Cards (all cards if implemented at the same time as "Perform Feat" above)
 
-+ `[M]` Add a toast when there is no Deck to draw from (applicable to both Fortune and Sorcery).
-+ `[M]` Add a toast when there is no Discard pile to pass to (applicable to both Fortune and Sorcery).
++ `[M]` Artefacts:
+  + Artefacts, new item type listed under 'Spells' (renamed 'Sorcery'?) or 'Possessions'
+  + Artefacts may be selected in the 'Cast Spell' form and contribute to the amount of Thaumic Energy that is collected
 
-+ `[M]` on Ready, programmatically activate Monarch for hands (if Monarch is present)
-+ `[M]` on Ready, programmatically activate RTUC for hands (if RTUC is present)
-
-+ `[M]` Consider upgrading permissions on Fortune/Sorcery decks and discard piles automatically (or at least ask the GM if they want to)
-+ `[M]` Consider (adding a button in the Settings to) create the Fortune/Sorcery decks and discard piles automatically.
-
-+ `[M]` Prevent error "User <playername> lacks permission to create new Cards", by either
-  + creating hands for player-owned characters which automatically following (Assitant-)GM actions (player made owner of a character)
-  + figuring out how to delegate this to the GM programmatically (socket)
-
-+ `[M]` give character owner(s) permissions on their hands (when they are created or when characters change permissions).
-  + listen to permission changes on characters to adapt permissions on the hand accordingly.
-
-+ `[M]` discard fortune&sorcery hands and delete them if characeter is deleted
-
-+ `[M]` when registering a deck, ensure it's compatibility with Castle Falkenstein rules
-  + checks suits are spades/hearts/diamonds/clubs/joker (or have setting allowing to use different ones)
-  + check aces have value 14 and if not, open a dialog to ask if OK to give them value 14
-  + check jokers have value 15 and if not, open a dialog to ask if OK to give them value 15
-  + check number of cards per suit and that there 2 jokers, and show warning if not
-
-+ `[M]` do not display warning about fortune/sorcery decks/piles at all onReady's. Do a proper check
++ `[M]` Refine onReady warning display about fortune/sorcery decks/piles. Perform more elaborate checks:
   + error is not all defined at onReady
   + error is not all defined at settings submit
   + warn at onReady if there are unmapped decks in the world
   + warn at onReady if a player connects and does not have access to the fortune deck --> add this to README explaining that it is for people who manage multiple tables, etc.
   + add i18n
+
++ `[M]` give character owner(s) permissions on their hands (when they are created or when characters change permissions).
+  + listen to permission changes on characters to adapt permissions on the hand accordingly.
+
++ `[M]` Discard a character's Fortune/Sorcery hands and delete them when the character is deleted
+
++ `[M]` Prevent error "User <playername> lacks permission to create new Cards", by either
+  + creating hands for player-owned characters after certain (Assitant-)GM actions (e.g. listening to events where a player made the owner of a character)
+  + delegating the action to the GM programmatically via socket (but then the GM has to be present..)
+
++ `[M]` Add an error toast when there is no configured Deck to draw from (applicable to both Fortune and Sorcery).
+
++ `[M]` Add an error toast when there is no Discard pile to play cards to / discard to (applicable to both Fortune and Sorcery)
+   + check this before opening the "Perform Feat / Cast Spell" dialog
+
++ `[M]` on Ready, programmatically activate Monarch sheets or RTUC sheets for actor hands (only if one of the modules is present)
+
++ `[M]` Consider upgrading the permissions on Fortune/Sorcery decks and discard piles automatically (or at least ask the GM if they want to)
+
++ `[M]` Consider creating the Fortune/Sorcery decks and discard piles automatically (or adding a one-click button in the Settings for it).
+
++ `[S]` When accepting a user deck in the Settings, ensure its compatibility with Castle Falkenstein rules
+  + checks suits have values spades/hearts/diamonds/clubs/joker and if not, error / reject the deck
+  + check aces have value 14 and if not, open a dialog to ask if OK to give them value 14
+  + check jokers have value 15 and if not, open a dialog to ask if OK to give them value 15
+  + `[C]` check number of cards per suit is 13 and that there are 2 jokers, and show warning if not
 
 + One data pack per Lorebook listed in CF corebook
   + `[M]` English
@@ -94,7 +99,3 @@
   + compute health automatically incl. Dragons' +2
   + list species features such as Dwarf's immunity to Fire, Fae sensibility to Iron in the sheet, ..)
   + potentially split "Fae" into "Fae (generic) / Fae (Brownie) / Fae (Pixie) / Fae (Lord/Lady)" for extra setup ofn non-generic Fae characters.
-
-+ Artefacts:
-  + `[S]` Artefacts, new item type listed under 'Spells' (renamed 'Sorcery'?)
-    + Artefacts may be selected in the 'Cast Spell' form as contribute to the amount of Poower collected
