@@ -12,17 +12,22 @@ However localization is supported. Do not hesitate to submit translations for ne
 ## User guide
 
 ### System Configuration
-Before you may use this system, you need to create the following card elements:
-- Fortune Deck* (with Limited permissions for your players)
-- Fortune discard pile (with Observer permissions for your players)
-- Sorcery Deck* (with Limited permissions for your players, or at least the ones playing a Sorcerer or Dragon)
-- Sorcery discard pile (with Observer permissions for your players, or at least the ones playing a Sorcerer or Dragon)
+Before you may use this system, you need to create some decks and card piles within FoundryVTT:
 
-Once done, go to `Configure Settings > System Settings` and pick these 4 deck/piles.
+| Create               | Required player permissions                          |
+|----------------------|------------------------------------------------------|
+| Fortune Deck         | Limited                                              |
+| Fortune discard pile | Observer (relevant for Sorcerer/Dragon players only) |
+| Fortune Deck         | Limited                                              |
+| Sorcery discard pile | Observer (relevant for Sorcerer/Dragon players only) |
+
+(N.B. this manual process may very well be automated in a future version of this System)
+
+Once done, go to `Configure Settings > System Settings > Castle Falkenstein` to associate these 4 deck/piles to the Castle Falkenstein system.
 
 #### Castle Falkenstein-styled deck
-When using this system, an official 'Castle Falkstein' deck preset is available in the deck creation menu.
-In order to actually use it however, you have to manually download the deck yourself from [R. Talsorian Games's website](https://rtalsoriangames.com/2020/07/24/falkenstein-friday-the-fortune-deck/), unzip the contents and place the card .jpg files in directory `{your FoundryVTT's Data/ directory}/cards/RTG-CF-FortuneDeck/`.
+Once this system has been installed, an 'Castle Falkstein' deck preset becomes available within the FoundryVTT deck creation menu.
+In order to actually use it however, you have to manually download the deck from [R. Talsorian Games's website](https://rtalsoriangames.com/2020/07/24/falkenstein-friday-the-fortune-deck/), unzip it and place the .jpg card images within directory `{your FoundryVTT's Data/ directory}/cards/RTG-CF-FortuneDeck/`.
 
 ### Character Sheet
 A unique character sheet is used for PCs and NPCs.
