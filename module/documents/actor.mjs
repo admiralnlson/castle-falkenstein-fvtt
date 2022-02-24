@@ -19,14 +19,13 @@ export class CastleFalkensteinActor extends Actor {
     const actorData = this.data;
     const data = actorData.data;
     const flags = actorData.flags.CastleFalkenstein || {};
-
   }
 
   computeHandName(handType) {
     return game.i18n.format(`castle-falkenstein.${handType}.hand`, {character: this.name});
   }
 
-  async onUpdate(data, options) {
+  async onUpdate(data, options, userId) {
     // if the character name changed, update the names of their Fortune/Sorcery hands also (if they exist)
     if (data.name) {
       [ "fortune", "sorcery" ].forEach(async (handType) => {
@@ -40,13 +39,23 @@ export class CastleFalkensteinActor extends Actor {
     }
   }
 
+  computeNewHandPermissions() {
+    // Card hands created for an actor have permissions derived from those on the actor
+    //  - None => None
+    //  - Limited => None (since with Limited they would just show up in the sidebar cards tab but remain inaccessible)
+    //  - Observer => Observer
+    //  - Owner => Owner
+    return Object.fromEntries(Object.entries(this.data.permission).filter(([key, value]) => value != CONST.ENTITY_PERMISSIONS.LIMITED));
+  }
+
   async createHand(handType) {
 
     const stacksConfig = [{
       type: "hand",
       name: this.computeHandName(handType),
       displayCount: true,
-      folder: null,
+      folder: null, // the GM may freely moved the hand to whatever folder they wish afterwards. This probably does not deserve a system Setting.
+      permission: this.computeNewHandPermissions()
     }];
 
     const stacks = await Cards.createDocuments(stacksConfig);
@@ -54,7 +63,7 @@ export class CastleFalkensteinActor extends Actor {
     if (stacks.length > 0) {
       return stacks[0];
     } else {
-      console.error("Could not create character hand");
+      CastleFalkenstein.error("Could not create character hand");
     }
   }
 
@@ -96,18 +105,15 @@ export class CastleFalkensteinActor extends Actor {
     const itemData = item.data;
 
     if (itemData.type != 'ability') {
-      console.error("Trying to performFeat with non-ability item.");
+      CastleFalkenstein.error("Trying to perform a feat with non-ability item.");
       return;
     }
 
     let fortuneHand = await this.fortuneHand();
     if (!fortuneHand) {
-      console.error("No Fortune hand to performFeat with.");
+      CastleFalkenstein.error("No Fortune hand to perform feat with.");
       return;
     }
-
-    // TODO
-    console.log('Castle Falkenstein | hands.fortune = ' + fortuneHand.id);
 
     let performFeat = new CastleFalkensteinPerformFeat(item);
     performFeat.render(true);
@@ -122,20 +128,15 @@ export class CastleFalkensteinActor extends Actor {
     const itemData = item.data;
 
     if (itemData.type != 'spell') {
-      console.error("Trying to castSpell with non-spell item.");
+      CastleFalkenstein.error("Trying to cast a spell from non-spell item.");
       return;
     }
 
     let sorceryHand = await this.sorceryHand();
     if (!sorceryHand) {
-      console.error("No Sorcery hand to castSpell with.");
+      CastleFalkenstein.error("No Sorcery hand to castSpell with.");
       return;
     }
-
-    // TODO
-    console.log('Castle Falkenstein | hands.sorcery = ' + sorceryHand.id);
   }
-
-  /** */
 
 }

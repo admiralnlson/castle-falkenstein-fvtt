@@ -19,8 +19,6 @@ Before you can use this system, you need to create some decks and card piles wit
 
 Once done, go to `Configure Settings > System Settings > Castle Falkenstein` to associate these 4 deck/piles to the Castle Falkenstein system.
 
-(N.B. this manual process may very well be automated in a future version.)
-
 ### New Europa-stylized deck
 This system is pre-configured to support the New Europa-stylized deck avaible free-of-charge on [R. Talsorian Games's website](https://rtalsoriangames.com/2020/07/24/falkenstein-friday-the-fortune-deck/).
 

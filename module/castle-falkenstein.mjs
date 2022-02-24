@@ -16,6 +16,24 @@ export default class CastleFalkenstein {
 
   static get name() { return "castle-falkenstein"; }
 
+	static get debugMode() {
+		const api = game.modules.get("_dev-mode")?.api;
+		if (!api) {
+       return false;
+    }
+		return api.getPackageDebugValue(this.name);
+	}
+
+  static cfLog(logLevel, msg, ...args) {
+    const color = "background: #ffda87; color: #000;";
+    console[logLevel](`%c Castle Falkenstein | ${msg}`, color, ...args);
+  }
+
+  static debug(msg, ...args) { if (this.debugMode) { this.cfLog("debug", msg, ...args); } }
+  static info(msg, ...args) { this.cfLog("info", msg, ...args); }
+  static warn(msg, ...args) { this.cfLog("warn", msg, ...args); }
+  static error(msg, ...args) { this.cfLog("error", msg, ...args); }
+
   /**
    * Convenience proxy getter for CastleFalkenstein settings.
    */
@@ -23,7 +41,7 @@ export default class CastleFalkenstein {
     get: function (target, key) {
       try { return game.settings.get(CastleFalkenstein.name, key); }
       catch (err) {
-        console.warn(err);
+        CastleFalkenstein.warn(err);
         return undefined;
       };
     }
@@ -94,9 +112,6 @@ export default class CastleFalkenstein {
   }
   
   static onInit() {
-    //this.registerSettings();
-    //this.registerSheets();
-
     game.CastleFalkenstein = CastleFalkenstein;
 
     // Add custom constants for configuration.
@@ -106,6 +121,7 @@ export default class CastleFalkenstein {
     CONFIG.Actor.documentClass = CastleFalkensteinActor;
     CONFIG.Item.documentClass = CastleFalkensteinItem;
 
+    // Declare Castle Falkenstein deck preset
     CONFIG.Cards.presets.castleFalkensteinDeck = {
       type: "deck",
       label: "castle-falkenstein.system",
@@ -118,71 +134,6 @@ export default class CastleFalkenstein {
     await this.preLoadTemplates();
     this.registerSheets();
 
-    Hooks.on("hotbarDrop", (hotbar, data, slot) => this.createItemMacro(data, slot));
-
-    Hooks.on("updateActor", (actor, data, options) => actor.onUpdate(data, options));
-
-    Hooks.on("getMonarchCardComponents", (monarch, components) => {
-
-      // Remove Monarch default standalone card components
-      while (components.badges.length > 0) { components.badges.pop(); }
-      while (components.markers.length > 0) { components.markers.pop(); }
-      while (components.contextMenu.length > 0) { components.contextMenu.pop(); }
-      while (components.controls.length > 0) { components.controls.pop(); }
-
-    });
-
-    Hooks.on("getMonarchHandComponents", (monarch, components) => {
-
-      // Remove Monarch default components
-      while (components.badges.length > 0) { components.badges.pop(); }
-      while (components.markers.length > 0) { components.markers.pop(); }
-      while (components.contextMenu.length > 0) { components.contextMenu.pop(); }
-      while (components.controls.length > 0) { components.controls.pop(); }
-      while (components.appControls.length > 0) { components.appControls.pop(); }
-
-      // Add Castle Falkenstein-relevant components
-
-      components.appControls.push({
-          label: "castle-falkenstein.cards.draw",
-          icon: "fas fa-plus",
-          class: "draw-cards",
-          onclick: async (event, app, hand) =>  {
-            const handProperties = await hand.getFlag("castle-falkenstein", "handProperties");
-            if (handProperties.type == "fortune") {
-              if (hand.cards.size < 4) {
-                hand.draw(CastleFalkenstein.fortuneDeck, 4 - hand.cards.size, {chatNotification: false});
-              }
-            } else if (handProperties.type == "sorcery") {
-              hand.draw(CastleFalkenstein.sorceryDeck, 1);
-            }
-          }
-      });
-
-      components.controls.push({
-        tooltip: "castle-falkenstein.cards.discard",
-        icon: "cf-card-discard",
-        class: "discard-card",
-        /* FIXME Cannot 'hide' CardControls in Monarch yet (https://github.com/zeel01/monarch/issues/38).
-                 For the time being, the Discard control will be 'disabled' only in Fortune hands.
-        hide: (card, container) => {
-          const handProperties = container.getFlag("castle-falkenstein", "handProperties");
-          return handProperties.type != "sorcery";
-        },*/
-        disabled: (card, container) => {
-          const handProperties = container.getFlag("castle-falkenstein", "handProperties");
-          return handProperties.type != "sorcery";
-        },
-        onclick: async (event, card, container) => {
-          const handProperties = await container.getFlag("castle-falkenstein", "handProperties");
-          if (handProperties.type == "sorcery") {
-            card.pass(CastleFalkenstein.sorceryDiscardPile);
-          }
-        }
-      });
-
-    });
-
     game.socket.on(this.socketName, this._onSocketMessage.bind(this));
 
     if (game.user.isGM) {
@@ -191,7 +142,65 @@ export default class CastleFalkenstein {
       ui.notifications.warn("Make sure Fortune/Sorcery deck and discard piles are correctly defined in the settings");
     }
 
-    console.log('Castle Falkenstein | Ready.');
+    CastleFalkenstein.info("Ready.");
+    CastleFalkenstein.debug("Debug mode active.");
+  }
+  
+  static configureMonarchCard(monarch, components) {
+    // Remove Monarch default standalone card components
+    while (components.badges.length > 0) { components.badges.pop(); }
+    while (components.markers.length > 0) { components.markers.pop(); }
+    while (components.contextMenu.length > 0) { components.contextMenu.pop(); }
+    while (components.controls.length > 0) { components.controls.pop(); }
+  }
+
+  static configureMonarchHand(monarch, components) {
+    // Remove Monarch default components
+    while (components.badges.length > 0) { components.badges.pop(); }
+    while (components.markers.length > 0) { components.markers.pop(); }
+    while (components.contextMenu.length > 0) { components.contextMenu.pop(); }
+    while (components.controls.length > 0) { components.controls.pop(); }
+    while (components.appControls.length > 0) { components.appControls.pop(); }
+
+    // Add Castle Falkenstein-relevant components
+
+    components.appControls.push({
+        label: "castle-falkenstein.cards.draw",
+        icon: "fas fa-plus",
+        class: "draw-cards",
+        onclick: async (event, app, hand) =>  {
+          const handProperties = await hand.getFlag("castle-falkenstein", "handProperties");
+          if (handProperties.type == "fortune") {
+            if (hand.cards.size < 4) {
+              hand.draw(CastleFalkenstein.fortuneDeck, 4 - hand.cards.size, {chatNotification: false});
+            }
+          } else if (handProperties.type == "sorcery") {
+            hand.draw(CastleFalkenstein.sorceryDeck, 1);
+          }
+        }
+    });
+
+    components.controls.push({
+      tooltip: "castle-falkenstein.cards.discard",
+      icon: "cf-card-discard",
+      class: "discard-card",
+      /* FIXME Cannot 'hide' CardControls in Monarch yet (https://github.com/zeel01/monarch/issues/38).
+                For the time being, the Discard control will be 'disabled' only in Fortune hands.
+      hide: (card, container) => {
+        const handProperties = container.getFlag("castle-falkenstein", "handProperties");
+        return handProperties.type != "sorcery";
+      },*/
+      disabled: (card, container) => {
+        const handProperties = container.getFlag("castle-falkenstein", "handProperties");
+        return handProperties.type != "sorcery";
+      },
+      onclick: async (event, card, container) => {
+        const handProperties = await container.getFlag("castle-falkenstein", "handProperties");
+        if (handProperties.type == "sorcery") {
+          card.pass(CastleFalkenstein.sorceryDiscardPile);
+        }
+      }
+    });
   }
 
   static async onRenderChatMessage(chatMessage, html, messageData) {
@@ -258,14 +267,9 @@ export default class CastleFalkenstein {
     ]);
   }
 
-  /**
-   * Create a Macro from an Item drop.
-   * Get an existing item macro if one exists, otherwise create a new one.
-   * @param {Object} data     The dropped data
-   * @param {number} slot     The hotbar slot to use
-   * @returns {Promise}
-   */
-  static async createItemMacro(data, slot) {
+  static async hotbarDrop(hotbar, data, slot) {
+    // Create a Macro from an Item drop.
+    // Get an existing item macro if one exists, otherwise create a new one.
     if (data.type !== "Item") return;
     if (!("data" in data)) return ui.notifications.warn("You can only create macro buttons for owned Items");
     const item = data.data;
@@ -279,7 +283,7 @@ export default class CastleFalkenstein {
         type: "script",
         img: item.img,
         command: command,
-        flags: { "CastleFalkenstein.itemMacro": true }
+        flags: { "castle-falkenstein.itemMacro": true }
       });
     }
     game.user.assignHotbarMacro(macro, slot);
@@ -331,15 +335,29 @@ export default class CastleFalkenstein {
   }
 }
 
+
 /* -------------------------------------------- */
 /*  Declare Hooks                               */
 /* -------------------------------------------- */
 
-Hooks.on("init", CastleFalkenstein.onInit.bind(CastleFalkenstein));
+Hooks.once("devModeReady", ({ registerPackageDebugFlag }) => {
+  registerPackageDebugFlag(CastleFalkenstein.name);
+});
 
-Hooks.on("ready", CastleFalkenstein.onReady.bind(CastleFalkenstein));
+Hooks.once("init", () => CastleFalkenstein.onInit());
 
-Hooks.on("renderChatMessage", CastleFalkenstein.onRenderChatMessage.bind(CastleFalkenstein));
+Hooks.once("ready", () => CastleFalkenstein.onReady());
+
+Hooks.on("getMonarchCardComponents", (monarch, components) => CastleFalkenstein.configureMonarchCard(monarch, components));
+
+Hooks.on("getMonarchHandComponents", (monarch, components) => CastleFalkenstein.configureMonarchHand(monarch, components));
+
+Hooks.on("renderChatMessage", (chatMessage, html, messageData) => CastleFalkenstein.onRenderChatMessage(chatMessage, html, messageData));
+
+Hooks.on("hotbarDrop", (hotbar, data, slot) => CastleFalkenstein.hotbarDrop(hotbar, data, slot));
+
+Hooks.on("updateActor", (actor, data, options, userId) => actor.onUpdate(data, options, userId));
+
 
 /* -------------------------------------------- */
 /*  Handlebars Helpers                          */

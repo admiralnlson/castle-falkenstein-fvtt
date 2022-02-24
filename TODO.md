@@ -8,6 +8,8 @@
 
 ## Evolutions
 
++ `[M🔥]` Add a **Show Players** button on Actor sheets
+
 + `[M🔥]` Add a **Cast Spell** menu to each Spell entry
   + player (or GM) can choose spell definitions
   + player (or GM) can cancel an ongoing spell, which discards all their Sorcery cards
@@ -19,11 +21,17 @@
   + Artefacts may be selected in the 'Cast Spell' form and contribute to the amount of Thaumic Energy that is collected
 
 + `[M]` Refine onReady warning display about fortune/sorcery decks/piles. Perform more elaborate checks:
-  + error is not all defined at onReady
+  + onReady, error if deck/pile setting left blank
+  + warn if deck/pile mentioned in settings was deleted
+  + on settings submit, error if  Fortune and Sorcery Decks/Piles are the same (or prevent it by removing them for the selection list)
   + error is not all defined at settings submit
   + warn at onReady if there are unmapped decks in the world
   + warn at onReady if a player connects and does not have access to the fortune deck --> add this to README explaining that it is for people who manage multiple tables, etc.
   + add i18n
+
++ `[C]` Replace Fortune/Sorcery discard pile selection system setting with **Automatic creation of discard piles**
+
++ `[M]` i18n for card names in CF deck preset
 
 + `[M]` give character owner(s) permissions on their hands (when they are created or when characters change permissions).
   + listen to permission changes on characters to adapt permissions on the hand accordingly.
@@ -80,10 +88,6 @@
 + `[S]` Support official variation which gives half-value to cards from an another suit
 
 + `[S]` Weapons list (under 'Possessions' or dedicated tab), dedicated sheet and chat message
-
-+ `[C]` Ensure Fortune and Sorcery Decks are different before accepting new settings.
-+ `[C]` Ensure Fortune and Sorcery discard piles are different before accepting new settings.
-+ `[C]` Replace Fortune/Sorcery discard pile selection system setting with **Automatic creation of discard piles**
 
 + `[S]` Fortune hand for the Host, which NPCs (PCs not owned by a player) use
 

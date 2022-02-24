@@ -54,23 +54,6 @@ export class CastleFalkensteinAbilitySheet extends ItemSheet {
     // Everything below here is only needed if the sheet is editable
     if (!this.isEditable) return;
 
-    /*if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
-      // FIXME PopOut! may not like this selection:
-      let select = $(".suit-select");
-      select.style = "font-size: 150%";
-      let options = select.children();
-      if (options.length == 5) {
-        options[1].text = "♠";
-        options[1].style = "font-size: 150%";
-        options[2].text = "♥";
-        options[2].style = "font-size: 150%";
-        options[3].text = "♦";
-        options[3].style = "font-size: 150%";
-        options[4].text = "♣";
-        options[4].style = "font-size: 150%";
-      }
-    }*/
-
     // Roll handlers, click handlers, etc. would go here.
   }
 }

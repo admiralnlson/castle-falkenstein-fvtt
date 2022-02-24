@@ -27,7 +27,7 @@ export default class CastleFalkensteinPerformFeat extends FormApplication {
     this.hand = game.cards.get(object.actor.data.data.hands.fortune);
     this.wrappedCards = [];
     for (const card of this.hand.cards) {
-      console.log("Castle Falkenstein | card sort info = " + card.data.sort);
+      CastleFalkenstein.debug("card sort info = " + card.data.sort);
       this.wrappedCards.push({
         card: card,
         correctSuit: (card.data.suit == this.ability.data.data.suit || card.data.suit == 'joker') ? 'correct-suit' : '',
@@ -83,8 +83,6 @@ export default class CastleFalkensteinPerformFeat extends FormApplication {
 
   static onRenderChatMessage(chatMessage, html, messageData) {
     html.find(".feat-chat-ranges-button").click(event => {
-      console.log("Castle Falkenstein | .feat-chat-ranges-button clicked");
-
       let button = event.currentTarget;
       var content = button.nextElementSibling;
       if (content.style.display === "block") {
