@@ -1,4 +1,4 @@
-import { CASTLE_FALKENSTEIN } from "../const.mjs";
+import { CASTLE_FALKENSTEIN } from "../config.mjs";
 
 /**
  * Sheet for the 'spell' item type.

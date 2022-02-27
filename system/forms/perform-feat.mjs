@@ -1,5 +1,5 @@
 import CastleFalkenstein from "../castle-falkenstein.mjs";
-import { CASTLE_FALKENSTEIN } from "../const.mjs";
+import { CASTLE_FALKENSTEIN } from "../config.mjs";
 
 // A form for performing a Feat.
 export default class CastleFalkensteinPerformFeat extends FormApplication {

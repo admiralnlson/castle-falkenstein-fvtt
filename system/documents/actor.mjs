@@ -1,6 +1,7 @@
+import { CASTLE_FALKENSTEIN } from "../config.mjs";
+import CastleFalkenstein from "../castle-falkenstein.mjs";
 import CastleFalkensteinPerformFeat from "../forms/perform-feat.mjs";
 import CastleFalkensteinDefineSpell from "../forms/define-spell.mjs";
-import CastleFalkenstein from "../castle-falkenstein.mjs";
 
 /**
  * Extend the base Actor document by defining a custom roll data structure which is ideal for the Simple system.
@@ -98,11 +99,14 @@ export class CastleFalkensteinActor extends Actor {
    */
   async performFeat(item) {
     if (!this.isOwner) return;
-    
-    const itemData = item.data;
-
-    if (itemData.type != 'ability') {
+ 
+    if (item.data.type != 'ability') {
       CastleFalkenstein.consoleError("Trying to perform a feat with non-ability item.");
+      return;
+    }
+
+    if (!CASTLE_FALKENSTEIN.validNonJokerCardSuits.includes(item.data.data.suit)) {
+      ui.notifications.error("Ability does not have a proper suit.");
       return;
     }
 
@@ -130,6 +134,11 @@ export class CastleFalkensteinActor extends Actor {
 
     if (itemData.type != 'spell') {
       CastleFalkenstein.consoleError("Trying to cast a spell from non-spell item.");
+      return;
+    }
+
+    if (!CASTLE_FALKENSTEIN.validNonJokerCardSuits.includes(item.data.data.suit)) {
+      ui.notifications.error("Spell does not have a proper aspect.");
       return;
     }
 

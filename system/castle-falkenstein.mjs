@@ -1,4 +1,4 @@
-import { CASTLE_FALKENSTEIN } from "./const.mjs";
+import { CASTLE_FALKENSTEIN } from "./config.mjs";
 import { CastleFalkensteinActor } from "./documents/actor.mjs";
 import { CastleFalkensteinItem } from "./documents/item.mjs";
 import { CastleFalkensteinActorSheet } from "./documents/actor-sheet.mjs";
@@ -23,7 +23,12 @@ export default class CastleFalkenstein {
 
   static _consoleLog(logLevel, msg, ...args) {
     const color = "background: #ffda87; color: #000;";
-    console[logLevel](`%c Castle Falkenstein | [${logLevel.toUpperCase()}] ${msg}`, color, ...args);
+    if (typeof msg === "string") {
+      console[logLevel](`%c Castle Falkenstein | [${logLevel.toUpperCase()}] ${msg}`, color, ...args);
+    } else {
+      console[logLevel](`%c Castle Falkenstein | [${logLevel.toUpperCase()}] ${typeof msg} display:`, color);
+      console[logLevel](msg);
+    }
   }
 
   static consoleDebug(msg, ...args) { if (this.debugMode) { this._consoleLog("debug", msg, ...args); } }
@@ -180,7 +185,7 @@ export default class CastleFalkenstein {
     while (components.badges.length > 0) { components.badges.pop(); }
     while (components.markers.length > 0) { components.markers.pop(); }
     while (components.contextMenu.length > 0) { components.contextMenu.pop(); }
-    while (components.controls.length > 0) { components.controls.pop(); }
+  //  while (components.controls.length > 0) { components.controls.pop(); }
   }
 
   static configureMonarchHand(monarch, components) {
@@ -213,13 +218,7 @@ export default class CastleFalkenstein {
       tooltip: "castle-falkenstein.cards.discard",
       icon: "cf-card-discard",
       class: "discard-card",
-      /* FIXME Cannot 'hide' CardControls in Monarch yet (https://github.com/zeel01/monarch/issues/38).
-                For the time being, the Discard control will be 'disabled' only in Fortune hands.
       hide: (card, container) => {
-        const handProperties = container.getFlag("castle-falkenstein", "handProperties");
-        return handProperties.type != "sorcery";
-      },*/
-      disabled: (card, container) => {
         const handProperties = container.getFlag("castle-falkenstein", "handProperties");
         return handProperties.type != "sorcery";
       },

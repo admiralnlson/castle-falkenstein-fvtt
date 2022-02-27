@@ -8,6 +8,8 @@
 
 ## Evolutions
 
++ `[S]` Enhance the visual appeal, possibly adding the Castle Falkenstein logo somewhere in the character sheet (with RTG's permission)
+
 + `[M]` Consider skipping the need for discard piles altogether, and instead sending cards played back to their origin decks (= card reset)
   + In the book, it says Sorcery cards which are of the wrong Aspect may be put at the bottom of the Sorcery deck.
 
@@ -46,9 +48,13 @@
   + warn at onReady if a player connects and does not have access to the fortune deck --> add this to README explaining that it is for people who manage multiple tables, etc.
   + add i18n
 
++ `[S]` 'Draw Fortune Card' button, useful in some scenarios (such as when a character loses all health: in an optional rule, drawing a spades card = character dies) or to help with determining purely random outcomes
+
 + `[M]` i18n of ui.notification.'s
 
 + `[M]` i18n of CF deck preset
+
++ `[C]` Button to share hand content in chat (Sorcery hand may cause a display issue if it has many cards though)
 
 + `[S🔥]` Add a **Show Players** button on Actor sheets
 

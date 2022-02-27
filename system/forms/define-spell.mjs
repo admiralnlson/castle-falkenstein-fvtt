@@ -1,4 +1,4 @@
-import { CASTLE_FALKENSTEIN } from "../const.mjs";
+import { CASTLE_FALKENSTEIN } from "../config.mjs";
 import CastleFalkenstein from "../castle-falkenstein.mjs";
 
 // A form for initiating a spell
@@ -7,10 +7,10 @@ export default class CastleFalkensteinDefineSpell extends FormApplication {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       id: "castle-falkenstein-define-spell",
-      title: game.i18n.localize("castle-falkenstein.spell.definitions"),
+      title: game.i18n.localize("castle-falkenstein.spell.definition.definitions"),
       template: "./systems/castle-falkenstein/system/forms/define-spell.hbs",
       classes: ["castle-falkenstein castle-falkenstein-define-spell", "sheet"],
-      width: 300,
+      width: 400,
       height: "auto",
       closeOnSubmit: true,
       submitOnClose: false,
@@ -25,12 +25,29 @@ export default class CastleFalkensteinDefineSpell extends FormApplication {
     super(object, options);
     this.spell = object;
     this.character = object.actor;
-  }
 
+    // FIXME, should be a property of character
+    this.spellBeingCast = {
+      spell: "", // FIXME unused thus far
+      artefact: "",  // FIXME unused thus far
+      definitions: {}
+    };
+
+    for (const [key, value] of Object.entries(CASTLE_FALKENSTEIN.spellDefinitions)) {
+      this.spellBeingCast.definitions[key] = {
+        label: value.label,
+        levels: value.levels,
+        value: 0
+      };
+    }
+  }
+  
   computeTotal() {
     let total = this.spell.data.data.level - CASTLE_FALKENSTEIN.abilityLevels[this.character.sorceryAbility.data.data.level].value;
 
-    // TODO add definition levels
+    for (const [key, value] of Object.entries(this.spellBeingCast.definitions)) {
+      total += value.value;
+    }
 
     return total > 0 ? total : 0;
   }
@@ -43,26 +60,21 @@ export default class CastleFalkensteinDefineSpell extends FormApplication {
       sorceryLevelAsSentenceHtml: CastleFalkenstein.abilityLevelAsSentenceHtml(this.character.sorceryAbility, false),
       spell: this.spell,
       spellSuitSymbol: CASTLE_FALKENSTEIN.cardSuitsSymbols[this.spell.data.data.suit],
+      spellBeingCast: this.spellBeingCast,
       total: this.computeTotal()
     }
   }
 
   /** @override */
   activateListeners(html) {
-    //No listener at this stage
-    //html.find('.spell-card-played-button').click(event => this.onClickCardSelect(event));
+    super.activateListeners(html);
+
+    html.find('.spell-definition-select').change(event => this._onSelectChange(event));
   }
 
-  static onRenderChatMessage(chatMessage, html, messageData) {
-    html.find(".spell-chat-ranges-button").click(event => {
-      let button = event.currentTarget;
-      var content = button.nextElementSibling;
-      if (content.style.display === "block") {
-        content.style.display = "none";
-      } else {
-        content.style.display = "block";
-      }
-    });
+  _onSelectChange(event) {
+    this.spellBeingCast.definitions[event.currentTarget.name].value = parseInt(event.currentTarget.value);
+    this.render(); // rerenders the FormApp with the new data.
   }
 
   /**
@@ -77,7 +89,7 @@ export default class CastleFalkensteinDefineSpell extends FormApplication {
     // Initialize chat data.
     const speaker = ChatMessage.getSpeaker({ actor: this.character });
     const rollMode = game.settings.get('core', 'rollMode');
-    const flavor = `[${game.i18n.localize("castle-falkenstein.spell.definitions")}]`;
+    const flavor = `[${game.i18n.localize("castle-falkenstein.spell.definition.definitions")}]`;
 
     const suitSymbol = CASTLE_FALKENSTEIN.cardSuitsSymbols[this.spell.data.data.suit];
     let content = `<b>${this.spell.name}</b> [<span class="suit-symbol-${this.spell.data.data.suit}">${suitSymbol}</span>]<br/>`;

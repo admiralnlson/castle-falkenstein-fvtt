@@ -106,11 +106,66 @@
     "spell": {
       "spells": "Spells",
       "spell": "Spell",
-      "definitions": "Definitions",
       "name": "Name",
       "aspect": "Aspect",
       "nameAndAspect": "Spell",
-      "thaumicLevel": "Thaumic Level"
+      "thaumicLevel": "Thaumic Level",
+      "definition": {
+        "definitions": "Spell definitions",
+        "duration": {
+          "label": "Spell Duration",
+          "1": "Momentary",
+          "2": "1-30 minutes",
+          "3": "1 hour",
+          "4": "1 day",
+          "6": "1 week",
+          "7": "1 month",
+          "8": "1 year"
+        },
+        "complexity": {
+          "label": "Complexité",
+          "1": "Involves only one element",
+          "2": "Involves only a few elements",
+          "3": "Involves many elements",
+          "4": "Involves many complex elements",
+          "5": "Subject must perform only one Task",
+          "6": "Subject must perform multiple Tasks"
+        },
+        "range": {
+          "label": "Spell Range",
+          "1": "Touch",
+          "2": "Within unaided sight",
+          "3": "Within a few miles",
+          "4": "In another city",
+          "5": "In another country",
+          "6": "In another dimension",
+          "7": "in another time"
+        },
+        "nbSubjects": {
+          "label": "Subjects Affected",
+          "1": "1",
+          "2": "Up to 10",
+          "3": "Up to 100",
+          "4": "Up to 1000",
+          "5": "An Entire Country"
+        },
+        "resistance": {
+          "label": "Subject is",
+          "1": "Mortal (Human or Animal)",
+          "2": "Faerie (ou Faerie Creature)",
+          "3": "Another Wizard",
+          "6": "Dragon",
+          "8": "Demon or other supernatural entity",
+          "16": "Dwarf"
+        },
+        "familiarity": {
+          "label": "Familiarity with the subject",
+          "1": "Know the Subject well",
+          "2": "Barely know the Subject",
+          "3": "Don't know the Subject",
+          "4": "Subject Totally Unknown to You"
+        }
+      }
     },
 
     "hostNotes": "Host notes"

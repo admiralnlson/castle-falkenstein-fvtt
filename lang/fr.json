@@ -106,11 +106,66 @@
     "spell": {
       "spells": "Sorts",
       "spell": "Sort",
-      "definitions": "Définitions de sort",
       "name": "Nom",
       "aspect": "Aspect",
       "nameAndAspect": "Sort",
-      "thaumicLevel": "Niveau thaumique"
+      "thaumicLevel": "Niveau thaumique",
+      "definition": {
+        "definitions": "Définitions de sort",
+        "duration": {
+          "label": "Durée",
+          "1": "Instantanée",
+          "2": "1-30 minutes",
+          "3": "1 heure",
+          "4": "1 jour",
+          "6": "1 semaine",
+          "7": "1 mois",
+          "8": "1 an"
+        },
+        "complexity": {
+          "label": "Complexité",
+          "1": "Implique seulement un élément",
+          "2": "Implique seulement quelques éléments",
+          "3": "Implique de nombreux éléments",
+          "4": "Implique de nombreux éléments complexes",
+          "5": "Le sujet doit accomplir une seule tâche",
+          "6": "Le sujet doit accomplir plusieurs tâches"
+        },
+        "range": {
+          "label": "Zone d'effet",
+          "1": "Contact",
+          "2": "En vue, sans assistance",
+          "3": "À quelque kilomètres",
+          "4": "Dans une autre ville",
+          "5": "Dans un autre pays",
+          "6": "Dans une autre dimension",
+          "7": "À une autre époque"
+        },
+        "nbSubjects": {
+          "label": "Nombre de sujets affectés",
+          "1": "1",
+          "2": "Jusqu'à 10",
+          "3": "Jusqu'à 100",
+          "4": "Jusqu'à 1000",
+          "5": "Tout un pays"
+        },
+        "resistance": {
+          "label": "Le sujet est",
+          "1": "Mortel (humain ou animal)",
+          "2": "Faë (ou une créature faë)",
+          "3": "Autre thaumaturge",
+          "6": "Dragon",
+          "8": "Démon ou autre entité naturelle",
+          "16": "Nain"
+        },
+        "familiarity": {
+          "label": "Familiarité avec le sujet",
+          "1": "Bonne",
+          "2": "Limitée",
+          "3": "Inconnu",
+          "4": "Totalement inconnu"
+        }
+      }
     },
 
     "hostNotes": "Notes de l'Hôte"

@@ -1,11 +1,16 @@
 <form class="flexcol" autocomplete="off">
 	<section class="content">
     <div>
-      <b>{{spell.name}}</b> [<span class="suit-symbol-{{this.spell.data.data.suit}}">{{spellSuitSymbol}}</span>]<br/>
+      <b>{{spell.name}}</b> [<span class="suit-symbol-{{spell.data.data.suit}}">{{spellSuitSymbol}}</span>]<br/>
       {{localize "castle-falkenstein.spell.thaumicLevel"}}: {{spell.data.data.level}}
       <hr />
-      <div class="spell-definitions">
-        {{!-- TODO add spell definitions --}}
+      <div class="grid-2col spell-definitions">
+      {{#each spellBeingCast.definitions}}
+      <label class="resource-label">{{localize label}}</label>
+      <select class="spell-definition-select" name="{{@key}}">
+        {{selectOptions levels selected=value localize=true}}
+      </select>
+      {{/each}}
       </div>
       <hr />
       {{{sorceryLevelAsSentenceHtml}}}<br />
