@@ -1,16 +1,13 @@
-// Import document classes.
+import { CASTLE_FALKENSTEIN } from "./const.mjs";
 import { CastleFalkensteinActor } from "./documents/actor.mjs";
 import { CastleFalkensteinItem } from "./documents/item.mjs";
-// Import sheet classes.
-import { CastleFalkensteinActorSheet } from "./sheets/actor-sheet.mjs";
-import { CastleFalkensteinAbilitySheet } from "./sheets/item-ability-sheet.mjs";
-import { CastleFalkensteinPossessionSheet } from "./sheets/item-possession-sheet.mjs";
-import { CastleFalkensteinSpellSheet } from "./sheets/item-spell-sheet.mjs";
-import { CastleFalkensteinWeaponSheet } from "./sheets/item-weapon-sheet.mjs";
-// Import helper/utility classes and constants.
-import { CASTLE_FALKENSTEIN } from "./helpers/config.mjs";
-import CastleFalkensteinSettings from "./helpers/settings.mjs";
-import CastleFalkensteinPerformFeat from "./helpers/perform-feat.mjs";
+import { CastleFalkensteinActorSheet } from "./documents/actor-sheet.mjs";
+import { CastleFalkensteinAbilitySheet } from "./documents/item-ability-sheet.mjs";
+import { CastleFalkensteinPossessionSheet } from "./documents/item-possession-sheet.mjs";
+import { CastleFalkensteinSpellSheet } from "./documents/item-spell-sheet.mjs";
+import { CastleFalkensteinWeaponSheet } from "./documents/item-weapon-sheet.mjs";
+import CastleFalkensteinSettings from "./forms/settings.mjs";
+import CastleFalkensteinPerformFeat from "./forms/perform-feat.mjs";
 
 export default class CastleFalkenstein {
 
@@ -24,15 +21,15 @@ export default class CastleFalkenstein {
 		return api.getPackageDebugValue(this.name);
 	}
 
-  static cfLog(logLevel, msg, ...args) {
+  static _consoleLog(logLevel, msg, ...args) {
     const color = "background: #ffda87; color: #000;";
-    console[logLevel](`%c Castle Falkenstein | ${msg}`, color, ...args);
+    console[logLevel](`%c Castle Falkenstein | [${logLevel.toUpperCase()}] ${msg}`, color, ...args);
   }
 
-  static debug(msg, ...args) { if (this.debugMode) { this.cfLog("debug", msg, ...args); } }
-  static info(msg, ...args) { this.cfLog("info", msg, ...args); }
-  static warn(msg, ...args) { this.cfLog("warn", msg, ...args); }
-  static error(msg, ...args) { this.cfLog("error", msg, ...args); }
+  static consoleDebug(msg, ...args) { if (this.debugMode) { this._consoleLog("debug", msg, ...args); } }
+  static consoleInfo(msg, ...args) { this._consoleLog("info", msg, ...args); }
+  static consoleWarn(msg, ...args) { this._consoleLog("warn", msg, ...args); }
+  static consoleError(msg, ...args) { this._consoleLog("error", msg, ...args); ui.notifications.error("Internal Castle Falkenstein system error (see console for details)"); }
 
   /**
    * Convenience proxy getter for CastleFalkenstein settings.
@@ -41,7 +38,7 @@ export default class CastleFalkenstein {
     get: function (target, key) {
       try { return game.settings.get(CastleFalkenstein.name, key); }
       catch (err) {
-        CastleFalkenstein.warn(err);
+        CastleFalkenstein.consoleWarn(err);
         return undefined;
       };
     }
@@ -63,10 +60,16 @@ export default class CastleFalkenstein {
     }};
 
     return {
+      // GM settings
       fortuneDeck: cardStackSelect("deck"),
       fortuneDiscardPile: cardStackSelect("pile"),
       sorceryDeck: cardStackSelect("deck"),
-      sorceryDiscardPile: cardStackSelect("pile")
+      sorceryDiscardPile: cardStackSelect("pile"),
+      sorceryAbility: {
+        type: String,
+        "default": ""
+      }
+      // Player settings
     };
   }
 
@@ -83,7 +86,33 @@ export default class CastleFalkenstein {
     return game.cards.get(this.settings.sorceryDiscardPile);
   }
 
+  static get i18nSorceryAbility() {
+    this.settings.sorceryAbility = this.settings.sorceryAbility.trim();
+
+    if (this.settings.sorceryAbility != "")
+      return this.settings.sorceryAbility;
+
+    return game.i18n.localize("castle-falkenstein.sorcery.ability");
+  }
   
+  static abilityLevelAsSentenceHtml(abilityItem, includeAbilitySuit = true) {
+    const levelI18nKey = game.i18n.localize(CASTLE_FALKENSTEIN.abilityLevels[abilityItem.data.data.level].full);
+    const levelValue = CASTLE_FALKENSTEIN.abilityLevels[abilityItem.data.data.level].value;
+    const suitSymbol = CASTLE_FALKENSTEIN.cardSuitsSymbols[abilityItem.data.data.suit];
+
+    const level = `${game.i18n.localize(levelI18nKey)} [${levelValue}]`;
+    let ability = `${abilityItem.name}`;
+    if (includeAbilitySuit)
+      ability += `[<span class="suit-symbol-${abilityItem.data.data.suit}">${suitSymbol}</span>]`;
+
+    const html = game.i18n.format("castle-falkenstein.ability.levelAsSentence", {
+      level: level,
+      ability: ability
+    });
+
+    return html;
+  }
+
   /**
    * Re-renders all CastleFalkenstein sheets to allow settings to take effect.
    *
@@ -142,8 +171,8 @@ export default class CastleFalkenstein {
       ui.notifications.warn("Make sure Fortune/Sorcery deck and discard piles are correctly defined in the settings");
     }
 
-    CastleFalkenstein.info("Ready.");
-    CastleFalkenstein.debug("Debug mode active.");
+    CastleFalkenstein.consoleDebug("Debug mode active.");
+    CastleFalkenstein.consoleInfo("Ready.");
   }
   
   static configureMonarchCard(monarch, components) {
@@ -260,10 +289,10 @@ export default class CastleFalkenstein {
   static async preLoadTemplates() {
     return loadTemplates([
       // Actor partials
-      "systems/castle-falkenstein/templates/parts/actor-abilities.hbs",
-      "systems/castle-falkenstein/templates/parts/actor-possessions.hbs",
-      "systems/castle-falkenstein/templates/parts/actor-spells.hbs",
-      "systems/castle-falkenstein/templates/parts/actor-weapons.hbs"
+      "systems/castle-falkenstein/system/documents/actor-abilities.hbs",
+      "systems/castle-falkenstein/system/documents/actor-possessions.hbs",
+      "systems/castle-falkenstein/system/documents/actor-spells.hbs",
+      "systems/castle-falkenstein/system/documents/actor-weapons.hbs"
     ]);
   }
 

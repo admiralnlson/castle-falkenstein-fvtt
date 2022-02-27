@@ -7,7 +7,7 @@ export default class CastleFalkensteinSettings extends FormApplication {
 		return mergeObject(super.defaultOptions, {
 			id: "castle-falkenstein-settings",
 			title: game.i18n.localize("castle-falkenstein.settings.title"),
-			template: "./systems/castle-falkenstein/templates/settings.hbs",
+			template: "./systems/castle-falkenstein/system/forms/settings.hbs",
 			classes: ["castle-falkenstein-settings", "sheet"],
 			width: 500,
 			height: "auto",
@@ -73,7 +73,7 @@ export default class CastleFalkensteinSettings extends FormApplication {
 
 	// Executes on form submission.
 	async _updateObject(event, data) {
-		for (let [key, value] of Object.entries(data)) {
+    for (let [key, value] of Object.entries(data)) {
 			await game.settings.set(CastleFalkenstein.name, key, value);
 		}
 	}
@@ -81,6 +81,7 @@ export default class CastleFalkensteinSettings extends FormApplication {
 	// Handles form submission.
 	async _onSubmit(...args) {
 		const ret = await super._onSubmit(...args);
+
 
 		// Don't believe this is necessary yet.
 		// await CastleFalkenstein.refreshSheetsAll();

@@ -1,4 +1,5 @@
-import {CASTLE_FALKENSTEIN} from "../helpers/config.mjs";
+import {CASTLE_FALKENSTEIN} from "../const.mjs";
+import CastleFalkenstein from "../castle-falkenstein.mjs";
 
 /**
  * Extend the basic Item with some very simple modifications.
@@ -57,12 +58,7 @@ export class CastleFalkensteinItem extends Item {
     // change label based on item type
     if (itemData.type == 'ability') {
       flavor = `[${game.i18n.localize("castle-falkenstein.ability.ability")}]`;
-      const levelI18nKey = CASTLE_FALKENSTEIN.abilityLevels[itemData.data.level].full;
-      const levelValue = CASTLE_FALKENSTEIN.abilityLevels[itemData.data.level].value;
-      const suitSymbol = CASTLE_FALKENSTEIN.cardSuitsSymbols[itemData.data.suit];
-      content = `${game.i18n.localize(levelI18nKey)} [${levelValue}]`
-              + `${game.i18n.localize("castle-falkenstein.ability.levelNameSeparator")}`
-              + `${itemData.name} [<span class="suit-symbol-${itemData.data.suit}">${suitSymbol}</span>]`;
+      content = CastleFalkenstein.abilityLevelAsSentenceHtml(this);
     } else if (itemData.type == 'possession') {
       flavor = `[${game.i18n.localize("castle-falkenstein.possession.possession")}]`;
       // default content

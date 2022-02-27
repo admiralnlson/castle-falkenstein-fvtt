@@ -1,4 +1,4 @@
-import {CASTLE_FALKENSTEIN} from "../helpers/config.mjs";
+import {CASTLE_FALKENSTEIN} from "../const.mjs";
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -10,7 +10,7 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: ["castle-falkenstein", "sheet", "actor"],
-      template: "systems/castle-falkenstein/templates/actor-sheet.hbs",
+      template: "systems/castle-falkenstein/system/documents/actor-sheet.hbs",
       width: 620,
       height: 600,
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }]

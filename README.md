@@ -22,7 +22,7 @@ Once done, go to `Configure Settings > System Settings > Castle Falkenstein` to 
 ### New Europa-stylized deck
 This system is pre-configured to support the New Europa-stylized deck avaible free-of-charge on [R. Talsorian Games's website](https://rtalsoriangames.com/2020/07/24/falkenstein-friday-the-fortune-deck/).
 
-In order to use it, make sure you download the ZIP file and extract the .jpg images into this folder: `{your FoundryVTT's Data/ directory}/cards/RTG-CF-FortuneDeck/`.
+In order to use it, make sure you download the ZIP file and extract the .jpg images into this folder: `{your FoundryVTT Data/ directory}/cards/RTG-CF-FortuneDeck/`.
 Once done, you may then use the dedicated preset within FoundryVTT:
 
 ![](./images/deck-preset.jpg)
@@ -30,9 +30,9 @@ Once done, you may then use the dedicated preset within FoundryVTT:
 ## Character Sheet
 The same character sheet is used for PCs and NPCs.
 
-As per FoundryVTT default behaviour, if the permission level granted to a non-GM Player on a character is 'None' (default), then the character does not appear to the player in the Actors tab.
+As per FoundryVTT default behaviour, if the permission level granted to a non-GM player on a character is 'None' (default), then the character does not appear to the player in the Actors tab.
 
-And here is what happens with higher Player permission levels:
+And here is what happens with higher permission levels:
 
 | Character sheet part | Limited | Observer | Owner  | Host (GM) |
 |----------------------|:-------:|:--------:|:------:|:---------:|
@@ -70,7 +70,7 @@ See [CHANGELOG](./CHANGELOG.md)
 See [TODO](./TODO.md)
 
 ## Feedback
-Please report bugs and request features as [Issues in this repository](https://github.com/admiralnlson/castle-falkenstein-foundryvtt/issues).
+Please report bugs and request features as [Issues in the project repository](https://github.com/admiralnlson/castle-falkenstein-foundryvtt/issues).
 
 Alternatively, you may also reach me via chat as admiralnlson#2349 on Discord.
 

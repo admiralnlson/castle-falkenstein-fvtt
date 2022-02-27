@@ -1,7 +1,7 @@
 <form class="flexcol" autocomplete="off">
 	<section class="content">
     <div>
-      {{levelI18nLabel}} [{{levelValue}}]{{localize 'castle-falkenstein.ability.levelNameSeparator'}}{{abilityData.name}} [<span class="suit-symbol-{{abilityData.data.suit}}">{{abilitySuitSymbol}}</span>]
+      {{{abilityLevelAsSentenceHtml}}}
       <hr />
       <div class="cards-played">
         {{#each wrappedCards as |wrappedCard id|}}

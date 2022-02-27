@@ -1,4 +1,5 @@
-import { CASTLE_FALKENSTEIN } from "../helpers/config.mjs";
+import CastleFalkenstein from "../castle-falkenstein.mjs";
+import { CASTLE_FALKENSTEIN } from "../const.mjs";
 
 // A form for performing a Feat.
 export default class CastleFalkensteinPerformFeat extends FormApplication {
@@ -7,7 +8,7 @@ export default class CastleFalkensteinPerformFeat extends FormApplication {
     return mergeObject(super.defaultOptions, {
       id: "castle-falkenstein-perform-feat",
       title: game.i18n.localize("castle-falkenstein.feat.perform"),
-      template: "./systems/castle-falkenstein/templates/perform-feat.hbs",
+      template: "./systems/castle-falkenstein/system/forms/perform-feat.hbs",
       classes: ["castle-falkenstein castle-falkenstein-perform-feat", "sheet"],
       width: 300,
       height: "auto",
@@ -27,7 +28,7 @@ export default class CastleFalkensteinPerformFeat extends FormApplication {
     this.hand = game.cards.get(object.actor.data.data.hands.fortune);
     this.wrappedCards = [];
     for (const card of this.hand.cards) {
-      CastleFalkenstein.debug("card sort info = " + card.data.sort);
+      //CastleFalkenstein.consoleDebug("card sort info = " + card.data.sort);
       this.wrappedCards.push({
         card: card,
         correctSuit: (card.data.suit == this.ability.data.data.suit || card.data.suit == 'joker') ? 'correct-suit' : '',
@@ -59,10 +60,8 @@ export default class CastleFalkensteinPerformFeat extends FormApplication {
    */
   async getData() {
     return {
+      abilityLevelAsSentenceHtml: CastleFalkenstein.abilityLevelAsSentenceHtml(this.ability),
       abilityData: this.ability.data,
-      abilitySuitSymbol: CASTLE_FALKENSTEIN.cardSuitsSymbols[this.ability.data.data.suit],
-      levelI18nLabel: game.i18n.localize(CASTLE_FALKENSTEIN.abilityLevels[this.ability.data.data.level].full),
-      levelValue: CASTLE_FALKENSTEIN.abilityLevels[this.ability.data.data.level].value,
       wrappedCards: this.wrappedCards,
       total: this.computeTotal()
     }
@@ -111,19 +110,14 @@ export default class CastleFalkensteinPerformFeat extends FormApplication {
     await this.hand.pass(game.CastleFalkenstein.fortuneDiscardPile, idsOfCardsPlayed, {chatNotification: false});
   
     //
-    // TODO produce chat message
+    // produce chat message
     //
 
     // Initialize chat data.
     const speaker = ChatMessage.getSpeaker({ actor: this.character });
     const rollMode = game.settings.get('core', 'rollMode');
     const flavor = `[${game.i18n.localize("castle-falkenstein.feat.feat")}]`;
-    const levelI18nKey = game.i18n.localize(CASTLE_FALKENSTEIN.abilityLevels[this.ability.data.data.level].full);
-    const levelValue = CASTLE_FALKENSTEIN.abilityLevels[this.ability.data.data.level].value;
-    const suitSymbol = CASTLE_FALKENSTEIN.cardSuitsSymbols[this.ability.data.data.suit];
-    let content = `${game.i18n.localize(levelI18nKey)} [${levelValue}]`
-                + `${game.i18n.localize("castle-falkenstein.ability.levelNameSeparator")}`
-                + `<b>${this.ability.name}</b> [<span class="suit-symbol-${this.ability.data.data.suit}">${suitSymbol}</span>]`;
+    let content = CastleFalkenstein.abilityLevelAsSentenceHtml(this.ability);
     content += '<hr/><div class="cards-played">';
     if (idsOfCardsPlayed.length > 0) {
       this.wrappedCards.forEach(w => {

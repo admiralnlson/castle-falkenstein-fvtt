@@ -6,7 +6,7 @@
   "minimumCoreVersion": "9",
   "compatibleCoreVersion": "9",
   "author": "admiralnlson",
-  "esmodules": ["module/castle-falkenstein.mjs"],
+  "esmodules": ["system/castle-falkenstein.mjs"],
   "styles": ["css/castle-falkenstein.css"],
   "scripts": [],
   "packs": [],

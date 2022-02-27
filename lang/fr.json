@@ -5,16 +5,11 @@
     "character": "Personnage",
 
     "fortune": {
-      "deck": "Jeu du destin",
-      "hand": "Destin - {character}",
-      "spadesDesc": "Prouesses sociales ou en rapport avec le statut social.",
-      "heartsDesc": "Prouesses romantiques et centrées sur les émotions.",
-      "diamondsDesc": "Prouesses intellectuelles et mentales.",
-      "clubsDesc": "Prouesses physiques."
+      "hand": "Destin - {character}"
     },
 
     "sorcery": {
-      "deck": "Jeu de sorcellerie",
+      "ability": "Sorcellerie",
       "hand": "Sorcellerie - {character}"
     },
 
@@ -28,7 +23,9 @@
       "sorceryDeck.name": "Jeu de sorcellerie",
       "sorceryDeck.hint": "Le paquet de cartes faisant office de Jeu de sorcellerie.",
       "sorceryDiscardPile.name": "Défausse du Jeu de sorcellerie",
-      "sorceryDiscardPile.hint": "La pile dans laquelle les cartes du Jeu de sorcellerie vont une fois jouées ou défaussées."
+      "sorceryDiscardPile.hint": "La pile dans laquelle les cartes du Jeu de sorcellerie vont une fois jouées ou défaussées.",
+      "sorceryAbility.name": "Nom du talent de Sorcellerie",
+      "sorceryAbility.hint": "[Optionnel] Permet d'avoir les noms de Talents des personnages dans la langue parlée par le groupe, même si celle-ci n'est pas encore officiellement supportée par le système."
     },
     
     "feat": {
@@ -59,7 +56,7 @@
       "ability": "Talent",
       "level": "Niveau",
       "name": "Nom",
-      "levelNameSeparator": " en ",
+      "levelAsSentence": "{level} en {ability}",
       "suit": "Couleur",
   
       "poor": "Faible",
@@ -109,7 +106,7 @@
     "spell": {
       "spells": "Sorts",
       "spell": "Sort",
-      "castASpell": "Lancer un sort",
+      "definitions": "Définitions de sort",
       "name": "Nom",
       "aspect": "Aspect",
       "nameAndAspect": "Sort",

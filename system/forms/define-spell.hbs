@@ -1,0 +1,20 @@
+<form class="flexcol" autocomplete="off">
+	<section class="content">
+    <div>
+      <b>{{spell.name}}</b> [<span class="suit-symbol-{{this.spell.data.data.suit}}">{{spellSuitSymbol}}</span>]<br/>
+      {{localize "castle-falkenstein.spell.thaumicLevel"}}: {{spell.data.data.level}}
+      <hr />
+      <div class="spell-definitions">
+        {{!-- TODO add spell definitions --}}
+      </div>
+      <hr />
+      {{{sorceryLevelAsSentenceHtml}}}<br />
+      <div class="define-spell-total">{{total}}</div>
+    </div>
+	</section>
+	<footer class="sheet-footer flexrow">
+		<button type="submit" name="submit">
+			<i class="fas fa-check"></i>
+		</button>
+	</footer>
+</form>

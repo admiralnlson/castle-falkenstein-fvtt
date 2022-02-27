@@ -1,4 +1,6 @@
-import CastleFalkensteinPerformFeat from "../helpers/perform-feat.mjs";
+import CastleFalkensteinPerformFeat from "../forms/perform-feat.mjs";
+import CastleFalkensteinDefineSpell from "../forms/define-spell.mjs";
+import CastleFalkenstein from "../castle-falkenstein.mjs";
 
 /**
  * Extend the base Actor document by defining a custom roll data structure which is ideal for the Simple system.
@@ -49,7 +51,6 @@ export class CastleFalkensteinActor extends Actor {
   }
 
   async createHand(handType) {
-
     const stacksConfig = [{
       type: "hand",
       name: this.computeHandName(handType),
@@ -61,15 +62,7 @@ export class CastleFalkensteinActor extends Actor {
     const stacks = await Cards.createDocuments(stacksConfig);
 
     if (stacks.length > 0) {
-      return stacks[0];
-    } else {
-      CastleFalkenstein.error("Could not create character hand");
-    }
-  }
-
-  async hand(handType) {
-    if (!this.data.data.hands[handType] || !game.cards.get(this.data.data.hands[handType])) {
-      const hand = await this.createHand(handType);
+      let hand = stacks[0];
       await this.update({
         [`data.hands.${handType}`]: hand.id
       });
@@ -78,22 +71,26 @@ export class CastleFalkensteinActor extends Actor {
         type: handType,
         actor: this.id
       });
+
+      return hand;
+    } else {
+      CastleFalkenstein.consoleError("Could not create character hand");
     }
-    return game.cards.get(this.data.data.hands[handType]);
   }
 
-  /**
-   * Returns the character's Fortune hand.
-   */
-  async fortuneHand() {
-    return await this.hand("fortune");
-  }
+  
+  async hand(handType) {
+    let hand = null;
 
-  /**
-   * Returns the character's Sorcery hand.
-   */
-  async sorceryHand() {
-    return await this.hand("sorcery");
+    if (this.data.data.hands[handType]) {
+      hand = game.cards.get(this.data.data.hands[handType]);
+    }
+
+    if (!hand) {
+      hand = await this.createHand(handType);
+    }
+
+    return hand;
   }
 
   /**
@@ -105,18 +102,22 @@ export class CastleFalkensteinActor extends Actor {
     const itemData = item.data;
 
     if (itemData.type != 'ability') {
-      CastleFalkenstein.error("Trying to perform a feat with non-ability item.");
+      CastleFalkenstein.consoleError("Trying to perform a feat with non-ability item.");
       return;
     }
 
-    let fortuneHand = await this.fortuneHand();
-    if (!fortuneHand) {
-      CastleFalkenstein.error("No Fortune hand to perform feat with.");
+    let hand = await this.hand("fortune");
+    if (!hand) {
+      ui.notifications.error("No Fortune hand to perform feat with.");
       return;
     }
 
     let performFeat = new CastleFalkensteinPerformFeat(item);
     performFeat.render(true);
+  }
+
+  get sorceryAbility() {
+    return this.items.find(item => item.type == 'ability' && item.name == CastleFalkenstein.i18nSorceryAbility);
   }
 
   /**
@@ -128,15 +129,22 @@ export class CastleFalkensteinActor extends Actor {
     const itemData = item.data;
 
     if (itemData.type != 'spell') {
-      CastleFalkenstein.error("Trying to cast a spell from non-spell item.");
+      CastleFalkenstein.consoleError("Trying to cast a spell from non-spell item.");
       return;
     }
 
-    let sorceryHand = await this.sorceryHand();
-    if (!sorceryHand) {
-      CastleFalkenstein.error("No Sorcery hand to castSpell with.");
+    let hand = await this.hand("sorcery");
+    if (!hand) {
+      ui.notifications.error("No Sorcery hand to cast spell with.");
       return;
     }
+
+    if (!this.sorceryAbility) {
+      ui.notifications.error(`Character does not have ability '${CastleFalkenstein.i18nSorceryAbility}'.`);
+      return;
+    }
+    
+    let performFeat = new CastleFalkensteinDefineSpell(item);
+    performFeat.render(true);
   }
-
 }

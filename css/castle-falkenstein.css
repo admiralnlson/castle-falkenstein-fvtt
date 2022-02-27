@@ -403,7 +403,7 @@ html * {
   display: none !important;
 }
 
-/* perform-feat and cast-spell */
+/* perform-feat and define-spell */
 
 .castle-falkenstein .cards-played,
 .chat-message .cards-played {
@@ -429,7 +429,9 @@ html * {
   border-bottom: 2px ridge gray;
 }
 
-.castle-falkenstein .perform-feat-total {
+.castle-falkenstein .perform-feat-total,
+.castle-falkenstein .define-spell-total,
+.chat-message .define-spell-total {
   width: 100%;
   margin-bottom: 5px;
   background: rgba(255, 255, 240, 0.8);

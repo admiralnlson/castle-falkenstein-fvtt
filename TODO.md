@@ -8,17 +8,34 @@
 
 ## Evolutions
 
-+ `[M🔥]` Add a **Show Players** button on Actor sheets
++ `[M]` Consider skipping the need for discard piles altogether, and instead sending cards played back to their origin decks (= card reset)
+  + In the book, it says Sorcery cards which are of the wrong Aspect may be put at the bottom of the Sorcery deck.
 
-+ `[M🔥]` Add a **Cast Spell** menu to each Spell entry
-  + player (or GM) can choose spell definitions
-  + player (or GM) can cancel an ongoing spell, which discards all their Sorcery cards
-  + At each Sorcery card drawn, produce a chat message showing the advancement toward the ongoing spell (based on its Aspect)
-    + Add chat message to trigger the effect (which discards all cards from the player hand).
-
-+ `[M]` Artefacts:
-  + Artefacts, new item type listed under 'Spells' (renamed 'Sorcery'?) or 'Possessions'
-  + Artefacts may be selected in the 'Cast Spell' form and contribute to the amount of Thaumic Energy that is collected
++ `[M🔥]` Spellcasting
+  + Character owner may **Define a Spell** (trigger from "Cast Spell" button next to each spell in char sheet > spells tab)
+    + if the Character is already casting a spell, a notification is generated telling the user to cancel the ongoing spell first
+  + From a Sorcery hand, the user (if owner) may **Gather Power** (fr: Canaliser du pouvoir) -> chat message indicates advancement when the power gathered is aligned or not
+    + button is disabled if no Spell is being cast
+    + the chat message indicates advancement advancement towards the goal and whether the power gathered is aligned or not
+    + Ideally the 'Release' button label is updated to show if Harmonics will be generated (in extremely rare cases, there can be up to 3 ex-aequo harmonics for the GM to choose from)
+  + From a Sorcery hand, the user (if owner) may **Release unaligned power** (fr: Disperser le pouvoir non-aligné) at any time -> custom chat message generated?
+    + button is hidden on cards with an aligned suit
+  + Character owner may **Unravel** (fr: Détramer) to collect aligned power (1 point of Health per 2 points of Thaumic Power) --> chat message generated
+    + button is disabled if no Spell is being cast
+  + From a Sorcery hand, the user (if owner) may **Cancel the spell**, which discards their Sorcery hand and stops the ongoing spell -> chat message generated
+    + button is disabled if no Spell is being cast
+  + Character owner may **Cast (the spell)** (fr: Lancer le sort) when they have gathered enough Power --> chat message generated
+    + button is disabled if not enough Power has been gathered
+  + When a Joker is drawn, the spell is immediately cast a.k.a. **Wild Spell** (fr: Surcharge thaumique)
+  + When enough aligned Power has been drawn, the spell is immediately cast also (no harmonics generated).
+  + The nature of Harmonics is shown at least on the 'spell cast' message, but possibly on cards as well:
+    + Spades / Spiritual (fr: spirituelle)
+    + Hearts / Emotional (fr: émotionnelle)
+    + Diamonds / Material (fr: matérielle)
+    + Clubs / Elemental (fr: élémentaire)
+  + Artefacts:
+    + Artefacts, new item type listed under 'Spells' (renamed 'Sorcery'?) or 'Possessions'
+    + Artefacts may be selected in the 'Cast Spell' form and contribute to the amount of Thaumic Energy that is collected
 
 + `[M]` Refine onReady warning display about fortune/sorcery decks/piles. Perform more elaborate checks:
   + onReady, error if deck/pile setting left blank
@@ -28,6 +45,12 @@
   + warn at onReady if there are unmapped decks in the world
   + warn at onReady if a player connects and does not have access to the fortune deck --> add this to README explaining that it is for people who manage multiple tables, etc.
   + add i18n
+
++ `[M]` i18n of ui.notification.'s
+
++ `[M]` i18n of CF deck preset
+
++ `[S🔥]` Add a **Show Players** button on Actor sheets
 
 + `[C]` Replace Fortune/Sorcery discard pile selection system setting with **Automatic creation of discard piles**
 

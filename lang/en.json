@@ -5,16 +5,11 @@
     "character": "Character",
 
     "fortune": {
-      "deck": "Fortune Deck",
-      "hand": "Fortune - {character}",
-      "spadesDesc": "Social and Status-related Feats.",
-      "heartsDesc": "Emotional and Romantic Feats.",
-      "diamondsDesc": "Mental and Intellectual Feats.",
-      "clubsDesc": "Physical Feats."
+      "hand": "Fortune - {character}"
     },
 
     "sorcery": {
-      "deck": "Sorcery Deck",
+      "ability": "Sorcery",
       "hand": "Sorcery - {character}"
     },
 
@@ -28,7 +23,9 @@
       "sorceryDeck.name": "Sorcery Deck",
       "sorceryDeck.hint": "The cards deck which represents the Sorcery Deck.",
       "sorceryDiscardPile.name": "Sorcery Deck discard pile",
-      "sorceryDiscardPile.hint": "The cards pile in which Sorcery Deck cards go when played or discarded."
+      "sorceryDiscardPile.hint": "The cards pile in which Sorcery Deck cards go when played or discarded.",
+      "sorceryAbility.name": "Name of the Sorcery ability",
+      "sorceryAbility.hint": "[Optional] Allows to have character ability names in the language spoken by your group, even if this language is not officially supported by the system yet."
     },
 
     "feat": {
@@ -58,7 +55,7 @@
       "abilities": "Abilities",
       "ability": "Ability",
       "level": "Level",
-      "levelNameSeparator": " ",
+      "levelAsSentence": "{level} {ability}",
       "name": "Name",
       "suit": "Suit",
   
@@ -109,7 +106,7 @@
     "spell": {
       "spells": "Spells",
       "spell": "Spell",
-      "castASpell": "Cast a Spell",
+      "definitions": "Definitions",
       "name": "Name",
       "aspect": "Aspect",
       "nameAndAspect": "Spell",

@@ -6,10 +6,10 @@
   "data": {},
   "cards": [
     {
-      "name": "2 de coeur",
+      "name": "2 of Hearts",
       "faces": [
         {
-          "name": "2 de coeur",
+          "name": "2 of Hearts",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_02.jpg"
         }
@@ -35,10 +35,10 @@
       }
     },
     {
-      "name": "3 de coeur",
+      "name": "3 of Hearts",
       "faces": [
         {
-          "name": "3 de coeur",
+          "name": "3 of Hearts",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_03.jpg"
         }
@@ -64,10 +64,10 @@
       }
     },
     {
-      "name": "4 de coeur",
+      "name": "4 of Hearts",
       "faces": [
         {
-          "name": "4 de coeur",
+          "name": "4 of Hearts",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_04.jpg"
         }
@@ -93,10 +93,10 @@
       }
     },
     {
-      "name": "5 de coeur",
+      "name": "5 of Hearts",
       "faces": [
         {
-          "name": "5 de coeur",
+          "name": "5 of Hearts",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_05.jpg"
         }
@@ -122,10 +122,10 @@
       }
     },
     {
-      "name": "6 de coeur",
+      "name": "6 of Hearts",
       "faces": [
         {
-          "name": "6 de coeur",
+          "name": "6 of Hearts",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_06.jpg"
         }
@@ -151,10 +151,10 @@
       }
     },
     {
-      "name": "7 de coeur",
+      "name": "7 of Hearts",
       "faces": [
         {
-          "name": "7 de coeur",
+          "name": "7 of Hearts",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_07.jpg"
         }
@@ -180,10 +180,10 @@
       }
     },
     {
-      "name": "8 de coeur",
+      "name": "8 of Hearts",
       "faces": [
         {
-          "name": "8 de coeur",
+          "name": "8 of Hearts",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_08.jpg"
         }
@@ -209,10 +209,10 @@
       }
     },
     {
-      "name": "9 de coeur",
+      "name": "9 of Hearts",
       "faces": [
         {
-          "name": "9 de coeur",
+          "name": "9 of Hearts",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_09.jpg"
         }
@@ -238,10 +238,10 @@
       }
     },
     {
-      "name": "10 de coeur",
+      "name": "10 of Hearts",
       "faces": [
         {
-          "name": "10 de coeur",
+          "name": "10 of Hearts",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_10.jpg"
         }
@@ -267,10 +267,10 @@
       }
     },
     {
-      "name": "Valet de coeur",
+      "name": "Jack of Hearts",
       "faces": [
         {
-          "name": "Valet de coeur",
+          "name": "Jack of Hearts",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_11.jpg"
         }
@@ -296,10 +296,10 @@
       }
     },
     {
-      "name": "Dame de coeur",
+      "name": "Queen of Hearts",
       "faces": [
         {
-          "name": "Dame de coeur",
+          "name": "Queen of Hearts",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_12.jpg"
         }
@@ -325,10 +325,10 @@
       }
     },
     {
-      "name": "Roi de coeur",
+      "name": "King of Hearts",
       "faces": [
         {
-          "name": "Roi de coeur",
+          "name": "King of Hearts",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_13.jpg"
         }
@@ -354,10 +354,10 @@
       }
     },
     {
-      "name": "As de coeur",
+      "name": "Ace of Hearts",
       "faces": [
         {
-          "name": "As de coeur",
+          "name": "Ace of Hearts",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_01.jpg"
         }
@@ -383,10 +383,10 @@
       }
     },
     {
-      "name": "2 de carreau",
+      "name": "2 of Diamonds",
       "faces": [
         {
-          "name": "2 de carreau",
+          "name": "2 of Diamonds",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_15.jpg"
         }
@@ -412,10 +412,10 @@
       }
     },
     {
-      "name": "3 de carreau",
+      "name": "3 of Diamonds",
       "faces": [
         {
-          "name": "3 de carreau",
+          "name": "3 of Diamonds",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_16.jpg"
         }
@@ -441,10 +441,10 @@
       }
     },
     {
-      "name": "4 de carreau",
+      "name": "4 of Diamonds",
       "faces": [
         {
-          "name": "4 de carreau",
+          "name": "4 of Diamonds",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_17.jpg"
         }
@@ -470,10 +470,10 @@
       }
     },
     {
-      "name": "5 de carreau",
+      "name": "5 of Diamonds",
       "faces": [
         {
-          "name": "5 de carreau",
+          "name": "5 of Diamonds",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_18.jpg"
         }
@@ -499,10 +499,10 @@
       }
     },
     {
-      "name": "6 de carreau",
+      "name": "6 of Diamonds",
       "faces": [
         {
-          "name": "6 de carreau",
+          "name": "6 of Diamonds",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_19.jpg"
         }
@@ -528,10 +528,10 @@
       }
     },
     {
-      "name": "7 de carreau",
+      "name": "7 of Diamonds",
       "faces": [
         {
-          "name": "7 de carreau",
+          "name": "7 of Diamonds",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_20.jpg"
         }
@@ -557,10 +557,10 @@
       }
     },
     {
-      "name": "8 de carreau",
+      "name": "8 of Diamonds",
       "faces": [
         {
-          "name": "8 de carreau",
+          "name": "8 of Diamonds",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_21.jpg"
         }
@@ -586,10 +586,10 @@
       }
     },
     {
-      "name": "9 de carreau",
+      "name": "9 of Diamonds",
       "faces": [
         {
-          "name": "9 de carreau",
+          "name": "9 of Diamonds",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_22.jpg"
         }
@@ -615,10 +615,10 @@
       }
     },
     {
-      "name": "10 de carreau",
+      "name": "10 of Diamonds",
       "faces": [
         {
-          "name": "10 de carreau",
+          "name": "10 of Diamonds",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_23.jpg"
         }
@@ -644,10 +644,10 @@
       }
     },
     {
-      "name": "Valet de carreau",
+      "name": "Jack of Diamonds",
       "faces": [
         {
-          "name": "Valet de carreau",
+          "name": "Jack of Diamonds",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_24.jpg"
         }
@@ -673,10 +673,10 @@
       }
     },
     {
-      "name": "Dame de carreau",
+      "name": "Queen of Diamonds",
       "faces": [
         {
-          "name": "Dame de carreau",
+          "name": "Queen of Diamonds",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_25.jpg"
         }
@@ -702,10 +702,10 @@
       }
     },
     {
-      "name": "Roi de carreau",
+      "name": "King of Diamonds",
       "faces": [
         {
-          "name": "Roi de carreau",
+          "name": "King of Diamonds",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_26.jpg"
         }
@@ -731,10 +731,10 @@
       }
     },
     {
-      "name": "As de carreau",
+      "name": "Ace of Diamonds",
       "faces": [
         {
-          "name": "As de carreau",
+          "name": "Ace of Diamonds",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_14.jpg"
         }
@@ -760,10 +760,10 @@
       }
     },
     {
-      "name": "2 de pique",
+      "name": "2 of Spades",
       "faces": [
         {
-          "name": "2 de pique",
+          "name": "2 of Spades",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_28.jpg"
         }
@@ -789,10 +789,10 @@
       }
     },
     {
-      "name": "3 de pique",
+      "name": "3 of Spades",
       "faces": [
         {
-          "name": "3 de pique",
+          "name": "3 of Spades",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_29.jpg"
         }
@@ -818,10 +818,10 @@
       }
     },
     {
-      "name": "4 de pique",
+      "name": "4 of Spades",
       "faces": [
         {
-          "name": "4 de pique",
+          "name": "4 of Spades",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_30.jpg"
         }
@@ -847,10 +847,10 @@
       }
     },
     {
-      "name": "5 de pique",
+      "name": "5 of Spades",
       "faces": [
         {
-          "name": "5 de pique",
+          "name": "5 of Spades",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_31.jpg"
         }
@@ -876,10 +876,10 @@
       }
     },
     {
-      "name": "6 de pique",
+      "name": "6 of Spades",
       "faces": [
         {
-          "name": "6 de pique",
+          "name": "6 of Spades",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_32.jpg"
         }
@@ -905,10 +905,10 @@
       }
     },
     {
-      "name": "7 de pique",
+      "name": "7 of Spades",
       "faces": [
         {
-          "name": "7 de pique",
+          "name": "7 of Spades",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_33.jpg"
         }
@@ -934,10 +934,10 @@
       }
     },
     {
-      "name": "8 de pique",
+      "name": "8 of Spades",
       "faces": [
         {
-          "name": "8 de pique",
+          "name": "8 of Spades",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_34.jpg"
         }
@@ -963,10 +963,10 @@
       }
     },
     {
-      "name": "9 de pique",
+      "name": "9 of Spades",
       "faces": [
         {
-          "name": "9 de pique",
+          "name": "9 of Spades",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_35.jpg"
         }
@@ -992,10 +992,10 @@
       }
     },
     {
-      "name": "10 de pique",
+      "name": "10 of Spades",
       "faces": [
         {
-          "name": "10 de pique",
+          "name": "10 of Spades",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_36.jpg"
         }
@@ -1021,10 +1021,10 @@
       }
     },
     {
-      "name": "Valet de pique",
+      "name": "Jack of Spades",
       "faces": [
         {
-          "name": "Valet de pique",
+          "name": "Jack of Spades",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_37.jpg"
         }
@@ -1050,10 +1050,10 @@
       }
     },
     {
-      "name": "Dame de pique",
+      "name": "Queen of Spades",
       "faces": [
         {
-          "name": "Dame de pique",
+          "name": "Queen of Spades",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_38.jpg"
         }
@@ -1079,10 +1079,10 @@
       }
     },
     {
-      "name": "Roi de pique",
+      "name": "King of Spades",
       "faces": [
         {
-          "name": "Roi de pique",
+          "name": "King of Spades",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_39.jpg"
         }
@@ -1108,10 +1108,10 @@
       }
     },
     {
-      "name": "As de pique",
+      "name": "Ace of Spades",
       "faces": [
         {
-          "name": "As de pique",
+          "name": "Ace of Spades",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_27.jpg"
         }
@@ -1137,10 +1137,10 @@
       }
     },
     {
-      "name": "2 de trèfle",
+      "name": "2 of Clubs",
       "faces": [
         {
-          "name": "2 de trèfle",
+          "name": "2 of Clubs",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_41.jpg"
         }
@@ -1166,10 +1166,10 @@
       }
     },
     {
-      "name": "3 de trèfle",
+      "name": "3 of Clubs",
       "faces": [
         {
-          "name": "3 de trèfle",
+          "name": "3 of Clubs",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_42.jpg"
         }
@@ -1195,10 +1195,10 @@
       }
     },
     {
-      "name": "4 de trèfle",
+      "name": "4 of Clubs",
       "faces": [
         {
-          "name": "4 de trèfle",
+          "name": "4 of Clubs",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_43.jpg"
         }
@@ -1224,10 +1224,10 @@
       }
     },
     {
-      "name": "5 de trèfle",
+      "name": "5 of Clubs",
       "faces": [
         {
-          "name": "5 de trèfle",
+          "name": "5 of Clubs",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_44.jpg"
         }
@@ -1253,10 +1253,10 @@
       }
     },
     {
-      "name": "6 de trèfle",
+      "name": "6 of Clubs",
       "faces": [
         {
-          "name": "6 de trèfle",
+          "name": "6 of Clubs",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_45.jpg"
         }
@@ -1282,10 +1282,10 @@
       }
     },
     {
-      "name": "7 de trèfle",
+      "name": "7 of Clubs",
       "faces": [
         {
-          "name": "7 de trèfle",
+          "name": "7 of Clubs",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_46.jpg"
         }
@@ -1311,10 +1311,10 @@
       }
     },
     {
-      "name": "8 de trèfle",
+      "name": "8 of Clubs",
       "faces": [
         {
-          "name": "8 de trèfle",
+          "name": "8 of Clubs",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_47.jpg"
         }
@@ -1340,10 +1340,10 @@
       }
     },
     {
-      "name": "9 de trèfle",
+      "name": "9 of Clubs",
       "faces": [
         {
-          "name": "9 de trèfle",
+          "name": "9 of Clubs",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_48.jpg"
         }
@@ -1369,10 +1369,10 @@
       }
     },
     {
-      "name": "10 de trèfle",
+      "name": "10 of Clubs",
       "faces": [
         {
-          "name": "10 de trèfle",
+          "name": "10 of Clubs",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_49.jpg"
         }
@@ -1398,10 +1398,10 @@
       }
     },
     {
-      "name": "Valet de trèfle",
+      "name": "Jack of Clubs",
       "faces": [
         {
-          "name": "Valet de trèfle",
+          "name": "Jack of Clubs",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_50.jpg"
         }
@@ -1427,10 +1427,10 @@
       }
     },
     {
-      "name": "Dame de trèfle",
+      "name": "Queen of Clubs",
       "faces": [
         {
-          "name": "Dame de trèfle",
+          "name": "Queen of Clubs",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_51.jpg"
         }
@@ -1456,10 +1456,10 @@
       }
     },
     {
-      "name": "Roi de trèfle",
+      "name": "King of Clubs",
       "faces": [
         {
-          "name": "Roi de trèfle",
+          "name": "King of Clubs",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_52.jpg"
         }
@@ -1485,10 +1485,10 @@
       }
     },
     {
-      "name": "As de trèfle",
+      "name": "Ace of Clubs",
       "faces": [
         {
-          "name": "As de trèfle",
+          "name": "Ace of Clubs",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_40.jpg"
         }
@@ -1514,10 +1514,10 @@
       }
     },
     {
-      "name": "Joker noir",
+      "name": "Black Joker",
       "faces": [
         {
-          "name": "Joker noir",
+          "name": "Black Joker",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_53.jpg"
         }
@@ -1543,10 +1543,10 @@
       }
     },
     {
-      "name": "Joker rouge",
+      "name": "Red Joker",
       "faces": [
         {
-          "name": "Joker rouge",
+          "name": "Red Joker",
           "text": "",
           "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_54.jpg"
         }
