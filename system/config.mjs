@@ -96,4 +96,3 @@ addSpellDefinitionLevels("range", 1, 7);
 addSpellDefinitionLevels("nbSubjects", 1, 5);
 addSpellDefinitionLevels("resistance", 1, 3); addSpellDefinitionLevels("resistance", 6); addSpellDefinitionLevels("resistance", 8); addSpellDefinitionLevels("resistance", 16);
 addSpellDefinitionLevels("familiarity", 1, 4);
-

@@ -179,61 +179,6 @@ export default class CastleFalkenstein {
     CastleFalkenstein.consoleDebug("Debug mode active.");
     CastleFalkenstein.consoleInfo("Ready.");
   }
-  
-  static configureMonarchCard(monarch, components) {
-    // Remove Monarch default standalone card components
-    while (components.badges.length > 0) { components.badges.pop(); }
-    while (components.markers.length > 0) { components.markers.pop(); }
-    while (components.contextMenu.length > 0) { components.contextMenu.pop(); }
-  //  while (components.controls.length > 0) { components.controls.pop(); }
-  }
-
-  static configureMonarchHand(monarch, components) {
-    // Remove Monarch default components
-    while (components.badges.length > 0) { components.badges.pop(); }
-    while (components.markers.length > 0) { components.markers.pop(); }
-    while (components.contextMenu.length > 0) { components.contextMenu.pop(); }
-    while (components.controls.length > 0) { components.controls.pop(); }
-    while (components.appControls.length > 0) { components.appControls.pop(); }
-
-    // Add Castle Falkenstein-relevant components
-
-    components.appControls.push({
-        label: "castle-falkenstein.cards.draw",
-        icon: "fas fa-plus",
-        class: "draw-cards",
-        onclick: async (event, app, hand) =>  {
-          const handProperties = await hand.getFlag("castle-falkenstein", "handProperties");
-          if (handProperties.type == "fortune") {
-            if (hand.cards.size < 4) {
-              hand.draw(CastleFalkenstein.fortuneDeck, 4 - hand.cards.size, {chatNotification: false});
-            }
-          } else if (handProperties.type == "sorcery") {
-            hand.draw(CastleFalkenstein.sorceryDeck, 1);
-          }
-        }
-    });
-
-    components.controls.push({
-      tooltip: "castle-falkenstein.cards.discard",
-      icon: "cf-card-discard",
-      class: "discard-card",
-      hide: (card, container) => {
-        const handProperties = container.getFlag("castle-falkenstein", "handProperties");
-        return handProperties.type != "sorcery";
-      },
-      onclick: async (event, card, container) => {
-        const handProperties = await container.getFlag("castle-falkenstein", "handProperties");
-        if (handProperties.type == "sorcery") {
-          card.pass(CastleFalkenstein.sorceryDiscardPile);
-        }
-      }
-    });
-  }
-
-  static async onRenderChatMessage(chatMessage, html, messageData) {
-    CastleFalkensteinPerformFeat.onRenderChatMessage(chatMessage, html, messageData);
-  }
 
   static registerSettings() {
     Object.entries(this.settingDefinitions).forEach(([key, def]) => {
@@ -293,6 +238,72 @@ export default class CastleFalkenstein {
       "systems/castle-falkenstein/system/documents/actor-spells.hbs",
       "systems/castle-falkenstein/system/documents/actor-weapons.hbs"
     ]);
+  }
+  
+  static configureMonarchCard(monarch, components) {
+    CastleFalkenstein.consoleDebug("configureMonarchCard");
+    // Remove Monarch default standalone card components
+    while (components.badges.length > 0) { components.badges.pop(); }
+    while (components.markers.length > 0) { components.markers.pop(); }
+    while (components.contextMenu.length > 0) { components.contextMenu.pop(); }
+    while (components.controls.length > 0) { components.controls.pop(); }
+  }
+
+  static configureMonarchHand(monarch, components) {
+    CastleFalkenstein.consoleDebug("configureMonarchHand");
+    // Remove Monarch default components
+    while (components.badges.length > 0) { components.badges.pop(); }
+    while (components.markers.length > 0) { components.markers.pop(); }
+    while (components.contextMenu.length > 0) { components.contextMenu.pop(); }
+    while (components.controls.length > 0) { components.controls.pop(); }
+    while (components.appControls.length > 0) { components.appControls.pop(); }
+
+    // Add Castle Falkenstein-relevant components
+
+    // Fortune + Sorcery Hands - Draw
+    components.appControls.push({
+        label: "castle-falkenstein.cards.draw",
+        icon: "fas fa-plus",
+        class: "draw-cards",
+        disabled: (card, hand) => {
+          const handProperties = hand.getFlag("castle-falkenstein", "handProperties");
+          CastleFalkenstein.consoleDebug(handProperties);
+          CastleFalkenstein.consoleDebug(hand);
+          CastleFalkenstein.consoleDebug(handProperties.type == "fortune" && hand.cards.size >= 4);
+          return handProperties.type == "fortune" && hand.cards.size >= 4;
+        },
+        onclick: async (event, app, hand) =>  {
+          const handProperties = await hand.getFlag("castle-falkenstein", "handProperties");
+          if (handProperties.type == "fortune") {
+            if (hand.cards.size < 4) {
+              hand.draw(CastleFalkenstein.fortuneDeck, 4 - hand.cards.size, {chatNotification: false});
+            }
+          } else if (handProperties.type == "sorcery") {
+            hand.draw(CastleFalkenstein.sorceryDeck, 1);
+          }
+        }
+    });
+
+    // Sorcery cards only - Release unaligned power (/ Discard)
+    components.controls.push({
+      tooltip: "castle-falkenstein.cards.discard",
+      icon: "cf-card-discard",
+      class: "discard-card",
+      hide: (card, container) => {
+        const handProperties = container.getFlag("castle-falkenstein", "handProperties");
+        return handProperties.type != "sorcery";
+      },
+      onclick: async (event, card, container) => {
+        const handProperties = await container.getFlag("castle-falkenstein", "handProperties");
+        if (handProperties.type == "sorcery") {
+          card.pass(CastleFalkenstein.sorceryDiscardPile);
+        }
+      }
+    });
+  }
+
+  static async onRenderChatMessage(chatMessage, html, messageData) {
+    CastleFalkensteinPerformFeat.onRenderChatMessage(chatMessage, html, messageData);
   }
 
   static async hotbarDrop(hotbar, data, slot) {

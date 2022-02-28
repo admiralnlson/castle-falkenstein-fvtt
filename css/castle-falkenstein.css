@@ -389,6 +389,11 @@ html * {
 
 /* Monarch display tweak */
 
+.monarch .app-control[disabled] {
+  opacity: 0.5 ;
+  cursor: default;
+}
+
 .monarch .card.show-ctx .context-menu {
   display: none !important;
 }

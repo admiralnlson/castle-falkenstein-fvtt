@@ -6,10 +6,12 @@
       <hr />
       <div class="grid-2col spell-definitions">
       {{#each spellBeingCast.definitions}}
+      {{#with (lookup ../spellDefinitions @key)}}
       <label class="resource-label">{{localize label}}</label>
       <select class="spell-definition-select" name="{{@key}}">
-        {{selectOptions levels selected=value localize=true}}
+        {{selectOptions levels selected=../this localize=true}}
       </select>
+      {{/with}}
       {{/each}}
       </div>
       <hr />
