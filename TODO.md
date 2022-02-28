@@ -39,6 +39,8 @@
     + Artefacts, new item type listed under 'Spells' (renamed 'Sorcery'?) or 'Possessions'
     + Artefacts may be selected in the 'Cast Spell' form and contribute to the amount of Thaumic Energy that is collected
 
++ `[C]` add some https://foundryvtt.wiki/en/development/guides/repository-bling
+
 + `[M]` Refine onReady warning display about fortune/sorcery decks/piles. Perform more elaborate checks:
   + onReady, error if deck/pile setting left blank
   + warn if deck/pile mentioned in settings was deleted

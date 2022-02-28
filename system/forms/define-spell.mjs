@@ -96,7 +96,9 @@ export default class CastleFalkensteinDefineSpell extends FormApplication {
     content += `${game.i18n.localize("castle-falkenstein.spell.thaumicLevel")}: ${this.spell.data.data.level}`;
     content += '<hr/><div class="spell-definitions">';
 
-    // TODO add definitions
+    for (const [key, value] of Object.entries(this.spellBeingCast.definitions)) {
+      content += `${game.i18n.localize(value.label)}: <b>${game.i18n.localize(value.levels[value.value])}</b><br/>`;
+    }
 
     content += '</div><hr/>';
     content += CastleFalkenstein.abilityLevelAsSentenceHtml(this.character.sorceryAbility, false);

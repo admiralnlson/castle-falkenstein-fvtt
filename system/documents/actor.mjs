@@ -116,8 +116,7 @@ export class CastleFalkensteinActor extends Actor {
       return;
     }
 
-    let performFeat = new CastleFalkensteinPerformFeat(item);
-    performFeat.render(true);
+    (new CastleFalkensteinPerformFeat(item)).render(true);
   }
 
   get sorceryAbility() {
@@ -153,7 +152,6 @@ export class CastleFalkensteinActor extends Actor {
       return;
     }
     
-    let performFeat = new CastleFalkensteinDefineSpell(item);
-    performFeat.render(true);
+    (new CastleFalkensteinDefineSpell(item)).render(true);
   }
 }
