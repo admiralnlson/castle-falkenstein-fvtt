@@ -128,7 +128,7 @@
       "thaumicLevel": "Thaumic Level",
       "cast": "Cast Spell",
       "definition": {
-        "definitions": "Spell definitions",
+        "definitions": "Spell Definitions",
         "duration": {
           "label": "Spell Duration",
           "1": "Momentary",
