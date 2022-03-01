@@ -140,7 +140,7 @@
           "8": "1 year"
         },
         "complexity": {
-          "label": "Complexité",
+          "label": "Complexity",
           "1": "Involves only one element",
           "2": "Involves only a few elements",
           "3": "Involves many elements",
