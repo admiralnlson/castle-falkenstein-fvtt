@@ -389,11 +389,19 @@ html * {
 
 /* Monarch display tweak */
 
+/* No editing cards while playing. Expecting system users to use presets (core, CF, RTUC or custom-made).
+ * Plus, if they want to edit cards, they may deactivate the Monarch sheet and use the default Card sheet temporarily. */
+.monarch .card-data {
+  display: none !important;
+}
+
+/* Required until https://github.com/zeel01/monarch/issues/51 is fixed */
 .monarch .app-control[disabled] {
   opacity: 0.5 ;
   cursor: default;
 }
 
+/* disabling the context menu does not fully hide it, it leaves a dot */
 .monarch .card.show-ctx .context-menu {
   display: none !important;
 }
@@ -401,7 +409,8 @@ html * {
 /* perform-feat and define-spell */
 
 .castle-falkenstein .cards-played,
-.chat-message .cards-played {
+.chat-message .cards-played,
+.chat-message .cards-drawn {
   display: flex;
   justify-content: center;
   gap: 5px;
@@ -438,12 +447,14 @@ html * {
 }
 
 .castle-falkenstein .cards-played .card-played::before,
-.chat-message .cards-played .card-played::before {
+.chat-message .cards-played .card-played::before,
+.chat-message .cards-drawn .card-drawn::before {
   font-size: 300%;
 }
 
-.castle-falkenstein .card-played:not(.correct-suit)::before,
-.chat-message .card-played:not(.correct-suit)::before {
+.castle-falkenstein .cards-played .card-played:not(.correct-suit)::before,
+.chat-message .cards-played .card-played:not(.correct-suit)::before,
+.chat-message .cards-drawn .card-drawn:not(.correct-suit)::before {
   color: gray;
 }
 

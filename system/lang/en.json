@@ -2,17 +2,6 @@
   "castle-falkenstein": {
     "system": "Castle Falkenstein",
 
-    "character": "Character",
-
-    "fortune": {
-      "hand": "Fortune - {character}"
-    },
-
-    "sorcery": {
-      "ability": "Sorcery",
-      "hand": "Sorcery - {character}"
-    },
-
     "settings": {
       "name": "System settings",
       "label": "Configure the Castle Falkenstein system",
@@ -28,16 +17,35 @@
       "sorceryAbility.hint": "[Optional] Allows to have character ability names in the language spoken by your group, even if this language is not officially supported by the system yet."
     },
 
-    "feat": {
-      "feat": "Feat",
-      "perform": "Perform a Feat",
-      "noCardsPlayed": "No cards played",
-      "total": "Total",
-      "highSuccess": "High Success",
-      "fullSuccess": "Full Success",
-      "partialSuccess": "Partial Success",
-      "failure": "Failure",
-      "fumble": "Fumble"
+    "character": "Character",
+
+    "maxHealth": "Health",
+    "wounds": "Wounds",
+    
+    "fortune": {
+      "hand": {
+        "name": "Fortune - {character}",
+        "draw": "Draw"
+      }
+    },
+
+    "sorcery": {
+      "ability": "Sorcery",
+      "hand": {
+        "name": "Sorcery - {character}",
+        "draw": "Gather Power",
+        "cast": "Cast Spell",
+        "cancel": "Cancel Spell",
+        "card": {
+          "releaseUnalignedPower": "Release the unaligned power"
+        }
+      },
+      "chat": {
+        "powerDrawn": "Power Drawn",
+        "powerReleased": "Power Released",
+        "spellCast": "Spell Cast",
+        "spellCanceled": "Spell Cancelled"
+      }
     },
 
     "description": "Description",
@@ -80,8 +88,24 @@
       "hearts": "Hearts",
       "diamonds": "Diamonds",
       "clubs": "Clubs",
-      "draw": "Draw",
-      "discard": "Discard"
+      "joker": "Joker"
+    },
+
+    "feat": {
+      "feat": "Feat",
+      "perform": "Perform a Feat",
+      "noCardsPlayed": "No cards played",
+      "total": "Total",
+      "highSuccess": "High Success",
+      "fullSuccess": "Full Success",
+      "partialSuccess": "Partial Success",
+      "failure": "Failure",
+      "fumble": "Fumble"
+    },
+
+    "possession": {
+      "possessions": "Possessions",
+      "possession": "Possession"
     },
 
     "weapon": {
@@ -95,14 +119,6 @@
       "woundsHigh": "Wounds (High)"
     },
 
-    "maxHealth": "Health",
-    "wounds": "Wounds",
-
-    "possession": {
-      "possessions": "Possessions",
-      "possession": "Possession"
-    },
-    
     "spell": {
       "spells": "Spells",
       "spell": "Spell",
@@ -110,6 +126,7 @@
       "aspect": "Aspect",
       "nameAndAspect": "Spell",
       "thaumicLevel": "Thaumic Level",
+      "cast": "Cast Spell",
       "definition": {
         "definitions": "Spell definitions",
         "duration": {

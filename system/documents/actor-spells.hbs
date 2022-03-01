@@ -10,7 +10,7 @@
   {{#each spells as |item id|}}
     <li class="item flexrow" data-item-id="{{item._id}}">
       <div class="spell-cast">
-        <a class="rollable" data-roll-type="item"><i class="cf-poker-hand"></i></a>
+        <a class="rollable" data-roll-type="item" title="{{localize 'castle-falkenstein.spell.cast'}}"><i class="cf-poker-hand"></i></a>
       </div>
       <div class="spell-name">
         {{item.name}} [<span class="suit-symbol-{{item.data.suit}}">{{item.data.suitSymbol}}</span>]

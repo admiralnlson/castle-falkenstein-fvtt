@@ -115,8 +115,11 @@ export default class CastleFalkensteinDefineSpell extends FormApplication {
       content: content
     });
 
-    // rerenders the FormApp with the new data.
+    // rerenders the FormApp with the new data (will disappear soon though)
     this.render();
+
+    // rerenders the hand to update button (disabled buttons such as 'Gather Power' will no longer be disabled)
+    (await this.character.hand("sorcery")).sheet.render();
   }
 
 }

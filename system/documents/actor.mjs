@@ -25,7 +25,7 @@ export class CastleFalkensteinActor extends Actor {
   }
 
   computeHandName(handType) {
-    return game.i18n.format(`castle-falkenstein.${handType}.hand`, {character: this.name});
+    return game.i18n.format(`castle-falkenstein.${handType}.hand.name`, {character: this.name});
   }
 
   async onUpdate(data, options, userId) {

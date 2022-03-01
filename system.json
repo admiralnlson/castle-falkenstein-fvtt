@@ -7,19 +7,19 @@
   "compatibleCoreVersion": "9",
   "author": "admiralnlson",
   "esmodules": ["system/castle-falkenstein.mjs"],
-  "styles": ["css/castle-falkenstein.css"],
+  "styles": ["system/css/castle-falkenstein.css"],
   "scripts": [],
   "packs": [],
   "languages": [
     {
       "lang": "en",
       "name": "English",
-      "path": "lang/en.json"
+      "path": "system/lang/en.json"
     },
     {
       "lang": "fr",
       "name": "French",
-      "path": "lang/fr.json"
+      "path": "system/lang/fr.json"
     }
   ],
   "gridDistance": 5,

@@ -29,7 +29,7 @@
   + Character owner may **Cast (the spell)** (fr: Lancer le sort) when they have gathered enough Power --> chat message generated
     + button is disabled if not enough Power has been gathered
   + When a Joker is drawn, the spell is immediately cast a.k.a. **Wild Spell** (fr: Surcharge thaumique)
-  + When enough aligned Power has been drawn, the spell is immediately cast also (no harmonics generated).
+  + When enough aligned Power has been drawn, the spell is immediately cast also (no harmonics generated) or a chat message is generated at least.
   + The nature of Harmonics is shown at least on the 'spell cast' message, but possibly on cards as well:
     + Spades / Spiritual (fr: spirituelle)
     + Hearts / Emotional (fr: émotionnelle)
@@ -38,6 +38,12 @@
   + Artefacts:
     + Artefacts, new item type listed under 'Spells' (renamed 'Sorcery'?) or 'Possessions'
     + Artefacts may be selected in the 'Cast Spell' form and contribute to the amount of Thaumic Energy that is collected
+
++ `[S]` Document that Monarch (or other Cards UI) should be activated manually (that or enable them programmatically).
+
++ `[C]` Button for GM to collect power to simulate that other Wizards are within 15km
+
++ `[C]` Cooperation on spellcasting - implement sopmething specific for this (ROI not great) or just document how to do it with the current version of the system in the Doc
 
 + `[C]` add some https://foundryvtt.wiki/en/development/guides/repository-bling
 
