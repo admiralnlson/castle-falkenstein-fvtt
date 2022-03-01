@@ -57,6 +57,8 @@ Sorcery
 
 + `[M]` i18n for ui.notification.'s
 
++ `[M]` match ability/spell macro icon with the card hand one used in the ability/spell list)
+
 + `[M]` i18n for the CF deck preset
 + `[M]` Ask RTG if OK to bundle the deck directly within the system
   + if yes, then remove  documentation about how system users need to download the images and put them in a specific folder
