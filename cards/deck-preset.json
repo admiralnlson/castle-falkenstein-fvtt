@@ -1,7 +1,7 @@
 {
-  "name": "Jeu du Destin",
+  "name": "Fortune Deck",
   "type": "deck",
-  "description": "Jeu du Destin de Château Falkenstein",
+  "description": "Castle Falkenstein Fortune Deck",
   "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-SquareBack.webp",
   "data": {},
   "cards": [
