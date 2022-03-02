@@ -414,6 +414,8 @@ html * {
   display: flex;
   justify-content: center;
   gap: 5px;
+  /* TODO replace the horizontal scrollbar with arrows on the left and right */
+  overflow: auto;
 }
 
 .castle-falkenstein .feat-card-played-button {

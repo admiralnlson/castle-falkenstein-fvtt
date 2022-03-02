@@ -1,3 +1,4 @@
+import { CASTLE_FALKENSTEIN } from "./config.mjs";
 import CastleFalkenstein from "./castle-falkenstein.mjs";
 
 export default class CastleFalkensteinMonarchConfig {
@@ -37,13 +38,18 @@ export default class CastleFalkensteinMonarchConfig {
         return hand.cards.size >= 4;
       },
       onclick: async (event, app, hand) =>  {
-          hand.draw(CastleFalkenstein.fortuneDeck, 4 - hand.cards.size, {chatNotification: false});
+        try {
+          await hand.draw(CastleFalkenstein.fortuneDeck, 4 - hand.cards.size, {chatNotification: false});
+        } catch (e) {
+          ui.notifications.error(e);
+          return;
+        }
       }
     });
 
     // Sorcery hand - Gather Power
     components.appControls.push({
-      label: "castle-falkenstein.sorcery.hand.draw",
+      label: "castle-falkenstein.sorcery.gatherPower",
       icon: "fas fa-plus",
       class: "sorcery-hand-gather-power",
       hide: (card, hand) => {
@@ -64,15 +70,20 @@ export default class CastleFalkensteinMonarchConfig {
         const handProperties = hand.getFlag("castle-falkenstein", "handProperties");
         const actor = game.actors.get(handProperties.actor);
 
-        // TODO mention whether the spell thaumic energy requirement has been reached. May not bode well with cooperation spellcasting scenarios though.
-        const cards = await hand.draw(CastleFalkenstein.sorceryDeck, 1, {chatNotification: false});
-        if (cards.length < 1) {
+        let cards;
+        try {
+           cards = await hand.draw(CastleFalkenstein.sorceryDeck, 1, {chatNotification: false});
+        } catch (e) {
+          ui.notifications.error(e);
           return;
         }
+
         const card = cards[0];
 
+        // TODO mention whether the spell thaumic energy requirement has been reached. May not bode well with cooperation spellcasting scenarios though.
+
         // Post message to chat
-        const flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.chat.powerDrawn")}]`;
+        const flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.gatherPower")}]`;
         const spell = actor.items.get(actor.data.data.spellBeingCast.spell);
         const correctSuit = (card.data.suit == spell.data.data.suit || card.data.suit == 'joker') ? 'correct-suit' : '';
         const content = `<div class="cards-drawn"><span class="card-drawn ${correctSuit} cf-card-${card.data.value}-${card.data.suit}"></span></div>`;
@@ -82,7 +93,7 @@ export default class CastleFalkensteinMonarchConfig {
 
     // Sorcery card - Release power
     components.controls.push({
-      tooltip: "castle-falkenstein.sorcery.hand.release",
+      tooltip: "castle-falkenstein.sorcery.releasePower",
       icon: "cf-card-discard",
       class: "sorcery-hand-card-release",
       hide: (card, container) => {
@@ -102,7 +113,7 @@ export default class CastleFalkensteinMonarchConfig {
           card.pass(CastleFalkenstein.sorceryDiscardPile, {chatNotification: false});
 
           // Post message to chat
-          const flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.chat.powerReleased")}]`;
+          const flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.releasePower")}]`;
           const content = `<div class="cards-played"><span class="card-played cf-card-${card.data.value}-${card.data.suit}"></span></div>`;
           CastleFalkenstein.createChatMessage(actor, flavor, content);
         }
@@ -111,7 +122,7 @@ export default class CastleFalkensteinMonarchConfig {
 
     // Sorcery hands - Cast spell
     components.appControls.push({
-      label: "castle-falkenstein.sorcery.hand.cast",
+      label: "castle-falkenstein.sorcery.castSpell",
       icon: "fas fa-play",
       class: "sorcery-hand-cast-spell",
       hide: (card, hand) => {
@@ -127,12 +138,30 @@ export default class CastleFalkensteinMonarchConfig {
       onclick: async (event, app, hand) =>  {
         const handProperties = hand.getFlag("castle-falkenstein", "handProperties");
         const actor = game.actors.get(handProperties.actor);
-        
-        hand.pass(CastleFalkenstein.sorceryDiscardPile, hand.cards.map((c)=>{ return c.id; }), {chatNotification: false});
+        const spell = actor.items.get(actor.data.data.spellBeingCast.spell);
 
         // Post message to chat
-        let flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.chat.spellCast")}]`;
-        let content = ""; // FIXME add info on spell which was cast (name, aspect, amount of power which had been gather + harmonic info if any)
+        let flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.castSpell")}]`;
+
+        const suitSymbol = CASTLE_FALKENSTEIN.cardSuitsSymbols[spell.data.data.suit];
+        let content = `<b>${spell.name}</b> [<span class="suit-symbol-${spell.data.data.suit}">${suitSymbol}</span>]<hr/><div class="cards-played">`;
+
+        if (hand.cards.contents.length > 0) {
+          hand.cards.contents.forEach(card => {
+            // FIXME code duplication
+            const correctSuit = (card.data.suit == spell.data.data.suit || card.data.suit == 'joker') ? 'correct-suit' : '';
+            content += `<span class="card-played ${correctSuit} cf-card-${card.data.value}-${card.data.suit}"></span>`;
+          });
+        } else {
+          content += game.i18n.localize("castle-falkenstein.feat.noCardsPlayed");
+        }
+        content += `</div>`;
+
+        // TODO add "<score> / <total>"" box.
+        // TODO show harmonic type(s) (up to 3 for the GM to choose from in case of ex-aequo), if unaligned power was used.
+
+        hand.pass(CastleFalkenstein.sorceryDiscardPile, hand.cards.map((c)=>{ return c.id; }), {chatNotification: false});
+
         CastleFalkenstein.createChatMessage(actor, flavor, content);
 
         // no spell being cast anymore on Actor side
@@ -146,7 +175,7 @@ export default class CastleFalkensteinMonarchConfig {
 
     // Sorcery hands - Cancel spell
     components.appControls.push({
-      label: "castle-falkenstein.sorcery.hand.cancel",
+      label: "castle-falkenstein.sorcery.cancelSpell",
       icon: "fas fa-stop",
       class: "sorcery-hand-cancel-spell",
       hide: (card, hand) => {
@@ -165,7 +194,7 @@ export default class CastleFalkensteinMonarchConfig {
         hand.pass(CastleFalkenstein.sorceryDiscardPile, hand.cards.map((c)=>{ return c.id; }), {chatNotification: false});
 
         // Post message to chat
-        let flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.chat.spellCanceled")}]`;
+        let flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.cancelSpell")}]`;
         let content = ""; // FIXME add info on spell which was canceled
         CastleFalkenstein.createChatMessage(actor, flavor, content);
 

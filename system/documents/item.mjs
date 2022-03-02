@@ -35,45 +35,45 @@ export class CastleFalkensteinItem extends Item {
     if (itemData.type == 'ability') {
       await this.actor?.performFeat(this);
     } else if (itemData.type == 'spell') {
-      await this.actor?.castSpell(this);
+      await this.actor?.defineSpell(this);
     } else {
       // default (other item types, if any)
-      await displayInChat();
+      await showOthers();
     }
   }
 
   /**
    * Show the item in chat.
    */
-  async displayInChat() {
+  async showOthers() {
     const itemData = this.data;
 
     // Initialize chat data.
     const speaker = ChatMessage.getSpeaker({ actor: this.actor });
     const rollMode = game.settings.get('core', 'rollMode');
-    let flavor = `[${itemData.type}]`;
+    let flavor = `[${game.i18n.localize('castle-falkenstein.item.showOthers')}`;
     let content = `${itemData.name}<hr/>`
                 + `${itemData.data.description}`;
 
     // change label based on item type
     if (itemData.type == 'ability') {
-      flavor = `[${game.i18n.localize("castle-falkenstein.ability.ability")}]`;
+      flavor += ` - ${game.i18n.localize('castle-falkenstein.ability.ability')}]`;
       content = CastleFalkenstein.abilityLevelAsSentenceHtml(this);
     } else if (itemData.type == 'possession') {
-      flavor = `[${game.i18n.localize("castle-falkenstein.possession.possession")}]`;
+      flavor += ` - ${game.i18n.localize('castle-falkenstein.possession.possession')}]`;
       // default content
     } else if (itemData.type == 'spell') {
-      flavor = `[${game.i18n.localize("castle-falkenstein.spell.spell")}]`;
+      flavor += ` - ${game.i18n.localize('castle-falkenstein.spell.spell')}]`;
       const suitSymbol = CASTLE_FALKENSTEIN.cardSuitsSymbols[itemData.data.suit];
       content = `${itemData.name} [<span class="suit-symbol-${itemData.data.suit}">${suitSymbol}</span>]<hr/>`
             + `${game.i18n.localize("castle-falkenstein.spell.thaumicLevel")}: ${itemData.data.level}<br/>`
             + `${itemData.data.description}`;
     } else {
-      // default (other item types, if any)
+      flavor += `]`;
+      CastleFalkenstein.consoleWarn(`Attempting to 'show others' an item of type '${itemData.type}'`);
     }
  
- 
-    // Post message to chat
+     // Post message to chat
     ChatMessage.create({
       speaker: speaker,
       rollMode: rollMode,

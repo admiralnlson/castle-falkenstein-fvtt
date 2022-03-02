@@ -8,23 +8,31 @@
 
 ## Evolutions
 
-Sorcery
-+ `[M🔥]` ensure only hand owners may use hand actions
-+ `[M🔥]` display more info in spell cast chat message
-+ `[M]` Prevent releasing of aligned Power (or at least add confirmation dialog)
-+ `[S]` Allow **Unraveling** as a way to generate Power
-+ `[S]` When enough aligned Power has been drawn, the spell is immediately cast also (no harmonics generated) or a chat message is generated at least.
+### Sorcery
++ `[M🔥]` ensure hand actions are only accessible to Owners, not Observers
++ `[M🔥]` Cast Spell - chat message - add a box showing power gathered vs initial requirement.
++ `[M🔥]` Cast Spell - chat message - add a box showing power gathered vs initial requirement.
++ `[S]` Cast Spell - chat message - if unaligned power was used, show harmonic type(s) (up to 3 for the GM to choose from in case of ex-aequo).
++ `[C]` Cast Spell - Open a dialog on GM side to ask which harmonic they prefer, then display the choice in chat.
++ `[C]` Cast Spell - When enough aligned Power has been drawn, the spell is immediately cast also (no harmonics generated) or a chat message is generated at least.
         Also, when a Joker is drawn, the spell is immediately cast a.k.a. **Wild Spell** (fr: Surcharge thaumique)
-+ `[S]` Artefacts:
+
++ `[S]` Gather Power - Allow **Unraveling** as a way to generate Power, which get added to the amount displayed when the spell is cast
++ `[S]` Gather Power - Artefacts:
     + Artefacts, new item type listed under 'Spells' (renamed 'Sorcery'?) or 'Possessions'
     + Artefacts may be selected in the 'Cast Spell' form and contribute to the amount of Thaumic Energy that is collected
-+ `[C]` The nature of Harmonics is shown at least on the 'spell cast' message, but possibly on cards as well:
++ `[M]` Release Power - Prevent releasing of aligned Power (or at least add confirmation dialog)
++ `[C]` Release Power - Show the harmonic type on unaligned power cards
   + Spades / Spiritual (fr: spirituelle)
   + Hearts / Emotional (fr: émotionnelle)
   + Diamonds / Material (fr: matérielle)
   + Clubs / Elemental (fr: élémentaire)
+
 + `[C]` Cooperation on spellcasting - implement sopmething specific for this (ROI not great) or just document how to do it with the current version of the system in the Doc
+
 + `[C]` Button for GM to collect Power to simulate actvity from other Wizards within 15km
+
+### Other
 
 + `[S]` Weapons list (under 'Possessions' or dedicated tab), dedicated sheet and chat message
 

@@ -7,7 +7,7 @@ export default class CastleFalkensteinDefineSpell extends FormApplication {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       id: "castle-falkenstein-define-spell",
-      title: game.i18n.localize("castle-falkenstein.spell.definition.definitions"),
+      title: game.i18n.localize("castle-falkenstein.spell.define"),
       template: "./systems/castle-falkenstein/system/forms/define-spell.hbs",
       classes: ["castle-falkenstein castle-falkenstein-define-spell", "sheet"],
       width: 400,
@@ -85,7 +85,7 @@ export default class CastleFalkensteinDefineSpell extends FormApplication {
     // Initialize chat data.
     const speaker = ChatMessage.getSpeaker({ actor: this.character });
     const rollMode = game.settings.get('core', 'rollMode');
-    const flavor = `[${game.i18n.localize("castle-falkenstein.spell.definition.definitions")}]`;
+    const flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.defineSpell")}]`;
 
     const suitSymbol = CASTLE_FALKENSTEIN.cardSuitsSymbols[this.spell.data.data.suit];
     let content = `<b>${this.spell.name}</b> [<span class="suit-symbol-${this.spell.data.data.suit}">${suitSymbol}</span>]<br/>`;

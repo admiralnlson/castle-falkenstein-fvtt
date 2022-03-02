@@ -115,7 +115,7 @@ export default class CastleFalkensteinPerformFeat extends FormApplication {
     // Initialize chat data.
     const speaker = ChatMessage.getSpeaker({ actor: this.character });
     const rollMode = game.settings.get('core', 'rollMode');
-    const flavor = `[${game.i18n.localize("castle-falkenstein.feat.feat")}]`;
+    const flavor = `[${game.i18n.localize("castle-falkenstein.feat.perform")}]`;
     let content = CastleFalkenstein.abilityLevelAsSentenceHtml(this.ability);
     content += '<hr/><div class="cards-played">';
     if (idsOfCardsPlayed.length > 0) {

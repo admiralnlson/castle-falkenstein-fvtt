@@ -96,7 +96,7 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
     html.find('.item-show').click(ev => {
       const li = $(ev.currentTarget).parents(".item");
       const item = this.actor.items.get(li.data("itemId"));
-      item.displayInChat();
+      item.showOthers();
     });
 
     // Render the item sheet for viewing/editing prior to the editable check.

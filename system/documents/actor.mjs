@@ -124,9 +124,9 @@ export class CastleFalkensteinActor extends Actor {
   }
 
   /**
-   * Cast a Spell.
+   * Define a Spell.
    */
-  async castSpell(item) {
+  async defineSpell(item) {
     if (!this.isOwner) return;
 
     const itemData = item.data;

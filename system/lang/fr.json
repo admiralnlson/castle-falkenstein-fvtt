@@ -31,21 +31,12 @@
 
     "sorcery": {
       "ability": "Sorcellerie",
-      "hand": {
-        "name": "Sorcellerie - {character}",
-        "draw": "Canaliser",
-        "cast": "Lancer le sort",
-        "cancel": "Annuler le sort",
-        "card": {
-          "releaseUnalignedPower": "Libérer le pouvoir non-aligné"
-        }
-      },
-      "chat": {
-        "powerDrawn": "Pouvoir canalisé",
-        "powerReleased": "Pouvoir libéré",
-        "spellCast": "Sort lancé",
-        "spellCanceled": "Sort annulé"
-      }
+      "defineSpell": "Définir le sort",
+      "gatherPower": "Canaliser du pouvoir",
+      "releasePower": "Libérer du pouvoir",
+      "castSpell": "Lancer le sort",
+      "cancelSpell": "Annuler le sort",
+      "handName": "Sorcellerie - {character}"
     },
 
     "description": "Description",
@@ -54,7 +45,7 @@
 
     "item": {
       "add": "Ajouter",
-      "displayInChat": "Afficher dans le tchat",
+      "showOthers": "Montrer aux autres",
       "edit": "Éditer",
       "delete": "Supprimer"
     },
@@ -92,7 +83,6 @@
     },
 
     "feat": {
-      "feat": "Prouesse",
       "perform": "Accomplir une prouesse",
       "noCardsPlayed": "Pas de carte jouée",
       "total": "Total",
@@ -126,9 +116,7 @@
       "aspect": "Aspect",
       "nameAndAspect": "Sort",
       "thaumicLevel": "Niveau thaumique",
-      "cast": "Lancer le sort",
       "definition": {
-        "definitions": "Définitions de sort",
         "duration": {
           "label": "Durée",
           "1": "Instantanée",

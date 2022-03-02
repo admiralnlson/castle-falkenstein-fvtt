@@ -31,21 +31,12 @@
 
     "sorcery": {
       "ability": "Sorcery",
-      "hand": {
-        "name": "Sorcery - {character}",
-        "draw": "Gather Power",
-        "cast": "Cast Spell",
-        "cancel": "Cancel Spell",
-        "card": {
-          "releaseUnalignedPower": "Release the unaligned power"
-        }
-      },
-      "chat": {
-        "powerDrawn": "Power Drawn",
-        "powerReleased": "Power Released",
-        "spellCast": "Spell Cast",
-        "spellCanceled": "Spell Cancelled"
-      }
+      "defineSpell": "Define Spell",
+      "gatherPower": "Gather Power",
+      "releasePower": "Release Power",
+      "castSpell": "Cast Spell",
+      "cancelSpell": "Cancel Spell",
+      "handName": "Sorcery - {character}"
     },
 
     "description": "Description",
@@ -54,7 +45,7 @@
 
     "item": {
       "add": "Add",
-      "displayInChat": "Display in chat",
+      "showOthers": "Show others",
       "edit": "Edit",
       "delete": "Delete"
     },
@@ -92,7 +83,6 @@
     },
 
     "feat": {
-      "feat": "Feat",
       "perform": "Perform a Feat",
       "noCardsPlayed": "No cards played",
       "total": "Total",
@@ -126,9 +116,7 @@
       "aspect": "Aspect",
       "nameAndAspect": "Spell",
       "thaumicLevel": "Thaumic Level",
-      "cast": "Cast Spell",
       "definition": {
-        "definitions": "Spell Definitions",
         "duration": {
           "label": "Spell Duration",
           "1": "Momentary",
