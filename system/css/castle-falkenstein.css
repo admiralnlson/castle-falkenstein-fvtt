@@ -395,6 +395,13 @@ html * {
   display: none !important;
 }
 
+/* when they are long, app control labels affect the display too much. Ellipsis is preferrable. */
+.monarch .app-control {
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  text-overflow: ellipsis !important;
+}
+
 /* Required until https://github.com/zeel01/monarch/issues/51 is fixed */
 .monarch .app-control[disabled] {
   opacity: 0.5 ;

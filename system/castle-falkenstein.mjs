@@ -169,7 +169,7 @@ export default class CastleFalkenstein {
     CONFIG.Cards.presets.castleFalkensteinDeck = {
       type: "deck",
       label: "castle-falkenstein.system",
-      src: "systems/castle-falkenstein/cards/deck-preset.json"
+      src: "systems/castle-falkenstein/system/cards/deck-preset.json"
     };
   }
 

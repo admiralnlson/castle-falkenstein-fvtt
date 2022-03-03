@@ -110,7 +110,7 @@ export default class CastleFalkensteinMonarchConfig {
         const actor = game.actors.get(handProperties.actor);
 
         if (handProperties.type == "sorcery") {
-          card.pass(CastleFalkenstein.sorceryDiscardPile, {chatNotification: false});
+          await card.pass(CastleFalkenstein.sorceryDiscardPile, {chatNotification: false});
 
           // Post message to chat
           const flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.releasePower")}]`;
@@ -160,7 +160,7 @@ export default class CastleFalkensteinMonarchConfig {
         // TODO add "<score> / <total>"" box.
         // TODO show harmonic type(s) (up to 3 for the GM to choose from in case of ex-aequo), if unaligned power was used.
 
-        hand.pass(CastleFalkenstein.sorceryDiscardPile, hand.cards.map((c)=>{ return c.id; }), {chatNotification: false});
+        await hand.pass(CastleFalkenstein.sorceryDiscardPile, hand.cards.map((c)=>{ return c.id; }), {chatNotification: false});
 
         CastleFalkenstein.createChatMessage(actor, flavor, content);
 
@@ -191,7 +191,7 @@ export default class CastleFalkensteinMonarchConfig {
         const handProperties = hand.getFlag("castle-falkenstein", "handProperties");
         const actor = game.actors.get(handProperties.actor);
 
-        hand.pass(CastleFalkenstein.sorceryDiscardPile, hand.cards.map((c)=>{ return c.id; }), {chatNotification: false});
+        await hand.pass(CastleFalkenstein.sorceryDiscardPile, hand.cards.map((c)=>{ return c.id; }), {chatNotification: false});
 
         // Post message to chat
         let flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.cancelSpell")}]`;
