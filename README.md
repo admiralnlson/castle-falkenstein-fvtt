@@ -1,4 +1,4 @@
-[release-badge]: https://img.shields.io/github/v/release/admiralnlson/castle-falkenstein.svg
+[release-badge]: https://img.shields.io/github/v/release/admiralnlson/castle-falkenstein-fvtt.svg
 
 
 # Castle Falkenstein system for FoundryVTT
