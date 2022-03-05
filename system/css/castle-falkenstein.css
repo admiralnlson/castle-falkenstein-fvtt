@@ -391,21 +391,28 @@ html * {
 
 /* No editing cards while playing. Expecting system users to use presets (core, CF, RTUC or custom-made).
  * Plus, if they want to edit cards, they may deactivate the Monarch sheet and use the default Card sheet temporarily. */
-.monarch .card-data {
+/*.monarch .card-data {
   display: none !important;
-}
+}*/
 
-/* when they are long, app control labels affect the display too much. Ellipsis is preferrable. */
-.monarch .app-control {
+/* When they are long, app control labels affect the display too much. Ellipsis is preferrable for them.
+   Also card names get truncated. */
+
+.monarch .app-control,
+.monarch-card .name input {
   overflow: hidden !important;
   white-space: nowrap !important;
   text-overflow: ellipsis !important;
 }
 
+.monarch-card .name {
+  max-width: 60% !important;
+}
+
 /* Required until https://github.com/zeel01/monarch/issues/51 is fixed */
 .monarch .app-control[disabled] {
-  opacity: 0.5 ;
-  cursor: default;
+  opacity: 0.5 !important;
+  cursor: default !important;
 }
 
 /* disabling the context menu does not fully hide it, it leaves a dot */

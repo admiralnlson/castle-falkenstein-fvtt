@@ -3,7 +3,7 @@ import CastleFalkenstein from "./castle-falkenstein.mjs";
 
 export default class CastleFalkensteinMonarchConfig {
 
-  static configureCardComponents(monarch, components) {
+  static onCardDisplay(monarch, components) {
     // Remove Monarch default standalone card components
     while (components.badges.length > 0) { components.badges.pop(); }
     while (components.markers.length > 0) { components.markers.pop(); }
@@ -13,7 +13,7 @@ export default class CastleFalkensteinMonarchConfig {
     // That's it..
   }
 
-  static configureHandComponents(monarch, components) {
+  static onHandDisplay(monarch, components) {
     // Remove Monarch default components
     while (components.badges.length > 0) { components.badges.pop(); }
     while (components.markers.length > 0) { components.markers.pop(); }
@@ -39,7 +39,7 @@ export default class CastleFalkensteinMonarchConfig {
       },
       onclick: async (event, app, hand) =>  {
         try {
-          await hand.draw(CastleFalkenstein.fortuneDeck, 4 - hand.cards.size, {chatNotification: false});
+          await hand.draw(CastleFalkenstein.fortuneDeck, max(4 - hand.cards.size,0), {chatNotification: false});
         } catch (e) {
           ui.notifications.error(e);
           return;
@@ -208,4 +208,24 @@ export default class CastleFalkensteinMonarchConfig {
     });
 
   }
+
+  static onCardClick(event, app, card) {
+
+    if (app.document?.data?.type == "hand") {
+      // Replace Monarch's default behaviour (open card sheet) with Monarch's ' magnify option directly.
+      const popout = new ImagePopout(card.img, {
+        title: card.data.name,
+        uuid: card.data.uuid,
+        shareable: true,
+        editable: true
+      }).render(true);
+
+      if (event.shiftKey) popout.shareImage();
+
+      return false; // prevent default Monarch behaviour (open card sheet)
+    } else {
+      return true;
+    }
+  }
+
 };

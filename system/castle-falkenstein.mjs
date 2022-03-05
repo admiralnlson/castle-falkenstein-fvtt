@@ -335,9 +335,11 @@ Hooks.once("init", () => CastleFalkenstein.onInit());
 
 Hooks.once("ready", () => CastleFalkenstein.onReady());
 
-Hooks.on("getMonarchCardComponents", (monarch, components) => CastleFalkensteinMonarchConfig.configureCardComponents(monarch, components));
+Hooks.on("getMonarchCardComponents", (monarch, components) => CastleFalkensteinMonarchConfig.onCardDisplay(monarch, components));
 
-Hooks.on("getMonarchHandComponents", (monarch, components) => CastleFalkensteinMonarchConfig.configureHandComponents(monarch, components));
+Hooks.on("getMonarchHandComponents", (monarch, components) => CastleFalkensteinMonarchConfig.onHandDisplay(monarch, components));
+
+Hooks.on("clickMonarchCard", (event, app, card) => {return CastleFalkensteinMonarchConfig.onCardClick(event, app, card) });
 
 Hooks.on("renderChatMessage", (chatMessage, html, messageData) => CastleFalkenstein.onRenderChatMessage(chatMessage, html, messageData));
 

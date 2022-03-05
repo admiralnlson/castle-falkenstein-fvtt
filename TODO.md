@@ -4,23 +4,22 @@
 
 + MoSCoW: `[M]`ust, `[S]`hould, `[C]`ould, `[W]`on't
 + `[🔥]` Personal project maintainer GM needs
++ `[⚠️]` Required for 1.0
 + RTG = R. Talsorian Games
 
 ## Evolutions
 
 ### Sorcery
-+ `[M🔥]` ensure hand actions are only accessible to Owners, not Observers
++ `[M🔥]` Define Spell - Allow user to specify a custom bonus/malus (with label) at spell definition time:
++ `[C]` Define Spell - explicit mechanic for using **Sorcery specialization** (as opposed to the raw Sorcery level)
++ `[C]` Define Spell - explicit mechanic for using **Artefacts**
++ `[C]` Define Spell - explicit mechanic for using **Unraveling**
 + `[M🔥]` Cast Spell - chat message - add a box showing power gathered vs initial requirement.
 + `[M🔥]` Cast Spell - chat message - add a box showing power gathered vs initial requirement.
 + `[S]` Cast Spell - chat message - if unaligned power was used, show harmonic type(s) (up to 3 for the GM to choose from in case of ex-aequo).
 + `[C]` Cast Spell - Open a dialog on GM side to ask which harmonic they prefer, then display the choice in chat.
 + `[C]` Cast Spell - When enough aligned Power has been drawn, the spell is immediately cast also (no harmonics generated) or a chat message is generated at least.
-        Also, when a Joker is drawn, the spell is immediately cast a.k.a. **Wild Spell** (fr: Surcharge thaumique)
-
-+ `[S]` Gather Power - Allow **Unraveling** as a way to generate Power, which get added to the amount displayed when the spell is cast
-+ `[S]` Gather Power - Artefacts:
-    + Artefacts, new item type listed under 'Spells' (renamed 'Sorcery'?) or 'Possessions'
-    + Artefacts may be selected in the 'Cast Spell' form and contribute to the amount of Thaumic Energy that is collected
++ `[C]` Cast Spell - When a Joker is drawn, the spell is immediately cast a.k.a. **Wild Spell** (fr: Surcharge thaumique)
 + `[M]` Release Power - Prevent releasing of aligned Power (or at least add confirmation dialog)
 + `[C]` Release Power - Show the harmonic type on unaligned power cards
   + Spades / Spiritual (fr: spirituelle)
@@ -30,7 +29,19 @@
 
 + `[C]` Cooperation on spellcasting - implement sopmething specific for this (ROI not great) or just document how to do it with the current version of the system in the Doc
 
-+ `[C]` Button for GM to collect Power to simulate actvity from other Wizards within 15km
++ `[C]` Button for GM to collect Power to simulate actvity from other Wizards within 15km (work-around: do it with a generic character although it will still be visible to players)
+
+### Cards
+
++ `[M🔥]` ensure hand actions are only accessible to Owners, not Observers
+
++ `[C]` Button to 'show players' a hand
+
++ `[C]` Add Reset+Shuffle Deck button on discard piles
+  + Consider skipping the need for discard piles altogether, and instead sending cards played back to their origin decks (= card reset + auto deck shuffle?)
+    + In the book, it says Sorcery cards which are of the wrong Aspect may be put at the bottom of the Sorcery deck.
+    + On the other hand, if GM wants to rmeove cards from the Sorcery deck he won't be able to.
++ `[C]` Replace Fortune/Sorcery discard pile selection system setting with **Automatic creation of discard piles**
 
 ### Other
 
@@ -44,13 +55,6 @@
 + `[M]` reset the character's Fortune/Sorcery hands and delete them when a character is deleted
 
 + `[S]` 'Draw Fortune Card' button, useful in some scenarios (such as when a character loses all health: in an optional rule, drawing a spades card = character dies) or to help with determining purely random outcomes
-
-+ `[C]` Button to share hand content in chat (Sorcery hand may cause a display issue if it has many cards though)
-
-+ `[C]` Replace Fortune/Sorcery discard pile selection system setting with **Automatic creation of discard piles**
-  + Consider skipping the need for discard piles altogether, and instead sending cards played back to their origin decks (= card reset + auto deck shuffle?)
-    + In the book, it says Sorcery cards which are of the wrong Aspect may be put at the bottom of the Sorcery deck.
-    + On the other hand, if GM wants to rmeove cards from the Sorcery deck he won't be able to.
 
 + `[M]` Refine onReady warning display about fortune/sorcery decks/piles. Perform more elaborate checks:
   + onReady, error if deck/pile setting left blank
