@@ -2,7 +2,9 @@
 This system is for playing [Castle Falkenstein](https://rtalsoriangames.com/castle-falkenstien/) on [Foundry Virtual Tabletop](https://foundryvtt.com/).
 
 ## Supported languages
-At this stage, the following languages are supported: English and French.
+At this stage, the following languages are supported:
++ English
++ French
 
 ## Dependencies
 In order to benefit from all features provided by this system, you want to use a Cards UI enhancement module with which the Castle Falkenstein system comes pre-integrated.
@@ -13,7 +15,7 @@ In order to benefit from all features provided by this system, you want to use a
 | [Ready To Use Cards](https://foundryvtt.com/packages/ready-to-use-cards) | ⌛ Not compatible yet   |
 
 ## User guide
-See [USERGUIDE](./USERGUIDE.md)
+See [USERGUIDE](./doc/USERGUIDE.md)
 
 ## Update notes
 See [CHANGELOG](./CHANGELOG.md)

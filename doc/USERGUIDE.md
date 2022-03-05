@@ -1,8 +1,7 @@
 # Castle Falkenstein FoundryVTT system - User Guide
 
 # Pre-requisites
-
-Before you may actually use this system, you need to create some decks and card piles within FoundryVTT:
+The first step to using this system is to make you create create some card decks (see "New Europa-stylized deck" below) and discard piles within FoundryVTT:
 
 |To create             |Type |Player permissions to define                          |
 |:---------------------|:----|:-----------------------------------------------------|
@@ -15,13 +14,15 @@ Once done, go to `Configure Settings > System Settings > Castle Falkenstein` to 
 
 Make sure you shuffle the decks before your players get a chance to draw cards from them also.
 
+(N.B. this pre-requisite may very well be automated in a future version).
+
 ## New Europa-stylized deck
 This system is pre-configured to support the New Europa-stylized deck avaible free-of-charge on [R. Talsorian Games's website](https://rtalsoriangames.com/2020/07/24/falkenstein-friday-the-fortune-deck/).
 
 In order to use it, make sure you download the ZIP file and extract the .jpg images into this folder: `{your FoundryVTT Data/ directory}/cards/RTG-CF-FortuneDeck/`.
 Once done, you may then use the dedicated preset within FoundryVTT:
 
-![](./doc/deck-preset.jpg)
+![](./deck-preset.jpg)
 
 # Character Sheet
 The same character sheet is used for PCs and NPCs.
