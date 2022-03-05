@@ -25,7 +25,7 @@ This system is pre-configured to support the New Europa-stylized deck avaible fr
 In order to use it, make sure you download the ZIP file and extract the .jpg images into this folder: `{your FoundryVTT Data/ directory}/cards/RTG-CF-FortuneDeck/`.
 Once done, you may then use the dedicated preset within FoundryVTT:
 
-![](./images/deck-preset.jpg)
+![](./samples/deck-preset.jpg)
 
 ## Character Sheet
 The same character sheet is used for PCs and NPCs.

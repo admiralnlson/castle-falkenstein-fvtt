@@ -1,30 +1,33 @@
 {
   "name": "castle-falkenstein",
+  "version": "0.2.0",
   "title": "Castle Falkenstein",
   "description": "FoundryVTT system for Castle Falkenstein.",
-  "version": "0.1.1",
   "minimumCoreVersion": "9",
   "compatibleCoreVersion": "9",
-  "author": "admiralnlson",
+  "authors": [ "admiralnlson" ],
   "esmodules": ["system/castle-falkenstein.mjs"],
   "styles": ["system/css/castle-falkenstein.css"],
-  "scripts": [],
   "packs": [],
   "languages": [
     {
       "lang": "en",
       "name": "English",
-      "path": "system/lang/en.json"
+      "path": "lang/en.json"
     },
     {
       "lang": "fr",
       "name": "French",
-      "path": "system/lang/fr.json"
+      "path": "lang/fr.json"
     }
   ],
-  "gridDistance": 5,
-  "gridUnits": "ft",
-  "url": "https://github.com/admiralnlson/castle-falkenstein-foundryvtt",
-  "manifest": "https://raw.githubusercontent.com/admiralnlson/castle-falkenstein-foundryvtt/master/system.json",
-  "download": "https://github.com/admiralnlson/castle-falkenstein-foundryvtt/archive/refs/heads/master.zip"
+  "dependencies": [],
+  "socket": false,
+  "manifest": "https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/latest/download/system.json",
+  "url": "https://github.com/admiralnlson/castle-falkenstein-fvtt",
+  "download": "https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/latest/download/castle-falkenstein.zip",
+  "license": "https://github.com/admiralnlson/castle-falkenstein-fvtt/blob/master/LICENSE",
+  "readme": "https://github.com/admiralnlson/castle-falkenstein-fvtt/blob/master/README.md",
+  "bugs": "https://github.com/admiralnlson/castle-falkenstein-fvtt/issues",
+  "changelog": "https://github.com/admiralnlson/castle-falkenstein-fvtt/releases"
 }
