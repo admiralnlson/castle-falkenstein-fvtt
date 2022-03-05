@@ -1,10 +1,14 @@
+[release-badge]: https://img.shields.io/github/v/release/admiralnlson/castle-falkenstein.svg
+
+
 # Castle Falkenstein system for FoundryVTT
 This system is for playing [Castle Falkenstein](https://rtalsoriangames.com/castle-falkenstien/) on [Foundry Virtual Tabletop](https://foundryvtt.com/).
 
 ## Supported languages
-At this stage, the following languages are supported:
+The system supports localization. But, at this stage, only the following languages are supported:
 + English
 + French
+To submit translation for another language, see Contributions below.
 
 ## Dependencies
 In order to benefit from all features provided by this system, you want to use a Cards UI enhancement module with which the Castle Falkenstein system comes pre-integrated.
@@ -23,15 +27,14 @@ See [CHANGELOG](./CHANGELOG.md)
 ## Planned features
 See [TODO](./TODO.md)
 
-## Bugs & feature requests
+## Bugs, feature requests & contributions
 Please report bugs and request features as [Issues in the project repository](https://github.com/admiralnlson/castle-falkenstein-foundryvtt/issues).
 
-Alternatively, you may also reach me via chat as admiralnlson#2349 on Discord.
+New translations (see [lang/ folder](./lang/) for what is expected) may be submitted as Issues also, or directly as Pull Requests if you're familiar with those.
 
-Do not address issues you're facing with this system to R. Talsorian Games, they would not be in a position to help you.
+I am reachable as admiralnlson#2349 on Discord.
 
-## Contributions 
-Please submit translation files for other languages as [Issues](https://github.com/admiralnlson/castle-falkenstein-foundryvtt/issues) or [Pull Requests](https://github.com/admiralnlson/castle-falkenstein-foundryvtt/pulls). See examples in the [lang/ folder](./lang/)).
+Please do not address issues you're facing with this system to R. Talsorian Games. They would not be in a position to help you.
 
 ## Thanking the author
 If this FoundryVTT system is useful to you and you want to say thanks, you may [leave me a comment or buy me coffee](https://ko-fi.com/admiralnlson).
