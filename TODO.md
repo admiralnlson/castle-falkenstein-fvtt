@@ -8,8 +8,6 @@
 
 ## Evolutions
 
-+ `[M🔥]` ensure hand actions are only accessible to Owners, not Observers
-
 + `[M🔥]` Consider skipping the need for discard piles altogether, and instead sending cards played back to their origin decks (= card reset + auto deck shuffle (on reset or draw?)
 
 + `[S🔥]` Add a **Show Players** button on Actor sheets to avoid FoundryVTT Core Actor/Journal duplication of NPCs

@@ -21,7 +21,13 @@
       "path": "lang/fr.json"
     }
   ],
-  "dependencies": [],
+  "dependencies": [ 
+    {
+      "name": "monarch",
+      "type": "module",
+      "manifest": "https://github.com/zeel01/monarch/releases/latest/download/module.json"
+    }
+  ],
   "socket": false,
   "manifest": "https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/latest/download/system.json",
   "url": "https://github.com/admiralnlson/castle-falkenstein-fvtt",

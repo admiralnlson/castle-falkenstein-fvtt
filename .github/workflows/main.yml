@@ -29,6 +29,7 @@ jobs:
         files: 'system.json'
       env:
         version: ${{steps.get_version.outputs.version-without-v}}
+        manifest: https://github.com/${{github.repository}}/releases/latest/download/system.json
         download: https://github.com/${{github.repository}}/releases/download/${{steps.get_version.outputs.version}}/castle-falkenstein.zip
 
     # Create a zip file with all files required by the system to add to the release
