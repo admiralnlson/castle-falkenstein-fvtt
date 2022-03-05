@@ -33,7 +33,7 @@ jobs:
         download: https://github.com/${{github.repository}}/releases/download/${{steps.get_version.outputs.version}}/castle-falkenstein.zip
 
     # Create a zip file with all files required by the system to add to the release
-    - run: zip -r ./castle-falkenstein.zip system.json template.json system/ lang/
+    - run: zip -r ./castle-falkenstein.zip system.json template.json LICENSE system/ lang/
 
     # Create a release for this specific version
     - name: Update Release with Files
