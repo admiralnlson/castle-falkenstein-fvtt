@@ -10,13 +10,13 @@ The system supports localization. But, at this stage, only the following languag
 + English
 + French
 
-To submit translation for another language, see Contributions below.
+To submit the translation for another language, see Contributions below.
 
 ## Dependencies
 In order to benefit from all features provided by this system, you want to use a Cards UI enhancement module with which the Castle Falkenstein system comes pre-integrated.
 
 | Card UI enhancement module                                               | Integration level       |
-|--------------------------------------------------------------------------|-------------------------|
+| ------------------------------------------------------------------------ | ----------------------- |
 | [🦋 Monarch](https://foundryvtt.com/packages/monarch)                    | ✅ Fully integrated    |
 | [Ready To Use Cards](https://foundryvtt.com/packages/ready-to-use-cards) | ⌛ Not compatible yet   |
 
