@@ -29,7 +29,7 @@ jobs:
         download: https://github.com/${{github.repository}}/releases/download/${{steps.get_version.outputs.version}}/castle-falkenstein.zip
 
     - name: Create minimal system zip file
-      run: zip -r ./castle-falkenstein.zip system.json template.json LICENSE system/ lang/
+      run: zip -r ./castle-falkenstein.zip system.json template.json LICENSE src/ lang/
 
     - name:  Create release
       id: create_version_release

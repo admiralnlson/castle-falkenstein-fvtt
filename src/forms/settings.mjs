@@ -7,7 +7,7 @@ export default class CastleFalkensteinSettings extends FormApplication {
 		return mergeObject(super.defaultOptions, {
 			id: "castle-falkenstein-settings",
 			title: game.i18n.localize("castle-falkenstein.settings.title"),
-			template: "./systems/castle-falkenstein/system/forms/settings.hbs",
+			template: "./systems/castle-falkenstein/src/forms/settings.hbs",
 			classes: ["castle-falkenstein-settings", "sheet"],
 			width: 500,
 			height: "auto",

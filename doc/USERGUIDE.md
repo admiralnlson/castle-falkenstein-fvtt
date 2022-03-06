@@ -1,6 +1,6 @@
 # Castle Falkenstein FoundryVTT system - User Guide
 
-# Pre-requisites
+# Setup required from the Host
 The first step to using this system is to make you create create some card decks (see "New Europa-stylized deck" below) and discard piles within FoundryVTT:
 
 |To create             |Type |Player permissions to define                          |

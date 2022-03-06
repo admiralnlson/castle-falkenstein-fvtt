@@ -8,7 +8,7 @@ export default class CastleFalkensteinDefineSpell extends FormApplication {
     return mergeObject(super.defaultOptions, {
       id: "castle-falkenstein-define-spell",
       title: game.i18n.localize("castle-falkenstein.spell.define"),
-      template: "./systems/castle-falkenstein/system/forms/define-spell.hbs",
+      template: "./systems/castle-falkenstein/src/forms/define-spell.hbs",
       classes: ["castle-falkenstein castle-falkenstein-define-spell", "sheet"],
       width: 400,
       height: "auto",

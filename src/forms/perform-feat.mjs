@@ -8,7 +8,7 @@ export default class CastleFalkensteinPerformFeat extends FormApplication {
     return mergeObject(super.defaultOptions, {
       id: "castle-falkenstein-perform-feat",
       title: game.i18n.localize("castle-falkenstein.feat.perform"),
-      template: "./systems/castle-falkenstein/system/forms/perform-feat.hbs",
+      template: "./systems/castle-falkenstein/src/forms/perform-feat.hbs",
       classes: ["castle-falkenstein castle-falkenstein-perform-feat", "sheet"],
       width: 300,
       height: "auto",

@@ -169,7 +169,7 @@ export default class CastleFalkenstein {
     CONFIG.Cards.presets.castleFalkensteinDeck = {
       type: "deck",
       label: "castle-falkenstein.system",
-      src: "systems/castle-falkenstein/system/cards/deck-preset.json"
+      src: "systems/castle-falkenstein/src/cards/deck-preset.json"
     };
   }
 
@@ -243,10 +243,10 @@ export default class CastleFalkenstein {
   static async preLoadTemplates() {
     return loadTemplates([
       // Actor partials
-      "systems/castle-falkenstein/system/documents/actor-abilities.hbs",
-      "systems/castle-falkenstein/system/documents/actor-possessions.hbs",
-      "systems/castle-falkenstein/system/documents/actor-spells.hbs",
-      "systems/castle-falkenstein/system/documents/actor-weapons.hbs"
+      "systems/castle-falkenstein/src/documents/actor-abilities.hbs",
+      "systems/castle-falkenstein/src/documents/actor-possessions.hbs",
+      "systems/castle-falkenstein/src/documents/actor-spells.hbs",
+      "systems/castle-falkenstein/src/documents/actor-weapons.hbs"
     ]);
   }
   
