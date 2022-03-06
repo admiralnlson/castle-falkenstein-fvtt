@@ -1,5 +1,6 @@
-[release-badge]: https://img.shields.io/github/v/release/admiralnlson/castle-falkenstein-fvtt.svg
-
+[![Latest release](https://img.shields.io/github/v/release/admiralnlson/castle-falkenstein-fvtt?label=Latest%20release)](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/latest)
+![Supported Foundry Versions](https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://raw.githubusercontent.com/admiralnlson/castle-falkenstein-fvtt/master/system.json)
+![downloads](https://img.shields.io/github/downloads/admiralnlson/castle-falkenstein-fvtt/latest/castle-falkenstein.zip?label=Downloads(latest%20release))
 
 # Castle Falkenstein system for FoundryVTT
 This system is for playing [Castle Falkenstein](https://rtalsoriangames.com/castle-falkenstien/) on [Foundry Virtual Tabletop](https://foundryvtt.com/).
