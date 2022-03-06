@@ -46,6 +46,6 @@ jobs:
         tag: ${{ steps.changelog_reader.outputs.version }}
         body: ${{ steps.changelog_reader.outputs.changes }}
         artifacts: './system.json, ./castle-falkenstein.zip'
-        draft: true
+        draft: false
         allowUpdates: true
         token: ${{ secrets.GITHUB_TOKEN }}
