@@ -9,6 +9,7 @@ This system is for playing [Castle Falkenstein](https://rtalsoriangames.com/cast
 The system supports localization. But, at this stage, only the following languages are supported:
 + English
 + French
+
 To submit translation for another language, see Contributions below.
 
 ## Dependencies
@@ -22,10 +23,10 @@ In order to benefit from all features provided by this system, you want to use a
 ## User guide
 See [USERGUIDE](./doc/USERGUIDE.md)
 
-## Update notes
+## Release notes
 See [CHANGELOG](./CHANGELOG.md)
 
-## Planned features
+## Planned evolutions
 See [TODO](./TODO.md)
 
 ## Bugs, feature requests & contributions
@@ -36,6 +37,3 @@ New translations (see [lang/ folder](./lang/) for what is expected) may be submi
 I am reachable as admiralnlson#2349 on Discord.
 
 Please do not address issues you're facing with this system to R. Talsorian Games. They would not be in a position to help you.
-
-## Thanking the author
-If this FoundryVTT system is useful to you and you want to say thanks, you may [leave me a comment or buy me coffee](https://ko-fi.com/admiralnlson).
