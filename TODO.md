@@ -1,14 +1,17 @@
 # TODO
 
 ## Legend
-
 + MoSCoW: `[M]`ust, `[S]`hould, `[C]`ould, `[W]`on't
 + `[🔥]` Personal project maintainer GM needs
 + RTG = R. Talsorian Games
 
 ## Evolutions
 
-+ `[M🔥]` Consider skipping the need for discard piles altogether, and instead sending cards played back to their origin decks (= card reset + auto deck shuffle (on reset or draw?)
++ `[C🔥]` Simplify shuffling of discarded cards back into Decks. Either:
+  + remove discard piles altogether, and send cards played directly back to the deck they belong to, or
+  + have discard piles auto-reset on draw, with a notification message in chat
+    + `[C]` Consider replacing Fortune/Sorcery discard pile selection system setting with **Automatic creation of discard piles** (in the same folder as their respective Decks)
+
 
 + `[S🔥]` Add a **Show Players** button on Actor sheets to avoid FoundryVTT Core Actor/Journal duplication of NPCs
 
@@ -35,10 +38,6 @@
 + `[C]` Button for GM to collect Power to simulate actvity from other Wizards within 15km (work-around: do it with a generic character although it will still be visible to players)
 
 + `[C]` Button to 'show players' a hand
-
-+ `[C]` Add Reset+Shuffle Deck button on discard piles
-  
-+ `[C]` Replace Fortune/Sorcery discard pile selection system setting with **Automatic creation of discard piles**
 
 + `[S]` 'Draw Fortune Card' button, useful in some scenarios (such as when a character loses all health: in an optional rule, drawing a spades card = character dies) or to help with determining purely random outcomes
 
