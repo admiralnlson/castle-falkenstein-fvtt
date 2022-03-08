@@ -7,6 +7,17 @@
 
 ## Evolutions
 
++ `[C]` Consider an i18n of packs which does not require Babele e.g. via something like:
+```
+Hooks.on("renderCompendiumDirectory", (app, html) => {
+    game.packs.forEach(p => {
+        if (!p.metadata.name.includes(game.i18n.lang)) {
+            html[0].querySelector(`[data-pack='${p.metadata.package}.${p.metadata.name}']`).remove();
+        }
+    });
+});
+```
+
 + `[C🔥]` Simplify shuffling of discarded cards back into Decks. Either:
   + remove discard piles altogether, and send cards played directly back to the deck they belong to, or
   + have discard piles auto-reset on draw, with a notification message in chat
@@ -86,16 +97,18 @@
 
 + `[C]` add some https://foundryvtt.wiki/en/development/guides/repository-bling
 
++ Find better icons for Abilities and Spells (or remove the need for them?)
+
 + Ability data packs (keeping their description to a minimum as per RTG Homebrew Content policy)
-  + `[M]` English - from Corebook
-  + `[M]` French - from Corebook (exists already but needs to be packed)
+  + `[✓]` English - from Corebook
+  + `[✓]` French - from Corebook
   + `[S]` English - from sourcebooks
   + `[S]` French - from sourcebooks
-  + `[M]` Shortcut to import Abilities from a data pack (must not introduce duplicates, but may fix incorrect suit assignments)
+  + `[M]` Shortcut to import all Abilities from a data pack (must not introduce duplicates, but may fix incorrect suit assignments)
 
 + Lorebook data packs (keeping their description to a minimum as per RTG Homebrew Content policy)
   + `[M]` English - from Corebook
-  + `[M]` French - from Corebook (exists already but needs to be packed)
+  + `[M]` French - from Corebook
   + `[S]` English - from sourcebooks
   + `[S]` French - from sourcebooks
   + `[M]` Shortcut to import Spells from a data pack (must not introduce duplicates, but may fix incorrect suit assignments)

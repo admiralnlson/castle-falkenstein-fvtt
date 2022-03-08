@@ -8,8 +8,8 @@ const clean = require("gulp-clean");
 const fs = require("fs");
 const path = require("path");
 
-const PACKS_SRC = "./packs";
-const PACKS_DST = "../build/packs";
+const PACKS_SRC = ".";
+const PACKS_DST = "../../build/packs";
 
 /* ----------------------------------------- */
 /*  Compile Compendia

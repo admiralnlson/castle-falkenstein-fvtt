@@ -138,14 +138,14 @@ data:
   level: AV
   suit: clubs
 ---
-name: Helmsmanship
+name: Tinkering
 type: ability
 img:  icons/svg/item-bag.svg
 data:
   level: AV
   suit: diamonds
 ---
-name: Tinkering
+name: Helmsmanship
 type: ability
 img:  icons/svg/item-bag.svg
 data:

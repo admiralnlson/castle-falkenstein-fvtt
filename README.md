@@ -6,7 +6,7 @@
 > DISCLAIMER: This [Castle Falkenstein system](https://rtalsoriangames.com/castle-falkenstien/) for [Foundry VTT](https://foundryvtt.com/) is unofficial content provided under the [Homebrew Content Policy of R. Talsorian Games](https://rtalsoriangames.com/homebrew-content-policy/) and is not approved or endorsed by RTG. This content references materials that are the property of R. Talsorian Games and its licensees.
 
 > <span style="color: orange">⚠️ This system is still in Beta phase, and made public mainly to collect feedback from its future users.\
-Until v1.0 (target date: mid-April'22), it is not recommended to use this Beta version for live games and only very limited support will be provided in case of breaking changes introduced between two v0.x versions.</span>
+Until v1.0 (target date: mid-April'22), it is not recommended to use this Beta version for live games and only limited support will be provided in case of breaking changes.</span>
 
 ## Supported languages
 The system supports localization. But, at this stage, only the following languages are supported:
