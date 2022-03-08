@@ -39,7 +39,7 @@ export default class CastleFalkensteinMonarchConfig {
       },
       onclick: async (event, app, hand) =>  {
         try {
-          await hand.draw(CastleFalkenstein.fortuneDeck, max(4 - hand.cards.size,0), {chatNotification: false});
+          await hand.draw(CastleFalkenstein.fortuneDeck, Math.max(4 - hand.cards.size,0), {chatNotification: false});
         } catch (e) {
           ui.notifications.error(e);
           return;
