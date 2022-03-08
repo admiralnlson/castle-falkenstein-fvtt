@@ -171,6 +171,10 @@ export default class CastleFalkenstein {
       label: "castle-falkenstein.system",
       src: "systems/castle-falkenstein/src/cards/deck-preset.json"
     };
+
+    if(typeof Babele !== 'undefined') {
+      Babele.get().setSystemTranslationsDir("lang/babele");
+    }
   }
 
   static async onReady() {

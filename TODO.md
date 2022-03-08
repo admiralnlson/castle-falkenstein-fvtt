@@ -2,7 +2,7 @@
 
 ## Legend
 + MoSCoW: `[M]`ust, `[S]`hould, `[C]`ould, `[W]`on't
-+ `[🔥]` Personal project maintainer GM needs
++ `[🔥]` Project maintainer (admiralnlson)'s own GM needs
 + RTG = R. Talsorian Games
 
 ## Evolutions
@@ -44,9 +44,11 @@
 + `[M]` Add an error toast and ensure proper error mgt when Fortune/Discard Deck/Pile have not be defined in system settings or have been deleted since.
   + Consider upgrading the permissions on Fortune/Sorcery decks and discard piles automatically (or at least ask the GM if they want to)
 
-+ `[M]` i18n for the CF deck preset
-+ `[M]` Ask RTG if OK to bundle the deck directly within the system
-  + if yes, then remove  documentation about how system users need to download the images and put them in a specific folder
++ `[M]` CF deck preset - i18n
++ `[M]` CF deck preset - English l10n
++ `[M]` CF deck preset - French l10n
++ `[M]` (Pending RTG confirmation) bundle the deck directly within the system
+  + remove documentation about how system users need to download the images and put them in a specific folder
 
 + `[M]` Prevent error "User <playername> lacks permission to create new Cards", by either
   + creating hands for player-owned characters after certain (Assitant-)GM actions (e.g. listening to events where a player made the owner of a character)
@@ -64,7 +66,7 @@
 
 + `[S]` Weapons list (under 'Possessions' or dedicated tab), dedicated sheet and chat message
 
-+ `[S]` Enhance the general visual appeal, possibly adding the Castle Falkenstein logo somewhere in the character sheet (with RTG's permission)
++ `[S]` add Castle Falkenstein logo somewhere in the character sheet
 
 + `[M]` listen to permission changes on characters to adapt permissions on the hand accordingly
 + `[M]` reset the character's Fortune/Sorcery hands and delete them when a character is deleted
@@ -84,27 +86,30 @@
 
 + `[C]` add some https://foundryvtt.wiki/en/development/guides/repository-bling
 
-+ If permitted by RTG, one data pack per Lorebook listed in CF corebook
-  + `[M]` English
-  + `[M]` French (exists already but kept private for now)
-+ If permitted by RTG, One data pack per Lorebook listed in sourcebooks
-  + `[C]` English
-  + `[C]` French
-+ `[M]` Shortcut to load Spells from a data pack (must not introduce duplicates, but may fix incorrect suit assignments)
++ Ability data packs (keeping their description to a minimum as per RTG Homebrew Content policy)
+  + `[M]` English - from Corebook
+  + `[M]` French - from Corebook (exists already but needs to be packed)
+  + `[S]` English - from sourcebooks
+  + `[S]` French - from sourcebooks
+  + `[M]` Shortcut to import Abilities from a data pack (must not introduce duplicates, but may fix incorrect suit assignments)
 
-+ If permitted by RTG, Data pack for Abilities listed in CF corebook
-  + `[M]` English
-  + `[M]` French (exists already but kept private for now)
-+ If permitted by RTG, Data pack for Abilities listed in CF sourcebooks
-  + `[C]` English
-  + `[C]` French
-+ `[M]` Shortcut to load Abilities from a data pack (must not introduce duplicates, but may fix incorrect suit assignments)
++ Lorebook data packs (keeping their description to a minimum as per RTG Homebrew Content policy)
+  + `[M]` English - from Corebook
+  + `[M]` French - from Corebook (exists already but needs to be packed)
+  + `[S]` English - from sourcebooks
+  + `[S]` French - from sourcebooks
+  + `[M]` Shortcut to import Spells from a data pack (must not introduce duplicates, but may fix incorrect suit assignments)
+
++ `[C]` Item data packs (keeping their description to a minimum as per RTG Homebrew Content policy)
+  + English - from Corebook
+  + French - from Corebook
+  + English - from sourcebooks
+  + French - from sourcebooks
+  + Shortcut to import Items from a data pack (must not introduce duplicates, but may fix incorrect suit assignments)
 
 + `[S]` Support official game variation which gives half-value to cards from an another suit
 
 + `[S]` Fortune hand for the Host, which NPCs (PCs not owned by a player) use
-
-+ `[C]` Monarch Deck & Pile controls to reset the pile and shuffle the deck in one go.
 
 + Possessions:
   + `[C]` 'on me' / 'location' property

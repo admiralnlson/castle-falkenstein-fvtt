@@ -1,0 +1,27 @@
+{
+  "label": "Talents",
+  "entries": {
+    "Athletics": { "name": "Athlétisme" },
+    "Charisma": { "name": "Charisme" },
+    "Comeliness": { "name": "Apparence" },
+    "Connections": { "name": "Relations" },
+    "Courage": { "name": "Courage" },
+    "Education": { "name": "Instruction" },
+    "Etherealness": { "name": "Éthéralité" },
+    "Exchequer": { "name": "Finances" },
+    "Fencing": { "name": "Escrime" },
+    "Fisticuffs": { "name": "Pugilat" },
+    "Glamour": { "name": "Charme" },
+    "Kindred Powers": { "name": "Pouvoirs de l'espèce" },
+    "Marksmanship": { "name": "Tir" },
+    "Perception": { "name": "Perception" },
+    "Performance": { "name": "Interprétation" },
+    "Physician": { "name": "Médecine" },
+    "Physique": { "name": "Physique" },
+    "Social Graces": { "name": "Aisance sociale" },
+    "Sorcery": { "name": "Sorcellerie" },
+    "Stealth": { "name": "Discrétion" },
+    "Helmsmanship": { "name": "Pilotage" },
+    "Tinkering": { "name": "Bricolage" }
+  }
+}

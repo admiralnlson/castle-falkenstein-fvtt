@@ -8,7 +8,14 @@
   "authors": [ "admiralnlson" ],
   "esmodules": ["src/castle-falkenstein.mjs"],
   "styles": ["src/css/castle-falkenstein.css"],
-  "packs": [],
+  "packs": [
+    {
+      "name": "abilities",
+      "label": "Abilities",
+      "path": "build/packs/abilities.db",
+      "type": "Item"
+    }
+  ],
   "languages": [
     {
       "lang": "en",

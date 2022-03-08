@@ -1,0 +1,22 @@
+{"name":"Athletics","type":"ability","img":"icons/svg/item-bag.svg","data":{"level":"AV","suit":"clubs"},"_id":"RouvwfLDLEVtrkLW"}
+{"name":"Charisma","type":"ability","img":"icons/svg/item-bag.svg","data":{"level":"AV","suit":"hearts"},"_id":"t3wMDhvcUJjJBVkv"}
+{"name":"Comeliness","type":"ability","img":"icons/svg/item-bag.svg","data":{"level":"AV","suit":"hearts"},"_id":"MYgVUMJX6tVjYJsO"}
+{"name":"Connections","type":"ability","img":"icons/svg/item-bag.svg","data":{"level":"AV","suit":"spades"},"_id":"4ZqGtqpWcHOOGuSV"}
+{"name":"Courage","type":"ability","img":"icons/svg/item-bag.svg","data":{"level":"AV","suit":"hearts"},"_id":"CU1kOnU0T1jMIkcc"}
+{"name":"Education","type":"ability","img":"icons/svg/item-bag.svg","data":{"level":"AV","suit":"diamonds"},"_id":"J1u6JAiaxOmCD3op"}
+{"name":"Etherealness","type":"ability","img":"icons/svg/item-bag.svg","data":{"level":"AV","suit":"spades"},"_id":"QDRrxXholNQ7y4DP"}
+{"name":"Exchequer","type":"ability","img":"icons/svg/item-bag.svg","data":{"level":"AV","suit":"spades"},"_id":"3cLDUhFdzDaCluNm"}
+{"name":"Fencing","type":"ability","img":"icons/svg/item-bag.svg","data":{"level":"AV","suit":"clubs"},"_id":"fN4LkbbshNcjuJVQ"}
+{"name":"Fisticuffs","type":"ability","img":"icons/svg/item-bag.svg","data":{"level":"AV","suit":"clubs"},"_id":"OfV9pIEhtPNhD4nL"}
+{"name":"Glamour","type":"ability","img":"icons/svg/item-bag.svg","data":{"level":"AV","suit":"hearts"},"_id":"o5yLvyyyPqHJ3NRF"}
+{"name":"Kindred Powers","type":"ability","img":"icons/svg/item-bag.svg","data":{"level":"AV","suit":"clubs"},"_id":"ZrSt9BkTvIX6qPcw"}
+{"name":"Marksmanship","type":"ability","img":"icons/svg/item-bag.svg","data":{"level":"AV","suit":"clubs"},"_id":"xfXNWgHWm7tR1xiJ"}
+{"name":"Perception","type":"ability","img":"icons/svg/item-bag.svg","data":{"level":"AV","suit":"diamonds"},"_id":"VjTZlKx525dUH1da"}
+{"name":"Performance","type":"ability","img":"icons/svg/item-bag.svg","data":{"level":"AV","suit":"hearts"},"_id":"mddfnES9mLIkN4Tu"}
+{"name":"Physician","type":"ability","img":"icons/svg/item-bag.svg","data":{"level":"AV","suit":"diamonds"},"_id":"FzJx4QjJ6kfVz9XS"}
+{"name":"Physique","type":"ability","img":"icons/svg/item-bag.svg","data":{"level":"AV","suit":"clubs"},"_id":"x7uvMJzAtaAnZEGU"}
+{"name":"Social Graces","type":"ability","img":"icons/svg/item-bag.svg","data":{"level":"AV","suit":"spades"},"_id":"lQNV0bpPWGIYOPxW"}
+{"name":"Sorcery","type":"ability","img":"icons/svg/item-bag.svg","data":{"level":"AV","suit":"diamonds"},"_id":"xFbLtsWC7Uf8bgLC"}
+{"name":"Stealth","type":"ability","img":"icons/svg/item-bag.svg","data":{"level":"AV","suit":"clubs"},"_id":"uMhnkAtY3DcG896a"}
+{"name":"Helmsmanship","type":"ability","img":"icons/svg/item-bag.svg","data":{"level":"AV","suit":"diamonds"},"_id":"3rUAu50ogZ69LqJm"}
+{"name":"Tinkering","type":"ability","img":"icons/svg/item-bag.svg","data":{"level":"AV","suit":"diamonds"},"_id":"7XnaBLsTSH5Dy6vq"}
