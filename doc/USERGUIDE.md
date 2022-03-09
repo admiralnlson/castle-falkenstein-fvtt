@@ -7,7 +7,7 @@ The first step to using this system is for the GM to create Fortune and Sorcery 
 
 This system natively supports the creation of decks based on [RTG's official Fortune Deck visuals](https://rtalsoriangames.com/2020/07/24/falkenstein-friday-the-fortune-deck/).
 
-| <img src="../src/cards/01.png" alt="Ace of Hearts" width="200"/> | <img src="../src/cards/13.png" alt="King of Hearts" width="200"/> | <img src="../src/cards/54.png" alt="Joker" width="200"/> |
+<img src="../src/cards/01.png" alt="Ace of Hearts" width="200"/> <img src="../src/cards/13.png" alt="King of Hearts" width="200"/> <img src="../src/cards/54.png" alt="Joker" width="200"/>
 
 To use these visuals, make sure to select the dedicated preset within FoundryVTT:
 
