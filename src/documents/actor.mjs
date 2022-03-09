@@ -40,15 +40,18 @@ export class CastleFalkensteinActor extends Actor {
         }
       });
     }
-  }
 
-  computeNewHandPermissions() {
-    // Card hands created for an actor have permissions derived from those on the actor
-    //  - None => None
-    //  - Limited => None (since with Limited they would just show up in the sidebar cards tab but remain inaccessible)
-    //  - Observer => Observer
-    //  - Owner => Owner
-    return Object.fromEntries(Object.entries(this.data.permission).filter(([key, value]) => value != CONST.ENTITY_PERMISSIONS.LIMITED));
+    // if permissions on the character changed, update the permissions of their Fortune/Sorcery hands also (if they exist)
+    if (data.permission) {
+      [ "fortune", "sorcery" ].forEach(async (handType) => {
+        if (this.data.data.hands[handType] != "") {
+          let hand = game.cards.get(this.data.data.hands[handType]);
+          await hand?.update({
+            permission: this.data.permission
+          });
+        }
+      });
+    }
   }
 
   async createHand(handType) {
@@ -57,7 +60,7 @@ export class CastleFalkensteinActor extends Actor {
       name: this.computeHandName(handType),
       displayCount: true,
       folder: null, // the GM may freely moved the hand to whatever folder they wish afterwards. This probably does not deserve a system Setting.
-      permission: this.computeNewHandPermissions()
+      permission: this.data.permission // hands inherit the permissions from the actor they belong to
     }];
 
     const stacks = await Cards.createDocuments(stacksConfig);
