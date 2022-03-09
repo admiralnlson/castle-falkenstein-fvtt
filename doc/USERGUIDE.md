@@ -13,12 +13,12 @@ To use these visuals, make sure to select the dedicated preset within FoundryVTT
 
 ![](./deck-preset.jpg)
 
-|GM must create a      |of type | which has player permissions                         |
-| :------------------- | :----- | :--------------------------------------------------- |
-| Fortune Deck         |Deck    | Limited                                              |
-| Fortune discard pile |Pile    | Observer                                             |
-| Fortune Deck         |Deck    | Limited (relevant for Sorcerer/Dragon players only)  |
-| Sorcery discard pile |Pile    | Observer (relevant for Sorcerer/Dragon players only) |
+|The Host must create a |of type | which has player permissions                         |
+| :-------------------- | :----- | :--------------------------------------------------- |
+| Fortune Deck          |Deck    | Limited                                              |
+| Fortune discard pile  |Pile    | Observer                                             |
+| Fortune Deck          |Deck    | Limited (relevant for Sorcerer/Dragon players only)  |
+| Sorcery discard pile  |Pile    | Observer (relevant for Sorcerer/Dragon players only) |
 
 Once done, go to `Configure Settings > System Settings > Castle Falkenstein` to register these 4 deck/piles into the Castle Falkenstein system.
 
