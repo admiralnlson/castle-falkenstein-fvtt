@@ -1,8 +1,8 @@
 {
-  "name": "Fortune Deck",
+  "name": "Castle Falkenstein Deck",
   "type": "deck",
-  "description": "Castle Falkenstein Fortune Deck",
-  "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-SquareBack.webp",
+  "description": "Castle Falkenstein Deck",
+  "img": "systems/castle-falkenstein/src/cards/back-square.png",
   "data": {},
   "cards": [
     {
@@ -11,7 +11,7 @@
         {
           "name": "2 of Hearts",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_02.jpg"
+          "img": "systems/castle-falkenstein/src/cards/02.png"
         }
       ],
       "width": null,
@@ -31,7 +31,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -40,7 +40,7 @@
         {
           "name": "3 of Hearts",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_03.jpg"
+          "img": "systems/castle-falkenstein/src/cards/03.png"
         }
       ],
       "width": null,
@@ -60,7 +60,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -69,7 +69,7 @@
         {
           "name": "4 of Hearts",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_04.jpg"
+          "img": "systems/castle-falkenstein/src/cards/04.png"
         }
       ],
       "width": null,
@@ -89,7 +89,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -98,7 +98,7 @@
         {
           "name": "5 of Hearts",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_05.jpg"
+          "img": "systems/castle-falkenstein/src/cards/05.png"
         }
       ],
       "width": null,
@@ -118,7 +118,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -127,7 +127,7 @@
         {
           "name": "6 of Hearts",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_06.jpg"
+          "img": "systems/castle-falkenstein/src/cards/06.png"
         }
       ],
       "width": null,
@@ -147,7 +147,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -156,7 +156,7 @@
         {
           "name": "7 of Hearts",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_07.jpg"
+          "img": "systems/castle-falkenstein/src/cards/07.png"
         }
       ],
       "width": null,
@@ -176,7 +176,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -185,7 +185,7 @@
         {
           "name": "8 of Hearts",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_08.jpg"
+          "img": "systems/castle-falkenstein/src/cards/08.png"
         }
       ],
       "width": null,
@@ -205,7 +205,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -214,7 +214,7 @@
         {
           "name": "9 of Hearts",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_09.jpg"
+          "img": "systems/castle-falkenstein/src/cards/09.png"
         }
       ],
       "width": null,
@@ -234,7 +234,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -243,7 +243,7 @@
         {
           "name": "10 of Hearts",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_10.jpg"
+          "img": "systems/castle-falkenstein/src/cards/10.png"
         }
       ],
       "width": null,
@@ -263,7 +263,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -272,7 +272,7 @@
         {
           "name": "Jack of Hearts",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_11.jpg"
+          "img": "systems/castle-falkenstein/src/cards/11.png"
         }
       ],
       "width": null,
@@ -292,7 +292,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -301,7 +301,7 @@
         {
           "name": "Queen of Hearts",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_12.jpg"
+          "img": "systems/castle-falkenstein/src/cards/12.png"
         }
       ],
       "width": null,
@@ -321,7 +321,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -330,7 +330,7 @@
         {
           "name": "King of Hearts",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_13.jpg"
+          "img": "systems/castle-falkenstein/src/cards/13.png"
         }
       ],
       "width": null,
@@ -350,7 +350,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -359,7 +359,7 @@
         {
           "name": "Ace of Hearts",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_01.jpg"
+          "img": "systems/castle-falkenstein/src/cards/01.png"
         }
       ],
       "width": null,
@@ -379,7 +379,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -388,7 +388,7 @@
         {
           "name": "2 of Diamonds",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_15.jpg"
+          "img": "systems/castle-falkenstein/src/cards/15.png"
         }
       ],
       "width": null,
@@ -408,7 +408,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -417,7 +417,7 @@
         {
           "name": "3 of Diamonds",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_16.jpg"
+          "img": "systems/castle-falkenstein/src/cards/16.png"
         }
       ],
       "width": null,
@@ -437,7 +437,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -446,7 +446,7 @@
         {
           "name": "4 of Diamonds",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_17.jpg"
+          "img": "systems/castle-falkenstein/src/cards/17.png"
         }
       ],
       "width": null,
@@ -466,7 +466,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -475,7 +475,7 @@
         {
           "name": "5 of Diamonds",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_18.jpg"
+          "img": "systems/castle-falkenstein/src/cards/18.png"
         }
       ],
       "width": null,
@@ -495,7 +495,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -504,7 +504,7 @@
         {
           "name": "6 of Diamonds",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_19.jpg"
+          "img": "systems/castle-falkenstein/src/cards/19.png"
         }
       ],
       "width": null,
@@ -524,7 +524,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -533,7 +533,7 @@
         {
           "name": "7 of Diamonds",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_20.jpg"
+          "img": "systems/castle-falkenstein/src/cards/20.png"
         }
       ],
       "width": null,
@@ -553,7 +553,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -562,7 +562,7 @@
         {
           "name": "8 of Diamonds",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_21.jpg"
+          "img": "systems/castle-falkenstein/src/cards/21.png"
         }
       ],
       "width": null,
@@ -582,7 +582,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -591,7 +591,7 @@
         {
           "name": "9 of Diamonds",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_22.jpg"
+          "img": "systems/castle-falkenstein/src/cards/22.png"
         }
       ],
       "width": null,
@@ -611,7 +611,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -620,7 +620,7 @@
         {
           "name": "10 of Diamonds",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_23.jpg"
+          "img": "systems/castle-falkenstein/src/cards/23.png"
         }
       ],
       "width": null,
@@ -640,7 +640,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -649,7 +649,7 @@
         {
           "name": "Jack of Diamonds",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_24.jpg"
+          "img": "systems/castle-falkenstein/src/cards/24.png"
         }
       ],
       "width": null,
@@ -669,7 +669,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -678,7 +678,7 @@
         {
           "name": "Queen of Diamonds",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_25.jpg"
+          "img": "systems/castle-falkenstein/src/cards/25.png"
         }
       ],
       "width": null,
@@ -698,7 +698,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -707,7 +707,7 @@
         {
           "name": "King of Diamonds",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_26.jpg"
+          "img": "systems/castle-falkenstein/src/cards/26.png"
         }
       ],
       "width": null,
@@ -727,7 +727,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -736,7 +736,7 @@
         {
           "name": "Ace of Diamonds",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_14.jpg"
+          "img": "systems/castle-falkenstein/src/cards/14.png"
         }
       ],
       "width": null,
@@ -756,7 +756,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -765,7 +765,7 @@
         {
           "name": "2 of Spades",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_28.jpg"
+          "img": "systems/castle-falkenstein/src/cards/28.png"
         }
       ],
       "width": null,
@@ -785,7 +785,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -794,7 +794,7 @@
         {
           "name": "3 of Spades",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_29.jpg"
+          "img": "systems/castle-falkenstein/src/cards/29.png"
         }
       ],
       "width": null,
@@ -814,7 +814,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -823,7 +823,7 @@
         {
           "name": "4 of Spades",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_30.jpg"
+          "img": "systems/castle-falkenstein/src/cards/30.png"
         }
       ],
       "width": null,
@@ -843,7 +843,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -852,7 +852,7 @@
         {
           "name": "5 of Spades",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_31.jpg"
+          "img": "systems/castle-falkenstein/src/cards/31.png"
         }
       ],
       "width": null,
@@ -872,7 +872,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -881,7 +881,7 @@
         {
           "name": "6 of Spades",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_32.jpg"
+          "img": "systems/castle-falkenstein/src/cards/32.png"
         }
       ],
       "width": null,
@@ -901,7 +901,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -910,7 +910,7 @@
         {
           "name": "7 of Spades",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_33.jpg"
+          "img": "systems/castle-falkenstein/src/cards/33.png"
         }
       ],
       "width": null,
@@ -930,7 +930,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -939,7 +939,7 @@
         {
           "name": "8 of Spades",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_34.jpg"
+          "img": "systems/castle-falkenstein/src/cards/34.png"
         }
       ],
       "width": null,
@@ -959,7 +959,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -968,7 +968,7 @@
         {
           "name": "9 of Spades",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_35.jpg"
+          "img": "systems/castle-falkenstein/src/cards/35.png"
         }
       ],
       "width": null,
@@ -988,7 +988,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -997,7 +997,7 @@
         {
           "name": "10 of Spades",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_36.jpg"
+          "img": "systems/castle-falkenstein/src/cards/36.png"
         }
       ],
       "width": null,
@@ -1017,7 +1017,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -1026,7 +1026,7 @@
         {
           "name": "Jack of Spades",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_37.jpg"
+          "img": "systems/castle-falkenstein/src/cards/37.png"
         }
       ],
       "width": null,
@@ -1046,7 +1046,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -1055,7 +1055,7 @@
         {
           "name": "Queen of Spades",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_38.jpg"
+          "img": "systems/castle-falkenstein/src/cards/38.png"
         }
       ],
       "width": null,
@@ -1075,7 +1075,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -1084,7 +1084,7 @@
         {
           "name": "King of Spades",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_39.jpg"
+          "img": "systems/castle-falkenstein/src/cards/39.png"
         }
       ],
       "width": null,
@@ -1104,7 +1104,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -1113,7 +1113,7 @@
         {
           "name": "Ace of Spades",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_27.jpg"
+          "img": "systems/castle-falkenstein/src/cards/27.png"
         }
       ],
       "width": null,
@@ -1133,7 +1133,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -1142,7 +1142,7 @@
         {
           "name": "2 of Clubs",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_41.jpg"
+          "img": "systems/castle-falkenstein/src/cards/41.png"
         }
       ],
       "width": null,
@@ -1162,7 +1162,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -1171,7 +1171,7 @@
         {
           "name": "3 of Clubs",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_42.jpg"
+          "img": "systems/castle-falkenstein/src/cards/42.png"
         }
       ],
       "width": null,
@@ -1191,7 +1191,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -1200,7 +1200,7 @@
         {
           "name": "4 of Clubs",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_43.jpg"
+          "img": "systems/castle-falkenstein/src/cards/43.png"
         }
       ],
       "width": null,
@@ -1220,7 +1220,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -1229,7 +1229,7 @@
         {
           "name": "5 of Clubs",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_44.jpg"
+          "img": "systems/castle-falkenstein/src/cards/44.png"
         }
       ],
       "width": null,
@@ -1249,7 +1249,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -1258,7 +1258,7 @@
         {
           "name": "6 of Clubs",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_45.jpg"
+          "img": "systems/castle-falkenstein/src/cards/45.png"
         }
       ],
       "width": null,
@@ -1278,7 +1278,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -1287,7 +1287,7 @@
         {
           "name": "7 of Clubs",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_46.jpg"
+          "img": "systems/castle-falkenstein/src/cards/46.png"
         }
       ],
       "width": null,
@@ -1307,7 +1307,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -1316,7 +1316,7 @@
         {
           "name": "8 of Clubs",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_47.jpg"
+          "img": "systems/castle-falkenstein/src/cards/47.png"
         }
       ],
       "width": null,
@@ -1336,7 +1336,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -1345,7 +1345,7 @@
         {
           "name": "9 of Clubs",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_48.jpg"
+          "img": "systems/castle-falkenstein/src/cards/48.png"
         }
       ],
       "width": null,
@@ -1365,7 +1365,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -1374,7 +1374,7 @@
         {
           "name": "10 of Clubs",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_49.jpg"
+          "img": "systems/castle-falkenstein/src/cards/49.png"
         }
       ],
       "width": null,
@@ -1394,7 +1394,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -1403,7 +1403,7 @@
         {
           "name": "Jack of Clubs",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_50.jpg"
+          "img": "systems/castle-falkenstein/src/cards/50.png"
         }
       ],
       "width": null,
@@ -1423,7 +1423,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -1432,7 +1432,7 @@
         {
           "name": "Queen of Clubs",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_51.jpg"
+          "img": "systems/castle-falkenstein/src/cards/51.png"
         }
       ],
       "width": null,
@@ -1452,7 +1452,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -1461,7 +1461,7 @@
         {
           "name": "King of Clubs",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_52.jpg"
+          "img": "systems/castle-falkenstein/src/cards/52.png"
         }
       ],
       "width": null,
@@ -1481,7 +1481,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -1490,7 +1490,7 @@
         {
           "name": "Ace of Clubs",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_40.jpg"
+          "img": "systems/castle-falkenstein/src/cards/40.png"
         }
       ],
       "width": null,
@@ -1510,7 +1510,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -1519,7 +1519,7 @@
         {
           "name": "Black Joker",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_53.jpg"
+          "img": "systems/castle-falkenstein/src/cards/53.png"
         }
       ],
       "width": null,
@@ -1539,7 +1539,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     },
     {
@@ -1548,7 +1548,7 @@
         {
           "name": "Red Joker",
           "text": "",
-          "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Fronts_Page_54.jpg"
+          "img": "systems/castle-falkenstein/src/cards/54.png"
         }
       ],
       "width": null,
@@ -1568,7 +1568,7 @@
       "back": {
         "name": "",
         "text": "",
-        "img": "cards/RTG-CF-FortuneDeck/RTG-CF-FortuneDeck-Back.jpg"
+        "img": "systems/castle-falkenstein/src/cards/back.png"
       }
     }
   ],
