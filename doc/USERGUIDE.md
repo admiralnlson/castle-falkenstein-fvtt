@@ -1,28 +1,28 @@
 # Castle Falkenstein FoundryVTT system - User Guide
 
 # Setup required from the Host
-The first step to using this system is to make you create create some card decks (see "New Europa-stylized deck" below) and discard piles within FoundryVTT:
+> N.B. this manual setup is very likely going to be automated in a future version
 
-|To create             |Type |Player permissions to define                          |
-|:---------------------|:----|:-----------------------------------------------------|
-| Fortune Deck         |Deck | Limited                                              |
-| Fortune discard pile |Pile | Observer                                             |
-| Fortune Deck         |Deck | Limited (relevant for Sorcerer/Dragon players only)  |
-| Sorcery discard pile |Pile | Observer (relevant for Sorcerer/Dragon players only) |
+The first step to using this system is for the GM to create Fortune and Sorcery decks and discard piles within Foundry VTT.
 
-Once done, go to `Configure Settings > System Settings > Castle Falkenstein` to associate these 4 deck/piles to the Castle Falkenstein system.
+This system natively supports the creation of decks based on [RTG's official Fortune Deck visuals](https://rtalsoriangames.com/2020/07/24/falkenstein-friday-the-fortune-deck/).
 
-Make sure you shuffle the decks before your players get a chance to draw cards from them also.
+| <img src="../src/cards/01.png" alt="Ace of Hearts" width="200"/> | <img src="../src/cards/13.png" alt="King of Hearts" width="200"/> | <img src="../src/cards/54.png" alt="Joker" width="200"/> |
 
-(N.B. this pre-requisite may very well be automated in a future version).
-
-## New Europa-stylized deck
-This system is pre-configured to support the New Europa-stylized deck avaible free-of-charge on [R. Talsorian Games's website](https://rtalsoriangames.com/2020/07/24/falkenstein-friday-the-fortune-deck/).
-
-In order to use it, make sure you download the ZIP file and extract the .jpg images into this folder: `{your FoundryVTT Data/ directory}/cards/RTG-CF-FortuneDeck/`.
-Once done, you may then use the dedicated preset within FoundryVTT:
+To use these visuals, make sure to select the dedicated preset within FoundryVTT:
 
 ![](./deck-preset.jpg)
+
+|GM must create a      |of type | which has player permissions                         |
+| :------------------- | :----- | :--------------------------------------------------- |
+| Fortune Deck         |Deck    | Limited                                              |
+| Fortune discard pile |Pile    | Observer                                             |
+| Fortune Deck         |Deck    | Limited (relevant for Sorcerer/Dragon players only)  |
+| Sorcery discard pile |Pile    | Observer (relevant for Sorcerer/Dragon players only) |
+
+Once done, go to `Configure Settings > System Settings > Castle Falkenstein` to register these 4 deck/piles into the Castle Falkenstein system.
+
+Make sure you shuffle the decks before your players get a chance to draw cards from them also.
 
 # Character Sheet
 The same character sheet is used for PCs and NPCs.
