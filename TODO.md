@@ -18,7 +18,6 @@
   + `[M]` Draw Fortunecards 1 by 1 rather than in bulk to avoid pile reset from happening too early
     + draw cards 1 by 1 for Fortune cards to ensure reset does not happen to soon
 
-+ `[M]` listen to permission changes on characters to adapt permissions on the hand accordingly
 + `[M]` reset the character's Fortune/Sorcery hands and delete them when a character is deleted
 
 + `[M]` Refine onReady warning display about fortune/sorcery decks/piles. Perform more elaborate checks:
