@@ -2,4 +2,4 @@
 *.lock
 
 # Node
-src/node_modules
+src/node_modules/*
