@@ -5,16 +5,35 @@
     "settings": {
       "name": "Paramètres du système",
       "label": "Paramétrer le système Château Falkenstein",
-      "fortuneDeck.name": "Jeu du destin",
-      "fortuneDeck.hint": "Le paquet de cartes faisant office de Jeu du destin.",
-      "fortuneDiscardPile.name": "Défausse du Jeu du destin",
-      "fortuneDiscardPile.hint": "La pile dans laquelle les cartes du Jeu du destin vont une fois jouées.",
-      "sorceryDeck.name": "Jeu de sorcellerie",
-      "sorceryDeck.hint": "Le paquet de cartes faisant office de Jeu de sorcellerie.",
-      "sorceryDiscardPile.name": "Défausse du Jeu de sorcellerie",
-      "sorceryDiscardPile.hint": "La pile dans laquelle les cartes du Jeu de sorcellerie vont une fois jouées ou défaussées.",
-      "sorceryAbility.name": "Nom du talent de Sorcellerie",
-      "sorceryAbility.hint": "[Optionnel] Permet d'avoir les noms de Talents des personnages dans la langue parlée par le groupe, même si celle-ci n'est pas encore officiellement supportée par le système."
+      "fortuneDeck": {
+        "name": "Jeu du destin",
+        "hint": "Le paquet de cartes faisant office de Jeu du destin."
+      },
+      "fortuneDiscardPile": {
+        "name": "Défausse du Jeu du destin",
+        "hint": "La pile dans laquelle les cartes du Jeu du destin vont une fois jouées."
+      },
+      "sorceryDeck": {
+        "name": "Jeu de sorcellerie",
+        "hint": "Le paquet de cartes faisant office de Jeu de sorcellerie."
+      },
+      "sorceryDiscardPile": {
+        "name": "Défausse du Jeu de sorcellerie",
+        "hint": "La pile dans laquelle les cartes du Jeu de sorcellerie vont une fois jouées ou défaussées."
+      },
+      "sorceryAbility": {
+        "name": "Nom du talent de Sorcellerie",
+        "hint": "[Optionnel] Permet d'avoir les noms de Talents des personnages dans la langue parlée par le groupe, même si celle-ci n'est pas encore officiellement supportée par le système."
+      }
+    },
+
+    "notifications": {
+      "createdCards": "Créé:"
+    },
+
+    "cardsDirectory": {
+      "decksAndPilesFolder": "Jeux et défausses",
+      "playerHandsFolder": "Mains des joueurs"
     },
 
     "character": "Personnage",
@@ -32,11 +51,13 @@
     "sorcery": {
       "ability": "Sorcellerie",
       "defineSpell": "Définir le sort",
-      "gatherPower": "Canaliser du pouvoir",
-      "releasePower": "Libérer du pouvoir",
-      "castSpell": "Lancer le sort",
-      "cancelSpell": "Annuler le sort",
-      "handName": "Sorcellerie - {character}"
+      "hand": {
+        "gatherPower": "Canaliser du pouvoir",
+        "releasePower": "Libérer du pouvoir",
+        "castSpell": "Lancer le sort",
+        "cancelSpell": "Annuler le sort",
+        "name": "Sorcellerie - {character}"
+      }
     },
 
     "description": "Description",
@@ -79,7 +100,24 @@
       "hearts": "coeur",
       "diamonds": "carreau",
       "clubs": "trèfle",
-      "joker": "joker"
+      "joker": "joker",
+
+      "nonJokerCardName": "{value} de {suit}",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "10": "10",
+      "11": "Valet",
+      "12": "Dame",
+      "13": "Roi",
+      "14": "As",
+      "blackJoker": "Joker noir",
+      "redJoker": "Joker rouge"
     },
 
     "feat": {

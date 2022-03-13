@@ -5,16 +5,35 @@
     "settings": {
       "name": "System settings",
       "label": "Configure the Castle Falkenstein system",
-      "fortuneDeck.name": "Fortune Deck",
-      "fortuneDeck.hint": "The cards deck which represents the Fortune Deck.",
-      "fortuneDiscardPile.name": "Forturne Deck discard pile",
-      "fortuneDiscardPile.hint": "The cards pile in which Fortune Deck cards go when played.",
-      "sorceryDeck.name": "Sorcery Deck",
-      "sorceryDeck.hint": "The cards deck which represents the Sorcery Deck.",
-      "sorceryDiscardPile.name": "Sorcery Deck discard pile",
-      "sorceryDiscardPile.hint": "The cards pile in which Sorcery Deck cards go when played or discarded.",
-      "sorceryAbility.name": "Name of the Sorcery ability",
-      "sorceryAbility.hint": "[Optional] Allows to have character ability names in the language spoken by your group, even if this language is not officially supported by the system yet."
+      "fortuneDeck": {
+        "name": "Fortune Deck",
+        "hint": "The cards deck which represents the Fortune Deck."
+      },
+      "fortuneDiscardPile": {
+        "name": "Forturne Deck discard pile",
+        "hint": "The cards pile in which Fortune Deck cards go when played."
+      },
+      "sorceryDeck": {
+        "name": "Sorcery Deck",
+        "hint": "The cards deck which represents the Sorcery Deck."
+      },
+      "sorceryDiscardPile": {
+        "name": "Sorcery Deck discard pile",
+        "hint": "The cards pile in which Sorcery Deck cards go when played or discarded."
+      },
+      "sorceryAbility": {
+        "name": "Name of the Sorcery ability",
+        "hint": "[Optional] dAllows to have character ability names in the language spoken by your group, even if this language is not officially supporte by the system yet."
+      }
+    },
+
+    "notifications": {
+      "createdCards": "Created:"
+    },
+
+    "cardsDirectory": {
+      "decksAndPilesFolder": "Decks and discard piles",
+      "characterHandsFolder": "Character hands"
     },
 
     "character": "Character",
@@ -32,11 +51,13 @@
     "sorcery": {
       "ability": "Sorcery",
       "defineSpell": "Define Spell",
-      "gatherPower": "Gather Power",
-      "releasePower": "Release Power",
-      "castSpell": "Cast Spell",
-      "cancelSpell": "Cancel Spell",
-      "handName": "Sorcery - {character}"
+      "hand": {
+        "gatherPower": "Gather Power",
+        "releasePower": "Release Power",
+        "castSpell": "Cast Spell",
+        "cancelSpell": "Cancel Spell",
+        "name": "Sorcery - {character}"
+      }
     },
 
     "description": "Description",
@@ -79,7 +100,24 @@
       "hearts": "Hearts",
       "diamonds": "Diamonds",
       "clubs": "Clubs",
-      "joker": "Joker"
+      "joker": "Joker",
+
+      "nonJokerCardName": "{value} of {suit}",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "10": "10",
+      "11": "Jack",
+      "12": "Queen",
+      "13": "King",
+      "14": "Ace",
+      "blackJoker": "Black Joker",
+      "redJoker": "Red Joker"
     },
 
     "feat": {
