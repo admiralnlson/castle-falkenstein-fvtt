@@ -38,6 +38,8 @@
 
     "character": "Character",
 
+    "showPlayers": "Show Players",
+
     "maxHealth": "Health",
     "wounds": "Wounds",
     

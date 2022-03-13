@@ -38,6 +38,8 @@
 
     "character": "Personnage",
 
+    "showPlayers": "Montrer aux joueurs",
+
     "maxHealth": "Santé",
     "wounds": "Blessures",
 

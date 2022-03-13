@@ -296,6 +296,11 @@ export default class CastleFalkenstein {
     const deck = CastleFalkenstein.deck(deckType);
     await deck.shuffle();
   }
+
+  static showActor(actorId) {
+    const actor = game.actors.get(actorId);
+    actor.sheet.render(true);
+  }
   
   static abilityLevelAsSentenceHtml(abilityItem, includeAbilitySuit = true) {
     const levelI18nKey = game.i18n.localize(CASTLE_FALKENSTEIN.abilityLevels[abilityItem.data.data.level].full);
@@ -368,6 +373,7 @@ export default class CastleFalkenstein {
 
     // register socket functions
 	  this.socket.register("shuffleDiscardPile", this.shuffleDiscardPile);
+    this.socket.register("showActor", this.showActor);
   }
 
   static registerSettings() {

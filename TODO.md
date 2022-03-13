@@ -15,15 +15,6 @@
 + `[C]` button in World settings (Host) to create any missing PC hands OR document how to recreate hands (by removing owner permissions and adding it again)
 + `[C]` button in World settings (Host) to delete all NPC hands
 
-+ Auto-deck/piles
-  + `[M]` (if user.isGM) Auto-create the Fortune & Sorcery Decks & piles 'onInit' if none is defined or the Id points to a missing deck
-    + make sure to update setting values when doing so
-    + shuffle any newly created decks
-    + add ui.notifications when creating(/shuffling) decks or piles
-  + `[M]` (as GM, via socket) Auto-reset piles when a 'draw' action cannot be fulfilled due to lack of cards in the deck
-  + `[M]` Draw Fortunecards 1 by 1 rather than in bulk to avoid pile reset from happening too early
-    + draw cards 1 by 1 for Fortune cards to ensure reset does not happen to soon
-
 + `[M]` reset the character's Fortune/Sorcery hands and delete them when a character is deleted
 
 + `[M]` Refine onReady warning display about fortune/sorcery decks/piles. Perform more elaborate checks:

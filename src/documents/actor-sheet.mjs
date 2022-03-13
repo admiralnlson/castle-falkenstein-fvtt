@@ -1,4 +1,5 @@
 import {CASTLE_FALKENSTEIN} from "../config.mjs";
+import CastleFalkenstein from "../castle-falkenstein.mjs";
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -18,6 +19,23 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
   }
 
   /* -------------------------------------------- */
+
+  /** @override */
+	_getHeaderButtons() {
+		const buttons = super._getHeaderButtons();
+    if (game.user.isGM) {
+      buttons.unshift({
+        class: "character-show-players",
+        icon: "fas fa-eye",
+        label: "castle-falkenstein.showPlayers",
+        onclick: () => {
+          CastleFalkenstein.socket.executeForOthers("showActor", this.actor.id);
+        }
+      });
+    }
+
+		return buttons;
+	}
 
   /** @override */
   getData() {

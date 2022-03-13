@@ -13,7 +13,7 @@ export class CastleFalkensteinActor extends Actor {
     return game.i18n.format(`castle-falkenstein.${handType}.hand.name`, {character: this.name});
   }
 
-  /// @override
+  /** @override */
   async _preUpdate(changed, options, user) {
     super._preUpdate(changed, options, user);
 
