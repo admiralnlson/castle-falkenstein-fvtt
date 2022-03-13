@@ -9,28 +9,17 @@ import CastleFalkensteinDefineSpell from "../forms/define-spell.mjs";
  */
 export class CastleFalkensteinActor extends Actor {
 
-  /**
-   * @override
-   * Augment the basic actor data with additional dynamic data. Typically,
-   * you'll want to handle most of your calculated/derived data in this step.
-   * Data calculated in this step should generally not exist in template.json
-   * (such as ability modifiers rather than ability scores) and should be
-   * available both inside and outside of character sheets (such as if an actor
-   * is queried and has a roll executed directly from it).
-   */
-  prepareDerivedData() {
-    const actorData = this.data;
-    const data = actorData.data;
-    const flags = actorData.flags.CastleFalkenstein || {};
-  }
-
   computeHandName(handType) {
     return game.i18n.format(`castle-falkenstein.${handType}.hand.name`, {character: this.name});
   }
 
-  async onUpdate(data, options, userId) {
-    // if the character name changed, update the names of their Fortune/Sorcery hands also (if they exist)
-    if (data.name) {
+  /// @override
+  async _preUpdate(changed, options, user) {
+    super._preUpdate(changed, options, user);
+
+    // character name changed, update the names of their Fortune/Sorcery hands also (if they exist)
+    // unless the user is using custom role permissions for their game, whoever updated the Actor should have permission to update the Hand also.
+    if (changed.name) {
       [ "fortune", "sorcery" ].forEach(async (handType) => {
         if (this.data.data.hands[handType] != "") {
           let hand = game.cards.get(this.data.data.hands[handType]);
@@ -42,7 +31,8 @@ export class CastleFalkensteinActor extends Actor {
     }
 
     // if permissions on the character changed, update the permissions of their Fortune/Sorcery hands also (if they exist)
-    if (data.permission) {
+    // unless the user is using custom role permissions for their game, whoever updated the Actor should have permission to update the Hand also.
+    if (changed.permission) {
       [ "fortune", "sorcery" ].forEach(async (handType) => {
         if (this.data.data.hands[handType] != "") {
           let hand = game.cards.get(this.data.data.hands[handType]);
@@ -55,31 +45,23 @@ export class CastleFalkensteinActor extends Actor {
   }
 
   async createHand(handType) {
-    const stacksConfig = [{
+    const handData = {
       type: "hand",
       name: this.computeHandName(handType),
       displayCount: true,
       folder: null, // the GM may freely moved the hand to whatever folder they wish afterwards. This probably does not deserve a system Setting.
-      permission: this.data.permission // hands inherit the permissions from the actor they belong to
-    }];
+      permission: this.data.permission, // hands inherit the permissions from the actor they belong to
+      folder: (await CastleFalkenstein.cardsFolder("character-hands", game.i18n.localize("castle-falkenstein.cardsDirectory.characterHandsFolder"))).id,
+      "flags.castle-falkenstein": { type: handType, actor: this.id }
+    };
 
-    const stacks = await Cards.createDocuments(stacksConfig);
+    const hand = await Cards.create(handData);
 
-    if (stacks.length > 0) {
-      let hand = stacks[0];
-      await this.update({
-        [`data.hands.${handType}`]: hand.id
-      });
+    await this.update({
+      [`data.hands.${handType}`]: hand.id
+    });
 
-      await hand.setFlag('castle-falkenstein', 'handProperties', {
-        type: handType,
-        actor: this.id
-      });
-
-      return hand;
-    } else {
-      CastleFalkenstein.consoleError("Could not create character hand");
-    }
+    return hand;
   }
 
   
@@ -126,6 +108,10 @@ export class CastleFalkensteinActor extends Actor {
     return this.items.find(item => item.type == 'ability' && item.name == CastleFalkenstein.i18nSorceryAbility);
   }
 
+  get isCasting() {
+    return this.data.data.spellBeingCast.spell != false;
+  }
+
   /**
    * Define a Spell.
    */
@@ -155,6 +141,13 @@ export class CastleFalkensteinActor extends Actor {
       return;
     }
     
+    hand.sheet.render(true);
+
+    if (this.isCasting) {
+      ui.notifications.error("Spell is already being cast. Cancel the previous one if you wish to cast another.");
+      return;
+    }
+
     (new CastleFalkensteinDefineSpell(item)).render(true);
   }
 }
