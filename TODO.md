@@ -9,6 +9,12 @@
 
 ### Cards
 
++ `[M]` create Fortune hand for character on ActorUpdate if owner permission is granted onto a player
++ `[M]` create Sorcery hand for character when a spell item is added on a player owned character
++ `[S]` shortcut to open Fortune and Sorcery hands from the sheet
++ `[C]` button in World settings (Host) to create any missing PC hands OR document how to recreate hands (by removing owner permissions and adding it again)
++ `[C]` button in World settings (Host) to delete all NPC hands
+
 + Auto-deck/piles
   + `[M]` (if user.isGM) Auto-create the Fortune & Sorcery Decks & piles 'onInit' if none is defined or the Id points to a missing deck
     + make sure to update setting values when doing so
@@ -29,7 +35,7 @@
   + warn at onReady if a player connects and does not have access to the fortune deck --> add this to README explaining that it is for people who manage multiple tables, etc.
   + add i18n
 
-+ `[M]` CF deck preset - i18n
++ `[M]` CF deck preset - i18n (on cardCreate)
 + `[M]` CF deck preset - English l10n
 + `[M]` CF deck preset - French l10n
 
@@ -40,14 +46,10 @@
 
 + `[C]` Button to 'show players' a hand
 
-+ `[S]` 'Draw Fortune Card' button, useful in some scenarios (such as when a character loses all health: in an optional rule, drawing a spades card = character dies) or to help with determining purely random outcomes
++ `[C]` 'Draw Fortune Card' button, useful in some scenarios (such as when a character loses all health: in an optional rule, drawing a spades card = character dies) or to help with determining purely random outcomes
 
 + `[M]` Add an error toast and ensure proper error mgt when Fortune/Discard Deck/Pile have not be defined in system settings or have been deleted since.
   + Consider upgrading the permissions on Fortune/Sorcery decks and discard piles automatically (or at least ask the GM if they want to)
-
-+ `[M]` Prevent error "User <playername> lacks permission to create new Cards", by either
-  + creating hands for player-owned characters after certain (Assitant-)GM actions (e.g. listening to events where a player made the owner of a character)
-  + delegating the action to the GM programmatically via socket (but then the GM has to be present..)
 
 + `[S]` When accepting a user deck in the Settings, ensure its compatibility with Castle Falkenstein rules
   + checks suits have values spades/hearts/diamonds/clubs/joker and if not, error / reject the deck
@@ -60,8 +62,6 @@
 + `[C]` Shortcut in Settings to delete all empty Castle Falkenstein hands (useful when many hands created for NPCs).
 
 ### Sorcery
-
-+ `[S🔥]` Add a **Show Players** button on Actor sheets to avoid FoundryVTT Core Actor/Journal duplication of NPCs
 
 + `[M🔥]` Define Spell - Allow user to specify a custom bonus/malus (with label) at spell definition time:
 + `[C]` Define Spell - explicit mechanic for using **Sorcery specialization** (as opposed to the raw Sorcery level)
@@ -87,17 +87,19 @@
 
 ### Other
 
++ `[S🔥]` Add a **Show Players** button on Actor sheets to avoid FoundryVTT Core Actor/Journal duplication of NPCs
+
 + `[S]` Weapons list (under 'Possessions' or dedicated tab), dedicated sheet and chat message
 
 + `[S]` add Castle Falkenstein logo somewhere in the character sheet
 
 + `[M]` i18n for ui.notification.'s
 
++ `[S]` Replace item (ability, spell, ..) flow display with grid for better control
+
 + `[S]` match ability/spell macro icon with the card hand one used in the ability/spell list)
 
-+ `[C]` add some https://foundryvtt.wiki/en/development/guides/repository-bling
-
-+ Find better icons for Abilities and Spells (or remove the need for them?)
++ `[M]` Replace icons for Abilities and Spells (or remove the need for them?)
 
 + Ability data packs (keeping their description to a minimum as per RTG Homebrew Content policy)
   + `[✓]` English - from Corebook
@@ -122,7 +124,8 @@
 
 + `[S]` Support official game variation which gives half-value to cards from an another suit
 
-+ `[S]` Fortune hand for the Host, which NPCs (PCs not owned by a player) use
++ `[S]` Fortune hand for the Host
+   + make NPCs use it
 
 + Possessions:
   + `[C]` 'on me' / 'location' property

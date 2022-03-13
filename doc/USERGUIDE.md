@@ -1,28 +1,49 @@
 # Castle Falkenstein FoundryVTT system - User Guide
 
 # Setup required from the Host
-> N.B. this manual setup is very likely going to be automated in a future version
 
-The first step to using this system is for the GM to create Fortune and Sorcery decks and discard piles within Foundry VTT.
-
-This system natively supports the creation of decks based on [RTG's official Fortune Deck visuals](https://rtalsoriangames.com/2020/07/24/falkenstein-friday-the-fortune-deck/).
+## Fortune & Sorcery decks
+This system natively supports decks based on [RTG's official Fortune Deck visuals](https://rtalsoriangames.com/2020/07/24/falkenstein-friday-the-fortune-deck/).
 
 <img src="../src/cards/01.png" alt="Ace of Hearts" width="200"/> <img src="../src/cards/13.png" alt="King of Hearts" width="200"/> <img src="../src/cards/54.png" alt="Joker" width="200"/>
 
-To use these visuals, make sure to select the dedicated preset within FoundryVTT:
+Fortune and Sorcery Decks and discard piles are automatically created when the world is first loaded by the Host.
 
-![](./deck-preset.jpg)
+### Different language
+If you started your Castle Falkenstein world before selecting your preferred language in FoundryVTT core settings, you may:
+- Reset the 2 Decks (this will recall all cards from player hands and discard piles if cards had already been drawn)
+- Select your language of choice in Foundry VTT core settings
+- Delete the Fortune and Sorcery Decks, and finally
+- press F5 to recreate them in that language.
+Note this only affects the _names_ of cards. The visuals of cards shared by RTG are English only.
 
-|The Host must create a |of type | which has player permissions                         |
+### Custom decks
+Hosts may also use custom decks if they so desire. The following setup is required.
+
+| Create                |of type | which has player permissions                         |
 | :-------------------- | :----- | :--------------------------------------------------- |
 | Fortune Deck          |Deck    | Limited                                              |
 | Fortune discard pile  |Pile    | Observer                                             |
 | Fortune Deck          |Deck    | Limited (relevant for Sorcerer/Dragon players only)  |
 | Sorcery discard pile  |Pile    | Observer (relevant for Sorcerer/Dragon players only) |
 
-Once done, go to `Configure Settings > System Settings > Castle Falkenstein` to register these 4 deck/piles into the Castle Falkenstein system.
+To use RTG's official Fortune Deck visuals, make sure to select the dedicated preset within FoundryVTT:
 
-Make sure you shuffle the decks before your players get a chance to draw cards from them also.
+![](./deck-preset.jpg)
+
+Note that, unlike automatically created Decks, cards within this preset deck will always be in English.
+
+Once you're done, go to `Configure Settings > System Settings > Castle Falkenstein` to register your customer deck/piles.
+
+Make sure you shuffle the decks before your players get a chance to draw cards from them also. The system won't do it for you.
+
+## Host hand
+At this stage, the system assumes that the Host will either
+  + not use FoundryVTT for their own Fortune and Sorcery hands or
+  + use Fortune and Sorcery hands specific to each 'Host character' (a.k.a. NPC) and delete them when no longer necessary so as to return any cards left within them to their origin decks
+  + use a generic "Host" character (and possibly generic ability too) for the sole purpose of showing the Fortune card they are playing
+
+This may evolve based on user feedback.
 
 # Character Sheet
 The same character sheet is used for PCs and NPCs.
@@ -46,7 +67,7 @@ And here is what happens with higher permission levels:
 General recommendation for the Host:
 - give each player an 'Owner' permission on their PC
 - give all players a 'Limited' permission on PCs which are not their own
-- during sessions, give players a 'Limited' permission on NPCs they meet, and do not put secret information in the 'Description' tab of these NPC sheets (unless you explicitly use the 'Secret' formatting option for it)
+- during sessions, give players a 'Limited' permission on Host characters (a.k.a. NPC) they meet, and do not put secret information in the 'Description' tab of these NPC sheets (unless you explicitly use the 'Secret' formatting option in the editor).
 
 ## Alternative: Diaries as 📖 Journal Entries
 To reinforce the notion of character diaries being a part of the world, the Host may elect to use dedicated 📖 Journal Entries for each Player Character's (or NPC's) Diary.
