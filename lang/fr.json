@@ -28,7 +28,15 @@
     },
 
     "notifications": {
-      "createdCards": "Créé:"
+      "createdCards": "Créé:",
+      "characterWasShown": "Le personnage '{name}' a été montré aux joueurs.",
+      "macroForOwnedItems": "Vous ne pouvez créer des bouton de macros que pour les items que vous possédez.",
+      "abilityInvalidSuit": "La couleur associée au talent n'est pas valide.",
+      "spellInvalidAspect": "L'aspect associé au sort n'est pas valide.",
+      "noFortuneHandForFeat": "Main du Destin manquante pour accomplir la prouesse.",
+      "noSorceryHandForSpell": "Main de Sorcellerie manquante pour lancer le sort.",
+      "characterDoesNotHaveAbility": "Le personnage n'a pas le talent '{name}'.",
+      "spellAlreadyBeingCast": "Un sort est déjà en cours de lancement. Annulez-le depuis la main de Sorcellerie si vous souhaitez en lancer un autre."
     },
 
     "cardsDirectory": {

@@ -44,27 +44,6 @@ export class CastleFalkensteinActor extends Actor {
     }
   }
 
-  async createHand(handType) {
-    const handData = {
-      type: "hand",
-      name: this.computeHandName(handType),
-      displayCount: true,
-      folder: null, // the GM may freely moved the hand to whatever folder they wish afterwards. This probably does not deserve a system Setting.
-      permission: this.data.permission, // hands inherit the permissions from the actor they belong to
-      folder: (await CastleFalkenstein.cardsFolder("character-hands", game.i18n.localize("castle-falkenstein.cardsDirectory.characterHandsFolder"))).id,
-      "flags.castle-falkenstein": { type: handType, actor: this.id }
-    };
-
-    const hand = await Cards.create(handData);
-
-    await this.update({
-      [`data.hands.${handType}`]: hand.id
-    });
-
-    return hand;
-  }
-
-  
   async hand(handType) {
     let hand = null;
 
@@ -73,7 +52,7 @@ export class CastleFalkensteinActor extends Actor {
     }
 
     if (!hand) {
-      hand = await this.createHand(handType);
+      hand = await CastleFalkenstein.socket.executeAsGM("createHand", handType, this.id);
     }
 
     return hand;
@@ -91,13 +70,13 @@ export class CastleFalkensteinActor extends Actor {
     }
 
     if (!CASTLE_FALKENSTEIN.validNonJokerCardSuits.includes(item.data.data.suit)) {
-      ui.notifications.error("Ability does not have a proper suit.");
+      ui.notifications.error(game.i18n.localize("castle-falkenstein.notifications.abilityInvalidSuit"));
       return;
     }
 
     let hand = await this.hand("fortune");
     if (!hand) {
-      ui.notifications.error("No Fortune hand to perform feat with.");
+      ui.notifications.error(game.i18n.localize("castle-falkenstein.notifications.noFortuneHandForFeat"));
       return;
     }
 
@@ -126,25 +105,27 @@ export class CastleFalkensteinActor extends Actor {
     }
 
     if (!CASTLE_FALKENSTEIN.validNonJokerCardSuits.includes(item.data.data.suit)) {
-      ui.notifications.error("Spell does not have a proper aspect.");
+      ui.notifications.error(game.i18n.localize("castle-falkenstein.notifications.spellInvalidAspect"));
       return;
     }
 
     let hand = await this.hand("sorcery");
     if (!hand) {
-      ui.notifications.error("No Sorcery hand to cast spell with.");
+      ui.notifications.error(game.i18n.localize("castle-falkenstein.notifications.noSorceryHandforSpell"));
       return;
     }
 
     if (!this.sorceryAbility) {
-      ui.notifications.error(`Character does not have ability '${CastleFalkenstein.i18nSorceryAbility}'.`);
+      ui.notifications.error(game.i18n.format("castle-falkenstein.notifications.characterDoesNotHaveAbility", {
+        name: CastleFalkenstein.i18nSorceryAbility
+      }));
       return;
     }
     
     hand.sheet.render(true);
 
     if (this.isCasting) {
-      ui.notifications.error("Spell is already being cast. Cancel the previous one if you wish to cast another.");
+      ui.notifications.error(game.i18n.localize("castle-falkenstein.notifications.spellAlreadyBeingCast"));
       return;
     }
 

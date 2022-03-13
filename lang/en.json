@@ -28,7 +28,15 @@
     },
 
     "notifications": {
-      "createdCards": "Created:"
+      "createdCards": "Created:",
+      "characterWasShown": "Character '{name}' was shown to players.",
+      "macroForOwnedItems": "You can only create macro buttons for owned Items.",
+      "abilityInvalidSuit": "The suit associated to the ability is invalid.",
+      "spellInvalidAspect": "The aspect associated to the spell is invalid.",
+      "noFortuneHandForFeat": "No Fortune hand to perform feat with.",
+      "noSorceryHandForSpell": "No Sorcery hand to cast spell with.",
+      "characterDoesNotHaveAbility": "Character does not have ability '{name}'.",
+      "spellAlreadyBeingCast": "Spell is already being cast. Cancel it from the Sorcery hand if you wish to cast another."
     },
 
     "cardsDirectory": {

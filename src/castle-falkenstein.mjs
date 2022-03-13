@@ -302,6 +302,27 @@ export default class CastleFalkenstein {
     actor.sheet.render(true);
   }
   
+  static async createHand(handType, actorId) {
+    const actor = game.actors.get(actorId);
+    const handData = {
+      type: "hand",
+      name: actor.computeHandName(handType),
+      displayCount: true,
+      folder: null, // the GM may freely moved the hand to whatever folder they wish afterwards. This probably does not deserve a system Setting.
+      permission: actor.data.permission, // hands inherit the permissions from the actor they belong to
+      folder: (await CastleFalkenstein.cardsFolder("character-hands", game.i18n.localize("castle-falkenstein.cardsDirectory.characterHandsFolder"))).id,
+      "flags.castle-falkenstein": { type: handType, actor: actor.id }
+    };
+
+    const hand = await Cards.create(handData);
+
+    await actor.update({
+      [`data.hands.${handType}`]: hand.id
+    });
+
+    return hand;
+  }
+
   static abilityLevelAsSentenceHtml(abilityItem, includeAbilitySuit = true) {
     const levelI18nKey = game.i18n.localize(CASTLE_FALKENSTEIN.abilityLevels[abilityItem.data.data.level].full);
     const levelValue = CASTLE_FALKENSTEIN.abilityLevels[abilityItem.data.data.level].value;
@@ -374,6 +395,7 @@ export default class CastleFalkenstein {
     // register socket functions
 	  this.socket.register("shuffleDiscardPile", this.shuffleDiscardPile);
     this.socket.register("showActor", this.showActor);
+    this.socket.register("createHand", this.createHand);
   }
 
   static registerSettings() {
@@ -452,7 +474,7 @@ export default class CastleFalkenstein {
     // Create a Macro from an Item drop.
     // Get an existing item macro if one exists, otherwise create a new one.
     if (data.type !== "Item") return;
-    if (!("data" in data)) return ui.notifications.warn("You can only create macro buttons for owned Items");
+    if (!("data" in data)) return ui.notifications.warn("macroForOwnedItems");
     const item = data.data;
 
     // Create the macro command

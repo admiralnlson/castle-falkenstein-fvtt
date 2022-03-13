@@ -30,6 +30,9 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
         label: "castle-falkenstein.showPlayers",
         onclick: () => {
           CastleFalkenstein.socket.executeForOthers("showActor", this.actor.id);
+          ui.notifications.info(game.i18n.format("castle-falkenstein.notifications.characterWasShown", {
+            name: this.actor.name
+          }));
         }
       });
     }

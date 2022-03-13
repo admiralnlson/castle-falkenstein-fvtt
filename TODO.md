@@ -84,13 +84,15 @@
 
 + `[S]` add Castle Falkenstein logo somewhere in the character sheet
 
-+ `[M]` i18n for ui.notification.'s
++ `[M]` i18n for remaining ui.notification.'s
 
 + `[S]` Replace item (ability, spell, ..) flow display with grid for better control
 
 + `[S]` match ability/spell macro icon with the card hand one used in the ability/spell list)
 
 + `[M]` Replace icons for Abilities and Spells (or remove the need for them?)
+
++ `[C]` Make character 'Show Players' button compatible with special dialog of 'Permission Viewer' module
 
 + Ability data packs (keeping their description to a minimum as per RTG Homebrew Content policy)
   + `[✓]` English - from Corebook
