@@ -78,16 +78,6 @@ export default class CastleFalkensteinSettings extends FormApplication {
 		}
 	}
 
-	// Handles form submission.
-	async _onSubmit(...args) {
-		const ret = await super._onSubmit(...args);
-
-
-		// Don't believe this is necessary yet.
-		// await CastleFalkenstein.refreshSheetsAll();
-
-		return ret;
-	}
 
 	// Handles click events on buttons.
 	_onButtonClick(event) {
