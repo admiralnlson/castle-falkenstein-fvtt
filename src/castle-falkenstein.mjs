@@ -196,6 +196,9 @@ export default class CastleFalkenstein {
       name: game.i18n.localize(`castle-falkenstein.settings.${type}DiscardPile.name`),
       type: "pile",
       folder: (await this.cardsFolder("decks-and-piles", game.i18n.localize("castle-falkenstein.cardsDirectory.decksAndPilesFolder"))).id,
+      permission: {
+        default: CONST.ENTITY_PERMISSIONS.OBSERVER
+      },
       "flags.castle-falkenstein": { type: type }
     }
     const pile = await Cards.create(pileData);
