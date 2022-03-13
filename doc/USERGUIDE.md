@@ -65,9 +65,9 @@ And here is what happens with higher permission levels:
 | Host Notes           | -       | -        | -      | Update    |
 
 General recommendation for the Host:
-- give each player an 'Owner' permission on their PC
-- give all players a 'Limited' permission on PCs which are not their own
-- during sessions, give players a 'Limited' permission on Host characters (a.k.a. NPC) they meet, and do not put secret information in the 'Description' tab of these NPC sheets (unless you explicitly use the 'Secret' formatting option in the editor).
+- give each player an 'Owner' permission on their Player Character
+- give all players a 'Limited' permission on Player Characters which are not their own
+- during sessions, give players a 'Limited' permission on Host characters (NPC Actors) PCs meet.
 
 ## Alternative: Diaries as 📖 Journal Entries
 To reinforce the notion of character diaries being a part of the world, the Host may elect to use dedicated 📖 Journal Entries for each Player Character's (or NPC's) Diary.
