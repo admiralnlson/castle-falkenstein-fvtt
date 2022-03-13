@@ -31,9 +31,9 @@ To use RTG's official Fortune Deck visuals, make sure to select the dedicated pr
 
 ![](./deck-preset.jpg)
 
-Note that, unlike automatically created Decks, cards within this preset deck will always be in English.
+Note that, at this stage, custom decks created with this preset, unlike automatically created Decks, are always in English.
 
-Once you're done, go to `Configure Settings > System Settings > Castle Falkenstein` to register your customer deck/piles.
+Once you're done, go to `Configure Settings > System Settings > Castle Falkenstein` to register your customer deck.
 
 Make sure you shuffle the decks before your players get a chance to draw cards from them also. The system won't do it for you.
 
