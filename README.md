@@ -5,21 +5,22 @@
 # Castle Falkenstein system for FoundryVTT
 > DISCLAIMER: This [Castle Falkenstein system](https://rtalsoriangames.com/castle-falkenstien/) for [Foundry VTT](https://foundryvtt.com/) is unofficial content provided under the [Homebrew Content Policy of R. Talsorian Games](https://rtalsoriangames.com/homebrew-content-policy/) and is not approved or endorsed by RTG. This content references materials that are the property of R. Talsorian Games and its licensees.
 
-> **⚠️This system is still in Beta phase, and made public mainly to collect feedback from its future users.\
-Until v1.0 (target date: mid-April'22), it is not recommended to use this Beta version for live games and only limited support will be provided in case of breaking changes.**
+> **⚠️This system is still in Beta phase, and made public mainly to collect feedback from future users of this system.\
+v0.x version upgrades may include breaking changes. As such, until v1.0 (target date: mid-April'22), it is recommended not to use this Beta version for live games. And if you decide to use the system anyway before v1.0, please make sure you backup your world before each system update, so that you have the option to go back to the previous version of the system (and world) if something does not work for you in the latest version.**
 
 ## Supported languages
 The system supports localization. But, at this stage, only the following languages are supported:
 + English
 + French<sup>(1)</sup>
 
-<sup>(1)</sup> Compendium translations required the 'Babele' module to be installed.
+<sup>(1)</sup> The 'Babele' module is required for the translations of Compendium packs (ability list and spell list).
 
 To submit translations for other languages, see [Contributions](#contributions) below.
 
 ## Dependencies
+In order to benefit from all features provided by this system, you need a Cards UI enhancement module with which the Castle Falkenstein system is pre-integrated.
 
-In order to benefit from all features provided by this system, you want to use a Cards UI enhancement module with which the Castle Falkenstein system comes pre-integrated.
+By default, the system selects the enhanced sheets for **Hands** and **Cards** (since they're customized) and leaves the core ones for **Decks** and **Piles** (since they are not customized). But you may use the enhanced sheets for **Decks** and **Piles** also if you so desire.
 
 | Card UI enhancement module                                               | Integration level       |
 | ------------------------------------------------------------------------ | ----------------------- |
