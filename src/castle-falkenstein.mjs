@@ -478,7 +478,7 @@ export default class CastleFalkenstein {
     const item = data.data;
 
     // Create the macro command
-    const command = `game.CastleFalkenstein.rollItemMacro("${item.name}");`;
+    const command = `game.CastleFalkenstein.rollItemMacro("${item.type}", "${item.name}");`;
     let macro = game.macros.find(m => (m.name === item.name) && (m.command === command));
     if (!macro) {
       macro = await Macro.create({
@@ -493,19 +493,18 @@ export default class CastleFalkenstein {
     return false;
   }
   
-  /**
-   * Create a Macro from an Item drop.
-   * Get an existing item macro if one exists, otherwise create a new one.
-   * @param {string} itemName
-   * @return {Promise}
-   */
-  static rollItemMacro(itemName) {
+  static rollItemMacro(itemType, itemName) {
     const speaker = ChatMessage.getSpeaker();
     let actor;
     if (speaker.token) actor = game.actors.tokens[speaker.token];
     if (!actor) actor = game.actors.get(speaker.actor);
-    const item = actor ? actor.items.find(i => i.name === itemName) : null;
-    if (!item) return ui.notifications.warn(`Your controlled Actor does not have an item named ${itemName}`);
+    const item = actor ? actor.items.find(i => i.type === itemType && i.name === itemName) : null;
+    if (!item) {
+      return ui.notifications.warn(game.i18n.format("castle-falkenstein.notifications.noItemNamed",{
+        name: itemName,
+        type: itemType
+      }));
+    }
 
     // Trigger the item roll
     return item.roll();

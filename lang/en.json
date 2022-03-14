@@ -36,7 +36,8 @@
       "noFortuneHandForFeat": "No Fortune hand to perform feat with.",
       "noSorceryHandForSpell": "No Sorcery hand to cast spell with.",
       "characterDoesNotHaveAbility": "Character does not have ability '{name}'.",
-      "spellAlreadyBeingCast": "Spell is already being cast. Cancel it from the Sorcery hand if you wish to cast another."
+      "spellAlreadyBeingCast": "Spell is already being cast. Cancel it from the Sorcery hand if you wish to cast another.",
+      "noItemNamed": "Your controlled character does not have an item of type '{type}' named '{name}'."
     },
 
     "cardsDirectory": {

@@ -36,7 +36,8 @@
       "noFortuneHandForFeat": "Main du Destin manquante pour accomplir la prouesse.",
       "noSorceryHandForSpell": "Main de Sorcellerie manquante pour lancer le sort.",
       "characterDoesNotHaveAbility": "Le personnage n'a pas le talent '{name}'.",
-      "spellAlreadyBeingCast": "Un sort est déjà en cours de lancement. Annulez-le depuis la main de Sorcellerie si vous souhaitez en lancer un autre."
+      "spellAlreadyBeingCast": "Un sort est déjà en cours de lancement. Annulez-le depuis la main de Sorcellerie si vous souhaitez en lancer un autre.",
+      "noItemNamed": "Le personnage que vous contrôlez ne possède pas d'item de type '{type}' nommé '{name}'."
     },
 
     "cardsDirectory": {
