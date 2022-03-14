@@ -54,7 +54,7 @@ And here is what happens with higher permission levels:
 
 | Character sheet part | Limited | Observer | Owner  | Host (GM) |
 |----------------------|:-------:|:--------:|:------:|:---------:|
-| Avatar               | View    | View     | Update | Update    |
+| Profile image        | View    | View     | Update | Update    |
 | Name                 | View    | View     | Update | Update    |
 | Health & Wounds      | -       | View     | Update | Update    |
 | Description          | View    | View     | Update | Update    |
@@ -64,10 +64,13 @@ And here is what happens with higher permission levels:
 | Spells               | -       | View     | Update | Update    |
 | Host Notes           | -       | -        | -      | Update    |
 
-General recommendation for the Host:
-- give each player an 'Owner' permission on their Player Character
-- give all players a 'Limited' permission on Player Characters which are not their own
-- during sessions, give players a 'Limited' permission on Host characters (NPC Actors) PCs meet.
+The system includes a GM-only 'Show Players' button in the header of all Actor sheets, similar to the one found on Journal Entries in Core FoundryVTT.
+
+Based on the above, a general recommendation for Host is to:
+- create an Actor for each Player Character, and:
+  - use permission 'Default: Limited' so all players can see the Description of their fellow players's characters, and
+  - give each player an 'Owner' permission on their own Player Character of course
+- create Host characters as Actors as well (rather than as Journal Items) and, during sessions, give players a 'Limited' permission on the ones which Player Characters meet before clicking on the NPC's sheet 'Show Players' button to showcase them.
 
 ### Abilities
 To initialize a character with all core abilities in one go, go to the Items tab and drag-and-drop the 'Abilities' folder to your character.
@@ -79,6 +82,6 @@ The folder will only appear if the Host first goes to the Compendium tab, look f
 ### Spells
 > As this stage (v0.3), Spell Lorebook compendium packs are not part of the system yet.
 
-## Alternative: Diaries as 📖 Journal Entries
-To reinforce the notion of character diaries being a part of the world, the Host may elect to use dedicated 📖 Journal Entries for each Player Character's (or NPC's) Diary.
-In this case, the 📖 Journal Entry should probably be drag-and-dropped into the Journal tab of the Character Sheet afterwards, for easier access by the player and Host.
+## Alternative: Diaries as Journal Entries
+To reinforce the notion of character diaries being a part of the world, the Host may elect to use dedicated Journal Entries for each Player Character's (or NPC's) Diary.
+In this case, the Journal Entry should probably be drag-and-dropped into the Journal tab of the Character Sheet afterwards, for easier access by the Player or Host.
