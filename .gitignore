@@ -1,6 +1,2 @@
 # Foundry
 *.lock
-
-# Node
-src/packs/node_modules
-build/packs/node_modules.db
