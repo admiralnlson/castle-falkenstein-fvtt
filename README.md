@@ -18,9 +18,9 @@ The system supports localization. But, at this stage, only the following languag
 To submit translations for other languages, see [Contributions](#contributions) below.
 
 ## Dependencies
-In order to benefit from all features provided by this system, you need a Cards UI enhancement module with which the Castle Falkenstein system is pre-integrated.
+In order to benefit from all features provided by this system, you need a Cards UI cutomization module with which the Castle Falkenstein system is pre-integrated.
 
-By default, the system selects the enhanced sheets for **Hands** and **Cards** (since they're customized) and leaves the core ones for **Decks** and **Piles** (since they are not customized). But you may use the enhanced sheets for **Decks** and **Piles** also if you so desire.
+By default, the system uses enhanced sheets for **Hands** and **Cards** (since they're customized) and leaves core ones for **Decks** and **Piles** (since they are not customized). But you may use the enhanced sheets for **Decks** and **Piles** also if you wish.
 
 | Card UI enhancement module                                               | Integration level       |
 | ------------------------------------------------------------------------ | ----------------------- |

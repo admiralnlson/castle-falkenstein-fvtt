@@ -21,7 +21,7 @@
     "Social Graces": { "name": "Aisance sociale" },
     "Sorcery": { "name": "Sorcellerie" },
     "Stealth": { "name": "Discrétion" },
-    "Helmsmanship": { "name": "Pilotage" },
-    "Tinkering": { "name": "Bricolage" }
+    "Tinkering": { "name": "Bricolage" },
+    "Helmsmanship": { "name": "Pilotage" }
   }
 }
