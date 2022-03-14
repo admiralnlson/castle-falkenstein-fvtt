@@ -83,6 +83,7 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
       // Append to abilities.
       if (i.type === 'ability') {
         i.data.levelI18nKey = CASTLE_FALKENSTEIN.abilityLevels[i.data.level].full;
+        i.data.levelValue = CASTLE_FALKENSTEIN.abilityLevels[i.data.level].value;
         i.data.suitSymbol = CASTLE_FALKENSTEIN.cardSuitsSymbols[i.data.suit];
         abilities.push(i);
       }
@@ -114,6 +115,17 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
   activateListeners(html) {
     super.activateListeners(html);
 
+    html.find('.fortune-hand-show').click(async (ev) => {
+      const hand = await this.actor.hand("fortune");
+      hand.sheet.render(true, { focus: true });
+    });
+
+    html.find('.sorcery-hand-show').click(async (ev) => {
+      const hand = await this.actor.hand("sorcery");
+      hand.sheet.render(true, { focus: true });
+    });
+
+
     html.find('.item-show').click(ev => {
       const li = $(ev.currentTarget).parents(".item");
       const item = this.actor.items.get(li.data("itemId"));
@@ -124,7 +136,7 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
     html.find('.item-edit').click(ev => {
       const li = $(ev.currentTarget).parents(".item");
       const item = this.actor.items.get(li.data("itemId"));
-      item.sheet.render(true);
+      item.sheet.render(true, { focus: true });
     });
 
     // -------------------------------------------------------------
