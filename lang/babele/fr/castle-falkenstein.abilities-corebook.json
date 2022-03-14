@@ -12,6 +12,7 @@
     "Fencing": { "name": "Escrime" },
     "Fisticuffs": { "name": "Pugilat" },
     "Glamour": { "name": "Charme" },
+    "Helmsmanship": { "name": "Pilotage" },
     "Kindred Powers": { "name": "Pouvoirs de l'espèce" },
     "Marksmanship": { "name": "Tir" },
     "Perception": { "name": "Perception" },
@@ -21,7 +22,6 @@
     "Social Graces": { "name": "Aisance sociale" },
     "Sorcery": { "name": "Sorcellerie" },
     "Stealth": { "name": "Discrétion" },
-    "Tinkering": { "name": "Bricolage" },
-    "Helmsmanship": { "name": "Pilotage" }
+    "Tinkering": { "name": "Bricolage" }
   }
 }

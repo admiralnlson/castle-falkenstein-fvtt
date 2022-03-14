@@ -2,4 +2,5 @@
 *.lock
 
 # Node
-src/node_modules/*
+src/packs/node_modules
+build/packs/node_modules.db

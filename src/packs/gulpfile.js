@@ -7,6 +7,7 @@ const mergeStream = require("merge-stream");
 const clean = require("gulp-clean");
 const fs = require("fs");
 const path = require("path");
+const sortArray = require("sort-array");
 
 const PACKS_SRC = ".";
 const PACKS_DST = "../../build/packs";
@@ -18,7 +19,7 @@ const PACKS_DST = "../../build/packs";
 function compilePacks() {
   // determine the source folders to process
   const folders = fs.readdirSync(PACKS_SRC).filter((file) => {
-    return fs.statSync(path.join(PACKS_SRC, file)).isDirectory();
+    return fs.statSync(path.join(PACKS_SRC, file)).isDirectory() && file != "node_modules";
   });
 
   // process each folder into a compendium db
@@ -26,7 +27,7 @@ function compilePacks() {
     const db = new Datastore({ filename: path.resolve(__dirname, PACKS_DST, `${folder}.db`), autoload: true });
     return gulp.src(path.join(PACKS_SRC, folder, "/**/*.yaml")).pipe(
       through2.obj((file, enc, cb) => {
-        let json = yaml.loadAll(file.contents.toString());
+        let json = sortArray(yaml.loadAll(file.contents.toString()), { by: 'name' });
         db.insert(json);
         cb(null, file);
       })

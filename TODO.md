@@ -59,14 +59,20 @@
   + `[✓]` French - from Corebook
   + `[S]` English - from sourcebooks
   + `[S]` French - from sourcebooks
-+ `[M]` Shortcut to import Abilities from a data pack, which does not introduce duplicates and fixes incorrect suit assignments
++ `[M]` Shortcut to import Abilities from a data pack, which
+  + does not introduce duplicates
+  + fixes incorrect suit assignments
+  + (optionally?) reorders alphabetically
 
 + Lorebook data packs (keeping their description to a minimum as per RTG Homebrew Content policy)
   + `[M]` English - from Corebook
   + `[M]` French - from Corebook
   + `[S]` English - from sourcebooks
   + `[S]` French - from sourcebooks
-+ `[M]` Shortcut to import Spells from a data pack (must not introduce duplicates, but may fix incorrect suit assignments)
++ `[M]` Shortcut to import Spells from a Lorebook data pack, which
+  + does not introduce duplicates
+  + fixes incorrect suit assignments
+  + (optionally?) reorders alphabetically
 
 + `[M]` Weapons list (under 'Possessions' or dedicated tab), dedicated sheet and chat message
 

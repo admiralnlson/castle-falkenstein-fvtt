@@ -74,6 +74,11 @@ To initialize a character with all core abilities in one go, go to the Items tab
 
 The folder will only appear if the Host first goes to the Compendium tab, look for 'Core Abilities', right clicks it and select'Import All Content'.
 
+> As this stage (v0.3), only one compendium pack for Corebook Abilities is part of the system.
+
+### Spells
+> As this stage (v0.3), Spell Lorebook compendium packs are not part of the system yet.
+
 ## Alternative: Diaries as 📖 Journal Entries
 To reinforce the notion of character diaries being a part of the world, the Host may elect to use dedicated 📖 Journal Entries for each Player Character's (or NPC's) Diary.
 In this case, the 📖 Journal Entry should probably be drag-and-dropped into the Journal tab of the Character Sheet afterwards, for easier access by the player and Host.
