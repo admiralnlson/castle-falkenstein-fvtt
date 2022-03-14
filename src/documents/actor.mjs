@@ -122,8 +122,6 @@ export class CastleFalkensteinActor extends Actor {
       return;
     }
     
-    hand.sheet.render(true);
-
     if (this.isCasting) {
       ui.notifications.error(game.i18n.localize("castle-falkenstein.notifications.spellAlreadyBeingCast"));
       return;
