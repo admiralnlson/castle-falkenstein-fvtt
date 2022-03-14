@@ -1,2 +1,5 @@
 # Foundry
 *.lock
+
+# Node
+src/packs/node_modules
