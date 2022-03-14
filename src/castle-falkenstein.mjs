@@ -299,7 +299,7 @@ export default class CastleFalkenstein {
 
   static showActor(actorId) {
     const actor = game.actors.get(actorId);
-    actor.sheet.render(true);
+    actor.sheet.render(true, { focus: true });
   }
   
   static async createHand(handType, actorId) {

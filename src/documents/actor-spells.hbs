@@ -1,6 +1,6 @@
 <ol class="items-list">
   <li class="item flexrow items-header">
-    <div class="spell-cast"></div>
+    <div class="spell-cast"><a class="sorcery-hand-show"><i class="cf-poker-hand"></i></a></div>
     <div class="spell-name">{{localize 'castle-falkenstein.spell.nameAndAspect'}}</div>
     <div class="spell-level">{{localize 'castle-falkenstein.spell.thaumicLevel'}}</div>
     <div class="item-controls">
@@ -10,7 +10,7 @@
   {{#each spells as |item id|}}
     <li class="item flexrow" data-item-id="{{item._id}}">
       <div class="spell-cast">
-        <a class="rollable" data-roll-type="item" title="{{localize 'castle-falkenstein.sorcery.defineSpell'}}"><i class="cf-poker-hand"></i></a>
+        <a class="rollable" data-roll-type="item" title="{{localize 'castle-falkenstein.sorcery.defineSpell'}}"><i class="fas fa-play-circle"></i></a>
       </div>
       <div class="spell-name">
         {{item.name}} [<span class="suit-symbol-{{item.data.suit}}">{{item.data.suitSymbol}}</span>]

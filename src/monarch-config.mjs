@@ -28,7 +28,7 @@ export default class CastleFalkensteinMonarchConfig {
     // Fortune hand - Draw
     components.appControls.push({
       label: "castle-falkenstein.fortune.hand.draw",
-      icon: "fas fa-plus",
+      icon: "fas fa-plus-circle",
       class: "fortune-hand-draw",
       hide: (card, hand) => {
         const type = hand.getFlag("castle-falkenstein", "type");
@@ -45,7 +45,7 @@ export default class CastleFalkensteinMonarchConfig {
     // Sorcery hand - Gather Power
     components.appControls.push({
       label: "castle-falkenstein.sorcery.hand.gatherPower",
-      icon: "fas fa-plus",
+      icon: "fas fa-plus-circle",
       class: "sorcery-hand-gather-power",
       hide: (card, hand) => {
         const type = hand.getFlag("castle-falkenstein", "type");
@@ -113,7 +113,7 @@ export default class CastleFalkensteinMonarchConfig {
     // Sorcery hands - Cast spell
     components.appControls.push({
       label: "castle-falkenstein.sorcery.hand.castSpell",
-      icon: "fas fa-play",
+      icon: "fas fa-play-circle",
       class: "sorcery-hand-cast-spell",
       hide: (card, hand) => {
         const type = hand.getFlag("castle-falkenstein", "type");
@@ -166,7 +166,7 @@ export default class CastleFalkensteinMonarchConfig {
     // Sorcery hands - Cancel spell
     components.appControls.push({
       label: "castle-falkenstein.sorcery.hand.cancelSpell",
-      icon: "fas fa-stop",
+      icon: "fas fa-stop-circle",
       class: "sorcery-hand-cancel-spell",
       hide: (card, hand) => {
         const type = hand.getFlag("castle-falkenstein", "type");
@@ -208,7 +208,7 @@ export default class CastleFalkensteinMonarchConfig {
         uuid: card.data.uuid,
         shareable: true,
         editable: true
-      }).render(true);
+      }).render(true, { focus: true });
 
       if (event.shiftKey) popout.shareImage();
 

@@ -359,6 +359,8 @@ html * {
 .chat-message .suit-symbol-diamonds,
 .castle-falkenstein .suit-symbol-clubs,
 .chat-message .suit-symbol-clubs,
+.castle-falkenstein .suit-symbol-\?,
+.chat-message .suit-symbol-\?,
 .castle-falkenstein .suit-select {
   font-size: 130%;
 }

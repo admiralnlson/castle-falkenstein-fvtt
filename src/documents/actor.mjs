@@ -80,7 +80,7 @@ export class CastleFalkensteinActor extends Actor {
       return;
     }
 
-    (new CastleFalkensteinPerformFeat(item)).render(true);
+    (new CastleFalkensteinPerformFeat(item)).render(true, { focus: true });
   }
 
   get sorceryAbility() {
@@ -127,6 +127,6 @@ export class CastleFalkensteinActor extends Actor {
       return;
     }
 
-    (new CastleFalkensteinDefineSpell(item)).render(true);
+    (new CastleFalkensteinDefineSpell(item)).render(true, { focus: true });
   }
 }
