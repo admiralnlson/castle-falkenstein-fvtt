@@ -14,9 +14,9 @@
   "styles": ["src/css/castle-falkenstein.css"],
   "packs": [
     {
-      "name": "abilities",
-      "label": "Abilities",
-      "path": "build/packs/abilities.db",
+      "name": "core-abilities",
+      "label": "Core Abilities",
+      "path": "build/packs/core-abilities.db",
       "type": "Item"
     }
   ],
