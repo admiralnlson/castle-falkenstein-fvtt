@@ -237,10 +237,11 @@ html * {
 .castle-falkenstein .items-list .item {
   align-items: center;
   padding: 0 2px;
+  height: 22px;
   border-bottom: 1px solid #c9c7b8;
 }
 
-.castle-falkenstein .items-list .item:last-child {
+.castle-falkenstein .items-list .item:not(.items-header):last-child {
   border-bottom: none;
 }
 
