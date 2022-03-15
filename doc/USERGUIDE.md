@@ -7,11 +7,11 @@ This system natively supports decks based on [RTG's official Fortune Deck visual
 
 <img src="../src/cards/01.png" alt="Ace of Hearts" width="200"/> <img src="../src/cards/13.png" alt="King of Hearts" width="200"/> <img src="../src/cards/54.png" alt="Joker" width="200"/>
 
-Fortune and Sorcery Decks and discard piles are automatically created when the world is first loaded by the Host.
+Fortune and Sorcery Decks and discard piles are automatically created when the world is first loaded by the Host. They may be renamed or moved to a different folder.
 
 ### Different language
 If you started your Castle Falkenstein world before selecting your preferred language in FoundryVTT core settings, you may:
-- Reset the 2 Decks (this will recall all cards from player hands and discard piles if cards had already been drawn)
+- Reset the 2 auto-generated Decks (this will recall all cards from player hands and discard piles if cards had already been drawn)
 - Select your language of choice in Foundry VTT core settings
 - Delete the Fortune and Sorcery Decks, and finally
 - press F5 to recreate them in that language.
