@@ -11,10 +11,10 @@ Fortune and Sorcery Decks and discard piles are automatically created when the w
 
 ### Different language
 If you started your Castle Falkenstein world before selecting your preferred language in FoundryVTT core settings, you may:
-- Reset the 2 auto-generated Decks (this will recall all cards from player hands and discard piles if cards had already been drawn)
 - Select your language of choice in Foundry VTT core settings
-- Delete the Fortune and Sorcery Decks, and finally
+- Delete the Fortune and Sorcery Decks (this will recall all cards from player hands and discard piles if cards had already been drawn)
 - press F5 to recreate them in that language.
+
 Note this only affects the _names_ of cards. The visuals of cards shared by RTG are English only.
 
 ### Custom decks
