@@ -28,6 +28,7 @@
     },
 
     "notifications": {
+      "babeleRequired": "Pour que les compendiums de Château Falkenstein soient traduits dans votre langue, vous devez installer et activer le module 'babele'.",
       "createdCards": "Créé:",
       "characterWasShown": "Le personnage '{name}' a été montré aux joueurs.",
       "macroForOwnedItems": "Vous ne pouvez créer des bouton de macros que pour les items que vous possédez.",

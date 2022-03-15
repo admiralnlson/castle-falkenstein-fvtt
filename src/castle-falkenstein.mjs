@@ -246,15 +246,60 @@ export default class CastleFalkenstein {
       ui.notifications.info(game.i18n.localize("castle-falkenstein.notifications.createdCards") + cardsCreatedI18n);
   }
 
-  static async onDeleteCards(cards, options, user) {
 
-    // Make sure to shuffle the contents of deleted hands/piles back into their origin deck
-    if (cards.type == "hand" || cards.type == "pile") {
-      const type = cards.getFlag("castle-falkenstein", "type");
-      if (type) {
-        cards.reset({ chatNotification: false });
-        const deck = this.deck(type);
-        deck?.shuffle();
+  static async onPreDeleteCards(cards, options, user) {
+    // In Foundry v9.255,
+    //   If you delete a deck, it recalls all cards from hands and piles.
+    //   However, if you delete a hand or pile, it does not recall the cards it contained to the origin deck.
+    const type = cards.getFlag("castle-falkenstein", "type");
+    if (type) {
+      if (cards.type == "hand" || cards.type == "pile") {
+        const toUpdate = {};
+        const returned = [];
+
+        for ( const card of cards.cards ) {
+          if ( card.isHome ) continue;
+    
+          // Return drawn cards to their origin deck.
+          if ( !toUpdate[card.data.origin] ) toUpdate[card.data.origin] = [];
+          const update = {_id: card.id, drawn: false};
+          toUpdate[card.data.origin].push(update);
+          returned.push(card.id);
+        }
+
+        const fromDelete = [];
+        const allowed = Hooks.call("returnCards", cards, returned.map(id => cards.cards.get(id)), {toUpdate, fromDelete});
+        if ( allowed === false ) {
+          CastleFalkenstein.consoleDebug(`The Cards#return operation was prevented by a hooked function.`);
+          return cards;
+        }
+
+        // Perform database operations.
+        const updates = await Object.entries(toUpdate).map(async ([origin, u]) => {
+          await game.cards.get(origin).updateEmbeddedDocuments("Card", u);
+        });
+      }
+    }
+  }
+
+  static async onDeleteCards(cards, options, user) {
+    const type = cards.getFlag("castle-falkenstein", "type");
+    if (type) {
+      if (cards.type == "hand" || cards.type == "pile") {
+        let origins = [];
+        cards.cards.forEach((card) => {
+          const origin = card.data.origin;
+          if (!origins.includes(origin))
+            origins.push(origin);
+        });
+        await origins.forEach(async (origin) => {
+          const deck = game.cards.get(origin);
+          await deck?.shuffle();
+        });
+        origins.forEach(async (origin) => {
+          const deck = game.cards.get(origin);
+          deck?.sheet?.render(false); // refresh the deck sheet if it's opened.
+        });
       }
     }
   }
@@ -381,8 +426,13 @@ export default class CastleFalkenstein {
       this.createMissingCards();
     }
    
-    if(typeof Babele !== "undefined" && game.settings.get("core", "language") != "en") {
-      Babele.get().setSystemTranslationsDir("lang/babele");
+    const userLanguage = game.settings.get("core", "language");
+    if (userLanguage != "en" && game.system.languages.map(el => el.lang).includes(userLanguage)) {
+      if(game.modules.get('babele')?.active) {
+        Babele.get().setSystemTranslationsDir("lang/babele");
+      } else {
+        ui.notifications.warn(game.i18n.localize("castle-falkenstein.notifications.babeleRequired"));
+      }
     }
 
     CastleFalkenstein.consoleDebug("Debug mode active.");
@@ -527,6 +577,8 @@ Hooks.once("ready", () => CastleFalkenstein.onReady());
 Hooks.on("renderChatMessage", (chatMessage, html, messageData) => CastleFalkenstein.onRenderChatMessage(chatMessage, html, messageData));
 
 Hooks.on("hotbarDrop", (hotbar, data, slot) => CastleFalkenstein.hotbarDrop(hotbar, data, slot));
+
+Hooks.on("preDeleteCards", (cards, options, user) => CastleFalkenstein.onPreDeleteCards(cards, options, user));
 
 Hooks.on("deleteCards", (cards, options, user) => CastleFalkenstein.onDeleteCards(cards, options, user));
 
