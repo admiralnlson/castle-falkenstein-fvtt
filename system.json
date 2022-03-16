@@ -7,7 +7,6 @@
   "compatibleCoreVersion": "9",
   "authors": [ "admiralnlson" ],
   "esmodules": [
-    "src/lib/socketlib/libwrapper_shim.js",
     "src/lib/socketlib/socketlib.js",
     "src/castle-falkenstein.mjs"
   ],
@@ -37,6 +36,11 @@
       "name": "monarch",
       "type": "module",
       "manifest": "https://github.com/zeel01/monarch/releases/latest/download/module.json"
+    },
+    {
+      "name": "lib-wrapper",
+      "type": "module",
+      "manifest": "https://github.com/ruipin/fvtt-lib-wrapper/releases/latest/download/module.json"
     }
   ],
   "socket": true,

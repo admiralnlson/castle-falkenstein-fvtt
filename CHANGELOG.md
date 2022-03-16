@@ -1,5 +1,12 @@
 # Changelog
 
+## [v0.3.1](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v0.3.1) - 2022/03/16
+### Fixed
++ Babele compendium translations were not activating.
++ French cards folder translation was missing.
+### Changed
++ libWrapper (Card UI enhancement) module is now an official dependency.
+
 ## [v0.3.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v0.3.0) - 2022/03/16
 ### Added
 + With permission from RTG, added a deck preset based on [R. Talsorian Games Castle Falkenstein Fortune Deck visuals](https://rtalsoriangames.com/2020/07/24/falkenstein-friday-the-fortune-deck/).

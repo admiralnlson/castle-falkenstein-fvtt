@@ -43,7 +43,7 @@
 
     "cardsDirectory": {
       "decksAndPilesFolder": "Jeux et défausses",
-      "playerHandsFolder": "Mains des joueurs"
+      "characterHandsFolder": "Mains des personnages"
     },
 
     "character": "Personnage",

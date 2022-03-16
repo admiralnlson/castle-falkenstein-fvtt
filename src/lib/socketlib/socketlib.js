@@ -1,4 +1,3 @@
-import {libWrapper} from "./libwrapper_shim.js";
 import * as errors from "./errors.js";
 
 const RECIPIENT_TYPES = {

@@ -413,6 +413,10 @@ export default class CastleFalkenstein {
       label: "castle-falkenstein.system",
       src: "systems/castle-falkenstein/src/cards/deck-preset.json"
     };
+
+    if(game.modules.get('babele')?.active) {
+      Babele.get().setSystemTranslationsDir("lang/babele");
+    }
   }
 
   static async onReady() {
@@ -422,17 +426,15 @@ export default class CastleFalkenstein {
 
     this.registerSheets();
     
-    if (game.user.isGM) {
-      this.createMissingCards();
-    }
-   
     const userLanguage = game.settings.get("core", "language");
     if (userLanguage != "en" && game.system.languages.map(el => el.lang).includes(userLanguage)) {
-      if(game.modules.get('babele')?.active) {
-        Babele.get().setSystemTranslationsDir("lang/babele");
-      } else {
+      if(!game.modules.get('babele')?.active) {
         ui.notifications.warn(game.i18n.localize("castle-falkenstein.notifications.babeleRequired"));
       }
+    }
+
+    if (game.user.isGM) {
+      this.createMissingCards();
     }
 
     CastleFalkenstein.consoleDebug("Debug mode active.");
