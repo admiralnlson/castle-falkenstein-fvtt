@@ -3,25 +3,25 @@ type: spell
 data:
   level: 8
   suit: spades
-  description: "animate the dead, allowing for full function as when the subject was alive."
+  description: "Animates the dead, allowing for full function as when the subject was alive."
 ---
 name: Speaker to the Dead
 type: spell
 data:
   level: 10
   suit: spades
-  description: "allow the dead to communicate as they did in life (but without physical movement ability)."
+  description: "Allows the dead to communicate as they did in life (but without physical movement ability)."
 ---
 name: Drawing of Another's Life Force
 type: spell
 data:
   level: 16
   suit: spades
-  description: "reduce the vitality of a living victim based on the Defined qualities of the spell."
+  description: "Reduces the vitality of a living victim based on the Defined qualities of the spell."
 ---
 name: Banish to Eternal Rest
 type: spell
 data:
   level: 8
   suit: spades
-  description: "reverse the fell curses described in Dark Libram of Necromancy, at any time before or after they have been cast."
+  description: "Reverses the fell curses described in Dark Libram of Necromancy, at any time before or after they have been cast."

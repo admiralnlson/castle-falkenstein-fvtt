@@ -10,32 +10,32 @@ type: spell
 data:
   level: 4
   suit: hearts
-  description: "show the dreamer a threat. Requires that the caster have true knowledge of the threat."
+  description: "Shows the dreamer a threat. Requires that the caster have true knowledge of the threat."
 ---
 name: Nightmares
 type: spell
 data:
   level: 8
   suit: hearts
-  description: "show the dreamer a scenario which is then populated by the person or thing the dreamer fears most."
+  description: "Shows the dreamer a scenario which is then populated by the person or thing the dreamer fears most."
 ---
 name: Erotic Dreams
 type: spell
 data:
   level: 6
   suit: hearts
-  description: "show the dreamer a scenario which is then populated by the person the dreamer desires most."
+  description: "Shows the dreamer a scenario which is then populated by the person the dreamer desires most."
 ---
 name: Killing Dreams
 type: spell
 data:
   level: 16
   suit: hearts
-  description: "cause the dreamer to dream his own death; if the dreamer is not awakened before the end of the dream, he dies, leaving no sign of how he was killed."
+  description: "Causes the dreamer to dream his own death; if the dreamer is not awakened before the end of the dream, he dies, leaving no sign of how he was killed."
 ---
 name: Dream Barrier
 type: spell
 data:
   level: 8
   suit: hearts
-  description: "self-proof against any or all of the sendings described in Megron's Realm of Dreaming, although it will not stop normal dreams."
+  description: "Proofs the sorcerer against any or all of the sendings described in Megron's Realm of Dreaming, although it will not stop normal dreams."

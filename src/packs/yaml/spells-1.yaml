@@ -31,32 +31,32 @@ type: spell
 data:
   level: 4
   suit: hearts
-  description: "make the subject dizzy and confused."
+  description: "Makes the subject dizzy and confused."
 ---
 name: Stunning
 type: spell
 data:
   level: 10
   suit: hearts
-  description: "render the subject unconscious."
+  description: "Renders the subject unconscious."
 ---
 name: Create Blinding Pain
 type: spell
 data:
   level: 12
   suit: hearts
-  description: "cause incapacitating agony that renders the victim unable to do anything but writhe in pain."
+  description: "Causes incapacitating agony that renders the victim unable to do anything but writhe in pain."
 ---
 name: Death Wish
 type: spell
 data:
   level: 16
   suit: hearts
-  description: "cause the victim to suffer great mental damage until he is killed (the level of damage caused must be determined by the Definition of the spell)."
+  description: "Causes the victim to suffer great mental damage until he is killed (the level of damage caused must be determined by the Definition of the spell)."
 ---
 name: Mental Barrier
 type: spell
 data:
   level: 10
   suit: hearts
-  description: "instantly deflect any and all of the actions described in Manuscriptum Mentallis."
+  description: "Instantly deflects any and all of the actions described in Manuscriptum Mentallis."

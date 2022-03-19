@@ -3,25 +3,25 @@ type: spell
 data:
   level: 8
   suit: diamonds
-  description: "allow Great flying speed to be imparted upon a person or object."
+  description: "Allows Great flying speed to be imparted upon a person or object."
 ---
 name: Mastery of Levitation
 type: spell
 data:
   level: 6
   suit: diamonds
-  description: "allow the slow moving of objects up to Poor speeds."
+  description: "Allows the slow moving of objects up to Poor speeds."
 ---
 name: Hands of Hovering
 type: spell
 data:
   level: 4
   suit: diamonds
-  description: "suspend (but not move) objects above the ground up to 100 feet."
+  description: "Allows to suspend (but not move) objects above the ground up to 100 feet."
 ---
 name: Floors of Glass
 type: spell
 data:
   level: 4
   suit: diamonds
-  description: "slide objects along a surface as through it were perfectly smooth at Average speeds."
+  description: "Slides objects along a surface as through it were perfectly smooth at Average speeds."

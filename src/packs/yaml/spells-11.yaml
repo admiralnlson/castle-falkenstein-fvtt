@@ -3,25 +3,25 @@ type: spell
 data:
   level: 6 
   suit: spades
-  description: "open portals to lands in New Europa, whether nearby or far."
+  description: "Opens portals to lands in New Europa, whether nearby or far."
 ---
 name: Portals to the Faerie Realm
 type: spell
 data:
   level: 8
   suit: spades
-  description: "open portals to the Faerie Realm."
+  description: "Opens portals to the Faerie Realm."
 ---
 name: Portals to Beyond the Veil
 type: spell
 data:
   level: 10
   suit: spades
-  description: "open portals to other dimensions beyond the Faerie Veil."
+  description: "Opens portals to other dimensions beyond the Faerie Veil."
 ---
 name: Astral Movement
 type: spell
 data:
   level: 4
   suit: spades
-  description: "project consciousness (but not the physical body) to any place within New Europa."
+  description: "Projects consciousness (but not the physical body) to any place within New Europa."
