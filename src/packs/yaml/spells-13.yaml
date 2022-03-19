@@ -10,14 +10,14 @@ type: spell
 data:
   level: 8
   suit: spades
-  description: ""Allows to see and hear distant sights and visions as though the sorcerer were there."
+  description: "Allows to see and hear distant sights and visions as though the sorcerer were there."
 ---
 name: Scrying
 type: spell
 data:
   level: 6
   suit: spades
-  description: ""Allows to see and hear distant sights and visions through the means of any clear crystal or mirror"
+  description: "Allows to see and hear distant sights and visions through the means of any clear crystal or mirror"
 ---
 name: Divination Barrier
 type: spell
