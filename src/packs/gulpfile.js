@@ -52,7 +52,6 @@ function compilePacks() {
             console.error("Too many items in the pack");
           }
           item._id = filenameHash13 + ("00" + counter).slice(-3); // 13 chars from filename + 3 from item = 16 (nedb id length)
-          console.log(item._id);
           ++counter;
         }
 
