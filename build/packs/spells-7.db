@@ -1,0 +1,4 @@
+{"name":"Alchemic Barrier","type":"spell","data":{"level":8,"suit":"diamonds","description":"empêcher les transformations d'Alchimie universelle, mais uniquement si le sort est lancé avant que la mutation ait commencé."},"img":"systems/castle-falkenstein/src/cards/diamonds.svg","_id":"9y0JB4fRIyTeo3gX"}
+{"name":"Alchemic Destruction","type":"spell","data":{"level":16,"suit":"diamonds","description":""},"img":"systems/castle-falkenstein/src/cards/diamonds.svg","_id":"ZcgNuMVyjPbKP3wU"}
+{"name":"Flesh to Mineral","type":"spell","data":{"level":8,"suit":"diamonds","description":""},"img":"systems/castle-falkenstein/src/cards/diamonds.svg","_id":"YEwmS7NWW0Xifnvt"}
+{"name":"Universal Alchemic","type":"spell","data":{"level":8,"suit":"diamonds","description":"modifier la structure matérielle des objets, par exemple pour changer le plomb en or."},"img":"systems/castle-falkenstein/src/cards/diamonds.svg","_id":"ryqU7OCE8ct3Yuox"}

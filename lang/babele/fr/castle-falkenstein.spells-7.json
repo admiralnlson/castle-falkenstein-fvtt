@@ -1,0 +1,24 @@
+{
+  "label": "Livre occulte - Le Manuscrit de l'alchimie universelle",
+  "mapping": {
+    "description": "data.description"
+  },
+  "entries": {
+    "Alchemic Barrier": {
+      "name": "Barrière alchimique",
+      "description": "empêcher les transformations d'Alchimie universelle, mais uniquement si le sort est lancé avant que la mutation ait commencé."
+    },
+    "Alchemic Destruction": {
+      "name": "Destruction alchimique",
+      "description": "réduit la victime aux éléments chimiques dont elle est composée, ce qui prend généralement la forme d'une gelée nauséabonde et graisseuse."
+    },
+    "Flesh to Mineral": {
+      "name": "Transmutation de chair en minéral",
+      "description": "change la matière minérale en chair et vice versa, le type spécifique de minéral étant défini au moment de la transformation."
+    },
+    "Universal Alchemic": {
+      "name": "Alchimie universelle",
+      "description": "permet de modifier la structure matérielle des objets, par exemple pour changer le plomb en or."
+    }
+  }
+}

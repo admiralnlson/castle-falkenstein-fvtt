@@ -1,0 +1,4 @@
+{"name":"Clairaudience","type":"spell","data":{"level":6,"suit":"spades","description":""},"img":"systems/castle-falkenstein/src/cards/spades.svg","_id":"h0gD3SdxrZGW4je4"}
+{"name":"Clairvoyance","type":"spell","data":{"level":8,"suit":"spades","description":""},"img":"systems/castle-falkenstein/src/cards/spades.svg","_id":"fG0HlHBf5ivx27KZ"}
+{"name":"Divination Barrier","type":"spell","data":{"level":8,"suit":"spades","description":""},"img":"systems/castle-falkenstein/src/cards/spades.svg","_id":"VUUquFj3VZhIdInZ"}
+{"name":"Scrying","type":"spell","data":{"level":6,"suit":"spades","description":""},"img":"systems/castle-falkenstein/src/cards/spades.svg","_id":"FAtaguTrLV07TiAD"}

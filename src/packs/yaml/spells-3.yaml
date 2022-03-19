@@ -1,0 +1,13 @@
+name: Illusions of the Mind & Body
+type: spell
+data:
+  level: 6
+  suit: hearts
+  description: ""
+---
+name: True Vision
+type: spell
+data:
+  level: 6
+  suit: hearts
+  description: ""

@@ -1,153 +1,109 @@
 name: Athletics
 type: ability
-img:  icons/svg/item-bag.svg
 data:
-  level: AV
   suit: clubs
 ---
 name: Charisma
 type: ability
-img:  icons/svg/item-bag.svg
 data:
-  level: AV
   suit: hearts
 ---
 name: Comeliness
 type: ability
-img:  icons/svg/item-bag.svg
 data:
-  level: AV
   suit: hearts
 ---
 name: Connections
 type: ability
-img:  icons/svg/item-bag.svg
 data:
-  level: AV
   suit: spades
 ---
 name: Courage
 type: ability
-img:  icons/svg/item-bag.svg
 data:
-  level: AV
   suit: hearts
 ---
 name: Education
 type: ability
-img:  icons/svg/item-bag.svg
 data:
-  level: AV
   suit: diamonds
 ---
 name: Etherealness
 type: ability
-img:  icons/svg/item-bag.svg
 data:
-  level: AV
   suit: spades
 ---
 name: Exchequer
 type: ability
-img:  icons/svg/item-bag.svg
 data:
-  level: AV
   suit: spades
 ---
 name: Fencing
 type: ability
-img:  icons/svg/item-bag.svg
 data:
-  level: AV
   suit: clubs
 ---
 name: Fisticuffs
 type: ability
-img:  icons/svg/item-bag.svg
 data:
-  level: AV
   suit: clubs
 ---
 name: Glamour
 type: ability
-img:  icons/svg/item-bag.svg
 data:
-  level: AV
   suit: hearts
 ---
 name: Kindred Powers
 type: ability
-img:  icons/svg/item-bag.svg
 data:
-  level: AV
   suit: clubs
 ---
 name: Marksmanship
 type: ability
-img:  icons/svg/item-bag.svg
 data:
-  level: AV
   suit: clubs
 ---
 name: Perception
 type: ability
-img:  icons/svg/item-bag.svg
 data:
-  level: AV
   suit: diamonds
 ---
 name: Performance
 type: ability
-img:  icons/svg/item-bag.svg
 data:
-  level: AV
   suit: hearts
 ---
 name: Physician
 type: ability
-img:  icons/svg/item-bag.svg
 data:
-  level: AV
   suit: diamonds
 ---
 name: Physique
 type: ability
-img:  icons/svg/item-bag.svg
 data:
-  level: AV
   suit: clubs
 ---
 name: Social Graces
 type: ability
-img:  icons/svg/item-bag.svg
 data:
-  level: AV
   suit: spades
 ---
 name: Sorcery
 type: ability
-img:  icons/svg/item-bag.svg
 data:
-  level: AV
   suit: diamonds
 ---
 name: Stealth
 type: ability
-img:  icons/svg/item-bag.svg
 data:
-  level: AV
   suit: clubs
 ---
 name: Tinkering
 type: ability
-img:  icons/svg/item-bag.svg
 data:
-  level: AV
   suit: diamonds
 ---
 name: Helmsmanship
 type: ability
-img:  icons/svg/item-bag.svg
 data:
-  level: AV
   suit: diamonds

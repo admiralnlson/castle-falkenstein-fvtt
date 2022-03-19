@@ -1,0 +1,28 @@
+{
+  "label": "Livre occulte - Le Soulèvement des forces de la nature",
+  "mapping": {
+    "description": "data.description"
+  },
+  "entries": {
+    "Quell Nature": {
+      "name": "Apaiser la nature",
+      "description": "arrêter immédiatement une ou plusieurs des forces déchaînées de la nature."
+    },
+    "Raise the Firestorm": {
+      "name": "Soulever la tempête de feu",
+      "description": "créer des feux de prairie et de forêt, mais peut également être concentré en un jet de flammes unique."
+    },
+    "Raise the Maelstrom": {
+      "name": "Soulever le maelström",
+      "description": "crée des lames de fond, des inondations et des trombes d'eau qui peuvent même jaillir de la paume des mains du sorcier."
+    },
+    "Raise the Storm": {
+      "name": "Soulever la tempête",
+      "description": "provoquer de puissantes tempêtes ou de lancer pluie et foudre sur ses ennemis."
+    },
+    "Shake the Earth": {
+      "name": "Faire trembler la terre",
+      "description": "créer des tremblements de terre."
+    }
+  }
+}

@@ -1,0 +1,5 @@
+{"name":"Bring to Peace","type":"spell","data":{"level":4,"suit":"hearts","description":""},"img":"systems/castle-falkenstein/src/cards/hearts.svg","_id":"4az4JlG62FsfkSCE"}
+{"name":"Bring to Rest","type":"spell","data":{"level":6,"suit":"hearts","description":""},"img":"systems/castle-falkenstein/src/cards/hearts.svg","_id":"sLeTWC1lfHg1tyM0"}
+{"name":"Cast Out the Other","type":"spell","data":{"level":8,"suit":"hearts","description":""},"img":"systems/castle-falkenstein/src/cards/hearts.svg","_id":"tsi6VCH0lYK5WLiY"}
+{"name":"Conquer the Madness","type":"spell","data":{"level":8,"suit":"hearts","description":""},"img":"systems/castle-falkenstein/src/cards/hearts.svg","_id":"Q5Iy1LhBOr9tHQgC"}
+{"name":"Hear the Hidden Thoughts","type":"spell","data":{"level":6,"suit":"hearts","description":""},"img":"systems/castle-falkenstein/src/cards/hearts.svg","_id":"sDVryrn1o7k44fCu"}

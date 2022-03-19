@@ -1,22 +1,22 @@
-{"name":"Athletics","type":"ability","img":"icons/svg/item-bag.svg","data":{"level":"AV","suit":"clubs"},"_id":"3POsTUEySTmuVjeX"}
-{"name":"Charisma","type":"ability","img":"icons/svg/item-bag.svg","data":{"level":"AV","suit":"hearts"},"_id":"HTCccpAfsykQPtoQ"}
-{"name":"Comeliness","type":"ability","img":"icons/svg/item-bag.svg","data":{"level":"AV","suit":"hearts"},"_id":"v5nHuEsd4C0NNgIQ"}
-{"name":"Connections","type":"ability","img":"icons/svg/item-bag.svg","data":{"level":"AV","suit":"spades"},"_id":"7aXLImgc5b1yhKyJ"}
-{"name":"Courage","type":"ability","img":"icons/svg/item-bag.svg","data":{"level":"AV","suit":"hearts"},"_id":"ptcSoKBPTRFf2bui"}
-{"name":"Education","type":"ability","img":"icons/svg/item-bag.svg","data":{"level":"AV","suit":"diamonds"},"_id":"PqVkSeeferR1NTY0"}
-{"name":"Etherealness","type":"ability","img":"icons/svg/item-bag.svg","data":{"level":"AV","suit":"spades"},"_id":"SKfXzEsln7o7sq0e"}
-{"name":"Exchequer","type":"ability","img":"icons/svg/item-bag.svg","data":{"level":"AV","suit":"spades"},"_id":"B9fKRcpFd0rW5DqH"}
-{"name":"Fencing","type":"ability","img":"icons/svg/item-bag.svg","data":{"level":"AV","suit":"clubs"},"_id":"qROB45r3BvqqS5Yp"}
-{"name":"Fisticuffs","type":"ability","img":"icons/svg/item-bag.svg","data":{"level":"AV","suit":"clubs"},"_id":"qpT5SqJ7uxxIBUJv"}
-{"name":"Glamour","type":"ability","img":"icons/svg/item-bag.svg","data":{"level":"AV","suit":"hearts"},"_id":"38PFgkKcH0XVCKD1"}
-{"name":"Helmsmanship","type":"ability","img":"icons/svg/item-bag.svg","data":{"level":"AV","suit":"diamonds"},"_id":"BA4cE8tyjDhSzjnN"}
-{"name":"Kindred Powers","type":"ability","img":"icons/svg/item-bag.svg","data":{"level":"AV","suit":"clubs"},"_id":"VOnT5wIEGR8MNObg"}
-{"name":"Marksmanship","type":"ability","img":"icons/svg/item-bag.svg","data":{"level":"AV","suit":"clubs"},"_id":"HvqhJCnlTbXRQWtt"}
-{"name":"Perception","type":"ability","img":"icons/svg/item-bag.svg","data":{"level":"AV","suit":"diamonds"},"_id":"FHfcsw4kudg9fBN4"}
-{"name":"Performance","type":"ability","img":"icons/svg/item-bag.svg","data":{"level":"AV","suit":"hearts"},"_id":"9q1TjI9htS3UMphC"}
-{"name":"Physician","type":"ability","img":"icons/svg/item-bag.svg","data":{"level":"AV","suit":"diamonds"},"_id":"fDQbKKvZeYVqLqvA"}
-{"name":"Physique","type":"ability","img":"icons/svg/item-bag.svg","data":{"level":"AV","suit":"clubs"},"_id":"kyTLlJFvnuck4LqD"}
-{"name":"Social Graces","type":"ability","img":"icons/svg/item-bag.svg","data":{"level":"AV","suit":"spades"},"_id":"hViGBuHgEAIRffop"}
-{"name":"Sorcery","type":"ability","img":"icons/svg/item-bag.svg","data":{"level":"AV","suit":"diamonds"},"_id":"FCgvpiiCpA2Io1XG"}
-{"name":"Stealth","type":"ability","img":"icons/svg/item-bag.svg","data":{"level":"AV","suit":"clubs"},"_id":"YiUPpMM0n8iu61qQ"}
-{"name":"Tinkering","type":"ability","img":"icons/svg/item-bag.svg","data":{"level":"AV","suit":"diamonds"},"_id":"1RX1PVSvtv15z1jM"}
+{"name":"Athletics","type":"ability","data":{"suit":"clubs","level":"AV"},"img":"systems/castle-falkenstein/src/cards/clubs.svg","_id":"QswpMLUJCRG4I27m"}
+{"name":"Charisma","type":"ability","data":{"suit":"hearts","level":"AV"},"img":"systems/castle-falkenstein/src/cards/hearts.svg","_id":"CK9QRkvKbxtVxmBx"}
+{"name":"Comeliness","type":"ability","data":{"suit":"hearts","level":"AV"},"img":"systems/castle-falkenstein/src/cards/hearts.svg","_id":"zMvDdHqZR8fhXzez"}
+{"name":"Connections","type":"ability","data":{"suit":"spades","level":"AV"},"img":"systems/castle-falkenstein/src/cards/spades.svg","_id":"0JEfZPndwts81ZzA"}
+{"name":"Courage","type":"ability","data":{"suit":"hearts","level":"AV"},"img":"systems/castle-falkenstein/src/cards/hearts.svg","_id":"I0Ow8NBc0jUaQZPL"}
+{"name":"Education","type":"ability","data":{"suit":"diamonds","level":"AV"},"img":"systems/castle-falkenstein/src/cards/diamonds.svg","_id":"PPGEaAvUG0NQ3QnP"}
+{"name":"Etherealness","type":"ability","data":{"suit":"spades","level":"AV"},"img":"systems/castle-falkenstein/src/cards/spades.svg","_id":"GgXK9bsDNFZdykAU"}
+{"name":"Exchequer","type":"ability","data":{"suit":"spades","level":"AV"},"img":"systems/castle-falkenstein/src/cards/spades.svg","_id":"XzXAikZssBEZISiN"}
+{"name":"Fencing","type":"ability","data":{"suit":"clubs","level":"AV"},"img":"systems/castle-falkenstein/src/cards/clubs.svg","_id":"0BO6KRFisPgDXsRa"}
+{"name":"Fisticuffs","type":"ability","data":{"suit":"clubs","level":"AV"},"img":"systems/castle-falkenstein/src/cards/clubs.svg","_id":"WnsPr8xnBseUrvSI"}
+{"name":"Glamour","type":"ability","data":{"suit":"hearts","level":"AV"},"img":"systems/castle-falkenstein/src/cards/hearts.svg","_id":"WkKh2rAmhpNbriHe"}
+{"name":"Helmsmanship","type":"ability","data":{"suit":"diamonds","level":"AV"},"img":"systems/castle-falkenstein/src/cards/diamonds.svg","_id":"Y7iTKtzcMXk6mzqd"}
+{"name":"Kindred Powers","type":"ability","data":{"suit":"clubs","level":"AV"},"img":"systems/castle-falkenstein/src/cards/clubs.svg","_id":"XoYdcx7S9pDNqkA2"}
+{"name":"Marksmanship","type":"ability","data":{"suit":"clubs","level":"AV"},"img":"systems/castle-falkenstein/src/cards/clubs.svg","_id":"WzmWCJzJgm8ntgq3"}
+{"name":"Perception","type":"ability","data":{"suit":"diamonds","level":"AV"},"img":"systems/castle-falkenstein/src/cards/diamonds.svg","_id":"pGCKcX7ec0cxWKfl"}
+{"name":"Performance","type":"ability","data":{"suit":"hearts","level":"AV"},"img":"systems/castle-falkenstein/src/cards/hearts.svg","_id":"q1hKjvetkOfjJYnm"}
+{"name":"Physician","type":"ability","data":{"suit":"diamonds","level":"AV"},"img":"systems/castle-falkenstein/src/cards/diamonds.svg","_id":"sbPXqvMUKHQOOlHd"}
+{"name":"Physique","type":"ability","data":{"suit":"clubs","level":"AV"},"img":"systems/castle-falkenstein/src/cards/clubs.svg","_id":"mGVeRJjRalszN5Nl"}
+{"name":"Social Graces","type":"ability","data":{"suit":"spades","level":"AV"},"img":"systems/castle-falkenstein/src/cards/spades.svg","_id":"OfkKHjPzwPgCqguL"}
+{"name":"Sorcery","type":"ability","data":{"suit":"diamonds","level":"AV"},"img":"systems/castle-falkenstein/src/cards/diamonds.svg","_id":"ETTRLAUJUfHKw0Mx"}
+{"name":"Stealth","type":"ability","data":{"suit":"clubs","level":"AV"},"img":"systems/castle-falkenstein/src/cards/clubs.svg","_id":"pFOPgpuaSoocldtn"}
+{"name":"Tinkering","type":"ability","data":{"suit":"diamonds","level":"AV"},"img":"systems/castle-falkenstein/src/cards/diamonds.svg","_id":"6PE7Vc2Jk47ZbC2U"}

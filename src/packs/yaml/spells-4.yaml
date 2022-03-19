@@ -1,0 +1,41 @@
+name: Dreams of Prophecy
+type: spell
+data:
+  level: 6
+  suit: hearts
+  description: ""
+---
+name: Dreams of Warning
+type: spell
+data:
+  level: 4
+  suit: hearts
+  description: ""
+---
+name: Nightmares
+type: spell
+data:
+  level: 8
+  suit: hearts
+  description: ""
+---
+name: Erotic Dreams
+type: spell
+data:
+  level: 6
+  suit: hearts
+  description: ""
+---
+name: Killing Dreams
+type: spell
+data:
+  level: 16
+  suit: hearts
+  description: ""
+---
+name: Dream Barrier
+type: spell
+data:
+  level: 8
+  suit: hearts
+  description: ""

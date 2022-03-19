@@ -1,0 +1,27 @@
+name: Clairaudience
+type: spell
+data:
+  level: 6
+  suit: spades
+  description: ""
+---
+name: Clairvoyance
+type: spell
+data:
+  level: 8
+  suit: spades
+  description: ""
+---
+name: Scrying
+type: spell
+data:
+  level: 6
+  suit: spades
+  description: ""
+---
+name: Divination Barrier
+type: spell
+data:
+  level: 8
+  suit: spades
+  description: ""

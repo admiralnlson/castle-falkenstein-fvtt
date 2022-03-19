@@ -1,0 +1,20 @@
+name: Time Cessation
+type: spell
+data:
+  level: 10
+  suit: spades
+  description: ""
+---
+name: Time Acceleration/Slowing
+type: spell
+data:
+  level: 12
+  suit: spades
+  description: ""
+---
+name: Temporal Fugue
+type: spell
+data:
+  level: 12
+  suit: spades
+  description: ""

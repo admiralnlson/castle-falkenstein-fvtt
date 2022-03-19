@@ -1,0 +1,4 @@
+{"name":"Temporal Fugue","type":"spell","data":{"level":12,"suit":"spades","description":""},"img":"systems/castle-falkenstein/src/cards/spades.svg","_id":"wvXOqYqiocLsNVLA"}
+{"name":"Time Acceleration","type":"spell","data":{"level":12,"suit":"spades","description":""},"img":"systems/castle-falkenstein/src/cards/spades.svg","_id":"A0RLOupVSFMOYsmu"}
+{"name":"Time Cessation","type":"spell","data":{"level":10,"suit":"spades","description":""},"img":"systems/castle-falkenstein/src/cards/spades.svg","_id":"uBQWRqY2wahRpwvj"}
+{"name":"Time Slowing","type":"spell","data":{"level":12,"suit":"spades","description":""},"img":"systems/castle-falkenstein/src/cards/spades.svg","_id":"AWJqDOeejyoGbiDn"}

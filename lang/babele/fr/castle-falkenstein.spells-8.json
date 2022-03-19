@@ -1,0 +1,24 @@
+{
+  "label": "Livre occulte - Le Grimoire d'Osman sur le mouvement physique",
+  "mapping": {
+    "description": "data.description"
+  },
+  "entries": {
+    "Floors of Glass": {
+      "name": "Sols de verre",
+      "description": "faire glisser des objets sur une surface comme si elle était parfaitement lisse, à une vitesse équivalente à un niveau Moyen."
+    },
+    "Hands of Hovering": {
+      "name": "Main de suspension",
+      "description": "maintenir des choses en l'air, jusqu'à 30 mètres du sol, mais pas les déplacer."
+    },
+    "Knowledge of Flight": {
+      "name": "Connaissance du vol",
+      "description": "attribuer un niveau Excellent à la capacité et à la vitesse de vol de la cible du sort, qu'elle soit un être vivant ou de la matière inerte."
+    },
+    "Mastery of Levitation": {
+      "name": "Maîtrise de la lévitation",
+      "description": "mouvoir des objets à une allure plus réduite, correspondant à un niveau Faible."
+    }
+  }
+}

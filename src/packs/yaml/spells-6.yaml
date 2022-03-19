@@ -1,0 +1,34 @@
+name: Change Size
+type: spell
+data:
+  level: 12
+  suit: diamonds
+  description: ""
+---
+name: Shape of a Known Form
+type: spell
+data:
+  level: 6
+  suit: diamonds
+  description: ""
+---
+name: Invest with Powers of a Known Form
+type: spell
+data:
+  level: 12
+  suit: diamonds
+  description: ""
+---
+name: Shape of the Unknown Form
+type: spell
+data:
+  level: 16
+  suit: diamonds
+  description: ""
+---
+name: Transformation Barrier
+type: spell
+data:
+  level: 8
+  suit: diamonds
+  description: ""

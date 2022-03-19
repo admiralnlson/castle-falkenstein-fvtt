@@ -9,25 +9,37 @@ const fs = require("fs");
 const path = require("path");
 const sortArray = require("sort-array");
 
-const PACKS_SRC = ".";
+const PACKS_SRC = "./yaml";
 const PACKS_DST = "../../build/packs";
 
 /* ----------------------------------------- */
-/*  Compile Compendia
+/*  Compile packs
 /* ----------------------------------------- */
 
 function compilePacks() {
-  // determine the source folders to process
-  const folders = fs.readdirSync(PACKS_SRC).filter((file) => {
-    return fs.statSync(path.join(PACKS_SRC, file)).isDirectory() && file != "node_modules";
+  // determine the source files to process
+  const files = fs.readdirSync(PACKS_SRC).filter((file) => {
+    return fs.statSync(path.join(PACKS_SRC, file)).isFile();
   });
 
   // process each folder into a compendium db
-  const packs = folders.map((folder) => {
-    const db = new Datastore({ filename: path.resolve(__dirname, PACKS_DST, `${folder}.db`), autoload: true });
-    return gulp.src(path.join(PACKS_SRC, folder, "/**/*.yaml")).pipe(
+  const packs = files.map((file) => {
+    const fileNoExt = file.replace('.yaml', '');
+    const db = new Datastore({ filename: path.resolve(__dirname, PACKS_DST, `${fileNoExt}.db`), autoload: true });
+    return gulp.src(path.join(PACKS_SRC, file)).pipe(
       through2.obj((file, enc, cb) => {
         let json = sortArray(yaml.loadAll(file.contents.toString()), { by: 'name' });
+        // create complete Foundry items
+        for (item of json) {
+          if (item.type == "ability") {
+            item.data.level = "AV";
+          } /*else if (item.type == "spell") {
+            item.img = "icons/svg/book.svg";
+          }*/
+
+          item.img = `systems/castle-falkenstein/src/cards/${item.data.suit}.svg`;
+        }
+        //
         db.insert(json);
         cb(null, file);
       })

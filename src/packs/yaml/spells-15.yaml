@@ -1,0 +1,34 @@
+name: Raise the Storm
+type: spell
+data:
+  level: 6
+  suit: clubs
+  description: ""
+---
+name: Raise the Maelstrom
+type: spell
+data:
+  level: 8 
+  suit: clubs
+  description: ""
+---
+name: Shake the Earth
+type: spell
+data:
+  level: 8 
+  suit: clubs
+  description: ""
+---
+name: Raise the Firestorm
+type: spell
+data:
+  level: 8 
+  suit: clubs
+  description: ""
+---
+name: Quell Nature
+type: spell
+data:
+  level: 8 
+  suit: clubs
+  description: ""

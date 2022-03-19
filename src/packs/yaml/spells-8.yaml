@@ -1,0 +1,27 @@
+name: Knowledge of Flight
+type: spell
+data:
+  level: 8
+  suit: diamonds
+  description: ""
+---
+name: Mastery of Levitation
+type: spell
+data:
+  level: 6
+  suit: diamonds
+  description: ""
+---
+name: Hands of Hovering
+type: spell
+data:
+  level: 4
+  suit: diamonds
+  description: ""
+---
+name: Floors of Glass
+type: spell
+data:
+  level: 4
+  suit: diamonds
+  description: ""

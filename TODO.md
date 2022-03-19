@@ -54,6 +54,8 @@
 
 ### Other
 
++ Packs: ensure abilities and spells in packs stay sorted in alphabetical order when dropped onto a char sheet (add sorting info?)
+
 + Ability data packs (keeping their description to a minimum as per RTG Homebrew Content policy)
   + `[✓]` English - from Corebook
   + `[✓]` French - from Corebook
@@ -66,7 +68,7 @@
 
 + Lorebook data packs (keeping their description to a minimum as per RTG Homebrew Content policy)
   + `[M]` English - from Corebook
-  + `[M]` French - from Corebook
+  + `[✓]` French - from Corebook
   + `[S]` English - from sourcebooks
   + `[S]` French - from sourcebooks
 + `[M]` Shortcut to import Spells from a Lorebook data pack, which

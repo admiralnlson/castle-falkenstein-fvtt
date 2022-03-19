@@ -1,0 +1,4 @@
+{"name":"Elemental Barrier","type":"spell","data":{"level":8,"suit":"clubs","description":""},"img":"systems/castle-falkenstein/src/cards/clubs.svg","_id":"HlOaG2bVMAEwikPg"}
+{"name":"Elemental Temperature","type":"spell","data":{"level":4,"suit":"clubs","description":""},"img":"systems/castle-falkenstein/src/cards/clubs.svg","_id":"8q0dFxtSOXOgwr8e"}
+{"name":"Investing the Element","type":"spell","data":{"level":10,"suit":"clubs","description":""},"img":"systems/castle-falkenstein/src/cards/clubs.svg","_id":"AvSpRgycKpo29fDy"}
+{"name":"Shaping the Element","type":"spell","data":{"level":8,"suit":"clubs","description":""},"img":"systems/castle-falkenstein/src/cards/clubs.svg","_id":"5LjRtfj98gHMJxRe"}

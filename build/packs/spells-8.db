@@ -1,0 +1,4 @@
+{"name":"Floors of Glass","type":"spell","data":{"level":4,"suit":"diamonds","description":""},"img":"systems/castle-falkenstein/src/cards/diamonds.svg","_id":"4nys3C5WdrvRJ2YB"}
+{"name":"Hands of Hovering","type":"spell","data":{"level":4,"suit":"diamonds","description":""},"img":"systems/castle-falkenstein/src/cards/diamonds.svg","_id":"XApU1i5SB8keMkrj"}
+{"name":"Knowledge of Flight","type":"spell","data":{"level":8,"suit":"diamonds","description":""},"img":"systems/castle-falkenstein/src/cards/diamonds.svg","_id":"nW0g5IcIvPMKz9WQ"}
+{"name":"Mastery of Levitation","type":"spell","data":{"level":6,"suit":"diamonds","description":""},"img":"systems/castle-falkenstein/src/cards/diamonds.svg","_id":"CUOftm1kfT2obZNu"}

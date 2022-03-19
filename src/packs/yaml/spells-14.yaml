@@ -1,0 +1,27 @@
+name: Investing the Element
+type: spell
+data:
+  level: 10
+  suit: clubs
+  description: ""
+---
+name: Elemental Temperature
+type: spell
+data:
+  level: 4
+  suit: clubs
+  description: ""
+---
+name: Shaping the Element
+type: spell
+data:
+  level: 8
+  suit: clubs
+  description: ""
+---
+name: Elemental Barrier
+type: spell
+data:
+  level: 8
+  suit: clubs
+  description: ""

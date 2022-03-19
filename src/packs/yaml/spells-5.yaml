@@ -1,0 +1,34 @@
+name: Cast Out the Other
+type: spell
+data:
+  level: 8
+  suit: hearts
+  description: ""
+---
+name: Conquer the Madness
+type: spell
+data:
+  level: 8
+  suit: hearts
+  description: ""
+---
+name: Hear the Hidden Thoughts
+type: spell
+data:
+  level: 6
+  suit: hearts
+  description: ""
+---
+name: Bring to Peace
+type: spell
+data:
+  level: 4
+  suit: hearts
+  description: ""
+---
+name: Bring to Rest
+type: spell
+data:
+  level: 6
+  suit: hearts
+  description: ""

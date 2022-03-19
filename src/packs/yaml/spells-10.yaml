@@ -1,0 +1,13 @@
+name: Summonation
+type: spell
+data:
+  level: 8
+  suit: spades 
+  description: ""
+---
+name: Banishment
+type: spell
+data:
+  level: 6
+  suit: spades
+  description: ""

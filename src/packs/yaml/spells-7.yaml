@@ -1,0 +1,28 @@
+name: Universal Alchemic
+type: spell
+data:
+  level: 8
+  suit: diamonds
+  description: "modifier la structure matérielle des objets, par exemple pour changer le plomb en or."
+---
+name: Flesh to Mineral
+type: spell
+data:
+  level: 8
+  suit: diamonds
+  description: ""
+
+---
+name: Alchemic Destruction
+type: spell
+data:
+  level: 16
+  suit: diamonds
+  description: ""
+---
+name: Alchemic Barrier
+type: spell
+data:
+  level: 8
+  suit: diamonds
+  description: "empêcher les transformations d'Alchimie universelle, mais uniquement si le sort est lancé avant que la mutation ait commencé."

@@ -1,0 +1,62 @@
+name: Mental Command
+type: spell
+data:
+  level: 4
+  suit: hearts
+  description: ""
+---
+name: Dominate Will
+type: spell
+data:
+  level: 10
+  suit: hearts
+  description: ""
+---
+name: Forget
+type: spell
+data:
+  level: 4
+  suit: hearts
+  description: ""
+---
+name: Implanting Suggestions
+type: spell
+data:
+  level: 6
+  suit: hearts
+  description: ""
+---
+name: Entrancing & Beguiling
+type: spell
+data:
+  level: 4
+  suit: hearts
+  description: ""
+---
+name: Stunning
+type: spell
+data:
+  level: 10
+  suit: hearts
+  description: ""
+---
+name: Create Blinding Pain
+type: spell
+data:
+  level: 12
+  suit: hearts
+  description: ""
+---
+name: Death Wish
+type: spell
+data:
+  level: 16
+  suit: hearts
+  description: ""
+---
+name: Mental Barrier
+type: spell
+data:
+  level: 10
+  suit: hearts
+  description: ""

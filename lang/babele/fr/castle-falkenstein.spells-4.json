@@ -1,0 +1,32 @@
+{
+  "label": "Livre occulte - Le Royaume du rêve de Megron",
+  "mapping": {
+    "description": "data.description"
+  },
+  "entries": {
+    "Dream Barrier": {
+      "name": "Barrière des rêves",
+      "description": "immunise le lanceur contre les rêves thaumaturgiques, mais sans l'empêcher d'avoir des rêves normaux."
+    },
+    "Dreams of Prophecy": {
+      "name": "Rêves prophétiques",
+      "description": "insuffler des connaissances au rêveur. Demande à ce que le sorcier possède une réelle connaissance de l'événement ou de la menace à venir, mais le fait que le sort soit lancé ne signifie pas pour autant que la prédiction va se réaliser."
+    },
+    "Dreams of Warning": {
+      "name": "Rêves prémonitoires",
+      "description": "montrer une menace à venir au rêveur. Demande à ce que le sorcier possède une réelle connaissance de l'événement ou de la menace à venir, mais le fait que le sort soit lancé ne signifie pas pour autant que la prédiction va se réaliser."
+    },
+    "Erotic Dreams": {
+      "name": "Rêves érotiques",
+      "description": "le thaumaturge imagine un scénario où est présentée la chose ou la personne que le rêveur désire le plus."
+    },
+    "Killing Dreams": {
+      "name": "Rêves mortels",
+      "description": "confrontent la victime du sort à une version onirique de sa propre mort. Si elle n'est pas réveillée avant que le cauchemar n'arrive à son terme, elle meurt sans laisser la moindre trace de la cause de sa mort."
+    },
+    "Nightmares": {
+      "name": "Cauchemars",
+      "description": "le thaumaturge imagine un scénario où est présentée la chose ou la personne que le rêveur abomine."
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{"name":"Create Blinding Pain","type":"spell","data":{"level":12,"suit":"hearts","description":""},"img":"systems/castle-falkenstein/src/cards/hearts.svg","_id":"OzhiJWSa4I8NfffO"}
+{"name":"Death Wish","type":"spell","data":{"level":16,"suit":"hearts","description":""},"img":"systems/castle-falkenstein/src/cards/hearts.svg","_id":"hMdPQAdNKVta75Y1"}
+{"name":"Dominate Will","type":"spell","data":{"level":10,"suit":"hearts","description":""},"img":"systems/castle-falkenstein/src/cards/hearts.svg","_id":"tSoTuVlfWfoOHkZg"}
+{"name":"Entrancing & Beguiling","type":"spell","data":{"level":4,"suit":"hearts","description":""},"img":"systems/castle-falkenstein/src/cards/hearts.svg","_id":"zwkTpW1LxYLsrwVA"}
+{"name":"Forget","type":"spell","data":{"level":4,"suit":"hearts","description":""},"img":"systems/castle-falkenstein/src/cards/hearts.svg","_id":"4Zrclj1zlDWFVPVN"}
+{"name":"Implanting Suggestions","type":"spell","data":{"level":6,"suit":"hearts","description":""},"img":"systems/castle-falkenstein/src/cards/hearts.svg","_id":"VyYys9yLOBTpvire"}
+{"name":"Mental Barrier","type":"spell","data":{"level":10,"suit":"hearts","description":""},"img":"systems/castle-falkenstein/src/cards/hearts.svg","_id":"VjkELTzycgFikaIA"}
+{"name":"Mental Command","type":"spell","data":{"level":4,"suit":"hearts","description":""},"img":"systems/castle-falkenstein/src/cards/hearts.svg","_id":"Yn5ZJVWd05iMic7i"}
+{"name":"Stunning","type":"spell","data":{"level":10,"suit":"hearts","description":""},"img":"systems/castle-falkenstein/src/cards/hearts.svg","_id":"vMmxvIa4nUD6HkJC"}

@@ -13,9 +13,99 @@
   "styles": ["src/css/castle-falkenstein.css"],
   "packs": [
     {
-      "name": "abilities-corebook",
       "label": "Abilities - Corebook",
       "path": "build/packs/abilities-corebook.db",
+      "name": "abilities-corebook",
+      "type": "Item"
+    },
+    {
+      "label": "Lorebook: Manuscriptum Mentallis",
+      "path": "build/packs/spells-1.db",
+      "name": "spells-1",
+      "type": "Item"
+    },
+    {
+      "label": "Lorebook: Ritual Writing of Psychic Binding",
+      "path": "build/packs/spells-2.db",
+      "name": "spells-2",
+      "type": "Item"
+    },
+    {
+      "label": "Lorebook: Agrivicca Rexus' Realm of Illusion",
+      "path": "build/packs/spells-3.db",
+      "name": "spells-3",
+      "type": "Item"
+    },
+    {
+      "label": "Lorebook: Megron's Realm of Dreaming",
+      "path": "build/packs/spells-4.db",
+      "name": "spells-4",
+      "type": "Item"
+    },
+    {
+      "label": "Lorebook: Realm of The Unknown Mind",
+      "path": "build/packs/spells-5.db",
+      "name": "spells-5",
+      "type": "Item"
+    },
+    {
+      "label": "Lorebook: Libram of Mystic Transformation",
+      "path": "build/packs/spells-6.db",
+      "name": "spells-6",
+      "type": "Item"
+    },
+    {
+      "label": "Lorebook: The Manuscriptum Universal Alchemic",
+      "path": "build/packs/spells-7.db",
+      "name": "spells-7",
+      "type": "Item"
+    },
+    {
+      "label": "Lorebook: Osman's Tome of Physical Movement",
+      "path": "build/packs/spells-8.db",
+      "name": "spells-8",
+      "type": "Item"
+    },
+    {
+      "label": "Lorebook: Libram of Temporal Control",
+      "path": "build/packs/spells-9.db",
+      "name": "spells-9",
+      "type": "Item"
+    },
+    {
+      "label": "Lorebook: Libram of Summonation",
+      "path": "build/packs/spells-10.db",
+      "name": "spells-10",
+      "type": "Item"
+    },
+    {
+      "label": "Lorebook: LeRoeun's Scrolls of Dimensional Movement",
+      "path": "build/packs/spells-11.db",
+      "name": "spells-11",
+      "type": "Item"
+    },
+    {
+      "label": "Lorebook: Dark Libram of Necromancy",
+      "path": "build/packs/spells-12.db",
+      "name": "spells-12",
+      "type": "Item"
+    },
+    {
+      "label": "Lorebook: Manuscript of Paranormal Divination",
+      "path": "build/packs/spells-13.db",
+      "name": "spells-13",
+      "type": "Item"
+    },
+    {
+      "label": "Lorebook: Manuscript of Elemental Shaping",
+      "path": "build/packs/spells-14.db",
+      "name": "spells-14",
+      "type": "Item"
+    },
+    {
+      "label": "Lorebook: Burton's On the Raised Forces of Nature",
+      "path": "build/packs/spells-15.db",
+      "name": "spells-15",
       "type": "Item"
     }
   ],

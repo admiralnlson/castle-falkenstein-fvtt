@@ -1,0 +1,24 @@
+{
+  "label": "Livre occulte - Les Parchemins du mouvement dimensionnel de Le Roeun",
+  "mapping": {
+    "description": "data.description"
+  },
+  "entries": {
+    "Astral Movement": {
+      "name": "Mouvement astral",
+      "description": "projeter sa conscience, et non son corps physique, vers un autre endroit de Nouvelle-Europe."
+    },
+    "Portals to Beyond the Veil": {
+      "name": "Portail vers les dimensions au-delà du Voile",
+      "description": "ouvrir un portail vers une destination au-delà du Voile."
+    },
+    "Portals to Lands in New Europa": {
+      "name": "Portail vers d'autres terres de Nouvelle-Europe",
+      "description": "ouvrir un portail vers une destination en Nouvelle-Europe."
+    },
+    "Portals to the Faerie Realm": {
+      "name": "Portail vers le royaume des Faës",
+      "description": "ouvrir un portail vers une destination dans le royaume des Faë."
+    }
+  }
+}

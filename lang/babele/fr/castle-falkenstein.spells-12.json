@@ -1,0 +1,24 @@
+{
+  "label": "Livre occulte - Le Livre noir de la nécromancie",
+  "mapping": {
+    "description": "data.description"
+  },
+  "entries": {
+    "Animation of the Dead": {
+      "name": "Animation des morts",
+      "description": "anime des morts qui reviennent en pleine possession de leurs facultés, comme de leur vivant."
+    },
+    "Banish to Eternal Rest": {
+      "name": "Bannissement des restes éternels",
+      "description": "combat les malédictions du Livre noir de la nécromancie, que ce soit avant ou après leur lancement."
+    },
+    "Drawing of Another's Life Force": {
+      "name": "Drainer la force vitale",
+      "description": "réduit la vitalité d'une victime vivante en fonction des définitions du sort."
+    },
+    "Speaker to the Dead": {
+      "name": "Parole des morts",
+      "description": "permet à des morts de communiquer comme s'ils étaient encore parmi nous, mais sans qu'ils soient capables d'une quelconque action physique."
+    }
+  }
+}

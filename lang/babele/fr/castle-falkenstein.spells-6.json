@@ -1,0 +1,28 @@
+{
+  "label": "Livre occulte - Le Livre de la transformation mystique",
+  "mapping": {
+    "description": "data.description"
+  },
+  "entries": {
+    "Change Size": {
+      "name": "Changer la taille",
+      "description": "altérer la taille d'un sujet vivant, jusqu'à lui faire atteindre celle d'une fourmi ou d'un éléphant."
+    },
+    "Invest with Powers of a Known Form": {
+      "name": "Investir avec les pouvoirs du modèle connu",
+      "description": "transmettre au bénéficiaire les pouvoirs ou les capacités propres du modèle choisi."
+    },
+    "Shape of a Known Form": {
+      "name": "Forme du modèle connu",
+      "description": "modifie l'apparence de la cible, en lui donnant celle d'un modèle vivant que le thaumaturge connaît personnellement."
+    },
+    "Shape of the Unknown Form": {
+      "name": "Forme du modèle inconnu",
+      "description": "Si le thaumaturge ne connaît pas directement l'apparence qu'il veut donner à sa cible, mais qu'il en a au moins une description détaillée, par exemple sous la forme d'un dessin fidèle ou d'une photo, il peut utiliser ce sort au même titre qu'il le ferait avec Forme du modèle connu."
+    },
+    "Transformation Barrier": {
+      "name": "Barrière de transformation",
+      "description": "Arrêter tout ou partie des transformations mystiques, tant que le sort est lancé avant le début de la transformation."
+    }
+  }
+}
