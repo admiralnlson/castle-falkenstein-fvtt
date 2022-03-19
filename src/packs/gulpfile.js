@@ -7,7 +7,8 @@ const mergeStream = require("merge-stream");
 const clean = require("gulp-clean");
 const fs = require("fs");
 const path = require("path");
-const sortArray = require("sort-array");
+//const sortArray = require("sort-array");
+const sha256 = require("crypto-js/sha256");
 
 const PACKS_SRC = "./yaml";
 const PACKS_DST = "../../build/packs";
@@ -15,6 +16,11 @@ const PACKS_DST = "../../build/packs";
 /* ----------------------------------------- */
 /*  Compile packs
 /* ----------------------------------------- */
+
+function hash(str, len) {
+  let hash = sha256(str).toString().substring(0, len);
+  return hash;
+}
 
 function compilePacks() {
   // determine the source files to process
@@ -28,18 +34,28 @@ function compilePacks() {
     const db = new Datastore({ filename: path.resolve(__dirname, PACKS_DST, `${fileNoExt}.db`), autoload: true });
     return gulp.src(path.join(PACKS_SRC, file)).pipe(
       through2.obj((file, enc, cb) => {
-        let json = sortArray(yaml.loadAll(file.contents.toString()), { by: 'name' });
-        // create complete Foundry items
+        let json = yaml.loadAll(file.contents.toString());
+        //json = sortArray(json, { by: 'name' });
+
+        const filenameHash13 = hash(fileNoExt, 13); // 13 chars from filename + 3 from item = 16 (nedb id length)
+
+        let counter = 1;
         for (item of json) {
+          // supplement the definitions with some key properties
           if (item.type == "ability") {
             item.data.level = "AV";
-          } /*else if (item.type == "spell") {
-            item.img = "icons/svg/book.svg";
-          }*/
-
+          }
           item.img = `systems/castle-falkenstein/src/cards/${item.data.suit}.svg`;
+
+          // add an nedb _id that is deterministic to avoid FoundryVTT reording them when saving
+          if (counter > 999) {
+            console.error("Too many items in the pack");
+          }
+          item._id = filenameHash13 + ("00" + counter).slice(-3); // 13 chars from filename + 3 from item = 16 (nedb id length)
+          console.log(item._id);
+          ++counter;
         }
-        //
+
         db.insert(json);
         cb(null, file);
       })
