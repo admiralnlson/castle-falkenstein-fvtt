@@ -6,39 +6,39 @@
   "entries": {
     "Create Blinding Pain": {
       "name": "Infliger une atroce douleur",
-      "description": "provoque une atroce douleur une telle souffrance que la cible est incapable de faire autre chose que se tordre de douleur."
+      "description": "Provoque une telle souffrance que la cible est incapable de faire autre chose que se tordre de douleur."
     },
     "Death Wish": {
       "name": "Pulsion suicidaire",
-      "description": "génère d'importants dégâts mentaux chez la victime, jusqu'à ce qu'elle meure (le niveau de dommage infligé est déterminé par la définition du sort)."
+      "description": "Génère d'importants dégâts mentaux chez la victime, jusqu'à ce qu'elle meure (le niveau de dommage infligé est déterminé par la définition du sort)."
     },
     "Dominate Will": {
       "name": "Dominer la volonté",
-      "description": "prendre le contrôle du corps de quelqu'un par la simple force de l'esprit."
+      "description": "Permet de prendre le contrôle du corps de quelqu'un par la simple force de l'esprit."
     },
     "Entrancing & Beguiling": {
       "name": "Séduction et ravissement",
-      "description": "provoquer l'étourdissement et la confusion."
+      "description": "Provoque l'étourdissement et la confusion."
     },
     "Forget": {
       "name": "Oubli",
-      "description":"engendrer des pertes de mémoire sur des sujets ou des périodes spécifiques."
+      "description":"Engendre des pertes de mémoire sur des sujets ou des périodes spécifiques."
     },
     "Implanting Suggestions": {
       "name": "Implanter des suggestions",
-      "description": "inculquer des idées et des pensées dans le subconscient."
+      "description": "Permet d'inculquer des idées et des pensées dans le subconscient."
     },
     "Mental Barrier": {
       "name": "Barrière mentale",
-      "description": "se protéger instantanément de toutes les effets décrits dans le Manuscriptum Mentallis."
+      "description": "Protège instantanément le thaumaturge de toutes les effets décrits dans le Manuscriptum Mentallis."
     },
     "Mental Command": {
       "name": "Ordre mental",
-      "description": "donner des instructions mentales simples ou complexes à des tiers."
+      "description": "Permet de donner des instructions mentales simples ou complexes à des tiers."
     },
     "Stunning": {
       "name": "Assommer",
-      "description": "provoquer l'inconscience."
+      "description": "Provoque l'inconscience."
     }
   }
 }

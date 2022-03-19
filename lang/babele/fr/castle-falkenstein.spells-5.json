@@ -6,23 +6,23 @@
   "entries": {
     "Bring to Peace": {
       "name": "Ramener la paix",
-      "description": "calme et apaise, faisant perdre à la cible toute velléité agressive."
+      "description": "Calme et apaise, faisant perdre à la cible toute velléité agressive."
     },
     "Bring do Rest": {
       "name": "Ramener le repos",
-      "description": "impose une sérénité encore plus profonde, à tel point que le sujet tombe dans un sommeil profond et réparateur."
+      "description": "Impose une sérénité profonde, à tel point que le sujet tombe dans un sommeil profond et réparateur."
     },
     "Cast Out the Other": {
       "name": "Chasser l'autre",
-      "description": "soigne les comportements schizophréniques et les possessions mentales."
+      "description": "Soigne les comportements schizophréniques et les possessions mentales."
     },
     "Conquer the Madness": {
       "name": "Conquête de la folie",
-      "description": " force la victime à ramper et à aboyer comme un chien, à entendre des voix étranges et à perdre le contact avec la réalité ou, inversement, la rend saine d'esprit si elle ne l'est pas."
+      "description": "Force la victime à ramper et à aboyer comme un chien, à entendre des voix étranges et à perdre le contact avec la réalité ou, inversement, la rend saine d'esprit si elle ne l'est pas."
     },
     "Hear the Hidden Thoughs": {
       "name": "Écouter les pensées cachées",
-      "description": "percevoir les pensées du sujet, même celles dont il n'est pas conscient."
+      "description": "Permet de percevoir les pensées du sujet, même celles dont il n'est pas conscient."
     }
   }
 }

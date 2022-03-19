@@ -6,15 +6,15 @@
   "entries": {
     "Temporal Fugue": {
       "name": "Fugue temporelle",
-      "description": "accomplir une tâche en faisant revenir le thaumaturge jusqu'à quatre fois dans la même période de temps de moins d'une minute. Ainsi, ses multiples copies peuvent réaliser bien plus de choses qu'il ne peut le faire seul."
+      "description": "Permet d'accomplir une tâche en faisant revenir le thaumaturge jusqu'à quatre fois dans la même période de temps de moins d'une minute. Ainsi, ses multiples copies peuvent réaliser bien plus de choses qu'il ne peut le faire seul."
     },
     "Time Acceleration/Slowing": {
       "name": "Accélération et ralentissement du temps",
-      "description": "faire s'écouler le temps jusqu'à quatre fois plus vite ou plus lentement pour tout ce qui se trouve autour du thaumaturge, excepté lui-même."
+      "description": "Fait s'écouler le temps jusqu'à quatre fois plus vite ou plus lentement pour tout ce qui se trouve autour du thaumaturge, excepté lui-même."
     },
     "Time Cessation": {
       "name": "Manuscrit du temps figé",
-      "description": "suspend le flux temporel autour du lanceur du sort."
+      "description": "Suspend le flux temporel autour du lanceur du sort."
     }
   }
 }

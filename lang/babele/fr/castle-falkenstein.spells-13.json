@@ -6,19 +6,19 @@
   "entries": {
     "Clairaudience": {
       "name": "Clairaudience",
-      "description": "entendre dans son esprit des conversations très éloignées du point où le thaumaturge se trouve."
+      "description": "Permet d'entendre dans son esprit des conversations très éloignées du point où le thaumaturge se trouve."
     },
     "Clairvoyance": {
       "name": "Clairvoyance",
-      "description": "voir et écouter des scènes lointaines comme si le thaumaturge était sur les lieux."
+      "description": "Permet de voir et écouter des scènes lointaines comme si le thaumaturge était sur les lieux."
     },
     "Divination Barrier": {
       "name": "Barrière à la divination",
-      "description": "contrer les sorts de Divination à tout moment."
+      "description": "Contre les sorts de Divination à tout moment."
     },
     "Scrying": {
       "name": "Cristallomancie",
-      "description": "voir et écouter des scènes lointaines comme si le thaumaturge était sur les lieux, mais uniquement par le biais d'un cristal translucide ou d'un miroir."
+      "description": "Permt de voir et écouter des scènes lointaines comme si le thaumaturge était sur les lieux, mais uniquement par le biais d'un cristal translucide ou d'un miroir."
     }
   }
 }

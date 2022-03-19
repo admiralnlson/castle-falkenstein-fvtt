@@ -6,19 +6,19 @@
   "entries": {
     "Elemental Barrier": {
       "name": "Barrière élémentaire",
-      "description": "arrêter instantanément tout ou partie des phénomènes décrits dans le Manuscrit des mutations élémentaires."
+      "description": "Arrête instantanément tout ou partie des phénomènes décrits dans le Manuscrit des mutations élémentaires."
     },
     "Elemental Temperature": {
       "name": "Température élémentaire",
-      "description": "chauffer un élément jusqu'à son point de fusion ou de sublimation, ou le refroidir jusqu'à son point de condensation ou de solidification."
+      "description": "Chauffe un élément jusqu'à son point de fusion ou de sublimation, ou le refroidit jusqu'à son point de condensation ou de solidification."
     },
     "Investing the Element": {
       "name": "Investir l'élément avec l'intellect et la forme",
-      "description": "créer des créatures entièrement composées de terre, d'air, de feu ou d'eau. Elles sont pourvues d'une intelligence limitée et n'exécutent qu'une tâche ou qu'une série de tâches simples à la fois."
+      "description": "Crée des créatures entièrement composées de terre, d'air, de feu ou d'eau. Elles sont pourvues d'une intelligence limitée et n'exécutent qu'une tâche ou qu'une série de tâches simples à la fois."
     },
     "Shaping the Element": {
       "name": "Former l'élément",
-      "description": "manipuler de grandes quantités brutes de l'élément choisi et à lui donner une forme spécifique. Ainsi, l'air peut devenir un tourbillon, l'eau provoquer des inondations ou s'écouler en torrent, la terre trembler ou engloutir des objets, et le feu les consumer ou les réchauffer."
+      "description": "Permet de manipuler de grandes quantités brutes de l'élément choisi et lui donner une forme spécifique. Ainsi, l'air peut devenir un tourbillon, l'eau provoquer des inondations ou s'écouler en torrent, la terre trembler ou engloutir des objets, et le feu les consumer ou les réchauffer."
     }
   }
 }

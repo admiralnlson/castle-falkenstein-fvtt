@@ -6,11 +6,11 @@
   "entries": {
     "Banishment": {
       "name": "Bannissement",
-      "description": "contrecarrer un sort d'Invocation, que ce soit avant ou après son lancement."
+      "description": "Contrecarre un sort d'Invocation, que ce soit avant ou après son lancement."
     },
     "Summonation": {
       "name": "Invocation",
-      "description": "manifester un objet ou un être devant le lanceur de sort sans pour autant qu'il ne soit soumis à la volonté du thaumaturge. Des objets, des armes, des être vivants mais aussi des armées de créatures, d'esprits ou de démons peuvent tous être invoqués. Les définitions du sort correspondent au lieu où se trouve la cible du sortilège, la complexité de ce dernier et sa durée."
+      "description": "Manifeste un objet ou un être devant le lanceur de sort sans pour autant qu'il ne soit soumis à la volonté du thaumaturge. Des objets, des armes, des être vivants mais aussi des armées de créatures, d'esprits ou de démons peuvent tous être invoqués. Les définitions du sort correspondent au lieu où se trouve la cible du sortilège, la complexité de ce dernier et sa durée."
     }
   }
 }

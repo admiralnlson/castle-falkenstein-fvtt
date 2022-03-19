@@ -6,15 +6,15 @@
   "entries": {
     "Change Size": {
       "name": "Changer la taille",
-      "description": "altérer la taille d'un sujet vivant, jusqu'à lui faire atteindre celle d'une fourmi ou d'un éléphant."
+      "description": "Altère la taille d'un sujet vivant, jusqu'à lui faire atteindre celle d'une fourmi ou d'un éléphant."
     },
     "Invest with Powers of a Known Form": {
       "name": "Investir avec les pouvoirs du modèle connu",
-      "description": "transmettre au bénéficiaire les pouvoirs ou les capacités propres du modèle choisi."
+      "description": "Trasmet au bénéficiaire les pouvoirs ou les capacités propres du modèle choisi."
     },
     "Shape of a Known Form": {
       "name": "Forme du modèle connu",
-      "description": "modifie l'apparence de la cible, en lui donnant celle d'un modèle vivant que le thaumaturge connaît personnellement."
+      "description": "Modifie l'apparence de la cible, en lui donnant celle d'un modèle vivant que le thaumaturge connaît personnellement."
     },
     "Shape of the Unknown Form": {
       "name": "Forme du modèle inconnu",
@@ -22,7 +22,7 @@
     },
     "Transformation Barrier": {
       "name": "Barrière de transformation",
-      "description": "Arrêter tout ou partie des transformations mystiques, tant que le sort est lancé avant le début de la transformation."
+      "description": "Arrête tout ou partie des transformations mystiques, tant que le sort est lancé avant le début de la transformation."
     }
   }
 }

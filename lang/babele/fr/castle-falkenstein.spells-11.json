@@ -6,19 +6,19 @@
   "entries": {
     "Astral Movement": {
       "name": "Mouvement astral",
-      "description": "projeter sa conscience, et non son corps physique, vers un autre endroit de Nouvelle-Europe."
+      "description": "Permet de projeter sa conscience, et non son corps physique, vers un autre endroit de Nouvelle-Europe."
     },
     "Portals to Beyond the Veil": {
       "name": "Portail vers les dimensions au-delà du Voile",
-      "description": "ouvrir un portail vers une destination au-delà du Voile faërique."
+      "description": "Ouvre un portail vers une destination au-delà du Voile faërique."
     },
     "Portals to Lands in New Europa": {
       "name": "Portail vers d'autres terres de Nouvelle-Europe",
-      "description": "ouvrir un portail vers une destination en Nouvelle-Europe."
+      "description": "Ouvre un portail vers une destination en Nouvelle-Europe."
     },
     "Portals to the Faerie Realm": {
       "name": "Portail vers le royaume des Faës",
-      "description": "ouvrir un portail vers une destination dans le royaume des Faë."
+      "description": "Ouvre un portail vers une destination dans le royaume des Faë."
     }
   }
 }

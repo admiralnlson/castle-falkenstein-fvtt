@@ -6,31 +6,31 @@
   "entries": {
     "Break the Binding": {
       "name": "Briser le lien",
-      "description": "couper instantanément les liens psychiques."
+      "description": "Coupe instantanément les liens psychiques."
     },
     "Psychic Bond": {
       "name": "Lien psychique",
-      "description": "savoir ce que la créature liée est en train de faire tant que l' initié se concentre sur cette vision. Ne permet pas de savoir que la créature liée pense."
+      "description": "Permet de savoir ce que la créature liée est en train de faire tant que l' initié se concentre sur cette vision. Ne permet pas de savoir que la créature liée pense."
     },
     "Restraint through Magic Circles": {
       "name": "Cercle de protection thaumaturgique",
-      "description": "empêche la créature ciblée de franchir le tracé du cercle."
+      "description": "Empêche la créature ciblée de franchir le tracé du cercle."
     },
     "Restraint through Magic Talismans": {
       "name": "Talisman",
-      "description": "empêche la créature ciblée d'attaquer le mage qui le porte."
+      "description": "Empêche la créature ciblée d'attaquer le mage qui le porte."
     },
     "Restraint through Magic Wards": {
       "name": "Symbole de garde",
-      "description": "empêche la créature ciblée de franchir l'entrée où il a été apposé."
+      "description": "Empêche la créature ciblée de franchir l'entrée où il a été apposé."
     },
     "Simple Geas": {
       "name": "Simple enchaînement",
-      "description": "un ordre ou un mot qui soumet le sujet au lanceur du sort."
+      "description": "Soumet le sujet au lanceur du sort."
     },
     "Strenghen the Life Bond": {
       "name": "Renforcer le lien vital",
-      "description": "restaure la santé d'une cible mortellement blessée à un niveau qui va lui permette de reprendre conscience (+1), au prix de la santé du thaumaturge."
+      "description": "Restaure la santé d'une cible mortellement blessée à un niveau qui va lui permette de reprendre conscience (+1), au prix de la santé du thaumaturge."
     }
   }
 }
