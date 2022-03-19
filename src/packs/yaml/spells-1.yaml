@@ -3,60 +3,60 @@ type: spell
 data:
   level: 4
   suit: hearts
-  description: ""
+  description: "give simple or complex mental commands to others."
 ---
 name: Dominate Will
 type: spell
 data:
   level: 10
   suit: hearts
-  description: ""
+  description: "possess the body of another mentally."
 ---
 name: Forget
 type: spell
 data:
   level: 4
   suit: hearts
-  description: ""
+  description: "cause selective memory loss of things or periods of time."
 ---
 name: Implanting Suggestions
 type: spell
 data:
   level: 6
   suit: hearts
-  description: ""
+  description: "mentally place ideas in the subject's subconscious."
 ---
 name: Entrancing & Beguiling
 type: spell
 data:
   level: 4
   suit: hearts
-  description: ""
+  description: "make the subject dizzy and confused."
 ---
 name: Stunning
 type: spell
 data:
   level: 10
   suit: hearts
-  description: ""
+  description: "render the subject unconscious."
 ---
 name: Create Blinding Pain
 type: spell
 data:
   level: 12
   suit: hearts
-  description: ""
+  description: "cause incapacitating agony that renders the victim unable to do anything but writhe in pain."
 ---
 name: Death Wish
 type: spell
 data:
   level: 16
   suit: hearts
-  description: ""
+  description: "cause the victim to suffer great mental damage until he is killed (the level of damage caused must be determined by the Definition of the spell)."
 ---
 name: Mental Barrier
 type: spell
 data:
   level: 10
   suit: hearts
-  description: ""
+  description: "instantly deflect any and all of the actions described in Manuscriptum Mentallis."

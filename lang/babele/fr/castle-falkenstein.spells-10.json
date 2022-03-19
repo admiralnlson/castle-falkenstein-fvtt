@@ -6,7 +6,7 @@
   "entries": {
     "Banishment": {
       "name": "Bannissement",
-      "description": "Contrecarre un sort d'Invocation, que ce soit avant ou après son lancement."
+      "description": "contrecarrer un sort d'Invocation, que ce soit avant ou après son lancement."
     },
     "Summonation": {
       "name": "Invocation",

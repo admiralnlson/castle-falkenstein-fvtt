@@ -1,4 +1,4 @@
-{"name":"Floors of Glass","type":"spell","data":{"level":4,"suit":"diamonds","description":""},"img":"systems/castle-falkenstein/src/cards/diamonds.svg","_id":"4nys3C5WdrvRJ2YB"}
-{"name":"Hands of Hovering","type":"spell","data":{"level":4,"suit":"diamonds","description":""},"img":"systems/castle-falkenstein/src/cards/diamonds.svg","_id":"XApU1i5SB8keMkrj"}
-{"name":"Knowledge of Flight","type":"spell","data":{"level":8,"suit":"diamonds","description":""},"img":"systems/castle-falkenstein/src/cards/diamonds.svg","_id":"nW0g5IcIvPMKz9WQ"}
-{"name":"Mastery of Levitation","type":"spell","data":{"level":6,"suit":"diamonds","description":""},"img":"systems/castle-falkenstein/src/cards/diamonds.svg","_id":"CUOftm1kfT2obZNu"}
+{"name":"Floors of Glass","type":"spell","data":{"level":4,"suit":"diamonds","description":"slide objects along a surface as through it were perfectly smooth at Average speeds."},"img":"systems/castle-falkenstein/src/cards/diamonds.svg","_id":"TwI98985wGoRKMJb"}
+{"name":"Hands of Hovering","type":"spell","data":{"level":4,"suit":"diamonds","description":"suspend (but not move) objects above the ground up to 100 feet."},"img":"systems/castle-falkenstein/src/cards/diamonds.svg","_id":"Vk78ZyqIgzOCoFWl"}
+{"name":"Knowledge of Flight","type":"spell","data":{"level":8,"suit":"diamonds","description":"allow Great flying speed to be imparted upon a person or object."},"img":"systems/castle-falkenstein/src/cards/diamonds.svg","_id":"vo11REklpmiCywnm"}
+{"name":"Mastery of Levitation","type":"spell","data":{"level":6,"suit":"diamonds","description":"allow the slow moving of objects up to Poor speeds."},"img":"systems/castle-falkenstein/src/cards/diamonds.svg","_id":"kvKypB3cTilZQKs9"}

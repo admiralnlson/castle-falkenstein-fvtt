@@ -1,4 +1,4 @@
-{"name":"Clairaudience","type":"spell","data":{"level":6,"suit":"spades","description":""},"img":"systems/castle-falkenstein/src/cards/spades.svg","_id":"h0gD3SdxrZGW4je4"}
-{"name":"Clairvoyance","type":"spell","data":{"level":8,"suit":"spades","description":""},"img":"systems/castle-falkenstein/src/cards/spades.svg","_id":"fG0HlHBf5ivx27KZ"}
-{"name":"Divination Barrier","type":"spell","data":{"level":8,"suit":"spades","description":""},"img":"systems/castle-falkenstein/src/cards/spades.svg","_id":"VUUquFj3VZhIdInZ"}
-{"name":"Scrying","type":"spell","data":{"level":6,"suit":"spades","description":""},"img":"systems/castle-falkenstein/src/cards/spades.svg","_id":"FAtaguTrLV07TiAD"}
+{"name":"Clairaudience","type":"spell","data":{"level":6,"suit":"spades","description":"mentally listen to conversations far away from the sorcerer's position."},"img":"systems/castle-falkenstein/src/cards/spades.svg","_id":"q8Z2vuAeuUJFzomk"}
+{"name":"Clairvoyance","type":"spell","data":{"level":8,"suit":"spades","description":"see and hear distant sights and visions as though the sorcerer were there."},"img":"systems/castle-falkenstein/src/cards/spades.svg","_id":"oVJynzuNGFab8tjT"}
+{"name":"Divination Barrier","type":"spell","data":{"level":8,"suit":"spades","description":"confound the powers described in Manuscript of Paranormal Divination, at any time."},"img":"systems/castle-falkenstein/src/cards/spades.svg","_id":"N2vsdOG9tWeAl57I"}
+{"name":"Scrying","type":"spell","data":{"level":6,"suit":"spades","description":"see and hear distant sights and visions through the means of any clear crystal or mirror"},"img":"systems/castle-falkenstein/src/cards/spades.svg","_id":"qMuBzXeoPASMkk3l"}

@@ -3,25 +3,25 @@ type: spell
 data:
   level: 10
   suit: clubs
-  description: ""
+  description: "create elemental creatures entirely made of either Earth, Air, Fire or Water; these are of limited intelligence and will normally carry out only one task (or a single series of very simple tasks) at a time."
 ---
 name: Elemental Temperature
 type: spell
 data:
   level: 4
   suit: clubs
-  description: ""
+  description: "heat or cool any chosen element from its boiling or gaseous point to a frozen or immobile state."
 ---
 name: Shaping the Element
 type: spell
 data:
   level: 8
   suit: clubs
-  description: ""
+  description: "manipulate large amounts of the chosen element in a raw form; air can be shaped to whirlwinds; water to shapes, floods or torrents; earth can be made to take forms, quake or engulf objects; and fire can be made to take shapes, consume or heat chosen objects."
 ---
 name: Elemental Barrier
 type: spell
 data:
   level: 8
   suit: clubs
-  description: ""
+  description: "instantly stop any or all of the actions described in Manuscript of Elemental Shaping."
