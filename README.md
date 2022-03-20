@@ -5,6 +5,12 @@
 # Castle Falkenstein system for Foundry Virtual Tabletop
 > DISCLAIMER: This [Castle Falkenstein](https://rtalsoriangames.com/castle-falkenstien/) system for [Foundry Virtual Tabletop](https://foundryvtt.com/) is unofficial content provided under the [Homebrew Content Policy of R. Talsorian Games](https://rtalsoriangames.com/homebrew-content-policy/) and is not approved or endorsed by RTG. This content references materials that are the property of R. Talsorian Games and its licensees.
 
+## Installation
+To install this system, copy this Manifest URL at the bottom of Foundry VTT's "Install System" dialog:
+```
+https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/latest/download/system.json
+```
+
 ## User guide
 See [USERGUIDE](./doc/USERGUIDE.md)
 
@@ -12,7 +18,7 @@ See [USERGUIDE](./doc/USERGUIDE.md)
 See [CHANGELOG](./CHANGELOG.md)
 
 ## Supported languages
-The system supports localization. But, at this stage, only the following languages are supported:
+The system supports localization. At this stage, the following languages are supported:
 + English
 + French<sup>(1)</sup>
 
