@@ -5,6 +5,12 @@
 # Castle Falkenstein system for FoundryVTT
 > DISCLAIMER: This [Castle Falkenstein system](https://rtalsoriangames.com/castle-falkenstien/) for [Foundry VTT](https://foundryvtt.com/) is unofficial content provided under the [Homebrew Content Policy of R. Talsorian Games](https://rtalsoriangames.com/homebrew-content-policy/) and is not approved or endorsed by RTG. This content references materials that are the property of R. Talsorian Games and its licensees.
 
+## User guide
+See [USERGUIDE](./doc/USERGUIDE.md)
+
+## Release notes
+See [CHANGELOG](./CHANGELOG.md)
+
 ## Supported languages
 The system supports localization. But, at this stage, only the following languages are supported:
 + English
@@ -23,12 +29,6 @@ By default, the system uses enhanced sheets for **Hands** and **Cards** (since t
 | ------------------------------------------------------------------------ | ----------------------- |
 | [🦋 Monarch](https://foundryvtt.com/packages/monarch)                    | ✅ Fully integrated    |
 | [Ready To Use Cards](https://foundryvtt.com/packages/ready-to-use-cards) | ⌛ Not compatible yet   |
-
-## User guide
-See [USERGUIDE](./doc/USERGUIDE.md)
-
-## Release notes
-See [CHANGELOG](./CHANGELOG.md)
 
 ## Planned evolutions
 See [TODO](./TODO.md)
