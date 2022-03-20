@@ -1,5 +1,9 @@
 # Changelog
 
+## [v1.0.1](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.0.1) - 2022/03/20
+### Fixed
+- Issue in French translation of Lorebook 'Realm of The Unknown Mind'
+
 ## [v1.0.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.0.0) - 2022/03/20
 ### Changed
 + System made generally available
