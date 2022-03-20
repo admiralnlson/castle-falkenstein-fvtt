@@ -3,7 +3,7 @@ type: spell
 data:
   level: 6
   suit: hearts
-  description: "send dreams in which the caster imparts knowledge to the dreamer. Requires that the caster have true knowledge of the event that is to come. The prophesy is not, however, assured."
+  description: "Sends dreams in which the caster imparts knowledge to the dreamer. Requires that the caster have true knowledge of the event that is to come. The prophesy is not, however, assured."
 ---
 name: Dreams of Warning
 type: spell

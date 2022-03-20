@@ -38,7 +38,7 @@ type: spell
 data:
   level: 8
   suit: hearts
-  description: "llows the Adept to be aware of whatever the bound creature is physically doing (as long as caster pays full attention), although its thoughts will be hidden from him."
+  description: "Allows the Adept to be aware of whatever the bound creature is physically doing (as long as caster pays full attention), although its thoughts will be hidden from him."
 ---
 name: Break the Binding
 type: spell

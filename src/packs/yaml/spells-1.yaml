@@ -3,28 +3,28 @@ type: spell
 data:
   level: 4
   suit: hearts
-  description: "give simple or complex mental commands to others."
+  description: "Allows to give simple or complex mental commands to others."
 ---
 name: Dominate Will
 type: spell
 data:
   level: 10
   suit: hearts
-  description: "possess the body of another mentally."
+  description: "Allows to possess the body of another mentally."
 ---
 name: Forget
 type: spell
 data:
   level: 4
   suit: hearts
-  description: "cause selective memory loss of things or periods of time."
+  description: "Causes selective memory loss of things or periods of time."
 ---
 name: Implanting Suggestions
 type: spell
 data:
   level: 6
   suit: hearts
-  description: "mentally place ideas in the subject's subconscious."
+  description: "Mentally places ideas in the subject's subconscious."
 ---
 name: Entrancing & Beguiling
 type: spell
