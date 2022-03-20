@@ -1,5 +1,10 @@
 # Changelog
 
+## [v0.4.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v0.4.0) - 2022/03/20
+### Added
++ Compendium packs for Lorebooks/spells mentioned in the Corebook (English + French (requires Babele module))
++ Warning in case joining player has insufficient permission on decks or discard piles (useful for Hosts who run 2+ player tables within the same world, with each their own separate decks/discard piles).
+
 ## [v0.3.1](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v0.3.1) - 2022/03/16
 ### Fixed
 + Babele compendium translations were not activating.
