@@ -3,7 +3,7 @@
 ![downloads](https://img.shields.io/github/downloads/admiralnlson/castle-falkenstein-fvtt/latest/castle-falkenstein.zip?label=Downloads(latest%20release))
 
 # Castle Falkenstein system for Foundry Virtual Tabletop
-> DISCLAIMER: This [Castle Falkenstein system](https://rtalsoriangames.com/castle-falkenstien/) for [Foundry VTT](https://foundryvtt.com/) is unofficial content provided under the [Homebrew Content Policy of R. Talsorian Games](https://rtalsoriangames.com/homebrew-content-policy/) and is not approved or endorsed by RTG. This content references materials that are the property of R. Talsorian Games and its licensees.
+> DISCLAIMER: This [Castle Falkenstein system](https://rtalsoriangames.com/castle-falkenstien/) for [Foundry Virtual Tabletop](https://foundryvtt.com/) is unofficial content provided under the [Homebrew Content Policy of R. Talsorian Games](https://rtalsoriangames.com/homebrew-content-policy/) and is not approved or endorsed by RTG. This content references materials that are the property of R. Talsorian Games and its licensees.
 
 ## User guide
 See [USERGUIDE](./doc/USERGUIDE.md)
