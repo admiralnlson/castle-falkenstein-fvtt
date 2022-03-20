@@ -73,23 +73,20 @@ And here is what happens with higher permission levels:
 | Spells               | -       | View     | Update | Update    |
 | Host Notes           | -       | -        | -      | Update    |
 
-The system includes a GM-only 'Show Players' button in the header of all Actor sheets, similar to the one found on Journal Entries in Core FoundryVTT.
-
 Based on the above, a general recommendation for Host is to:
 - create an Actor for each Player Character, and:
   - use permission 'Default: Limited' so all players can see the Description of their fellow players's characters, and
   - give each player an 'Owner' permission on their own Player Character of course
 - create Host characters as Actors as well (rather than as Journal Items) and, during sessions, give players a 'Limited' permission on the ones which Player Characters meet before clicking on the NPC's sheet 'Show Players' button to showcase them.
 
-### Abilities
-To initialize a character with all core abilities in one go, go to the Items tab and drag-and-drop the 'Abilities' folder to your character.
+The character's Fortune (resp. Sorcery) hand is accessible via (and created when first-time clicking on) the link at the top-left of the Talents (resp. Spells) tab.
 
-The folder will only appear if the Host first goes to the Compendium tab, look for 'Core Abilities', right clicks it and select'Import All Content'.
+The system includes a GM-only 'Show Players' button in the header of all character sheets, similar to the one found on Journal Entries in Core FoundryVTT.
 
-> As this stage (v0.3), only one compendium pack for Corebook Abilities is part of the system.
+### Abilities and Spells
+To initialize a character with all abilities (and, if they are a sorcerer, all spells from Lorebooks they know), go to the Items tab and drag-and-drop the adequate folder to the character sheet.
 
-### Spells
-> As this stage (v0.3), Spell Lorebook compendium packs are not part of the system yet.
+The folder will only appear if the Host first goes to the Compendium tab, right clicks on each desired pack and selects 'Import All Content'.
 
 ## Alternative: Diaries as Journal Entries
 To reinforce the notion of character diaries being a part of the world, the Host may elect to use dedicated Journal Entries for each Player Character's (or NPC's) Diary.
