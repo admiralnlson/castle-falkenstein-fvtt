@@ -36,17 +36,17 @@ Note this only affects the _names_ of cards. The visuals of cards shared by RTG 
 ## [Optional] Custom decks
 Hosts may use custom decks if they so desire. The following setup is required.
 
-| Create                |of type | which has player permissions                         |
+| Create a              |of type | which has player permissions                         |
 | :-------------------- | :----- | :--------------------------------------------------- |
 | Fortune Deck          |Deck    | Limited                                              |
 | Fortune discard pile  |Pile    | Observer                                             |
 | Fortune Deck          |Deck    | Limited (relevant for Sorcerer/Dragon players only)  |
 | Sorcery discard pile  |Pile    | Observer (relevant for Sorcerer/Dragon players only) |
 
-The Host also has to pay special attention to the 'value' property of cards in the Deck (e.g. value of Aces is 14 (not 1), Joker is 15).
-The 'suit' property must also have a value in { spades, hearts, diamonds, clubs, joker }. Otherwise the deck won't work with the system.
+The Host also has to pay special attention to the 'value' card property in Decks (e.g. value of Ace is 14 (not 1), Joker is 15).
+The 'suit' card property must also have a value in { spades, hearts, diamonds, clubs, joker }. Otherwise the deck won't work with the system.
 
-Once you're done, go to `Configure Settings > System Settings > Castle Falkenstein` to register your customer deck.
+Once you're done, go to `Configure Settings > System Settings > Castle Falkenstein` to register your custom decks.
 
 Make sure you shuffle the decks before your players get a chance to draw cards from them also. The system won't do it for you.
 
