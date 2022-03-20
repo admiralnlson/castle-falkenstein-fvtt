@@ -44,7 +44,7 @@ export default class CastleFalkenstein {
     get: function (target, key) {
       try { return game.settings.get(CastleFalkenstein.name, key); }
       catch (err) {
-        CastleFalkenstein.consoleWarn(err);
+        CastleFalkenstein.consoleError(err);
         return undefined;
       };
     }
@@ -303,6 +303,35 @@ export default class CastleFalkenstein {
       }
     }
   }
+
+  static async onRenderPlayerList(application, html, data) {
+    this.checkPermissionsOnDecksAndPiles();
+  }
+
+  static async checkPermissionsOnDecksAndPiles() {
+    if (game.user.isGM) {
+      game.users.contents.forEach((user) => {
+        if (user.active) {
+          let stacks = "";
+          [ this.fortuneDeck, this.sorceryDeck ].forEach((deck) => {
+            if (!deck.testUserPermission(user, CONST.ENTITY_PERMISSIONS.LIMITED)) {
+              stacks += `<br/>- ${deck.name}`;
+            }
+          });
+          [ this.fortuneDiscardPile, this.sorceryDiscardPile ].forEach((pile) => {
+            if (!pile.testUserPermission(user, CONST.ENTITY_PERMISSIONS.OBSERVER)) {
+              stacks += `<br/>- ${pile.name}`;
+            }
+          });
+          if (stacks) {
+            ui.notifications.warn(game.i18n.format("castle-falkenstein.notifications.playerHasInsufficientPermissionsOnCardStacks", {
+              player: user.name
+            }) + stacks);
+          }
+        }
+      });
+    }
+  }
   
   static async draw(deckType, hand, nbCardsToDraw) {
     let cardsDrawn = [];
@@ -417,11 +446,11 @@ export default class CastleFalkenstein {
     if(game.modules.get('babele')?.active) {
       Babele.get().setSystemTranslationsDir("lang/babele");
     }
+
+    this.registerSettings();
   }
 
   static async onReady() {
-    this.registerSettings();
-
     await this.preLoadTemplates();
 
     this.registerSheets();
@@ -583,6 +612,8 @@ Hooks.on("hotbarDrop", (hotbar, data, slot) => CastleFalkenstein.hotbarDrop(hotb
 Hooks.on("preDeleteCards", (cards, options, user) => CastleFalkenstein.onPreDeleteCards(cards, options, user));
 
 Hooks.on("deleteCards", (cards, options, user) => CastleFalkenstein.onDeleteCards(cards, options, user));
+
+Hooks.on("renderPlayerList", (application, html, data) => CastleFalkenstein.onRenderPlayerList(application, html, data));
 
 Hooks.on("getMonarchCardComponents", (monarch, components) => CastleFalkensteinMonarchConfig.onCardDisplay(monarch, components));
 

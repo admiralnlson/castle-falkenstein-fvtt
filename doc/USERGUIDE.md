@@ -9,7 +9,13 @@ This system natively supports decks based on [RTG's official Fortune Deck visual
 
 Fortune and Sorcery Decks and discard piles are automatically created when the world is first loaded by the Host. They may be renamed or moved to a different folder.
 
-### Different language
+Note that a deck with the same visuals can be manually created by selecting the dedicated preset within FoundryVTT:
+
+![](./deck-preset.jpg)
+
+At this stage however, such manually-created decks, unlike automatically created Decks which support localization, will always have card names in English.
+
+### [Optional] Different language
 If you started your Castle Falkenstein world before selecting your preferred language in FoundryVTT core settings, you may:
 - Select your language of choice in Foundry VTT core settings
 - Delete the Fortune and Sorcery Decks (this will recall all cards from player hands and discard piles if cards had already been drawn)
@@ -17,8 +23,8 @@ If you started your Castle Falkenstein world before selecting your preferred lan
 
 Note this only affects the _names_ of cards. The visuals of cards shared by RTG are English only.
 
-### Custom decks
-Hosts may also use custom decks if they so desire. The following setup is required.
+### [Optional] Custom decks
+Hosts may use custom decks if they so desire. The following setup is required.
 
 | Create                |of type | which has player permissions                         |
 | :-------------------- | :----- | :--------------------------------------------------- |
@@ -27,15 +33,18 @@ Hosts may also use custom decks if they so desire. The following setup is requir
 | Fortune Deck          |Deck    | Limited (relevant for Sorcerer/Dragon players only)  |
 | Sorcery discard pile  |Pile    | Observer (relevant for Sorcerer/Dragon players only) |
 
-To use RTG's official Fortune Deck visuals, make sure to select the dedicated preset within FoundryVTT:
-
-![](./deck-preset.jpg)
-
-Note that, at this stage, custom decks created with this preset, unlike automatically created Decks, are always in English.
+The Host also has to pay special attention to the 'value' property of cards in the Deck (e.g. value of Aces is 14 (not 1), Joker is 15).
+The 'suit' property must also have a value in { spades, hearts, diamonds, clubs, joker }. Otherwise the deck won't work with the system.
 
 Once you're done, go to `Configure Settings > System Settings > Castle Falkenstein` to register your customer deck.
 
 Make sure you shuffle the decks before your players get a chance to draw cards from them also. The system won't do it for you.
+
+### [Optional] 2+ player groups within the same world
+Hosts who have more than one group of players playing in the same world may duplicate newly created decks and piles and decrease permissions on each deck/pile to match the permissions required by each player group (see table above).
+
+The Host should then ensure that, at the beginning of each gaming session, the adequate set of decks and piles for each group is selected in the Castle Falkenstein system settings.\
+To help remind the Host they have to do this, a warning is produced each time a player connects and they don't have access to one of the Deck/Piles.
 
 ## Host hand
 At this stage, the system assumes that the Host will either

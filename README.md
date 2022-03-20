@@ -13,7 +13,7 @@ The system supports localization. But, at this stage, only the following languag
 + English
 + French<sup>(1)</sup>
 
-<sup>(1)</sup> Compendium pack translations require the 'Babele' module to be installed and activated.
+<sup>(1)</sup> Translations of compendium packs (list of abilities & spells) require the 'Babele' module to be installed and activated.
 
 To submit translations for other languages, see [Contributions](#contributions) below.
 

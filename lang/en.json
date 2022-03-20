@@ -29,6 +29,7 @@
 
     "notifications": {
       "babeleRequired": "In order for the Castle Falkenstein compendium packs to be translated in your language, you need to install and activate the 'babele' module.",
+      "playerRequiresPermissionsOnCardStacks": "Player '{player}' has insufficient permissions on:",
       "createdCards": "Created:",
       "characterWasShown": "Character '{name}' was shown to players.",
       "macroForOwnedItems": "You can only create macro buttons for owned Items.",
