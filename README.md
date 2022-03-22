@@ -3,7 +3,7 @@
 ![downloads](https://img.shields.io/github/downloads/admiralnlson/castle-falkenstein-fvtt/latest/castle-falkenstein.zip?label=Downloads(latest%20release))
 
 # Castle Falkenstein system for Foundry Virtual Tabletop
-> DISCLAIMER: This [Castle Falkenstein](https://rtalsoriangames.com/castle-falkenstien/) system for [Foundry Virtual Tabletop](https://foundryvtt.com/) is unofficial content provided under the [Homebrew Content Policy of R. Talsorian Games](https://rtalsoriangames.com/homebrew-content-policy/) and is not approved or endorsed by RTG. This content references materials that are the property of R. Talsorian Games and its licensees.
+Enter a world of another universe just a few steps away from our own; a place where Dragons and Steampower rule the skies, Faerie Lords duel atop the battlements, and where the forces of Wizardry and Magick meet the gaslight streets of Sherlock Holmes' London. This is a place of Swashbuckling Fantasy, High Romance and Alternate History; the world of **Castle Falkenstein**!
 
 ## Installation
 To install this system, copy its Manifest URL at the bottom of Foundry VTT's "Install System" dialog:
@@ -48,3 +48,7 @@ When submitting translations, please indicate whether your contribution is a one
 I am reachable as [admiralnlson#2349](https://discordapp.com/users/198160826853490688/) on Discord.
 
 Please do not address issues you're facing with this system to R. Talsorian Games. They would not be in a position to help you.
+
+<hr />
+
+> DISCLAIMER: This [Castle Falkenstein](https://rtalsoriangames.com/castle-falkenstien/) system for [Foundry Virtual Tabletop](https://foundryvtt.com/) is unofficial content provided under the [Homebrew Content Policy of R. Talsorian Games](https://rtalsoriangames.com/homebrew-content-policy/) and is not approved or endorsed by RTG. This content references materials that are the property of R. Talsorian Games and its licensees.
