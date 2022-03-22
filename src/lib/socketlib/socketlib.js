@@ -1,3 +1,7 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2021 Manuel Vögele
+
+import {libWrapper} from "../lib-wrapper-shim/shim.js";
 import * as errors from "./errors.js";
 
 const RECIPIENT_TYPES = {

@@ -311,15 +311,15 @@ export default class CastleFalkenstein {
   static async checkPermissionsOnDecksAndPiles() {
     if (game.user.isGM) {
       game.users.contents.forEach((user) => {
-        if (user.active) {
+        if (user.active && !user.isGM) {
           let stacks = "";
           [ this.fortuneDeck, this.sorceryDeck ].forEach((deck) => {
-            if (!deck.testUserPermission(user, CONST.ENTITY_PERMISSIONS.LIMITED)) {
+            if (deck && deck.testUserPermission(user, CONST.ENTITY_PERMISSIONS.LIMITED)) {
               stacks += `<br/>- ${deck.name}`;
             }
           });
           [ this.fortuneDiscardPile, this.sorceryDiscardPile ].forEach((pile) => {
-            if (!pile.testUserPermission(user, CONST.ENTITY_PERMISSIONS.OBSERVER)) {
+            if (pile && !pile.testUserPermission(user, CONST.ENTITY_PERMISSIONS.OBSERVER)) {
               stacks += `<br/>- ${pile.name}`;
             }
           });
@@ -466,8 +466,38 @@ export default class CastleFalkenstein {
       this.createMissingCards();
     }
 
+    // only Monarch fully supported for now
+    if(!game.modules.get('monarch')?.active) {
+      this.warnCardUiIsMissing();
+    }
+
     CastleFalkenstein.consoleDebug("Debug mode active.");
     CastleFalkenstein.consoleInfo("Ready.");
+  }
+
+  static warnCardUiIsMissing() {
+    
+    const i18nSystem = game.i18n.localize("castle-falkenstein.system");
+    const MESSAGE = `
+      <p><b>${game.i18n.localize("castle-falkenstein.notifications.cardUiRequired")}</b></p>
+      <small><p>${game.i18n.localize("castle-falkenstein.notifications.cardUiInstallDetails")}</p></small>`;
+
+    // Settings key used for the "Don't remind me again" setting
+    const DONT_REMIND_AGAIN_KEY = "libwrapper-dont-remind-again";
+
+    // Dialog code
+    CastleFalkenstein.consoleWarn(`No Card UI module present.`);
+    game.settings.register(this.name, DONT_REMIND_AGAIN_KEY, { name: '', default: false, type: Boolean, scope: 'world', config: false });
+    if(game.user.isGM && !game.settings.get(this.name, DONT_REMIND_AGAIN_KEY)) {
+      new Dialog({
+        title: game.i18n.localize("castle-falkenstein.system"),
+        options: { top: 100 },
+        content: MESSAGE, buttons: {
+          ok: { icon: '<i class="fas fa-check"></i>', label: 'Understood' },
+          dont_remind: { icon: '<i class="fas fa-times"></i>', label: "Don't remind me again", callback: () => game.settings.set(PACKAGE_ID, DONT_REMIND_AGAIN_KEY, true) }
+        }
+      }).render(true);
+    }
   }
 
   static setupSocket() {

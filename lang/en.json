@@ -23,13 +23,15 @@
       },
       "sorceryAbility": {
         "name": "Name of the Sorcery ability",
-        "hint": "[Optional] dAllows to have character ability names in the language spoken by your group, even if this language is not officially supporte by the system yet."
+        "hint": "[Optional] Allows to have character ability names in the language spoken by your group, even if this language is not officially supporte by the system yet."
       }
     },
 
     "notifications": {
-      "babeleRequired": "In order for the Castle Falkenstein compendium packs to be translated in your language, you need to install and activate the 'babele' module.",
-      "playerRequiresPermissionsOnCardStacks": "Player '{player}' has insufficient permissions on:",
+      "babeleRequired": "In order for the Castle Falkenstein compendium packs to be translated in your language, you need to install and activate the 'Babele' module!",
+      "cardUiRequired": "The Castle Falkenstein system depends on the 'Monarch' module, which is not present.",
+      "cardUiInstallDetails": "You can install it from the 'Add-on Modules' tab in the 'Foundry VTT Setup' window. It it is already installed, then you need to activate it in the 'Manage Modules' menu.",
+      "playerHasInsufficientPermissionsOnCardStacks": "Player '{player}' has insufficient permissions on:",
       "createdCards": "Created:",
       "characterWasShown": "Character '{name}' was shown to players.",
       "macroForOwnedItems": "You can only create macro buttons for owned Items.",
