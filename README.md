@@ -10,9 +10,9 @@
 Enter a world of another universe just a few steps away from our own; a place where Dragons and Steampower rule the skies, Faerie Lords duel atop the battlements, and where the forces of Wizardry and Magick meet the gaslight streets of Sherlock Holmes' London. This is a place of Swashbuckling Fantasy, High Romance and Alternate History; the world of **Castle Falkenstein**!
 
 ## Installation
-To install this system in FoundryVTT, simply go to 'Configuration and Setup' (startup screen) > Game Systems > Install System, enter Castle Falkenstein in the top-right search bar and click the 'Install' button.
+To install this system in FoundryVTT, simply go to "Configuration and Setup" (startup screen) > "Game Systems" > "Install System", enter Castle Falkenstein in the top-right search bar and click the "Install" button.
 
-Alternatively, you may copy this Manifest URL at the bottom of the 'Install System' window:
+Alternatively, you may enter this Manifest URL at the bottom of the "Install System" window:
 ```
 https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/latest/download/system.json
 ```
