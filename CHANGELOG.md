@@ -2,7 +2,7 @@
 
 ## [v1.0.3](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.0.3) - 2022/03/23
 ### Fixed
-- Removed incorrect warning about players lacking permissions on decks
+- Incorrect warning about players lacking permissions on decks
 
 ## [v1.0.2](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.0.2) - 2022/03/22
 ### Fixed
