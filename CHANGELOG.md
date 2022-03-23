@@ -2,11 +2,11 @@
 
 ## [v1.0.3](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.0.3) - 2022/03/23
 ### Fixed
-- Incorrect warning about players lacking permissions on decks
+- False positive warning about players lacking permissions on decks
 
 ## [v1.0.2](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.0.2) - 2022/03/22
 ### Fixed
-- Incorrect warning about Host lacking permissions on decks
+- False positive warning about Host lacking permissions on decks
 - Replaced hard dependencies (on libWrapper and Monarch) which are not respected by the FoundryVTT client. Replaced with soft dependencies instead.
 
 ## [v1.0.1](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.0.1) - 2022/03/20
