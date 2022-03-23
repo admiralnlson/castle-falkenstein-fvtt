@@ -12,11 +12,6 @@ Enter a world of another universe just a few steps away from our own; a place wh
 ## Installation
 To install this system in FoundryVTT, simply go to "Configuration and Setup" (startup screen) > "Game Systems" > "Install System", enter Castle Falkenstein in the top-right search bar and click the "Install" button.
 
-Alternatively, you may enter this Manifest URL at the bottom of the "Install System" window:
-```
-https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/latest/download/system.json
-```
-
 ## User guide
 See [USERGUIDE](./doc/USERGUIDE.md)
 
