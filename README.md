@@ -2,7 +2,7 @@
 
 [![Latest release](https://img.shields.io/github/v/release/admiralnlson/castle-falkenstein-fvtt?label=Latest%20release)](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/latest)
 ![Supported Foundry Versions](https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://raw.githubusercontent.com/admiralnlson/castle-falkenstein-fvtt/master/system.json)
-![downloads](https://img.shields.io/github/downloads/admiralnlson/castle-falkenstein-fvtt/latest/castle-falkenstein.zip?label=Downloads(latest%20release))
+![downloads](https://img.shields.io/github/downloads/admiralnlson/castle-falkenstein-fvtt/latest/castle-falkenstein.zip?label="Downloads%20(latest%20release)")
 
 </div>
 
