@@ -314,7 +314,7 @@ export default class CastleFalkenstein {
         if (user.active && !user.isGM) {
           let stacks = "";
           [ this.fortuneDeck, this.sorceryDeck ].forEach((deck) => {
-            if (deck && deck.testUserPermission(user, CONST.ENTITY_PERMISSIONS.LIMITED)) {
+            if (deck && !deck.testUserPermission(user, CONST.ENTITY_PERMISSIONS.LIMITED)) {
               stacks += `<br/>- ${deck.name}`;
             }
           });
