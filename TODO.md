@@ -4,7 +4,6 @@
 + MoSCoW: `[M]`ust, `[S]`hould, `[C]`ould, `[W]`on't
 + `[🔥]` Project maintainer (admiralnlson)'s own GM needs
 + `[✓]` Done but kept in the list for info
-+ RTG = R. Talsorian Games
 
 ## Evolutions
 
@@ -24,7 +23,7 @@
 
 ### Sorcery
 
-+ `[M🔥]` Define Spell - Allow user to specify a custom bonus/malus (with label) at spell definition time:
++ `[M🔥]` Define Spell - Allow user to specify a custom bonus/malus (with label) at spell definition time
 + `[S]` Define Spell - explicit mechanic for using **Artefacts**
 + `[S]` Define Spell - explicit mechanic for using **Unraveling**
 + `[S]` Define Spell - explicit mechanic for using **Sorcery specialization** (as opposed to the raw Sorcery level)
@@ -46,7 +45,17 @@
 
 + `[C]` Button for GM to (silently) collect Power to simulate actvity from other Wizards within 15km (work-around: do it with a generic character although it will still be visible to players)
 
-### Variations on the Great Game 
+# Core mechanics not yet supported
+
++ `[M]` Weapon item type and weapons list (under 'Possessions' or dedicated tab), dedicated sheet and chat message
+
++ `[M]` Duel mechanics
+
++ `[S]` Unique Fortune hand for the Host, shared by all NPCs
+
+### From "Variations on the Great Game" and other sourcebooks
+
++ `[C]` Consider adding a lorebook property on spells (and showing it in the spells list)
 
 + `[C]` Support "Divorce Variation" / "Variante de la séparation"\
         en: In which Abilities loosen the bonds which hold them tight to their governing Suits.\
@@ -72,39 +81,17 @@
         en: In which the whimsy and oddity of Magick is simulated using a Tarot deck.\
         fr: Dans laquelle on simule la fantaisie et la bizarrerie de la magie en utilisant un jeu de Tarot.
 
-### Other
++ `[S]` Compendium pack for Abilities found in sourcebooks (English)
++ `[S]` Compendium pack for Abilities found in sourcebooks (French)
 
-+ `[M]` Weapons list (under 'Possessions' or dedicated tab), dedicated sheet and chat message
++ `[S]` Compendium pack for Spells found in sourcebooks (English)
++ `[S]` Compendium pack for Spells found in sourcebooks (French)
 
-+ `[S]` Unique Fortune hand for the Host, shared by all NPCs
+### Cosmetic / Other
 
 + `[S]` add Castle Falkenstein logo somewhere in the character sheet
 
 + `[S]` Ensure abilities remain in alphabetical order when dropped onto a char sheet
-
-+ `[S]` Compendium pack for Abilities found in sourcebooks (English)
-+ `[S]` Compendium pack for Abilities found in sourcebooks (French)
-+ `[C]` Shortcut to import Abilities from a compendium pack, which
-  + does not introduce duplicates
-  + fixes incorrect suit assignments
-  + (optionally?) reorders alphabetically
-
-+ `[S]` Compendium pack for Spells found in sourcebooks (English)
-+ `[S]` Compendium pack for Spells found in sourcebooks (French)
-+ `[C]` Shortcut to import Spells from a compendium pack, which
-  + does not introduce duplicates
-  + fixes incorrect suit assignments
-  + (optionally?) reorders alphabetically
-
-+ `[C]` Compendium pack for items found in the corebook (English)
-+ `[C]` Compendium pack for items found in the corebook (French)
-+ `[C]` Compendium pack for items found in sourcebooks (English)
-+ `[C]` Compendium pack for items found in the corebook (French)
-+ `[C]` Shortcut to import Items from a data pack (must not introduce duplicates, but may fix incorrect suit assignments)
-
-+ `[C]` Replace item (ability, spell, ..) CSS flow display with CSS grid for better display control
-
-+ `[C]` Make the Actor 'Show Players' button compatible with special dialog of 'Permission Viewer' module
 
 + `[C]` Add a species drop-down list (Human/Fae/Dragon/Dwarf) and add species-specific behaviour:
   + give Fae talents to Fae characters only
@@ -113,5 +100,21 @@
   + list species features such as Dwarf's immunity to Fire, Fae sensibility to Iron in the sheet, ..)
   + potentially split "Fae" into "Fae (generic) / Fae (Brownie) / Fae (Pixie) / Fae (Lord/Lady)" for extra setup of non-generic Fae characters.
 
-+ `[C]` Possessions 'on me' / 'location' property
-+ `[C]` Possessions dedicated entry for Cash/Money
++ `[C]` Shortcut to import Abilities and Spells from a compendium pack / imported folder, which
+  + does not introduce duplicates
+  + fixes incorrect suit assignments
+  + (optionally?) reorders alphabetically
+
++ `[C]` Compendium pack for non-weapon items found in the corebook (English)
++ `[C]` Compendium pack for non-weapon items found in the corebook (French)
++ `[C]` Compendium pack for non-weapon items found in sourcebooks (English)
++ `[C]` Compendium pack for non-weapon items found in the corebook (French)
++ `[C]` Shortcut to import Items from a data pack (must not introduce duplicates, but may fix incorrect suit assignments)
+
++ `[C]` Display tweak: rework item (ability, spell, ..) CSS-flow display with CSS-grid
+
++ `[C]` Make the Actor 'Show Players' button compatible with special dialog of 'Permission Viewer' module (pending feedback from PV owner)
+
+
++ `[C]` Possessions: location (equipped, at home, in the bank, investments, ..)
++ `[C]` Possessions: dedicated input box for Cash/Money
