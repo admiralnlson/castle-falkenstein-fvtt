@@ -23,7 +23,7 @@ Note that a deck with the same visuals can be manually created by selecting the 
 
 ![](./deck-preset.jpg)
 
-At this stage however, such manually-created decks, unlike automatically created Decks which support localization, will always have card names in English.
+At this stage however, such manually created decks, unlike automatically created ones, will always have card names in English.
 
 ## [Optional] Different language
 If you started your Castle Falkenstein world before selecting your preferred language in FoundryVTT core settings, you may:
