@@ -13,13 +13,9 @@
 
 + `[S]` reset the character's Fortune/Sorcery hands and delete them when a character is deleted
 
-+ `[C]` on Ready, display warnings about fortune/sorcery decks/piles. Perform more elaborate checks:
-+ `[C]` on settings submit, error if Fortune and Sorcery Decks/Piles are the same (or prevent it by removing them for the selection list)
-+ `[C]` error is not all defined at settings submit
-
 + `[C]` button in World settings (Host only) to delete all NPC hands
 
-+ `[C]` Button to 'show players' a hand
++ `[C]` 👁 button to show a Fortune or Sorcery hand in chat
 
 ### Sorcery
 
@@ -41,9 +37,9 @@
   + Diamonds / Material (fr: matérielle)
   + Clubs / Elemental (fr: élémentaire)
 
-+ `[C]` Cooperation on spellcasting - implement sopmething specific for this (ROI not great) or just document how to do it with the current version of the system in the Doc
++ `[C]` Cooperation on spellcasting - implement sopmething specific for this (ROI not great) or just document in the userguide how to do it with the current version of the system
 
-+ `[C]` Button for GM to (silently) collect Power to simulate actvity from other Wizards within 15km (work-around: do it with a generic character although it will still be visible to players)
++ `[C]` Confirmation dialog for Hosts when they 'Gather Power' for a Host character and 'Self Roll' isn't active
 
 # Core mechanics not yet supported
 
