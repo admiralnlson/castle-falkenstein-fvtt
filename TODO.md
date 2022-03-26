@@ -3,7 +3,6 @@
 ## Legend
 + MoSCoW: `[M]`ust, `[S]`hould, `[C]`ould, `[W]`on't
 + `[🔥]` Project maintainer (admiralnlson)'s own GM needs
-+ `[✓]` Done but kept in the list for info
 
 ## Evolutions
 
@@ -15,7 +14,7 @@
 
 + `[C]` button in World settings (Host only) to delete all NPC hands
 
-+ `[C]` 👁 button to show a Fortune or Sorcery hand in chat
++ `[C]` button to show a Fortune or Sorcery hand in chat
 
 ### Sorcery
 
@@ -28,20 +27,20 @@
 + `[S]` Cast Spell - chat message - if unaligned power was used, show harmonic type(s) (up to 3 for the GM to choose from in case of ex-aequo).
 + `[C]` Cast Spell - Open a dialog on GM side to ask which harmonic they prefer, then display the choice in chat.
 + `[C]` Cast Spell - When enough aligned Power has been drawn, the spell is immediately cast also (no harmonics generated) or a chat message is generated at least.
-+ `[C]` Cast Spell - When a Joker is drawn, the spell is immediately cast a.k.a. **Wild Spell** (fr: Surcharge thaumique)
++ `[S]` Cast Spell - When a Joker is drawn, the spell is immediately cast a.k.a. **Wild Spell** (fr: Surcharge thaumique)
 
-+ `[M]` Release Power - Prevent releasing of aligned Power (or at least add confirmation dialog)
-+ `[C]` Release Power - Show the harmonic type on unaligned power cards
++ `[C]` Release Power - Prevent releasing of aligned Power (or at least add confirmation dialog)
++ `[S]` Release Power - Show the harmonic type on unaligned power cards
   + Spades / Spiritual (fr: spirituelle)
   + Hearts / Emotional (fr: émotionnelle)
   + Diamonds / Material (fr: matérielle)
   + Clubs / Elemental (fr: élémentaire)
-
+S
 + `[C]` Cooperation on spellcasting - implement sopmething specific for this (ROI not great) or just document in the userguide how to do it with the current version of the system
 
 + `[C]` Confirmation dialog for Hosts when they 'Gather Power' for a Host character and 'Self Roll' isn't active
 
-# Core mechanics not yet supported
+### Core mechanics not yet supported
 
 + `[M]` Weapon item type and weapons list (under 'Possessions' or dedicated tab), dedicated sheet and chat message
 
