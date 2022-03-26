@@ -9,7 +9,7 @@
 
 ### Cards
 
-+ `[M]` 'Draw a single Fortune Card' button (outside of Feats), useful in some scenarios such as when a character loses all health: in an optional rule, drawing a spades card = character dies) or to help with determining purely random outcomes
++ `[C]` Helper to draw a single card button (e.g. for when a character loses all health, spades = character dies)
 
 + `[S]` reset the character's Fortune/Sorcery hands and delete them when a character is deleted
 
