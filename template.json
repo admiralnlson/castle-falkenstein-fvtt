@@ -47,7 +47,7 @@
     "weapon": {
       "templates": ["base"],
       "effectiveRange": 0,
-      "magazine": 1,
+      "magazine": 0,
       "wounds_partial": 0,
       "wounds_full": 0,
       "wounds_high": 0

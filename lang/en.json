@@ -59,7 +59,8 @@
     "fortune": {
       "hand": {
         "name": "Fortune - {character}",
-        "draw": "Draw"
+        "refill": "Refill",
+        "chance": "Chance"
       }
     },
 
@@ -158,7 +159,7 @@
       "rangeUnitAbbr": "yds",
       "magazine": "Magazine",
       "woundsPartial": "Wounds (Partial)",
-      "woundsFull": "Wounds (Partial)",
+      "woundsFull": "Wounds (Full)",
       "woundsHigh": "Wounds (High)"
     },
 

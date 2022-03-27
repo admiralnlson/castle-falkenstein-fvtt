@@ -25,11 +25,12 @@ export default class CastleFalkensteinMonarchConfig {
     // Add Castle Falkenstein-relevant components
     //
 
-    // Fortune hand - Draw
+    // Fortune hand - Refill hand
     components.appControls.push({
-      label: "castle-falkenstein.fortune.hand.draw",
-      icon: "fas fa-plus-circle",
-      class: "fortune-hand-draw",
+      label: "castle-falkenstein.fortune.hand.refill",
+      //icon: "fas fa-plus-circle",
+      icon: "cf-stack",
+      class: "fortune-hand-refill",
       hide: (card, hand) => {
         const type = hand.getFlag("castle-falkenstein", "type");
         return type != "fortune";
@@ -39,6 +40,38 @@ export default class CastleFalkensteinMonarchConfig {
       },
       onclick: async (event, app, hand) =>  {
         await CastleFalkenstein.draw("fortune", hand, 4 - hand.cards.size);
+      }
+    });
+
+
+    // Fortune hand - Chance (draw a single Fortune card, immediately playing it)
+    components.appControls.push({
+      label: "castle-falkenstein.fortune.hand.chance",
+      icon: "fas fa-question",
+      class: "fortune-hand-chance",
+      hide: (card, hand) => {
+        const type = hand.getFlag("castle-falkenstein", "type");
+        return type != "fortune";
+      },
+      disabled: (card, hand) => {
+        return false;
+      },
+      onclick: async (event, app, hand) =>  {
+        const actorId = hand.getFlag("castle-falkenstein", "actor");
+        const actor = game.actors.get(actorId);
+
+        // draw a single card
+        const cardsDrawn = await CastleFalkenstein.draw("fortune", hand, 1);
+
+        // Post message to chat
+        const card = cardsDrawn[0];
+        const flavor = `[${game.i18n.localize("castle-falkenstein.fortune.hand.chance")}]`;
+        const correctSuit = 'correct-suit';
+        const content = `<div class="cards-drawn"><span class="card-drawn ${correctSuit} cf-card-${card.data.value}-${card.data.suit}" title="${card.name}"></span></div>`;
+        CastleFalkenstein.createChatMessage(actor, flavor, content);
+
+        // discard this card immediately
+        await hand.pass(game.CastleFalkenstein.fortuneDiscardPile, [card.id], {chatNotification: false});
       }
     });
 
@@ -74,7 +107,7 @@ export default class CastleFalkensteinMonarchConfig {
         const flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.hand.gatherPower")}]`;
         const spell = actor.items.get(actor.data.data.spellBeingCast.spell);
         const correctSuit = (card.data.suit == spell.data.data.suit || card.data.suit == 'joker') ? 'correct-suit' : '';
-        const content = `<div class="cards-drawn"><span class="card-drawn ${correctSuit} cf-card-${card.data.value}-${card.data.suit}"></span></div>`;
+        const content = `<div class="cards-drawn"><span class="card-drawn ${correctSuit} cf-card-${card.data.value}-${card.data.suit}" title="${card.name}"></span></div>`;
         CastleFalkenstein.createChatMessage(actor, flavor, content);
       }
     });
@@ -104,7 +137,7 @@ export default class CastleFalkensteinMonarchConfig {
 
           // Post message to chat
           const flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.hand.releasePower")}]`;
-          const content = `<div class="cards-played"><span class="card-played cf-card-${card.data.value}-${card.data.suit}"></span></div>`;
+          const content = `<div class="cards-played"><span class="card-played cf-card-${card.data.value}-${card.data.suit}" title="${card.name}"></span></div>`;
           CastleFalkenstein.createChatMessage(actor, flavor, content);
         }
       }
@@ -140,7 +173,7 @@ export default class CastleFalkensteinMonarchConfig {
           hand.cards.contents.forEach(card => {
             // FIXME code duplication
             const correctSuit = (card.data.suit == spell.data.data.suit || card.data.suit == 'joker') ? 'correct-suit' : '';
-            content += `<span class="card-played ${correctSuit} cf-card-${card.data.value}-${card.data.suit}"></span>`;
+            content += `<span class="card-played ${correctSuit} cf-card-${card.data.value}-${card.data.suit}" title="${card.name}"></span>`;
           });
         } else {
           content += game.i18n.localize("castle-falkenstein.feat.noCardsPlayed");

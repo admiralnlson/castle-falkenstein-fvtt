@@ -1,13 +1,21 @@
 # Changelog
 
+## [v1.1.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.1.0) - 2022/??/??
+### Added
++ 'Chance' action button in Fortune card hands, which draws a single Fortune card and immediately plays it (displayed in chat).
++ Card names in dialogs and chat now display on hover.
+
+### Changed
++ 'Draw' action button in Fortune card hands was renamed 'Refill' to better reflect what it does
+
 ## [v1.0.3](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.0.3) - 2022/03/23
 ### Fixed
-- False positive warning about players lacking permissions on decks
++ False positive warning about players lacking permissions on decks
 
 ## [v1.0.2](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.0.2) - 2022/03/22
 ### Fixed
-- False positive warning about Host lacking permissions on decks
-- Replaced hard dependencies (on libWrapper and Monarch) which are not respected by the FoundryVTT client. Replaced with soft dependencies instead.
++ False positive warning about Host lacking permissions on decks
++ Replaced hard dependencies (on libWrapper and Monarch) which are not respected by the FoundryVTT client. Replaced with soft dependencies instead.
 
 ## [v1.0.1](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.0.1) - 2022/03/20
 ### Fixed

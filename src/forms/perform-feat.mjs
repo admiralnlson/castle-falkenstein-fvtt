@@ -121,7 +121,7 @@ export default class CastleFalkensteinPerformFeat extends FormApplication {
     if (idsOfCardsPlayed.length > 0) {
       this.wrappedCards.forEach(w => {
         if (w.checked) {
-          content += `<span class="card-played ${w.correctSuit} cf-card-${w.card.data.value}-${w.card.data.suit}"></span>`;
+          content += `<span class="card-played ${w.correctSuit} cf-card-${w.card.data.value}-${w.card.data.suit}" title="${w.card.name}"></span>`;
         }
       });
     } else {

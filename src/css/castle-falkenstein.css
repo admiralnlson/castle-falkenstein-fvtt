@@ -2,7 +2,8 @@
 
 @import "./cf-cards.css";
 [class*='cf-']:before {
-  font-size: 18px;
+  font-size: 20px;
+  vertical-align: middle;
 }
 
 /* Generic formatting stuff */
@@ -65,7 +66,7 @@
 
 .castle-falkenstein .sheet-header {
   flex: 0 0 120px;
-  overflow: hidden;
+  /*overflow: hidden;*/
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -259,7 +260,11 @@ html * {
   grid-template-columns: 20px 1fr max-content 74px;
 }
 
-.castle-falkenstein .tab.possessions .items-list .item {
+.castle-falkenstein .tab.possessions .items-list.weapons .item {
+  grid-template-columns: 1fr 74px;
+}
+
+.castle-falkenstein .tab.possessions .items-list.possessions .item {
   grid-template-columns: 1fr 74px;
 }
 
@@ -285,7 +290,7 @@ html * {
 
 .castle-falkenstein.item .ability-sheet-header {
   align-items: center;
-  grid-template-columns: auto 1fr auto 2fr auto;
+  grid-template-columns: auto 1fr auto 5px auto auto;
 }
 
 .castle-falkenstein.item .ability-sheet-header .level {
@@ -469,6 +474,11 @@ html * {
 }
 
 /* buttons - fix - they remain highlighted out of hover just because they're in focus, this is annoying */
+.chat-message button:focus,
 .castle-falkenstein button:focus {
   box-shadow: none;
+}
+
+.castle-falkenstein .feat-card-played-button:hover {
+  box-shadow: 0 0 5px var(--color-shadow-primary);
 }

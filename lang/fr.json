@@ -59,7 +59,8 @@
     "fortune": {
       "hand": {
         "name": "Destin - {character}",
-        "draw": "Piocher"
+        "refill": "Compléter",
+        "chance": "Chance"
       }
     },
 
@@ -155,11 +156,11 @@
       "weapons": "Armes",
       "weapon": "Arme",
       "effectiveRange": "Portée Effective",
-      "rangeUnitAbbr": "yds",
-      "magazine": "Munitions",
-      "woundsPartial": "Wounds (Partial)",
-      "woundsFull": "Wounds (Partial)",
-      "woundsHigh": "Wounds (High)"
+      "rangeUnitAbbr": "m",
+      "magazine": "Magasin ou munitions",
+      "woundsPartial": "Blessures (succès partiel)",
+      "woundsFull": "Blessures (franc succès)",
+      "woundsHigh": "Blessures (magnifique succès)"
     },
 
     "spell": {

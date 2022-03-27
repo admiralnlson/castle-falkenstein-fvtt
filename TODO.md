@@ -8,13 +8,11 @@
 
 ### Cards
 
-+ `[C]` Helper to draw a single card button (e.g. for when a character loses all health, spades = character dies)
++ `[S]` Reset the character's Fortune/Sorcery hands and delete them when a character is deleted
 
-+ `[S]` reset the character's Fortune/Sorcery hands and delete them when a character is deleted
++ `[C]` Button in World settings (Host only) to delete all NPC hands
 
-+ `[C]` button in World settings (Host only) to delete all NPC hands
-
-+ `[C]` button to show a Fortune or Sorcery hand in chat
++ `[C]` Card hand button to show a Fortune or Sorcery hand in chat
 
 ### Sorcery
 
