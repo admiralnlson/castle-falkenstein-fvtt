@@ -1,21 +1,21 @@
 <ol class="items-list">
-  <li class="item flexrow items-header">
-    <div class="ability-perform-feat"><a class="fortune-hand-show"><i class="cf-poker-hand"></i></a></div>
-    <div class="ability-name">{{localize 'castle-falkenstein.ability.ability'}}</div>
+  <li class="item items-header">
+    <div class="perform-feat"><a class="fortune-hand-show"><i class="cf-poker-hand"></i></a></div>
+    <div class="name">{{localize 'castle-falkenstein.ability.ability'}}</div>
     <div class="ability-level">{{localize 'castle-falkenstein.ability.level'}}</div>
     <div class="item-controls">
       <a class="item-control item-create" title="{{localize 'castle-falkenstein.item.add'}}" data-type="ability"><i class="fas fa-plus"></i> {{localize 'castle-falkenstein.item.add'}}</a>
     </div>
   </li>
   {{#each abilities as |item id|}}
-    <li class="item flexrow" data-item-id="{{item._id}}">
-      <div class="ability-perform-feat">
+    <li class="item" data-item-id="{{item._id}}">
+      <div class="perform-feat" title="{{localize 'castle-falkenstein.feat.perform'}}">
         <a class="rollable" data-roll-type="item" title="{{localize 'castle-falkenstein.feat.perform'}}"><i class="fas fa-play-circle"></i></a>
       </div>
-      <div class="ability-name">
+      <div class="name">
         {{item.name}} [<span class="suit-symbol-{{item.data.suit}}">{{item.data.suitSymbol}}</span>]
       </div>
-      <div class="ability-level">
+      <div class="level">
         {{localize item.data.levelI18nKey}} [<span>{{item.data.levelValue}}</span>]
       </div>
       <div class="item-controls">

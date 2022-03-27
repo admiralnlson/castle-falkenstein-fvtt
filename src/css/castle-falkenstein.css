@@ -81,7 +81,6 @@
 
 .castle-falkenstein .sheet-header .header-fields {
   flex: 1;
-  /*---removed from original--- height: 100px;*/
 }
 
 .castle-falkenstein .sheet-header h1.charname {
@@ -112,6 +111,7 @@
 
 .castle-falkenstein .tabs {
   flex: 0 0 40px;
+  flex-wrap: wrap;
   border-top: 1px solid #AAA;
   border-bottom: 1px solid #AAA;
 }
@@ -178,10 +178,6 @@ html * {
   font-weight: bold;
 }
 
-.castle-falkenstein .items-list > * {
-  text-align: left;
-}
-
 .castle-falkenstein .items-list .items-header > * {
   font-size: 14px;
 }
@@ -203,23 +199,6 @@ html * {
   list-style: none;
   margin: 0;
   padding: 0;
-}
-
-.castle-falkenstein .items-list .item-name {
-  flex: 2;
-  margin: 0;
-  overflow: hidden;
-  font-size: 13px;
-  text-align: left;
-  align-items: center;
-  display: flex;
-}
-
-.castle-falkenstein .items-list .item-name h3,
-.castle-falkenstein .items-list .item-name h4 {
-  margin: 0;
-  white-space: nowrap;
-  overflow-x: hidden;
 }
 
 .castle-falkenstein .items-list .item-controls {
@@ -245,25 +224,6 @@ html * {
   border-bottom: none;
 }
 
-.castle-falkenstein .items-list .item .item-name {
-  color: #191813;
-}
-
-.castle-falkenstein .items-list .item .item-name .item-image {
-  flex: 0 0 30px;
-  height: 30px;
-  background-size: 30px;
-  border: none;
-  margin-right: 5px;
-}
-
-.castle-falkenstein .items-list .item-prop {
-  text-align: center;
-  border-left: 1px solid #c9c7b8;
-  border-right: 1px solid #c9c7b8;
-  font-size: 12px;
-}
-
 .castle-falkenstein .items-list .items-header {
   height: 28px;
   margin: 2px 0;
@@ -274,21 +234,43 @@ html * {
   font-weight: bold;
 }
 
-.castle-falkenstein .items-list .items-header .item-name {
-  padding-left: 5px;
-  text-align: left;
+.castle-falkenstein .items-list .item > *:first-child {
+  margin-left:2px;
 }
 
-.castle-falkenstein .inlineblock {
-  display: inline-block;
+.castle-falkenstein .items-list .item {
+  display: grid;
+  grid-column-gap: 10px;
+}
+
+.castle-falkenstein .items-list .perform-feat,
+.castle-falkenstein .items-list .define-spell {
+  text-align: center;
+}
+
+.castle-falkenstein .items-list .name {
+  text-align: left;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
+.castle-falkenstein .tab.abilities .items-list .item {
+  grid-template-columns: 20px 1fr max-content 74px;
+}
+
+.castle-falkenstein .tab.possessions .items-list .item {
+  grid-template-columns: 1fr 74px;
+}
+
+.castle-falkenstein .tab.spells .items-list .item {
+  grid-template-columns: 20px 1fr max-content 74px;
 }
 
 .castle-falkenstein.actor .sheet-header,
 .castle-falkenstein.item .sheet-header {
   padding: 2px;
 }
-
-/* Really Castle Falkenstein system specific */
 
 .castle-falkenstein .health-and-wounds {
   height: 45px;
@@ -299,26 +281,6 @@ html * {
   text-align: center;
 }
 
-/* item lists */
-
-.castle-falkenstein .items-list .ability-perform-feat,
-.castle-falkenstein .items-list .spell-cast {
-  text-align: center;
-  flex: 0 0 30px;
-}
-
-.castle-falkenstein .items-list .ability-level {
-  flex: 1 1 100px;
-}
-.castle-falkenstein .items-list .ability-name {
-  flex: 1 1 300px;
-}
-
-.castle-falkenstein .items-list .spell-level {
-  flex: 0 0 115px;
-  text-align: center;
-}
-
 /* item sheets */
 
 .castle-falkenstein.item .ability-sheet-header {
@@ -326,7 +288,7 @@ html * {
   grid-template-columns: auto 1fr auto 2fr auto;
 }
 
-.castle-falkenstein.item .ability-sheet-header .ability-level {
+.castle-falkenstein.item .ability-sheet-header .level {
   text-align: right;
 }
 
@@ -340,7 +302,7 @@ html * {
   grid-template-columns: auto 1fr auto 5px auto 25px;
 }
 
-.castle-falkenstein.item .spell-sheet-header .thaumic-level {
+.castle-falkenstein.item .spell-sheet-header .level {
   text-align: center;
 }
 

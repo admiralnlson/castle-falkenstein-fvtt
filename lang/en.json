@@ -169,6 +169,7 @@
       "aspect": "Aspect",
       "nameAndAspect": "Spell",
       "thaumicLevel": "Thaumic Level",
+      "thaumicLevelShort": "TL",
       "definition": {
         "duration": {
           "label": "Spell Duration",

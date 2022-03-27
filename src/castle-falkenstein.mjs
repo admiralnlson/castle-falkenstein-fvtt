@@ -572,8 +572,7 @@ export default class CastleFalkenstein {
       // Actor partials
       "systems/castle-falkenstein/src/documents/actor-abilities.hbs",
       "systems/castle-falkenstein/src/documents/actor-possessions.hbs",
-      "systems/castle-falkenstein/src/documents/actor-spells.hbs",
-      "systems/castle-falkenstein/src/documents/actor-weapons.hbs"
+      "systems/castle-falkenstein/src/documents/actor-spells.hbs"
     ]);
   }
   

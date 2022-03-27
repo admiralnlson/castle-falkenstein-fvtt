@@ -169,6 +169,7 @@
       "aspect": "Aspect",
       "nameAndAspect": "Sort",
       "thaumicLevel": "Niveau thaumique",
+      "thaumicLevelShort": "NT",
       "definition": {
         "duration": {
           "label": "Durée",
