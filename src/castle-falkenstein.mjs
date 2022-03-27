@@ -333,7 +333,7 @@ export default class CastleFalkenstein {
     }
   }
   
-  static async draw(deckType, hand, nbCardsToDraw) {
+  static async draw(deckType, destStack, nbCardsToDraw) {
     let cardsDrawn = [];
 
     const deck = CastleFalkenstein.deck(deckType);
@@ -343,7 +343,7 @@ export default class CastleFalkenstein {
     let nbCardsDrawn = Math.min(nbCardsToDraw,nbCardsLeftInDeck);
 
     if (nbCardsDrawn > 0)
-      cardsDrawn = cardsDrawn.concat(await hand.draw(deck, nbCardsDrawn, {chatNotification: false}));
+      cardsDrawn = cardsDrawn.concat(await destStack.draw(deck, nbCardsDrawn, {chatNotification: false}));
 
     nbCardsLeftInDeck -= nbCardsDrawn;
 
@@ -353,7 +353,7 @@ export default class CastleFalkenstein {
       // draw cards now that there should be some available.
       if (nbCardsDrawn < nbCardsToDraw) {
         // resurive call would be imaginable, but all cards from the decks may already be distributed in hands (e.g. too many NPC hands non-emptied).
-        cardsDrawn = cardsDrawn.concat(await hand.draw(deck, nbCardsToDraw - nbCardsDrawn, {chatNotification: false}));
+        cardsDrawn = cardsDrawn.concat(await destStack.draw(deck, nbCardsToDraw - nbCardsDrawn, {chatNotification: false}));
       }
     }
 

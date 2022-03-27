@@ -60,8 +60,8 @@ export default class CastleFalkensteinMonarchConfig {
         const actorId = hand.getFlag("castle-falkenstein", "actor");
         const actor = game.actors.get(actorId);
 
-        // draw a single card
-        const cardsDrawn = await CastleFalkenstein.draw("fortune", hand, 1);
+        // draw a single card from the discard pile directly (avoids glitches)
+        const cardsDrawn = await CastleFalkenstein.draw("fortune", game.CastleFalkenstein.fortuneDiscardPile, 1);
 
         // Post message to chat
         const card = cardsDrawn[0];
@@ -69,9 +69,6 @@ export default class CastleFalkensteinMonarchConfig {
         const correctSuit = 'correct-suit';
         const content = `<div class="cards-drawn"><span class="card-drawn ${correctSuit} cf-card-${card.data.value}-${card.data.suit}" title="${card.name}"></span></div>`;
         CastleFalkenstein.createChatMessage(actor, flavor, content);
-
-        // discard this card immediately
-        await hand.pass(game.CastleFalkenstein.fortuneDiscardPile, [card.id], {chatNotification: false});
       }
     });
 
