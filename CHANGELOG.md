@@ -2,7 +2,7 @@
 
 ## [v1.1.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.1.0) - 2022/03/28
 ### Added
-+ 'Chance' action button in Fortune card hands, which draws a single Fortune card and immediately plays it (displayed in chat).
++ 'Chance' action in Fortune card hands, which draws a single Fortune card and immediately plays it (displayed in chat).
 + Card names in dialogs and chat now displayed on hover.
 
 ### Changed
