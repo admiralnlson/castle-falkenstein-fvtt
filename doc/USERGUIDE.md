@@ -25,13 +25,19 @@ Note that a deck with the same visuals can be manually created by selecting the 
 
 At this stage however, such manually created decks, unlike automatically created ones, will always have card names in English.
 
-## [Optional] Different language
-If you started your Castle Falkenstein world before selecting your preferred language in FoundryVTT core settings, you may:
-- Select your language of choice in Foundry VTT core settings
-- Delete the Fortune and Sorcery Decks (this will recall all cards from player hands and discard piles if cards had already been drawn)
-- press F5 to recreate them in that language.
+## [Optional] Other supported languages
+Selecting one of the languages this system officially supports (see [README](../README.md)) in Foundry VTT core settings should automatically replace most text (including Compendium text if you have the Babele module installed and activated).
 
-Note this only affects the _names_ of cards. The visuals of cards shared by RTG are English only.
+The following text elements do not automatically change:
+1. Ability and Spell names already listed in character sheets\
+→ Babele adds a button in the header of character sheets which Hosts can use to translate them.
+2. Fortune and Sorcery card names\
+→ To fix this, you need to:
+   + Delete the Fortune and Sorcery Decks (this will recall all cards from player hands and discard piles if cards had already been drawn)
+   + Press F5 to recreate the two decks
+     Note this only affects the _names_ of cards. The visuals of cards shared by RTG are English only.
+3. Any chat messages generated prior to the change\
+→ There is no fixing this.
 
 ## [Optional] Custom decks
 Hosts may use custom decks if they so desire. The following setup is required.
