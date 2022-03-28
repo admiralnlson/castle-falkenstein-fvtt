@@ -402,8 +402,16 @@ html * {
   overflow: auto;
 }
 
+.castle-falkenstein .cards-played img,
+.chat-message .cards-played img,
+.chat-message .cards-drawn img {
+  border: none;
+  height: 35px;
+  width: 25px;
+}
+
 .castle-falkenstein .feat-card-played-button {
-  width: min-content;
+  width: auto;
   padding: 0;
   margin: 0;
   font-family: revert;
@@ -432,16 +440,18 @@ html * {
   text-align: center;
 }
 
+
+/* compatibility for chat messages generated before 1.1.0 */
 .castle-falkenstein .cards-played .card-played::before,
 .chat-message .cards-played .card-played::before,
 .chat-message .cards-drawn .card-drawn::before {
-  font-size: 300%;
+  font-size: 250%;
 }
 
-.castle-falkenstein .cards-played .card-played:not(.correct-suit)::before,
-.chat-message .cards-played .card-played:not(.correct-suit)::before,
-.chat-message .cards-drawn .card-drawn:not(.correct-suit)::before {
-  color: gray;
+.castle-falkenstein .cards-played .card-played:not(.correct-suit),
+.chat-message .cards-played .card-played:not(.correct-suit),
+.chat-message .cards-drawn .card-drawn:not(.correct-suit) {
+  opacity: 0.4;
 }
 
 .chat-message .feat-chat-ranges-button {
@@ -471,12 +481,6 @@ html * {
 .chat-message .message-header .message-sender {
   text-overflow: ellipsis;
   overflow: hidden;
-}
-
-/* buttons - fix - they remain highlighted out of hover just because they're in focus, this is annoying */
-.chat-message button:focus,
-.castle-falkenstein button:focus {
-  box-shadow: none;
 }
 
 .castle-falkenstein .feat-card-played-button:hover {

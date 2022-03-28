@@ -397,6 +397,12 @@ export default class CastleFalkenstein {
     return hand;
   }
 
+  static smallCardImg(card, classes) {
+    const suit = card.data.suit;
+    const value = card.data.suit == "joker" ? (card.name == "Black Joker" ? "black" : "red") : card.data.value;
+    return `<img class="${classes}" src="systems/castle-falkenstein/src/cards/small/${suit}-${value}.svg" alt="${card.name}" title="${card.name}"></img>`;
+  }
+
   static abilityLevelAsSentenceHtml(abilityItem, includeAbilitySuit = true) {
     const levelI18nKey = game.i18n.localize(CASTLE_FALKENSTEIN.abilityLevels[abilityItem.data.data.level].full);
     const levelValue = CASTLE_FALKENSTEIN.abilityLevels[abilityItem.data.data.level].value;

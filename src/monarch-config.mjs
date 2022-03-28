@@ -66,8 +66,9 @@ export default class CastleFalkensteinMonarchConfig {
         // Post message to chat
         const card = cardsDrawn[0];
         const flavor = `[${game.i18n.localize("castle-falkenstein.fortune.hand.chance")}]`;
+        // TODO FIXME not always a match actually, compare with spell aspect
         const correctSuit = 'correct-suit';
-        const content = `<div class="cards-drawn"><span class="card-drawn ${correctSuit} cf-card-${card.data.value}-${card.data.suit}" title="${card.name}"></span></div>`;
+        const content = `<div class="cards-drawn">${CastleFalkenstein.smallCardImg(card,`card-drawn ${correctSuit}`)}</div>`;
         CastleFalkenstein.createChatMessage(actor, flavor, content);
       }
     });
@@ -104,7 +105,7 @@ export default class CastleFalkensteinMonarchConfig {
         const flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.hand.gatherPower")}]`;
         const spell = actor.items.get(actor.data.data.spellBeingCast.spell);
         const correctSuit = (card.data.suit == spell.data.data.suit || card.data.suit == 'joker') ? 'correct-suit' : '';
-        const content = `<div class="cards-drawn"><span class="card-drawn ${correctSuit} cf-card-${card.data.value}-${card.data.suit}" title="${card.name}"></span></div>`;
+        const content = `<div class="cards-drawn">${CastleFalkenstein.smallCardImg(card, `card-played ${correctSuit}`)}</div>`;
         CastleFalkenstein.createChatMessage(actor, flavor, content);
       }
     });
@@ -134,7 +135,7 @@ export default class CastleFalkensteinMonarchConfig {
 
           // Post message to chat
           const flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.hand.releasePower")}]`;
-          const content = `<div class="cards-played"><span class="card-played cf-card-${card.data.value}-${card.data.suit}" title="${card.name}"></span></div>`;
+          const content = `<div class="cards-played">${CastleFalkenstein.smallCardImg(card, "card-played")}</div>`;
           CastleFalkenstein.createChatMessage(actor, flavor, content);
         }
       }
@@ -170,7 +171,7 @@ export default class CastleFalkensteinMonarchConfig {
           hand.cards.contents.forEach(card => {
             // FIXME code duplication
             const correctSuit = (card.data.suit == spell.data.data.suit || card.data.suit == 'joker') ? 'correct-suit' : '';
-            content += `<span class="card-played ${correctSuit} cf-card-${card.data.value}-${card.data.suit}" title="${card.name}"></span>`;
+            content += CastleFalkenstein.smallCardImg(card,`card-played ${correctSuit}`);
           });
         } else {
           content += game.i18n.localize("castle-falkenstein.feat.noCardsPlayed");

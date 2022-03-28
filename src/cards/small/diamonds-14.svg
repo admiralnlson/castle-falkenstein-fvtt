@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="41"
+   height="61"
+   id="svg2"
+   version="1.1"
+   inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
+   sodipodi:docname="1d.svg"
+   inkscape:export-filename="D:\GR8DAN\Projects\PlayingCards\SimpleSVG\small_playing_cards.png"
+   inkscape:export-xdpi="93.300003"
+   inkscape:export-ydpi="93.300003"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs446" />
+  <sodipodi:namedview
+     id="namedview444"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="1.3222222"
+     inkscape:cx="395.16807"
+     inkscape:cy="135.37815"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-9.5,-771.86218)">
+    <g
+       id="g7511">
+      <rect
+         rx="10"
+         ry="12"
+         y="772.36218"
+         x="10"
+         height="60"
+         width="40"
+         id="rect3050-09-6"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         id="text2985-7-2"
+         y="797.41296"
+         x="19.629204"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:0%;font-family:Verdana;-inkscape-font-specification:'Verdana Bold';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ff0000;fill-opacity:1;stroke:none"
+         xml:space="preserve"><tspan
+           y="797.41296"
+           x="19.629204"
+           id="tspan2987-3-5"
+           sodipodi:role="line"
+           style="font-size:28px;line-height:1.25">A</tspan></text>
+      <path
+         style="fill:#ff0000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+         d="m 30.557119,799.50413 c -2.97818,4.95596 -6.33086,9.72332 -9.73703,14.30208 3.56668,4.57876 6.97285,9.34611 9.73703,14.30207 2.87117,-5.05025 6.00985,-9.86477 9.73702,-14.30207 -3.62017,-4.57876 -6.91935,-9.44042 -9.73702,-14.30208 z"
+         id="path2139-1"
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0" />
+    </g>
+  </g>
+</svg>

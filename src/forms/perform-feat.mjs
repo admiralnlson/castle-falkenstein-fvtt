@@ -58,6 +58,12 @@ export default class CastleFalkensteinPerformFeat extends FormApplication {
    * @override
    */
   async getData() {
+    if (this.wrappedCards.length > 0) {
+      this.wrappedCards.forEach(w => {
+        w.smallCardImg = CastleFalkenstein.smallCardImg(w.card, `card-played ${w.correctSuit}`);
+      });
+    }
+
     return {
       abilityLevelAsSentenceHtml: CastleFalkenstein.abilityLevelAsSentenceHtml(this.ability),
       abilityData: this.ability.data,
@@ -121,7 +127,7 @@ export default class CastleFalkensteinPerformFeat extends FormApplication {
     if (idsOfCardsPlayed.length > 0) {
       this.wrappedCards.forEach(w => {
         if (w.checked) {
-          content += `<span class="card-played ${w.correctSuit} cf-card-${w.card.data.value}-${w.card.data.suit}" title="${w.card.name}"></span>`;
+          content += CastleFalkenstein.smallCardImg(w.card, `card-played ${w.correctSuit}`);
         }
       });
     } else {
@@ -157,7 +163,7 @@ export default class CastleFalkensteinPerformFeat extends FormApplication {
     });
 
     // rerenders the FormApp with the new data.
-    this.render();
+    //this.render();
   }
 
 }

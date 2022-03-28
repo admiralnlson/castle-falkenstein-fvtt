@@ -5,7 +5,7 @@
       <hr />
       <div class="cards-played">
         {{#each wrappedCards as |wrappedCard id|}}
-          <button type="button" name="{{wrappedCard.card.id}}" class="feat-card-played-button card-played {{wrappedCard.checked}} {{wrappedCard.correctSuit}} cf-card-{{wrappedCard.card.data.value}}-{{wrappedCard.card.data.suit}}" title="{{wrappedCard.name}}"></button>
+          <button type="button" name="{{wrappedCard.card.id}}" class="feat-card-played-button {{wrappedCard.checked}}">{{{wrappedCard.smallCardImg}}}</button>
         {{/each}}
       </div>
       <hr />
