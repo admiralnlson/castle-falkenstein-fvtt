@@ -2,12 +2,14 @@
 
 ## [v1.1.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.1.0) - 2022/03/28
 ### Added
-+ 'Chance' action in Fortune card hands, which draws a single Fortune card and immediately plays it (displayed in chat).
-+ Card names in dialogs and chat now displayed on hover.
++ 'Chance' action in Fortune card hands, which draws a single Fortune card and immediately plays it (displayed in chat)
 
 ### Changed
 + Clearer card visuals in dialogs and chat messages
-+ 'Draw' action button in Fortune card hands was renamed 'Refill' to better reflect what it does
++ 'Draw' action button in Fortune card hands renamed 'Refill' to better reflect what it does
+
+### Fixed
++ Improved the layout of the character sheet when resized to smaller sizes
 
 ## [v1.0.3](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.0.3) - 2022/03/23
 ### Fixed

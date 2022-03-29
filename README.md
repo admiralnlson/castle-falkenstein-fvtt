@@ -1,10 +1,6 @@
-<div align="center">
-
 [![Latest release](https://img.shields.io/github/v/release/admiralnlson/castle-falkenstein-fvtt?label=Latest%20release)](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/latest)
 ![Supported Foundry Versions](https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://raw.githubusercontent.com/admiralnlson/castle-falkenstein-fvtt/master/system.json)
 ![downloads](https://img.shields.io/github/downloads/admiralnlson/castle-falkenstein-fvtt/latest/castle-falkenstein.zip?label="Downloads%20(latest%20release)")
-
-</div>
 
 # Castle Falkenstein system for Foundry Virtual Tabletop
 Enter a world of another universe just a few steps away from our own; a place where Dragons and Steampower rule the skies, Faerie Lords duel atop the battlements, and where the forces of Wizardry and Magick meet the gaslight streets of Sherlock Holmes' London. This is a place of Swashbuckling Fantasy, High Romance and Alternate History; the world of **Castle Falkenstein**!
