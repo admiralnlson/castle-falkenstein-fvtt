@@ -399,7 +399,6 @@ html * {
   justify-content: center;
   gap: 5px;
   /* TODO replace the horizontal scrollbar with arrows on the left and right */
-  overflow: auto;
 }
 
 .castle-falkenstein .cards-played img,
@@ -415,12 +414,22 @@ html * {
   padding: 0;
   margin: 0;
   font-family: revert;
-  line-height: normal;
+  line-height: 0;
+  padding-top: 2px;
+  padding-bottom: 2px;
   background: transparent;
   cursor: pointer;
-  padding-top: 2px;
   border: 0;
-  border-bottom: 2px ridge transparent; /* changed upon select, see below */
+  border-bottom: 2px ridge transparent; /* see card-selected below */
+}
+
+.castle-falkenstein .feat-card-played-button:focus {
+  box-shadow: none;
+}
+
+.castle-falkenstein .feat-card-played-button:hover,
+.castle-falkenstein .feat-card-played-button:focus-visible {
+  box-shadow: 0 0 5px var(--color-shadow-primary);
 }
 
 .castle-falkenstein .feat-card-played-button.card-selected {
@@ -481,8 +490,4 @@ html * {
 .chat-message .message-header .message-sender {
   text-overflow: ellipsis;
   overflow: hidden;
-}
-
-.castle-falkenstein .feat-card-played-button:hover {
-  box-shadow: 0 0 5px var(--color-shadow-primary);
 }
