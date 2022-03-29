@@ -5,8 +5,8 @@
 + 'Chance' action in Fortune card hands, which draws a single Fortune card and immediately plays it (displayed in chat)
 
 ### Changed
-+ Clearer card visuals in dialogs and chat messages
 + 'Draw' action button in Fortune card hands renamed 'Refill' to better reflect what it does
++ Clearer card visuals in dialogs and chat messages
 
 ### Fixed
 + Improved the layout of the character sheet when resized to smaller sizes
