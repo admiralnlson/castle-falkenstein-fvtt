@@ -1,6 +1,6 @@
 # Changelog
 
-## [v1.1.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.1.0) - 2022/03/28
+## [v1.1.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.1.0) - 2022/04/03
 ### Added
 + 'Chance' action in Fortune card hands, which draws a single Fortune card and immediately plays it (displayed in chat)
 
@@ -9,7 +9,7 @@
 + Clearer card visuals in dialogs and chat messages
 
 ### Fixed
-+ Improved the layout of the character sheet when resized to smaller sizes
++ Character sheet layout no longer immediately breaks when resized to medium or lower sizes
 
 ## [v1.0.3](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.0.3) - 2022/03/23
 ### Fixed
