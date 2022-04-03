@@ -16,10 +16,10 @@
 
 ### Sorcery
 
-+ `[M🔥]` Define Spell - Allow user to specify a custom bonus/malus (with label) at spell definition time
++ `[M🔥]` Define Spell - Allow user to specify a custom bonus/malus (with label?) at spell definition time
++ `[S]` Define Spell - explicit mechanic for using **Sorcery specialization** (as opposed to the raw Sorcery level)
 + `[S]` Define Spell - explicit mechanic for using **Artefacts**
 + `[S]` Define Spell - explicit mechanic for using **Unraveling**
-+ `[S]` Define Spell - explicit mechanic for using **Sorcery specialization** (as opposed to the raw Sorcery level)
 
 + `[S]` Cast Spell - chat message - add a box showing power gathered vs initial requirement.
 + `[S]` Cast Spell - chat message - if unaligned power was used, show harmonic type(s) (up to 3 for the GM to choose from in case of ex-aequo).
@@ -33,7 +33,7 @@
   + Hearts / Emotional (fr: émotionnelle)
   + Diamonds / Material (fr: matérielle)
   + Clubs / Elemental (fr: élémentaire)
-S
+
 + `[C]` Cooperation on spellcasting - implement sopmething specific for this (ROI not great) or just document in the userguide how to do it with the current version of the system
 
 + `[C]` Confirmation dialog for Hosts when they 'Gather Power' for a Host character and 'Self Roll' isn't active
@@ -43,7 +43,13 @@ S
 + `[M]` Weapon item type and weapons list (under 'Possessions' or dedicated tab), dedicated sheet and chat message
 
 + `[M]` Duel mechanics
-
+  + [M] Duel hand initiated with 2 Red cards, 2 Black cards and 2 Jokers
+  + [M] Hand action to reset it back to 2 Red, 2 Black, 2 Jokers
+  + [M] Form to play 2 cards at once out of the 6.
+  + [C] Macro for Host to start a duel b/w 2 characters based on a given Ability (not necessarily Fencing)
+  + [C] Exchange cards are shown only when both characters have selected them
+  + [C] Rest counter
+  + [C] Exchanges & Rounds materialized in combat tracker
 + `[S]` Unique Fortune hand for the Host, shared by all NPCs
 
 ### From "Variations on the Great Game" and other sourcebooks
