@@ -40,7 +40,8 @@
 
 ### Core mechanics not yet supported
 
-+ `[M]` Weapon item type and weapons list (under 'Possessions' or dedicated tab), dedicated sheet and chat message
++ `[S]` Weapon item type and weapons list (under 'Possessions' or dedicated tab), dedicated sheet and chat message
++ `[C]` Support for 'Harm Rank' alternative mechanics
 
 + `[M]` Duel mechanics
   + [M] Duel hand initiated with 2 Red cards, 2 Black cards and 2 Jokers
