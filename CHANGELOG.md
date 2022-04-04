@@ -3,7 +3,7 @@
 ## [v1.2.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.2.0) - Unreleased
 
 ### Changed
-- Character Health value now defaults to 0 (previously: 10).
+- Character Health value now defaults to empty (previously: 10).
 
 ## [v1.1.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.1.0) - 2022/04/03
 ### Added
