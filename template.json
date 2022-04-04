@@ -4,7 +4,7 @@
     "templates": {
       "base": {
         "health": {
-          "max": 10
+          "max": 0
         },
         "description": "",
         "hostNotes": "",
