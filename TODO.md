@@ -8,6 +8,10 @@
 
 ### Cards
 
++ `[M🔥]` Remove the dependency to Monarch module by proposing a default Hand sheet implem (enabled by default).
+
++ `[M🔥]` Make sure drawn cards always appear to the right (Might be the case with Monarch already but unsure if will necessarily be the case for the CF-default hand)
+
 + `[S]` Reset the character's Fortune/Sorcery hands and delete them when a character is deleted
 
 + `[C]` Button in World settings (Host only) to delete all NPC hands
