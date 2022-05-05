@@ -454,13 +454,13 @@ export default class CastleFalkenstein {
     }
 
     this.registerSettings();
+
+    this.registerSheets();
   }
 
   static async onReady() {
     await this.preLoadTemplates();
 
-    this.registerSheets();
-    
     const userLanguage = game.settings.get("core", "language");
     if (userLanguage != "en" && game.system.languages.map(el => el.lang).includes(userLanguage)) {
       if(!game.modules.get('babele')?.active) {
@@ -537,29 +537,29 @@ export default class CastleFalkenstein {
   static registerSheets() {
     Actors.unregisterSheet("core", ActorSheet);
     Actors.registerSheet("castle-falkenstein", CastleFalkensteinActorSheet, { 
-      label: game.i18n.localize("castle-falkenstein.system") + " | " + game.i18n.localize("castle-falkenstein.character"),
+      label: "castle-falkenstein.character",
       makeDefault: true
     });
 
     Items.unregisterSheet("core", ItemSheet);
     Items.registerSheet("castle-falkenstein", CastleFalkensteinAbilitySheet, {
       types: ["ability"],
-      label: game.i18n.localize("castle-falkenstein.system") + " | " + game.i18n.localize("castle-falkenstein.ability.ability"),
+      label: "castle-falkenstein.ability.ability",
       makeDefault: true
     });
     Items.registerSheet("castle-falkenstein", CastleFalkensteinPossessionSheet, {
       types: ["possession"],
-      label: game.i18n.localize("castle-falkenstein.system") + " | " + game.i18n.localize("castle-falkenstein.possession.possession"),
+      label: "castle-falkenstein.possession.possession",
       makeDefault: true
     });
     Items.registerSheet("castle-falkenstein", CastleFalkensteinWeaponSheet, {
       types: ["weapon"],
-      label: game.i18n.localize("castle-falkenstein.system") + " | " + game.i18n.localize("castle-falkenstein.weapon.weapon"),
+      label: "castle-falkenstein.weapon.weapon",
       makeDefault: true
     });
     Items.registerSheet("castle-falkenstein", CastleFalkensteinSpellSheet, {
       types: ["spell"],
-      label: game.i18n.localize("castle-falkenstein.system") + " | " + game.i18n.localize("castle-falkenstein.spell.spell"),
+      label: "castle-falkenstein.spell.spell",
       makeDefault: true
     });
 
