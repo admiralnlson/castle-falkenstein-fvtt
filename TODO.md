@@ -6,6 +6,13 @@
 
 ## Evolutions
 
+### Explicit user requests
+
+| User | Request |
+|------|:--------|
+| Dame du Lac | `[S🔥]` Extra 'Other' tab for listing secondary attributes such as Speed (Run+Flight) or Languages known |
+| Dame du Lac | `[C]` Have abilities display as 2+ columns if there is enough horizontal space (and ensure 2 in the default width) |
+
 ### Cards
 
 + `[M🔥]` Remove the dependency to Monarch module by proposing a default Hand sheet implem (enabled by default).
