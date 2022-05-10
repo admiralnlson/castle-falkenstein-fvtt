@@ -66,12 +66,10 @@
 
 .castle-falkenstein .sheet-header {
   flex: 0 0 120px;
-  /*overflow: hidden;*/
-  display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
-  margin-bottom: 10px;
+  overflow: visible;
 }
 
 .castle-falkenstein .sheet-header .profile-img {
@@ -97,6 +95,38 @@
   margin: 0;
 }
 
+/* Deactivated for now, need a better overall solution which scales all fonts and text heights down */
+/*
+.gm-screen-grid-cell-content .sheet-header .profile-img {
+  height: 50px;
+  max-width: 50px;
+}
+
+.gm-screen-grid-cell-content .sheet-header h1.charname,
+.gm-screen-grid-cell-content .sheet-header h1.charname input,
+.gm-screen-grid-cell-content .sheet-header input,
+.gm-screen-grid-cell-content .sheet-header label,
+.gm-screen-grid-cell-content .tab-link {
+  font-size: 12px;
+  height: 14px;
+  max-height: 14px;
+  margin-left: 1px;
+  margin-right: 1px;
+}
+
+.gm-screen-grid-cell-content .sheet-header .health-and-wounds {
+  height: auto;
+}
+
+.gm-screen-grid-cell-content .sheet-header {
+  flex: 0 0 70px;
+}*/
+
+.castle-falkenstein .tab-link {
+  margin-left: 1px;
+  margin-right: 1px;
+}
+
 .castle-falkenstein .resource {
   width: 50%;
   height: 40px;
@@ -111,7 +141,7 @@
 }
 
 .castle-falkenstein .tabs {
-  flex: 0 0 40px;
+  flex: 0 0 30px;
   flex-wrap: wrap;
   border-top: 1px solid #AAA;
   border-bottom: 1px solid #AAA;
