@@ -4,6 +4,11 @@ import CastleFalkenstein from "./castle-falkenstein.mjs";
 export default class CastleFalkensteinMonarchConfig {
 
   static onCardDisplay(monarch, components) {
+
+    const cfCardsType = monarch.object.getFlag(CastleFalkenstein.name, "type");
+    if (!cfCardsType)
+      return;
+
     // Remove Monarch default standalone card components
     while (components.badges.length > 0) { components.badges.pop(); }
     while (components.markers.length > 0) { components.markers.pop(); }
@@ -14,6 +19,11 @@ export default class CastleFalkensteinMonarchConfig {
   }
 
   static onHandDisplay(monarch, components) {
+
+    const cfCardsType = monarch.object.getFlag(CastleFalkenstein.name, "type");
+    if (!cfCardsType)
+      return;
+
     // Remove Monarch default components
     while (components.badges.length > 0) { components.badges.pop(); }
     while (components.markers.length > 0) { components.markers.pop(); }
@@ -32,7 +42,7 @@ export default class CastleFalkensteinMonarchConfig {
       icon: "cf-stack",
       class: "fortune-hand-refill",
       hide: (card, hand) => {
-        const type = hand.getFlag("castle-falkenstein", "type");
+        const type = hand.getFlag(CastleFalkenstein.name, "type");
         return type != "fortune";
       },
       disabled: (card, hand) => {
@@ -50,14 +60,14 @@ export default class CastleFalkensteinMonarchConfig {
       icon: "fas fa-question",
       class: "fortune-hand-chance",
       hide: (card, hand) => {
-        const type = hand.getFlag("castle-falkenstein", "type");
+        const type = hand.getFlag(CastleFalkenstein.name, "type");
         return type != "fortune";
       },
       disabled: (card, hand) => {
         return false;
       },
       onclick: async (event, app, hand) =>  {
-        const actorId = hand.getFlag("castle-falkenstein", "actor");
+        const actorId = hand.getFlag(CastleFalkenstein.name, "actor");
         const actor = game.actors.get(actorId);
 
         // draw a single card from the discard pile directly (avoids glitches)
@@ -79,11 +89,11 @@ export default class CastleFalkensteinMonarchConfig {
       icon: "fas fa-plus-circle",
       class: "sorcery-hand-gather-power",
       hide: (card, hand) => {
-        const type = hand.getFlag("castle-falkenstein", "type");
+        const type = hand.getFlag(CastleFalkenstein.name, "type");
         return type != "sorcery";
       },
       disabled: (card, hand) => {
-        const actorId = hand.getFlag("castle-falkenstein", "actor");
+        const actorId = hand.getFlag(CastleFalkenstein.name, "actor");
         const actor = game.actors.get(actorId);
 
         // TODO add "actor.isDragon" getter to allow implementation of this 5-card limit
@@ -93,7 +103,7 @@ export default class CastleFalkensteinMonarchConfig {
         return !actor.isCasting;
       },
       onclick: async (event, app, hand) =>  {
-        const actorId = hand.getFlag("castle-falkenstein", "actor");
+        const actorId = hand.getFlag(CastleFalkenstein.name, "actor");
         const actor = game.actors.get(actorId);
 
         const cards = await CastleFalkenstein.draw("sorcery", hand, 1);
@@ -116,18 +126,18 @@ export default class CastleFalkensteinMonarchConfig {
       icon: "cf-card-discard",
       class: "sorcery-hand-card-release",
       hide: (card, container) => {
-        const type = container.getFlag("castle-falkenstein", "type");
+        const type = container.getFlag(CastleFalkenstein.name, "type");
         return type != "sorcery";
       },
       // TODO disable the button on cards with aligned power (if done, maybe reconsider label & chat messages content)
       /*disabled: (card, hand) => {
-        const actorId = hand.getFlag("castle-falkenstein", "actor");
+        const actorId = hand.getFlag(CastleFalkenstein.name, "actor");
         const actor = game.actors.get(actorId);
         return !actor.isSpellAligned(card);
       },*/
       onclick: async (event, card, container) => {
-        const type = container.getFlag("castle-falkenstein", "type");
-        const actorId = container.getFlag("castle-falkenstein", "actor");
+        const type = container.getFlag(CastleFalkenstein.name, "type");
+        const actorId = container.getFlag(CastleFalkenstein.name, "actor");
         const actor = game.actors.get(actorId);
 
         if (type == "sorcery") {
@@ -147,17 +157,17 @@ export default class CastleFalkensteinMonarchConfig {
       icon: "fas fa-play-circle",
       class: "sorcery-hand-cast-spell",
       hide: (card, hand) => {
-        const type = hand.getFlag("castle-falkenstein", "type");
+        const type = hand.getFlag(CastleFalkenstein.name, "type");
         return type != "sorcery";
       },
       disabled: (card, hand) => {
-        const actorId = hand.getFlag("castle-falkenstein", "actor");
+        const actorId = hand.getFlag(CastleFalkenstein.name, "actor");
         const actor = game.actors.get(actorId);
         // TODO disable if the thaumic energy requirement has not been reached? (may not bode well with cooperation spellcasting scenario though)
         return !actor.isCasting;
       },
       onclick: async (event, app, hand) =>  {
-        const actorId = hand.getFlag("castle-falkenstein", "actor");
+        const actorId = hand.getFlag(CastleFalkenstein.name, "actor");
         const actor = game.actors.get(actorId);
         const spell = actor.items.get(actor.data.data.spellBeingCast.spell);
 
@@ -200,16 +210,16 @@ export default class CastleFalkensteinMonarchConfig {
       icon: "fas fa-stop-circle",
       class: "sorcery-hand-cancel-spell",
       hide: (card, hand) => {
-        const type = hand.getFlag("castle-falkenstein", "type");
+        const type = hand.getFlag(CastleFalkenstein.name, "type");
         return type != "sorcery";
       },
       disabled: (card, hand) => {
-        const actorId = hand.getFlag("castle-falkenstein", "actor");
+        const actorId = hand.getFlag(CastleFalkenstein.name, "actor");
         const actor = game.actors.get(actorId);
         return !actor.isCasting;
       },
       onclick: async (event, app, hand) =>  {
-        const actorId = hand.getFlag("castle-falkenstein", "actor");
+        const actorId = hand.getFlag(CastleFalkenstein.name, "actor");
         const actor = game.actors.get(actorId);
 
         await hand.pass(CastleFalkenstein.sorceryDiscardPile, hand.cards.map((c)=>{ return c.id; }), {chatNotification: false});
