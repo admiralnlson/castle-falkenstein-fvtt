@@ -10,14 +10,15 @@
 
 | User | Request |
 |------|:--------|
-| Dame du Lac | `[S🔥]` Extra 'Other' tab for listing secondary attributes such as Speed (Run+Flight) or Languages known |
+| Dame du Lac | `[S]` Extra 'Other' tab for listing secondary attributes such as Speed (Run+Flight) or Languages known |
 | Dame du Lac | `[C]` Have abilities display as 2+ columns if there is enough horizontal space (and ensure 2 in the default width) |
+| mite.railleuse | Duel system |
 
 ### Cards
 
-+ `[M🔥]` Remove the dependency to Monarch module by proposing a default Hand sheet implem (enabled by default).
++ `[M]` Remove the dependency to Monarch by proposing a default Hand sheet implem (enabled by default).
 
-+ `[M🔥]` Make sure drawn cards always appear to the right (Might be the case with Monarch already but unsure if will necessarily be the case for the CF-default hand)
++ `[M🔥]` Make sure drawn cards always appear to the right (might be the case with Monarch already but don't think it will be the case for the CF-default hand)
 
 + `[S]` Reset the character's Fortune/Sorcery hands and delete them when a character is deleted
 
