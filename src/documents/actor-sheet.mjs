@@ -10,7 +10,7 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
   /** @override */
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
-      classes: ["castle-falkenstein", "sheet", "actor"],
+      classes: [CastleFalkenstein.name, "sheet", "actor"],
       template: "systems/castle-falkenstein/src/documents/actor-sheet.hbs",
       width: 620,
       height: 600,

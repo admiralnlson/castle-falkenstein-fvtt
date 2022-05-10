@@ -164,7 +164,7 @@ export default class CastleFalkenstein {
     deckData.permission = deckData.permission || {};
     deckData.permission.default = CONST.ENTITY_PERMISSIONS.LIMITED;
     deckData.folder = (await this.cardsFolder("decks-and-piles", game.i18n.localize("castle-falkenstein.cardsDirectory.decksAndPilesFolder"))).id;
-    deckData.flags["castle-falkenstein"] = {
+    deckData.flags[this.name] = {
       type: type
     };
 
@@ -251,7 +251,7 @@ export default class CastleFalkenstein {
     // In Foundry v9.255,
     //   If you delete a deck, it recalls all cards from hands and piles.
     //   However, if you delete a hand or pile, it does not recall the cards it contained to the origin deck.
-    const type = cards.getFlag("castle-falkenstein", "type");
+    const type = cards.getFlag(this.name, "type");
     if (type) {
       if (cards.type == "hand" || cards.type == "pile") {
         const toUpdate = {};
@@ -283,7 +283,7 @@ export default class CastleFalkenstein {
   }
 
   static async onDeleteCards(cards, options, user) {
-    const type = cards.getFlag("castle-falkenstein", "type");
+    const type = cards.getFlag(this.name, "type");
     if (type) {
       if (cards.type == "hand" || cards.type == "pile") {
         let origins = [];
@@ -507,7 +507,7 @@ export default class CastleFalkenstein {
   }
 
   static setupSocket() {
-    this.socket = socketlib.registerSystem("castle-falkenstein");
+    this.socket = socketlib.registerSystem(this.name);
 
     // register socket functions
 	  this.socket.register("shuffleDiscardPile", this.shuffleDiscardPile);
@@ -536,28 +536,28 @@ export default class CastleFalkenstein {
 
   static registerSheets() {
     Actors.unregisterSheet("core", ActorSheet);
-    Actors.registerSheet("castle-falkenstein", CastleFalkensteinActorSheet, { 
+    Actors.registerSheet(this.name, CastleFalkensteinActorSheet, { 
       label: "castle-falkenstein.character",
       makeDefault: true
     });
 
     Items.unregisterSheet("core", ItemSheet);
-    Items.registerSheet("castle-falkenstein", CastleFalkensteinAbilitySheet, {
+    Items.registerSheet(this.name, CastleFalkensteinAbilitySheet, {
       types: ["ability"],
       label: "castle-falkenstein.ability.ability",
       makeDefault: true
     });
-    Items.registerSheet("castle-falkenstein", CastleFalkensteinPossessionSheet, {
+    Items.registerSheet(this.name, CastleFalkensteinPossessionSheet, {
       types: ["possession"],
       label: "castle-falkenstein.possession.possession",
       makeDefault: true
     });
-    Items.registerSheet("castle-falkenstein", CastleFalkensteinWeaponSheet, {
+    Items.registerSheet(this.name, CastleFalkensteinWeaponSheet, {
       types: ["weapon"],
       label: "castle-falkenstein.weapon.weapon",
       makeDefault: true
     });
-    Items.registerSheet("castle-falkenstein", CastleFalkensteinSpellSheet, {
+    Items.registerSheet(this.name, CastleFalkensteinSpellSheet, {
       types: ["spell"],
       label: "castle-falkenstein.spell.spell",
       makeDefault: true

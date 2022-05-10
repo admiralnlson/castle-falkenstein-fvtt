@@ -1,4 +1,5 @@
 import { CASTLE_FALKENSTEIN } from "../config.mjs";
+import CastleFalkenstein from "../castle-falkenstein.mjs";
 
 /**
  * Sheet for the 'spell' item type.
@@ -11,7 +12,7 @@ export class CastleFalkensteinSpellSheet extends ItemSheet {
    */
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
-      classes: ["castle-falkenstein", "sheet", "item"],
+      classes: [CastleFalkenstein.name, "sheet", "item"],
       template: "systems/castle-falkenstein/src/documents/item-spell-sheet.hbs",
       width: 460,
       height: 300,

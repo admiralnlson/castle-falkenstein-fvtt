@@ -3,6 +3,7 @@
 
 import {libWrapper} from "../lib-wrapper-shim/shim.js";
 import * as errors from "./errors.js";
+import CastleFalkenstein from "../castle-falkenstein.mjs";
 
 const RECIPIENT_TYPES = {
 	ONE_GM: 0,
@@ -22,7 +23,7 @@ const MESSAGE_TYPES = {
 Hooks.once("init", () => {
 	window.socketlib = new Socketlib();
   // Castle Falkenstein patch applied: have to change socket name
-	libWrapper.register("castle-falkenstein", "Users.prototype.constructor._handleUserActivity", handleUserActivity);
+	libWrapper.register(CastleFalkenstein.name, "Users.prototype.constructor._handleUserActivity", handleUserActivity);
 	Hooks.callAll("socketlib.ready");
 }, "WRAPPER");
 
