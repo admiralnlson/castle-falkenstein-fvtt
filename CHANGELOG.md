@@ -3,7 +3,7 @@
 ## [v1.1.1](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.1.1) - 2022/05/05
 ### Fixed
 - Character health now defaults to empty (previously was given the arbitrary value of 10).
-- Character sheets used on the 'GM screen' module will now display correctly after a refresh.
+- Character sheets used on the 'GM screen' module will now also display correctly after a refresh.
 - Non system-specific card hands will now display correctly.
 
 ## [v1.1.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.1.0) - 2022/04/03
