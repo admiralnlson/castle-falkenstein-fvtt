@@ -1,5 +1,12 @@
 # Changelog
 
+## [v1.1.2](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.1.2) - 2022/05/16
+### Fixed
+- Fixed a v1.1.1 regression where:
+  - Discard piles were no longer automatically reschuffling into empty decks
+  - The 'Show Players' button on Actors was no longer doing anything
+  - Monarch sheets were no longer set as the default for hands and cards (new worlds only)
+
 ## [v1.1.1](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.1.1) - 2022/05/05
 ### Fixed
 - Character health now defaults to empty (previously was given the arbitrary value of 10).

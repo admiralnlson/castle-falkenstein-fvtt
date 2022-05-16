@@ -459,6 +459,16 @@ export default class CastleFalkenstein {
   }
 
   static async onReady() {
+    // <FIXME> There's probably a better way to make sure Monarch sheets are set as default for CF-system created hands, without enforcing it for GM created ones also.
+    // register Monarch Hand & Card sheets by default.
+    const settings = game.settings.get("core", "sheetClasses") || {};
+		foundry.utils.mergeObject(settings, {
+      "Cards.base": "monarch.MonarchCard",
+      "Cards.hand": "monarch.MonarchHand"
+    });
+		game.settings.set("core", "sheetClasses", settings);
+    // </FIXME>
+
     await this.preLoadTemplates();
 
     const userLanguage = game.settings.get("core", "language");
@@ -562,14 +572,6 @@ export default class CastleFalkenstein {
       label: "castle-falkenstein.spell.spell",
       makeDefault: true
     });
-
-    // register Monarch Hand & Card sheets by default.
-    const settings = game.settings.get("core", "sheetClasses") || {};
-		foundry.utils.mergeObject(settings, {
-      "Cards.base": "monarch.MonarchCard",
-      "Cards.hand": "monarch.MonarchHand"
-    });
-		game.settings.set("core", "sheetClasses", settings);
   }
 
   // Load all the templates for handlebars partials.
