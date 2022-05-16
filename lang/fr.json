@@ -156,8 +156,11 @@
       "weapons": "Armes",
       "weapon": "Arme",
       "effectiveRange": "Portée Effective",
-      "rangeUnitAbbr": "m",
-      "magazine": "Magasin ou munitions",
+      "effectiveRangeAbbr": "Portée",
+      "ammunition": "Munitions",
+      "ammunition_current": "Munitions (actuel)",
+      "ammunition_max": "Munitions (max)",
+      "wounds": "Blessures",
       "woundsPartial": "Blessures (succès partiel)",
       "woundsFull": "Blessures (franc succès)",
       "woundsHigh": "Blessures (magnifique succès)"

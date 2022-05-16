@@ -156,8 +156,11 @@
       "weapons":"Weapons",
       "weapon":"Weapon",
       "effectiveRange": "Effective Range",
-      "rangeUnitAbbr": "yds",
-      "magazine": "Magazine",
+      "effectiveRangeAbbr": "Range",
+      "ammunition": "Ammunition",
+      "ammunition_current": "Ammunition (current)",
+      "ammunition_max": "Ammunition (max)",
+      "wounds": "Wounds",
       "woundsPartial": "Wounds (Partial)",
       "woundsFull": "Wounds (Full)",
       "woundsHigh": "Wounds (High)"

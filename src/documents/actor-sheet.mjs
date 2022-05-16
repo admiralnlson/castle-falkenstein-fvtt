@@ -14,7 +14,14 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
       template: "systems/castle-falkenstein/src/documents/actor-sheet.hbs",
       width: 620,
       height: 600,
-      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }]
+      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }],
+      dragDrop: [{
+        dragSelector: ".items-list .item",
+        dropSelector: ".items-list"/*,
+        permissions: { dragstart: this._canDragStart.bind(this), drop: this._canDragDrop.bind(this) },
+        callbacks: { dragstart: this._onDragStart.bind(this), drop: this._onDragDrop.bind(this) }*/
+      }],
+      scrollY: [".items-list"]
     });
   }
 
@@ -114,7 +121,7 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
   /** @override */
   activateListeners(html) {
     super.activateListeners(html);
-
+ 
     html.find('.fortune-hand-show').click(async (ev) => {
       const hand = await this.actor.hand("fortune");
       hand.sheet.render(true, { focus: true });
@@ -124,7 +131,6 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
       const hand = await this.actor.hand("sorcery");
       hand.sheet.render(true, { focus: true });
     });
-
 
     html.find('.item-show').click(ev => {
       const li = $(ev.currentTarget).parents(".item");
@@ -143,29 +149,66 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
     // Everything below here is only needed if the sheet is editable
     if (!this.isEditable) return;
 
-    // Add Inventory Item
+    // Add item
     html.find('.item-create').click(this._onItemCreate.bind(this));
 
-    // Delete Inventory Item
+    // Delete item
     html.find('.item-delete').click(ev => {
       const li = $(ev.currentTarget).parents(".item");
       const item = this.actor.items.get(li.data("itemId"));
       item.delete();
-      li.slideUp(200, () => this.render(false));
     });
 
-    // Rollable abilities.
+    // Rollable items
     html.find('.rollable').click(this._onRoll.bind(this));
 
-    // Drag events for macros.
-    if (this.actor.isOwner) {
+
+    html.find('.items-list .item').each((i, li) => {
+      li.draggable({ handle: ".item-drag" });
+    });
+
+    // Drag events
+    /*if (this.actor.isOwner) {
       let handler = ev => this._onDragStart(ev);
       html.find('li.item').each((i, li) => {
         if (li.classList.contains("inventory-header")) return;
-        li.setAttribute("draggable", true);
+        //li.setAttribute("draggable", true);
         li.addEventListener("dragstart", handler, false);
       });
-    }
+    }*/
+
+    // Weapon ammunition
+    html.find('.weapon-ammunition-current').change(ev => {
+      const li = $(ev.currentTarget).parents(".item");
+      const item = this.actor.items.get(li.data("itemId"));
+      item.update({
+        [`data.ammunition`]: ev.currentTarget.value 
+      });
+    });
+  }
+
+  _canDragStart(event) {
+    CastleFalkenstein.consoleDebug("_canDragStart");
+    CastleFalkenstein.consoleDebug(event);
+    return super._canDragStart(event);
+  }
+  
+  _canDragStop(event) {
+    CastleFalkenstein.consoleDebug("_canDragStop");
+    CastleFalkenstein.consoleDebug(event);
+    return super._canDragStop(event);
+  }
+
+  _onDragStart(event) {
+    CastleFalkenstein.consoleDebug("_onDragStart");
+    CastleFalkenstein.consoleDebug(event);
+    return super._onDragStart(event);
+  }
+
+  _onDragDrop(event) {
+    CastleFalkenstein.consoleDebug("_onDragDrop");
+    CastleFalkenstein.consoleDebug(event);
+    return super._onDragDrop(event);
   }
 
   /**

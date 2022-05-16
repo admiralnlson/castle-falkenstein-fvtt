@@ -13,7 +13,7 @@
   display: grid;
   grid-column: span 2 / span 2;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
+  gap: 5px;
   padding: 0;
 }
 
@@ -226,12 +226,6 @@ html * {
   color: #444;
 }
 
-.castle-falkenstein .items-list .item-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
 .castle-falkenstein .items-list .item-controls {
   display: flex;
   flex: 0 0 75px;
@@ -271,7 +265,15 @@ html * {
 
 .castle-falkenstein .items-list .item {
   display: grid;
-  grid-column-gap: 10px;
+  grid-column-gap: 5px;
+}
+
+.castle-falkenstein .items-list .item .item-drag {
+  cursor: grab;
+}
+
+.castle-falkenstein .items-list .item input {
+  height: auto;
 }
 
 .castle-falkenstein .items-list .perform-feat,
@@ -287,19 +289,53 @@ html * {
 }
 
 .castle-falkenstein .tab.abilities .items-list .item {
-  grid-template-columns: 20px 1fr max-content 74px;
+  grid-template-columns: 20px 1fr 110px 74px;
+}
+
+.castle-falkenstein .tab.abilities .items-list .level {
+  text-align: center;
 }
 
 .castle-falkenstein .tab.possessions .items-list.weapons .item {
-  grid-template-columns: 1fr 74px;
+  grid-template-columns: 15px 1fr 60px 30px 5px 30px 8px 5px 8px 5px 8px 74px;
 }
+
+.castle-falkenstein .tab.possessions .items-list.weapons .item.items-header .ammunition {
+  grid-column: span 3;
+}
+
+.castle-falkenstein .tab.possessions .items-list.weapons .item.items-header .wounds {
+  grid-column: span 5;
+}
+
+.castle-falkenstein .tab.possessions .items-list.weapons .range,
+.castle-falkenstein .tab.possessions .items-list.weapons .ammunition,
+.castle-falkenstein .tab.possessions .items-list.weapons .wounds,
+.castle-falkenstein .tab.possessions .items-list.weapons .wounds-partial,
+.castle-falkenstein .tab.possessions .items-list.weapons .wounds-full,
+.castle-falkenstein .tab.possessions .items-list.weapons .wounds-high {
+  text-align: center;
+}
+
+.castle-falkenstein .tab.possessions .items-list.weapons .ammunition-current {
+  text-align: right;
+}
+
+.castle-falkenstein .tab.possessions .items-list.weapons .ammunition-max {
+  text-align: left;
+}
+
 
 .castle-falkenstein .tab.possessions .items-list.possessions .item {
   grid-template-columns: 1fr 74px;
 }
 
 .castle-falkenstein .tab.spells .items-list .item {
-  grid-template-columns: 20px 1fr max-content 74px;
+  grid-template-columns: 20px 1fr 30px 74px;
+}
+
+.castle-falkenstein .tab.spells .items-list .level {
+  text-align: center;
 }
 
 .castle-falkenstein.actor .sheet-header,
@@ -323,8 +359,13 @@ html * {
   grid-template-columns: auto 1fr auto 5px auto auto;
 }
 
-.castle-falkenstein.item .ability-sheet-header .level {
+.castle-falkenstein.item .ability-sheet-header .ability-level {
   text-align: right;
+}
+
+.castle-falkenstein.item .weapon-sheet-header {
+  align-items: center;
+  grid-template-columns: auto 1fr;
 }
 
 .castle-falkenstein.item .possession-sheet-header {
@@ -503,7 +544,7 @@ html * {
   grid-template-columns: max-content max-content;
   justify-content: center;
   gap: 2px;
-  grid-column-gap: 10px;
+  grid-column-gap: 5px;
   padding-top: 5px;
 }
 
