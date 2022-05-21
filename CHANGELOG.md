@@ -1,5 +1,13 @@
 # Changelog
 
+## [v1.2.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.2.0) - 2022/05/21
+## Added
+- Weapons list in the character sheet Possessions tab
+- Weapons compendium - English
+- Weapons compendium - French translation (requires the Babele module)
+## Changed
+- Minor cosmetic & user xp updates
+
 ## [v1.1.2](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.1.2) - 2022/05/16
 ### Fixed
 - Fixed a v1.1.1 regression where:

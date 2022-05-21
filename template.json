@@ -46,11 +46,12 @@
     },
     "weapon": {
       "templates": ["base"],
-      "effectiveRange": 0,
-      "magazine": 0,
-      "wounds_partial": 0,
-      "wounds_full": 0,
-      "wounds_high": 0
+      "effectiveRange": "",
+      "ammunition": null,
+      "ammunition_max": null,
+      "woundsPartial": null,
+      "woundsFull": null,
+      "woundsHigh": null
     },
     "possession": {
       "templates": ["base"]

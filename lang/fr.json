@@ -82,6 +82,7 @@
 
     "item": {
       "add": "Ajouter",
+      "sort": "Glisser-déplacer pour réordonner la liste",
       "showOthers": "Montrer aux autres",
       "edit": "Éditer",
       "delete": "Supprimer"
@@ -155,9 +156,13 @@
     "weapon": {
       "weapons": "Armes",
       "weapon": "Arme",
-      "effectiveRange": "Portée Effective",
-      "rangeUnitAbbr": "m",
-      "magazine": "Magasin ou munitions",
+      "effectiveRange": "Portée effective",
+      "effectiveRangeAbbr": "Portée",
+      "ammunition": "Munitions",
+      "ammunitionAbbr": "Mun.",
+      "ammunitionCurrent": "Munitions (actuel)",
+      "ammunitionMax": "Munitions (max)",
+      "wounds": "Blessures",
       "woundsPartial": "Blessures (succès partiel)",
       "woundsFull": "Blessures (franc succès)",
       "woundsHigh": "Blessures (magnifique succès)"

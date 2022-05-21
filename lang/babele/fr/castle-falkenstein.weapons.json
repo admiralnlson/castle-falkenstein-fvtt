@@ -1,0 +1,146 @@
+{
+  "label": "Armes",
+  "mapping": {
+    "effectiveRange": "data.effectiveRange",
+    "description": "data.description"
+  },
+  "entries": {
+    "Bow": {
+      "name": "Arc",
+      "effectiveRange": "30 m"
+    },
+    "Carbine": {
+      "name": "Carabine",
+      "effectiveRange": "90 m"
+    },
+    "Chassepot Rifle": {
+      "name": "Fusil Chassepot",
+      "effectiveRange": "140 m"
+    },
+    "Derringer": {
+      "name": "Derringer",
+      "effectiveRange": "10 m"
+    },
+    "Drop Pistol": {
+      "name": "Pistolet à bascule",
+      "effectiveRange": "20 m"
+    },
+    "Elfshot": {
+      "name": "Flèche elfique",
+      "effectiveRange": "30 m"
+    },
+    "French Mitraillreuse": {
+      "name": "Mitrailleuse française Reffye",
+      "effectiveRange": "300 m"
+    },
+    "Gatling Gun": {
+      "name": "Mitrailleuse Gatling",
+      "effectiveRange": "300 m"
+    },
+    "Musket (rifled)": {
+      "name": "Mousquet (canon rayé)",
+      "effectiveRange": "80 m"
+    },
+    "Prussian Needle Rifle": {
+      "name": "Fusil Dreyse prussien",
+      "effectiveRange": "120 m"
+    },
+    "Pepperbox Revolver": {
+      "name": "Revolver Poivrière",
+      "effectiveRange": "20 m"
+    },
+    "Reciprocator": {
+      "name": "Réciprocateur",
+      "effectiveRange": "10 m"
+    },
+    "Shotgun": {
+      "name": "Fusil de chasse",
+      "effectiveRange": "30 m"
+    },
+    "Shrapnel": {
+      "name": "Shrapnel",
+      "effectiveRange": "6 m",
+      "description": "Inclut les grenades, les obus d'artillerie et les autres explosifs. La portée est la distance par rapport au point d'impact du projectile."
+    },
+    "Thrown Dagger": {
+      "name": "Couteau de lancer",
+      "effectiveRange": "5 m"
+    },
+    "Thrown Spear": {
+      "name": "Javelot",
+      "effectiveRange": "10 m"
+    },
+    "Dragon Firecast (Poor Physique)": {
+      "name": "Jet de flammes de Dragon (Physique Faible)",
+      "effectiveRange": "10 m"
+    },
+    "Dragon Firecast (Average Physique)": {
+      "name": "Jet de flammes de Dragon (Physique Moyen)",
+      "effectiveRange": "20 m"
+    },
+    "Dragon Firecast (Good Physique)": {
+      "name": "Jet de flammes de Dragon (Physique Bon)",
+      "effectiveRange": "30 m"
+    },
+    "Dragon Firecast (Great Physique)": {
+      "name": "Jet de flammes de Dragon (Physique Excellent)",
+      "effectiveRange": "40 m"
+    },
+    "Dragon Firecast (Exceptional Physique)": {
+      "name": "Jet de flammes de Dragon (Physique Magistral)",
+      "effectiveRange": "50 m"
+    },
+    "Dragon Firecast (Extraordinary Physique)": {
+      "name": "Jet de flammes de Dragon (Physique Prodigieux)",
+      "effectiveRange": "60 m"
+    },
+    "Animal Attack (tiny)": {
+      "name": "Attaque d'animal (minuscule)"
+    },
+    "Animal Attack (small)": {
+      "name": "Attaque d'animal (petit)"
+    },
+    "Animal Attack (large)": {
+      "name": "Attaque d'animal (moyen)"
+    },
+    "Animal Attack (very large)": {
+      "name": "Attaque d'animal (grand)"
+    },
+    "Animal Attack (huge)": {
+      "name": "Attaque d'animal (très grand)"
+    },
+    "Animal Attack (gigantic)": {
+      "name": "Attaque d'animal (énorme)"
+    },
+    "Blow (PR to AV Physique)": {
+      "name": "Coup (Physique FAI à MOY)"
+    },
+    "Blow (GD to GR Physique)": {
+      "name": "Coup (Physique BON à EXC)"
+    },
+    "Blow (EXC to EXT Physique)": {
+      "name": "Coup (Physique MAG à PRO)"
+    },
+    "Cudgel / Club": {
+      "name": "Gourdin / Massue"
+    },
+    "Dagger / Bayonet / Knife": {
+      "name": "Couteau / Baïonnette / Poignard"
+    },
+    "Hatpin": {
+      "name": "Épingle à chapeau"
+    },
+    "Life Preserver": {
+      "name": "Assommoir"
+    },
+    "Rapier / Court Sword": {
+      "name": "Rapière / Épée courte"
+    },
+    "Saber": {
+      "name": "Sabre"
+    },
+    "Spear": {
+      "name": "Lance"
+    }
+  }
+}

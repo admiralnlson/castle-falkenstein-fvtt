@@ -123,7 +123,7 @@
 + `[C]` Compendium pack for non-weapon items found in the corebook (French)
 + `[C]` Shortcut to import Items from a data pack (must not introduce duplicates, but may fix incorrect suit assignments)
 
-+ `[C]` Display tweak: rework item (ability, spell, ..) CSS-flow display with CSS-grid
++ `[C]` Display tweak: rework item (ability, spell, ..) CSS-flow display with CSS-subgrid when Chrome implements it (could try with display: contents in the meantime)
 
 + `[C]` Make the Actor 'Show Players' button compatible with special dialog of 'Permission Viewer' module (pending feedback from PV owner)
 

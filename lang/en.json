@@ -82,6 +82,7 @@
 
     "item": {
       "add": "Add",
+      "sort": "Drag-and-drop to reorder the list",
       "showOthers": "Show others",
       "edit": "Edit",
       "delete": "Delete"
@@ -156,8 +157,12 @@
       "weapons":"Weapons",
       "weapon":"Weapon",
       "effectiveRange": "Effective Range",
-      "rangeUnitAbbr": "yds",
-      "magazine": "Magazine",
+      "effectiveRangeAbbr": "Range",
+      "ammunition": "Ammunition",
+      "ammunitionAbbr": "Ammo",
+      "ammunitionCurrent": "Ammunition (Current)",
+      "ammunitionMax": "Ammunition (Max)",
+      "wounds": "Wounds",
       "woundsPartial": "Wounds (Partial)",
       "woundsFull": "Wounds (Full)",
       "woundsHigh": "Wounds (High)"

@@ -411,7 +411,7 @@ export default class CastleFalkenstein {
     const level = `${game.i18n.localize(levelI18nKey)} [${levelValue}]`;
     let ability = `${abilityItem.name}`;
     if (includeAbilitySuit)
-      ability += `[<span class="suit-symbol-${abilityItem.data.data.suit}">${suitSymbol}</span>]`;
+      ability += ` [<span class="suit-symbol-${abilityItem.data.data.suit}">${suitSymbol}</span>]`;
 
     const html = game.i18n.format("castle-falkenstein.ability.levelAsSentence", {
       level: level,
