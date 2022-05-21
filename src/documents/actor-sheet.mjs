@@ -7,7 +7,6 @@ import CastleFalkenstein from "../castle-falkenstein.mjs";
  */
 export class CastleFalkensteinActorSheet extends ActorSheet {
 
-  /** @override */
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: [CastleFalkenstein.name, "sheet", "actor"],
@@ -16,10 +15,8 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
       height: 600,
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }],
       dragDrop: [{
-        dragSelector: ".items-list .item",
-        dropSelector: ".items-list"/*,
-        permissions: { dragstart: this._canDragStart.bind(this), drop: this._canDragDrop.bind(this) },
-        callbacks: { dragstart: this._onDragStart.bind(this), drop: this._onDragDrop.bind(this) }*/
+        dragSelector: ".items-list .item .item-drag",
+        dropSelector: ".items-list"
       }],
       scrollY: [".items-list"]
     });
@@ -162,21 +159,6 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
     // Rollable items
     html.find('.rollable').click(this._onRoll.bind(this));
 
-
-    html.find('.items-list .item').each((i, li) => {
-      li.draggable({ handle: ".item-drag" });
-    });
-
-    // Drag events
-    /*if (this.actor.isOwner) {
-      let handler = ev => this._onDragStart(ev);
-      html.find('li.item').each((i, li) => {
-        if (li.classList.contains("inventory-header")) return;
-        //li.setAttribute("draggable", true);
-        li.addEventListener("dragstart", handler, false);
-      });
-    }*/
-
     // Weapon ammunition
     html.find('.weapon-ammunition-current').change(ev => {
       const li = $(ev.currentTarget).parents(".item");
@@ -187,28 +169,39 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
     });
   }
 
-  _canDragStart(event) {
-    CastleFalkenstein.consoleDebug("_canDragStart");
-    CastleFalkenstein.consoleDebug(event);
-    return super._canDragStart(event);
+  /** @override */
+  _onDragStart(event) {
+    super._onDragStart(event);
+
+    event.dataTransfer.setDragImage(event.target.parentElement, 0, 0);
   }
   
-  _canDragStop(event) {
-    CastleFalkenstein.consoleDebug("_canDragStop");
-    CastleFalkenstein.consoleDebug(event);
-    return super._canDragStop(event);
-  }
+  // TEMP temporary override until https://gitlab.com/foundrynet/foundryvtt/-/issues/7130 is fixed
+  _onSortItem(event, itemData) {
+    // Get the drag source and its siblings
+    const source = this.actor.items.get(itemData._id);
+    const siblings = this.actor.items.filter(i => {
+      return (i.data.type === source.data.type) && (i.data._id !== source.data._id);
+    });
 
-  _onDragStart(event) {
-    CastleFalkenstein.consoleDebug("_onDragStart");
-    CastleFalkenstein.consoleDebug(event);
-    return super._onDragStart(event);
-  }
+    // Get the drop target
+    const dropTarget = event.target.closest("[data-item-id]");
+    const targetId = dropTarget ? dropTarget.dataset.itemId : null;
+    const target = siblings.find(s => s.data._id === targetId);
 
-  _onDragDrop(event) {
-    CastleFalkenstein.consoleDebug("_onDragDrop");
-    CastleFalkenstein.consoleDebug(event);
-    return super._onDragDrop(event);
+    // Ensure we are only sorting like-types
+    if (!target || (source.data.type !== target.data.type)) return;
+
+    // Perform the sort
+    const sortUpdates = SortingHelpers.performIntegerSort(source, {target: target, siblings, sortBefore: (source.data.sort > target.data.sort)});
+    const updateData = sortUpdates.map(u => {
+      const update = u.update;
+      update._id = u.target.data._id;
+      return update;
+    });
+
+    // Perform the update
+    return this.actor.updateEmbeddedDocuments("Item", updateData);
   }
 
   /**

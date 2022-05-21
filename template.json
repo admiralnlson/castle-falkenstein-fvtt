@@ -49,9 +49,9 @@
       "effectiveRange": "",
       "ammunition": null,
       "ammunition_max": null,
-      "wounds_partial": null,
-      "wounds_full": null,
-      "wounds_high": null
+      "woundsPartial": null,
+      "woundsFull": null,
+      "woundsHigh": null
     },
     "possession": {
       "templates": ["base"]

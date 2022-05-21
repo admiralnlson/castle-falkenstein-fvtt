@@ -82,6 +82,7 @@
 
     "item": {
       "add": "Add",
+      "sort": "Drag-and-drop to reorder the list",
       "showOthers": "Show others",
       "edit": "Edit",
       "delete": "Delete"
@@ -158,8 +159,9 @@
       "effectiveRange": "Effective Range",
       "effectiveRangeAbbr": "Range",
       "ammunition": "Ammunition",
-      "ammunition_current": "Ammunition (current)",
-      "ammunition_max": "Ammunition (max)",
+      "ammunitionAbbr": "Ammo",
+      "ammunitionCurrent": "Ammunition (Current)",
+      "ammunitionMax": "Ammunition (Max)",
       "wounds": "Wounds",
       "woundsPartial": "Wounds (Partial)",
       "woundsFull": "Wounds (Full)",

@@ -3,27 +3,27 @@
   <header class="sheet-header">
     <div class="header-fields">
       <div class="flexcol">
-        <div class="flexrow weapon-sheet-header">
+        <div class="grid weapon-sheet-header1">
           <label class="resource-label">{{localize 'castle-falkenstein.weapon.weapon'}}:</label>
           <input name="name" type="text" value="{{item.name}}" placeholder="Name" />
-        </div>
-        <div class="flexrow">
           <label class="resource-label">{{localize 'castle-falkenstein.weapon.effectiveRange'}}:</label>
-          <input class="weapon-range" name="data.effectiveRange" type="text" value="{{data.effectiveRange}}" placeholder="" />
-      </div>
-      <div class="flexrow">
-        <label class="resource-label">{{localize 'castle-falkenstein.weapon.ammunition'}}:</label>
-        <input class="weapon-ammunition-current" name="data.ammunition" type="number" min="0" value="{{data.ammunition}}" placeholder="" />
-        <span>/</span>
-        <input class="weapon-ammunition-max" name="data.ammunition_max" type="number" min="0" value="{{data.ammunition_max}}" placeholder="" />
-      </div>
-      <div class="flexrow">
-        <label class="resource-label">{{localize 'castle-falkenstein.weapon.wounds'}}:</label>
-        <input class="weapon-wounds-partial" name="data.woundsPartial" type="number" min="0" value="{{data.woundsPartial}}" placeholder="" />
-        <span>/</span>
-        <input class="weapon-wounds-full" name="data.woundsFull" type="number" min="0" value="{{data.woundsFull}}" placeholder="" />
-        <span>/</span>
-        <input class="weapon-wounds-high" name="data.woundsHigh" type="number" min="0" value="{{data.woundsHigh}}" placeholder="" />
+          <input class="range" name="data.effectiveRange" type="text" value="{{data.effectiveRange}}" placeholder="" />
+        </div>
+        <div class="grid weapon-sheet-header2">
+          <span class="separator"></span>
+          <label class="resource-label">{{localize 'castle-falkenstein.weapon.ammunition'}}:</label>
+          <input class="ammunition-current" name="data.ammunition" type="number" min="0" value="{{data.ammunition}}" placeholder="" />
+          <span>/</span>
+          <input class="ammunition-max" name="data.ammunition_max" type="number" min="0" value="{{data.ammunition_max}}" placeholder="" />
+          <span class="separator"></span>
+          <label class="resource-label">{{localize 'castle-falkenstein.weapon.wounds'}}:</label>
+          <input class="wounds-partial" name="data.woundsPartial" type="number" min="0" value="{{data.woundsPartial}}" placeholder="" />
+          <span>/</span>
+          <input class="wounds-full" name="data.woundsFull" type="number" min="0" value="{{data.woundsFull}}" placeholder="" />
+          <span>/</span>
+          <input class="wounds-high" name="data.woundsHigh" type="number" min="0" value="{{data.woundsHigh}}" placeholder="" />
+          <span class="separator"></span>
+        </div>
       </div>
     </div>
   </header>

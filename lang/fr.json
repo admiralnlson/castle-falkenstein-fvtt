@@ -82,6 +82,7 @@
 
     "item": {
       "add": "Ajouter",
+      "sort": "Glisser-déplacer pour réordonner la liste",
       "showOthers": "Montrer aux autres",
       "edit": "Éditer",
       "delete": "Supprimer"
@@ -155,11 +156,12 @@
     "weapon": {
       "weapons": "Armes",
       "weapon": "Arme",
-      "effectiveRange": "Portée Effective",
+      "effectiveRange": "Portée effective",
       "effectiveRangeAbbr": "Portée",
       "ammunition": "Munitions",
-      "ammunition_current": "Munitions (actuel)",
-      "ammunition_max": "Munitions (max)",
+      "ammunitionAbbr": "Mun.",
+      "ammunitionCurrent": "Munitions (actuel)",
+      "ammunitionMax": "Munitions (max)",
       "wounds": "Blessures",
       "woundsPartial": "Blessures (succès partiel)",
       "woundsFull": "Blessures (franc succès)",

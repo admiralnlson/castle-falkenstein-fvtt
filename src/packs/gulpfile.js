@@ -44,8 +44,13 @@ function compilePacks() {
           // supplement the definitions with some key properties
           if (item.type == "ability") {
             item.data.level = "AV";
+            item.img = `systems/castle-falkenstein/src/cards/${item.data.suit}.svg`;
+          } else if (item.type == "spell") {
+            item.img = `systems/castle-falkenstein/src/cards/${item.data.suit}.svg`;
+          } else if (item.type == "weapon") {
+            item.data.ammunition = item.data.ammunition_max;
+            item.img = `icons/svg/item-bag.svg`;
           }
-          item.img = `systems/castle-falkenstein/src/cards/${item.data.suit}.svg`;
 
           // add an nedb _id that is deterministic to avoid FoundryVTT reording them when saving
           if (counter > 999) {

@@ -59,6 +59,13 @@ export class CastleFalkensteinItem extends Item {
     if (itemData.type == 'ability') {
       flavor += ` - ${game.i18n.localize('castle-falkenstein.ability.ability')}]`;
       content = CastleFalkenstein.abilityLevelAsSentenceHtml(this);
+    } else if (itemData.type == 'weapon') {
+      flavor += ` - ${game.i18n.localize('castle-falkenstein.weapon.weapon')}]`;
+      content = `${itemData.name}<hr/>`
+              + (itemData.data.effectiveRange == "" ? `` : `${game.i18n.localize("castle-falkenstein.weapon.effectiveRange")}: ${itemData.data.effectiveRange}<br/>`)
+              + (itemData.data.ammunition == null && itemData.data.ammunition_max == null ? `` : `${game.i18n.localize("castle-falkenstein.weapon.ammunition")}: ${itemData.data.ammunition} / ${itemData.data.ammunition_max}<br/>`)
+              + `${game.i18n.localize("castle-falkenstein.weapon.wounds")}: ${itemData.data.woundsPartial ?? 0} / ${itemData.data.woundsFull ?? 0} / ${itemData.data.woundsHigh ?? 0}<br/>`
+              + `${itemData.data.description}`;
     } else if (itemData.type == 'possession') {
       flavor += ` - ${game.i18n.localize('castle-falkenstein.possession.possession')}]`;
       // default content

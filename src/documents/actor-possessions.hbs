@@ -1,9 +1,9 @@
 <ol class="items-list weapons">
   <li class="item items-header">
-    <div class="placeholder"></div>
+    <div class="item-drag-placeholder"></div>
     <div class="name" title="{{localize 'castle-falkenstein.weapon.weapon'}}">{{localize 'castle-falkenstein.weapon.weapon'}}</div>
     <div class="range" title="{{localize 'castle-falkenstein.weapon.effectiveRange'}}">{{localize 'castle-falkenstein.weapon.effectiveRangeAbbr'}}</div>
-    <div class="ammunition" title="{{localize 'castle-falkenstein.weapon.ammunition'}}">{{localize 'castle-falkenstein.weapon.ammunition'}}</div>
+    <div class="ammunition" title="{{localize 'castle-falkenstein.weapon.ammunition'}}">{{localize 'castle-falkenstein.weapon.ammunitionAbbr'}}</div>
     <div class="wounds" title="{{localize 'castle-falkenstein.weapon.wounds'}}">{{localize 'castle-falkenstein.weapon.wounds'}}</div>
     <div class="item-controls">
       <a class="item-control item-create" title="{{localize 'castle-falkenstein.item.add'}}" data-type="weapon"><i class="fas fa-plus"></i> {{localize 'castle-falkenstein.item.add'}}</a>
@@ -11,30 +11,35 @@
   </li>
   {{#each weapons as |item id|}}
     <li class="item" data-item-id="{{item._id}}">
-      <div class="item-drag" data-item-id="{{item._id}}"><i class="fas fa-bars"></i></div>
+      <div class="item-drag" data-item-id="{{item._id}}" title="{{localize 'castle-falkenstein.item.sort'}}"><i class="fas fa-bars"></i></div>
       <div class="name" title="{{item.name}}">
         {{item.name}}
       </div>
-      <div class="range">
+      <div class="range" title="{{item.data.effectiveRange}}">
         {{item.data.effectiveRange}}
       </div>
-      <div class="ammunition-current">
-        {{!-- <input {{item.data.ammunition}} --}}
-        <input class="weapon-ammunition-current" name="item.data.ammunition" type="number" min="0" value="{{item.data.ammunition}}" placeholder="" />
+      <div class="ammunition-current" title="{{localize 'castle-falkenstein.weapon.ammunitionCurrent'}}">
+        {{#if item.data.ammunition_max}}
+          <input class="weapon-ammunition-current" name="item.data.ammunition" type="number" min="0" value="{{item.data.ammunition}}" placeholder="" />
+        {{/if}}
       </div>
-      <div>/</div>
-      <div class="ammunition-max">
+      <div class="slash">
+        {{#if item.data.ammunition_max}}
+			    /
+		    {{/if}}
+      </div>
+      <div class="ammunition-max" title="{{localize 'castle-falkenstein.weapon.ammunitionMax'}}">
         {{item.data.ammunition_max}}
       </div>
-      <div class="wounds-partial">
+      <div class="wounds-partial" title="{{localize 'castle-falkenstein.weapon.woundsPartial'}}">
         {{item.data.woundsPartial}}
       </div>
-      <div>/</div>
-      <div class="wounds-full">
+      <div class="slash">/</div>
+      <div class="wounds-full" title="{{localize 'castle-falkenstein.weapon.woundsFull'}}">
         {{item.data.woundsFull}}
       </div>
-      <div>/</div>
-      <div class="wounds-high">
+      <div class="slash">/</div>
+      <div class="wounds-high" title="{{localize 'castle-falkenstein.weapon.woundsHigh'}}">
         {{item.data.woundsHigh}}
       </div>
       <div class="item-controls">
@@ -48,6 +53,7 @@
 
 <ol class="items-list possessions">
   <li class="item items-header">
+    <div class="item-drag-placeholder"></div>
     <div class="name" title="{{localize 'castle-falkenstein.possession.possession'}}">{{localize 'castle-falkenstein.possession.possession'}}</div>
     <div class="item-controls">
       <a class="item-control item-create" title="{{localize 'castle-falkenstein.item.add'}}" data-type="possession"><i class="fas fa-plus"></i> {{localize 'castle-falkenstein.item.add'}}</a>
@@ -55,6 +61,7 @@
   </li>
   {{#each possessions as |item id|}}
     <li class="item" data-item-id="{{item._id}}">
+      <div class="item-drag" data-item-id="{{item._id}}" title="{{localize 'castle-falkenstein.item.sort'}}"><i class="fas fa-bars"></i></div>
       <div class="name" title="{{item.name}}">
         {{item.name}}
       </div>

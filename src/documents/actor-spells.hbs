@@ -9,6 +9,7 @@
   </li>
   {{#each spells as |item id|}}
     <li class="item" data-item-id="{{item._id}}">
+      <div class="item-drag" data-item-id="{{item._id}}" title="{{localize 'castle-falkenstein.item.sort'}}"><i class="fas fa-bars"></i></div>
       <div class="define-spell" title="{{localize 'castle-falkenstein.sorcery.defineSpell'}}">
         <a class="rollable" data-roll-type="item" title="{{localize 'castle-falkenstein.sorcery.defineSpell'}}"><i class="fas fa-play-circle"></i></a>
       </div>
