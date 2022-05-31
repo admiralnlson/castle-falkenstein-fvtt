@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+## Changed
+- Minor cosmetic & user xp updates
+
 ## [v1.3.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.3.0) - 2022/05/30
 ## Added
 - The default macro icon of each ability, weapon, possession or spell may now be customized in the respective sheets.
