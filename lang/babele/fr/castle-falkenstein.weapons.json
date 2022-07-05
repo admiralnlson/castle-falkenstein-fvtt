@@ -101,16 +101,16 @@
       "name": "Attaque d'animal (petit)"
     },
     "Animal Attack (large)": {
-      "name": "Attaque d'animal (moyen)"
-    },
-    "Animal Attack (very large)": {
       "name": "Attaque d'animal (grand)"
     },
-    "Animal Attack (huge)": {
+    "Animal Attack (very large)": {
       "name": "Attaque d'animal (très grand)"
     },
-    "Animal Attack (gigantic)": {
+    "Animal Attack (huge)": {
       "name": "Attaque d'animal (énorme)"
+    },
+    "Animal Attack (gigantic)": {
+      "name": "Attaque d'animal (gigantesque)"
     },
     "Blow (PR to AV Physique)": {
       "name": "Coup (Physique FAI à MOY)"
