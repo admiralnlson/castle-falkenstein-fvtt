@@ -196,6 +196,7 @@ data:
   woundsPartial: 0
   woundsFull: 0
   woundsHigh: 1
+  description: Attack of a tiny animal (less than 1 pound).
 ---
 name: Animal Attack (small)
 type: weapon
@@ -203,20 +204,23 @@ data:
   woundsPartial: 0
   woundsFull: 1
   woundsHigh: 2
+  description: Attack of a small animal (up to a 100 pounds).
 ---
-name: Animal Attack (large)
+name: Animal Attack (medium)
 type: weapon
 data:
   woundsPartial: 1
   woundsFull: 2
   woundsHigh: 3
+  description: Attack of a medium animal (up to 300 pounds), or Dragon with Poor or Average Physique.
 ---
-name: Animal Attack (very large)
+name: Animal Attack (large)
 type: weapon
 data:
   woundsPartial: 4
   woundsFull: 5
   woundsHigh: 6
+  description: Attack of a large animal (up to 2,500 pounds), or Dragon with Good or Great Physique.
 ---
 name: Animal Attack (huge)
 type: weapon
@@ -224,6 +228,7 @@ data:
   woundsPartial: 7
   woundsFull: 8
   woundsHigh: 9
+  description: Attack of a huge animal (up to 15,000 pounds), or Dragon with Exceptional Physique.
 ---
 name: Animal Attack (gigantic)
 type: weapon
@@ -231,6 +236,7 @@ data:
   woundsPartial: 8
   woundsFull: 9
   woundsHigh: 10
+  description: Attack of a gigantic animal (more than 15,000 pounds), or Dragon with Extraordinary Physique.
 ---
 name: Blow (PR to AV Physique)
 type: weapon

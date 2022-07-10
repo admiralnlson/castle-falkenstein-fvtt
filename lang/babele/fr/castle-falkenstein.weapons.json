@@ -95,22 +95,28 @@
       "effectiveRange": "60 m"
     },
     "Animal Attack (tiny)": {
-      "name": "Attaque d'animal (minuscule)"
+      "name": "Attaque d'animal (minuscule)",
+      "description": "Attaque d'un petit animal (jusqu'à 450 grammes)."
     },
     "Animal Attack (small)": {
-      "name": "Attaque d'animal (petit)"
+      "name": "Attaque d'animal (petit)",
+      "description": "Attaque d'un petit animal (jusqu'à 45 kilos)."
+    },
+    "Animal Attack (medium)": {
+      "name": "Attaque d'animal (moyen)",
+      "description": "Attaque d'un animal moyen (jusqu'à 135 kilos), ou d'un Dragon dont le Physique est Faible ou Moyen."
     },
     "Animal Attack (large)": {
-      "name": "Attaque d'animal (grand)"
-    },
-    "Animal Attack (very large)": {
-      "name": "Attaque d'animal (très grand)"
+      "name": "Attaque d'animal (grand)",
+      "description": "Attaque d'un grand animal (jusqu'à 1 tonne), ou d'un Dragon dont le Physique est Bon ou Excellent."
     },
     "Animal Attack (huge)": {
-      "name": "Attaque d'animal (énorme)"
+      "name": "Attaque d'animal (énorme)",
+      "description": "Attaque d'un animal énorme (jusqu'à 7 tonnes), ou d'un Dragon dont le Physique est Magistral."
     },
     "Animal Attack (gigantic)": {
-      "name": "Attaque d'animal (gigantesque)"
+      "name": "Attaque d'animal (gigantesque)",
+      "description": "Attaque d'un animal gigantesque (plus de 7 tonnes), ou d'un Dragon dont le Physique est Prodigieux."
     },
     "Blow (PR to AV Physique)": {
       "name": "Coup (Physique FAI à MOY)"
