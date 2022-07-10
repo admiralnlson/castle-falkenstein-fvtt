@@ -4,7 +4,37 @@
 + MoSCoW: `[M]`ust, `[S]`hould, `[C]`ould, `[W]`on't
 + `[🔥]` Project maintainer (admiralnlson)'s own GM needs
 
-## Evolutions
+## `[M]` Core version compatibility
+
+  + when v10 is mature
+    + reactivate compatibility warnings
+    + migrate code to v10 (data -> system, ..)
+    + make v9 no longer supported
+    + in system.json
+    + remove 'name' property
+    + remove 'minimumCoreVersion' & 'compatibleCoreVersion'
+
+## `[M]` Bugs
+
++ Fortune/Sorcery hand linking issue for unlinked tokens and duplicated actors
+  + Required
+    + on click to open the fortune/sorcery hand in the character sheet, if the hand is not actually linked to the actor (incl. unlinked token) then replace it
+  + TBC if required
+    + (User XP) Warning at the top of the char sheet to indicate it's not linked to an actor?
+    + [data migration] game.scenes.forEach / (scene).tokens.forEach / if (token).isLinked==false && (token).actor != null, token.update 'data.spellBeingCast.spell' to '' and 'sorceryHand' to null
+    + On createToken, if (token).data.token.isLinked==false, set 'spellBeingCast.spell' to '' and 'sorceryHand' to null
+    + On updateToken w/ change.actorLink==true and (), delete the token's sorcery hand if it exists and set 'sorceryHand' to (the source actor one)
+    + On updateToken w/ change.actorLink==false, set 'sorceryHand' to null
+    + on deleteToken, if delete the token's sorcery hand if it exists
+    + (related gap) on deleteActor, delete the actor's sorcery hand if it exists
+    + (related gap) on deleteActor, delete the actor's fortune hand if it exists
+    + (related gap) differentiate pc and npc
+      + [data migration] game.actors.forEach / (scene).tokens.forEach / if (token).isLinked==false && (token).actor != null, token.update 'data.spellBeingCast.spell' to '' 
+    + (related gap) onReady, create the GM fortune hand if missing
+    + (related gap) on actor permission change, if no player owns the actor anymore, delete the dedicated fortuneHand and point to the GM hand instead
+    + (related gap) on actor permission change, if no player owns the actor anymore, creata a dedicated fortune hand and set fortuneHand to it
+
+## Feature evolutions
 
 ### Explicit user requests
 
@@ -12,9 +42,25 @@
 |------|:--------|
 | Dame du Lac | `[S]` Extra 'Other' tab for listing secondary attributes such as Speed (Run+Flight) or Languages known |
 | Dame du Lac | `[C]` Have abilities display as 2+ columns if there is enough horizontal space (and ensure 2 in the default width) |
-| mite.railleuse | Duel system |
+| mite.railleuse | `[S]` Duel system |
+| mite.railleuse | `[S]` Tab for special stats (see below) |
+
+### `[🔥]` Derived stats & Racial abilities
++ Free text, free text w/ compendium or key/value pairs?
+  + Languages
+  + Faerie Power
+  + Corebook p140 / Libre de base p194
+    + Running speed (Athletics) / Vitesse de course (Athlétisme)
+    + Flying Speeds (Faerie Etherealness or Dragon/Animal Physique) / Vitesses de vol (Éthéralité et Physique)
+  + Dragon
+    + Flying
+    + Shapeshift
+    + Armor
+    + help users with Dragon attack levels (because the Corebook and Curious Creatures do not match)
 
 ### Cards
+
++ `[S]` Display the ongoing spell name in the hand (and char sheet?)
 
 + `[M]` Remove the dependency to Monarch by proposing a default Hand sheet implem (enabled by default).
 
