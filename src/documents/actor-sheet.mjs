@@ -176,8 +176,13 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
     event.dataTransfer.setDragImage(event.target.parentElement, 0, 0);
   }
   
-  // TEMP temporary override until https://gitlab.com/foundrynet/foundryvtt/-/issues/7130 is fixed
+  // remove this override when v9 is no longer supported by the system
   _onSortItem(event, itemData) {
+    // Override only until v10 which fixes https://github.com/foundryvtt/foundryvtt/issues/7130
+    if (game.release.generation >= 10) {
+      return super._onSortItem(event, itemData);
+    }
+
     // Get the drag source and its siblings
     const source = this.actor.items.get(itemData._id);
     const siblings = this.actor.items.filter(i => {

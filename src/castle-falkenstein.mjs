@@ -162,7 +162,7 @@ export default class CastleFalkenstein {
     // add Limited permission on the Dec so that plays may draw from it but not see its contents.
     deckData.name = game.i18n.localize(`castle-falkenstein.settings.${type}Deck.name`);
     deckData.permission = deckData.permission || {};
-    deckData.permission.default = CONST.ENTITY_PERMISSIONS.LIMITED;
+    deckData.permission.default = CONST.DOCUMENT_PERMISSION_LEVELS.LIMITED;
     deckData.folder = (await this.cardsFolder("decks-and-piles", game.i18n.localize("castle-falkenstein.cardsDirectory.decksAndPilesFolder"))).id;
     deckData.flags[this.name] = {
       type: type
@@ -197,7 +197,7 @@ export default class CastleFalkenstein {
       type: "pile",
       folder: (await this.cardsFolder("decks-and-piles", game.i18n.localize("castle-falkenstein.cardsDirectory.decksAndPilesFolder"))).id,
       permission: {
-        default: CONST.ENTITY_PERMISSIONS.OBSERVER
+        default: CONST.DOCUMENT_PERMISSION_LEVELS.OBSERVER
       },
       "flags.castle-falkenstein": { type: type }
     }
@@ -246,11 +246,13 @@ export default class CastleFalkenstein {
       ui.notifications.info(game.i18n.localize("castle-falkenstein.notifications.createdCards") + cardsCreatedI18n);
   }
 
-
+  
   static async onPreDeleteCards(cards, options, user) {
     // In Foundry v9.255,
     //   If you delete a deck, it recalls all cards from hands and piles.
     //   However, if you delete a hand or pile, it does not recall the cards it contained to the origin deck.
+
+    /*
     const type = cards.getFlag(this.name, "type");
     if (type) {
       if (cards.type == "hand" || cards.type == "pile") {
@@ -279,7 +281,7 @@ export default class CastleFalkenstein {
           await game.cards.get(origin).updateEmbeddedDocuments("Card", u);
         });
       }
-    }
+    }*/
   }
 
   static async onDeleteCards(cards, options, user) {
@@ -314,12 +316,12 @@ export default class CastleFalkenstein {
         if (user.active && !user.isGM) {
           let stacks = "";
           [ this.fortuneDeck, this.sorceryDeck ].forEach((deck) => {
-            if (deck && !deck.testUserPermission(user, CONST.ENTITY_PERMISSIONS.LIMITED)) {
+            if (deck && !deck.testUserPermission(user, CONST.DOCUMENT_PERMISSION_LEVELS.LIMITED)) {
               stacks += `<br/>- ${deck.name}`;
             }
           });
           [ this.fortuneDiscardPile, this.sorceryDiscardPile ].forEach((pile) => {
-            if (pile && !pile.testUserPermission(user, CONST.ENTITY_PERMISSIONS.OBSERVER)) {
+            if (pile && !pile.testUserPermission(user, CONST.DOCUMENT_PERMISSION_LEVELS.OBSERVER)) {
               stacks += `<br/>- ${pile.name}`;
             }
           });
@@ -433,6 +435,12 @@ export default class CastleFalkenstein {
 
 
   static onInit() {
+ 
+    // FIXME Disable compatibility warnings for now
+    if (game.release.generation == 10) {
+      CONFIG.compatibility.mode = CONST.COMPATIBILITY_MODES.SILENT;
+    }
+
     game.CastleFalkenstein = CastleFalkenstein;
 
     // Add custom constants for configuration.
@@ -459,6 +467,7 @@ export default class CastleFalkenstein {
   }
 
   static async onReady() {
+
     // <FIXME> There's probably a better way to make sure Monarch sheets are set as default for CF-system created hands, without enforcing it for GM created ones also.
     // register Monarch Hand & Card sheets by default.
     const settings = game.settings.get("core", "sheetClasses") || {};
@@ -628,7 +637,6 @@ export default class CastleFalkenstein {
     return item.roll();
   }
 }
-
 
 /* -------------------------------------------- */
 /*  Declare Hooks                               */

@@ -1,12 +1,21 @@
 {
+  "id": "castle-falkenstein",
   "name": "castle-falkenstein",
-  "version": "1.0.2",
+  "version": "0.1.0",
   "title": "Castle Falkenstein",
   "description": "FoundryVTT system for Castle Falkenstein.",
-  "minimumCoreVersion": "9",
-  "compatibleCoreVersion": "9",
-  "authors": [
-    "admiralnlson"
+  "compatibility": {
+    "minimum": "9.269",
+    "verified": "9.269",
+    "maximum": "9"
+  },
+  "minimumCoreVersion": "9.269",
+  "compatibleCoreVersion": "9.269",
+  "authors": [ {
+      "name": "admiralnlson",
+      "url": "https://ko-fi.com/admiralnlson",
+      "discord": "admiralnlson#2349"
+    }
   ],
   "esmodules": [
     "src/lib/lib-wrapper-shim/shim.js",
