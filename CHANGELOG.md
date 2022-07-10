@@ -1,19 +1,21 @@
 # Changelog
 
 ## Unreleased
-## Changed
-- Minor cosmetic & user xp updates
+### Changed
+- Weapons compendium - Animal sizes now match with the ones documented in sourcebook "Curious Creatures" (Large becomes Medium ; Very Large becomes Large)
+- Weapons compendium - Added mapping to Dragon attacks in animal attack descriptions
+- Minor typos
 
 ## [v1.3.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.3.0) - 2022/05/30
-## Added
+### Added
 - The default macro icon of each ability, weapon, possession or spell may now be customized in the respective sheets.
 
 ## [v1.2.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.2.0) - 2022/05/21
-## Added
+### Added
 - Weapons list in the character sheet Possessions tab
 - Weapons compendium - English
 - Weapons compendium - French translation (requires the Babele module)
-## Changed
+### Changed
 - Minor cosmetic & user xp updates
 
 ## [v1.1.2](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.1.2) - 2022/05/16
