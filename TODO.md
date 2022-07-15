@@ -11,8 +11,9 @@
     + migrate code to v10 (data -> system, ..)
     + make v9 no longer supported
     + in system.json
-    + remove 'name' property
-    + remove 'minimumCoreVersion' & 'compatibleCoreVersion'
+      + upgrade system to "v2.0.0"
+      + replace "name" with "id" 
+      + replaace "minimumCoreVersion" & "compatibleCoreVersion" with "compatibility object
   + or alternatively: maintain 2 separate branches/version tracks for v9 and v10 (potentially quite a bit more work if adding new features or fix until v9 is decommissioned..)
 
 ## `[M]` Bugs

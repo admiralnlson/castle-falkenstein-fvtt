@@ -1,14 +1,8 @@
 {
-  "id": "castle-falkenstein",
   "name": "castle-falkenstein",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "title": "Castle Falkenstein",
   "description": "FoundryVTT system for Castle Falkenstein.",
-  "compatibility": {
-    "minimum": "9.269",
-    "verified": "9.269",
-    "maximum": "9"
-  },
   "minimumCoreVersion": "9.269",
   "compatibleCoreVersion": "9.269",
   "authors": [ {

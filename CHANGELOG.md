@@ -4,6 +4,7 @@
 ### Changed
 - Weapons compendium - Animal sizes now match with the ones documented in sourcebook "Curious Creatures" (Large becomes Medium ; Very Large becomes Large)
 - Weapons compendium - Added mapping to Dragon attacks in animal attack descriptions
+### Fixed
 - Minor typos
 
 ## [v1.3.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.3.0) - 2022/05/30
