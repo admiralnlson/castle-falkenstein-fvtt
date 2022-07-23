@@ -6,35 +6,33 @@
 
 ## `[M]` Core version compatibility
 
-  + when v10 is mature
-    + reactivate compatibility warnings
-    + migrate code to v10 (data -> system, ..)
-    + make v9 no longer supported
-    + in system.json
-      + upgrade system to "v2.0.0"
-      + replace "name" with "id" 
-      + replaace "minimumCoreVersion" & "compatibleCoreVersion" with "compatibility object
-  + or alternatively: maintain 2 separate branches/version tracks for v9 and v10 (potentially quite a bit more work if adding new features or fix until v9 is decommissioned..)
-
+  + Core v9 => CFv1.x
+  + Core v10 => CFv2.x
+  
 ## `[M]` Bugs
 
 + Fortune/Sorcery hand linking issue for unlinked tokens and duplicated actors
-  + Required
-    + on click to open the fortune/sorcery hand in the character sheet, if the hand is not actually linked to the actor (incl. unlinked token) then replace it
-  + TBC if required
-    + (User XP) Warning at the top of the char sheet to indicate it's not linked to an actor?
-    + [data migration] game.scenes.forEach / (scene).tokens.forEach / if (token).isLinked==false && (token).actor != null, token.update 'data.spellBeingCast.spell' to '' and 'sorceryHand' to null
-    + On createToken, if (token).data.token.isLinked==false, set 'spellBeingCast.spell' to '' and 'sorceryHand' to null
-    + On updateToken w/ change.actorLink==true and (), delete the token's sorcery hand if it exists and set 'sorceryHand' to (the source actor one)
-    + On updateToken w/ change.actorLink==false, set 'sorceryHand' to null
-    + on deleteToken, if delete the token's sorcery hand if it exists
-    + (related gap) on deleteActor, delete the actor's sorcery hand if it exists
-    + (related gap) on deleteActor, delete the actor's fortune hand if it exists
-    + (related gap) differentiate pc and npc
-      + [data migration] game.actors.forEach / (scene).tokens.forEach / if (token).isLinked==false && (token).actor != null, token.update 'data.spellBeingCast.spell' to '' 
-    + (related gap) onReady, create the GM fortune hand if missing
-    + (related gap) on actor permission change, if no player owns the actor anymore, delete the dedicated fortuneHand and point to the GM hand instead
-    + (related gap) on actor permission change, if no player owns the actor anymore, creata a dedicated fortune hand and set fortuneHand to it
+  + (re)create the Host fortune hand like Fortune/Sorcery deck & discard piles & add corresponding setting
+  + in fortune/sorcery hand getter,
+    + search for the hand in game.cards using flags (actor id)
+      + Add "\[Token\]" prefix to token hands
+      + Check that unlinked tokens hands are recognized properly (= do not interfere with the hand of their actor)
+    + stop caching the id of hands in the actor data (or using these ids anywhere)
+    + if no such hand exists
+      + if (fortune && (the actor is not owned by any player)) then
+        + return the GM fortune hand
+      + else, create the missing hand and return it
+  + On duplication of Actor, set 'spellBeingCast.spell' to ''
+  + on actor permission change, if no player owns the actor anymore, delete the dedicated fortuneHand (maybe with a confirmation popup?)
+  + on deleteActor, delete the actor's fortune & sorcery hand if they exist (make sure an unlinked token does not delete the hand of the original actor)
+  + On updateToken w/ change.actorLink==true, delete the token's fortune hand (attached to the unlinked token) if it exists
+  + Prevent the use of Sorcery on unlinked tokens (have the tab empty except for a message mentioning Sorcery only allowed for tokens linked to an actor)
+  + Support for Sorcery in unlinked tokens
+    + Prevent it (have the tab empty except for a message mentioning Sorcery only allowed for tokens linked to an actor) OR
+    + Allow it
+      + On createToken, if (token).data.token.isLinked==false, set 'spellBeingCast.spell' to ''
+      + On updateToken w/ change.actorLink==true, delete the token's fortune hand (attached to the unlinked token) if it exists
+      + on deleteToken, if delete the token's sorcery hand if it exists
 
 ## Feature evolutions
 
@@ -100,7 +98,6 @@
 
 ### Core mechanics not yet supported
 
-+ `[S]` Weapon item type and weapons list (under 'Possessions' or dedicated tab), dedicated sheet and chat message
 + `[C]` Support for 'Harm Rank' alternative mechanics
 
 + `[M]` Duel mechanics
