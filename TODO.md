@@ -9,7 +9,7 @@
   + Core v9 => CFv1.x
   + Core v10 => CFv2.x
   
-## `[M]` Bugs
+## `[M]` unlinked token/duplicated actor Bug & related improvements
 
 + Fortune/Sorcery hand linking issue for unlinked tokens and duplicated actors
   + (re)create the Host fortune hand like Fortune/Sorcery deck & discard piles & add corresponding setting
@@ -22,9 +22,9 @@
       + if (fortune && (the actor is not owned by any player)) then
         + return the GM fortune hand
       + else, create the missing hand and return it
-  + On duplication of Actor, set 'spellBeingCast.spell' to ''
+  + On duplication of Actor (Actor post-create?), set 'spellBeingCast.spell' to ''
   + on actor permission change, if no player owns the actor anymore, delete the dedicated fortuneHand (maybe with a confirmation popup?)
-  + on deleteActor, delete the actor's fortune & sorcery hand if they exist (make sure an unlinked token does not delete the hand of the original actor)
+  + on actor delete, delete their fortune & sorcery hand if they exist (make sure an unlinked token does not delete the hand of the original actor)
   + On updateToken w/ change.actorLink==true, delete the token's fortune hand (attached to the unlinked token) if it exists
   + Prevent the use of Sorcery on unlinked tokens (have the tab empty except for a message mentioning Sorcery only allowed for tokens linked to an actor)
   + Support for Sorcery in unlinked tokens
@@ -40,13 +40,13 @@
 
 | User | Request |
 |------|:--------|
-| Dame du Lac | `[S]` Extra 'Other' tab for listing secondary attributes such as Speed (Run+Flight) or Languages known |
+| Dame du Lac | `[S]` Extra 'Other' tab for listing secondary attributes such as Speed (Run+Flight) or Languages known (see below) |
 | Dame du Lac | `[C]` Have abilities display as 2+ columns if there is enough horizontal space (and ensure 2 in the default width) |
 | mite.railleuse | `[S]` Duel system |
-| mite.railleuse | `[S]` Tab for special stats (see below) |
 
-### `[🔥]` Derived stats & Racial abilities
-+ Free text, free text w/ compendium or key/value pairs?
+### `[🔥]` Derived stats & Racial abilities (a.k.a 'Other' tab)
+
++ Free text (w/ compendium?), specific labels with rw input, specific labels with auto-computed values?
   + Languages
   + Faerie Power
   + Corebook p140 / Libre de base p194
@@ -58,15 +58,19 @@
     + Armor
     + help users with Dragon attack levels (because the Corebook and Curious Creatures do not match)
 
++ `[S]` Add a species drop-down list (Human/Fae/Dragon/Dwarf) and add species-specific behaviour:
+  + give Fae talents to Fae characters only
+  + compute health automatically incl. Dragons' +2
+  + limit Dragon sorcery hands to 5 cards max
+  + list species features such as Dwarf's immunity to Fire, Fae sensibility to Iron in the sheet, ..)
+  + potentially split "Fae" into "Fae (generic) / Fae (Brownie) / Fae (Pixie) / Fae (Lord/Lady)" for extra setup of non-generic Fae characters.
+
 ### Cards
 
 + `[S]` Display the ongoing spell name in the hand (and char sheet?)
 
-+ `[M]` Remove the dependency to Monarch by proposing a default Hand sheet implem (enabled by default).
-
-+ `[M🔥]` Make sure drawn cards always appear to the right (might be the case with Monarch already but don't think it will be the case for the CF-default hand)
-
-+ `[S]` Reset the character's Fortune/Sorcery hands and delete them when a character is deleted
++ `[S]` Remove the dependency to Monarch by proposing a default Hand sheet implem (enabled by default).
+  + `[S🔥]` Make sure drawn cards always appear to the right (might be the case with Monarch already but don't think it will be the case for the CF-default hand)
 
 + `[C]` Button in World settings (Host only) to delete all NPC hands
 
@@ -146,32 +150,20 @@
 
 ### Cosmetic / Other
 
-+ `[S]` add Castle Falkenstein logo somewhere in the character sheet
-
-+ `[S]` Ensure abilities remain in alphabetical order when dropped onto a char sheet
-
-+ `[C]` Add a species drop-down list (Human/Fae/Dragon/Dwarf) and add species-specific behaviour:
-  + give Fae talents to Fae characters only
-  + compute health automatically incl. Dragons' +2
-  + limit Dragon sorcery hands to 5 cards max
-  + list species features such as Dwarf's immunity to Fire, Fae sensibility to Iron in the sheet, ..)
-  + potentially split "Fae" into "Fae (generic) / Fae (Brownie) / Fae (Pixie) / Fae (Lord/Lady)" for extra setup of non-generic Fae characters.
++ `[C]` add Castle Falkenstein logo somewhere in the character sheet
 
 + `[C]` Shortcut to import Abilities and Spells from a compendium pack / imported folder, which
-  + does not introduce duplicates
-  + fixes incorrect suit assignments
-  + (optionally?) reorders alphabetically
+  + does not introduce duplicates but fixes incorrect suit assignments in case of a match
 
 + `[C]` Compendium pack for non-weapon items found in the corebook (English)
 + `[C]` Compendium pack for non-weapon items found in the corebook (French)
 + `[C]` Compendium pack for non-weapon items found in sourcebooks (English)
 + `[C]` Compendium pack for non-weapon items found in the corebook (French)
-+ `[C]` Shortcut to import Items from a data pack (must not introduce duplicates, but may fix incorrect suit assignments)
++ `[C]` Shortcut to import Items from a data pack
 
 + `[C]` Display tweak: rework item (ability, spell, ..) CSS-flow display with CSS-subgrid when Chrome implements it (could try with display: contents in the meantime)
 
 + `[C]` Make the Actor 'Show Players' button compatible with special dialog of 'Permission Viewer' module (pending feedback from PV owner)
-
 
 + `[C]` Possessions: location (equipped, at home, in the bank, investments, ..)
 + `[C]` Possessions: dedicated input box for Cash/Money
