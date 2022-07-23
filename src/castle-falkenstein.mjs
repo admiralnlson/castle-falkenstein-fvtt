@@ -436,7 +436,7 @@ export default class CastleFalkenstein {
 
   static onInit() {
  
-    // Disable deprecattion warnings if the v9 track is used with v10
+    // Disable deprecation warnings if the v9 track is used with v10
     if (game.release.generation == 10 && (game.system.version >= '1.0.0' && game.system.version < '2.0.0')) {
       CONFIG.compatibility.mode = CONST.COMPATIBILITY_MODES.SILENT;
     }
