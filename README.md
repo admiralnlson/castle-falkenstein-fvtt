@@ -24,14 +24,15 @@ The system supports localization. At this stage, the following languages are sup
 To submit translations for other languages, see [Contributions](#contributions) below.
 
 ## Dependencies
-In order to benefit from all features provided by this system, you need a Cards UI cutomization module with which the Castle Falkenstein system is pre-integrated.
+The system is planned to provide its own flavor for card hands. However in the meantime, the system requires that the [🦋Monarch](https://foundryvtt.com/packages/monarch) be installed and activated.
 
-By default, the system uses enhanced sheets for **Hands** and **Cards** (since they're customized) and leaves core ones for **Decks** and **Piles** (since they are not customized). But you may use the enhanced sheets for **Decks** and **Piles** also if you wish.
+By default, the system activates 🦋Monarch sheets for **Hands** and **Cards** only. But you may enable the enhanced sheets for **Decks** and **Piles** also if you wish.
 
 | Card UI enhancement module                                               | Integration level       |
 | ------------------------------------------------------------------------ | ----------------------- |
 | [🦋 Monarch](https://foundryvtt.com/packages/monarch)                    | ✅ Fully integrated    |
-| [Ready To Use Cards](https://foundryvtt.com/packages/ready-to-use-cards) | ⌛ Not compatible yet   |
+
+The system is planned to have it own UI for card hands, thus lifting the dependency with Monarch. M
 
 ## Planned evolutions
 See [TODO](./TODO.md)
