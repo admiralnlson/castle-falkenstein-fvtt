@@ -2,6 +2,7 @@ import { CASTLE_FALKENSTEIN } from "./config.mjs";
 import CastleFalkensteinMonarchConfig from "./monarch-config.mjs";
 import { CastleFalkensteinActor } from "./documents/actor.mjs";
 import { CastleFalkensteinItem } from "./documents/item.mjs";
+import { CastleFalkensteinCards } from "./documents/cards.mjs";
 import { CastleFalkensteinActorSheet } from "./documents/actor-sheet.mjs";
 import { CastleFalkensteinAbilitySheet } from "./documents/item-ability-sheet.mjs";
 import { CastleFalkensteinPossessionSheet } from "./documents/item-possession-sheet.mjs";
@@ -117,6 +118,18 @@ export default class CastleFalkenstein {
     }
   }
 
+  static async hostFortuneHand() {
+    let hand = game.cards.filter(stack => stack.type === "hand" &&
+                                          stack.getFlag(CastleFalkenstein.name, "type") === "fortune" &&
+                                          stack.getFlag(CastleFalkenstein.name, "actor") === "host");
+
+    if (hand.length > 0)
+      return hand[0];
+    
+    hand = await CastleFalkenstein.socket.executeAsGM("createHand", "fortune", "host");
+    return hand;
+  }
+
   static get i18nSorceryAbility() {
     this.settings.sorceryAbility = this.settings.sorceryAbility.trim();
 
@@ -153,7 +166,7 @@ export default class CastleFalkenstein {
         "flags.castle-falkenstein": folderFlag
     });
     return newFolder;
-}
+  }
 
   static async createPresetDeck(type) {
     const response = await fetch("systems/castle-falkenstein/src/cards/deck-preset.json");
@@ -207,7 +220,7 @@ export default class CastleFalkenstein {
 
   static async createMissingCards() {
 
-    // Create missing Fortune/Sorcery Decks/Piles
+    // Create Fortune/Sorcery Decks/Piles if missing
 
     let cardsCreatedI18n = "";
 
@@ -235,10 +248,10 @@ export default class CastleFalkenstein {
       cardsCreatedI18n += "<br/>  - " + game.i18n.localize("castle-falkenstein.settings.sorceryDiscardPile.name");
     }
 
-    // TODO Create missing PC hands
+    // TBC Create Host Fortune hand if missing
+    await this.hostFortuneHand();
 
-    // TODO Create missing Host Fortune hand
-
+    // TBC Create PC-owned actors' hands if missing
 
     // Notify the user
 
@@ -246,64 +259,38 @@ export default class CastleFalkenstein {
       ui.notifications.info(game.i18n.localize("castle-falkenstein.notifications.createdCards") + cardsCreatedI18n);
   }
 
-  
-  static async onPreDeleteCards(cards, options, user) {
-    // In Foundry v9.255,
-    //   If you delete a deck, it recalls all cards from hands and piles.
-    //   However, if you delete a hand or pile, it does not recall the cards it contained to the origin deck.
-
-    /*
-    const type = cards.getFlag(this.name, "type");
-    if (type) {
-      if (cards.type == "hand" || cards.type == "pile") {
-        const toUpdate = {};
-        const returned = [];
-
-        for ( const card of cards.cards ) {
-          if ( card.isHome ) continue;
-    
-          // Return drawn cards to their origin deck.
-          if ( !toUpdate[card.data.origin] ) toUpdate[card.data.origin] = [];
-          const update = {_id: card.id, drawn: false};
-          toUpdate[card.data.origin].push(update);
-          returned.push(card.id);
+  static onReturnCards(stack, returned, {fromDelete, toUpdate}={}) {
+    if (returned.length > 0) {
+      // shuffle the fortune (resp. sorcery) deck when cards from cards in a fortune/sorcery discard pile are recalled.
+      const handType = stack.getFlag(this.name, "type");
+      if (handType) {
+        if (stack.type == "pile") {
+          // shuffle the decks to which cards are being recalled
+          for (const deckId in toUpdate) {
+            const deck = game.cards.get(deckId);
+            deck?.shuffle(); // no 'await' so that the shuffle happens after the actual return of the cards
+          }
         }
-
-        const fromDelete = [];
-        const allowed = Hooks.call("returnCards", cards, returned.map(id => cards.cards.get(id)), {toUpdate, fromDelete});
-        if ( allowed === false ) {
-          CastleFalkenstein.consoleDebug(`The Cards#return operation was prevented by a hooked function.`);
-          return cards;
-        }
-
-        // Perform database operations.
-        const updates = await Object.entries(toUpdate).map(async ([origin, u]) => {
-          await game.cards.get(origin).updateEmbeddedDocuments("Card", u);
-        });
-      }
-    }*/
-  }
-
-  static async onDeleteCards(cards, options, user) {
-    const type = cards.getFlag(this.name, "type");
-    if (type) {
-      if (cards.type == "hand" || cards.type == "pile") {
-        let origins = [];
-        cards.cards.forEach((card) => {
-          const origin = card.data.origin;
-          if (!origins.includes(origin))
-            origins.push(origin);
-        });
-        await origins.forEach(async (origin) => {
-          const deck = game.cards.get(origin);
-          await deck?.shuffle();
-        });
-        origins.forEach(async (origin) => {
-          const deck = game.cards.get(origin);
-          deck?.sheet?.render(false); // refresh the deck sheet if it's opened.
-        });
       }
     }
+  }
+
+  static searchUniqueHand(handType, actorOrHost) {
+    const actorFlag = actorOrHost === "host" ? "host" : actorOrHost.id;
+
+    const search = game.cards.filter(stack => stack.type === "hand" &&
+                                              stack.getFlag(CastleFalkenstein.name, "type") === handType &&
+                                              stack.getFlag(CastleFalkenstein.name, "actor") === actorFlag);
+
+    if (search.length > 1) {
+      const name = actorOrHost === "host" ? "host" : actorOrHost.name;
+      CastleFalkenstein.consoleError("Multiple " + handType + " hands found for " + name);
+    }
+
+    if (search.length > 0)
+      return search[0];
+
+    return null;
   }
 
   static async onRenderPlayerList(application, html, data) {
@@ -367,7 +354,10 @@ export default class CastleFalkenstein {
       CastleFalkenstein.consoleError("Unauthorized call to 'shuffleDiscardPile' from non-GM player");
 
     const discardPile = CastleFalkenstein.discardPile(deckType);
-    await discardPile.reset();
+    if (game.release.generation == 9)
+      await discardPile.reset();
+    else
+      await discardPile.recall();
 
     const deck = CastleFalkenstein.deck(deckType);
     await deck.shuffle();
@@ -379,23 +369,37 @@ export default class CastleFalkenstein {
   }
   
   static async createHand(handType, actorId) {
-    const actor = game.actors.get(actorId);
-    const handData = {
-      type: "hand",
-      name: actor.computeHandName(handType),
-      displayCount: true,
-      folder: null, // the GM may freely moved the hand to whatever folder they wish afterwards. This probably does not deserve a system Setting.
-      permission: actor.data.permission, // hands inherit the permissions from the actor they belong to
-      folder: (await CastleFalkenstein.cardsFolder("character-hands", game.i18n.localize("castle-falkenstein.cardsDirectory.characterHandsFolder"))).id,
-      "flags.castle-falkenstein": { type: handType, actor: actor.id }
-    };
+    let handData = {};
+    if (actorId === "host") {
+      // create host hand
+      handData = {
+        type: "hand",
+        name: game.i18n.format(`castle-falkenstein.fortune.hand.name`, {character: game.i18n.localize("castle-falkenstein.host")}),
+        displayCount: true,
+        // permission: ??? // no special permissions (limited to GM)
+        folder: null, // the GM may freely move the hand to whatever folder they wish afterwards
+        "flags.castle-falkenstein": { type: handType, actor: actorId }
+      };
+    } else {
+      // create character fortune or sorcery hand
+      const actor = game.actors.get(actorId);
+      handData = {
+        type: "hand",
+        name: actor.computeHandName(handType),
+        displayCount: true,
+        permission: actor.data.permission, // hands inherit the permissions from the actor they belong to
+        folder: (await CastleFalkenstein.cardsFolder("character-hands", game.i18n.localize("castle-falkenstein.cardsDirectory.characterHandsFolder"))).id,
+        "flags.castle-falkenstein": { type: handType, actor: actor.id }
+      };
+    }
 
     const hand = await Cards.create(handData);
 
-    await actor.update({
-      [`data.hands.${handType}`]: hand.id
-    });
-
+    if (hand) {
+      ui.notifications.info(game.i18n.localize("castle-falkenstein.notifications.createdCards") + 
+                            "<br/>  - " + hand.name);
+    }
+    
     return hand;
   }
 
@@ -449,6 +453,7 @@ export default class CastleFalkenstein {
     // Define custom Document classes
     CONFIG.Actor.documentClass = CastleFalkensteinActor;
     CONFIG.Item.documentClass = CastleFalkensteinItem;
+    CONFIG.Cards.documentClass = CastleFalkensteinCards;
 
     // Declare Castle Falkenstein deck preset
     CONFIG.Cards.presets.castleFalkensteinDeck = {
@@ -481,7 +486,7 @@ export default class CastleFalkenstein {
     await this.preLoadTemplates();
 
     const userLanguage = game.settings.get("core", "language");
-    if (userLanguage != "en" && game.system.languages.map(el => el.lang).includes(userLanguage)) {
+    if (userLanguage != "en" && Array.from(game.system.languages.map(el => el.lang)).includes(userLanguage)) {
       if(!game.modules.get('babele')?.active) {
         ui.notifications.warn(game.i18n.localize("castle-falkenstein.notifications.babeleRequired"));
       }
@@ -654,9 +659,7 @@ Hooks.on("renderChatMessage", (chatMessage, html, messageData) => CastleFalkenst
 
 Hooks.on("hotbarDrop", (hotbar, data, slot) => CastleFalkenstein.hotbarDrop(hotbar, data, slot));
 
-Hooks.on("preDeleteCards", (cards, options, user) => CastleFalkenstein.onPreDeleteCards(cards, options, user));
-
-Hooks.on("deleteCards", (cards, options, user) => CastleFalkenstein.onDeleteCards(cards, options, user));
+Hooks.on("returnCards", (stack, returned, context) => CastleFalkenstein.onReturnCards(stack, returned, context));
 
 Hooks.on("renderPlayerList", (application, html, data) => CastleFalkenstein.onRenderPlayerList(application, html, data));
 

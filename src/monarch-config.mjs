@@ -53,7 +53,6 @@ export default class CastleFalkensteinMonarchConfig {
       }
     });
 
-
     // Fortune hand - Chance (draw a single Fortune card, immediately playing it)
     components.appControls.push({
       label: "castle-falkenstein.fortune.hand.chance",
@@ -68,7 +67,6 @@ export default class CastleFalkensteinMonarchConfig {
       },
       onclick: async (event, app, hand) =>  {
         const actorId = hand.getFlag(CastleFalkenstein.name, "actor");
-        const actor = game.actors.get(actorId);
 
         // draw a single card from the discard pile directly (avoids glitches)
         const cardsDrawn = await CastleFalkenstein.draw("fortune", game.CastleFalkenstein.fortuneDiscardPile, 1);
@@ -79,7 +77,7 @@ export default class CastleFalkensteinMonarchConfig {
         // TODO FIXME not always a match actually, compare with spell aspect
         const correctSuit = 'correct-suit';
         const content = `<div class="cards-drawn">${CastleFalkenstein.smallCardImg(card,`card-drawn ${correctSuit}`)}</div>`;
-        CastleFalkenstein.createChatMessage(actor, flavor, content);
+        CastleFalkenstein.createChatMessage(actorId === "host" ? "gm" : game.actors.get(actorId), flavor, content);
       }
     });
 
@@ -94,6 +92,8 @@ export default class CastleFalkensteinMonarchConfig {
       },
       disabled: (card, hand) => {
         const actorId = hand.getFlag(CastleFalkenstein.name, "actor");
+        if (actorId === "host")
+          return true;
         const actor = game.actors.get(actorId);
 
         // TODO add "actor.isDragon" getter to allow implementation of this 5-card limit
@@ -104,6 +104,8 @@ export default class CastleFalkensteinMonarchConfig {
       },
       onclick: async (event, app, hand) =>  {
         const actorId = hand.getFlag(CastleFalkenstein.name, "actor");
+        if (actorId === "host")
+          return; // should never be able to click from host hand anyway (see 'disabled' above)
         const actor = game.actors.get(actorId);
 
         const cards = await CastleFalkenstein.draw("sorcery", hand, 1);
@@ -129,25 +131,27 @@ export default class CastleFalkensteinMonarchConfig {
         const type = container.getFlag(CastleFalkenstein.name, "type");
         return type != "sorcery";
       },
-      // TODO disable the button on cards with aligned power (if done, maybe reconsider label & chat messages content)
-      /*disabled: (card, hand) => {
-        const actorId = hand.getFlag(CastleFalkenstein.name, "actor");
-        const actor = game.actors.get(actorId);
-        return !actor.isSpellAligned(card);
-      },*/
+      disabled: (card, hand) => {
+        // TODO disable the release of unaligned power (if done, maybe reconsider label & chat messages content)
+        //const actorId = hand.getFlag(CastleFalkenstein.name, "actor");
+        //if (actorId === "host")
+        //  return true;
+        //const actor = game.actors.get(actorId);
+        //return !actor.isSpellAligned(card);
+        return false;
+      },
       onclick: async (event, card, container) => {
-        const type = container.getFlag(CastleFalkenstein.name, "type");
         const actorId = container.getFlag(CastleFalkenstein.name, "actor");
+        if (actorId === "host")
+          return; // should never be able to click from host hand anyway (see 'disabled' above)
         const actor = game.actors.get(actorId);
 
-        if (type == "sorcery") {
-          await card.pass(CastleFalkenstein.sorceryDiscardPile, {chatNotification: false});
+        await card.pass(CastleFalkenstein.sorceryDiscardPile, {chatNotification: false});
 
-          // Post message to chat
-          const flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.hand.releasePower")}]`;
-          const content = `<div class="cards-played">${CastleFalkenstein.smallCardImg(card, "card-played")}</div>`;
-          CastleFalkenstein.createChatMessage(actor, flavor, content);
-        }
+        // Post message to chat
+        const flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.hand.releasePower")}]`;
+        const content = `<div class="cards-played">${CastleFalkenstein.smallCardImg(card, "card-played")}</div>`;
+        CastleFalkenstein.createChatMessage(actor, flavor, content);
       }
     });
 
@@ -162,12 +166,18 @@ export default class CastleFalkensteinMonarchConfig {
       },
       disabled: (card, hand) => {
         const actorId = hand.getFlag(CastleFalkenstein.name, "actor");
+        if (actorId === "host")
+          return true;
         const actor = game.actors.get(actorId);
+
         // TODO disable if the thaumic energy requirement has not been reached? (may not bode well with cooperation spellcasting scenario though)
+
         return !actor.isCasting;
       },
       onclick: async (event, app, hand) =>  {
         const actorId = hand.getFlag(CastleFalkenstein.name, "actor");
+        if (actorId === "host")
+          return; // should never be able to click from host hand anyway (see 'disabled' above)
         const actor = game.actors.get(actorId);
         const spell = actor.items.get(actor.data.data.spellBeingCast.spell);
 
@@ -215,11 +225,15 @@ export default class CastleFalkensteinMonarchConfig {
       },
       disabled: (card, hand) => {
         const actorId = hand.getFlag(CastleFalkenstein.name, "actor");
+        if (actorId === "host")
+          return true;
         const actor = game.actors.get(actorId);
         return !actor.isCasting;
       },
       onclick: async (event, app, hand) =>  {
         const actorId = hand.getFlag(CastleFalkenstein.name, "actor");
+        if (actorId === "host")
+          return; // should never be able to click from host hand anyway (see 'disabled' above)
         const actor = game.actors.get(actorId);
 
         await hand.pass(CastleFalkenstein.sorceryDiscardPile, hand.cards.map((c)=>{ return c.id; }), {chatNotification: false});

@@ -21,10 +21,10 @@ export default class CastleFalkensteinDefineSpell extends FormApplication {
   /**
    * @override
    */
-  constructor(object = {}, options = {}) {
-    super(object, options);
-    this.spell = object;
-    this.character = object.actor;
+  constructor(spell, options = {}) {
+    super(spell, options);
+    this.spell = spell;
+    this.character = spell.actor;
 
     this.spellBeingCast = {
       spell: this.spell.id,

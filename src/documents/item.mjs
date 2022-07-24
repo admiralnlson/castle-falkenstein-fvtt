@@ -2,7 +2,7 @@ import {CASTLE_FALKENSTEIN} from "../config.mjs";
 import CastleFalkenstein from "../castle-falkenstein.mjs";
 
 /**
- * Extend the basic Item with some very simple modifications.
+ * @extends {Item}
  */
 export class CastleFalkensteinItem extends Item {
   /**

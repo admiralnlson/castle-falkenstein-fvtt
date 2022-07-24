@@ -4,7 +4,6 @@ import CastleFalkensteinPerformFeat from "../forms/perform-feat.mjs";
 import CastleFalkensteinDefineSpell from "../forms/define-spell.mjs";
 
 /**
- * Extend the base Actor document by defining a custom roll data structure which is ideal for the Simple system.
  * @extends {Actor}
  */
 export class CastleFalkensteinActor extends Actor {
@@ -14,46 +13,77 @@ export class CastleFalkensteinActor extends Actor {
   }
 
   /** @override */
-  async _preUpdate(changed, options, user) {
-    super._preUpdate(changed, options, user);
-
-    // character name changed, update the names of their Fortune/Sorcery hands also (if they exist)
-    // unless the user is using custom role permissions for their game, whoever updated the Actor should have permission to update the Hand also.
+  async _onUpdate(changed, options, user) {
+    super._onUpdate(changed, options, user);
+    
+    // If the character name changed, update the names of their Fortune/Sorcery hands also, if they exist.
     if (changed.name) {
       [ "fortune", "sorcery" ].forEach(async (handType) => {
-        if (this.data.data.hands[handType] != "") {
-          let hand = game.cards.get(this.data.data.hands[handType]);
-          await hand?.update({
+        const hand = CastleFalkenstein.searchUniqueHand(handType, this);
+        if (hand) {
+          // No need for a socket here.
+          // Whoever updated the name on the Actor is expected to have permission to update the name of the Hand also (see below).
+          await hand.update({
             name: this.computeHandName(handType)
           });
         }
       });
     }
 
-    // if permissions on the character changed, update the permissions of their Fortune/Sorcery hands also (if they exist)
-    // unless the user is using custom role permissions for their game, whoever updated the Actor should have permission to update the Hand also.
     if (changed.permission) {
+      // If permissions on a Character changed and no player owns it anymore, delete their Fortune hand if it exists.
+      if (!this.hasPlayerOwner) {
+        const fortuneHand = CastleFalkenstein.searchUniqueHand("fortune", this);
+        if (fortuneHand) {
+          // No need for a socket here.
+          // Whoever delete the Actor is expected to have permission to delete the Hand also (with default role permissions at least they should).
+          await fortuneHand.delete();
+        }
+      }
+
+      // If permissions on a Character changed, update the permissions of their Fortune/Sorcery hands to match, if they (still, see above) exist.
       [ "fortune", "sorcery" ].forEach(async (handType) => {
-        if (this.data.data.hands[handType] != "") {
-          let hand = game.cards.get(this.data.data.hands[handType]);
-          await hand?.update({
+        const hand = CastleFalkenstein.searchUniqueHand(handType, this);
+        if (hand) {
+          // No need for a socket here.
+          // Whoever updated permissions on the the Actor is expected to have permission to update them on the Hand also (with default role permissions at least, they should).
+          await hand.update({
             permission: this.data.permission
           });
         }
       });
     }
   }
+  
+
+  /** @override */
+  async _preDelete(changed, options, user) {
+    super._preDelete(changed, options, user);
+
+    [ "fortune", "sorcery" ].forEach(async (handType) => {
+      const hand = CastleFalkenstein.searchUniqueHand(handType, this);
+      if (hand) {
+        await hand.delete();
+      }
+    });
+  }
+
+  handIfExists(handType) {
+
+    let actorOrHost;
+    if (handType === "fortune" && !this.hasPlayerOwner)
+      actorOrHost = "host";
+    else
+      actorOrHost = this;
+
+    return CastleFalkenstein.searchUniqueHand(handType, actorOrHost);
+  }
 
   async hand(handType) {
-    let hand = null;
+    let hand = this.handIfExists(handType);
 
-    if (this.data.data.hands[handType]) {
-      hand = game.cards.get(this.data.data.hands[handType]);
-    }
-
-    if (!hand) {
+    if (!hand)
       hand = await CastleFalkenstein.socket.executeAsGM("createHand", handType, this.id);
-    }
 
     return hand;
   }
@@ -88,7 +118,8 @@ export class CastleFalkensteinActor extends Actor {
   }
 
   get isCasting() {
-    return this.data.data.spellBeingCast.spell != false;
+    return this.data.data.spellBeingCast &&
+           this.data.data.spellBeingCast.spell;
   }
 
   /**
