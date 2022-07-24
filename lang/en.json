@@ -76,6 +76,9 @@
       }
     },
 
+    "empty": "",
+    "openCharacterSheet": "Open the character sheet",
+
     "description": "Description",
     "icon": "Icon",
 
