@@ -11,28 +11,10 @@
   
 ## `[M]` unlinked token/duplicated actor Bug & related improvements
 
-+ Fortune/Sorcery hand linking issue for unlinked tokens and duplicated actors
-  + (re)create the Host fortune hand like Fortune/Sorcery deck & discard piles & add corresponding setting
-  + in fortune/sorcery hand getter,
-    + search for the hand in game.cards using flags (actor id)
-      + Add "\[Token\]" prefix to token hands
-      + Check that unlinked tokens hands are recognized properly (= do not interfere with the hand of their actor)
-    + stop caching the id of hands in the actor data (or using these ids anywhere)
-    + if no such hand exists
-      + if (fortune && (the actor is not owned by any player)) then
-        + return the GM fortune hand
-      + else, create the missing hand and return it
-  + On duplication of Actor (Actor post-create?), set 'spellBeingCast.spell' to ''
-  + on actor permission change, if no player owns the actor anymore, delete the dedicated fortuneHand (maybe with a confirmation popup?)
-  + on actor delete, delete their fortune & sorcery hand if they exist (make sure an unlinked token does not delete the hand of the original actor)
-  + On updateToken w/ change.actorLink==true, delete the token's fortune hand (attached to the unlinked token) if it exists
-  + Prevent the use of Sorcery on unlinked tokens (have the tab empty except for a message mentioning Sorcery only allowed for tokens linked to an actor)
-  + Support for Sorcery in unlinked tokens
-    + Prevent it (have the tab empty except for a message mentioning Sorcery only allowed for tokens linked to an actor) OR
-    + Allow it
-      + On createToken, if (token).data.token.isLinked==false, set 'spellBeingCast.spell' to ''
-      + On updateToken w/ change.actorLink==true, delete the token's fortune hand (attached to the unlinked token) if it exists
-      + on deleteToken, if delete the token's sorcery hand if it exists
+  + move 'spellBeingCast' out of the Actor and into Sorcery hands as flags
+    + use the occasion to display the name of the spell being cast in the hand itself (+ its definition?)
+        
+  + Prevent the usage of Sorcery from unlinked tokens (replace Sorcery tab with a message)
 
 ## Feature evolutions
 
@@ -167,3 +149,7 @@
 
 + `[C]` Possessions: location (equipped, at home, in the bank, investments, ..)
 + `[C]` Possessions: dedicated input box for Cash/Money
+
++ `[C]` Tours (a.k.a. tutorials)
+  + Using compendiums
+  + Casting spells
