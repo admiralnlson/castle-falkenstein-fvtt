@@ -477,6 +477,11 @@ html * {
   display: none !important;
 }
 
+.monarch-hand footer.sheet-footer button {
+  max-width: fit-content;
+  margin-left: 10px;
+}
+
 /* perform-feat and define-spell */
 
 .castle-falkenstein .cards-played,
