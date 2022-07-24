@@ -6,26 +6,10 @@
         "health": {
           "max": null
         },
-        "description": "",
-        "hostNotes": "",
-        "diary": "",
         "wounds": "",
-        "hands": {
-           "fortune": "",
-           "sorcery": ""
-        },
-        "spellBeingCast": {
-          "spell": "",
-          "artefact": "",
-          "definitions": {
-            "duration": 0,
-            "complexity": 0,
-            "range": 0,
-            "nbSubjects": 0,
-            "resistance": 0,
-            "familiarity": 0
-          }
-        }
+        "description": "",
+        "diary": "",
+        "hostNotes": ""
       }
     },
     "character": {
