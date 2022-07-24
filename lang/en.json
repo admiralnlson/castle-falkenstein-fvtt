@@ -58,7 +58,7 @@
     
     "fortune": {
       "hand": {
-        "name": "Fortune - {character}",
+        "name": "Fortune hand - {character}",
         "refill": "Refill",
         "chance": "Chance"
       }
@@ -72,7 +72,7 @@
         "releasePower": "Release Power",
         "castSpell": "Cast Spell",
         "cancelSpell": "Cancel Spell",
-        "name": "Sorcery - {character}"
+        "name": "Sorcery hand - {character}"
       }
     },
 
@@ -234,6 +234,7 @@
       }
     },
 
+    "host": "Host",
     "hostNotes": "Host notes"
   }
 }

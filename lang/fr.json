@@ -58,7 +58,7 @@
 
     "fortune": {
       "hand": {
-        "name": "Destin - {character}",
+        "name": "Main du destin - {character}",
         "refill": "Compléter",
         "chance": "Chance"
       }
@@ -72,7 +72,7 @@
         "releasePower": "Libérer du pouvoir",
         "castSpell": "Lancer le sort",
         "cancelSpell": "Annuler le sort",
-        "name": "Sorcellerie - {character}"
+        "name": "Main de sorcellerie - {character}"
       }
     },
 
@@ -234,6 +234,7 @@
       }
     },
 
+    "host": "Hôte",
     "hostNotes": "Notes de l'Hôte"
   }
 }
