@@ -88,6 +88,10 @@ export class CastleFalkensteinActor extends Actor {
     return hand;
   }
 
+  spellBeingCast() {
+    return this.handIfExists("sorcery")?.spellBeingCast;
+  }
+
   /**
    * Perform a Feat.
    */
@@ -115,11 +119,6 @@ export class CastleFalkensteinActor extends Actor {
 
   get sorceryAbility() {
     return this.items.find(item => item.type == 'ability' && item.name == CastleFalkenstein.i18nSorceryAbility);
-  }
-
-  get isCasting() {
-    return this.data.data.spellBeingCast &&
-           this.data.data.spellBeingCast.spell;
   }
 
   /**
@@ -153,7 +152,7 @@ export class CastleFalkensteinActor extends Actor {
       return;
     }
     
-    if (this.isCasting) {
+    if (hand.spellBeingCast) {
       ui.notifications.error(game.i18n.localize("castle-falkenstein.notifications.spellAlreadyBeingCast"));
       return;
     }
