@@ -5,7 +5,7 @@ export default class CastleFalkensteinMonarchConfig {
 
   static onCardDisplay(monarch, components) {
 
-    const cfCardsType = monarch.object.getFlag(CastleFalkenstein.name, "type");
+    const cfCardsType = monarch.object.getFlag(CastleFalkenstein.id, "type");
     if (!cfCardsType)
       return;
 
@@ -20,7 +20,7 @@ export default class CastleFalkensteinMonarchConfig {
 
   static onHandDisplay(monarch, components) {
 
-    const cfCardsType = monarch.object.getFlag(CastleFalkenstein.name, "type");
+    const cfCardsType = monarch.object.getFlag(CastleFalkenstein.id, "type");
     if (!cfCardsType)
       return;
 
@@ -35,14 +35,32 @@ export default class CastleFalkensteinMonarchConfig {
     // Add Castle Falkenstein-relevant components
     //
 
+    // Fortune & Sorcery hands - Open character sheet
+    components.appControls.push({
+      label: "castle-falkenstein.empty",
+      tooltip: "castle-falkenstein.openCharacterSheet",
+      icon: "fas fa-user",
+      class: "hand-charsheet",
+      hide: (card, hand) => {
+        const actorFlag = hand.getFlag(CastleFalkenstein.id, "actor");
+        return actorFlag === "host";
+      },
+      onclick: async (event, app, hand) =>  {
+        const actorFlag = hand.getFlag(CastleFalkenstein.id, "actor");
+        if (actorFlag === "host")
+          return;
+        const actor = game.actors.get(actorFlag);
+        actor.sheet.render(true, { focus: true });
+      }
+    });
+
     // Fortune hand - Refill hand
     components.appControls.push({
       label: "castle-falkenstein.fortune.hand.refill",
-      //icon: "fas fa-plus-circle",
       icon: "cf-stack",
       class: "fortune-hand-refill",
       hide: (card, hand) => {
-        const type = hand.getFlag(CastleFalkenstein.name, "type");
+        const type = hand.getFlag(CastleFalkenstein.id, "type");
         return type != "fortune";
       },
       disabled: (card, hand) => {
@@ -59,14 +77,14 @@ export default class CastleFalkensteinMonarchConfig {
       icon: "fas fa-question",
       class: "fortune-hand-chance",
       hide: (card, hand) => {
-        const type = hand.getFlag(CastleFalkenstein.name, "type");
+        const type = hand.getFlag(CastleFalkenstein.id, "type");
         return type != "fortune";
       },
       disabled: (card, hand) => {
         return false;
       },
       onclick: async (event, app, hand) =>  {
-        const actorId = hand.getFlag(CastleFalkenstein.name, "actor");
+        const actorId = hand.getFlag(CastleFalkenstein.id, "actor");
 
         // draw a single card from the discard pile directly (avoids glitches)
         const cardsDrawn = await CastleFalkenstein.draw("fortune", game.CastleFalkenstein.fortuneDiscardPile, 1);
@@ -87,23 +105,23 @@ export default class CastleFalkensteinMonarchConfig {
       icon: "fas fa-plus-circle",
       class: "sorcery-hand-gather-power",
       hide: (card, hand) => {
-        const type = hand.getFlag(CastleFalkenstein.name, "type");
+        const type = hand.getFlag(CastleFalkenstein.id, "type");
         return type != "sorcery";
       },
       disabled: (card, hand) => {
-        const actorId = hand.getFlag(CastleFalkenstein.name, "actor");
-        if (actorId === "host")
-          return true;
-        const actor = game.actors.get(actorId);
+        //const actorId = hand.getFlag(CastleFalkenstein.id, "actor");
+        //if (actorId === "host")
+        //  return true;
+        //const actor = game.actors.get(actorId);
 
         // TODO add "actor.isDragon" getter to allow implementation of this 5-card limit
         //if (actor.isDragon && hand.cards.size >= 5)
         //  return true;
 
-        return !actor.isCasting;
+        return !hand.spellBeingCast;
       },
       onclick: async (event, app, hand) =>  {
-        const actorId = hand.getFlag(CastleFalkenstein.name, "actor");
+        const actorId = hand.getFlag(CastleFalkenstein.id, "actor");
         if (actorId === "host")
           return; // should never be able to click from host hand anyway (see 'disabled' above)
         const actor = game.actors.get(actorId);
@@ -115,7 +133,7 @@ export default class CastleFalkensteinMonarchConfig {
 
         // Post message to chat
         const flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.hand.gatherPower")}]`;
-        const spell = actor.items.get(actor.data.data.spellBeingCast.spell);
+        const spell = actor.items.get(hand.spellBeingCast.actorItemId);
         const correctSuit = (card.data.suit == spell.data.data.suit || card.data.suit == 'joker') ? 'correct-suit' : '';
         const content = `<div class="cards-drawn">${CastleFalkenstein.smallCardImg(card, `card-played ${correctSuit}`)}</div>`;
         CastleFalkenstein.createChatMessage(actor, flavor, content);
@@ -128,12 +146,12 @@ export default class CastleFalkensteinMonarchConfig {
       icon: "cf-card-discard",
       class: "sorcery-hand-card-release",
       hide: (card, container) => {
-        const type = container.getFlag(CastleFalkenstein.name, "type");
+        const type = container.getFlag(CastleFalkenstein.id, "type");
         return type != "sorcery";
       },
       disabled: (card, hand) => {
         // TODO disable the release of unaligned power (if done, maybe reconsider label & chat messages content)
-        //const actorId = hand.getFlag(CastleFalkenstein.name, "actor");
+        //const actorId = hand.getFlag(CastleFalkenstein.id, "actor");
         //if (actorId === "host")
         //  return true;
         //const actor = game.actors.get(actorId);
@@ -141,7 +159,7 @@ export default class CastleFalkensteinMonarchConfig {
         return false;
       },
       onclick: async (event, card, container) => {
-        const actorId = container.getFlag(CastleFalkenstein.name, "actor");
+        const actorId = container.getFlag(CastleFalkenstein.id, "actor");
         if (actorId === "host")
           return; // should never be able to click from host hand anyway (see 'disabled' above)
         const actor = game.actors.get(actorId);
@@ -161,25 +179,24 @@ export default class CastleFalkensteinMonarchConfig {
       icon: "fas fa-play-circle",
       class: "sorcery-hand-cast-spell",
       hide: (card, hand) => {
-        const type = hand.getFlag(CastleFalkenstein.name, "type");
+        const type = hand.getFlag(CastleFalkenstein.id, "type");
         return type != "sorcery";
       },
       disabled: (card, hand) => {
-        const actorId = hand.getFlag(CastleFalkenstein.name, "actor");
-        if (actorId === "host")
-          return true;
-        const actor = game.actors.get(actorId);
-
+        //const actorId = hand.getFlag(CastleFalkenstein.id, "actor");
+        //if (actorId === "host")
+        //  return true;
+   
         // TODO disable if the thaumic energy requirement has not been reached? (may not bode well with cooperation spellcasting scenario though)
 
-        return !actor.isCasting;
+        return !hand.spellBeingCast;
       },
       onclick: async (event, app, hand) =>  {
-        const actorId = hand.getFlag(CastleFalkenstein.name, "actor");
+        const actorId = hand.getFlag(CastleFalkenstein.id, "actor");
         if (actorId === "host")
           return; // should never be able to click from host hand anyway (see 'disabled' above)
         const actor = game.actors.get(actorId);
-        const spell = actor.items.get(actor.data.data.spellBeingCast.spell);
+        const spell = actor.items.get(hand.spellBeingCast.actorItemId);
 
         // Post message to chat
         let flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.hand.castSpell")}]`;
@@ -205,11 +222,9 @@ export default class CastleFalkensteinMonarchConfig {
 
         CastleFalkenstein.createChatMessage(actor, flavor, content);
 
-        // no spell being cast anymore on Actor side
-        await actor.update({
-          ['data.spellBeingCast.spell']: ""
-        });
-
+        // no spell being cast anymore
+        await hand.stopCasting();
+ 
         hand.sheet.render();
       }
     });
@@ -220,18 +235,14 @@ export default class CastleFalkensteinMonarchConfig {
       icon: "fas fa-stop-circle",
       class: "sorcery-hand-cancel-spell",
       hide: (card, hand) => {
-        const type = hand.getFlag(CastleFalkenstein.name, "type");
+        const type = hand.getFlag(CastleFalkenstein.id, "type");
         return type != "sorcery";
       },
       disabled: (card, hand) => {
-        const actorId = hand.getFlag(CastleFalkenstein.name, "actor");
-        if (actorId === "host")
-          return true;
-        const actor = game.actors.get(actorId);
-        return !actor.isCasting;
+        return !hand.spellBeingCast;
       },
       onclick: async (event, app, hand) =>  {
-        const actorId = hand.getFlag(CastleFalkenstein.name, "actor");
+        const actorId = hand.getFlag(CastleFalkenstein.id, "actor");
         if (actorId === "host")
           return; // should never be able to click from host hand anyway (see 'disabled' above)
         const actor = game.actors.get(actorId);
@@ -243,10 +254,8 @@ export default class CastleFalkensteinMonarchConfig {
         let content = ""; // FIXME add info on spell which was canceled
         CastleFalkenstein.createChatMessage(actor, flavor, content);
 
-        // no spell being cast anymore on Actor side
-        await actor.update({
-          ['data.spellBeingCast.spell']: ""
-        });
+        // no spell being cast anymore
+        await hand.stopCasting();
 
         hand.sheet.render();
       }
