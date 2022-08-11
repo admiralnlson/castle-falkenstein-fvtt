@@ -13,14 +13,14 @@ import CastleFalkensteinPerformFeat from "./forms/perform-feat.mjs";
 
 export default class CastleFalkenstein {
 
-  static get name() { return "castle-falkenstein"; }
+  static get id() { return "castle-falkenstein"; }
 
 	static get debugMode() {
 		const api = game.modules.get("_dev-mode")?.api;
 		if (!api) {
        return false;
     }
-		return api.getPackageDebugValue(this.name);
+		return api.getPackageDebugValue(this.id);
 	}
 
   static _consoleLog(logLevel, msg, ...args) {
@@ -43,7 +43,7 @@ export default class CastleFalkenstein {
    */
   static settings = new Proxy({}, {
     get: function (target, key) {
-      try { return game.settings.get(CastleFalkenstein.name, key); }
+      try { return game.settings.get(CastleFalkenstein.id, key); }
       catch (err) {
         CastleFalkenstein.consoleError(err);
         return undefined;
@@ -120,13 +120,13 @@ export default class CastleFalkenstein {
 
   static async hostFortuneHand() {
     let hand = game.cards.filter(stack => stack.type === "hand" &&
-                                          stack.getFlag(CastleFalkenstein.name, "type") === "fortune" &&
-                                          stack.getFlag(CastleFalkenstein.name, "actor") === "host");
+                                          stack.getFlag(this.id, "type") === "fortune" &&
+                                          stack.getFlag(this.id, "actor") === "host");
 
     if (hand.length > 0)
       return hand[0];
     
-    hand = await CastleFalkenstein.socket.executeAsGM("createHand", "fortune", "host");
+    hand = await this.socket.executeAsGM("createHand", "fortune", "host");
     return hand;
   }
 
@@ -177,7 +177,7 @@ export default class CastleFalkenstein {
     deckData.permission = deckData.permission || {};
     deckData.permission.default = CONST.DOCUMENT_PERMISSION_LEVELS.LIMITED;
     deckData.folder = (await this.cardsFolder("decks-and-piles", game.i18n.localize("castle-falkenstein.cardsDirectory.decksAndPilesFolder"))).id;
-    deckData.flags[this.name] = {
+    deckData.flags[this.id] = {
       type: type
     };
 
@@ -226,25 +226,25 @@ export default class CastleFalkenstein {
 
     if (!this.fortuneDeck) {
       const deck = await this.createPresetDeck("fortune");
-      await game.settings.set(CastleFalkenstein.name, "fortuneDeck", deck.id);
+      await game.settings.set(this.id, "fortuneDeck", deck.id);
       cardsCreatedI18n += "<br/>  - " + game.i18n.localize("castle-falkenstein.settings.fortuneDeck.name");
     }
 
     if (!this.fortuneDiscardPile) {
       const pile = await this.createDiscardPile("fortune");
-      await game.settings.set(CastleFalkenstein.name, "fortuneDiscardPile", pile.id);
+      await game.settings.set(this.id, "fortuneDiscardPile", pile.id);
       cardsCreatedI18n += "<br/>  - " + game.i18n.localize("castle-falkenstein.settings.fortuneDiscardPile.name");
     }
 
     if (!this.sorceryDeck) {
       const deck = await this.createPresetDeck("sorcery");
-      await game.settings.set(CastleFalkenstein.name, "sorceryDeck", deck.id);
+      await game.settings.set(this.id, "sorceryDeck", deck.id);
       cardsCreatedI18n += "<br/>  - " + game.i18n.localize("castle-falkenstein.settings.sorceryDeck.name");
     }
 
     if (!this.sorceryDiscardPile) {
       const pile = await this.createDiscardPile("sorcery");
-      await game.settings.set(CastleFalkenstein.name, "sorceryDiscardPile", pile.id);
+      await game.settings.set(this.id, "sorceryDiscardPile", pile.id);
       cardsCreatedI18n += "<br/>  - " + game.i18n.localize("castle-falkenstein.settings.sorceryDiscardPile.name");
     }
 
@@ -262,7 +262,7 @@ export default class CastleFalkenstein {
   static onReturnCards(stack, returned, {fromDelete, toUpdate}={}) {
     if (returned.length > 0) {
       // shuffle the fortune (resp. sorcery) deck when cards from cards in a fortune/sorcery discard pile are recalled.
-      const handType = stack.getFlag(this.name, "type");
+      const handType = stack.getFlag(this.id, "type");
       if (handType) {
         if (stack.type == "pile") {
           // shuffle the decks to which cards are being recalled
@@ -279,12 +279,12 @@ export default class CastleFalkenstein {
     const actorFlag = actorOrHost === "host" ? "host" : actorOrHost.id;
 
     const search = game.cards.filter(stack => stack.type === "hand" &&
-                                              stack.getFlag(CastleFalkenstein.name, "type") === handType &&
-                                              stack.getFlag(CastleFalkenstein.name, "actor") === actorFlag);
+                                              stack.getFlag(this.id, "type") === handType &&
+                                              stack.getFlag(this.id, "actor") === actorFlag);
 
     if (search.length > 1) {
       const name = actorOrHost === "host" ? "host" : actorOrHost.name;
-      CastleFalkenstein.consoleError("Multiple " + handType + " hands found for " + name);
+      this.consoleError("Multiple " + handType + " hands found for " + name);
     }
 
     if (search.length > 0)
@@ -517,8 +517,8 @@ export default class CastleFalkenstein {
 
     // Dialog code
     CastleFalkenstein.consoleWarn(`No Card UI module present.`);
-    game.settings.register(this.name, DONT_REMIND_AGAIN_KEY, { name: '', default: false, type: Boolean, scope: 'world', config: false });
-    if(game.user.isGM && !game.settings.get(this.name, DONT_REMIND_AGAIN_KEY)) {
+    game.settings.register(this.id, DONT_REMIND_AGAIN_KEY, { name: '', default: false, type: Boolean, scope: 'world', config: false });
+    if(game.user.isGM && !game.settings.get(this.id, DONT_REMIND_AGAIN_KEY)) {
       new Dialog({
         title: game.i18n.localize("castle-falkenstein.system"),
         options: { top: 100 },
@@ -526,12 +526,12 @@ export default class CastleFalkenstein {
           ok: { icon: '<i class="fas fa-check"></i>', label: 'Understood' },
           dont_remind: { icon: '<i class="fas fa-times"></i>', label: "Don't remind me again", callback: () => game.settings.set(PACKAGE_ID, DONT_REMIND_AGAIN_KEY, true) }
         }
-      }).render(true);
+      }).render(true, { focus: true });
     }
   }
 
   static setupSocket() {
-    this.socket = socketlib.registerSystem(this.name);
+    this.socket = socketlib.registerSystem(this.id);
 
     // register socket functions
 	  this.socket.register("shuffleDiscardPile", this.shuffleDiscardPile);
@@ -541,7 +541,7 @@ export default class CastleFalkenstein {
 
   static registerSettings() {
     Object.entries(this.settingDefinitions).forEach(([key, def]) => {
-      game.settings.register(CastleFalkenstein.name, key, {
+      game.settings.register(this.id, key, {
         ...def,
         scope: def.scope ?? "world",
         config: false,
@@ -550,7 +550,7 @@ export default class CastleFalkenstein {
       });
     })
 
-    game.settings.registerMenu(this.name, 'settingsMenu', {
+    game.settings.registerMenu(this.id, 'settingsMenu', {
       name: game.i18n.localize("castle-falkenstein.settings.name"),
       icon: "fas fa-bars",
       label: game.i18n.localize("castle-falkenstein.settings.label"),
@@ -560,28 +560,28 @@ export default class CastleFalkenstein {
 
   static registerSheets() {
     Actors.unregisterSheet("core", ActorSheet);
-    Actors.registerSheet(this.name, CastleFalkensteinActorSheet, { 
+    Actors.registerSheet(this.id, CastleFalkensteinActorSheet, { 
       label: "castle-falkenstein.character",
       makeDefault: true
     });
 
     Items.unregisterSheet("core", ItemSheet);
-    Items.registerSheet(this.name, CastleFalkensteinAbilitySheet, {
+    Items.registerSheet(this.id, CastleFalkensteinAbilitySheet, {
       types: ["ability"],
       label: "castle-falkenstein.ability.ability",
       makeDefault: true
     });
-    Items.registerSheet(this.name, CastleFalkensteinPossessionSheet, {
+    Items.registerSheet(this.id, CastleFalkensteinPossessionSheet, {
       types: ["possession"],
       label: "castle-falkenstein.possession.possession",
       makeDefault: true
     });
-    Items.registerSheet(this.name, CastleFalkensteinWeaponSheet, {
+    Items.registerSheet(this.id, CastleFalkensteinWeaponSheet, {
       types: ["weapon"],
       label: "castle-falkenstein.weapon.weapon",
       makeDefault: true
     });
-    Items.registerSheet(this.name, CastleFalkensteinSpellSheet, {
+    Items.registerSheet(this.id, CastleFalkensteinSpellSheet, {
       types: ["spell"],
       label: "castle-falkenstein.spell.spell",
       makeDefault: true
@@ -648,7 +648,7 @@ export default class CastleFalkenstein {
 /* -------------------------------------------- */
 
 Hooks.once("devModeReady", ({ registerPackageDebugFlag }) => {
-  registerPackageDebugFlag(CastleFalkenstein.name);
+  registerPackageDebugFlag(CastleFalkenstein.id);
 });
 
 Hooks.once("init", () => CastleFalkenstein.onInit());
