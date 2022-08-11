@@ -5,7 +5,7 @@
 - The Host now has their own Fortune hand, used for Host characters feats. N.B. Sorcerer host characters still use individual sorcery hands.
 - A shortcut button was added in fortune/sorcery hands to open the character's sheet.
 ### Changed
-- In the weapons compendium, animal sizes were renamed to match the ones documented in sourcebook "Curious Creatures" (Large becomes Medium ; Very Large becomes Large). A mapping to Dragon attacks in animal attack descriptions was also added for convenience.
+- In the weapons compendium, animal sizes were renamed to match the ones documented in sourcebook "Curious Creatures" (Large becomes Medium ; Very Large becomes Large). Their descriptions were improved to avoid any confusion and a mapping to Dragon attacks was also added for convenience.
 - Decks will now be automatically reshuffled when a fortune/sorcery discard pile is reset or deleted.
 - Resetting or deleting a character's fortune or sorcery hand will now discard the cards it contained to the adequate discard pile, rather than reinjecting them in the deck without reshuffle.
 - Deleting a character will now also delete any dedicated fortune/sorcery hands they had.
