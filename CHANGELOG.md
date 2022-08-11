@@ -6,9 +6,9 @@
 - A shortcut button was added in fortune and sorcery hands to open the character's sheet.
 ### Changed
 - In the weapons compendium, animal sizes were renamed to match the ones documented in sourcebook "Curious Creatures" (Large becomes Medium ; Very Large becomes Large). A mapping to Dragon attacks was also added for convenience.
-- Decks will now be automatically reshuffled when a fortune or sorcery discard pile is reset or deleted.
-- Resetting or deleting a character's fortune or sorcery hand will now discard the cards it contained to the adequate discard pile, rather than directly reinjecting them into the deck without reshuffle.
-- Deleting a character will now also delete any fortune or sorcery hand they had.
+- Decks will now be automatically reshuffled when a discard pile is reset or deleted.
+- Resetting or deleting a character's fortune or sorcery hand will now discard the cards it contained, rather than directly reinjecting them into the deck without reshuffle.
+- Deleting a character will now automatically delete (discard) any fortune or sorcery hand they had.
 ### Fixed
 - Duplicated characters will no longer reuse the fortune or sorcery hands of the copied character, and have their own.
 - Tokens with 'Link Actor Data' disabled will no longer give the impression that the sorcery hand has become unusable.
