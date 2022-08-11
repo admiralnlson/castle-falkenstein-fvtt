@@ -2,18 +2,16 @@
 
 ## [v1.4.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.4.0) - 2022/08/11
 ### Added
-- The Host now has their own Fortune hand, used for Host characters feats. N.B. Host characters still use individual sorcery hands.
+- The Host now has their own Fortune hand, used for Host characters feats. N.B. Sorcerer host characters still use individual sorcery hands.
 - A shortcut button was added in fortune/sorcery hands to open the character's sheet.
 ### Changed
 - Weapons compendium - Animal sizes now match with the ones documented in sourcebook "Curious Creatures" (Large becomes Medium ; Very Large becomes Large). A mapping to Dragon attacks in animal attack descriptions was also added for convenience.
-- Decks will now be automatically reshuffled when fortune/sorcery discard piles are reset or deleted.
+- Decks will now be automatically reshuffled when a fortune/sorcery discard pile is reset or deleted.
 - Resetting or deleting a character's fortune or sorcery hand will now discard the cards it contained to the adequate discard pile, rather than reinjecting them in the deck without reshuffle.
 - Deleting a character will now also delete any dedicated fortune/sorcery hands they had.
-- Minor cosmetic updates
 ### Fixed
 - Duplicated characters will no longer reuse the fortune/sorcery hands of the copied character, and have their own.
 - Tokens with 'Link Actor Data' disabled will no longer give the impression that the sorcery hand has become unusable.
-- Minor typos were fixed.
 
 ## [v1.3.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.3.0) - 2022/05/30
 ### Added
