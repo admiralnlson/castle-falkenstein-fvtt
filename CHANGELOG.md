@@ -1,6 +1,6 @@
 # Changelog
 
-## [v1.4.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.4.0) - 2022/??/??
+## [v1.4.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.4.0) - 2022/08/11
 ### Added
 - The Host now has their own Fortune hand, used for Host characters feats. N.B. Host characters still use individual sorcery hands.
 - A shortcut button was added in fortune/sorcery hands to open the character's sheet.
