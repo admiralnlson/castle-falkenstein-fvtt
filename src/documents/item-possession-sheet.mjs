@@ -12,7 +12,7 @@ export class CastleFalkensteinPossessionSheet extends ItemSheet {
    */
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
-      classes: [CastleFalkenstein.name, "sheet", "item"],
+      classes: [CastleFalkenstein.id, "sheet", "item"],
       template: "systems/castle-falkenstein/src/documents/item-possession-sheet.hbs",
       width: 460,
       height: 300,
