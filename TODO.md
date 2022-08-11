@@ -8,13 +8,7 @@
 
   + Core v9 => CFv1.x
   + Core v10 => CFv2.x
-  
-## `[M]` unlinked token/duplicated actor Bug & related improvements
-
-  + move 'spellBeingCast' out of the Actor and into Sorcery hands as flags
-    + use the occasion to display the name of the spell being cast in the hand itself (+ its definition?)
-        
-  + Prevent the usage of Sorcery from unlinked tokens (replace Sorcery tab with a message)
+    + declare CF settings as not requiring a reload
 
 ## Feature evolutions
 
@@ -65,6 +59,7 @@
 + `[S]` Define Spell - explicit mechanic for using **Artefacts**
 + `[S]` Define Spell - explicit mechanic for using **Unraveling**
 
++ `[S]` Display the name of the spell being cast in the hand itself or in the cast/cancel tooltip only?)
 + `[S]` Cast Spell - chat message - add a box showing power gathered vs initial requirement.
 + `[S]` Cast Spell - chat message - if unaligned power was used, show harmonic type(s) (up to 3 for the GM to choose from in case of ex-aequo).
 + `[C]` Cast Spell - Open a dialog on GM side to ask which harmonic they prefer, then display the choice in chat.
