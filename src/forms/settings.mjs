@@ -74,7 +74,7 @@ export default class CastleFalkensteinSettings extends FormApplication {
 	// Executes on form submission.
 	async _updateObject(event, data) {
     for (let [key, value] of Object.entries(data)) {
-			await game.settings.set(CastleFalkenstein.name, key, value);
+			await game.settings.set(CastleFalkenstein.id, key, value);
 		}
 	}
 
