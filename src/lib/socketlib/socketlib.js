@@ -23,7 +23,7 @@ const MESSAGE_TYPES = {
 Hooks.once("init", () => {
 	window.socketlib = new Socketlib();
   // Castle Falkenstein patch applied: have to change socket name
-	libWrapper.register(CastleFalkenstein.name, "Users.prototype.constructor._handleUserActivity", handleUserActivity);
+	libWrapper.register(CastleFalkenstein.id, "Users.prototype.constructor._handleUserActivity", handleUserActivity);
 	Hooks.callAll("socketlib.ready");
 }, "WRAPPER");
 
