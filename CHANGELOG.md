@@ -2,15 +2,15 @@
 
 ## [v1.4.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.4.0) - 2022/08/11
 ### Added
-- The Host now has their own Fortune hand, used for Host characters feats. N.B. Sorcerer host characters still use individual sorcery hands.
-- A shortcut button was added in fortune/sorcery hands to open the character's sheet.
+- The Host now has their own Fortune hand, used for Host characters feats (N.B. sorcerer Host characters still use individual sorcery hands).
+- A shortcut button was added in fortune and sorcery hands to open the character's sheet.
 ### Changed
-- In the weapons compendium, animal sizes were renamed to match the ones documented in sourcebook "Curious Creatures" (Large becomes Medium ; Very Large becomes Large). Their descriptions were improved to avoid any confusion and a mapping to Dragon attacks was also added for convenience.
-- Decks will now be automatically reshuffled when a fortune/sorcery discard pile is reset or deleted.
-- Resetting or deleting a character's fortune or sorcery hand will now discard the cards it contained to the adequate discard pile, rather than reinjecting them in the deck without reshuffle.
-- Deleting a character will now also delete any dedicated fortune/sorcery hands they had.
+- In the weapons compendium, animal sizes were renamed to match the ones documented in sourcebook "Curious Creatures" (Large becomes Medium ; Very Large becomes Large). A mapping to Dragon attacks was also added for convenience.
+- Decks will now be automatically reshuffled when a fortune or sorcery discard pile is reset or deleted.
+- Resetting or deleting a character's fortune or sorcery hand will now discard the cards it contained to the adequate discard pile, rather than directly reinjecting them into the deck without reshuffle.
+- Deleting a character will now also delete any fortune or sorcery hand they had.
 ### Fixed
-- Duplicated characters will no longer reuse the fortune/sorcery hands of the copied character, and have their own.
+- Duplicated characters will no longer reuse the fortune or sorcery hands of the copied character, and have their own.
 - Tokens with 'Link Actor Data' disabled will no longer give the impression that the sorcery hand has become unusable.
 
 ## [v1.3.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.3.0) - 2022/05/30
