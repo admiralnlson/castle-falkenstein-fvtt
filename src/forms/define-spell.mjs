@@ -27,8 +27,7 @@ export default class CastleFalkensteinDefineSpell extends FormApplication {
     this.character = spell.actor;
 
     this.spellBeingCast = {
-      spell: this.spell.id,
-      artefact: "",  // FIXME unused thus far
+      actorItemId: this.spell.id,
       definitions: {}
     };
 
@@ -101,11 +100,8 @@ export default class CastleFalkensteinDefineSpell extends FormApplication {
     const total = this.computeTotal();
     content += `<div class="define-spell-total">${total}</div>`;
 
-    await this.character.update({
-      data: {
-        spellBeingCast: this.spellBeingCast
-      }
-    });
+    let hand = await this.character.hand("sorcery");
+    await hand.defineSpell(this.spellBeingCast);
 
     // Post message to chat
     ChatMessage.create({
@@ -118,8 +114,8 @@ export default class CastleFalkensteinDefineSpell extends FormApplication {
     // rerenders the FormApp with the new data (will disappear soon though)
     this.render();
 
-    // rerenders the hand to update button (disabled buttons such as 'Gather Power' will no longer be disabled)
-    (await this.character.hand("sorcery")).sheet.render();
+    // rerenders the hand to update buttons (disabled buttons such as 'Gather Power' will no longer be disabled)
+    hand.sheet.render(true, { focus: true });
   }
 
 }
