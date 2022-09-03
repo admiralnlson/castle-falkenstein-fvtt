@@ -32,8 +32,6 @@ By default, the system activates 🦋Monarch sheets for **Hands** and **Cards** 
 | ------------------------------------------------------------------------ | ----------------------- |
 | [🦋 Monarch](https://foundryvtt.com/packages/monarch)                    | ✅ Fully integrated    |
 
-The system is planned to have it own UI for card hands, thus lifting the dependency with Monarch. M
-
 ## Planned evolutions
 See [TODO](./TODO.md)
 
