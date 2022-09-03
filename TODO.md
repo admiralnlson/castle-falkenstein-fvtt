@@ -14,10 +14,10 @@
 
 ### Explicit user requests
 
-| User | Request |
-|------|:--------|
-| Dame du Lac | `[S]` Extra 'Other' tab for listing secondary attributes such as Speed (Run+Flight) or Languages known (see below) |
-| Dame du Lac | `[C]` Have abilities display as 2+ columns if there is enough horizontal space (and ensure 2 in the default width) |
+| User           | Request |
+|----------------|:--------|
+| Dame du Lac    | `[S]` Extra 'Other' tab for listing secondary attributes such as Speed (Run+Flight) or Languages known (see below) |
+| Dame du Lac    | `[C]` Have abilities display as 2+ columns if there is enough horizontal space (and ensure 2 in the default width) |
 | mite.railleuse | `[S]` Duel system |
 
 ### `[🔥]` Derived stats & Racial abilities (a.k.a 'Other' tab)
@@ -43,12 +43,12 @@
 
 ### Cards
 
-+ `[S]` Display the ongoing spell name in the hand (and char sheet?)
++ `[S]` Shortcut to 'refill' the fortune hand in the Perform Feat form, or at least refresh the form when fortune cards are drawn from the hand itself
 
 + `[S]` Remove the dependency to Monarch by proposing a default Hand sheet implem (enabled by default).
   + `[S🔥]` Make sure drawn cards always appear to the right (might be the case with Monarch already but don't think it will be the case for the CF-default hand)
 
-+ `[C]` Button in World settings (Host only) to delete all NPC hands
++ `[C]` Macro to delete all Host character hands
 
 + `[C]` Card hand button to show a Fortune or Sorcery hand in chat
 
@@ -59,7 +59,7 @@
 + `[S]` Define Spell - explicit mechanic for using **Artefacts**
 + `[S]` Define Spell - explicit mechanic for using **Unraveling**
 
-+ `[S]` Display the name of the spell being cast in the hand itself or in the cast/cancel tooltip only?)
++ `[S]` Display the name of the spell being cast in the hand itself or in the cast/cancel tooltip only and/or in the char sheet
 + `[S]` Cast Spell - chat message - add a box showing power gathered vs initial requirement.
 + `[S]` Cast Spell - chat message - if unaligned power was used, show harmonic type(s) (up to 3 for the GM to choose from in case of ex-aequo).
 + `[C]` Cast Spell - Open a dialog on GM side to ask which harmonic they prefer, then display the choice in chat.
@@ -119,18 +119,21 @@
         en: In which the whimsy and oddity of Magick is simulated using a Tarot deck.\
         fr: Dans laquelle on simule la fantaisie et la bizarrerie de la magie en utilisant un jeu de Tarot.
 
+### Compendiums
+
 + `[S]` Compendium pack for Abilities found in sourcebooks (English)
 + `[S]` Compendium pack for Abilities found in sourcebooks (French)
 
 + `[S]` Compendium pack for Spells found in sourcebooks (English)
 + `[S]` Compendium pack for Spells found in sourcebooks (French)
 
+
++ `[S]` Shortcut to import Abilities into a character
++ `[C]` Shortcut to import spells from a Lorebook into a character
+
 ### Cosmetic / Other
 
 + `[C]` add Castle Falkenstein logo somewhere in the character sheet
-
-+ `[C]` Shortcut to import Abilities and Spells from a compendium pack / imported folder, which
-  + does not introduce duplicates but fixes incorrect suit assignments in case of a match
 
 + `[C]` Compendium pack for non-weapon items found in the corebook (English)
 + `[C]` Compendium pack for non-weapon items found in the corebook (French)
