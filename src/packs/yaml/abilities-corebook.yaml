@@ -1,109 +1,109 @@
 name: Athletics
 type: ability
-data:
+system:
   suit: clubs
 ---
 name: Charisma
 type: ability
-data:
+system:
   suit: hearts
 ---
 name: Comeliness
 type: ability
-data:
+system:
   suit: hearts
 ---
 name: Connections
 type: ability
-data:
+system:
   suit: spades
 ---
 name: Courage
 type: ability
-data:
+system:
   suit: hearts
 ---
 name: Education
 type: ability
-data:
+system:
   suit: diamonds
 ---
 name: Etherealness
 type: ability
-data:
+system:
   suit: spades
 ---
 name: Exchequer
 type: ability
-data:
+system:
   suit: spades
 ---
 name: Fencing
 type: ability
-data:
+system:
   suit: clubs
 ---
 name: Fisticuffs
 type: ability
-data:
+system:
   suit: clubs
 ---
 name: Glamour
 type: ability
-data:
+system:
   suit: hearts
 ---
 name: Kindred Powers
 type: ability
-data:
+system:
   suit: clubs
 ---
 name: Marksmanship
 type: ability
-data:
+system:
   suit: clubs
 ---
 name: Perception
 type: ability
-data:
+system:
   suit: diamonds
 ---
 name: Performance
 type: ability
-data:
+system:
   suit: hearts
 ---
 name: Physician
 type: ability
-data:
+system:
   suit: diamonds
 ---
 name: Physique
 type: ability
-data:
+system:
   suit: clubs
 ---
 name: Social Graces
 type: ability
-data:
+system:
   suit: spades
 ---
 name: Sorcery
 type: ability
-data:
+system:
   suit: diamonds
 ---
 name: Stealth
 type: ability
-data:
+system:
   suit: clubs
 ---
 name: Tinkering
 type: ability
-data:
+system:
   suit: diamonds
 ---
 name: Helmsmanship
 type: ability
-data:
+system:
   suit: diamonds

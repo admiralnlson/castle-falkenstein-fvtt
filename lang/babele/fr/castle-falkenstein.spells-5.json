@@ -1,7 +1,7 @@
 {
   "label": "Livre occulte - Le Royaume de l'esprit inconnu",
   "mapping": {
-    "description": "data.description"
+    "description": "system.description"
   },
   "entries": {
     "Bring to Peace": {

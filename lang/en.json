@@ -3,8 +3,8 @@
     "system": "Castle Falkenstein",
 
     "settings": {
-      "name": "System settings",
-      "label": "Configure the Castle Falkenstein system",
+      "name": "World settings (Host only)",
+      "label": "Configure the world",
       "fortuneDeck": {
         "name": "Fortune Deck",
         "hint": "The cards deck which represents the Fortune Deck."

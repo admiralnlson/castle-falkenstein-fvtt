@@ -1,7 +1,7 @@
 {
   "label": "Livre occulte - Le Manuscrit de la divination paranormale",
   "mapping": {
-    "description": "data.description"
+    "description": "system.description"
   },
   "entries": {
     "Clairaudience": {

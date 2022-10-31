@@ -6,7 +6,7 @@ export default class CastleFalkensteinSettings extends FormApplication {
 	static get defaultOptions() {
 		return mergeObject(super.defaultOptions, {
 			id: "castle-falkenstein-settings",
-			title: game.i18n.localize("castle-falkenstein.settings.title"),
+			title: game.i18n.localize("castle-falkenstein.system") + " - " + game.i18n.localize("castle-falkenstein.settings.name"),
 			template: "./systems/castle-falkenstein/src/forms/settings.hbs",
 			classes: ["castle-falkenstein-settings", "sheet"],
 			width: 500,
@@ -18,8 +18,8 @@ export default class CastleFalkensteinSettings extends FormApplication {
 	}
 
 	getData() {
-		// All settings
-		const all = Object.entries(CastleFalkenstein.settingDefinitions);
+		// world settings only
+		const all = Object.entries(CastleFalkenstein.settingDefinitions).filter(([key, def]) => def.scope == "world");
 
 		// Settings expanded with all the relevant data
 		const expanded = all.map(([key, def]) => ({

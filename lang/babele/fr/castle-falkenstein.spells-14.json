@@ -1,7 +1,7 @@
 {
   "label": "Livre occulte - Le Manuscrit des mutations élémentaires",
   "mapping": {
-    "description": "data.description"
+    "description": "system.description"
   },
   "entries": {
     "Elemental Barrier": {

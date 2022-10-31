@@ -1,7 +1,7 @@
 {
   "label": "Livre occulte - Le Royaume du rêve de Megron",
   "mapping": {
-    "description": "data.description"
+    "description": "system.description"
   },
   "entries": {
     "Dream Barrier": {

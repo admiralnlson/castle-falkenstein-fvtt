@@ -30,21 +30,21 @@ export default class CastleFalkensteinPerformFeat extends FormApplication {
     for (const card of this.hand.cards) {
       this.wrappedCards.push({
         card: card,
-        correctSuit: (card.data.suit == this.ability.data.data.suit || card.data.suit == 'joker') ? 'correct-suit' : '',
+        correctSuit: (card.suit == this.ability.system.suit || card.suit == 'joker') ? 'correct-suit' : '',
         checked: ""
       });
     }
-    this.wrappedCards.sort((a, b) => (a.card.data.sort > b.card.data.sort) ? 1 : -1);
+    this.wrappedCards.sort((a, b) => (a.card.sort > b.card.sort) ? 1 : -1);
   }
 
   computeTotal() {
-    let total = CASTLE_FALKENSTEIN.abilityLevels[this.ability.data.data.level].value;
+    let total = CASTLE_FALKENSTEIN.abilityLevels[this.ability.system.level].value;
 
     for (const w of this.wrappedCards) {
       if (w.checked) {
         // Core rules only, variants not supported (yet?)
-        if (w.card.data.suit == this.ability.data.data.suit || w.card.data.suit == "joker") {
-          total += w.card.data.value;
+        if (w.card.suit == this.ability.system.suit || w.card.suit == "joker") {
+          total += w.card.value;
         } else {
           total += 1;
         }
@@ -66,7 +66,6 @@ export default class CastleFalkensteinPerformFeat extends FormApplication {
 
     return {
       abilityLevelAsSentenceHtml: CastleFalkenstein.abilityLevelAsSentenceHtml(this.ability),
-      abilityData: this.ability.data,
       wrappedCards: this.wrappedCards,
       total: this.computeTotal()
     }
@@ -82,7 +81,7 @@ export default class CastleFalkensteinPerformFeat extends FormApplication {
     const w = this.wrappedCards.find(w => {return w.card.id == cardId});
     w.checked = (w.checked == "card-selected") ? "" : "card-selected";
 
-    this.render(); // rerenders the FormApp with the new data.
+    this.render();
   }
 
   static onRenderChatMessage(chatMessage, html, messageData) {
@@ -119,9 +118,6 @@ export default class CastleFalkensteinPerformFeat extends FormApplication {
     // produce chat message
     //
 
-    // Initialize chat data.
-    const speaker = ChatMessage.getSpeaker({ actor: this.character });
-    const rollMode = game.settings.get('core', 'rollMode');
     const flavor = `[${game.i18n.localize("castle-falkenstein.feat.perform")}]`;
     let content = CastleFalkenstein.abilityLevelAsSentenceHtml(this.ability);
     content += '<hr/><div class="cards-played">';
@@ -156,15 +152,7 @@ export default class CastleFalkensteinPerformFeat extends FormApplication {
 
 
     // Post message to chat
-    ChatMessage.create({
-      speaker: speaker,
-      rollMode: rollMode,
-      flavor: flavor,
-      content: content
-    });
-
-    // rerenders the FormApp with the new data.
-    //this.render();
+    CastleFalkenstein.createChatMessage(this.character, flavor, content);
   }
 
 }

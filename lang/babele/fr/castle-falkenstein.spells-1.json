@@ -1,7 +1,7 @@
 {
   "label": "Livre occulte - Manuscriptum Mentallis",
   "mapping": {
-    "description": "data.description"
+    "description": "system.description"
   },
   "entries": {
     "Create Blinding Pain": {

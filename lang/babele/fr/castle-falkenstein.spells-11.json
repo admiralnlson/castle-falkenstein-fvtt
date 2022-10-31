@@ -1,7 +1,7 @@
 {
   "label": "Livre occulte - Les Parchemins du mouvement dimensionnel de Le Roeun",
   "mapping": {
-    "description": "data.description"
+    "description": "system.description"
   },
   "entries": {
     "Astral Movement": {

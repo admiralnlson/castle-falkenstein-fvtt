@@ -1,6 +1,6 @@
 name: Bow
 type: weapon
-data:
+system:
   effectiveRange: "30 yds"
   ammunition_max: 12
   woundsPartial: 1
@@ -9,7 +9,7 @@ data:
 ---
 name: Carbine
 type: weapon
-data:
+system:
   effectiveRange: "90 yds"
   ammunition_max: 1
   woundsPartial: 3
@@ -18,7 +18,7 @@ data:
 ---
 name: Chassepot Rifle
 type: weapon
-data:
+system:
   effectiveRange: "140 yds"
   ammunition_max: 1
   woundsPartial: 4
@@ -27,7 +27,7 @@ data:
 ---
 name: Derringer
 type: weapon
-data:
+system:
   effectiveRange: "10 yds"
   ammunition_max: 2
   woundsPartial: 2
@@ -36,7 +36,7 @@ data:
 ---
 name: Drop Pistol
 type: weapon
-data:
+system:
   effectiveRange: "20 yds"
   ammunition_max: 4
   woundsPartial: 3
@@ -45,7 +45,7 @@ data:
 ---
 name: Elfshot
 type: weapon
-data:
+system:
   effectiveRange: "30 yds"
   ammunition_max: 6
   woundsPartial: 4
@@ -54,7 +54,7 @@ data:
 ---
 name: French Mitraillreuse
 type: weapon
-data:
+system:
   effectiveRange: "300 yds"
   ammunition_max: 36
   woundsPartial: 8
@@ -63,7 +63,7 @@ data:
 ---
 name: Gatling Gun
 type: weapon
-data:
+system:
   effectiveRange: "300 yds"
   ammunition_max: 42
   woundsPartial: 8
@@ -72,7 +72,7 @@ data:
 ---
 name: Musket (rifled)
 type: weapon
-data:
+system:
   effectiveRange: "80 yds"
   ammunition_max: 1
   woundsPartial: 4
@@ -81,7 +81,7 @@ data:
 ---
 name: Prussian Needle Rifle
 type: weapon
-data:
+system:
   effectiveRange: "120 yds"
   ammunition_max: 1
   woundsPartial: 4
@@ -90,7 +90,7 @@ data:
 ---
 name: Pepperbox Revolver
 type: weapon
-data:
+system:
   effectiveRange: "20 yds"
   ammunition_max: 6
   woundsPartial: 3
@@ -99,7 +99,7 @@ data:
 ---
 name: Reciprocator
 type: weapon
-data:
+system:
   effectiveRange: "10 yds"
   ammunition_max: 6
   woundsPartial: 4
@@ -108,7 +108,7 @@ data:
 ---
 name: Shotgun
 type: weapon
-data:
+system:
   effectiveRange: "30 yds"
   ammunition_max: 2
   woundsPartial: 5
@@ -117,7 +117,7 @@ data:
 ---
 name: Shrapnel
 type: weapon
-data:
+system:
   effectiveRange: "6 yds"
   woundsPartial: 8
   woundsFull: 9
@@ -126,7 +126,7 @@ data:
 ---
 name: Thrown Dagger
 type: weapon
-data:
+system:
   effectiveRange: "5 yds"
   ammunition_max: 1
   woundsPartial: 0
@@ -135,7 +135,7 @@ data:
 ---
 name: Thrown Spear
 type: weapon
-data:
+system:
   effectiveRange: "10 yds"
   ammunition_max: 1
   woundsPartial: 1
@@ -144,7 +144,7 @@ data:
 ---
 name: Dragon Firecast (Poor Physique)
 type: weapon
-data:
+system:
   effectiveRange: "10 yds"
   woundsPartial: 4
   woundsFull: 5
@@ -152,7 +152,7 @@ data:
 ---
 name: Dragon Firecast (Average Physique)
 type: weapon
-data:
+system:
   effectiveRange: "20 yds"
   woundsPartial: 5
   woundsFull: 6
@@ -160,7 +160,7 @@ data:
 ---
 name: Dragon Firecast (Good Physique)
 type: weapon
-data:
+system:
   effectiveRange: "30 yds"
   woundsPartial: 6
   woundsFull: 7
@@ -168,7 +168,7 @@ data:
 ---
 name: Dragon Firecast (Great Physique)
 type: weapon
-data:
+system:
   effectiveRange: "40 yds"
   woundsPartial: 7
   woundsFull: 8
@@ -176,7 +176,7 @@ data:
 ---
 name: Dragon Firecast (Exceptional Physique)
 type: weapon
-data:
+system:
   effectiveRange: "50 yds"
   woundsPartial: 8
   woundsFull: 9
@@ -184,7 +184,7 @@ data:
 ---
 name: Dragon Firecast (Extraordinary Physique)
 type: weapon
-data:
+system:
   effectiveRange: "60 yds"
   woundsPartial: 9
   woundsFull: 10
@@ -192,7 +192,7 @@ data:
 ---
 name: Animal Attack (tiny)
 type: weapon
-data:
+system:
   woundsPartial: 0
   woundsFull: 0
   woundsHigh: 1
@@ -200,7 +200,7 @@ data:
 ---
 name: Animal Attack (small)
 type: weapon
-data:
+system:
   woundsPartial: 0
   woundsFull: 1
   woundsHigh: 2
@@ -208,7 +208,7 @@ data:
 ---
 name: Animal Attack (medium)
 type: weapon
-data:
+system:
   woundsPartial: 1
   woundsFull: 2
   woundsHigh: 3
@@ -216,7 +216,7 @@ data:
 ---
 name: Animal Attack (large)
 type: weapon
-data:
+system:
   woundsPartial: 4
   woundsFull: 5
   woundsHigh: 6
@@ -224,7 +224,7 @@ data:
 ---
 name: Animal Attack (huge)
 type: weapon
-data:
+system:
   woundsPartial: 7
   woundsFull: 8
   woundsHigh: 9
@@ -232,7 +232,7 @@ data:
 ---
 name: Animal Attack (gigantic)
 type: weapon
-data:
+system:
   woundsPartial: 8
   woundsFull: 9
   woundsHigh: 10
@@ -240,70 +240,70 @@ data:
 ---
 name: Blow (PR to AV Physique)
 type: weapon
-data:
+system:
   woundsPartial: 0
   woundsFull: 1
   woundsHigh: 2
 ---
 name: Blow (GD to GR Physique)
 type: weapon
-data:
+system:
   woundsPartial: 1
   woundsFull: 2
   woundsHigh: 3
 ---
 name: Blow (EXC to EXT Physique)
 type: weapon
-data:
+system:
   woundsPartial: 2
   woundsFull: 3
   woundsHigh: 4
 ---
 name: Cudgel / Club
 type: weapon
-data:
+system:
   woundsPartial: 1
   woundsFull: 2
   woundsHigh: 3
 ---
 name: Dagger / Bayonet / Knife
 type: weapon
-data:
+system:
   woundsPartial: 1
   woundsFull: 2
   woundsHigh: 3
 ---
 name: Hatpin
 type: weapon
-data:
+system:
   woundsPartial: 1
   woundsFull: 2
   woundsHigh: 3
 ---
 name: Life Preserver
 type: weapon
-data:
+system:
   woundsPartial: 1
   woundsFull: 2
   woundsHigh: 3
 ---
 name: Rapier / Court Sword
 type: weapon
-data:
+system:
   woundsPartial: 4
   woundsFull: 5
   woundsHigh: 6
 ---
 name: Saber
 type: weapon
-data:
+system:
   woundsPartial: 4
   woundsFull: 5
   woundsHigh: 6
 ---
 name: Spear
 type: weapon
-data:
+system:
   woundsPartial: 2
   woundsFull: 3
   woundsHigh: 4

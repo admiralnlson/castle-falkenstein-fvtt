@@ -1,48 +1,48 @@
 name: Simple Geas
 type: spell
-data:
+system:
   level: 4
   suit: hearts
   description: "A binding command or word that places the subject under the Adept's power."
 ---
 name: Restraint through Magic Circles
 type: spell
-data:
+system:
   level: 2
   suit: hearts
   description: "Prevents the bound creature from stepping over the circle."
 ---
 name: Restraint through Magic Wards
 type: spell
-data:
+system:
   level: 4
   suit: hearts
   description: "Prevents the bound creature from passing through the warded opening."
 ---
 name: Restraint through Magic Talismans
 type: spell
-data:
+system:
   level: 4
   suit: hearts
   description: "Prevents the bound creature from attacking the Mage carrying the Talisman"
 ---
 name: Strenghen the Life Bond
 type: spell
-data:
+system:
   level: 12
   suit: hearts
   description: "If the target is mortally wounded, it will regain enough Health to reach a positive value (+1) from the Health of the Mage casting the spell."
 ---
 name: Psychic Bond
 type: spell
-data:
+system:
   level: 8
   suit: hearts
   description: "Allows the Adept to be aware of whatever the bound creature is physically doing (as long as caster pays full attention), although its thoughts will be hidden from him."
 ---
 name: Break the Binding
 type: spell
-data:
+system:
   level: 8
   suit: hearts
   description: "Instantly severs any and all of the bindings described in the Ritual Writing of Psychic Binding."

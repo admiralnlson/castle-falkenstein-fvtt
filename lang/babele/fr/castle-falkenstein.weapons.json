@@ -1,8 +1,8 @@
 {
   "label": "Armes",
   "mapping": {
-    "effectiveRange": "data.effectiveRange",
-    "description": "data.description"
+    "effectiveRange": "system.effectiveRange",
+    "description": "system.description"
   },
   "entries": {
     "Bow": {

@@ -1,13 +1,13 @@
 name: Universal Alchemic
 type: spell
-data:
+system:
   level: 8
   suit: diamonds
   description: "Changes the inherent material structure of non-living forms, such as lead to gold."
 ---
 name: Flesh to Mineral
 type: spell
-data:
+system:
   level: 8
   suit: diamonds
   description: "Changes mineral to flesh and vice versa, with the defined mineral type established at the time of transformation."
@@ -15,14 +15,14 @@ data:
 ---
 name: Alchemic Destruction
 type: spell
-data:
+system:
   level: 16
   suit: diamonds
   description: "Causes the victim to subsume into its raw chemical materials (a greasy, bubbling puddle of slime)."
 ---
 name: Alchemic Barrier
 type: spell
-data:
+system:
   level: 8
   suit: diamonds
   description: "Stops any or all of the changes described in the Manuscriptum Universal Alchemic, as long as the spell is cast before the transformation has begun."

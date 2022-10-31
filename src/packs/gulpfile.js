@@ -43,12 +43,12 @@ function compilePacks() {
         for (item of json) {
           // supplement the definitions with some key properties
           if (item.type == "ability") {
-            item.data.level = "AV";
-            item.img = `systems/castle-falkenstein/src/cards/${item.data.suit}.svg`;
+            item.system.level = "AV";
+            item.img = `systems/castle-falkenstein/src/cards/${item.system.suit}.svg`;
           } else if (item.type == "spell") {
-            item.img = `systems/castle-falkenstein/src/cards/${item.data.suit}.svg`;
+            item.img = `systems/castle-falkenstein/src/cards/${item.system.suit}.svg`;
           } else if (item.type == "weapon") {
-            item.data.ammunition = item.data.ammunition_max;
+            item.system.ammunition = item.system.ammunition_max;
             item.img = `icons/svg/item-bag.svg`;
           }
 

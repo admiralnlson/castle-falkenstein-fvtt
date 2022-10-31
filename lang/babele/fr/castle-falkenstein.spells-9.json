@@ -1,7 +1,7 @@
 {
   "label": "Livre occulte - Le Recueil du contrôle temporel",
   "mapping": {
-    "description": "data.description"
+    "description": "system.description"
   },
   "entries": {
     "Temporal Fugue": {

@@ -1,5 +1,14 @@
 # Changelog
 
+## [v2.0.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.0.0) - Unreleasd
+### Changed
+- As from this version, migrating to Foundry V10 is a minimum requirement. Hosts who cannot migrate from V9 to V10 will need to keep using Castle Falkenstein v1.4.x
+- Character descriptions, diaries and host notes and item descriptions now make use of the ProseMirror editor (the one proposed by default in V10 journals).
+- Chat messages the system generates will now, like OOC messages, have a border of the user's selected color.
+### Fixed
+- Character items dragged onto the hotbar will now produce adequate macros again.
+- The world settings menu now only shows up for the Host.
+
 ## [v1.4.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.4.0) - 2022/08/11
 ### Added
 - The Host now has their own Fortune hand, used for Host characters feats (N.B. sorcerer Host characters still use individual sorcery hands).

@@ -1,34 +1,34 @@
 name: Cast Out the Other
 type: spell
-data:
+system:
   level: 8
   suit: hearts
   description: "Cures schizophrenic behaviors and mental posession."
 ---
 name: Conquer the Madness
 type: spell
-data:
+system:
   level: 8
   suit: hearts
   description: "Makes the victim grovel and bark like a dog, hear strange voices, and lose touch with reality, or conversely become lucid again if insane."
 ---
 name: Hear the Hidden Thoughts
 type: spell
-data:
+system:
   level: 6
   suit: hearts
   description: "Allow to perceive thoughts of the subject, including those the subject may not be aware of."
 ---
 name: Bring to Peace
 type: spell
-data:
+system:
   level: 4
   suit: hearts
   description: "Imparts calmness and tranquillity to the subject, such that he loses all desire for aggressive action."
 ---
 name: Bring to Rest
 type: spell
-data:
+system:
   level: 6
   suit: hearts
   description: "Imparts great calmness, such that the subject falls into a deep, restful sleep."

@@ -1,7 +1,7 @@
 {
   "label": "Livre occulte - Le Livre noir de la nécromancie",
   "mapping": {
-    "description": "data.description"
+    "description": "system.description"
   },
   "entries": {
     "Animation of the Dead": {

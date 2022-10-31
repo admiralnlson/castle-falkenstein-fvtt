@@ -1,7 +1,7 @@
 {
   "label": "Livre occulte - Le Manuscrit de l'alchimie universelle",
   "mapping": {
-    "description": "data.description"
+    "description": "system.description"
   },
   "entries": {
     "Alchemic Barrier": {

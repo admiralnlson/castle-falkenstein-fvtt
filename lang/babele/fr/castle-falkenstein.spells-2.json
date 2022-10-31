@@ -1,7 +1,7 @@
 {
   "label": "Livre occulte - L'Écrit rituel de lien psychique",
   "mapping": {
-    "description": "data.description"
+    "description": "system.description"
   },
   "entries": {
     "Break the Binding": {

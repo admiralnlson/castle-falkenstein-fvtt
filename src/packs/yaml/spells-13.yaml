@@ -1,27 +1,27 @@
 name: Clairaudience
 type: spell
-data:
+system:
   level: 6
   suit: spades
   description: "Allows to mentally listen to conversations far away from the sorcerer's position."
 ---
 name: Clairvoyance
 type: spell
-data:
+system:
   level: 8
   suit: spades
   description: "Allows to see and hear distant sights and visions as though the sorcerer were there."
 ---
 name: Scrying
 type: spell
-data:
+system:
   level: 6
   suit: spades
   description: "Allows to see and hear distant sights and visions through the means of any clear crystal or mirror"
 ---
 name: Divination Barrier
 type: spell
-data:
+system:
   level: 8
   suit: spades
   description: "Confounds the powers described in Manuscript of Paranormal Divination, at any time."

@@ -1,41 +1,41 @@
 name: Dreams of Prophecy
 type: spell
-data:
+system:
   level: 6
   suit: hearts
   description: "Sends dreams in which the caster imparts knowledge to the dreamer. Requires that the caster have true knowledge of the event that is to come. The prophesy is not, however, assured."
 ---
 name: Dreams of Warning
 type: spell
-data:
+system:
   level: 4
   suit: hearts
   description: "Shows the dreamer a threat. Requires that the caster have true knowledge of the threat."
 ---
 name: Nightmares
 type: spell
-data:
+system:
   level: 8
   suit: hearts
   description: "Shows the dreamer a scenario which is then populated by the person or thing the dreamer fears most."
 ---
 name: Erotic Dreams
 type: spell
-data:
+system:
   level: 6
   suit: hearts
   description: "Shows the dreamer a scenario which is then populated by the person the dreamer desires most."
 ---
 name: Killing Dreams
 type: spell
-data:
+system:
   level: 16
   suit: hearts
   description: "Causes the dreamer to dream his own death; if the dreamer is not awakened before the end of the dream, he dies, leaving no sign of how he was killed."
 ---
 name: Dream Barrier
 type: spell
-data:
+system:
   level: 8
   suit: hearts
   description: "Proofs the sorcerer against any or all of the sendings described in Megron's Realm of Dreaming, although it will not stop normal dreams."

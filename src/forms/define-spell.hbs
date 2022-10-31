@@ -1,8 +1,8 @@
 <form class="flexcol" autocomplete="off">
 	<section class="content">
     <div>
-      <b>{{spell.name}}</b> [<span class="suit-symbol-{{spell.data.data.suit}}">{{spellSuitSymbol}}</span>]<br/>
-      {{localize "castle-falkenstein.spell.thaumicLevel"}}: {{spell.data.data.level}}
+      <b>{{spell.name}}</b> [<span class="suit-symbol-{{spell.system.suit}}">{{spellSuitSymbol}}</span>]<br/>
+      {{localize "castle-falkenstein.spell.thaumicLevel"}}: {{spell.system.level}}
       <hr />
       <div class="grid-2col spell-definitions">
       {{#each spellBeingCast.definitions}}

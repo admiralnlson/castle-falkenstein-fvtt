@@ -15,32 +15,32 @@
       <div class="name" title="{{item.name}}">
         {{item.name}}
       </div>
-      <div class="range" title="{{item.data.effectiveRange}}">
-        {{item.data.effectiveRange}}
+      <div class="range" title="{{item.system.effectiveRange}}">
+        {{item.system.effectiveRange}}
       </div>
       <div class="ammunition-current" title="{{localize 'castle-falkenstein.weapon.ammunitionCurrent'}}">
-        {{#if item.data.ammunition_max}}
-          <input class="weapon-ammunition-current" name="item.data.ammunition" type="number" min="0" value="{{item.data.ammunition}}" placeholder="" />
+        {{#if item.system.ammunition_max}}
+          <input class="weapon-ammunition-current" name="item.system.ammunition" type="number" min="0" value="{{item.system.ammunition}}" placeholder="" />
         {{/if}}
       </div>
       <div class="slash">
-        {{#if item.data.ammunition_max}}
+        {{#if item.system.ammunition_max}}
 			    /
 		    {{/if}}
       </div>
       <div class="ammunition-max" title="{{localize 'castle-falkenstein.weapon.ammunitionMax'}}">
-        {{item.data.ammunition_max}}
+        {{item.system.ammunition_max}}
       </div>
       <div class="wounds-partial" title="{{localize 'castle-falkenstein.weapon.woundsPartial'}}">
-        {{item.data.woundsPartial}}
+        {{item.system.woundsPartial}}
       </div>
       <div class="slash">/</div>
       <div class="wounds-full" title="{{localize 'castle-falkenstein.weapon.woundsFull'}}">
-        {{item.data.woundsFull}}
+        {{item.system.woundsFull}}
       </div>
       <div class="slash">/</div>
       <div class="wounds-high" title="{{localize 'castle-falkenstein.weapon.woundsHigh'}}">
-        {{item.data.woundsHigh}}
+        {{item.system.woundsHigh}}
       </div>
       <div class="item-controls">
         <a class="item-control item-show" title="{{localize 'castle-falkenstein.item.showOthers'}} - {{localize 'castle-falkenstein.weapon.weapon'}}"><i class="fas fa-eye"></i></a>

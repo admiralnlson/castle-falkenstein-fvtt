@@ -134,7 +134,7 @@ export default class CastleFalkensteinMonarchConfig {
         // Post message to chat
         const flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.hand.gatherPower")}]`;
         const spell = actor.items.get(hand.spellBeingCast.actorItemId);
-        const correctSuit = (card.data.suit == spell.data.data.suit || card.data.suit == 'joker') ? 'correct-suit' : '';
+        const correctSuit = (card.suit == spell.system.suit || card.suit == 'joker') ? 'correct-suit' : '';
         const content = `<div class="cards-drawn">${CastleFalkenstein.smallCardImg(card, `card-played ${correctSuit}`)}</div>`;
         CastleFalkenstein.createChatMessage(actor, flavor, content);
       }
@@ -201,13 +201,13 @@ export default class CastleFalkensteinMonarchConfig {
         // Post message to chat
         let flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.hand.castSpell")}]`;
 
-        const suitSymbol = CASTLE_FALKENSTEIN.cardSuitsSymbols[spell.data.data.suit];
-        let content = `<b>${spell.name}</b> [<span class="suit-symbol-${spell.data.data.suit}">${suitSymbol}</span>]<hr/><div class="cards-played">`;
+        const suitSymbol = CASTLE_FALKENSTEIN.cardSuitsSymbols[spell.system.suit];
+        let content = `<b>${spell.name}</b> [<span class="suit-symbol-${spell.system.suit}">${suitSymbol}</span>]<hr/><div class="cards-played">`;
 
         if (hand.cards.contents.length > 0) {
           hand.cards.contents.forEach(card => {
             // FIXME code duplication
-            const correctSuit = (card.data.suit == spell.data.data.suit || card.data.suit == 'joker') ? 'correct-suit' : '';
+            const correctSuit = (card.suit == spell.system.suit || card.suit == 'joker') ? 'correct-suit' : '';
             content += CastleFalkenstein.smallCardImg(card,`card-played ${correctSuit}`);
           });
         } else {
@@ -265,11 +265,11 @@ export default class CastleFalkensteinMonarchConfig {
 
   static onCardClick(event, app, card) {
 
-    if (app.document?.data?.type == "hand") {
+    if (app.document?.type == "hand") {
       // Replace Monarch's default behaviour (open card sheet) with Monarch's ' magnify option directly.
       const popout = new ImagePopout(card.img, {
-        title: card.data.name,
-        uuid: card.data.uuid,
+        title: card.name,
+        uuid: card.uuid,
         shareable: true,
         editable: true
       }).render(true, { focus: true });

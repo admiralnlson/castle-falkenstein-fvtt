@@ -34,24 +34,6 @@ class Socketlib {
 		this.errors = errors;
 	}
 
-	registerModule(moduleName) {
-		const existingSocket = this.modules.get(moduleName);
-		if (existingSocket)
-			return existingSocket;
-		const module = game.modules.get(moduleName);
-		if (!module?.active) {
-			console.error(`socketlib | Someone tried to register module '${moduleName}', but no module with that name is active. As a result the registration request has been ignored.`);
-			return undefined;
-		}
-		if (!module.data.socket) {
-			console.error(`socketlib | Failed to register socket for module '${moduleName}'. Please set '"socket":true' in your manifset and restart foundry (you need to reload your world - simply reloading your browser won't do).`);
-			return undefined;
-		}
-		const newSocket = new SocketlibSocket(moduleName, "module");
-		this.modules.set(moduleName, newSocket);
-		return newSocket;
-	}
-
 	registerSystem(systemId) {
 		if (game.system.id !== systemId) {
 			console.error(`socketlib | Someone tried to register system '${systemId}', but that system isn't active. As a result the registration request has been ignored.`);
@@ -60,7 +42,7 @@ class Socketlib {
 		const existingSocket = this.system;
 		if (existingSocket)
 			return existingSocket;
-		if (!game.system.data.socket) {
+		if (!game.system.socket) {
 			console.error(`socketlib | Failed to register socket for system '${systemId}'. Please set '"socket":true' in your manifest and restart foundry (you need to reload your world - simply reloading your browser won't do).`);
 		}
 		const newSocket = new SocketlibSocket(systemId, "system");
@@ -312,7 +294,7 @@ function isResponsibleGM() {
 	if (!game.user.isGM)
 		return false;
 	const connectedGMs = game.users.filter(isActiveGM);
-	return !connectedGMs.some(other => other.data._id < game.user.data._id);
+	return !connectedGMs.some(other => other.id < game.user.id);
 }
 
 function isActiveGM(user) {

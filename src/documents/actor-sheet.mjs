@@ -45,21 +45,17 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
 	}
 
   /** @override */
-  getData() {
+  async getData(options) {
     // Retrieve the data structure from the base sheet.
-    const context = super.getData();
+    const context = super.getData(options);
 
-    // Use a safe clone of the actor data for further operations.
-    const actorData = this.actor.data.toObject(false);
-
-    // Add the actor's data to context.data for easier access, as well as flags.
-    context.data = actorData.data;
-    context.flags = actorData.flags;
+    // Add the actor's system data to context.system for easier access
+    context.system = context.actor.system;
+    context.enrichedDescription = await TextEditor.enrichHTML(context.system.description, {async: true});
+    context.enrichedDiary = await TextEditor.enrichHTML(context.system.diary, {async: true});
+    context.enrichedHostNotes = await TextEditor.enrichHTML(context.system.hostNotes, {async: true});
 
     this._prepareItems(context);
-
-    // Add roll data for TinyMCE editors.
-    context.rollData = context.actor.getRollData();
 
     // Conditionals
     context.userHasObserverOrOwnerAccess = game.user.isGM || (this.actor.visible && !this.actor.limited);
@@ -86,9 +82,10 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
     for (let i of context.items) {
       // Append to abilities.
       if (i.type === 'ability') {
-        i.data.levelI18nKey = CASTLE_FALKENSTEIN.abilityLevels[i.data.level].full;
-        i.data.levelValue = CASTLE_FALKENSTEIN.abilityLevels[i.data.level].value;
-        i.data.suitSymbol = CASTLE_FALKENSTEIN.cardSuitsSymbols[i.data.suit];
+        i.computed = i.computed || {};
+        i.computed.levelI18nKey = CASTLE_FALKENSTEIN.abilityLevels[i.system.level].full;
+        i.computed.levelValue = CASTLE_FALKENSTEIN.abilityLevels[i.system.level].value;
+        i.computed.suitSymbol = CASTLE_FALKENSTEIN.cardSuitsSymbols[i.system.suit];
         abilities.push(i);
       }
       // Append to weapons.
@@ -101,7 +98,8 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
       }
       // Append to spells.
       else if (i.type === 'spell') {
-        i.data.suitSymbol = CASTLE_FALKENSTEIN.cardSuitsSymbols[i.data.suit];
+        i.computed = i.computed || {};
+        i.computed.suitSymbol = CASTLE_FALKENSTEIN.cardSuitsSymbols[i.system.suit];
         spells.push(i);
       }
     }
@@ -112,8 +110,6 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
     context.possessions = possessions;
     context.spells = spells;
   }
-
-  /* -------------------------------------------- */
 
   /** @override */
   activateListeners(html) {
@@ -164,7 +160,7 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
       const li = $(ev.currentTarget).parents(".item");
       const item = this.actor.items.get(li.data("itemId"));
       item.update({
-        [`data.ammunition`]: ev.currentTarget.value 
+        [`system.ammunition`]: ev.currentTarget.value 
       });
     });
   }
@@ -176,39 +172,6 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
     event.dataTransfer.setDragImage(event.target.parentElement, 0, 0);
   }
   
-  // remove this override when v9 is no longer supported by the system
-  _onSortItem(event, itemData) {
-    // Override only until v10 which fixes https://github.com/foundryvtt/foundryvtt/issues/7130
-    if (game.release.generation >= 10) {
-      return super._onSortItem(event, itemData);
-    }
-
-    // Get the drag source and its siblings
-    const source = this.actor.items.get(itemData._id);
-    const siblings = this.actor.items.filter(i => {
-      return (i.data.type === source.data.type) && (i.data._id !== source.data._id);
-    });
-
-    // Get the drop target
-    const dropTarget = event.target.closest("[data-item-id]");
-    const targetId = dropTarget ? dropTarget.dataset.itemId : null;
-    const target = siblings.find(s => s.data._id === targetId);
-
-    // Ensure we are only sorting like-types
-    if (!target || (source.data.type !== target.data.type)) return;
-
-    // Perform the sort
-    const sortUpdates = SortingHelpers.performIntegerSort(source, {target: target, siblings, sortBefore: (source.data.sort > target.data.sort)});
-    const updateData = sortUpdates.map(u => {
-      const update = u.update;
-      update._id = u.target.data._id;
-      return update;
-    });
-
-    // Perform the update
-    return this.actor.updateEmbeddedDocuments("Item", updateData);
-  }
-
   /**
    * Handle creating a new Owned Item for the actor using initial data defined in the HTML dataset
    * @param {Event} event   The originating click event
@@ -219,18 +182,13 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
     const header = event.currentTarget;
     // Get the type of item to create.
     const type = header.dataset.type;
-    // Grab any data associated with this control.
-    const data = duplicate(header.dataset);
     // Initialize a default name.
     const name = `New ${type.capitalize()}`;
     // Prepare the item object.
     const itemData = {
       name: name,
-      type: type,
-      data: data
+      type: type
     };
-    // Remove the type from the dataset since it's in the itemData.type prop.
-    delete itemData.data["type"];
 
     // Finally, create the item!
     return await Item.create(itemData, {parent: this.actor});

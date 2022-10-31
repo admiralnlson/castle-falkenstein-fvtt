@@ -1,13 +1,13 @@
 name: Illusions of the Mind & Body
 type: spell
-data:
+system:
   level: 6
   suit: hearts
   description: "Imparts illusions with Sight, Sound, Touch, Smell, and Taste. The Definitions of this Lore encompass the complexity and duration of the Illusion, whether it encompasses multiple parts or is of one thing, whether the description of what you want to create is vague or unknown to you, whether the illusion will be mobile and the number and type of subjects the illusion is to be viewed by."
 ---
 name: True Vision
 type: spell
-data:
+system:
   level: 6
   suit: hearts
   description: "Instantly dispels any and all of the illusions described in Agrivicca Rexus' Realm of Illusion."

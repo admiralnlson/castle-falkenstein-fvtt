@@ -4,15 +4,16 @@
 + MoSCoW: `[M]`ust, `[S]`hould, `[C]`ould, `[W]`on't
 + `[🔥]` Project maintainer (admiralnlson)'s own GM needs
 
-## `[M]` Core version compatibility
+## `[M]` Bugs
 
-  + Core v9 => CFv1.x
-  + Core v10 => CFv2.x
-    + declare CF settings as not requiring a reload
+  + Created items do not get added at the end of the list
 
 ## Feature evolutions
 
-### Explicit user requests
++ `[?]` deplete Host or character hands before changing the Fortune discard pile (maybe ask for confirmation first)
++ `[C🔥]` Add "Damage" to Spell Definition (Comme Il Faut (FR), p154)
+
+### User requests
 
 | User           | Request |
 |----------------|:--------|

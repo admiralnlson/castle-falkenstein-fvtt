@@ -1,34 +1,34 @@
 name: Raise the Storm
 type: spell
-data:
+system:
   level: 6
   suit: clubs
   description: "Causes mighty storms or to hurl rain and lightning at a foe. The level of devastation caused must be determined by the Definition of the spell."
 ---
 name: Raise the Maelstrom
 type: spell
-data:
+system:
   level: 8 
   suit: clubs
   description: "Creates tidal waves, floods and gouts of water to be hurled from the sorcerer's hands. The level of devastation caused must be determined by the Definition of the spell."
 ---
 name: Shake the Earth
 type: spell
-data:
+system:
   level: 8 
   suit: clubs
   description: "Creates earthquakes. The level of devastation caused must be determined by the Definition of the spell."
 ---
 name: Raise the Firestorm
 type: spell
-data:
+system:
   level: 8 
   suit: clubs
   description: "Causes forest and prairie fires, unless focused to a single blast of flame. The level of devastation caused must be determined by the Definition of the spell."
 ---
 name: Quell Nature
 type: spell
-data:
+system:
   level: 8 
   suit: clubs
   description: "Instantly stops any or all of the Forces described in Burton's On the Raised Forces of Nature."

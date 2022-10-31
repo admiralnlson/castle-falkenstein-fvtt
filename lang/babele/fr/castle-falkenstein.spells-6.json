@@ -1,7 +1,7 @@
 {
   "label": "Livre occulte - Le Livre de la transformation mystique",
   "mapping": {
-    "description": "data.description"
+    "description": "system.description"
   },
   "entries": {
     "Change Size": {

@@ -1,7 +1,7 @@
 {
   "label": "Livre occulte - Le Grimoire d'Osman sur le mouvement physique",
   "mapping": {
-    "description": "data.description"
+    "description": "system.description"
   },
   "entries": {
     "Floors of Glass": {

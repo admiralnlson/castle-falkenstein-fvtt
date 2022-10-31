@@ -1,7 +1,7 @@
 export const CASTLE_FALKENSTEIN = {};
 
 /**
- * The set of Abilities  used within the sytem.
+ * The set of Abilities  used within the system.
  * @type {Object}
  */
  CASTLE_FALKENSTEIN.abilityLevels = {
@@ -43,7 +43,7 @@ CASTLE_FALKENSTEIN.abilityValues = Object.fromEntries(Object.entries(CASTLE_FALK
 
 
 /**
- * The set of card suits used within the sytem.
+ * The set of card suits used within the system.
  * @type {Object}
  */
  CASTLE_FALKENSTEIN.cardSuits = {

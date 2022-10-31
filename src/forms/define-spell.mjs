@@ -37,7 +37,7 @@ export default class CastleFalkensteinDefineSpell extends FormApplication {
   }
   
   computeTotal() {
-    let total = this.spell.data.data.level - CASTLE_FALKENSTEIN.abilityLevels[this.character.sorceryAbility.data.data.level].value;
+    let total = this.spell.system.level - CASTLE_FALKENSTEIN.abilityLevels[this.character.sorceryAbility.system.level].value;
 
     for (const [key, value] of Object.entries(this.spellBeingCast.definitions)) {
       total += value;
@@ -53,7 +53,7 @@ export default class CastleFalkensteinDefineSpell extends FormApplication {
     return {
       sorceryLevelAsSentenceHtml: CastleFalkenstein.abilityLevelAsSentenceHtml(this.character.sorceryAbility, false),
       spell: this.spell,
-      spellSuitSymbol: CASTLE_FALKENSTEIN.cardSuitsSymbols[this.spell.data.data.suit],
+      spellSuitSymbol: CASTLE_FALKENSTEIN.cardSuitsSymbols[this.spell.system.suit],
       spellBeingCast: this.spellBeingCast,
       spellDefinitions: CASTLE_FALKENSTEIN.spellDefinitions,
       total: this.computeTotal()
@@ -69,7 +69,7 @@ export default class CastleFalkensteinDefineSpell extends FormApplication {
 
   _onSelectChange(event) {
     this.spellBeingCast.definitions[event.currentTarget.name] = parseInt(event.currentTarget.value);
-    this.render(); // rerenders the FormApp with the new data.
+    this.render();
   }
 
   /**
@@ -81,14 +81,11 @@ export default class CastleFalkensteinDefineSpell extends FormApplication {
     // produce chat message
     //
 
-    // Initialize chat data.
-    const speaker = ChatMessage.getSpeaker({ actor: this.character });
-    const rollMode = game.settings.get('core', 'rollMode');
     const flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.defineSpell")}]`;
 
-    const suitSymbol = CASTLE_FALKENSTEIN.cardSuitsSymbols[this.spell.data.data.suit];
-    let content = `<b>${this.spell.name}</b> [<span class="suit-symbol-${this.spell.data.data.suit}">${suitSymbol}</span>]<br/>`;
-    content += `${game.i18n.localize("castle-falkenstein.spell.thaumicLevel")}: ${this.spell.data.data.level}`;
+    const suitSymbol = CASTLE_FALKENSTEIN.cardSuitsSymbols[this.spell.system.suit];
+    let content = `<b>${this.spell.name}</b> [<span class="suit-symbol-${this.spell.system.suit}">${suitSymbol}</span>]<br/>`;
+    content += `${game.i18n.localize("castle-falkenstein.spell.thaumicLevel")}: ${this.spell.system.level}`;
     content += '<hr/><div class="spell-definitions">';
 
     for (const [key, value] of Object.entries(CASTLE_FALKENSTEIN.spellDefinitions)) {
@@ -104,12 +101,7 @@ export default class CastleFalkensteinDefineSpell extends FormApplication {
     await hand.defineSpell(this.spellBeingCast);
 
     // Post message to chat
-    ChatMessage.create({
-      speaker: speaker,
-      rollMode: rollMode,
-      flavor: flavor,
-      content: content
-    });
+    CastleFalkenstein.createChatMessage(this.character, flavor, content);
 
     // rerenders the FormApp with the new data (will disappear soon though)
     this.render();

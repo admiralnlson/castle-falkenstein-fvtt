@@ -1,7 +1,7 @@
 {
   "label": "Livre occulte - Le Royaume des illusions d'Agrivicca Rexus",
   "mapping": {
-    "description": "data.description"
+    "description": "system.description"
   },
   "entries": {
     "Illusions of the Mind & Body": {

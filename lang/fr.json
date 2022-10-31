@@ -3,8 +3,8 @@
     "system": "Château Falkenstein",
 
     "settings": {
-      "name": "Paramètres du système",
-      "label": "Paramétrer le système Château Falkenstein",
+      "name": "Paramètres du monde (Hôte seulement)",
+      "label": "Paramétrer le monde",
       "fortuneDeck": {
         "name": "Jeu du destin",
         "hint": "Le paquet de cartes faisant office de Jeu du destin."

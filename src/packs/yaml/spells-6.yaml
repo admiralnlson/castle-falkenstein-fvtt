@@ -1,34 +1,34 @@
 name: Change Size
 type: spell
-data:
+system:
   level: 12
   suit: diamonds
   description: "Alters the size of any living subject from that of an ant to elephant-sized."
 ---
 name: Shape of a Known Form
 type: spell
-data:
+system:
   level: 6
   suit: diamonds
   description: "Gives the subject the shape of any living form personally known to the Adept."
 ---
 name: Invest with Powers of a Known Form
 type: spell
-data:
+system:
   level: 12
   suit: diamonds
   description: "Invests the subject with the powers or inherent abilities of any living form personally known to the Adept."
 ---
 name: Shape of the Unknown Form
 type: spell
-data:
+system:
   level: 16
   suit: diamonds
   description: "Gives the subject the shape of things not personally known to the Adept, as long as a detailed description (an accurate drawing or picture) is in their possession."
 ---
 name: Transformation Barrier
 type: spell
-data:
+system:
   level: 8
   suit: diamonds
   description: "Stops any or all of the changes described in Libram of Mystic Transformation, as long as the spell is cast before the transformation has begun."

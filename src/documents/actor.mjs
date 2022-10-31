@@ -48,7 +48,7 @@ export class CastleFalkensteinActor extends Actor {
           // No need for a socket here.
           // Whoever updated permissions on the the Actor is expected to have permission to update them on the Hand also (with default role permissions at least, they should).
           await hand.update({
-            permission: this.data.permission
+            ownership: this.ownership
           });
         }
       });
@@ -98,12 +98,12 @@ export class CastleFalkensteinActor extends Actor {
   async performFeat(item) {
     if (!this.isOwner) return;
  
-    if (item.data.type != 'ability') {
+    if (item.type != 'ability') {
       CastleFalkenstein.consoleError("Trying to perform a feat with non-ability item.");
       return;
     }
 
-    if (!CASTLE_FALKENSTEIN.validNonJokerCardSuits.includes(item.data.data.suit)) {
+    if (!CASTLE_FALKENSTEIN.validNonJokerCardSuits.includes(item.system.suit)) {
       ui.notifications.error(game.i18n.localize("castle-falkenstein.notifications.abilityInvalidSuit"));
       return;
     }
@@ -127,14 +127,12 @@ export class CastleFalkensteinActor extends Actor {
   async defineSpell(item) {
     if (!this.isOwner) return;
 
-    const itemData = item.data;
-
-    if (itemData.type != 'spell') {
+    if (item.type != 'spell') {
       CastleFalkenstein.consoleError("Trying to cast a spell from non-spell item.");
       return;
     }
 
-    if (!CASTLE_FALKENSTEIN.validNonJokerCardSuits.includes(item.data.data.suit)) {
+    if (!CASTLE_FALKENSTEIN.validNonJokerCardSuits.includes(item.system.suit)) {
       ui.notifications.error(game.i18n.localize("castle-falkenstein.notifications.spellInvalidAspect"));
       return;
     }

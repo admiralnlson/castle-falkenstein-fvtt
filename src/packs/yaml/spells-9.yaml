@@ -1,20 +1,20 @@
 name: Time Cessation
 type: spell
-data:
+system:
   level: 10
   suit: spades
   description: "Time around the caster stops."
 ---
 name: Time Acceleration/Slowing
 type: spell
-data:
+system:
   level: 12
   suit: spades
   description: "Time is speeded up/slowed by a factor of four for all but the caster."
 ---
 name: Temporal Fugue
 type: spell
-data:
+system:
   level: 12
   suit: spades
   description: "Allows to return to a single period of time (up to four times, for only 1 minute) to perform a task, in such a way that it appears that many copies of him are performing many things at once."

@@ -1,7 +1,7 @@
 {
   "label": "Livre occulte - Le Soulèvement des forces de la nature",
   "mapping": {
-    "description": "data.description"
+    "description": "system.description"
   },
   "entries": {
     "Quell Nature": {
