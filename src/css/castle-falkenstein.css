@@ -103,11 +103,6 @@
   margin: 0;
 }
 
-.castle-falkenstein .tab-link {
-  margin-left: 1px;
-  margin-right: 1px;
-}
-
 .castle-falkenstein .resource {
   width: 50%;
   height: 40px;
@@ -122,10 +117,16 @@
 }
 
 .castle-falkenstein .tabs {
-  flex: 0 0 30px;
+  flex: 0 0 25px;
   flex-wrap: wrap;
   border-top: 1px solid #AAA;
   border-bottom: 1px solid #AAA;
+}
+
+.castle-falkenstein .tab-link {
+  line-height: 25px;
+  margin-left: 3px;
+  margin-right: 3px;
 }
 
 .castle-falkenstein .tabs .item {
