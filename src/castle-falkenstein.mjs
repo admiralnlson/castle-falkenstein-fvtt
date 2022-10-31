@@ -54,6 +54,7 @@ export default class CastleFalkenstein {
   static get settingDefinitions() {
 
     const cardStackSelect = (stackType) => { return {
+      scope: "world",
       type: String,
       default: "",
       getChoices: () => ({
@@ -73,10 +74,12 @@ export default class CastleFalkenstein {
       sorceryDeck: cardStackSelect("deck"),
       sorceryDiscardPile: cardStackSelect("pile"),
       sorceryAbility: {
+        scope: "world",
         type: String,
-        "default": ""
+        default: ""
       }
       // Player settings
+      //,
     };
   }
 
@@ -148,9 +151,9 @@ export default class CastleFalkenstein {
 
     // Does the folder already exist?
     const existingFolder = game.folders.find(f => {
-        if( f.data.type != "Cards" ) { return false; } 
+        if( f.type != "Cards" ) { return false; } 
         
-        const flag = f.data.flags['castle-falkenstein'] ?? {};
+        const flag = f.flags['castle-falkenstein'] ?? {};
         return flag?.type == folderFlag.type;
     });
 
@@ -174,8 +177,8 @@ export default class CastleFalkenstein {
     // change the deck name to match its actual type and 
     // add Limited permission on the Dec so that plays may draw from it but not see its contents.
     deckData.name = game.i18n.localize(`castle-falkenstein.settings.${type}Deck.name`);
-    deckData.permission = deckData.permission || {};
-    deckData.permission.default = CONST.DOCUMENT_PERMISSION_LEVELS.LIMITED;
+    deckData.ownership = deckData.ownership || {};
+    deckData.ownership.default = CONST.DOCUMENT_OWNERSHIP_LEVELS.LIMITED;
     deckData.folder = (await this.cardsFolder("decks-and-piles", game.i18n.localize("castle-falkenstein.cardsDirectory.decksAndPilesFolder"))).id;
     deckData.flags[this.id] = {
       type: type
@@ -209,7 +212,7 @@ export default class CastleFalkenstein {
       name: game.i18n.localize(`castle-falkenstein.settings.${type}DiscardPile.name`),
       type: "pile",
       folder: (await this.cardsFolder("decks-and-piles", game.i18n.localize("castle-falkenstein.cardsDirectory.decksAndPilesFolder"))).id,
-      permission: {
+      ownership: {
         default: CONST.DOCUMENT_PERMISSION_LEVELS.OBSERVER
       },
       "flags.castle-falkenstein": { type: type }
@@ -387,7 +390,7 @@ export default class CastleFalkenstein {
         type: "hand",
         name: actor.computeHandName(handType),
         displayCount: true,
-        permission: actor.data.permission, // hands inherit the permissions from the actor they belong to
+        ownership: actor.ownership, // hands inherit the ownership from the actor they belong to
         folder: (await CastleFalkenstein.cardsFolder("character-hands", game.i18n.localize("castle-falkenstein.cardsDirectory.characterHandsFolder"))).id,
         "flags.castle-falkenstein": { type: handType, actor: actor.id }
       };
@@ -404,20 +407,20 @@ export default class CastleFalkenstein {
   }
 
   static smallCardImg(card, classes) {
-    const suit = card.data.suit;
-    const value = card.data.suit == "joker" ? (card.name == "Black Joker" ? "black" : "red") : card.data.value;
+    const suit = card.suit;
+    const value = card.suit == "joker" ? (card.name == "Black Joker" ? "black" : "red") : card.value;
     return `<img class="${classes}" src="systems/castle-falkenstein/src/cards/small/${suit}-${value}.svg" alt="${card.name}" title="${card.name}"></img>`;
   }
 
   static abilityLevelAsSentenceHtml(abilityItem, includeAbilitySuit = true) {
-    const levelI18nKey = game.i18n.localize(CASTLE_FALKENSTEIN.abilityLevels[abilityItem.data.data.level].full);
-    const levelValue = CASTLE_FALKENSTEIN.abilityLevels[abilityItem.data.data.level].value;
-    const suitSymbol = CASTLE_FALKENSTEIN.cardSuitsSymbols[abilityItem.data.data.suit];
+    const levelI18nKey = game.i18n.localize(CASTLE_FALKENSTEIN.abilityLevels[abilityItem.system.level].full);
+    const levelValue = CASTLE_FALKENSTEIN.abilityLevels[abilityItem.system.level].value;
+    const suitSymbol = CASTLE_FALKENSTEIN.cardSuitsSymbols[abilityItem.system.suit];
 
     const level = `${game.i18n.localize(levelI18nKey)} [${levelValue}]`;
     let ability = `${abilityItem.name}`;
     if (includeAbilitySuit)
-      ability += ` [<span class="suit-symbol-${abilityItem.data.data.suit}">${suitSymbol}</span>]`;
+      ability += ` [<span class="suit-symbol-${abilityItem.system.suit}">${suitSymbol}</span>]`;
 
     const html = game.i18n.format("castle-falkenstein.ability.levelAsSentence", {
       level: level,
@@ -431,6 +434,7 @@ export default class CastleFalkenstein {
     ChatMessage.create({
       speaker: ChatMessage.getSpeaker({ actor: actor }),
       rollMode: game.settings.get('core', 'rollMode'),
+      type: CONST.CHAT_MESSAGE_TYPES.OOC,
       flavor: flavor,
       content: content,
       "flags.castle-falkenstein": { type: flavor }
@@ -540,21 +544,35 @@ export default class CastleFalkenstein {
   }
 
   static registerSettings() {
-    Object.entries(this.settingDefinitions).forEach(([key, def]) => {
+
+    // world settings
+
+    Object.entries(this.settingDefinitions).filter(([key, def]) => def.scope == "world").forEach(([key, def]) => {
       game.settings.register(this.id, key, {
         ...def,
-        scope: def.scope ?? "world",
         config: false,
         name: `castle-falkenstein.settings.${key}.name`,
         hint: `castle-falkenstein.settings.${key}.hint`
       });
-    })
+    });
 
     game.settings.registerMenu(this.id, 'settingsMenu', {
       name: game.i18n.localize("castle-falkenstein.settings.name"),
       icon: "fas fa-bars",
       label: game.i18n.localize("castle-falkenstein.settings.label"),
       type: CastleFalkensteinSettings,
+      restricted: true
+    });
+
+    // local settings
+    
+    Object.entries(this.settingDefinitions).filter(([key, def]) => def.scope == "client").forEach(([key, def]) => {
+      game.settings.register(this.id, key, {
+        ...def,
+        config: true,
+        name: `castle-falkenstein.settings.${key}.name`,
+        hint: `castle-falkenstein.settings.${key}.hint`
+      });
     });
   }
 
@@ -602,13 +620,7 @@ export default class CastleFalkenstein {
     CastleFalkensteinPerformFeat.onRenderChatMessage(chatMessage, html, messageData);
   }
 
-  static async hotbarDrop(hotbar, data, slot) {
-    // Create a Macro from an Item drop.
-    // Get an existing item macro if one exists, otherwise create a new one.
-    if (data.type !== "Item") return;
-    if (!("data" in data)) return ui.notifications.warn("macroForOwnedItems");
-    const item = data.data;
-
+  static async addItemMacroAtHotbarSlot(item, slot) {
     // Create the macro command
     const command = `game.CastleFalkenstein.rollItemMacro("${item.type}", "${item.name}");`;
     let macro = game.macros.find(m => (m.name === item.name) && (m.command === command));
@@ -622,6 +634,21 @@ export default class CastleFalkenstein {
       });
     }
     game.user.assignHotbarMacro(macro, slot);
+  }
+
+  static hotbarDrop(hotbar, data, slot) {
+    // Create a Macro from an Item drop.
+    // Get an existing item macro if one exists, otherwise create a new one.
+    if (data.type !== "Item") return;
+    if (!data.uuid) return;
+    const uuidParts = data.uuid.split(".");
+    if (uuidParts.length != 4 || uuidParts[0] != "Actor" || uuidParts[2] != "Item") return;
+    const actor = game.actors.get(uuidParts[1]);
+    if (!actor) return;
+    const item = actor.items.get(uuidParts[3]);
+    if (!item) return;
+
+    CastleFalkenstein.addItemMacroAtHotbarSlot(item, slot);
     return false;
   }
   
@@ -657,7 +684,7 @@ Hooks.once("ready", () => CastleFalkenstein.onReady());
 
 Hooks.on("renderChatMessage", (chatMessage, html, messageData) => CastleFalkenstein.onRenderChatMessage(chatMessage, html, messageData));
 
-Hooks.on("hotbarDrop", (hotbar, data, slot) => CastleFalkenstein.hotbarDrop(hotbar, data, slot));
+Hooks.on("hotbarDrop", (hotbar, data, slot) => {return CastleFalkenstein.hotbarDrop(hotbar, data, slot) });
 
 Hooks.on("returnCards", (stack, returned, context) => CastleFalkenstein.onReturnCards(stack, returned, context));
 
