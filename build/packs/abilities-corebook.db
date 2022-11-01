@@ -1,22 +1,22 @@
-{"name":"Athletics","type":"ability","data":{"suit":"clubs","level":"AV"},"img":"systems/castle-falkenstein/src/cards/clubs.svg","_id":"50bfd019c5a54001","sort":1}
-{"name":"Charisma","type":"ability","data":{"suit":"hearts","level":"AV"},"img":"systems/castle-falkenstein/src/cards/hearts.svg","_id":"50bfd019c5a54002","sort":2}
-{"name":"Comeliness","type":"ability","data":{"suit":"hearts","level":"AV"},"img":"systems/castle-falkenstein/src/cards/hearts.svg","_id":"50bfd019c5a54003","sort":3}
-{"name":"Connections","type":"ability","data":{"suit":"spades","level":"AV"},"img":"systems/castle-falkenstein/src/cards/spades.svg","_id":"50bfd019c5a54004","sort":4}
-{"name":"Courage","type":"ability","data":{"suit":"hearts","level":"AV"},"img":"systems/castle-falkenstein/src/cards/hearts.svg","_id":"50bfd019c5a54005","sort":5}
-{"name":"Education","type":"ability","data":{"suit":"diamonds","level":"AV"},"img":"systems/castle-falkenstein/src/cards/diamonds.svg","_id":"50bfd019c5a54006","sort":6}
-{"name":"Etherealness","type":"ability","data":{"suit":"spades","level":"AV"},"img":"systems/castle-falkenstein/src/cards/spades.svg","_id":"50bfd019c5a54007","sort":7}
-{"name":"Exchequer","type":"ability","data":{"suit":"spades","level":"AV"},"img":"systems/castle-falkenstein/src/cards/spades.svg","_id":"50bfd019c5a54008","sort":8}
-{"name":"Fencing","type":"ability","data":{"suit":"clubs","level":"AV"},"img":"systems/castle-falkenstein/src/cards/clubs.svg","_id":"50bfd019c5a54009","sort":9}
-{"name":"Fisticuffs","type":"ability","data":{"suit":"clubs","level":"AV"},"img":"systems/castle-falkenstein/src/cards/clubs.svg","_id":"50bfd019c5a54010","sort":10}
-{"name":"Glamour","type":"ability","data":{"suit":"hearts","level":"AV"},"img":"systems/castle-falkenstein/src/cards/hearts.svg","_id":"50bfd019c5a54011","sort":11}
-{"name":"Kindred Powers","type":"ability","data":{"suit":"clubs","level":"AV"},"img":"systems/castle-falkenstein/src/cards/clubs.svg","_id":"50bfd019c5a54012","sort":12}
-{"name":"Marksmanship","type":"ability","data":{"suit":"clubs","level":"AV"},"img":"systems/castle-falkenstein/src/cards/clubs.svg","_id":"50bfd019c5a54013","sort":13}
-{"name":"Perception","type":"ability","data":{"suit":"diamonds","level":"AV"},"img":"systems/castle-falkenstein/src/cards/diamonds.svg","_id":"50bfd019c5a54014","sort":14}
-{"name":"Performance","type":"ability","data":{"suit":"hearts","level":"AV"},"img":"systems/castle-falkenstein/src/cards/hearts.svg","_id":"50bfd019c5a54015","sort":15}
-{"name":"Physician","type":"ability","data":{"suit":"diamonds","level":"AV"},"img":"systems/castle-falkenstein/src/cards/diamonds.svg","_id":"50bfd019c5a54016","sort":16}
-{"name":"Physique","type":"ability","data":{"suit":"clubs","level":"AV"},"img":"systems/castle-falkenstein/src/cards/clubs.svg","_id":"50bfd019c5a54017","sort":17}
-{"name":"Social Graces","type":"ability","data":{"suit":"spades","level":"AV"},"img":"systems/castle-falkenstein/src/cards/spades.svg","_id":"50bfd019c5a54018","sort":18}
-{"name":"Sorcery","type":"ability","data":{"suit":"diamonds","level":"AV"},"img":"systems/castle-falkenstein/src/cards/diamonds.svg","_id":"50bfd019c5a54019","sort":19}
-{"name":"Stealth","type":"ability","data":{"suit":"clubs","level":"AV"},"img":"systems/castle-falkenstein/src/cards/clubs.svg","_id":"50bfd019c5a54020","sort":20}
-{"name":"Tinkering","type":"ability","data":{"suit":"diamonds","level":"AV"},"img":"systems/castle-falkenstein/src/cards/diamonds.svg","_id":"50bfd019c5a54021","sort":21}
-{"name":"Helmsmanship","type":"ability","data":{"suit":"diamonds","level":"AV"},"img":"systems/castle-falkenstein/src/cards/diamonds.svg","_id":"50bfd019c5a54022","sort":22}
+{"name":"Athletics","type":"ability","system":{"suit":"clubs","level":"AV"},"img":"systems/castle-falkenstein/src/cards/clubs.svg","_id":"50bfd019c5a54001","sort":1}
+{"name":"Charisma","type":"ability","system":{"suit":"hearts","level":"AV"},"img":"systems/castle-falkenstein/src/cards/hearts.svg","_id":"50bfd019c5a54002","sort":2}
+{"name":"Comeliness","type":"ability","system":{"suit":"hearts","level":"AV"},"img":"systems/castle-falkenstein/src/cards/hearts.svg","_id":"50bfd019c5a54003","sort":3}
+{"name":"Connections","type":"ability","system":{"suit":"spades","level":"AV"},"img":"systems/castle-falkenstein/src/cards/spades.svg","_id":"50bfd019c5a54004","sort":4}
+{"name":"Courage","type":"ability","system":{"suit":"hearts","level":"AV"},"img":"systems/castle-falkenstein/src/cards/hearts.svg","_id":"50bfd019c5a54005","sort":5}
+{"name":"Education","type":"ability","system":{"suit":"diamonds","level":"AV"},"img":"systems/castle-falkenstein/src/cards/diamonds.svg","_id":"50bfd019c5a54006","sort":6}
+{"name":"Etherealness","type":"ability","system":{"suit":"spades","level":"AV"},"img":"systems/castle-falkenstein/src/cards/spades.svg","_id":"50bfd019c5a54007","sort":7}
+{"name":"Exchequer","type":"ability","system":{"suit":"spades","level":"AV"},"img":"systems/castle-falkenstein/src/cards/spades.svg","_id":"50bfd019c5a54008","sort":8}
+{"name":"Fencing","type":"ability","system":{"suit":"clubs","level":"AV"},"img":"systems/castle-falkenstein/src/cards/clubs.svg","_id":"50bfd019c5a54009","sort":9}
+{"name":"Fisticuffs","type":"ability","system":{"suit":"clubs","level":"AV"},"img":"systems/castle-falkenstein/src/cards/clubs.svg","_id":"50bfd019c5a54010","sort":10}
+{"name":"Glamour","type":"ability","system":{"suit":"hearts","level":"AV"},"img":"systems/castle-falkenstein/src/cards/hearts.svg","_id":"50bfd019c5a54011","sort":11}
+{"name":"Kindred Powers","type":"ability","system":{"suit":"clubs","level":"AV"},"img":"systems/castle-falkenstein/src/cards/clubs.svg","_id":"50bfd019c5a54012","sort":12}
+{"name":"Marksmanship","type":"ability","system":{"suit":"clubs","level":"AV"},"img":"systems/castle-falkenstein/src/cards/clubs.svg","_id":"50bfd019c5a54013","sort":13}
+{"name":"Perception","type":"ability","system":{"suit":"diamonds","level":"AV"},"img":"systems/castle-falkenstein/src/cards/diamonds.svg","_id":"50bfd019c5a54014","sort":14}
+{"name":"Performance","type":"ability","system":{"suit":"hearts","level":"AV"},"img":"systems/castle-falkenstein/src/cards/hearts.svg","_id":"50bfd019c5a54015","sort":15}
+{"name":"Physician","type":"ability","system":{"suit":"diamonds","level":"AV"},"img":"systems/castle-falkenstein/src/cards/diamonds.svg","_id":"50bfd019c5a54016","sort":16}
+{"name":"Physique","type":"ability","system":{"suit":"clubs","level":"AV"},"img":"systems/castle-falkenstein/src/cards/clubs.svg","_id":"50bfd019c5a54017","sort":17}
+{"name":"Social Graces","type":"ability","system":{"suit":"spades","level":"AV"},"img":"systems/castle-falkenstein/src/cards/spades.svg","_id":"50bfd019c5a54018","sort":18}
+{"name":"Sorcery","type":"ability","system":{"suit":"diamonds","level":"AV"},"img":"systems/castle-falkenstein/src/cards/diamonds.svg","_id":"50bfd019c5a54019","sort":19}
+{"name":"Stealth","type":"ability","system":{"suit":"clubs","level":"AV"},"img":"systems/castle-falkenstein/src/cards/clubs.svg","_id":"50bfd019c5a54020","sort":20}
+{"name":"Tinkering","type":"ability","system":{"suit":"diamonds","level":"AV"},"img":"systems/castle-falkenstein/src/cards/diamonds.svg","_id":"50bfd019c5a54021","sort":21}
+{"name":"Helmsmanship","type":"ability","system":{"suit":"diamonds","level":"AV"},"img":"systems/castle-falkenstein/src/cards/diamonds.svg","_id":"50bfd019c5a54022","sort":22}

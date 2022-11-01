@@ -28,10 +28,6 @@ The system is planned to provide its own flavor for card hands. However in the m
 
 By default, the system activates 🦋Monarch sheets for **Hands** and **Cards** only. But you may enable the enhanced sheets for **Decks** and **Piles** also if you wish.
 
-| Card UI enhancement module                                               | Integration level       |
-| ------------------------------------------------------------------------ | ----------------------- |
-| [🦋 Monarch](https://foundryvtt.com/packages/monarch)                    | ✅ Fully integrated    |
-
 ## Planned evolutions
 See [TODO](./TODO.md)
 
