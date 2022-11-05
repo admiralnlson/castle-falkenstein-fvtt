@@ -3,27 +3,30 @@
     "system": "Château Falkenstein",
 
     "settings": {
-      "name": "Paramètres du monde (Hôte seulement)",
-      "label": "Paramétrer le monde",
       "fortuneDeck": {
         "name": "Jeu du destin",
-        "hint": "Le paquet de cartes faisant office de Jeu du destin."
+        "hint": "[Hôte uniquement] Le paquet de cartes faisant office de Jeu du destin."
       },
       "fortuneDiscardPile": {
         "name": "Défausse du Jeu du destin",
-        "hint": "La pile dans laquelle les cartes du Jeu du destin vont une fois jouées."
+        "hint": "[Hôte uniquement] La pile dans laquelle les cartes du Jeu du destin vont une fois jouées."
       },
       "sorceryDeck": {
         "name": "Jeu de sorcellerie",
-        "hint": "Le paquet de cartes faisant office de Jeu de sorcellerie."
+        "hint": "[Hôte uniquement] Le paquet de cartes faisant office de Jeu de sorcellerie."
       },
       "sorceryDiscardPile": {
         "name": "Défausse du Jeu de sorcellerie",
-        "hint": "La pile dans laquelle les cartes du Jeu de sorcellerie vont une fois jouées ou défaussées."
+        "hint": "[Hôte uniquement] La pile dans laquelle les cartes du Jeu de sorcellerie vont une fois jouées ou défaussées."
       },
       "sorceryAbility": {
         "name": "Nom du talent de Sorcellerie",
-        "hint": "[Optionnel] Permet d'avoir les noms de Talents des personnages dans la langue parlée par le groupe, même si celle-ci n'est pas encore officiellement supportée par le système."
+        "hint": "[Hôte uniquement] [Optionnel] Permet d'avoir les noms de Talents des personnages dans la langue parlée par le groupe, même si celle-ci n'est pas encore officiellement supportée par le système."
+      },
+      "cardsUi": {
+        "name": "Interface pour les cartes",
+        "hint": "Les joueurs peuvent individuellement sélectionner leur interface utilisateur de préférence pour les cartes à jouer.",
+        "valueDefault": "Défaut"
       }
     },
 

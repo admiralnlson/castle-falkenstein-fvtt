@@ -2,12 +2,12 @@
 
 ## [v2.0.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.0.0) - Unreleasd
 ### Changed
-- As from this version, migrating to Foundry V10 is a minimum requirement. Hosts who cannot migrate from V9 to V10 will need to keep using Castle Falkenstein v1.4.x
+- As from this version, migrating to Foundry V10 is a minimum requirement. Hosts who cannot migrate from V9 to V10 will need to keep using Castle Falkenstein v1.x
 - Character descriptions, diaries and host notes and item descriptions now make use of the ProseMirror editor (the one proposed by default in V10 journals).
 - Chat messages the system generates will now, like OOC messages, have a border of the user's selected color.
+- System settings are no longer configured in a separate window (since Foundry V10 has a dedicated tab for the system already)
 ### Fixed
 - Character items dragged onto the hotbar will now produce adequate macros again.
-- The world settings menu now only shows up for the Host.
 
 ## [v1.4.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.4.0) - 2022/08/11
 ### Added

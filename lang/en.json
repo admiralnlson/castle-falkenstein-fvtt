@@ -3,27 +3,30 @@
     "system": "Castle Falkenstein",
 
     "settings": {
-      "name": "World settings (Host only)",
-      "label": "Configure the world",
       "fortuneDeck": {
         "name": "Fortune Deck",
-        "hint": "The cards deck which represents the Fortune Deck."
+        "hint": "[Host only] The cards deck which represents the Fortune Deck."
       },
       "fortuneDiscardPile": {
         "name": "Forturne Deck discard pile",
-        "hint": "The cards pile in which Fortune Deck cards go when played."
+        "hint": "[Host only] The cards pile in which Fortune Deck cards go when played."
       },
       "sorceryDeck": {
         "name": "Sorcery Deck",
-        "hint": "The cards deck which represents the Sorcery Deck."
+        "hint": "[Host only] The cards deck which represents the Sorcery Deck."
       },
       "sorceryDiscardPile": {
         "name": "Sorcery Deck discard pile",
-        "hint": "The cards pile in which Sorcery Deck cards go when played or discarded."
+        "hint": "[Host only] The cards pile in which Sorcery Deck cards go when played or discarded."
       },
       "sorceryAbility": {
         "name": "Name of the Sorcery ability",
-        "hint": "[Optional] Allows to have character ability names in the language spoken by your group, even if this language is not officially supporte by the system yet."
+        "hint": "[Host only] [Optional] Allows to have character ability names in the language spoken by your group, even if this language is not officially supporte by the system yet."
+      },
+      "cardsUi": {
+        "name": "Cards User Interface",
+        "hint": "Players may individually select their preferred user interface for cards.",
+        "valueDefault": "Default"
       }
     },
 

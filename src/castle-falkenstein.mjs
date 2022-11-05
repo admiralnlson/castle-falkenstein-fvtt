@@ -8,7 +8,6 @@ import { CastleFalkensteinAbilitySheet } from "./documents/item-ability-sheet.mj
 import { CastleFalkensteinPossessionSheet } from "./documents/item-possession-sheet.mjs";
 import { CastleFalkensteinSpellSheet } from "./documents/item-spell-sheet.mjs";
 import { CastleFalkensteinWeaponSheet } from "./documents/item-weapon-sheet.mjs";
-import CastleFalkensteinSettings from "./forms/settings.mjs";
 import CastleFalkensteinPerformFeat from "./forms/perform-feat.mjs";
 
 export default class CastleFalkenstein {
@@ -50,38 +49,6 @@ export default class CastleFalkenstein {
       };
     }
   });
-
-  static get settingDefinitions() {
-
-    const cardStackSelect = (stackType) => { return {
-      scope: "world",
-      type: String,
-      default: "",
-      getChoices: () => ({
-        "": "",
-        ...Object.fromEntries(
-          game.cards
-            .filter(stack => stack.type === stackType)
-            .map(stack => [stack.id, stack.name])
-        )
-      })
-    }};
-
-    return {
-      // GM settings
-      fortuneDeck: cardStackSelect("deck"),
-      fortuneDiscardPile: cardStackSelect("pile"),
-      sorceryDeck: cardStackSelect("deck"),
-      sorceryDiscardPile: cardStackSelect("pile"),
-      sorceryAbility: {
-        scope: "world",
-        type: String,
-        default: ""
-      }
-      // Player settings
-      //,
-    };
-  }
 
   static get fortuneDeck() {
     return game.cards.get(this.settings.fortuneDeck);
@@ -198,7 +165,6 @@ export default class CastleFalkenstein {
         });
       }
     });
-
     
     const deck = await Cards.create(deckData);
 
@@ -545,28 +511,43 @@ export default class CastleFalkenstein {
 
   static registerSettings() {
 
-    // world settings
+    const cardStackSelect = (stackType) => { return {
+      scope: "world",
+      type: String,
+      default: "",
+      choices: () => ({
+        "": "",
+        ...Object.fromEntries(
+          game.cards
+            .filter(stack => stack.type === stackType)
+            .map(stack => [stack.id, stack.name])
+        )
+      })
+    }};
 
-    Object.entries(this.settingDefinitions).filter(([key, def]) => def.scope == "world").forEach(([key, def]) => {
-      game.settings.register(this.id, key, {
-        ...def,
-        config: false,
-        name: `castle-falkenstein.settings.${key}.name`,
-        hint: `castle-falkenstein.settings.${key}.hint`
-      });
-    });
-
-    game.settings.registerMenu(this.id, 'settingsMenu', {
-      name: game.i18n.localize("castle-falkenstein.settings.name"),
-      icon: "fas fa-bars",
-      label: game.i18n.localize("castle-falkenstein.settings.label"),
-      type: CastleFalkensteinSettings,
-      restricted: true
-    });
-
-    // local settings
-    
-    Object.entries(this.settingDefinitions).filter(([key, def]) => def.scope == "client").forEach(([key, def]) => {
+    const settingDefinitions = {
+      // Host settings
+      fortuneDeck: cardStackSelect("deck"),
+      fortuneDiscardPile: cardStackSelect("pile"),
+      sorceryDeck: cardStackSelect("deck"),
+      sorceryDiscardPile: cardStackSelect("pile"),
+      sorceryAbility: {
+        scope: "world",
+        type: String,
+        default: ""
+      },
+      // Player settings
+      /*cardsUi: {
+        scope: "client",
+        choices: () => ({ // TODO  make it more dynamic (checking that Monarch is active and if not disable the setting)
+          "default": game.i18n.localize("castle-falkenstein.settings.cardsUi.valueDefault"),
+          "monarch": "🦋 Monarch"
+        }),
+        default: "default"
+      }*/
+    };
+  
+    Object.entries(settingDefinitions).forEach(([key, def]) => {
       game.settings.register(this.id, key, {
         ...def,
         config: true,
@@ -574,6 +555,7 @@ export default class CastleFalkenstein {
         hint: `castle-falkenstein.settings.${key}.hint`
       });
     });
+
   }
 
   static registerSheets() {
