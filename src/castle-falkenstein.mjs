@@ -22,20 +22,27 @@ export default class CastleFalkenstein {
 		return api.getPackageDebugValue(this.id);
 	}
 
-  static _consoleLog(logLevel, msg, ...args) {
-    const color = "background: #ffda87; color: #000;";
-    if (typeof msg === "string") {
-      console[logLevel](`%c Castle Falkenstein | [${logLevel.toUpperCase()}] ${msg}`, color, ...args);
-    } else {
-      console[logLevel](`%c Castle Falkenstein | [${logLevel.toUpperCase()}] ${typeof msg} display:`, color);
-      console[logLevel](msg);
-    }
-  }
+  static log = {
+    _log: (logLevel, msg, ...args) => {
+      const color = "background: #ffda87; color: #000;";
+      if (typeof msg === "string") {
+        console[logLevel](`%c Castle Falkenstein | [${logLevel.toUpperCase()}] ${msg}`, color, ...args);
+      } else {
+        console[logLevel](`%c Castle Falkenstein | [${logLevel.toUpperCase()}] ${typeof msg} display:`, color);
+        console[logLevel](msg);
+      }
+    },
+    debug: (msg, ...args) => { if (this.debugMode) { this.log._log("debug", msg, ...args); } },
+    info: (msg, ...args) => { this.log._log("info", msg, ...args); },
+    warn: (msg, ...args) => { this.log._log("warn", msg, ...args); },
+    error: (msg, ...args) => { this.log._log("error", msg, ...args); ui.notifications.error("Internal Castle Falkenstein system error (see console for details)"); }
+  };
 
-  static consoleDebug(msg, ...args) { if (this.debugMode) { this._consoleLog("debug", msg, ...args); } }
-  static consoleInfo(msg, ...args) { this._consoleLog("info", msg, ...args); }
-  static consoleWarn(msg, ...args) { this._consoleLog("warn", msg, ...args); }
-  static consoleError(msg, ...args) { this._consoleLog("error", msg, ...args); ui.notifications.error("Internal Castle Falkenstein system error (see console for details)"); }
+  static notif = {
+    info: (msg, ...args) => { this.log._log("info", msg, ...args); ui.notifications.info(msg, ...args); },
+    warn: (msg, ...args) => { this.log._log("warn", msg, ...args); ui.notifications.warn(msg, ...args); },
+    error: (msg, ...args) => { this.log._log("error", msg, ...args); ui.notifications.error(msg, ...args); }
+  };
 
   /**
    * Convenience proxy getter for CastleFalkenstein settings.
@@ -44,7 +51,7 @@ export default class CastleFalkenstein {
     get: function (target, key) {
       try { return game.settings.get(CastleFalkenstein.id, key); }
       catch (err) {
-        CastleFalkenstein.consoleError(err);
+        CastleFalkenstein.log.error(err);
         return undefined;
       };
     }
@@ -64,7 +71,7 @@ export default class CastleFalkenstein {
     } else if (type == "sorcery") {
       return this.sorceryDeck;
     } else {
-      this.consoleError(`Unknown deck type '${type}'`);
+      CastleFalkenstein.log.error(`Unknown deck type '${type}'`);
       return;
     }
   }
@@ -83,7 +90,7 @@ export default class CastleFalkenstein {
     } else if (type == "sorcery") {
       return this.sorceryDiscardPile;
     } else {
-      this.consoleError(`Unknown discard pile type '${type}'`);
+      CastleFalkenstein.log.error(`Unknown discard pile type '${type}'`);
       return;
     }
   }
@@ -225,7 +232,7 @@ export default class CastleFalkenstein {
     // Notify the user
 
     if (cardsCreatedI18n)
-      ui.notifications.info(game.i18n.localize("castle-falkenstein.notifications.createdCards") + cardsCreatedI18n);
+      CastleFalkenstein.notif.info(game.i18n.localize("castle-falkenstein.notifications.createdCards") + cardsCreatedI18n);
   }
 
   static onReturnCards(stack, returned, {fromDelete, toUpdate}={}) {
@@ -253,7 +260,7 @@ export default class CastleFalkenstein {
 
     if (search.length > 1) {
       const name = actorOrHost === "host" ? "host" : actorOrHost.name;
-      this.consoleError("Multiple " + handType + " hands found for " + name);
+      CastleFalkenstein.log.error("Multiple " + handType + " hands found for " + name);
     }
 
     if (search.length > 0)
@@ -282,7 +289,7 @@ export default class CastleFalkenstein {
             }
           });
           if (stacks) {
-            ui.notifications.warn(game.i18n.format("castle-falkenstein.notifications.playerHasInsufficientPermissionsOnCardStacks", {
+            CastleFalkenstein.notif.warn(game.i18n.format("castle-falkenstein.notifications.playerHasInsufficientPermissionsOnCardStacks", {
               player: user.name
             }) + stacks);
           }
@@ -320,7 +327,7 @@ export default class CastleFalkenstein {
 
   static async shuffleDiscardPile(deckType) {
     if (!game.user.isGM)
-      CastleFalkenstein.consoleError("Unauthorized call to 'shuffleDiscardPile' from non-GM player");
+      CastleFalkenstein.log.error("Unauthorized call to 'shuffleDiscardPile' from non-GM player");
 
     const discardPile = CastleFalkenstein.discardPile(deckType);
     if (game.release.generation == 9)
@@ -365,7 +372,7 @@ export default class CastleFalkenstein {
     const hand = await Cards.create(handData);
 
     if (hand) {
-      ui.notifications.info(game.i18n.localize("castle-falkenstein.notifications.createdCards") + 
+      CastleFalkenstein.notif.info(game.i18n.localize("castle-falkenstein.notifications.createdCards") + 
                             "<br/>  - " + hand.name);
     }
     
@@ -458,7 +465,7 @@ export default class CastleFalkenstein {
     const userLanguage = game.settings.get("core", "language");
     if (userLanguage != "en" && Array.from(game.system.languages.map(el => el.lang)).includes(userLanguage)) {
       if(!game.modules.get('babele')?.active) {
-        ui.notifications.warn(game.i18n.localize("castle-falkenstein.notifications.babeleRequired"));
+        CastleFalkenstein.notif.warn(game.i18n.localize("castle-falkenstein.notifications.babeleRequired"));
       }
     }
 
@@ -471,8 +478,8 @@ export default class CastleFalkenstein {
       this.warnCardUiIsMissing();
     }
 
-    CastleFalkenstein.consoleDebug("Debug mode active.");
-    CastleFalkenstein.consoleInfo("Ready.");
+    CastleFalkenstein.log.debug("Debug mode active.");
+    CastleFalkenstein.log.info("Ready.");
   }
 
   static warnCardUiIsMissing() {
@@ -486,7 +493,7 @@ export default class CastleFalkenstein {
     const DONT_REMIND_AGAIN_KEY = "libwrapper-dont-remind-again";
 
     // Dialog code
-    CastleFalkenstein.consoleWarn(`No Card UI module present.`);
+    CastleFalkenstein.log.warn(`No Card UI module present.`);
     game.settings.register(this.id, DONT_REMIND_AGAIN_KEY, { name: '', default: false, type: Boolean, scope: 'world', config: false });
     if(game.user.isGM && !game.settings.get(this.id, DONT_REMIND_AGAIN_KEY)) {
       new Dialog({
@@ -516,7 +523,6 @@ export default class CastleFalkenstein {
       type: String,
       default: "",
       choices: () => ({
-        "": "",
         ...Object.fromEntries(
           game.cards
             .filter(stack => stack.type === stackType)
@@ -526,7 +532,7 @@ export default class CastleFalkenstein {
     }};
 
     const settingDefinitions = {
-      // Host settings
+      // World settings
       fortuneDeck: cardStackSelect("deck"),
       fortuneDiscardPile: cardStackSelect("pile"),
       sorceryDeck: cardStackSelect("deck"),
@@ -536,7 +542,7 @@ export default class CastleFalkenstein {
         type: String,
         default: ""
       },
-      // Player settings
+      // Client settings
       /*cardsUi: {
         scope: "client",
         choices: () => ({ // TODO  make it more dynamic (checking that Monarch is active and if not disable the setting)
@@ -641,7 +647,7 @@ export default class CastleFalkenstein {
     if (!actor) actor = game.actors.get(speaker.actor);
     const item = actor ? actor.items.find(i => i.type === itemType && i.name === itemName) : null;
     if (!item) {
-      return ui.notifications.warn(game.i18n.format("castle-falkenstein.notifications.noItemNamed",{
+      return CastleFalkenstein.notif.warn(game.i18n.format("castle-falkenstein.notifications.noItemNamed",{
         name: itemName,
         type: itemType
       }));
