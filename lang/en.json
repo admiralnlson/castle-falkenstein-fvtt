@@ -59,7 +59,7 @@
     
     "fortune": {
       "hand": {
-        "name": "Fortune hand - {character}",
+        "name": "Fortune - {character}",
         "refill": "Refill",
         "chance": "Chance"
       }
@@ -73,7 +73,7 @@
         "releasePower": "Release Power",
         "castSpell": "Cast Spell",
         "cancelSpell": "Cancel Spell",
-        "name": "Sorcery hand - {character}"
+        "name": "Sorcery - {character}"
       }
     },
 
