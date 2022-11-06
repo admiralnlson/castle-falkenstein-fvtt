@@ -32,8 +32,6 @@
 
     "notifications": {
       "babeleRequired": "Pour que les compendiums de Château Falkenstein soient traduits dans votre langue, vous devez installer et activer le module 'Babele' !",
-      "cardUiRequired": "Ce système dépend du module 'Monarch', qui n'est pas présent.",
-      "cardUiInstallDetails": "Vous pouvez l'installer depuis le tab 'Add-on Modules' de la fenêtre 'Foundry VTT Setup'. S'il est déjà installé, pensez à l'activer dans le menu 'Manage Modules'.",
       "playerHasInsufficientPermissionsOnCardStacks": "Le joueur '{player}' a des permissions insuffisantes sur :",
       "createdCards": "Créé:",
       "characterWasShown": "Le personnage '{name}' a été montré aux joueurs.",

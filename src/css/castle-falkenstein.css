@@ -1,4 +1,5 @@
 @import "./cf-cards.css";
+@import "./cf-hand.css";
 
 :root {
   --item-drag-width: 15px;

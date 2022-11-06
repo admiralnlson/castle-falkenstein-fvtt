@@ -113,3 +113,8 @@ Deleting a hand will first discard all cards it contains, making it a safe way t
 ## Chance
 
 Fortune hands have a "? Chance" button, which draws the top card from the Fortune Deck and plays it immediately.
+
+# Alternative Cards UI
+The system supports [🦋Monarch](https://foundryvtt.com/packages/monarch) as an alternative user interface for card hands.
+
+In order to use it, the Host must first install and activate the module. Then host and players may individually enable it in their client settings.
