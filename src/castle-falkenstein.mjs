@@ -1,5 +1,4 @@
 import { CASTLE_FALKENSTEIN } from "./config.mjs";
-import CastleFalkensteinMonarchConfig from "./monarch-config.mjs";
 import { CastleFalkensteinActor } from "./documents/actor.mjs";
 import { CastleFalkensteinItem } from "./documents/item.mjs";
 import { CastleFalkensteinCards } from "./documents/cards.mjs";
@@ -8,19 +7,21 @@ import { CastleFalkensteinAbilitySheet } from "./documents/item-ability-sheet.mj
 import { CastleFalkensteinPossessionSheet } from "./documents/item-possession-sheet.mjs";
 import { CastleFalkensteinSpellSheet } from "./documents/item-spell-sheet.mjs";
 import { CastleFalkensteinWeaponSheet } from "./documents/item-weapon-sheet.mjs";
+import { CastleFalkensteinHandSheet } from "./documents/hand-sheet.mjs";
+import CastleFalkensteinMonarchConfig from "./monarch-config.mjs";
 import CastleFalkensteinPerformFeat from "./forms/perform-feat.mjs";
 
 export default class CastleFalkenstein {
 
   static get id() { return "castle-falkenstein"; }
 
-	static get debugMode() {
-		const api = game.modules.get("_dev-mode")?.api;
-		if (!api) {
-       return false;
+  static get debugMode() {
+    const api = game.modules.get("_dev-mode")?.api;
+    if (!api) {
+      return false;
     }
-		return api.getPackageDebugValue(this.id);
-	}
+    return api.getPackageDebugValue(this.id);
+  }
 
   static log = {
     _log: (logLevel, msg, ...args) => {
@@ -97,12 +98,12 @@ export default class CastleFalkenstein {
 
   static async hostFortuneHand() {
     let hand = game.cards.filter(stack => stack.type === "hand" &&
-                                          stack.getFlag(this.id, "type") === "fortune" &&
-                                          stack.getFlag(this.id, "actor") === "host");
+      stack.getFlag(this.id, "type") === "fortune" &&
+      stack.getFlag(this.id, "actor") === "host");
 
     if (hand.length > 0)
       return hand[0];
-    
+
     hand = await this.socket.executeAsGM("createHand", "fortune", "host");
     return hand;
   }
@@ -119,28 +120,28 @@ export default class CastleFalkenstein {
   static async cardsFolder(type, name) {
 
     // Flags which should be owned by the folder
-    const folderFlag = { 
-        type: type
+    const folderFlag = {
+      type: type
     };
 
     // Does the folder already exist?
     const existingFolder = game.folders.find(f => {
-        if( f.type != "Cards" ) { return false; } 
-        
-        const flag = f.flags['castle-falkenstein'] ?? {};
-        return flag?.type == folderFlag.type;
+      if (f.type != "Cards") { return false; }
+
+      const flag = f.flags['castle-falkenstein'] ?? {};
+      return flag?.type == folderFlag.type;
     });
 
-    if( existingFolder ) {
-        return existingFolder;
+    if (existingFolder) {
+      return existingFolder;
     }
 
     // Create a new folder
     const newFolder = await Folder.create({
-        name: name,
-        type: 'Cards',
-        sorting: 'm',
-        "flags.castle-falkenstein": folderFlag
+      name: name,
+      type: 'Cards',
+      sorting: 'm',
+      "flags.castle-falkenstein": folderFlag
     });
     return newFolder;
   }
@@ -159,7 +160,7 @@ export default class CastleFalkenstein {
     };
 
     // i18n'ize card names within the deck
-    deckData.cards.forEach( (card) => {
+    deckData.cards.forEach((card) => {
       if (card.name == "Black Joker") {
         card.name = game.i18n.localize("castle-falkenstein.cards.blackJoker");
       }
@@ -172,7 +173,7 @@ export default class CastleFalkenstein {
         });
       }
     });
-    
+
     const deck = await Cards.create(deckData);
 
     await deck.shuffle();
@@ -235,7 +236,7 @@ export default class CastleFalkenstein {
       CastleFalkenstein.notif.info(game.i18n.localize("castle-falkenstein.notifications.createdCards") + cardsCreatedI18n);
   }
 
-  static onReturnCards(stack, returned, {fromDelete, toUpdate}={}) {
+  static onReturnCards(stack, returned, { fromDelete, toUpdate } = {}) {
     if (returned.length > 0) {
       // shuffle the fortune (resp. sorcery) deck when cards from cards in a fortune/sorcery discard pile are recalled.
       const handType = stack.getFlag(this.id, "type");
@@ -255,8 +256,8 @@ export default class CastleFalkenstein {
     const actorFlag = actorOrHost === "host" ? "host" : actorOrHost.id;
 
     const search = game.cards.filter(stack => stack.type === "hand" &&
-                                              stack.getFlag(this.id, "type") === handType &&
-                                              stack.getFlag(this.id, "actor") === actorFlag);
+      stack.getFlag(this.id, "type") === handType &&
+      stack.getFlag(this.id, "actor") === actorFlag);
 
     if (search.length > 1) {
       const name = actorOrHost === "host" ? "host" : actorOrHost.name;
@@ -278,12 +279,12 @@ export default class CastleFalkenstein {
       game.users.contents.forEach((user) => {
         if (user.active && !user.isGM) {
           let stacks = "";
-          [ this.fortuneDeck, this.sorceryDeck ].forEach((deck) => {
+          [this.fortuneDeck, this.sorceryDeck].forEach((deck) => {
             if (deck && !deck.testUserPermission(user, CONST.DOCUMENT_PERMISSION_LEVELS.LIMITED)) {
               stacks += `<br/>- ${deck.name}`;
             }
           });
-          [ this.fortuneDiscardPile, this.sorceryDiscardPile ].forEach((pile) => {
+          [this.fortuneDiscardPile, this.sorceryDiscardPile].forEach((pile) => {
             if (pile && !pile.testUserPermission(user, CONST.DOCUMENT_PERMISSION_LEVELS.OBSERVER)) {
               stacks += `<br/>- ${pile.name}`;
             }
@@ -297,7 +298,7 @@ export default class CastleFalkenstein {
       });
     }
   }
-  
+
   static async draw(deckType, destStack, nbCardsToDraw) {
     let cardsDrawn = [];
 
@@ -305,10 +306,10 @@ export default class CastleFalkenstein {
 
     let nbCardsLeftInDeck = deck.cards.size - deck.drawnCards.length;
 
-    let nbCardsDrawn = Math.min(nbCardsToDraw,nbCardsLeftInDeck);
+    let nbCardsDrawn = Math.min(nbCardsToDraw, nbCardsLeftInDeck);
 
     if (nbCardsDrawn > 0)
-      cardsDrawn = cardsDrawn.concat(await destStack.draw(deck, nbCardsDrawn, {chatNotification: false}));
+      cardsDrawn = cardsDrawn.concat(await destStack.draw(deck, nbCardsDrawn, { chatNotification: false }));
 
     nbCardsLeftInDeck -= nbCardsDrawn;
 
@@ -318,7 +319,7 @@ export default class CastleFalkenstein {
       // draw cards now that there should be some available.
       if (nbCardsDrawn < nbCardsToDraw) {
         // resurive call would be imaginable, but all cards from the decks may already be distributed in hands (e.g. too many NPC hands non-emptied).
-        cardsDrawn = cardsDrawn.concat(await destStack.draw(deck, nbCardsToDraw - nbCardsDrawn, {chatNotification: false}));
+        cardsDrawn = cardsDrawn.concat(await destStack.draw(deck, nbCardsToDraw - nbCardsDrawn, { chatNotification: false }));
       }
     }
 
@@ -343,14 +344,14 @@ export default class CastleFalkenstein {
     const actor = game.actors.get(actorId);
     actor.sheet.render(true, { focus: true });
   }
-  
+
   static async createHand(handType, actorId) {
     let handData = {};
     if (actorId === "host") {
       // create host hand
       handData = {
         type: "hand",
-        name: game.i18n.format(`castle-falkenstein.fortune.hand.name`, {character: game.i18n.localize("castle-falkenstein.host")}),
+        name: game.i18n.format(`castle-falkenstein.fortune.hand.name`, { character: game.i18n.localize("castle-falkenstein.host") }),
         displayCount: true,
         // permission: ??? // no special permissions (limited to GM)
         folder: null, // the GM may freely move the hand to whatever folder they wish afterwards
@@ -372,10 +373,9 @@ export default class CastleFalkenstein {
     const hand = await Cards.create(handData);
 
     if (hand) {
-      CastleFalkenstein.notif.info(game.i18n.localize("castle-falkenstein.notifications.createdCards") + 
-                            "<br/>  - " + hand.name);
+      CastleFalkenstein.notif.info(game.i18n.localize("castle-falkenstein.notifications.createdCards") + "<br/>  - " + hand.name);
     }
-    
+
     return hand;
   }
 
@@ -416,7 +416,7 @@ export default class CastleFalkenstein {
 
 
   static onInit() {
- 
+
     // Disable deprecation warnings if the v9 track is used with v10
     if (game.release.generation == 10 && (game.system.version >= '1.0.0' && game.system.version < '2.0.0')) {
       CONFIG.compatibility.mode = CONST.COMPATIBILITY_MODES.SILENT;
@@ -439,7 +439,7 @@ export default class CastleFalkenstein {
       src: "systems/castle-falkenstein/src/cards/deck-preset.json"
     };
 
-    if(game.modules.get('babele')?.active) {
+    if (game.modules.get('babele')?.active) {
       Babele.get().setSystemTranslationsDir("lang/babele");
     }
 
@@ -450,17 +450,13 @@ export default class CastleFalkenstein {
 
   static async onReady() {
 
-    // <FIXME> There's probably a better way to make sure Monarch sheets are set as default for CF-system created hands, without enforcing it for GM created ones also.
-    // register Monarch Hand & Card sheets by default.
-    const settings = game.settings.get("core", "sheetClasses") || {};
-		foundry.utils.mergeObject(settings, {
-      "Cards.base": "monarch.MonarchCard",
-      "Cards.hand": "monarch.MonarchHand"
-    });
-		game.settings.set("core", "sheetClasses", settings);
-    // </FIXME>
-
     await this.preLoadTemplates();
+
+    if (CONFIG["Cards"].sheetClasses.hand["monarch.MonarchHand"])
+      CONFIG["Cards"].sheetClasses.hand["monarch.MonarchHand"].default = (this.cardsUi == this.CARDS_UI_OPTIONS.monarch);
+
+    if (CONFIG["Cards"].sheetClasses.hand["castle-falkenstein.CastleFalkensteinHandSheet"])
+      CONFIG["Cards"].sheetClasses.hand["castle-falkenstein.CastleFalkensteinHandSheet"].default = (this.cardsUi == this.CARDS_UI_OPTIONS.default);
 
     const userLanguage = game.settings.get("core", "language");
     if (userLanguage != "en" && Array.from(game.system.languages.map(el => el.lang)).includes(userLanguage)) {
@@ -473,55 +469,29 @@ export default class CastleFalkenstein {
       this.createMissingCards();
     }
 
-    // only Monarch fully supported for now
-    if(!game.modules.get('monarch')?.active) {
-      this.warnCardUiIsMissing();
-    }
-
     CastleFalkenstein.log.debug("Debug mode active.");
     CastleFalkenstein.log.info("Ready.");
-  }
-
-  static warnCardUiIsMissing() {
-    
-    const i18nSystem = game.i18n.localize("castle-falkenstein.system");
-    const MESSAGE = `
-      <p><b>${game.i18n.localize("castle-falkenstein.notifications.cardUiRequired")}</b></p>
-      <small><p>${game.i18n.localize("castle-falkenstein.notifications.cardUiInstallDetails")}</p></small>`;
-
-    // Settings key used for the "Don't remind me again" setting
-    const DONT_REMIND_AGAIN_KEY = "libwrapper-dont-remind-again";
-
-    // Dialog code
-    CastleFalkenstein.log.warn(`No Card UI module present.`);
-    game.settings.register(this.id, DONT_REMIND_AGAIN_KEY, { name: '', default: false, type: Boolean, scope: 'world', config: false });
-    if(game.user.isGM && !game.settings.get(this.id, DONT_REMIND_AGAIN_KEY)) {
-      new Dialog({
-        title: game.i18n.localize("castle-falkenstein.system"),
-        options: { top: 100 },
-        content: MESSAGE, buttons: {
-          ok: { icon: '<i class="fas fa-check"></i>', label: 'Understood' },
-          dont_remind: { icon: '<i class="fas fa-times"></i>', label: "Don't remind me again", callback: () => game.settings.set(PACKAGE_ID, DONT_REMIND_AGAIN_KEY, true) }
-        }
-      }).render(true, { focus: true });
-    }
   }
 
   static setupSocket() {
     this.socket = socketlib.registerSystem(this.id);
 
     // register socket functions
-	  this.socket.register("shuffleDiscardPile", this.shuffleDiscardPile);
+    this.socket.register("shuffleDiscardPile", this.shuffleDiscardPile);
     this.socket.register("showActor", this.showActor);
     this.socket.register("createHand", this.createHand);
   }
 
-  static registerSettings() {
+  static get cardsUi() {
+    return game.modules.get('monarch')?.active ? this.settings.cardsUi : this.CARDS_UI_OPTIONS.default;
+  }
 
-    const cardStackSelect = (stackType) => { return {
+  static _cardStackSelect = (stackType) => {
+    return {
       scope: "world",
       type: String,
       default: "",
+      requiresReload: true,
       choices: () => ({
         ...Object.fromEntries(
           game.cards
@@ -529,31 +499,42 @@ export default class CastleFalkenstein {
             .map(stack => [stack.id, stack.name])
         )
       })
-    }};
+    }
+  };
 
-    const settingDefinitions = {
-      // World settings
-      fortuneDeck: cardStackSelect("deck"),
-      fortuneDiscardPile: cardStackSelect("pile"),
-      sorceryDeck: cardStackSelect("deck"),
-      sorceryDiscardPile: cardStackSelect("pile"),
-      sorceryAbility: {
-        scope: "world",
-        type: String,
-        default: ""
-      },
-      // Client settings
-      /*cardsUi: {
-        scope: "client",
-        choices: () => ({ // TODO  make it more dynamic (checking that Monarch is active and if not disable the setting)
-          "default": game.i18n.localize("castle-falkenstein.settings.cardsUi.valueDefault"),
-          "monarch": "🦋 Monarch"
-        }),
-        default: "default"
-      }*/
-    };
-  
-    Object.entries(settingDefinitions).forEach(([key, def]) => {
+  static CARDS_UI_OPTIONS = {
+    default: "default",
+    monarch: "monarch"
+  };
+
+  static SETTING_DEFINITIONS = {
+
+    // Host settings
+    fortuneDeck: this._cardStackSelect("deck"),
+    fortuneDiscardPile: this._cardStackSelect("pile"),
+    sorceryDeck: this._cardStackSelect("deck"),
+    sorceryDiscardPile: this._cardStackSelect("pile"),
+    sorceryAbility: {
+      scope: "world",
+      type: String,
+      default: "",
+      requiresReload: true
+    },
+    // Player settings
+    cardsUi: {
+      scope: "client",
+      choices: () => ({ // TODO  make it more dynamic (checking that Monarch is active and if not disable the setting)
+        [this.CARDS_UI_OPTIONS.default]: game.i18n.localize("castle-falkenstein.settings.cardsUi.valueDefault"),
+        [this.CARDS_UI_OPTIONS.monarch]: "🦋 Monarch"
+      }),
+      default: this.CARDS_UI_OPTIONS.default,
+      requiresReload: true
+    }
+  };
+
+  static registerSettings() {
+
+    Object.entries(this.SETTING_DEFINITIONS).forEach(([key, def]) => {
       game.settings.register(this.id, key, {
         ...def,
         config: true,
@@ -566,7 +547,7 @@ export default class CastleFalkenstein {
 
   static registerSheets() {
     Actors.unregisterSheet("core", ActorSheet);
-    Actors.registerSheet(this.id, CastleFalkensteinActorSheet, { 
+    Actors.registerSheet(this.id, CastleFalkensteinActorSheet, {
       label: "castle-falkenstein.character",
       makeDefault: true
     });
@@ -592,6 +573,13 @@ export default class CastleFalkenstein {
       label: "castle-falkenstein.spell.spell",
       makeDefault: true
     });
+
+    CardStacks.registerSheet(this.id, CastleFalkensteinHandSheet, {
+      types: ["hand"],
+      label: "castle-falkenstein.settings.cardsUi.valueDefault",
+      makeDefault: this.cardsUi == this.CARDS_UI_OPTIONS.default
+    });
+
   }
 
   // Load all the templates for handlebars partials.
@@ -600,10 +588,12 @@ export default class CastleFalkenstein {
       // Actor partials
       "systems/castle-falkenstein/src/documents/actor-abilities.hbs",
       "systems/castle-falkenstein/src/documents/actor-possessions.hbs",
-      "systems/castle-falkenstein/src/documents/actor-spells.hbs"
+      "systems/castle-falkenstein/src/documents/actor-spells.hbs",
+      // TODO check is needed:
+      "systems/castle-falkenstein/src/documents/hand-sheet.hbs"
     ]);
   }
-  
+
   static async onRenderChatMessage(chatMessage, html, messageData) {
     CastleFalkensteinPerformFeat.onRenderChatMessage(chatMessage, html, messageData);
   }
@@ -639,7 +629,7 @@ export default class CastleFalkenstein {
     CastleFalkenstein.addItemMacroAtHotbarSlot(item, slot);
     return false;
   }
-  
+
   static rollItemMacro(itemType, itemName) {
     const speaker = ChatMessage.getSpeaker();
     let actor;
@@ -672,7 +662,7 @@ Hooks.once("ready", () => CastleFalkenstein.onReady());
 
 Hooks.on("renderChatMessage", (chatMessage, html, messageData) => CastleFalkenstein.onRenderChatMessage(chatMessage, html, messageData));
 
-Hooks.on("hotbarDrop", (hotbar, data, slot) => {return CastleFalkenstein.hotbarDrop(hotbar, data, slot) });
+Hooks.on("hotbarDrop", (hotbar, data, slot) => { return CastleFalkenstein.hotbarDrop(hotbar, data, slot) });
 
 Hooks.on("returnCards", (stack, returned, context) => CastleFalkenstein.onReturnCards(stack, returned, context));
 
@@ -682,7 +672,7 @@ Hooks.on("getMonarchCardComponents", (monarch, components) => CastleFalkensteinM
 
 Hooks.on("getMonarchHandComponents", (monarch, components) => CastleFalkensteinMonarchConfig.onHandDisplay(monarch, components));
 
-Hooks.on("clickMonarchCard", (event, app, card) => {return CastleFalkensteinMonarchConfig.onCardClick(event, app, card) });
+Hooks.on("clickMonarchCard", (event, app, card) => { return CastleFalkensteinMonarchConfig.onCardClick(event, app, card) });
 
 Hooks.once("socketlib.ready", () => CastleFalkenstein.setupSocket());
 
@@ -690,7 +680,28 @@ Hooks.once("socketlib.ready", () => CastleFalkenstein.setupSocket());
 /*  Handlebars Helpers                          */
 /* -------------------------------------------- */
 
-// If you need to add Handlebars helpers, here are a few useful examples:
+Handlebars.registerHelper('ifequal', function (a, b, options) {
+  if (a == b) { return options.fn(this); }
+  return options.inverse(this);
+});
+
+Handlebars.registerHelper('ifnotequal', function (a, b, options) {
+  if (a != b) { return options.fn(this); }
+  return options.inverse(this);
+});
+
+Handlebars.registerHelper('times', function (n, block) {
+  var accum = '';
+  for (var i = 0; i < n; ++i)
+    accum += block.fn(i);
+  return accum;
+});
+
+Handlebars.registerHelper('add', function (a, b) {
+
+  return parseInt(a) + parseInt(b);
+});
+
 Handlebars.registerHelper('concat', function () {
   var outStr = '';
   for (var arg in arguments) {

@@ -1,0 +1,43 @@
+<form class="{{cssClass}}" autocomplete="off">
+  <div class="flexrow">
+    {{#if owner}}
+    <button class="card-control" type="button" data-action="draw" {{ disabled inCompendium }}>
+      <i class="fas fa-plus"></i> {{localize "CARDS.Draw"}}
+    </button>
+    <button class="card-control" type="button" data-action="pass" {{ disabled inCompendium }}>
+      <i class="fas fa-share-square"></i> {{localize "CARDS.Pass"}}
+    </button>
+    <button class="card-control" type="button" data-action="reset" {{ disabled inCompendium }}>
+      <i class="fas fa-undo"></i> {{localize "CARDS.Reset"}}
+    </button>
+    {{/if}}
+  </div>
+  <div id="handedCards">
+    <ol class="cards">
+      {{#each cards as |card|}}
+      <li class="card flexrow" data-card-id="{{card.id}}">
+        <img class="card-face" src="{{card.img}}" alt="{{card.name}}" height="48">
+
+        <div class="castle-falkenstein-card-controls flexcol">
+          <a class="card-control" title="{{localize 'CARD.FaceNext'}}" data-action="nextFace" {{#unless card.hasNextFace}} disabled {{/unless}}>
+            <i class="fas fa-caret-up"></i>
+          </a>
+          <a class="card-control" title="{{localize 'CARD.FacePrevious'}}" data-action="prevFace" {{#unless card.hasPreviousFace}} disabled {{/unless}}>
+            <i class="fas fa-caret-down"></i>
+          </a>
+          <a class="card-control" title="{{localize 'CARD.Play'}}" data-action="play">
+            <i class="fas fa-play-circle" style="color:white"></i>
+          </a>
+          <a class="card-control" title="{{localize 'CARD.Delete'}}" data-action="delete">
+            <i class="fas fa-trash" style="color:white"></i>
+          </a>
+        </div>
+      </li>
+      {{else}}
+      <li>
+        <p class="hint">{{localize "CARDS.NoCards"}}</p>
+      </li>
+      {{/each}}
+    </ol>
+  </div>
+</form>

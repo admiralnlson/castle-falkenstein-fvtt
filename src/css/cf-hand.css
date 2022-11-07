@@ -1,0 +1,108 @@
+.app.castle-falkenstein .window-content {
+  overflow: visible;
+  background-position: center;
+}
+
+#handedCards {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: relative;
+  margin-top: 20px;
+  right: 0%;
+  top: 0;
+  width: 100%;
+}
+
+#handedCards h2 {
+  text-align: center;
+  color: white;
+  margin-top: 5px;
+}
+
+#handedCards ol.cards {
+  transition: all 0.3s cubic-bezier(0.6, -0.07, 0.56, 1.52) 0.2s;
+  justify-content: space-between;
+  height: 250px; /* original is 750px */
+  width: 183px;  /* original is 550px */
+  position: relative;
+  overflow: visible
+}
+
+#handedCards ol.cards li.card {
+  transition: all 0.7s;
+  box-shadow: 1px 1px 20px 5px #111111;
+  position: absolute;
+  transform-origin: center 200%;
+  transform: rotateZ(-5deg);
+  top: 0;
+  width: 100%;
+  height: 100%;
+  list-style: none;
+  /* antialiasing */
+  outline: 2px solid transparent;
+  will-change: transform;
+}
+
+#handedCards ol.cards li.focusedCard {
+  transform: scale(2);
+}
+
+#handedCards ol.cards li.card:hover {
+  box-shadow: 1px 1px 20px 5px #3a3a3a;
+}
+
+#handedCards ol.cards li.card img.card-face {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#handedCards li.card div.castle-falkenstein-card-controls {
+  opacity: 0;
+  color: white;
+  background-color: #8b351b;
+  justify-content: space-around;
+  border-radius: 25% 0% 0% 25%;
+  height: 100%;
+  position: absolute;
+  left: -0px;
+  transition: 0.5s;
+  font-size: 1em;
+  width: 0px;
+  height: 0;
+  display: flex;
+}
+
+#handedCards li.card div.castle-falkenstein-card-controls>* {
+  height: 0;
+}
+
+#handedCards li.card div.castle-falkenstein-card-controls i {
+  font-size: 1em;
+  transition: 0.5s
+}
+
+#handedCards li.card.focusedCard div.castle-falkenstein-card-controls a[disabled] i {
+  color: rgb(70, 70, 70)
+}
+
+#handedCards li.card.focusedCard div.castle-falkenstein-card-controls i {
+  font-size: 2em;
+  color: white;
+}
+
+#handedCards li.card.focusedCard div.castle-falkenstein-card-controls {
+  opacity: 1;
+  width: 47px;
+  left: -47px;
+  height: 100%
+}
+
+.verticalRot {
+  transform: rotate(-90deg);
+  position: absolute;
+  bottom: 0;
+}

@@ -19,14 +19,9 @@ The system supports localization. At this stage, the following languages are sup
 + English
 + French<sup>(1)</sup>
 
-<sup>(1)</sup> Translations of compendium packs (list of abilities & spells) require the 'Babele' module to be installed and activated.
+<sup>(1)</sup> Translations of compendium packs require the 'Babele' module to be installed and activated.
 
 To submit translations for other languages, see [Contributions](#contributions) below.
-
-## Dependencies
-The system is planned to provide its own flavor for card hands. However in the meantime, the system requires that the [🦋Monarch](https://foundryvtt.com/packages/monarch) be installed and activated.
-
-By default, the system activates 🦋Monarch sheets for **Hands** and **Cards** only. But you may enable the enhanced sheets for **Decks** and **Piles** also if you wish.
 
 ## Planned evolutions
 See [TODO](./TODO.md)

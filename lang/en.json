@@ -32,8 +32,6 @@
 
     "notifications": {
       "babeleRequired": "In order for the Castle Falkenstein compendium packs to be translated in your language, you need to install and activate the 'Babele' module!",
-      "cardUiRequired": "The Castle Falkenstein system depends on the 'Monarch' module, which is not present.",
-      "cardUiInstallDetails": "You can install it from the 'Add-on Modules' tab in the 'Foundry VTT Setup' window. It it is already installed, then you need to activate it in the 'Manage Modules' menu.",
       "playerHasInsufficientPermissionsOnCardStacks": "Player '{player}' has insufficient permissions on:",
       "createdCards": "Created:",
       "characterWasShown": "Character '{name}' was shown to players.",
@@ -61,7 +59,7 @@
     
     "fortune": {
       "hand": {
-        "name": "Fortune hand - {character}",
+        "name": "Fortune - {character}",
         "refill": "Refill",
         "chance": "Chance"
       }
@@ -75,7 +73,7 @@
         "releasePower": "Release Power",
         "castSpell": "Cast Spell",
         "cancelSpell": "Cancel Spell",
-        "name": "Sorcery hand - {character}"
+        "name": "Sorcery - {character}"
       }
     },
 
