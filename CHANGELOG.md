@@ -2,7 +2,7 @@
 
 ## [v2.0.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.0.0) - Unreleasd
 ### Added
-- The system now has a native user interface for card hands. The '🦋 Monarch' module remains usable as an alternative (configurable in System settings).
+- The system now has a native user interface for card hands. The '🦋 Monarch' module remains usable as an alternative.
 ### Changed
 - As from this version, migrating to Foundry V10 is a minimum requirement. Hosts who cannot migrate from V9 to V10 will need to keep using Castle Falkenstein v1.x
 - Character descriptions, diaries and host notes and item descriptions now make use of the ProseMirror editor (the one proposed by default in V10 journals).
