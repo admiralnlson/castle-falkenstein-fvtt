@@ -99,18 +99,18 @@ export class CastleFalkensteinActor extends Actor {
     if (!this.isOwner) return;
  
     if (item.type != 'ability') {
-      CastleFalkenstein.consoleError("Trying to perform a feat with non-ability item.");
+      CastleFalkenstein.log.error("Trying to perform a feat with non-ability item.");
       return;
     }
 
     if (!CASTLE_FALKENSTEIN.validNonJokerCardSuits.includes(item.system.suit)) {
-      ui.notifications.error(game.i18n.localize("castle-falkenstein.notifications.abilityInvalidSuit"));
+      CastleFalkenstein.notif.error(game.i18n.localize("castle-falkenstein.notifications.abilityInvalidSuit"));
       return;
     }
 
     let hand = await this.hand("fortune");
     if (!hand) {
-      ui.notifications.error(game.i18n.localize("castle-falkenstein.notifications.noFortuneHandForFeat"));
+      CastleFalkenstein.notif.error(game.i18n.localize("castle-falkenstein.notifications.noFortuneHandForFeat"));
       return;
     }
 
@@ -128,30 +128,30 @@ export class CastleFalkensteinActor extends Actor {
     if (!this.isOwner) return;
 
     if (item.type != 'spell') {
-      CastleFalkenstein.consoleError("Trying to cast a spell from non-spell item.");
+      CastleFalkenstein.log.error("Trying to cast a spell from non-spell item.");
       return;
     }
 
     if (!CASTLE_FALKENSTEIN.validNonJokerCardSuits.includes(item.system.suit)) {
-      ui.notifications.error(game.i18n.localize("castle-falkenstein.notifications.spellInvalidAspect"));
+      CastleFalkenstein.notif.error(game.i18n.localize("castle-falkenstein.notifications.spellInvalidAspect"));
       return;
     }
 
     let hand = await this.hand("sorcery");
     if (!hand) {
-      ui.notifications.error(game.i18n.localize("castle-falkenstein.notifications.noSorceryHandforSpell"));
+      CastleFalkenstein.notif.error(game.i18n.localize("castle-falkenstein.notifications.noSorceryHandforSpell"));
       return;
     }
 
     if (!this.sorceryAbility) {
-      ui.notifications.error(game.i18n.format("castle-falkenstein.notifications.characterDoesNotHaveAbility", {
+      CastleFalkenstein.notif.error(game.i18n.format("castle-falkenstein.notifications.characterDoesNotHaveAbility", {
         name: CastleFalkenstein.i18nSorceryAbility
       }));
       return;
     }
     
     if (hand.spellBeingCast) {
-      ui.notifications.error(game.i18n.localize("castle-falkenstein.notifications.spellAlreadyBeingCast"));
+      CastleFalkenstein.notif.error(game.i18n.localize("castle-falkenstein.notifications.spellAlreadyBeingCast"));
       return;
     }
 
