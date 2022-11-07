@@ -15,6 +15,11 @@
   vertical-align: middle;
 }
 
+.card-control i:before {
+  font-size: 14px;
+  vertical-align: middle;
+}
+
 /* Generic formatting stuff */
 
 .grid,
@@ -64,7 +69,7 @@
 /* Base */ 
 
 .castle-falkenstein .window-content {
-  height: 100%;
+  height: auto;
   padding: 5px;
   overflow-y: hidden;
 }

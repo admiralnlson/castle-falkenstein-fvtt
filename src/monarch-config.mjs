@@ -143,7 +143,7 @@ export default class CastleFalkensteinMonarchConfig {
     // Sorcery card - Release power
     components.controls.push({
       tooltip: "castle-falkenstein.sorcery.hand.releasePower",
-      icon: "cf-card-discard",
+      icon: "fas fa-trash",
       class: "sorcery-hand-card-release",
       hide: (card, container) => {
         const type = container.getFlag(CastleFalkenstein.id, "type");
