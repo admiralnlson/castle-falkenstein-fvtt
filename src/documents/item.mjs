@@ -62,7 +62,7 @@ export class CastleFalkensteinItem extends Item {
             + `${this.system.description}`;
     } else {
       flavor += `]`;
-      CastleFalkenstein.consoleWarn(`Attempting to 'show others' an item of type '${this.type}'`);
+      CastleFalkenstein.log.warn(`Attempting to 'show others' an item of type '${this.type}'`);
     }
  
      // Post message to chat
