@@ -146,6 +146,31 @@ export default class CastleFalkenstein {
     return newFolder;
   }
 
+  static async translateCardStack(stack) {
+    const translateCard = (card) => {
+      if (card.suit == "joker") {
+        card.name = card.faces[0].name = game.i18n.localize("castle-falkenstein.cards.joker");
+      } else {
+        card.name = card.faces[0].name = game.i18n.format("castle-falkenstein.cards.nonJokerCardName", {
+          value: game.i18n.localize("castle-falkenstein.cards." + card.value),
+          suit: game.i18n.localize("castle-falkenstein.cards." + card.suit)
+        });
+      }
+    };
+
+    if (stack.cards)
+      stack.cards.forEach((card) => translateCard(card));
+    
+    if (stack.availableCards)
+      stack.availableCards.forEach((card) => translateCard(card));
+
+    if (stack.drawnCards)
+      stack.drawnCards.forEach((card) => translateCard(card));
+
+    if (stack._source.cards)
+      stack._source.cards.forEach((card) => translateCard(card));
+  }
+
   static async createPresetDeck(type) {
     const response = await fetch("systems/castle-falkenstein/src/cards/deck-preset.json");
     const deckData = await response.json();
@@ -159,20 +184,7 @@ export default class CastleFalkenstein {
       type: type
     };
 
-    // i18n'ize card names within the deck
-    deckData.cards.forEach((card) => {
-      if (card.name == "Black Joker") {
-        card.name = game.i18n.localize("castle-falkenstein.cards.blackJoker");
-      }
-      else if (card.name == "Red Joker") {
-        card.name = game.i18n.localize("castle-falkenstein.cards.redJoker");
-      } else {
-        card.name = game.i18n.format("castle-falkenstein.cards.nonJokerCardName", {
-          value: game.i18n.localize("castle-falkenstein.cards." + card.value),
-          suit: game.i18n.localize("castle-falkenstein.cards." + card.suit)
-        });
-      }
-    });
+    this.translateCardStack(deckData);
 
     const deck = await Cards.create(deckData);
 
@@ -468,6 +480,10 @@ export default class CastleFalkenstein {
     if (game.user.isGM) {
       this.createMissingCards();
     }
+
+    await game.cards.updateAll(this.translateCardStack, (stack) => {
+      return stack.flags[CastleFalkenstein.id];
+    });
 
     CastleFalkenstein.log.debug("Debug mode active.");
     CastleFalkenstein.log.info("Ready.");

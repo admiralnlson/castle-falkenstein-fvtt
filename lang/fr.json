@@ -137,9 +137,7 @@
       "11": "Valet",
       "12": "Dame",
       "13": "Roi",
-      "14": "As",
-      "blackJoker": "Joker noir",
-      "redJoker": "Joker rouge"
+      "14": "As"
     },
 
     "feat": {

@@ -137,9 +137,7 @@
       "11": "Jack",
       "12": "Queen",
       "13": "King",
-      "14": "Ace",
-      "blackJoker": "Black Joker",
-      "redJoker": "Red Joker"
+      "14": "Ace"
     },
 
     "feat": {

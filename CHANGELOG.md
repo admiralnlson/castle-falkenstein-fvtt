@@ -2,12 +2,13 @@
 
 ## [v2.0.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.0.0) - Unreleasd
 ### Added
-- The system now has a native user interface for card hands. The '🦋 Monarch' module remains usable as an alternative (configurable in System settings).
+- The system now has a native user interface for card hands. The '🦋 Monarch' module remains usable as an alternative.
 ### Changed
 - As from this version, migrating to Foundry V10 is a minimum requirement. Hosts who cannot migrate from V9 to V10 will need to keep using Castle Falkenstein v1.x
 - Character descriptions, diaries and host notes and item descriptions now make use of the ProseMirror editor (the one proposed by default in V10 journals).
-- Chat messages the system generates will now, like OOC messages, have a border of the user's selected color.
-- System settings are no longer configured in a separate window (since Foundry V10 has a dedicated tab for the system already)
+- Card names will now translate based on each user's language preference (assuming this language is supported by the system of course).
+- Chat messages the system generates will now, like OOC (Out Of Character) messages, have a border the same color as the user who triggered them.
+- System settings are no longer configured in a separate window (since Foundry V10 now has a dedicated tab for system configuration).
 ### Fixed
 - Character items dragged onto the hotbar will now produce adequate macros again.
 

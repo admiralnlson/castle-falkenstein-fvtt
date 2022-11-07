@@ -1,5 +1,5 @@
-import { CASTLE_FALKENSTEIN } from "./config.mjs";
 import CastleFalkenstein from "./castle-falkenstein.mjs";
+import { CastleFalkensteinHandSheet } from "./documents/hand-sheet.mjs";
 
 export default class CastleFalkensteinMonarchConfig {
 
@@ -41,16 +41,11 @@ export default class CastleFalkensteinMonarchConfig {
       tooltip: "castle-falkenstein.openCharacterSheet",
       icon: "fas fa-user",
       class: "hand-charsheet",
-      hide: (card, hand) => {
-        const actorFlag = hand.getFlag(CastleFalkenstein.id, "actor");
-        return actorFlag === "host";
+      disabled: (card, hand) => {
+        return CastleFalkensteinHandSheet.openActorDisabled(hand);
       },
       onclick: async (event, app, hand) =>  {
-        const actorFlag = hand.getFlag(CastleFalkenstein.id, "actor");
-        if (actorFlag === "host")
-          return;
-        const actor = game.actors.get(actorFlag);
-        actor.sheet.render(true, { focus: true });
+        await CastleFalkensteinHandSheet.openActor(hand);
       }
     });
 
@@ -64,10 +59,10 @@ export default class CastleFalkensteinMonarchConfig {
         return type != "fortune";
       },
       disabled: (card, hand) => {
-        return hand.cards.size >= 4;
+        return CastleFalkensteinHandSheet.refillHandDisabled(hand);
       },
       onclick: async (event, app, hand) =>  {
-        await CastleFalkenstein.draw("fortune", hand, 4 - hand.cards.size);
+        await CastleFalkensteinHandSheet.refillHand(hand);
       }
     });
 
@@ -81,21 +76,10 @@ export default class CastleFalkensteinMonarchConfig {
         return type != "fortune";
       },
       disabled: (card, hand) => {
-        return false;
+        return CastleFalkensteinHandSheet.chanceCardDisabled(hand);
       },
       onclick: async (event, app, hand) =>  {
-        const actorId = hand.getFlag(CastleFalkenstein.id, "actor");
-
-        // draw a single card from the discard pile directly (avoids glitches)
-        const cardsDrawn = await CastleFalkenstein.draw("fortune", game.CastleFalkenstein.fortuneDiscardPile, 1);
-
-        // Post message to chat
-        const card = cardsDrawn[0];
-        const flavor = `[${game.i18n.localize("castle-falkenstein.fortune.hand.chance")}]`;
-        // TODO FIXME not always a match actually, compare with spell aspect
-        const correctSuit = 'correct-suit';
-        const content = `<div class="cards-drawn">${CastleFalkenstein.smallCardImg(card,`card-drawn ${correctSuit}`)}</div>`;
-        CastleFalkenstein.createChatMessage(actorId === "host" ? "gm" : game.actors.get(actorId), flavor, content);
+        await CastleFalkensteinHandSheet.chanceCard(hand);
       }
     });
 
@@ -109,67 +93,27 @@ export default class CastleFalkensteinMonarchConfig {
         return type != "sorcery";
       },
       disabled: (card, hand) => {
-        //const actorId = hand.getFlag(CastleFalkenstein.id, "actor");
-        //if (actorId === "host")
-        //  return true;
-        //const actor = game.actors.get(actorId);
-
-        // TODO add "actor.isDragon" getter to allow implementation of this 5-card limit
-        //if (actor.isDragon && hand.cards.size >= 5)
-        //  return true;
-
-        return !hand.spellBeingCast;
+        return CastleFalkensteinHandSheet.gatherPowerDisabled(hand);
       },
       onclick: async (event, app, hand) =>  {
-        const actorId = hand.getFlag(CastleFalkenstein.id, "actor");
-        if (actorId === "host")
-          return; // should never be able to click from host hand anyway (see 'disabled' above)
-        const actor = game.actors.get(actorId);
-
-        const cards = await CastleFalkenstein.draw("sorcery", hand, 1);
-        const card = cards[0];
-
-        // TODO mention whether the spell thaumic energy requirement has been reached. May not bode well with cooperation spellcasting scenarios though.
-
-        // Post message to chat
-        const flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.hand.gatherPower")}]`;
-        const spell = actor.items.get(hand.spellBeingCast.actorItemId);
-        const correctSuit = (card.suit == spell.system.suit || card.suit == 'joker') ? 'correct-suit' : '';
-        const content = `<div class="cards-drawn">${CastleFalkenstein.smallCardImg(card, `card-played ${correctSuit}`)}</div>`;
-        CastleFalkenstein.createChatMessage(actor, flavor, content);
+        await CastleFalkensteinHandSheet.gatherPower(hand);
       }
     });
 
     // Sorcery card - Release power
     components.controls.push({
       tooltip: "castle-falkenstein.sorcery.hand.releasePower",
-      icon: "cf-card-discard",
+      icon: "fas fa-trash",
       class: "sorcery-hand-card-release",
-      hide: (card, container) => {
-        const type = container.getFlag(CastleFalkenstein.id, "type");
+      hide: (card, hand) => {
+        const type = hand.getFlag(CastleFalkenstein.id, "type");
         return type != "sorcery";
       },
       disabled: (card, hand) => {
-        // TODO disable the release of unaligned power (if done, maybe reconsider label & chat messages content)
-        //const actorId = hand.getFlag(CastleFalkenstein.id, "actor");
-        //if (actorId === "host")
-        //  return true;
-        //const actor = game.actors.get(actorId);
-        //return !actor.isSpellAligned(card);
-        return false;
+        return CastleFalkensteinHandSheet.releasePowerDisabled(card, hand);
       },
-      onclick: async (event, card, container) => {
-        const actorId = container.getFlag(CastleFalkenstein.id, "actor");
-        if (actorId === "host")
-          return; // should never be able to click from host hand anyway (see 'disabled' above)
-        const actor = game.actors.get(actorId);
-
-        await card.pass(CastleFalkenstein.sorceryDiscardPile, {chatNotification: false});
-
-        // Post message to chat
-        const flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.hand.releasePower")}]`;
-        const content = `<div class="cards-played">${CastleFalkenstein.smallCardImg(card, "card-played")}</div>`;
-        CastleFalkenstein.createChatMessage(actor, flavor, content);
+      onclick: async (event, card, hand) => {
+        await CastleFalkensteinHandSheet.releasePower(card, hand);
       }
     });
 
@@ -183,49 +127,10 @@ export default class CastleFalkensteinMonarchConfig {
         return type != "sorcery";
       },
       disabled: (card, hand) => {
-        //const actorId = hand.getFlag(CastleFalkenstein.id, "actor");
-        //if (actorId === "host")
-        //  return true;
-   
-        // TODO disable if the thaumic energy requirement has not been reached? (may not bode well with cooperation spellcasting scenario though)
-
-        return !hand.spellBeingCast;
+        return CastleFalkensteinHandSheet.castSpellDisabled(hand);
       },
       onclick: async (event, app, hand) =>  {
-        const actorId = hand.getFlag(CastleFalkenstein.id, "actor");
-        if (actorId === "host")
-          return; // should never be able to click from host hand anyway (see 'disabled' above)
-        const actor = game.actors.get(actorId);
-        const spell = actor.items.get(hand.spellBeingCast.actorItemId);
-
-        // Post message to chat
-        let flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.hand.castSpell")}]`;
-
-        const suitSymbol = CASTLE_FALKENSTEIN.cardSuitsSymbols[spell.system.suit];
-        let content = `<b>${spell.name}</b> [<span class="suit-symbol-${spell.system.suit}">${suitSymbol}</span>]<hr/><div class="cards-played">`;
-
-        if (hand.cards.contents.length > 0) {
-          hand.cards.contents.forEach(card => {
-            // FIXME code duplication
-            const correctSuit = (card.suit == spell.system.suit || card.suit == 'joker') ? 'correct-suit' : '';
-            content += CastleFalkenstein.smallCardImg(card,`card-played ${correctSuit}`);
-          });
-        } else {
-          content += game.i18n.localize("castle-falkenstein.feat.noCardsPlayed");
-        }
-        content += `</div>`;
-
-        // TODO add "<score> / <total>"" box.
-        // TODO show harmonic type(s) (up to 3 for the GM to choose from in case of ex-aequo), if unaligned power was used.
-
-        await hand.pass(CastleFalkenstein.sorceryDiscardPile, hand.cards.map((c)=>{ return c.id; }), {chatNotification: false});
-
-        CastleFalkenstein.createChatMessage(actor, flavor, content);
-
-        // no spell being cast anymore
-        await hand.stopCasting();
- 
-        hand.sheet.render();
+        await CastleFalkensteinHandSheet.castSpell(hand);
       }
     });
 
@@ -239,25 +144,10 @@ export default class CastleFalkensteinMonarchConfig {
         return type != "sorcery";
       },
       disabled: (card, hand) => {
-        return !hand.spellBeingCast;
+        return CastleFalkensteinHandSheet.cancelSpellDisabled(hand);
       },
       onclick: async (event, app, hand) =>  {
-        const actorId = hand.getFlag(CastleFalkenstein.id, "actor");
-        if (actorId === "host")
-          return; // should never be able to click from host hand anyway (see 'disabled' above)
-        const actor = game.actors.get(actorId);
-
-        await hand.pass(CastleFalkenstein.sorceryDiscardPile, hand.cards.map((c)=>{ return c.id; }), {chatNotification: false});
-
-        // Post message to chat
-        let flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.hand.cancelSpell")}]`;
-        let content = ""; // FIXME add info on spell which was canceled
-        CastleFalkenstein.createChatMessage(actor, flavor, content);
-
-        // no spell being cast anymore
-        await hand.stopCasting();
-
-        hand.sheet.render();
+        await CastleFalkensteinHandSheet.cancelSpell(hand);
       }
     });
 
