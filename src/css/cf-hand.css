@@ -23,8 +23,6 @@
 
 #handedCards ol.cards {
   justify-content: space-between;
-  height: 255px; /* original is 750px, 255px works ok */
-  width: 187px;  /* original is 550px, 187 works ok */
   position: relative;
   overflow: visible
 }
@@ -41,7 +39,6 @@
   height: 100%;
   list-style: none;
   /* antialiasing */
-  outline: 2px solid transparent;
   will-change: transform;
 }
 
@@ -63,7 +60,7 @@
 }
 
 #handedCards ol.cards li.card.focusedCard img.card-face {
-  cursor: auto;
+  cursor: zoom-out;
 }
 
 #handedCards li.card div.castle-falkenstein-card-controls {

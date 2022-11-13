@@ -1,5 +1,10 @@
 # Changelog
 
+## [v2.1.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.1.0) - 2022/11/13
+### Changed
+- Reduced whitespace around native card visuals
+- Improved compatibility with custom card visuals which have a different width/height ratio
+
 ## [v2.0.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.0.0) - 2022/11/13
 ### Added
 - The system now has a native user interface for card hands. The '🦋 Monarch' module remains usable as an alternative.

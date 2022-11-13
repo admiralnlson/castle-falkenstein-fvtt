@@ -1,10 +1,12 @@
 <form class="{{cssClass}}" autocomplete="off">
   <div class="flexrow">
     {{#if owner}}
+    {{#if typeFlag}}
     <a class="card-control" data-action="openActor" title="{{localize "castle-falkenstein.openCharacterSheet"}}" {{ disabled disabled.openActor }}>
       <i class="fas fa-user"></i>
     </a>
-    {{#ifequal document.flags.castle-falkenstein.type "fortune"}}
+    {{/if}}
+    {{#ifequal typeFlag "fortune"}}
     <a class="card-control" data-action="refillHand" title="{{localize "castle-falkenstein.fortune.hand.refill"}}" {{ disabled disabled.refillHand }}>
       <i class="cf-stack"></i>
     </a>
@@ -12,7 +14,7 @@
       <i class="fas fa-question"></i>
     </a>
     {{/ifequal}}
-    {{#ifequal document.flags.castle-falkenstein.type "sorcery"}}
+    {{#ifequal typeFlag "sorcery"}}
     <a class="card-control" data-action="gatherPower" title="{{localize "castle-falkenstein.sorcery.hand.gatherPower"}}" {{ disabled disabled.gatherPower }}>
       <i class="fas fa-plus-circle"></i>
     </a>
@@ -26,16 +28,20 @@
     {{/if}}
   </div>
   <div id="handedCards">
-    <ol class="cards">
+    <ol class="cards" style="width: {{cardWidth}}px; height: {{cardHeight}}px">
       {{#each cards as |card|}}
       <li class="card flexrow" data-card-id="{{card.id}}" title="{{card.name}}">
         <img class="card-face" src="{{card.img}}" alt="{{card.name}}">
         <div class="castle-falkenstein-card-controls flexcol">
-          {{#ifequal ../document.flags.castle-falkenstein.type "sorcery"}}
+          {{#if ../typeFlag}}
+          {{#if ../owner}}
+          {{#ifequal ../typeFlag "sorcery"}}
           <a class="card-control" data-action="releasePower" title="{{localize "castle-falkenstein.sorcery.hand.releasePower"}}" >
             <i class="fas fa-trash"></i>
           </a>
           {{/ifequal}}
+          {{/if}}
+          {{/if}}
         </div>
       </li>
       {{/each}}

@@ -28,7 +28,13 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     const context = super.getData(options);
 
     const hand = this.object;
-    const actorFlag = hand.getFlag(CastleFalkenstein.id, "actor");
+    context.typeFlag =  hand.getFlag(CastleFalkenstein.id, "type");
+    let deck;
+    if (context.typeFlag == "fortune") {
+      deck = CastleFalkenstein.fortuneDeck;
+    } else if (context.typeFlag == "sorcery") {
+      deck = CastleFalkenstein.sorceryDeck;
+    }
 
     context.disabled = {};
 
@@ -41,6 +47,16 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     context.disabled.castSpell = context.inCompendium || CastleFalkensteinHandSheet.castSpellDisabled(hand);
     context.disabled.cancelSpell = context.inCompendium || CastleFalkensteinHandSheet.cancelSpellDisabled(hand);
 
+    // default cards in core have a 2x3 ratio
+    context.cardWidth = 188;
+    context.cardHeight = 282;
+    if (deck?.img == "systems/castle-falkenstein/src/cards/back-square.png") {
+      context.cardHeight = 268; // default cards have a different ratio (470 x 670, here scaling down by factor of 2/5)
+    }
+    else if (deck?.width > 0 && deck?.height > 0) {
+      context.cardHeight = context.cardWidth * deck.height / deck.width;
+    }
+  
     return context;
   }
 
