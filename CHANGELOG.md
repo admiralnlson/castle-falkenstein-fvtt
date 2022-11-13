@@ -4,9 +4,9 @@
 ### Added
 - The system now has a native user interface for card hands. The '🦋 Monarch' module remains usable as an alternative.
 ### Changed
-- As from this version, migrating to Foundry V10 is a minimum requirement. Hosts who cannot migrate from V9 to V10 will need to keep using Castle Falkenstein v1.x
-- Character descriptions, diaries and host notes and item descriptions now make use of the ProseMirror editor (the one proposed by default in V10 journals).
-- Card names will now translate based on each user's language preference (assuming this language is supported by the system of course).
+- As from this version of the system, Foundry V10 is the minimum required generation. Hosts who cannot migrate from V9 to V10 will need to keep using Castle Falkenstein v1.x
+- Character descriptions, diaries, host notes and item descriptions now make use of the ProseMirror editor (the one proposed by default in V10 journals).
+- Card names will now be translated based on each user's language preference (assuming this language is supported by the system of course).
 - Chat messages the system generates will now, like OOC (Out Of Character) messages, have a border the same color as the user who triggered them.
 - System settings are no longer configured in a separate window (since Foundry V10 now has a dedicated tab for system configuration).
 ### Fixed
