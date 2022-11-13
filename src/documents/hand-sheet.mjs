@@ -9,7 +9,7 @@ export class CastleFalkensteinHandSheet extends CardsHand {
 
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
-      classes: [CastleFalkenstein.id, "sheet", "cardsHand", "cards-config"],
+      classes: [CastleFalkenstein.id, "sheet", "cards-hand", "cards-config"],
       width: 300,
       top: 150,
       resizable: false,
@@ -46,35 +46,65 @@ export class CastleFalkensteinHandSheet extends CardsHand {
 
   async activateListeners(html) {
     this.rotateCards(html);
-    html.find(".card img").click(this.focusCard.bind(this));
+    html.find(".card img").click(this.cardClick.bind(this));
+    html.find(".card img").mouseenter(this.cardMouseEnter.bind(this));
+    html.find(".card img").mouseleave(this.cardMouseLeave.bind(this));
     super.activateListeners(html);
   }
 
   rotateCards(html) {
     let cardsAreas = html.find('.cards');
+    const halfTranslation = 30;
+    const halfAngle = 2;
     for (let area of cardsAreas) {
       for (let i = 0; i < area.children.length; i++) {
         let card = area.children[i];
-        card.style.transform = `rotateZ(${(i * 4)}deg) translateX(${i * 30}px)`;
+        const factor = 1 - area.children.length + 2*i;
+        card.style.transform = `rotateZ(${(factor * halfAngle)}deg) translateX(${factor * halfTranslation}px)`;
         card.style["z-index"] = 302 + i*4;
       }
-      area.style.transform = `rotateZ(${-((area.children.length - 1) * 2)}deg) translateX(-${area.children.length * 15}px)`
     }
   }
 
-  focusCard(event) {
+  cardClick(event) {
     let eventCard = event.currentTarget.closest('li.card');
     eventCard.classList.toggle('focusedCard');
-    let correction = parseInt(eventCard.parentElement.style.transform.replace("rotateZ(", "").replace(")deg", "")) * -1;
+
+    const parent = eventCard.parentNode;
+    const index = Array.prototype.indexOf.call(parent.children, eventCard);
+
     if (eventCard.classList.contains("focusedCard")) {
-      eventCard.setAttribute("data-rot", eventCard.style.transform);
+      eventCard.setAttribute("data-transf", eventCard.style.transform);
       eventCard.setAttribute("data-zind", eventCard.style["z-index"])
-      eventCard.style.transform = `rotateZ(${correction}deg) scale(1.5) translate(7%, 40%)`;
-      eventCard.style["z-index"] = 400 - correction;
+      eventCard.style.transform = `scale(1.5) translateY(15%)`;
+      eventCard.style["z-index"] = 400 + index * 4;
     } else {
-      eventCard.style.transform = eventCard.getAttribute("data-rot");
+      eventCard.style.transform = eventCard.getAttribute("data-transf");
       eventCard.style["z-index"] = eventCard.getAttribute("data-zind");
     }
+  }
+
+  static CARD_MOUSE_ENTER_TRANSLATE = ` translateY(10px)`;
+
+  cardMouseEnter(event) {
+    let eventCard = event.currentTarget.closest('li.card');
+
+    let oneIsFocused = false;
+
+    for (let card of eventCard.parentNode.children) {
+      if (card.classList.contains("focusedCard")) {
+        oneIsFocused = true;
+      }
+    };
+
+    if (!oneIsFocused) {
+      eventCard.style.transform = eventCard.style.transform += CastleFalkensteinHandSheet.CARD_MOUSE_ENTER_TRANSLATE;
+    }
+  }
+
+  cardMouseLeave(event) {
+    let eventCard = event.currentTarget.closest('li.card');
+    eventCard.style.transform = eventCard.style.transform.replace(CastleFalkensteinHandSheet.CARD_MOUSE_ENTER_TRANSLATE,'');
   }
 
   /** @override */

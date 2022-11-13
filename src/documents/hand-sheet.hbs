@@ -29,7 +29,7 @@
     <ol class="cards">
       {{#each cards as |card|}}
       <li class="card flexrow" data-card-id="{{card.id}}" title="{{card.name}}">
-        <img class="card-face" src="{{card.img}}" alt="{{card.name}}" height="48">
+        <img class="card-face" src="{{card.img}}" alt="{{card.name}}">
         <div class="castle-falkenstein-card-controls flexcol">
           {{#ifequal ../document.flags.castle-falkenstein.type "sorcery"}}
           <a class="card-control" data-action="releasePower" title="{{localize "castle-falkenstein.sorcery.hand.releasePower"}}" >

@@ -1,6 +1,7 @@
-.app.castle-falkenstein .window-content {
+.app.castle-falkenstein.cards-hand .window-content {
   overflow: visible;
   background-position: center;
+  background: transparent;
 }
 
 #handedCards {
@@ -29,11 +30,11 @@
 }
 
 #handedCards ol.cards li.card {
-  transition: all 0.25s;
+  transition: all 0.1s;
   transition-timing-function: ease-in;
   box-shadow: 1px 1px 20px 5px #111111;
   position: absolute;
-  transform-origin: center 200%;
+  transform-origin: bottom center;
   transform: rotateZ(-5deg);
   top: 0;
   width: 100%;
@@ -73,8 +74,16 @@
   flex-direction: row;
 }
 
-#handedCards li.card.focusedCard div.castle-falkenstein-card-controls a[disabled] i {
-  color: rgb(70, 70, 70)
+div.castle-falkenstein.cards-config a.card-control {
+  color: var(--color-text-light-highlight);
+}
+
+div.castle-falkenstein.cards-config a[disabled].card-control {
+  color: var(--color-text-dark-inactive);
+}
+
+#handedCards li.card.focusedCard div.castle-falkenstein-card-controls a.card-control {
+  color: var(--color-text-dark-secondary); 
 }
 
 #handedCards li.card.focusedCard div.castle-falkenstein-card-controls i:before {
@@ -83,9 +92,9 @@
 
 #handedCards li.card.focusedCard div.castle-falkenstein-card-controls {
   display: flex;
-  bottom: 0px;
-  right: 0px;
-  height: 15px;
+  bottom: 0;
+  right: 4px;
+  height: 20px;
 }
 
 .verticalRot {
