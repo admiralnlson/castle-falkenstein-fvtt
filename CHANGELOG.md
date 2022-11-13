@@ -1,6 +1,6 @@
 # Changelog
 
-## [v2.0.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.0.0) - Unreleasd
+## [v2.0.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.0.0) - 2022/11/13
 ### Added
 - The system now has a native user interface for card hands. The '🦋 Monarch' module remains usable as an alternative.
 ### Changed
