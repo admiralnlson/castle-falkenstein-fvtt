@@ -3,7 +3,8 @@
 ## [v2.2.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.2.0) - 2022/11/15
 ### Added
 - The size of cards in the native cards UI may not be customized via client settings.
-- Native card hands are now better sized when popped out via the `PopOut!` module.
+### Fixed
+- When popping out a cards hand via the `PopOut!` module, the resulting window is now better sized.
 
 ## [v2.1.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.1.0) - 2022/11/13
 ### Changed
