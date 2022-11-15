@@ -1,5 +1,10 @@
 # Changelog
 
+## [v2.2.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.2.0) - 2022/11/15
+### Added
+- The size of cards in the native cards UI may not be customized via client settings.
+- Native card hands are now better sized when popped out via the `PopOut!` module.
+
 ## [v2.1.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.1.0) - 2022/11/13
 ### Changed
 - Reduced whitespace around native card visuals
@@ -10,12 +15,12 @@
 - The system now has a native user interface for card hands. The '🦋 Monarch' module remains usable as an alternative.
 ### Changed
 - As from this version of the system, Foundry V10 is the minimum required generation. Hosts who cannot migrate from V9 to V10 will need to keep using Castle Falkenstein v1.x
-- Character descriptions, diaries, host notes and item descriptions now make use of the ProseMirror editor (the one proposed by default in V10 journals).
+- Character descriptions, diaries, host notes and ability/spell/weapon/possession descriptions now make use of the ProseMirror editor (the one proposed by default in V10 journals).
 - Card names will now be translated based on each user's language preference (assuming this language is supported by the system of course).
 - Chat messages the system generates will now, like OOC (Out Of Character) messages, have a border the same color as the user who triggered them.
 - System settings are no longer configured in a separate window (since Foundry V10 now has a dedicated tab for system configuration).
 ### Fixed
-- Character items dragged onto the hotbar will now produce adequate macros again.
+- Abilities/spells/weapon/possessions dragged onto the hotbar will now produce adequate macros again.
 
 ## [v1.4.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.4.0) - 2022/08/11
 ### Added

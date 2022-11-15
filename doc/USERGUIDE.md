@@ -108,7 +108,7 @@ The cards hand is first created when the link is clicked or the first Feat (resp
 The Host has a single Fortune Hand shared by all Host Characters.
 Host Character's Sorcery Hands function the same as for Dramatic Characters (one per character, created the first time it is needed).
 
-Deleting a hand will first discard all cards it contains, making it a safe way to get rid of a hand which is no longer useful.
+Deleting a hand will first discard all cards it contains.
 
 ## Chance
 

@@ -46,9 +46,6 @@
 
 + `[S]` Shortcut to 'refill' the fortune hand in the Perform Feat form, or at least refresh the form when fortune cards are drawn from the hand itself
 
-+ `[S]` Remove the dependency to Monarch by proposing a default Hand sheet implem (enabled by default).
-  + `[S🔥]` Make sure drawn cards always appear to the right (might be the case with Monarch already but don't think it will be the case for the CF-default hand)
-
 + `[C]` Macro to delete all Host character hands
 
 + `[C]` Card hand button to show a Fortune or Sorcery hand in chat

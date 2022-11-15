@@ -25,8 +25,12 @@
       },
       "cardsUi": {
         "name": "Interface pour les cartes",
-        "hint": "Les joueurs peuvent individuellement sélectionner leur interface utilisateur de préférence pour les cartes à jouer.",
-        "valueDefault": "Défaut"
+        "hint": "Vous pouvez ici sélectionner l' interface utilisateur que vous préférez pour les cartes à jouer.",
+        "valueNative": "Native (défaut)"
+      },
+      "cardWidth": {
+        "name": "Largeur des cartes",
+        "hint": "Si vous avez sélectionne l'interface par défaut pour les cartes, vous pouvez ici modifier ici la taille des cartes (défaut: 200). (Si à l'inverse vous utilisez 🦋 Monarch, alors dirigez-vous plutôt vers les paramètres du module Monarch lui-même."
       }
     },
 

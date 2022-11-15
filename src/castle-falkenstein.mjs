@@ -160,7 +160,7 @@ export default class CastleFalkenstein {
 
     if (stack.cards)
       stack.cards.forEach((card) => translateCard(card));
-    
+
     if (stack.availableCards)
       stack.availableCards.forEach((card) => translateCard(card));
 
@@ -286,6 +286,25 @@ export default class CastleFalkenstein {
     this.checkPermissionsOnDecksAndPiles();
   }
 
+  static async onPopout(app, popout) {
+
+    if (app?.options?.template == "systems/castle-falkenstein/src/documents/hand-sheet.hbs") {
+      const cardWidth = CastleFalkenstein.settings.cardWidth;
+
+      // cards in the hand besides the first overlap each other by 0.4x their width (the fact they rotate should not influence the overall width much).
+      const innerWidth = cardWidth * (1 + (app.object.cards.size > 0 ? app.object.cards.size - 1 : 0) * 0.41);
+      // cards typically have a 2x3 ratio (width *1.5), may be focused (scale: 1.5) and there is a button to discard sorcery cards underneath them
+      const innerHeight = CastleFalkenstein.computeCardHeight("fortune") + 60 + 50;
+
+      popout.resizeTo(innerWidth + popout.outerWidth - app.options.width,
+                      innerHeight + popout.outerHeight - app.options.height);
+    }
+  }
+
+  static async onRenderPlayerList(application, html, data) {
+    this.checkPermissionsOnDecksAndPiles();
+  }
+
   static async checkPermissionsOnDecksAndPiles() {
     if (game.user.isGM) {
       game.users.contents.forEach((user) => {
@@ -391,6 +410,28 @@ export default class CastleFalkenstein {
     return hand;
   }
 
+    static computeCardHeight(typeFlag) {
+
+    let deck;
+    if (typeFlag == "fortune") {
+      deck = CastleFalkenstein.fortuneDeck;
+    } else if (typeFlag == "sorcery") {
+      deck = CastleFalkenstein.sorceryDeck;
+    }
+
+    const cardWidth = CastleFalkenstein.settings.cardWidth;
+
+    if (deck?.img == "systems/castle-falkenstein/src/cards/back-square.png") {
+      return cardWidth * 670 / 470;
+    }
+    else if (deck?.width > 0 && deck?.height > 0) {
+      return cardWidth * deck.height / deck.width;
+    }
+    else {
+      return cardWidth * 3 / 2;
+    }
+  }
+
   static smallCardImg(card, classes) {
     const suit = card.suit;
     const value = card.suit == "joker" ? (card.name == "Black Joker" ? "black" : "red") : card.value;
@@ -468,11 +509,11 @@ export default class CastleFalkenstein {
       CONFIG["Cards"].sheetClasses.hand["monarch.MonarchHand"].default = (this.cardsUi == this.CARDS_UI_OPTIONS.monarch);
 
     if (CONFIG["Cards"].sheetClasses.hand["castle-falkenstein.CastleFalkensteinHandSheet"])
-      CONFIG["Cards"].sheetClasses.hand["castle-falkenstein.CastleFalkensteinHandSheet"].default = (this.cardsUi == this.CARDS_UI_OPTIONS.default);
+      CONFIG["Cards"].sheetClasses.hand["castle-falkenstein.CastleFalkensteinHandSheet"].default = (this.cardsUi == this.CARDS_UI_OPTIONS.native);
 
     const userLanguage = game.settings.get("core", "language");
     if (userLanguage != "en" && Array.from(game.system.languages.map(el => el.lang)).includes(userLanguage)) {
-      if(!game.modules.get('babele')?.active) {
+      if (!game.modules.get('babele')?.active) {
         CastleFalkenstein.notif.warn(game.i18n.localize("castle-falkenstein.notifications.babeleRequired"));
       }
     }
@@ -499,7 +540,7 @@ export default class CastleFalkenstein {
   }
 
   static get cardsUi() {
-    return game.modules.get('monarch')?.active ? this.settings.cardsUi : this.CARDS_UI_OPTIONS.default;
+    return game.modules.get('monarch')?.active ? this.settings.cardsUi : this.CARDS_UI_OPTIONS.native;
   }
 
   static _cardStackSelect = (stackType) => {
@@ -519,7 +560,7 @@ export default class CastleFalkenstein {
   };
 
   static CARDS_UI_OPTIONS = {
-    default: "default",
+    native: "native",
     monarch: "monarch"
   };
 
@@ -540,11 +581,26 @@ export default class CastleFalkenstein {
     cardsUi: {
       scope: "client",
       choices: () => ({ // TODO  make it more dynamic (checking that Monarch is active and if not disable the setting)
-        [this.CARDS_UI_OPTIONS.default]: game.i18n.localize("castle-falkenstein.settings.cardsUi.valueDefault"),
+        [this.CARDS_UI_OPTIONS.native]: game.i18n.localize("castle-falkenstein.settings.cardsUi.valueNative"),
         [this.CARDS_UI_OPTIONS.monarch]: "🦋 Monarch"
       }),
-      default: this.CARDS_UI_OPTIONS.default,
+      default: this.CARDS_UI_OPTIONS.native,
       requiresReload: true
+    },
+    cardWidth: {
+      scope: "client",
+      type: Number,
+      range: {
+        min: 100,
+        max: 400,
+        step: 10
+      },
+      default: 200,
+      requiresReload: false,
+      onChange: value => {
+        game.cards.filter(stack => stack.type == "hand" && stack.sheet.rendered).forEach(stack => stack.render());
+      }
+
     }
   };
 
@@ -559,6 +615,9 @@ export default class CastleFalkenstein {
       });
     });
 
+    // transparent migration from old setting value "default" to new value "native"
+    if (CastleFalkenstein.settings.cardsUi == "default")
+      game.settings.set(CastleFalkenstein.id, "cardsUi", CastleFalkenstein.CARDS_UI_OPTIONS.native);
   }
 
   static registerSheets() {
@@ -592,8 +651,8 @@ export default class CastleFalkenstein {
 
     CardStacks.registerSheet(this.id, CastleFalkensteinHandSheet, {
       types: ["hand"],
-      label: "castle-falkenstein.settings.cardsUi.valueDefault",
-      makeDefault: this.cardsUi == this.CARDS_UI_OPTIONS.default
+      label: "castle-falkenstein.settings.cardsUi.valueNative",
+      makeDefault: this.cardsUi == this.CARDS_UI_OPTIONS.native
     });
 
   }
@@ -653,7 +712,7 @@ export default class CastleFalkenstein {
     if (!actor) actor = game.actors.get(speaker.actor);
     const item = actor ? actor.items.find(i => i.type === itemType && i.name === itemName) : null;
     if (!item) {
-      return CastleFalkenstein.notif.warn(game.i18n.format("castle-falkenstein.notifications.noItemNamed",{
+      return CastleFalkenstein.notif.warn(game.i18n.format("castle-falkenstein.notifications.noItemNamed", {
         name: itemName,
         type: itemType
       }));
@@ -684,13 +743,16 @@ Hooks.on("returnCards", (stack, returned, context) => CastleFalkenstein.onReturn
 
 Hooks.on("renderPlayerList", (application, html, data) => CastleFalkenstein.onRenderPlayerList(application, html, data));
 
+Hooks.on("PopOut:popout", (app, popout) => { return CastleFalkenstein.onPopout(app, popout) });
+
+Hooks.once("socketlib.ready", () => CastleFalkenstein.setupSocket());
+
 Hooks.on("getMonarchCardComponents", (monarch, components) => CastleFalkensteinMonarchConfig.onCardDisplay(monarch, components));
 
 Hooks.on("getMonarchHandComponents", (monarch, components) => CastleFalkensteinMonarchConfig.onHandDisplay(monarch, components));
 
 Hooks.on("clickMonarchCard", (event, app, card) => { return CastleFalkensteinMonarchConfig.onCardClick(event, app, card) });
 
-Hooks.once("socketlib.ready", () => CastleFalkenstein.setupSocket());
 
 /* -------------------------------------------- */
 /*  Handlebars Helpers                          */

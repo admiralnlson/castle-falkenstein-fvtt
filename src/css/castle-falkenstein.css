@@ -69,9 +69,8 @@
 /* Base */ 
 
 .castle-falkenstein .window-content {
-  height: auto;
+  height: 320px;
   padding: 5px;
-  overflow-y: hidden;
 }
 
 .castle-falkenstein form {

@@ -25,8 +25,12 @@
       },
       "cardsUi": {
         "name": "Cards User Interface",
-        "hint": "Players may individually select their preferred user interface for cards.",
-        "valueDefault": "Default"
+        "hint": "You may select your preferred user interface for cards here.",
+        "valueNative": "Native (default)"
+      },
+      "cardWidth": {
+        "name": "Cards width",
+        "hint": "If you use the Default cards user interface, you may select your preferred size for cards here (default: 200). (If instead you chose the 🦋 Monarch interface, the see Monarch module settings instead)."
       }
     },
 

@@ -1,6 +1,18 @@
+.app.castle-falkenstein.cards-hand.window-app .window-header {
+  width: 100%;
+}
+
+.app.castle-falkenstein.cards-hand .card-hand-controls {
+  display: flex;
+  justify-content: center;
+}
+
+.app.castle-falkenstein.cards-hand .card-hand-controls .flexrow {
+  width: 300px;
+}
+
 .app.castle-falkenstein.cards-hand .window-content {
   overflow: visible;
-  background-position: center;
   background: transparent;
 }
 
@@ -8,11 +20,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  position: relative;
   margin-top: 15px;
-  right: 0%;
-  top: 0;
-  width: 100%;
 }
 
 #handedCards h2 {
@@ -22,28 +30,18 @@
 }
 
 #handedCards ol.cards {
-  justify-content: space-between;
-  position: relative;
-  overflow: visible
+  display: contents;
+  overflow: visible;
 }
 
 #handedCards ol.cards li.card {
   transition: all 0.1s;
   transition-timing-function: ease-in;
   box-shadow: 1px 1px 20px 5px #111111;
-  position: absolute;
-  transform-origin: bottom center;
-  transform: rotateZ(-5deg);
-  top: 0;
-  width: 100%;
-  height: 100%;
-  list-style: none;
+  
   /* antialiasing */
   will-change: transform;
-}
-
-#handedCards ol.cards li.focusedCard {
-  transform: scale(2);
+  justify-content: center;
 }
 
 #handedCards ol.cards li.card:hover {
@@ -51,24 +49,27 @@
 }
 
 #handedCards ol.cards li.card img.card-face {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   cursor: zoom-in;
+  /* will-change: transform; */
 }
 
 #handedCards ol.cards li.card.focusedCard img.card-face {
   cursor: zoom-out;
+  box-shadow: 1px 1px 20px 5px #3a3a3a;
 }
 
 #handedCards li.card div.castle-falkenstein-card-controls {
   display: none;
-  position: absolute;
+  position: relative;
   transition: none;
   font-size: 1em;
   flex-direction: row;
+  height: 20px;
+  /* bottom: 20px; */
+  justify-items: end;
+  align-items: end;
 }
 
 div.castle-falkenstein.cards-config a.card-control {
@@ -79,8 +80,14 @@ div.castle-falkenstein.cards-config a[disabled].card-control {
   color: var(--color-text-dark-inactive);
 }
 
+/*
+#handedCards ol.cards li.card.focusedCard {
+  box-shadow: 0px 0px 20px 5px var(--color-shadow-primary);
+}
+*/
+
 #handedCards li.card.focusedCard div.castle-falkenstein-card-controls a.card-control {
-  color: var(--color-text-dark-secondary); 
+  color: var(--color-text-light-highlight);
 }
 
 #handedCards li.card.focusedCard div.castle-falkenstein-card-controls i:before {
@@ -89,13 +96,5 @@ div.castle-falkenstein.cards-config a[disabled].card-control {
 
 #handedCards li.card.focusedCard div.castle-falkenstein-card-controls {
   display: flex;
-  bottom: 0;
-  right: 4px;
-  height: 20px;
-}
-
-.verticalRot {
-  transform: rotate(-90deg);
-  position: absolute;
-  bottom: 0;
+  flex-grow: 0;
 }

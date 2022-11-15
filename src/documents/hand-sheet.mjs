@@ -2,7 +2,7 @@ import { CASTLE_FALKENSTEIN } from "../config.mjs";
 import CastleFalkenstein from "../castle-falkenstein.mjs";document
 
 /**
- * Sheet for the default Cards Hand.
+ * Sheet for the native Cards Hand.
  * @extends {CardsHand}
  */
 export class CastleFalkensteinHandSheet extends CardsHand {
@@ -11,8 +11,11 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: [CastleFalkenstein.id, "sheet", "cards-hand", "cards-config"],
       width: 300,
-      top: 150,
-      resizable: false,
+      height: 60,
+      resizable: {
+        resizeX: true,
+        resizeY: false
+      },
       template: "systems/castle-falkenstein/src/documents/hand-sheet.hbs",
     })
   }
@@ -29,12 +32,6 @@ export class CastleFalkensteinHandSheet extends CardsHand {
 
     const hand = this.object;
     context.typeFlag =  hand.getFlag(CastleFalkenstein.id, "type");
-    let deck;
-    if (context.typeFlag == "fortune") {
-      deck = CastleFalkenstein.fortuneDeck;
-    } else if (context.typeFlag == "sorcery") {
-      deck = CastleFalkenstein.sorceryDeck;
-    }
 
     context.disabled = {};
 
@@ -47,16 +44,10 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     context.disabled.castSpell = context.inCompendium || CastleFalkensteinHandSheet.castSpellDisabled(hand);
     context.disabled.cancelSpell = context.inCompendium || CastleFalkensteinHandSheet.cancelSpellDisabled(hand);
 
-    // default cards in core have a 2x3 ratio
-    context.cardWidth = 188;
-    context.cardHeight = 282;
-    if (deck?.img == "systems/castle-falkenstein/src/cards/back-square.png") {
-      context.cardHeight = 268; // default cards have a different ratio (470 x 670, here scaling down by factor of 2/5)
-    }
-    else if (deck?.width > 0 && deck?.height > 0) {
-      context.cardHeight = context.cardWidth * deck.height / deck.width;
-    }
-  
+    context.cardWidth = CastleFalkenstein.settings.cardWidth;
+
+    context.cardHeight = CastleFalkenstein.computeCardHeight(context.typeFlag);
+
     return context;
   }
 
@@ -70,7 +61,7 @@ export class CastleFalkensteinHandSheet extends CardsHand {
 
   rotateCards(html) {
     let cardsAreas = html.find('.cards');
-    const halfTranslation = 30;
+    const halfTranslation = CastleFalkenstein.settings.cardWidth/5;
     const halfAngle = 2;
     for (let area of cardsAreas) {
       for (let i = 0; i < area.children.length; i++) {
@@ -91,16 +82,24 @@ export class CastleFalkensteinHandSheet extends CardsHand {
 
     if (eventCard.classList.contains("focusedCard")) {
       eventCard.setAttribute("data-transf", eventCard.style.transform);
-      eventCard.setAttribute("data-zind", eventCard.style["z-index"])
-      eventCard.style.transform = `scale(1.5) translateY(15%)`;
+      eventCard.setAttribute("data-zind", eventCard.style["z-index"]);
+
+      const hand = this.object;
+      const typeFlag =  hand.getFlag(CastleFalkenstein.id, "type");
+      const cardHeight = CastleFalkenstein.computeCardHeight(typeFlag);
+      const scaleFactor = (cardHeight + 60) / cardHeight;
+      eventCard.style.transform = `scale(${scaleFactor}) translateY(-25px)`;
+      eventCard.children[1].style.transform = `scale(${1/scaleFactor})`;
+
       eventCard.style["z-index"] = 400 + index * 4;
     } else {
       eventCard.style.transform = eventCard.getAttribute("data-transf");
       eventCard.style["z-index"] = eventCard.getAttribute("data-zind");
+      eventCard.children[1].style.transform = `scale(1)`;
     }
   }
 
-  static CARD_MOUSE_ENTER_TRANSLATE = ` translateY(10px)`;
+  static CARD_MOUSE_ENTER_TRANSLATE = ` translateY(-10px)`;
 
   cardMouseEnter(event) {
     let eventCard = event.currentTarget.closest('li.card');
