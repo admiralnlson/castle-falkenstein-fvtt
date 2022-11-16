@@ -291,10 +291,14 @@ export default class CastleFalkenstein {
     if (app?.options?.template == "systems/castle-falkenstein/src/documents/hand-sheet.hbs") {
       const cardWidth = CastleFalkenstein.settings.cardWidth;
 
+      const hand = app.object;
+      const deckType = hand.getFlag(CastleFalkenstein.id, "type");
+      const deck = CastleFalkenstein.deck(deckType);
+
       // cards in the hand besides the first overlap each other by 0.4x their width (the fact they rotate should not influence the overall width much).
       const innerWidth = cardWidth * (1 + (app.object.cards.size > 0 ? app.object.cards.size - 1 : 0) * 0.41);
       // cards typically have a 2x3 ratio (width *1.5), may be focused (scale: 1.5) and there is a button to discard sorcery cards underneath them
-      const innerHeight = CastleFalkenstein.computeCardHeight("fortune") + 60 + 50;
+      const innerHeight = CastleFalkenstein.computeCardHeight(deck) + 60 + 50;
 
       popout.resizeTo(innerWidth + popout.outerWidth - app.options.width,
                       innerHeight + popout.outerHeight - app.options.height);
@@ -410,15 +414,11 @@ export default class CastleFalkenstein {
     return hand;
   }
 
-    static computeCardHeight(typeFlag) {
+  static usingRTGCardVisuals(deck) {
+    return deck?.img == "systems/castle-falkenstein/src/cards/back-square.png";
+  }
 
-    let deck;
-    if (typeFlag == "fortune") {
-      deck = CastleFalkenstein.fortuneDeck;
-    } else if (typeFlag == "sorcery") {
-      deck = CastleFalkenstein.sorceryDeck;
-    }
-
+  static computeCardHeight(deck) {
     const cardWidth = CastleFalkenstein.settings.cardWidth;
 
     if (deck?.img == "systems/castle-falkenstein/src/cards/back-square.png") {

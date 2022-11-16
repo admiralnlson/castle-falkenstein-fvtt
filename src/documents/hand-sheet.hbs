@@ -32,7 +32,7 @@
   <div id="handedCards">
     <ol class="cards">
       {{#each cards as |card|}}
-      <li class="card flexrow" data-card-id="{{card.id}}" title="{{card.name}}" style="width: {{../cardWidth}}px; height: {{../cardHeight}}px; margin-left: calc(-1/2*{{../cardWidth}}px); margin-right: calc(-1/2*{{../cardWidth}}px);">
+      <li class="card flexrow {{../rtgVisuals}}" data-card-id="{{card.id}}" title="{{card.name}}" style="width: {{../cardWidth}}px; height: {{../cardHeight}}px; margin-left: calc(-1/2*{{../cardWidth}}px); margin-right: calc(-1/2*{{../cardWidth}}px);">
         <img class="card-face" src="{{card.img}}" alt="{{card.name}}">
         <div class="castle-falkenstein-card-controls flexcol">
           {{#if ../typeFlag}}

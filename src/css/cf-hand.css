@@ -52,7 +52,11 @@
   width: 100%;
   height: 100%;
   cursor: zoom-in;
-  /* will-change: transform; */
+}
+
+#handedCards ol.cards li.card.rtg-visuals,
+#handedCards ol.cards li.card.rtg-visuals img.card-face {
+  border-radius: 4.5% / 3%;
 }
 
 #handedCards ol.cards li.card.focusedCard img.card-face {

@@ -31,7 +31,9 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     const context = super.getData(options);
 
     const hand = this.object;
+
     context.typeFlag =  hand.getFlag(CastleFalkenstein.id, "type");
+    const deck = CastleFalkenstein.deck(context.typeFlag);
 
     context.disabled = {};
 
@@ -45,8 +47,9 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     context.disabled.cancelSpell = context.inCompendium || CastleFalkensteinHandSheet.cancelSpellDisabled(hand);
 
     context.cardWidth = CastleFalkenstein.settings.cardWidth;
+    context.cardHeight = CastleFalkenstein.computeCardHeight(deck);
 
-    context.cardHeight = CastleFalkenstein.computeCardHeight(context.typeFlag);
+    context.rtgVisuals = CastleFalkenstein.usingRTGCardVisuals(deck) ? "rtg-visuals" : "";
 
     return context;
   }
@@ -86,7 +89,8 @@ export class CastleFalkensteinHandSheet extends CardsHand {
 
       const hand = this.object;
       const typeFlag =  hand.getFlag(CastleFalkenstein.id, "type");
-      const cardHeight = CastleFalkenstein.computeCardHeight(typeFlag);
+      const deck = CastleFalkenstein.deck(typeFlag);
+      const cardHeight = CastleFalkenstein.computeCardHeight(deck);
       const scaleFactor = (cardHeight + 60) / cardHeight;
       eventCard.style.transform = `scale(${scaleFactor}) translateY(-25px)`;
       eventCard.children[1].style.transform = `scale(${1/scaleFactor})`;
@@ -185,8 +189,8 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     // Post message to chat
     const card = cardsDrawn[0];
     const flavor = `[${game.i18n.localize("castle-falkenstein.fortune.hand.chance")}]`;
-    // TODO FIXME not always a match actually, compare with spell aspect
-    const correctSuit = 'correct-suit';
+    
+    const correctSuit = 'correct-suit'; // will be grayed out otherwise
     const content = `<div class="cards-drawn">${CastleFalkenstein.smallCardImg(card,`card-drawn ${correctSuit}`)}</div>`;
     CastleFalkenstein.createChatMessage(actorId === "host" ? "gm" : game.actors.get(actorId), flavor, content);
   }
@@ -308,7 +312,7 @@ export class CastleFalkensteinHandSheet extends CardsHand {
 
     // Post message to chat
     let flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.hand.cancelSpell")}]`;
-    let content = ""; // FIXME add info on spell which was canceled
+    let content = ""; // TODO add info on spell which was canceled
     CastleFalkenstein.createChatMessage(actor, flavor, content);
 
     // no spell being cast anymore

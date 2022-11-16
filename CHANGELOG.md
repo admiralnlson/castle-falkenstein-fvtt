@@ -1,5 +1,9 @@
 # Changelog
 
+## [v2.3.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.3.0) - Not released yet
+### Added
+- Official RTG card visuals now have rounded corners like most playing cards have
+
 ## [v2.2.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.2.0) - 2022/11/15
 ### Added
 - The size of cards in the native cards UI may not be customized via client settings.
@@ -8,7 +12,7 @@
 
 ## [v2.1.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.1.0) - 2022/11/13
 ### Changed
-- Reduced whitespace around native card visuals
+- Reduced whitespace around official RTG card visuals
 - Improved compatibility with custom card visuals which have a different width/height ratio
 
 ## [v2.0.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.0.0) - 2022/11/13
