@@ -111,6 +111,13 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
     context.spells = spells;
   }
 
+  static async onRender(app, html, data) {
+    if (app.tabToOpen) {
+      await app.activateTab(app.tabToOpen);
+      app.tabToOpen = null;
+    }
+  }
+
   /** @override */
   activateListeners(html) {
     super.activateListeners(html);
@@ -227,3 +234,5 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
   }
 
 }
+
+Hooks.on("renderCastleFalkensteinActorSheet", (app, html, data) => CastleFalkensteinActorSheet.onRender(app, html, data));

@@ -165,6 +165,16 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     if (actorFlag === "host")
       return;
     const actor = game.actors.get(actorFlag);
+    if (!actor)
+      return;
+
+    const typeFlag = hand.getFlag(CastleFalkenstein.id, "type");
+
+    if (typeFlag == "fortune") {
+      actor.sheet.tabToOpen = "abilities";
+    } else if (typeFlag == "sorcery") {
+      actor.sheet.tabToOpen = "spells";
+    }
     actor.sheet.render(true, { focus: true });
   }
 
