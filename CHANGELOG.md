@@ -1,9 +1,11 @@
 # Changelog
 
-## [v2.3.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.3.0) - Not released yet
+## [v2.3.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.3.0) - 2022/11/18
 ### Changed
 - Official RTG card visuals now have rounded corners like most playing cards have.
 - The character sheet shortcut in Fortune (resp. Sorcery) card hands now also activates the Abilities (resp. Spells) tab.
+### Fixed
+- Native UI cards were not displaying correctly on Firefox.
 
 ## [v2.2.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.2.0) - 2022/11/15
 ### Added
