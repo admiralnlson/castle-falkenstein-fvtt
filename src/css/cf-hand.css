@@ -59,6 +59,11 @@
   border-radius: 4.5% / 3%;
 }
 
+#handedCards ol.cards li.card.rtg-visuals img.card-face {
+  /* fix for firefox */
+  flex: 1;
+}
+
 #handedCards ol.cards li.card.focusedCard img.card-face {
   cursor: zoom-out;
   box-shadow: 1px 1px 20px 5px #3a3a3a;
