@@ -6,7 +6,31 @@
 
 ## `[M]` Bugs
 
-  + Created items do not get added at the end of the list
++ Created items do not get added at the end of the list
++ It is no longer possible to drop items below the last item (or title bar in case of empty lists)
+
+## V11 update
+
++ from https://foundryvtt.com/releases/11.292
+  + check impacts of move from neDB to LevelDB. Probably requires review of the Compendium packaging logic
+  + consider using `relationships.recommends` and `RelatedPackage.reason` to suggest the usage of Babele to non-English speakers
+* from https://foundryvtt.com/releases/11.294
+  + consider using something like
+  ```
+    "flags": {
+      "hotReload": {
+        "extensions": ["css", "hbs", "jsdon"],
+        "paths": ["system/templates", "css", "lang/en.json"]
+      }
+    }
+  ```
+  along with the "Hot-Reload Package Files" option in the client.
++ from https://foundryvtt.com/releases/11.295
+  + request permission from Talsorian to add a thumbnail for the system in the setup view
++ from https://foundryvtt.com/releases/11.296
+  + consider organizing packs in folders with `packFolders` in `system.json`
+  + see if `ChatMessage.create` must be replaced with `ChatMessage.implementation.create`
+  + see if the `ownership` property must or can be defined in `system.json` for packs with value `{PLAYER: "OBSERVER"}`
 
 ## Feature evolutions
 
