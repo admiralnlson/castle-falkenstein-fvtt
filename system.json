@@ -4,9 +4,9 @@
   "description": "FoundryVTT system for Castle Falkenstein.",
   "version": "0.0.0",
   "compatibility": {
-    "minimum": "10",
-    "verified": "10.291",
-    "maximum": "10"
+    "minimum": "11",
+    "verified": "11.297",
+    "maximum": "11"
   },
   "authors": [ {
       "name": "admiralnlson",
@@ -14,6 +14,27 @@
       "discord": "admiralnlson#2349"
     }
   ],
+  "relationships": {
+    "recommends": [
+      {
+        "id": "babele",
+        "type": "module",
+        "reason": "The French version of this system requires the Babele module."
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "setup",
+      "url": "systems/castle-falkenstein/src/img/castle-falkenstein-banner-large.jpg"
+    }
+  ],
+  "flags": {
+    "hotReload": {
+      "extensions": ["css", "hbs", "mjs", "json"],
+      "paths": ["src", "lang", "system.json", "template.json"]
+    }
+  },
   "esmodules": [
     "src/lib/lib-wrapper-shim/shim.js",
     "src/lib/socketlib/socketlib.js",
@@ -22,17 +43,48 @@
   "styles": [
     "src/css/castle-falkenstein.css"
   ],
+  "packFolders": [
+    {
+      "name": "Castle Falkenstein - Lorebooks",
+      "sorting": "m",
+      "packs": [
+        "spells-1",
+        "spells-2",
+        "spells-3",
+        "spells-4",
+        "spells-5",
+        "spells-6",
+        "spells-7",
+        "spells-8",
+        "spells-9",
+        "spells-10",
+        "spells-11",
+        "spells-12",
+        "spells-13",
+        "spells-14",
+        "spells-15"
+      ]
+    },
+    {
+      "name": "Castle Falkenstein - Other",
+      "sorting": "m",
+      "packs": [
+        "abilities-corebook",
+        "weapons"
+      ]
+    }
+  ],
   "packs": [
     {
-      "label": "Abilities - Corebook",
-      "path": "build/packs/abilities-corebook.db",
+      "label": "Abilities (Corebook)",
+      "path": "build/packs/abilities.db",
       "name": "abilities-corebook",
       "type": "Item",
       "system": "castle-falkenstein",
       "module": "castle-falkenstein"
     },
     {
-      "label": "Lorebook: Manuscriptum Mentallis",
+      "label": "Manuscriptum Mentallis",
       "path": "build/packs/spells-1.db",
       "name": "spells-1",
       "type": "Item",
@@ -40,7 +92,7 @@
       "module": "castle-falkenstein"
     },
     {
-      "label": "Lorebook: Ritual Writing of Psychic Binding",
+      "label": "Ritual Writing of Psychic Binding",
       "path": "build/packs/spells-2.db",
       "name": "spells-2",
       "type": "Item",
@@ -48,7 +100,7 @@
       "module": "castle-falkenstein"
     },
     {
-      "label": "Lorebook: Agrivicca Rexus' Realm of Illusion",
+      "label": "Agrivicca Rexus' Realm of Illusion",
       "path": "build/packs/spells-3.db",
       "name": "spells-3",
       "type": "Item",
@@ -56,7 +108,7 @@
       "module": "castle-falkenstein"
     },
     {
-      "label": "Lorebook: Megron's Realm of Dreaming",
+      "label": "Megron's Realm of Dreaming",
       "path": "build/packs/spells-4.db",
       "name": "spells-4",
       "type": "Item",
@@ -64,7 +116,7 @@
       "module": "castle-falkenstein"
     },
     {
-      "label": "Lorebook: Realm of The Unknown Mind",
+      "label": "Realm of The Unknown Mind",
       "path": "build/packs/spells-5.db",
       "name": "spells-5",
       "type": "Item",
@@ -72,7 +124,7 @@
       "module": "castle-falkenstein"
     },
     {
-      "label": "Lorebook: Libram of Mystic Transformation",
+      "label": "Libram of Mystic Transformation",
       "path": "build/packs/spells-6.db",
       "name": "spells-6",
       "type": "Item",
@@ -80,7 +132,7 @@
       "module": "castle-falkenstein"
     },
     {
-      "label": "Lorebook: The Manuscriptum Universal Alchemic",
+      "label": "The Manuscriptum Universal Alchemic",
       "path": "build/packs/spells-7.db",
       "name": "spells-7",
       "type": "Item",
@@ -88,7 +140,7 @@
       "module": "castle-falkenstein"
     },
     {
-      "label": "Lorebook: Osman's Tome of Physical Movement",
+      "label": "Osman's Tome of Physical Movement",
       "path": "build/packs/spells-8.db",
       "name": "spells-8",
       "type": "Item",
@@ -96,7 +148,7 @@
       "module": "castle-falkenstein"
     },
     {
-      "label": "Lorebook: Libram of Temporal Control",
+      "label": "Libram of Temporal Control",
       "path": "build/packs/spells-9.db",
       "name": "spells-9",
       "type": "Item",
@@ -104,7 +156,7 @@
       "module": "castle-falkenstein"
     },
     {
-      "label": "Lorebook: Libram of Summonation",
+      "label": "Libram of Summonation",
       "path": "build/packs/spells-10.db",
       "name": "spells-10",
       "type": "Item",
@@ -112,7 +164,7 @@
       "module": "castle-falkenstein"
     },
     {
-      "label": "Lorebook: LeRoeun's Scrolls of Dimensional Movement",
+      "label": "LeRoeun's Scrolls of Dimensional Movement",
       "path": "build/packs/spells-11.db",
       "name": "spells-11",
       "type": "Item",
@@ -120,7 +172,7 @@
       "module": "castle-falkenstein"
     },
     {
-      "label": "Lorebook: Dark Libram of Necromancy",
+      "label": "Dark Libram of Necromancy",
       "path": "build/packs/spells-12.db",
       "name": "spells-12",
       "type": "Item",
@@ -128,7 +180,7 @@
       "module": "castle-falkenstein"
     },
     {
-      "label": "Lorebook: Manuscript of Paranormal Divination",
+      "label": "Manuscript of Paranormal Divination",
       "path": "build/packs/spells-13.db",
       "name": "spells-13",
       "type": "Item",
@@ -136,7 +188,7 @@
       "module": "castle-falkenstein"
     },
     {
-      "label": "Lorebook: Manuscript of Elemental Shaping",
+      "label": "Manuscript of Elemental Shaping",
       "path": "build/packs/spells-14.db",
       "name": "spells-14",
       "type": "Item",
@@ -144,7 +196,7 @@
       "module": "castle-falkenstein"
     },
     {
-      "label": "Lorebook: Burton's On the Raised Forces of Nature",
+      "label": "Burton's On the Raised Forces of Nature",
       "path": "build/packs/spells-15.db",
       "name": "spells-15",
       "type": "Item",
