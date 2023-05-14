@@ -45,32 +45,38 @@
   ],
   "packFolders": [
     {
-      "name": "Castle Falkenstein - Lorebooks",
+      "name": "Castle Falkenstein", 
       "sorting": "m",
-      "packs": [
-        "spells-1",
-        "spells-2",
-        "spells-3",
-        "spells-4",
-        "spells-5",
-        "spells-6",
-        "spells-7",
-        "spells-8",
-        "spells-9",
-        "spells-10",
-        "spells-11",
-        "spells-12",
-        "spells-13",
-        "spells-14",
-        "spells-15"
-      ]
-    },
-    {
-      "name": "Castle Falkenstein - Other",
-      "sorting": "m",
-      "packs": [
-        "abilities-corebook",
-        "weapons"
+      "folders": [
+        {
+          "name": "Lorebooks",
+          "sorting": "m",
+          "packs": [
+            "spells-1",
+            "spells-2",
+            "spells-3",
+            "spells-4",
+            "spells-5",
+            "spells-6",
+            "spells-7",
+            "spells-8",
+            "spells-9",
+            "spells-10",
+            "spells-11",
+            "spells-12",
+            "spells-13",
+            "spells-14",
+            "spells-15"
+          ]
+        },
+        {
+          "name": "Other",
+          "sorting": "m",
+          "packs": [
+            "abilities-corebook",
+            "weapons"
+          ]
+        }
       ]
     }
   ],
