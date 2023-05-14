@@ -66,6 +66,14 @@
   grid-template-columns: repeat(9, minmax(0, 1fr));
 }
 
+/* Changes to FoundryVTT default CSS */
+
+.compendium-sidebar .directory-item.compendium .compendium-name {
+  align-self: start;
+  font-size: var(--font-size-14);
+
+}
+
 /* Base */ 
 
 .castle-falkenstein .window-content {
