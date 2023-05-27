@@ -9,10 +9,6 @@
 + Created items do not get added at the end of the list
 + It is no longer possible to drop items below the last item (or title bar in case of empty lists)
 
-## V11 update
-+ from https://foundryvtt.com/releases/11.295
-  + request permission from Talsorian to add a thumbnail for the system in the setup view
-
 ## Feature evolutions
 
 + `[?]` deplete Host or character hands before changing the Fortune discard pile (maybe ask for confirmation first)
