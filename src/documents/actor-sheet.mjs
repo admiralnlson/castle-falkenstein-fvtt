@@ -51,9 +51,10 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
 
     // Add the actor's system data to context.system for easier access
     context.system = context.actor.system;
-    context.enrichedDescription = await TextEditor.enrichHTML(context.system.description);
-    context.enrichedDiary = await TextEditor.enrichHTML(context.system.diary);
-    context.enrichedHostNotes = await TextEditor.enrichHTML(context.system.hostNotes);
+
+    context.enrichedDescription = await TextEditor.enrichHTML(context.system.description, {async: true});
+    context.enrichedDiary = await TextEditor.enrichHTML(context.system.diary, {async: true});
+    context.enrichedHostNotes = await TextEditor.enrichHTML(context.system.hostNotes, {async: true});
 
     this._prepareItems(context);
 
