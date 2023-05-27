@@ -1,5 +1,11 @@
 # Changelog
 
+## [v2.4.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.4.0) - 2023/05/27
+### Added
+- Compatibility with Foundry V11
+- [Foundry V11+] Official visual for the system in the Setup menu.
+- [Foundry V11+] Compendium packs folder structure.
+
 ## [v2.3.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.3.0) - 2022/11/18
 ### Changed
 - Official RTG card visuals now have rounded corners like most playing cards have.
