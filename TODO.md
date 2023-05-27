@@ -9,6 +9,10 @@
 + Created items do not get added at the end of the list
 + It is no longer possible to drop items below the last item (or title bar in case of empty lists)
 
+## Capabilities
+
++ Look into full text search capability added in V11, based on indexed data
+
 ## Feature evolutions
 
 + `[?]` deplete Host or character hands before changing the Fortune discard pile (maybe ask for confirmation first)
