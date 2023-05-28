@@ -1,0 +1,17 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "attach",
+      "name": "Attach to existing Chrome browser started with --remote-debugging-port=9222 --user-data-dir=remote-debug-profile",
+      "port": 9222
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Launch Chrome in debug mode with FoundryVTT running at localhost:30001",
+      "url": "http://localhost:30001"
+    }
+  ]
+}
