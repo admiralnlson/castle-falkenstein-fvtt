@@ -3,3 +3,6 @@
 
 # Node
 src/packs/node_modules
+
+# these are the folders which FoundryVTT creates when converting NEDB files
+build/packs/*/
