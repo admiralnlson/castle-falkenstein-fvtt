@@ -10,6 +10,19 @@
         "cwd": "D:/FoundryVTT Dev/"
       },
       "command": "node code/resources/app/main.js --port=30001 --dataPath=data"
+    },
+    {
+      "label": "Open FoundryVTT Dev folder",
+      "type": "shell",
+      "command": "explorer \"D:\\FoundryVTT Dev\""
+    },
+    {
+      "label": "Build packs",
+      "type": "shell",
+      "options": {
+        "cwd": "${workspaceFolder}/src/packs"
+      },
+      "command": "gulp build"
     }
   ]
 }
