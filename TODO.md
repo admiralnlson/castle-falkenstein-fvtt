@@ -15,7 +15,9 @@
 
 ## Feature evolutions
 
-+ `[?]` deplete Host or character hands before changing the Fortune discard pile (maybe ask for confirmation first)
++ `[]` allow actors to use another actor's Fortune hand ("Host Notes" tab becomes "Host tab")
+  + consider attaching Fortune hands to players as opposed to actors? (although this may reduce options)
++ `[M]` deplete Host or character hands before changing the Fortune discard pile (maybe ask for confirmation first)
 + `[C🔥]` Add "Damage" to Spell Definition (Comme Il Faut (FR), p154)
 
 ### User requests
@@ -48,8 +50,6 @@
   + potentially split "Fae" into "Fae (generic) / Fae (Brownie) / Fae (Pixie) / Fae (Lord/Lady)" for extra setup of non-generic Fae characters.
 
 ### Cards
-
-+ `[S]` Shortcut to 'refill' the fortune hand in the Perform Feat form, or at least refresh the form when fortune cards are drawn from the hand itself
 
 + `[C]` Macro to delete all Host character hands
 
