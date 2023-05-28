@@ -1,5 +1,6 @@
 import { CASTLE_FALKENSTEIN } from "../config.mjs";
-import CastleFalkenstein from "../castle-falkenstein.mjs";document
+import CastleFalkenstein from "../castle-falkenstein.mjs";
+import CastleFalkensteinPerformFeat from "../forms/perform-feat.mjs";
 
 /**
  * Sheet for the native Cards Hand.
@@ -183,7 +184,18 @@ export class CastleFalkensteinHandSheet extends CardsHand {
   }
 
   static async refillHand(hand) {
-    await CastleFalkenstein.draw("fortune", hand, 4 - hand.cards.size);
+    const cardsDrawn = await CastleFalkenstein.draw("fortune", hand, 4 - hand.cards.size);
+
+    // Refresh the local "Perform Feat" window, if any
+    if (cardsDrawn.length > 0) {
+      for (const form of Object.values(ui.windows)) {
+        if (form instanceof CastleFalkensteinPerformFeat && form.hand.id == hand.id) {
+          form.computeWrappedCards();
+          form.render(true);
+          break;
+        }
+      }
+    }
   }
 
   static chanceCardDisabled(hand) {

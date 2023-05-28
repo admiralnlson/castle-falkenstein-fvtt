@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+### Added
++ The "Perform Feat" window will now automatically refresh if the corresponding Fortune hand is refilled.
+
 ## [v2.4.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.4.0) - 2023/05/27
 ### Added
 - Compatibility with Foundry V11

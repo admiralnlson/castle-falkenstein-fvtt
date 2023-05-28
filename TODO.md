@@ -51,6 +51,8 @@
 
 ### Cards
 
++ `[S]` refresh the Perform Feat form when missing Fortune cards are drawn
+
 + `[C]` Macro to delete all Host character hands
 
 + `[C]` Card hand button to show a Fortune or Sorcery hand in chat

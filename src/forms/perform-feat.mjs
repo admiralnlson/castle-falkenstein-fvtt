@@ -26,6 +26,10 @@ export default class CastleFalkensteinPerformFeat extends FormApplication {
     this.ability = ability;
     this.character = ability.actor;
     this.hand = this.character.handIfExists("fortune");
+    this.computeWrappedCards();
+  }
+
+  computeWrappedCards() {
     this.wrappedCards = [];
     for (const card of this.hand.cards) {
       this.wrappedCards.push({
