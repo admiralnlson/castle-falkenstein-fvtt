@@ -206,12 +206,34 @@ html * {
   white-space: nowrap;
 }
 
+.castle-falkenstein .resource-label {
+  font-weight: bold;
+}
+
 .castle-falkenstein .sheet-tabs .active {
   font-weight: bold;
 }
 
-.castle-falkenstein .resource-label {
-  font-weight: bold;
+.castle-falkenstein .tab[data-tab].active {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.castle-falkenstein .items-list {
+  flex-grow: 1;
+}
+
+.castle-falkenstein .items-list.weapons {
+  flex-grow: 0;
+  overflow-y: visible;
+  padding-bottom:22px;
+}
+
+.castle-falkenstein .items-list.possessions {
+  flex-grow: 1;
+  overflow-y: visible;
 }
 
 .castle-falkenstein .items-list .items-header > * {
