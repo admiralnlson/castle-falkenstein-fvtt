@@ -9,7 +9,12 @@
       "options": {
         "cwd": "D:/FoundryVTT Dev/"
       },
-      "command": "node code/resources/app/main.js --port=30001 --dataPath=data"
+      "command": "node code/resources/app/main.js --port=30001 --dataPath=data",
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
     },
     {
       "label": "Open FoundryVTT Dev folder",
