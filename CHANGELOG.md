@@ -4,7 +4,7 @@
 ### Added
 + The "Perform Feat" window will now automatically refresh if the corresponding Fortune hand is refilled.
 ### Fixed
-+ It it once again possible to drop an Item (ability, weapon, spell) by aiming below the corresponding list on the character sheet (as opposed to exactly *on* the list).
++ It is once again possible to drop an Item (ability, weapon, spell) by aiming below the corresponding list on the character sheet (as opposed to exactly *on* the list).
 
 ## [v2.4.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.4.0) - 2023/05/27
 ### Added
