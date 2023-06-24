@@ -57,7 +57,7 @@ function compilePacks() {
             console.error("Too many items in the pack");
           }
           item._id = filenameHash13 + ("00" + counter).slice(-3); // 13 chars from filename + 3 from item = 16 (nedb id length)
-          item.sort = counter;
+          item.sort = counter * 10000; // FVTT seems to be using increments of 10,000 for sort values (as of FVTT build 302).
           ++counter;
         }
 
