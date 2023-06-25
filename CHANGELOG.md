@@ -1,5 +1,10 @@
 # Changelog
 
+## [v2.6.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.5.0) - 2023/06/25
+### Added [Foundry V11+ only]
++ Players and Hosts may not use the "Full Text search" function in the Actors sidebar to search character descriptions
++ Hosts may not use the "Full Text search" function in the Actors sidebar to search diaries and host notes.
+
 ## [v2.5.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.5.0) - 2023/06/24
 ### Added
 + The "Perform Feat" window will now automatically refresh if the corresponding Fortune hand is refilled.
@@ -7,78 +12,78 @@
 + It is once again possible to drop an Item (ability, weapon, spell) by aiming below the corresponding list on the character sheet (as opposed to exactly *on* the list).
 
 ## [v2.4.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.4.0) - 2023/05/27
-### Added
-- Compatibility with Foundry V11
-- [Foundry V11+] Official visual for the system in the Setup menu.
-- [Foundry V11+] Compendium packs folder structure.
+### Added [Foundry V11+ only]
++ Compatibility with Foundry V11
++ Official visual for the system in the Setup menu.
++ Compendium packs folder structure.
 
 ## [v2.3.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.3.0) - 2022/11/18
 ### Changed
-- Official RTG card visuals now have rounded corners like most playing cards have.
-- The character sheet shortcut in Fortune (resp. Sorcery) card hands now also activates the Abilities (resp. Spells) tab.
++ Official RTG card visuals now have rounded corners like most playing cards have.
++ The character sheet shortcut in Fortune (resp. Sorcery) card hands now also activates the Abilities (resp. Spells) tab.
 ### Fixed
-- Native UI cards were not displaying correctly on Firefox.
++ Native UI cards were not displaying correctly on Firefox.
 
 ## [v2.2.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.2.0) - 2022/11/15
 ### Added
-- The size of cards in the native cards UI may not be customized via client settings.
++ The size of cards in the native cards UI may not be customized via client settings.
 ### Fixed
-- When popping out a cards hand via the `PopOut!` module, the resulting window is now better sized.
++ When popping out a cards hand via the `PopOut!` module, the resulting window is now better sized.
 
 ## [v2.1.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.1.0) - 2022/11/13
 ### Changed
-- Reduced whitespace around official RTG card visuals
-- Improved compatibility with custom card visuals which have a different width/height ratio
++ Reduced whitespace around official RTG card visuals
++ Improved compatibility with custom card visuals which have a different width/height ratio
 
 ## [v2.0.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.0.0) - 2022/11/13
 ### Added
-- The system now has a native user interface for card hands. The '🦋 Monarch' module remains usable as an alternative.
++ The system now has a native user interface for card hands. The '🦋 Monarch' module remains usable as an alternative.
 ### Changed
-- As from this version of the system, Foundry V10 is the minimum required generation. Hosts who cannot migrate from V9 to V10 will need to keep using Castle Falkenstein v1.x
-- Character descriptions, diaries, host notes and ability/spell/weapon/possession descriptions now make use of the ProseMirror editor (the one proposed by default in V10 journals).
-- Card names will now be translated based on each user's language preference (assuming this language is supported by the system of course).
-- Chat messages the system generates will now, like OOC (Out Of Character) messages, have a border the same color as the user who triggered them.
-- System settings are no longer configured in a separate window (since Foundry V10 now has a dedicated tab for system configuration).
++ As from this version of the system, Foundry V10 is the minimum required generation. Hosts who cannot migrate from V9 to V10 will need to keep using Castle Falkenstein v1.x
++ Character descriptions, diaries, host notes and ability/spell/weapon/possession descriptions now make use of the ProseMirror editor (the one proposed by default in V10 journals).
++ Card names will now be translated based on each user's language preference (assuming this language is supported by the system of course).
++ Chat messages the system generates will now, like OOC (Out Of Character) messages, have a border the same color as the user who triggered them.
++ System settings are no longer configured in a separate window (since Foundry V10 now has a dedicated tab for system configuration).
 ### Fixed
-- Abilities/spells/weapon/possessions dragged onto the hotbar will now produce adequate macros again.
++ Abilities/spells/weapon/possessions dragged onto the hotbar will now produce adequate macros again.
 
 ## [v1.4.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.4.0) - 2022/08/11
 ### Added
-- The Host now has their own Fortune hand, used for Host characters feats (N.B. sorcerer Host characters still use individual sorcery hands).
-- A shortcut button was added in fortune and sorcery hands to open the character's sheet.
++ The Host now has their own Fortune hand, used for Host characters feats (N.B. sorcerer Host characters still use individual sorcery hands).
++ A shortcut button was added in fortune and sorcery hands to open the character's sheet.
 ### Changed
-- In the weapons compendium, animal sizes were renamed to match the ones documented in sourcebook "Curious Creatures" (Large becomes Medium ; Very Large becomes Large). A mapping to Dragon attacks was also added for convenience.
-- Decks will now be automatically reshuffled when a discard pile is reset or deleted.
-- Resetting or deleting a character's fortune or sorcery hand will now discard the cards it contained, rather than directly reinjecting them into the deck without reshuffle.
-- Deleting a character will now automatically delete (discard) any fortune or sorcery hand they had.
++ In the weapons compendium, animal sizes were renamed to match the ones documented in sourcebook "Curious Creatures" (Large becomes Medium ; Very Large becomes Large). A mapping to Dragon attacks was also added for convenience.
++ Decks will now be automatically reshuffled when a discard pile is reset or deleted.
++ Resetting or deleting a character's fortune or sorcery hand will now discard the cards it contained, rather than directly reinjecting them into the deck without reshuffle.
++ Deleting a character will now automatically delete (discard) any fortune or sorcery hand they had.
 ### Fixed
-- Duplicated characters will no longer reuse the fortune or sorcery hands of the copied character, and have their own.
-- Tokens with 'Link Actor Data' disabled will no longer give the impression that the sorcery hand has become unusable.
++ Duplicated characters will no longer reuse the fortune or sorcery hands of the copied character, and have their own.
++ Tokens with 'Link Actor Data' disabled will no longer give the impression that the sorcery hand has become unusable.
 
 ## [v1.3.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.3.0) - 2022/05/30
 ### Added
-- The default macro icon of each ability, weapon, possession or spell may now be customized in the respective sheets.
++ The default macro icon of each ability, weapon, possession or spell may now be customized in the respective sheets.
 
 ## [v1.2.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.2.0) - 2022/05/21
 ### Added
-- Weapons list in the character sheet Possessions tab
-- Weapons compendium - English
-- Weapons compendium - French translation (requires the Babele module)
++ Weapons list in the character sheet Possessions tab
++ Weapons compendium - English
++ Weapons compendium - French translation (requires the Babele module)
 ### Changed
-- Minor cosmetic & user xp updates
++ Minor cosmetic & user xp updates
 
 ## [v1.1.2](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.1.2) - 2022/05/16
 ### Fixed
-- Fixed a v1.1.1 regression where:
-  - Discard piles were no longer automatically reschuffling into empty decks
-  - The 'Show Players' button on Actors was no longer doing anything
-  - Monarch sheets were no longer set as the default for hands and cards (new worlds only)
++ Fixed a v1.1.1 regression where:
+  + Discard piles were no longer automatically reschuffling into empty decks
+  + The 'Show Players' button on Actors was no longer doing anything
+  + Monarch sheets were no longer set as the default for hands and cards (new worlds only)
 
 ## [v1.1.1](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.1.1) - 2022/05/05
 ### Fixed
-- Character health now defaults to empty (previously was given the arbitrary value of 10).
-- Character sheets used on the 'GM screen' module will now also display correctly after a refresh.
-- Non system-specific card hands will now display correctly.
++ Character health now defaults to empty (previously was given the arbitrary value of 10).
++ Character sheets used on the 'GM screen' module will now also display correctly after a refresh.
++ Non system-specific card hands will now display correctly.
 
 ## [v1.1.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.1.0) - 2022/04/03
 ### Added
@@ -102,7 +107,7 @@
 
 ## [v1.0.1](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.0.1) - 2022/03/20
 ### Fixed
-- Issue in French translation of Lorebook 'Realm of The Unknown Mind'
++ Issue in French translation of Lorebook 'Realm of The Unknown Mind'
 
 ## [v1.0.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.0.0) - 2022/03/20
 ### Changed

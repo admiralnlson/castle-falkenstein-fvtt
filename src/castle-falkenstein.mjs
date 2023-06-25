@@ -1,6 +1,11 @@
 import { CASTLE_FALKENSTEIN } from "./config.mjs";
 import { CastleFalkensteinActor } from "./documents/actor.mjs";
+import { CastleFalkensteinActorDataModel } from "./documents/actordatamodel.mjs";
 import { CastleFalkensteinItem } from "./documents/item.mjs";
+import { CastleFalkensteinAbilityDataModel } from "./documents/item-abilitydatamodel.mjs";
+import { CastleFalkensteinWeaponDataModel } from "./documents/item-weapondatamodel.mjs";
+import { CastleFalkensteinPossessionDataModel } from "./documents/item-possessiondatamodel.mjs";
+import { CastleFalkensteinSpellDataModel } from "./documents/item-spelldatamodel.mjs";
 import { CastleFalkensteinCards } from "./documents/cards.mjs";
 import { CastleFalkensteinActorSheet } from "./documents/actor-sheet.mjs";
 import { CastleFalkensteinAbilitySheet } from "./documents/item-ability-sheet.mjs";
@@ -485,6 +490,20 @@ export default class CastleFalkenstein {
     CONFIG.Item.documentClass = CastleFalkensteinItem;
     CONFIG.Cards.documentClass = CastleFalkensteinCards;
 
+    if (game.release.generation >= 11) {
+      CONFIG.Actor.dataModels.character = CastleFalkensteinActorDataModel;
+      // the system does not have Actor packs, but users might.
+      CONFIG.Actor.compendiumIndexFields = ["name", "system.description"];
+      
+      CONFIG.Item.dataModels.ability = CastleFalkensteinAbilityDataModel;
+      CONFIG.Item.dataModels.weapon = CastleFalkensteinWeaponDataModel;
+      CONFIG.Item.dataModels.possession = CastleFalkensteinPossessionDataModel;
+      CONFIG.Item.dataModels.spell = CastleFalkensteinSpellDataModel;
+      CONFIG.Item.compendiumIndexFields = ["name", "system.description"];
+
+      game.packs.forEach(p => p.getIndex({fields: ["name", "system.description"]}));
+    }
+
     // Declare Castle Falkenstein deck preset
     CONFIG.Cards.presets.castleFalkensteinDeck = {
       type: "deck",
@@ -661,11 +680,9 @@ export default class CastleFalkenstein {
   static async preLoadTemplates() {
     return loadTemplates([
       // Actor partials
-      "systems/castle-falkenstein/src/documents/actor-abilities.hbs",
-      "systems/castle-falkenstein/src/documents/actor-possessions.hbs",
-      "systems/castle-falkenstein/src/documents/actor-spells.hbs",
-      // TODO check is needed:
-      "systems/castle-falkenstein/src/documents/hand-sheet.hbs"
+      "systems/castle-falkenstein/src/documents/actor-sheet-abilities.hbs",
+      "systems/castle-falkenstein/src/documents/actor-sheet-possessions.hbs",
+      "systems/castle-falkenstein/src/documents/actor-sheet-spells.hbs",
     ]);
   }
 

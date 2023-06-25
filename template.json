@@ -1,49 +1,15 @@
 {
   "Actor": {
     "types": ["character"],
-    "templates": {
-      "base": {
-        "health": {
-          "max": null
-        },
-        "wounds": "",
-        "description": "",
-        "diary": "",
-        "hostNotes": ""
-      }
-    },
-    "character": {
-      "templates": ["base"]
-    }
+    "htmlFields": ["description", "diary", "hostNotes"],
+    "character": {}
   },
   "Item": {
     "types": ["ability", "weapon", "possession", "spell"],
-    "templates": {
-      "base": {
-        "description": ""
-      }
-    },
-    "ability": {
-      "templates": ["base"],
-      "level" : "AV",
-      "suit": "?"
-    },
-    "weapon": {
-      "templates": ["base"],
-      "effectiveRange": "",
-      "ammunition": null,
-      "ammunition_max": null,
-      "woundsPartial": null,
-      "woundsFull": null,
-      "woundsHigh": null
-    },
-    "possession": {
-      "templates": ["base"]
-    },
-    "spell": {
-      "templates": ["base"],
-      "level" : "0",
-      "suit": "?"
-    }
+    "htmlFields": ["description"],
+    "ability": {},
+    "weapon": {},
+    "possession": {},
+    "spell": {}
   }
 }
