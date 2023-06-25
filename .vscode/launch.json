@@ -9,7 +9,7 @@
       "args": [
         "--port=30001",
         "--dataPath=data",
-        "--world=${foundryvttDebugWorld}"
+        "--world=${config:foundryvttDebugWorld}"
       ],
       "request": "launch",
       "skipFiles": [
