@@ -28,10 +28,11 @@
 
 + Free text (w/ compendium?), specific labels with rw input, specific labels with auto-computed values?
   + Languages
-  + Faerie Power
   + Corebook p140 / Libre de base p194
     + Running speed (Athletics) / Vitesse de course (Athlétisme)
     + Flying Speeds (Faerie Etherealness or Dragon/Animal Physique) / Vitesses de vol (Éthéralité et Physique)
+  + Faerie Powers
+  + Dwarf Powers
   + Dragon
     + Flying
     + Shapeshift
@@ -47,11 +48,13 @@
 
 ### Cards
 
-+ `[S]` refresh the Perform Feat form when missing Fortune cards are drawn
-
 + `[C]` Macro to delete all Host character hands
 
 + `[C]` Card hand button to show a Fortune or Sorcery hand in chat
+
+### Abilities
+
++ `[C]` Specialization in the system itself (= depend on another ; level is computed)
 
 ### Sorcery
 
@@ -67,7 +70,7 @@
 + `[C]` Cast Spell - When enough aligned Power has been drawn, the spell is immediately cast also (no harmonics generated) or a chat message is generated at least.
 + `[S]` Cast Spell - When a Joker is drawn, the spell is immediately cast a.k.a. **Wild Spell** (fr: Surcharge thaumique)
 
-+ `[C]` Release Power - Prevent releasing of aligned Power (or at least add confirmation dialog)
++ `[S]` Release Power - Prevent releasing of aligned Power (or at least add confirmation dialog)
 + `[S]` Release Power - Show the harmonic type on unaligned power cards
   + Spades / Spiritual (fr: spirituelle)
   + Hearts / Emotional (fr: émotionnelle)
@@ -80,7 +83,7 @@
 
 ### Core mechanics not yet supported
 
-+ `[C]` Support for 'Harm Rank' alternative mechanics
++ `[S]` Support for 'Harm Rank' alternative mechanics
 
 + `[M]` Duel mechanics
   + [M] Duel hand initiated with 2 Red cards, 2 Black cards and 2 Jokers
@@ -90,11 +93,10 @@
   + [C] Exchange cards are shown only when both characters have selected them
   + [C] Rest counter
   + [C] Exchanges & Rounds materialized in combat tracker
-+ `[S]` Unique Fortune hand for the Host, shared by all NPCs
 
 ### From "Variations on the Great Game" and other sourcebooks
 
-+ `[C]` Consider adding a lorebook property on spells (and showing it in the spells list)
++ `[C]` Lorebook property on spells (and showing it in the spells list)
 
 + `[C]` Support "Divorce Variation" / "Variante de la séparation"\
         en: In which Abilities loosen the bonds which hold them tight to their governing Suits.\
