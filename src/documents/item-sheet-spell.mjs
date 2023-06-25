@@ -13,7 +13,7 @@ export class CastleFalkensteinSpellSheet extends ItemSheet {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: [CastleFalkenstein.id, "sheet", "item"],
-      template: "systems/castle-falkenstein/src/documents/item-spell-sheet.hbs",
+      template: "systems/castle-falkenstein/src/documents/item-sheet-spell.hbs",
       width: 460,
       height: 300,
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }]

@@ -2,10 +2,10 @@ import { CASTLE_FALKENSTEIN } from "../config.mjs";
 import CastleFalkenstein from "../castle-falkenstein.mjs";
 
 /**
- * Sheet for the 'ability' item type.
+ * Sheet for the 'possession' item type.
  * @extends {ItemSheet}
  */
-export class CastleFalkensteinAbilitySheet extends ItemSheet {
+export class CastleFalkensteinPossessionSheet extends ItemSheet {
 
   /**
    * @override
@@ -13,7 +13,7 @@ export class CastleFalkensteinAbilitySheet extends ItemSheet {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: [CastleFalkenstein.id, "sheet", "item"],
-      template: "systems/castle-falkenstein/src/documents/item-ability-sheet.hbs",
+      template: "systems/castle-falkenstein/src/documents/item-sheet-possession.hbs",
       width: 460,
       height: 300,
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }]
@@ -28,5 +28,6 @@ export class CastleFalkensteinAbilitySheet extends ItemSheet {
     context.CASTLE_FALKENSTEIN = CASTLE_FALKENSTEIN;
     return context;
   }
+
 
 }

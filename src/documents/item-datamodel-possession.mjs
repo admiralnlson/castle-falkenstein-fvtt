@@ -1,4 +1,4 @@
-import { CastleFalkensteinItemDataModel } from "./itemdatamodel.mjs";
+import { CastleFalkensteinItemDataModel } from "./item-datamodel.mjs";
 
 export class CastleFalkensteinPossessionDataModel extends CastleFalkensteinItemDataModel {
   static defineSchema() {
