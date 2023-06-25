@@ -30,7 +30,7 @@ Please report bugs and request features as [Issues in the project repository](ht
 New translations (see [lang/ folder](./lang/) for what is expected) may be submitted as Issues also, or directly as Pull Requests if you're familiar with those.
 When submitting translations, please indicate whether your contribution is a one-time thing only or if you're like to be contacted each time a new version of the system introduces new text to translate.
 
-I am reachable as [admiralnlson#2349](https://discordapp.com/users/198160826853490688/) on Discord.
+I am reachable as [admiralnlson](https://discordapp.com/users/198160826853490688/) on Discord.
 
 Please do not address issues you're facing with this system to R. Talsorian Games. They would not be in a position to help you.
 
