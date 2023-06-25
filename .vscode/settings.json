@@ -1,3 +1,6 @@
 {
-  "foundryvttDevFolder": "D:\\FoundryVTT Dev\\"
+  // must container subfolders: "code/" (NodeJS zip content) and "data/" (user data)
+  "foundryvttDevFolder": "D:\\FoundryVTT Dev\\",
+  // name of the world opened by FoundryVTT before debug starts
+  "foundryvttDebugWorld": "chateau-falkenstein"
 }

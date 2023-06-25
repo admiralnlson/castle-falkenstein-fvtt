@@ -9,7 +9,7 @@
       "args": [
         "--port=30001",
         "--dataPath=data",
-        "--world=chateau-falkenstein"
+        "--world=${foundryvttDebugWorld}"
       ],
       "request": "launch",
       "skipFiles": [
