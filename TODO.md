@@ -4,10 +4,6 @@
 + MoSCoW: `[M]`ust, `[S]`hould, `[C]`ould, `[W]`on't
 + `[🔥]` Project maintainer (admiralnlson)'s own GM needs
 
-## Capabilities
-
-+ Look into full text search capability added in V11, based on indexed data
-
 ## Feature evolutions
 
 + `[]` allow actors to use another actor's Fortune hand ("Host Notes" tab becomes "Host tab")
@@ -21,7 +17,12 @@
 |----------------|:--------|
 | Dame du Lac    | `[S]` Extra 'Other' tab for listing secondary attributes such as Speed (Run+Flight) or Languages known (see below) |
 | Dame du Lac    | `[C]` Have abilities display as 2+ columns if there is enough horizontal space (and ensure 2 in the default width) |
-| mite.railleuse | `[S]` Duel system |
+| mite.railleuse | `[S]` Duel system                                                                                                  |
+
+### Technical
+
++ See if Cards would benefit from DataModel functions (value computation, unicode suit from textual one, etc.)
++ See if Spells would benefit from DataModel functional (unicode aspect(suit) from textual one)
 
 ### `[🔥]` Derived stats & Racial abilities (a.k.a 'Other' tab)
 
