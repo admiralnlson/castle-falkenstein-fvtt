@@ -6,7 +6,7 @@
     {
       "label": "Open FoundryVTT Dev folder",
       "type": "shell",
-      "command": "explorer \"D:\\FoundryVTT Dev\"",
+      "command": "explorer ${config:foundryvttDevFolder}",
       "problemMatcher": []
     },
     {

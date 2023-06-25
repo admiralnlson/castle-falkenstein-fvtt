@@ -3,7 +3,7 @@
   "configurations": [
     {
       "name": "Run FoundryVTT",
-      "cwd": "D:/FoundryVTT Dev/",
+      "cwd": "${config:foundryvttDevFolder}",
       "type": "node",
       "program": "code/resources/app/main.js",
       "args": [
@@ -25,27 +25,24 @@
     },
     {
       "name": "Open browser",
-      "presentation": {
-        "hidden": true
-      },
       "type": "chrome",
       "request": "launch",
       "url": "http://localhost:30001",
-      "webRoot": "D:/FoundryVTT Dev/code/resources/app/public",
+      "webRoot": "${config:foundryvttDevFolder}/code/resources/app/public",
       "pathMapping": {
         // Override the path for own system...
         "/systems/castle-falkenstein": "${workspaceFolder}",
         // ... and use the default for everything else.
         // Note the slightly different formats - swap them for a module.
-        "/systems/*": "D:/FoundryVTT Dev/data/Data/systems/*",
-        "/modules": "D:/FoundryVTT Dev/data/Data/modules"
+        "/systems/*": "${config:foundryvttDevFolder}/data/Data/systems/*",
+        "/modules": "${config:foundryvttDevFolder}/data/Data/modules"
       },
       "skipFiles": [
         "<node_internals>/**/*.js",
         "node_modules/**/*.js"
       ],
       // How long to wait for the launcher. Increase this for potato debugging.
-      "timeout": 5000,
+      "timeout": 5000
     }
   ]
 }
