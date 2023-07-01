@@ -2,7 +2,7 @@
 
 ## Unreleased
 ### Added [Foundry V11+ only]
-+ Players and Hosts may not use the "Full Text search" function in the Actors sidebar to search character descriptions
++ Players and Hosts may not use the "Full Text search" function in the Actors sidebar to search character descriptions.
 + Hosts may not use the "Full Text search" function in the Actors sidebar to search diaries and host notes.
 
 ## [v2.5.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.5.0) - 2023/06/24
