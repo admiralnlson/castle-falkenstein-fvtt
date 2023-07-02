@@ -121,6 +121,11 @@ export class CastleFalkensteinActor extends Actor {
     return this.items.find(item => item.type == 'ability' && item.name == CastleFalkenstein.i18nSorceryAbility);
   }
 
+  get sorceryAbilityAndSpecializations() {
+    return this.items.filter(item => item.type == "ability" && (item.name == CastleFalkenstein.i18nSorceryAbility ||
+      item.system.isSpecialization && item.system.rootAbility?.name == CastleFalkenstein.i18nSorceryAbility));
+  }
+
   /**
    * Define a Spell.
    */

@@ -56,60 +56,39 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
     context.enrichedDiary = await TextEditor.enrichHTML(context.system.diary, {async: true});
     context.enrichedHostNotes = await TextEditor.enrichHTML(context.system.hostNotes, {async: true});
 
-    this._prepareItems(context);
+    // Initialize Item type specific containers.
+    context.abilities = [];
+    context.weapons = [];
+    context.possessions = [];
+    context.spells = [];
+
+    // Iterate through items, allocating to containers
+    let sortedItems = context.document.items.contents.sort((a,b) => a.sort-b.sort);
+
+    for (let i of sortedItems) {
+      // Append to abilities.
+      if (i.type === 'ability') {
+        context.abilities.push(i);
+      }
+      // Append to weapons.
+      else if (i.type === 'weapon') {
+        context.weapons.push(i);
+      }
+      // Append to possessions.
+      else if (i.type === 'possession') {
+        context.possessions.push(i);
+      }
+      // Append to spells.
+      else if (i.type === 'spell') {
+        context.spells.push(i);
+      }
+    }
 
     // Conditionals
     context.userHasObserverOrOwnerAccess = game.user.isGM || (this.actor.visible && !this.actor.limited);
     context.userIsHost = game.user.isGM;
 
     return context;
-  }
-
-  /**
-   * Organize and classify Items for Character sheets.
-   *
-   * @param {Object} actorData The actor to prepare.
-   *
-   * @return {undefined}
-   */
-  _prepareItems(context) {
-    // Initialize containers.
-    const abilities = [];
-    const weapons = [];
-    const possessions = [];
-    const spells = [];
-
-    // Iterate through items, allocating to containers
-    for (let i of context.items) {
-      // Append to abilities.
-      if (i.type === 'ability') {
-        i.computed = i.computed || {};
-        i.computed.levelI18nKey = CASTLE_FALKENSTEIN.abilityLevels[i.system.level].full;
-        i.computed.levelValue = CASTLE_FALKENSTEIN.abilityLevels[i.system.level].value;
-        i.computed.suitSymbol = CASTLE_FALKENSTEIN.cardSuitsSymbols[i.system.suit];
-        abilities.push(i);
-      }
-      // Append to weapons.
-      else if (i.type === 'weapon') {
-        weapons.push(i);
-      }
-      // Append to possessions.
-      else if (i.type === 'possession') {
-        possessions.push(i);
-      }
-      // Append to spells.
-      else if (i.type === 'spell') {
-        i.computed = i.computed || {};
-        i.computed.suitSymbol = CASTLE_FALKENSTEIN.cardSuitsSymbols[i.system.suit];
-        spells.push(i);
-      }
-    }
-
-    // Assign and return
-    context.abilities = abilities;
-    context.weapons = weapons;
-    context.possessions = possessions;
-    context.spells = spells;
   }
 
   static async onRender(app, html, data) {

@@ -3,16 +3,22 @@
   <header class="sheet-header">
     <div class="header-fields">
       <div class="flexcol">
-        <div class="grid grid-5col ability-sheet-header">
-          <label class="resource-label">{{localize 'castle-falkenstein.ability.name'}}:</label>
-          <input name="name" type="text" value="{{item.name}}" placeholder="Name"/>
-          <select name="system.suit" class="suit-select">
-            {{selectOptions CASTLE_FALKENSTEIN.cardSuitsSymbols selected=system.suit localize=false}}
+        <div class="grid grid-6col ability-sheet-header {{#if system.isSpecialization}}specialization{{/if}}">
+          <select name="system.isSpecialization" class="specialization-select">
+            {{selectOptions specializationSelectOptions selected=system.isSpecialization localize=true}}
           </select>
-          <span></span>
-          <label class="resource-label">{{localize 'castle-falkenstein.ability.level'}}:</label>
-          <select name="system.level">
-            {{selectOptions CASTLE_FALKENSTEIN.abilityFullLevels selected=system.level localize=true}}
+          <select name="system.specializationOf" class="spe-only">
+            {{selectOptions availableRootAbilities selected=system.specializationOf localize=false inverted=true}}
+          </select>
+          <span class="spe-only">:</span>
+          <input name="name" type="text" value="{{item.name}}" placeholder="Name"/>
+          <select name="system.own.suit" class="suit-select own-only">
+            {{selectOptions CASTLE_FALKENSTEIN.cardSuitsSymbols selected=system.own.suit localize=false}}
+          </select>
+          <span class="own-only"></span>
+          <label class="resource-label own-only">{{localize 'castle-falkenstein.ability.level'}}:</label>
+          <select name="system.own.level" class="own-only">
+            {{selectOptions CASTLE_FALKENSTEIN.abilityFullLevels selected=system.own.level localize=true}}
           </select>
         </div>
       </div>

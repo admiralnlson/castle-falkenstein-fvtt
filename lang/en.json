@@ -117,7 +117,10 @@
       "goodAbbr": "GD",
       "greatAbbr": "GR",
       "exceptionalAbbr": "EXC",
-      "extraordinaryAbbr": "EXT"
+      "extraordinaryAbbr": "EXT",
+
+      "specialization": "Specialization",
+      "specializationDisplayName": "{rootAbility}: {specialization}"
     },
 
     "cards": {

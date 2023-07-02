@@ -26,6 +26,12 @@ export class CastleFalkensteinAbilitySheet extends ItemSheet {
     context.system = context.item.system;
     context.enrichedDescription = await TextEditor.enrichHTML(context.system.description, {async: true});
     context.CASTLE_FALKENSTEIN = CASTLE_FALKENSTEIN;
+    context.specializationSelectOptions = {
+      false: "castle-falkenstein.ability.ability",
+      true: "castle-falkenstein.ability.specialization"
+    };
+    let availableRootAbilities = context.item.actor.items.filter(it => it.type == "ability" && !it.system.isSpecialization).map(a => a.name).sort();
+    context.availableRootAbilities = { "": null, ...Object.fromEntries(availableRootAbilities.map(a => [a, a])) };
     return context;
   }
 

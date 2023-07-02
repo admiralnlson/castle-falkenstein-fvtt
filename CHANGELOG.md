@@ -1,9 +1,12 @@
 # Changelog
 
-## Unreleased
+## [v2.6.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.6.0) - 2023/07/02
+### Added [The Specializations Variation]
++ Ability specializations can now be formally defined in the Abilities tab of the character sheet.
++ A sorcery specialization may now be used when casting a spell.
 ### Added [Foundry V11+ only]
-+ Players and Hosts may not use the "Full Text search" function in the Actors sidebar to search character descriptions.
-+ Hosts may not use the "Full Text search" function in the Actors sidebar to search diaries and host notes.
++ Players and Hosts may now use the "Full Text search" function in the Actors sidebar to search character descriptions.
++ Hosts may now use the "Full Text search" function in the Actors sidebar to search diaries and host notes.
 
 ## [v2.5.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.5.0) - 2023/06/24
 ### Added

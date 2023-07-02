@@ -20,13 +20,36 @@
       "serverReadyAction": {
         "pattern": "listening on port ([0-9]+)",
         "action": "startDebugging",
-        "name": "Open browser"
+        "name": "Launch Chrome"
       }
     },
     {
-      "name": "Open browser",
+      "name": "Launch Chrome",
       "type": "chrome",
       "request": "launch",
+      "url": "http://localhost:30001",
+      "webRoot": "${config:foundryvttDevFolder}/code/resources/app/public",
+      "pathMapping": {
+        // Override the path for own system...
+        "/systems/castle-falkenstein": "${workspaceFolder}",
+        // ... and use the default for everything else.
+        // Note the slightly different formats - swap them for a module.
+        "/systems/*": "${config:foundryvttDevFolder}/data/Data/systems/*",
+        "/modules": "${config:foundryvttDevFolder}/data/Data/modules"
+      },
+      "skipFiles": [
+        "<node_internals>/**/*.js",
+        "node_modules/**/*.js"
+      ],
+      // How long to wait for the launcher. Increase this for potato debugging.
+      "timeout": 5000,
+      "internalConsoleOptions": "openOnSessionStart",
+      "cleanUp": "onlyTab"
+    },
+    {
+      "name": "Launch Edge",
+      "request": "launch",
+      "type": "msedge",
       "url": "http://localhost:30001",
       "webRoot": "${config:foundryvttDevFolder}/code/resources/app/public",
       "pathMapping": {

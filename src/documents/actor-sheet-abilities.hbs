@@ -13,11 +13,11 @@
       <div class="perform-feat" title="{{localize 'castle-falkenstein.feat.perform'}}">
         <a class="rollable" data-roll-type="item" title="{{localize 'castle-falkenstein.feat.perform'}}"><i class="fas fa-play-circle"></i></a>
       </div>
-      <div class="name" title="{{item.name}}">
-        {{item.name}} [<span class="suit-symbol-{{item.system.suit}}">{{item.computed.suitSymbol}}</span>]
+      <div class="name" title="{{item.system.displayName}}">
+        {{item.system.prefixedDisplayName}} [<span class="suit-symbol-{{item.system.suit}}">{{item.system.suitSymbol}}</span>]
       </div>
       <div class="level">
-        {{localize item.computed.levelI18nKey}} [<span>{{item.computed.levelValue}}</span>]
+        {{localize item.system.levelI18nKey}} [<span>{{item.system.levelValue}}</span>]
       </div>
       <div class="item-controls">
         <a class="item-control item-show" title="{{localize 'castle-falkenstein.item.showOthers'}} - {{localize 'castle-falkenstein.ability.ability'}}"><i class="fas fa-eye"></i></a>

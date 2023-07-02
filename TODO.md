@@ -4,17 +4,6 @@
 + MoSCoW: `[M]`ust, `[S]`hould, `[C]`ould, `[W]`on't
 + `[🔥]` Project maintainer (admiralnlson)'s own GM needs
 
-### Technical
-
-+ `[C]` See if Cards would benefit from DataModel functions (value computation, unicode suit from textual one, etc.)
-+ `[C]` See if Spells would benefit from DataModel functional (unicode aspect(suit) from textual one)
-
-### Technico-Functional
-
-+ `[M]` deplete Host or character hands before changing the Fortune discard pile (maybe ask for confirmation first)
-+ `[C]` allow actors to use another actor's (/ player's) Fortune hand ("Host Notes" tab becomes "Host tab")
-  + consider attaching Fortune hands to players as opposed to actors? (although this may reduce options)
-
 ### Derived stats & Racial abilities (a.k.a 'Other' tab)
 
 + `[S]` Extra 'Other' tab for listing secondary attributes such as Speed (Run+Flight) or Languages known (see below)
@@ -27,7 +16,7 @@
   + give Fae talents to Fae characters only
   + compute health automatically incl. Dragons' +2
   + limit Dragon sorcery to 5 cards drawn
-  + list species features such as Dwarf's immunity to Fire, Fae sensibility to Iron in the sheet, ..)
+  + list species features such as Dwarf's immunity to Fire, Fae sensibility to Iron in the sheet, ..
     + Faerie Powers
       + potentially split "Fae" into "Fae (generic) / Fae (Brownie) / Fae (Pixie) / Fae (Lord/Lady)" for extra setup of non-generic Fae characters.
     + Dwarf Powers
@@ -41,15 +30,13 @@
 
 + `[C]` Macro to delete all Host character hands
 + `[C]` Card hand button to show a Fortune or Sorcery hand in chat
-
-### Abilities
-
-+ `[C]` Ability specialization in the system itself (= depend on another ; level is computed)
++ `[M]` deplete Host or character hands before changing the Fortune discard pile (maybe ask for confirmation first)
++ `[C]` allow actors to use another actor's (/ player's) Fortune hand ("Host Notes" tab becomes "Host tab")
+  + consider attaching Fortune hands to players as opposed to actors? (although this may reduce options)
 
 ### Sorcery
 
-+ `[M🔥]` Define Spell - Allow user to specify a custom bonus/malus (with label?) at spell definition time
-+ `[S]` Define Spell - explicit mechanic for using **Sorcery specialization** (as opposed to the raw Sorcery level)
++ `[M]` Define Spell - Allow user to specify a custom bonus/malus (with label?) at spell definition time
 + `[S]` Define Spell - explicit mechanic for using **Artefacts**
 + `[S]` Define Spell - explicit mechanic for using **Unraveling**
 + `[S]` Display the name of the spell being cast in the hand itself or in the cast/cancel tooltip only and/or in the char sheet
@@ -102,6 +89,7 @@
 + `[S]` Support "Half-Off Variation" / "Variante de la demi-valeur"\
         en: In which the tyranny of off-Suit cards is limited.\
         fr: Dans laquelle on limite la frustration de n’avoir que des cartes mal assorties.
+  + `[🔥]` Harmonics
 
 + `[C]` Support "Six-Sided Variation" / "Variante à six faces"\
         en: In which rules are presented so those wicked individuals who so desire might use dice in the Great Game.\
@@ -148,3 +136,8 @@
 + `[C]` Tours (a.k.a. tutorials)
   + Using compendiums
   + Casting spells
+
+### Technical
+
++ `[C]` See if Cards would benefit from DataModel functions (value computation, unicode suit from textual one, etc.)
++ `[C]` See if Spells would benefit from DataModel functional (unicode aspect(suit) from textual one)

@@ -8,32 +8,38 @@ export const CASTLE_FALKENSTEIN = {};
   PR: {
     full: "castle-falkenstein.ability.poor",
     abbr: "castle-falkenstein.ability.poorAbbr",
-    value: 2
+    value: 2,
+    specialized: "AV"
   },
   AV: {
     full: "castle-falkenstein.ability.average",
     abbr: "castle-falkenstein.ability.averageAbbr",
-    value: 4
+    value: 4,
+    specialized: "GD"
   },
   GD: {
     full: "castle-falkenstein.ability.good",
     abbr: "castle-falkenstein.ability.goodAbbr",
-    value: 6
+    value: 6,
+    specialized: "GR"
   },
   GR: {
     full: "castle-falkenstein.ability.great",
     abbr: "castle-falkenstein.ability.greatAbbr",
-    value: 8
+    value: 8,
+    specialized: "EXC"
   },
   EXC: {
     full: "castle-falkenstein.ability.exceptional",
     abbr: "castle-falkenstein.ability.exceptionalAbbr",
-    value: 10
+    value: 10,
+    specialized: "EXT"
   },
   EXT: {
     full: "castle-falkenstein.ability.extraordinary",
     abbr: "castle-falkenstein.ability.extraordinaryAbbr",
-    value: 12
+    value: 12,
+    specialized: "EXT" // specialization does not increase the level if it's already Extraordinary
   }
 };
 

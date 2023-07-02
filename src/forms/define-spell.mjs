@@ -28,7 +28,8 @@ export default class CastleFalkensteinDefineSpell extends FormApplication {
 
     this.spellBeingCast = {
       actorItemId: this.spell.id,
-      definitions: {}
+      definitions: {},
+      sorceryAbilityId: this.character.sorceryAbility.id
     };
 
     for (const [key, value] of Object.entries(CASTLE_FALKENSTEIN.spellDefinitions)) {
@@ -37,7 +38,7 @@ export default class CastleFalkensteinDefineSpell extends FormApplication {
   }
   
   computeTotal() {
-    let total = this.spell.system.level - CASTLE_FALKENSTEIN.abilityLevels[this.character.sorceryAbility.system.level].value;
+    let total = this.spell.system.level - CASTLE_FALKENSTEIN.abilityLevels[this.character.items.get(this.spellBeingCast.sorceryAbilityId).system.level].value;
 
     for (const [key, value] of Object.entries(this.spellBeingCast.definitions)) {
       total += value;
@@ -50,13 +51,15 @@ export default class CastleFalkensteinDefineSpell extends FormApplication {
    * @override
    */
   async getData() {
+
     return {
-      sorceryLevelAsSentenceHtml: CastleFalkenstein.abilityLevelAsSentenceHtml(this.character.sorceryAbility, false),
+      sorceryLevelAsSentenceHtml: CastleFalkenstein.abilityLevelAsSentenceHtml(this.character.items.get(this.spellBeingCast.sorceryAbilityId), false),
       spell: this.spell,
       spellSuitSymbol: CASTLE_FALKENSTEIN.cardSuitsSymbols[this.spell.system.suit],
       spellBeingCast: this.spellBeingCast,
       spellDefinitions: CASTLE_FALKENSTEIN.spellDefinitions,
-      total: this.computeTotal()
+      total: this.computeTotal(),
+      availableSorceryAbilities: Object.fromEntries(this.character.sorceryAbilityAndSpecializations.map(a => [a.id, a.system.displayName]))
     }
   }
 
@@ -64,11 +67,18 @@ export default class CastleFalkensteinDefineSpell extends FormApplication {
   activateListeners(html) {
     super.activateListeners(html);
 
-    html.find('.spell-definition-select').change(event => this._onSelectChange(event));
+    html.find('.spell-definition-select').change(event => this._onDefinitionSelectChange(event));
+
+    html.find('.sorcery-ability-select').change(event => this._onAbilitySelectChange(event));
   }
 
-  _onSelectChange(event) {
+  _onDefinitionSelectChange(event) {
     this.spellBeingCast.definitions[event.currentTarget.name] = parseInt(event.currentTarget.value);
+    this.render();
+  }
+
+  _onAbilitySelectChange(event) {
+    this.spellBeingCast.sorceryAbilityId = event.currentTarget.value;
     this.render();
   }
 
@@ -93,7 +103,7 @@ export default class CastleFalkensteinDefineSpell extends FormApplication {
     }
 
     content += '</div><hr/>';
-    content += CastleFalkenstein.abilityLevelAsSentenceHtml(this.character.sorceryAbility, false);
+    content += CastleFalkenstein.abilityLevelAsSentenceHtml(this.character.items.get(this.spellBeingCast.sorceryAbilityId), false);
     const total = this.computeTotal();
     content += `<div class="define-spell-total">${total}</div>`;
 

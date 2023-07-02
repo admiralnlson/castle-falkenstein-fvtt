@@ -15,7 +15,13 @@
       {{/each}}
       </div>
       <hr />
-      {{{sorceryLevelAsSentenceHtml}}}<br />
+      <div class="grid-2col">
+        <label class="resource-label">{{localize 'castle-falkenstein.ability.ability'}}</label>
+        <select class="sorcery-ability-select" name="spellBeingCast.sorceryAbilityId">
+          {{selectOptions availableSorceryAbilities selected=spellBeingCast.sorceryAbilityId localize=false}}
+        </select>
+      </div>
+      <br />
       <div class="define-spell-total">{{total}}</div>
     </div>
 	</section>

@@ -20,13 +20,7 @@ export default class CastleFalkenstein {
 
   static get id() { return "castle-falkenstein"; }
 
-  static get debugMode() {
-    const api = game.modules.get("_dev-mode")?.api;
-    if (!api) {
-      return false;
-    }
-    return api.getPackageDebugValue(this.id);
-  }
+  static debug = false;
 
   static log = {
     _log: (logLevel, msg, ...args) => {
@@ -38,7 +32,7 @@ export default class CastleFalkenstein {
         console[logLevel](msg);
       }
     },
-    debug: (msg, ...args) => { if (this.debugMode) { this.log._log("debug", msg, ...args); } },
+    debug: (msg, ...args) => { if (this.debug) { this.log._log("debug", msg, ...args); } },
     info: (msg, ...args) => { this.log._log("info", msg, ...args); },
     warn: (msg, ...args) => { this.log._log("warn", msg, ...args); },
     error: (msg, ...args) => { this.log._log("error", msg, ...args); ui.notifications.error("Internal Castle Falkenstein system error (see console for details)"); }
@@ -449,7 +443,7 @@ export default class CastleFalkenstein {
     const suitSymbol = CASTLE_FALKENSTEIN.cardSuitsSymbols[abilityItem.system.suit];
 
     const level = `${game.i18n.localize(levelI18nKey)} [${levelValue}]`;
-    let ability = `${abilityItem.name}`;
+    let ability = `${abilityItem.system.displayName}`;
     if (includeAbilitySuit)
       ability += ` [<span class="suit-symbol-${abilityItem.system.suit}">${suitSymbol}</span>]`;
 
