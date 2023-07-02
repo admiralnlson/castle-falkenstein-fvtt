@@ -5,8 +5,8 @@
 + Ability specializations can now be formally defined in the Abilities tab of the character sheet.
 + A sorcery specialization may now be used when casting a spell.
 ### Added [Foundry V11+ only]
-+ Players and Hosts may now use the "Full Text search" function in the Actors sidebar to search character descriptions.
-+ Hosts may now use the "Full Text search" function in the Actors sidebar to search diaries and host notes.
++ The "Full Text search" function in the Actors sidebar now allows to search text present in character Descriptions.
++ The Host may use this same function to search for text present in character Diaries or Host Notes.
 
 ## [v2.5.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.5.0) - 2023/06/24
 ### Added
