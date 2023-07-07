@@ -129,7 +129,7 @@
       "hearts": "coeur",
       "diamonds": "carreau",
       "clubs": "trèfle",
-      "joker": "joker",
+      "joker": "Joker",
 
       "nonJokerCardName": "{value} de {suit}",
       "2": "2",
