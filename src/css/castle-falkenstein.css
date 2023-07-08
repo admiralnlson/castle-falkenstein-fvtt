@@ -527,6 +527,7 @@ html * {
 }
 
 .monarch-hand footer.sheet-footer button {
+  max-width: -moz-fit-content;
   max-width: fit-content;
   margin-left: 10px;
 }
