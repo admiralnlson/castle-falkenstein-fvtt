@@ -15,14 +15,24 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
       height: 600,
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }],
       dragDrop: [{
-        dragSelector: ".items-list .item .item-drag",
-        dropSelector: ".items-list"
+        dragSelector: ".items-list > .item > .item-drag",
+        dropSelector: ".items-list > .item"
       }],
       scrollY: [".items-list"]
     });
   }
 
   /* -------------------------------------------- */
+
+  /** @override */
+  async _onDropItem(event, data) {
+    // TEMP HACK work-around for https://github.com/foundryvtt/foundryvtt/issues/9677
+    const betterTarget = event.target.closest(this._dragDrop[0].dropSelector);
+    if ( !betterTarget ) return;
+    Object.defineProperty(event, 'target', {writable: false, value: betterTarget});
+
+    return await super._onDropItem(event, data);
+  }
 
   /** @override */
 	_getHeaderButtons() {
@@ -47,42 +57,42 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
   /** @override */
   async getData(options) {
     // Retrieve the data structure from the base sheet.
-    const context = super.getData(options);
+    let context = await super.getData(options);
 
-    // Add the actor's system data to context.system for easier access
+    // convenience so context and name/target are aligned for system properties
     context.system = context.actor.system;
 
     context.enrichedDescription = await TextEditor.enrichHTML(context.system.description, {async: true});
     context.enrichedDiary = await TextEditor.enrichHTML(context.system.diary, {async: true});
     context.enrichedHostNotes = await TextEditor.enrichHTML(context.system.hostNotes, {async: true});
 
-    // Initialize Item type specific containers.
-    context.abilities = [];
-    context.weapons = [];
-    context.possessions = [];
-    context.spells = [];
-
-    // Iterate through items, allocating to containers
-    let sortedItems = context.document.items.contents.sort((a,b) => a.sort-b.sort);
-
-    for (let i of sortedItems) {
-      // Append to abilities.
-      if (i.type === 'ability') {
-        context.abilities.push(i);
-      }
-      // Append to weapons.
-      else if (i.type === 'weapon') {
-        context.weapons.push(i);
-      }
-      // Append to possessions.
-      else if (i.type === 'possession') {
-        context.possessions.push(i);
-      }
-      // Append to spells.
-      else if (i.type === 'spell') {
-        context.spells.push(i);
+    // Call getters explicitly & affect to containers
+    let abilities = [];
+    let weapons = [];
+    let possessions = [];
+    let spells = [];
+    for (let i of context.items) {
+      const elWithDM = context.actor.items.get(i._id);
+      if (i.type == "ability") {
+        i.system.prefixedDisplayName = elWithDM.system.prefixedDisplayName;
+        i.system.levelI18nKey = elWithDM.system.levelI18nKey;
+        i.system.levelValue = elWithDM.system.levelValue;
+        i.system.suit = elWithDM.system.suit;
+        i.system.suitSymbol = elWithDM.system.suitSymbol;
+        abilities.push(i);
+      } else if (i.type == "weapon") {
+        weapons.push(i);
+      } else if (i.type == "possession") {
+        possessions.push(i);
+      } else if (i.type == "spell") {
+        i.system.suitSymbol = elWithDM.system.suitSymbol;
+        spells.push(i);
       }
     }
+    context.abilities = abilities;
+    context.weapons = weapons;
+    context.possessions = possessions;
+    context.spells = spells;
 
     // Conditionals
     context.userHasObserverOrOwnerAccess = game.user.isGM || (this.actor.visible && !this.actor.limited);

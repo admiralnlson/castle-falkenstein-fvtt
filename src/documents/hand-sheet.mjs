@@ -29,7 +29,7 @@ export class CastleFalkensteinHandSheet extends CardsHand {
   /** @override */
   async getData(options) {
     // Retrieve the data structure from the base sheet.
-    const context = super.getData(options);
+    const context = await super.getData(options);
 
     const hand = this.object;
 

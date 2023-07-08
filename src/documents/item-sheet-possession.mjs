@@ -22,7 +22,8 @@ export class CastleFalkensteinPossessionSheet extends ItemSheet {
 
   /** @override */
   async getData(options) {
-    const context = super.getData(options);
+    const context = await super.getData(options);
+    // convenience so context and name/target are aligned for system properties
     context.system = context.item.system;
     context.enrichedDescription = await TextEditor.enrichHTML(context.system.description, {async: true});
     context.CASTLE_FALKENSTEIN = CASTLE_FALKENSTEIN;
