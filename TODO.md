@@ -4,6 +4,10 @@
 + MoSCoW: `[M]`ust, `[S]`hould, `[C]`ould, `[W]`on't
 + `[🔥]` Project maintainer (admiralnlson)'s own GM needs
 
+### Bugs
++ `[M🔥]` Jokers are supposed to be Red and Black
+
+
 ### Derived stats & Racial abilities (a.k.a 'Other' tab)
 
 + `[S]` Extra 'Other' tab for listing secondary attributes such as Speed (Run+Flight) or Languages known (see below)
