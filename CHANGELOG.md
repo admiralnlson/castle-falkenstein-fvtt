@@ -3,6 +3,7 @@
 ## Unreleased
 ### Fixed
 + Abilities in the Compendium were not displaying correctly.
++ Sorting Items (abilities, weapons, possessions, spells) on a character sheet was not always behaving as expected.
 
 ## [v2.6.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.6.0) - 2023/07/02
 ### Added [The Specializations Variation]
