@@ -9,7 +9,8 @@
       <a class="item-control item-create" title="{{localize 'castle-falkenstein.item.add'}}" data-type="weapon"><i class="fas fa-plus"></i> {{localize 'castle-falkenstein.item.add'}}</a>
     </div>
   </li>
-  {{#each weapons as |item id|}}
+  {{#each items as |item id|}}
+  {{#if (eq item.type "weapon")}}
     <li class="item" data-item-id="{{item._id}}">
       <div class="item-drag" data-item-id="{{item._id}}" title="{{localize 'castle-falkenstein.item.sort'}}"><i class="fas fa-bars"></i></div>
       <div class="name" title="{{item.name}}">
@@ -48,6 +49,7 @@
         <a class="item-control item-delete" title="{{localize 'castle-falkenstein.item.delete'}}"><i class="fas fa-trash"></i></a>
       </div>
     </li>
+  {{/if}}
   {{/each}}
 </ol>
 
@@ -59,7 +61,8 @@
       <a class="item-control item-create" title="{{localize 'castle-falkenstein.item.add'}}" data-type="possession"><i class="fas fa-plus"></i> {{localize 'castle-falkenstein.item.add'}}</a>
     </div>
   </li>
-  {{#each possessions as |item id|}}
+  {{#each items as |item id|}}
+  {{#if (eq item.type "possession")}}
     <li class="item" data-item-id="{{item._id}}">
       <div class="item-drag" data-item-id="{{item._id}}" title="{{localize 'castle-falkenstein.item.sort'}}"><i class="fas fa-bars"></i></div>
       <div class="name" title="{{item.name}}">
@@ -71,5 +74,6 @@
         <a class="item-control item-delete" title="{{localize 'castle-falkenstein.item.delete'}}"><i class="fas fa-trash"></i></a>
       </div>
     </li>
+  {{/if}}
   {{/each}}
 </ol>

@@ -16,7 +16,7 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }],
       dragDrop: [{
         dragSelector: ".items-list > .item > .item-drag",
-        dropSelector: ".items-list > .item"
+        dropSelector: ".items-list"
       }],
       scrollY: [".items-list"]
     });
@@ -24,14 +24,29 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
 
   /* -------------------------------------------- */
 
+  newItemSortValue() {
+    const max = (this.actor.items.contents.length > 0) ? Math.max(...this.actor.items.contents.map(a => a.sort)) : 0;
+    return max + CONST.SORT_INTEGER_DENSITY;
+  }
+
   /** @override */
   async _onDropItem(event, data) {
-    // TEMP HACK work-around for https://github.com/foundryvtt/foundryvtt/issues/9677
-    const betterTarget = event.target.closest(this._dragDrop[0].dropSelector);
-    if ( !betterTarget ) return;
-    Object.defineProperty(event, 'target', {writable: false, value: betterTarget});
+    if ( !this.actor.isOwner ) return false;
+    const item = await Item.implementation.fromDropData(data);
+    const itemData = item.toObject();
 
-    return await super._onDropItem(event, data);
+    // Handle item sorting within the same Actor
+    if ( this.actor.uuid === item.parent?.uuid ) {
+      const li = event.target.closest(".items-list > .item");
+      if ( !li ) return;
+      Object.defineProperty(event, 'target', {writable: false, value: li});
+      return this._onSortItem(event, itemData);
+    }
+
+    itemData.sort = this.newItemSortValue();
+
+    // Create the owned item
+    return this._onDropItemCreate(itemData);
   }
 
   /** @override */
@@ -66,33 +81,8 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
     context.enrichedDiary = await TextEditor.enrichHTML(context.system.diary, {async: true});
     context.enrichedHostNotes = await TextEditor.enrichHTML(context.system.hostNotes, {async: true});
 
-    // Call getters explicitly & affect to containers
-    let abilities = [];
-    let weapons = [];
-    let possessions = [];
-    let spells = [];
-    for (let i of context.items) {
-      const elWithDM = context.actor.items.get(i._id);
-      if (i.type == "ability") {
-        i.system.prefixedDisplayName = elWithDM.system.prefixedDisplayName;
-        i.system.levelI18nKey = elWithDM.system.levelI18nKey;
-        i.system.levelValue = elWithDM.system.levelValue;
-        i.system.suit = elWithDM.system.suit;
-        i.system.suitSymbol = elWithDM.system.suitSymbol;
-        abilities.push(i);
-      } else if (i.type == "weapon") {
-        weapons.push(i);
-      } else if (i.type == "possession") {
-        possessions.push(i);
-      } else if (i.type == "spell") {
-        i.system.suitSymbol = elWithDM.system.suitSymbol;
-        spells.push(i);
-      }
-    }
-    context.abilities = abilities;
-    context.weapons = weapons;
-    context.possessions = possessions;
-    context.spells = spells;
+    context.items = [...context.actor.items.contents];
+    context.items.sort((a,b) => ((a.sort || 0) - (b.sort || 0)));
 
     // Conditionals
     context.userHasObserverOrOwnerAccess = game.user.isGM || (this.actor.visible && !this.actor.limited);
@@ -184,7 +174,8 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
     // Prepare the item object.
     const itemData = {
       name: name,
-      type: type
+      type: type,
+      sort: this.newItemSortValue()
     };
 
     // Finally, create the item!
