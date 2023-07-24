@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## [v2.6.1](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.6.1) - 2023/07/24
 ### Fixed
 + Abilities in the Compendium were not displaying correctly.
 + Sorting Items (abilities, weapons, possessions, spells) on a character sheet was not always behaving as expected.

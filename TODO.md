@@ -6,7 +6,7 @@
 
 ### Bugs
 + `[M🔥]` Jokers are supposed to be Red and Black
-
++ `[M🔥]` Cards which are played are not supposed to go in a discard pile in CF. They are to back to the deck directly.
 
 ### Derived stats & Racial abilities (a.k.a 'Other' tab)
 
@@ -40,9 +40,10 @@
 
 ### Sorcery
 
++ `[S🔥]` Define Spell - Add additional spell definitions from Comme Il Faut
 + `[M]` Define Spell - Allow user to specify a custom bonus/malus (with label?) at spell definition time
 + `[S]` Define Spell - explicit mechanic for using **Artefacts**
-+ `[S]` Define Spell - explicit mechanic for using **Unraveling**
++ `[S]` Cast Spell - explicit mechanic for using **Unraveling**
 + `[S]` Display the name of the spell being cast in the hand itself or in the cast/cancel tooltip only and/or in the char sheet
 + `[S]` Cast Spell - chat message - add a box showing power gathered vs initial requirement.
 + `[S]` Cast Spell - chat message - if unaligned power was used, show harmonic type(s) (up to 3 for the GM to choose from in case of ex-aequo).
