@@ -8,6 +8,7 @@
 + `[M🔥]` Jokers are supposed to be Red and Black
 + `[M🔥]` Cards which are played are not supposed to go in a discard pile in CF. They are to go back to the deck directly.
 + `[M🔥]` Cards cannot be dropped onto an empty hand because the contain (ol.cards) has a width and heigh of 0.
++ `[M🔥]` Button on cards are too big (go well beyond the icon)
 
 ### Derived stats & Racial abilities (a.k.a 'Other' tab)
 
