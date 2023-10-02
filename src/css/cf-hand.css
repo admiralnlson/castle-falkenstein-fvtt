@@ -34,6 +34,14 @@
   overflow: visible;
 }
 
+/* when there are no cards in the hand, add a semi-transparent area in which cards may be dropped */
+#handedCards ol.cards:not(:has(> *)) {
+  display: block; 
+  width: 300px;
+  height: 285px;
+  background-color: rgba(255,255,255,0.1)
+}
+
 #handedCards ol.cards li.card {
   transition: all 0.1s;
   transition-timing-function: ease-in;
@@ -83,6 +91,7 @@
 
 div.castle-falkenstein.cards-config a.card-control {
   color: var(--color-text-light-highlight);
+  width: min-content;
 }
 
 div.castle-falkenstein.cards-config a[disabled].card-control {
