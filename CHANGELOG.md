@@ -2,9 +2,11 @@
 
 ## [v2.7.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.7.0) - Unreleased
 ### Changed
-+ Fortune and Sorcery discard piles have disappeared. As per official rules, a card, once played, is now directly shuffled back into the deck.
++ Fortune and Sorcery discard piles have been removed. As per official rules, a card, once played, is now directly shuffled back into the deck.
 ### Fixed
-+ An empty card hand can now receive a card from drag-and-drop too (added a semi-transparent box on which the card may be dropped).
++ It is now possible to drag-and-drop cards onto empty native UI hands also (already worked for non-empty hands).
++ The Black Joker no longer disguises himself as a Red Joker.
++ A scrollbar now appears if a large number of cards are played at once, e.g. as part of a spellcast.
 
 ## [v2.6.1](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.6.1) - 2023/07/24
 ### Fixed
