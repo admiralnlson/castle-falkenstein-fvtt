@@ -5,15 +5,12 @@ import CastleFalkenstein from "../castle-falkenstein.mjs";
  */
 export class CastleFalkensteinCards extends Cards {
 
-  async _resetStack({updateData={}, chatNotification=true}={}) {
-    // Let's short-circuit the default behaviour of cards returning from CF hands to decks by default in Core, and discard them to the adequate pile instead
-    if (this.type === "hand") {
-      const handType = this.getFlag(CastleFalkenstein.id, "type");
-
-      await this.pass(CastleFalkenstein.discardPile(handType), this.cards.map(card => card.id), {chatNotification: chatNotification});
-    }
-    else {
-      super._resetStack({updateData, chatNotification});
+  async shuffleBackToDeck(idsOfCardsPlayed) {
+    const type = this.getFlag(CastleFalkenstein.id, "type");
+    if (type) {
+      const deck = CastleFalkenstein.deck(type);
+      await this.pass(deck, idsOfCardsPlayed, {chatNotification: false});
+      await deck.shuffle({ chatNotification: false });
     }
   }
 

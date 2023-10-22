@@ -1,6 +1,8 @@
 # Changelog
 
 ## [v2.7.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.7.0) - Unreleased
+### Changed
++ Fortune and Sorcery discard piles have disappeared. As per official rules, a card, once played, is now directly shuffled back into the deck.
 ### Fixed
 + An empty card hand can now receive a card from drag-and-drop too (added a semi-transparent box on which the card may be dropped).
 

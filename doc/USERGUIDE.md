@@ -1,6 +1,6 @@
 # Castle Falkenstein FoundryVTT system - User Guide
 - [Fortune & Sorcery decks](#fortune--sorcery-decks)
-  * [Auto-created decks and discard piles](#auto-created-decks-and-discard-piles)
+  * [Auto-created decks](#auto-created-decks)
   * [[Optional] Other supported languages](#optional-other-supported-languages)
   * [[Optional] Custom decks](#optional-custom-decks)
   * [[Optional] 2+ player groups within the same world](#optional-2-player-groups-within-the-same-world)
@@ -10,12 +10,12 @@
 - [Card hands](#card-hands)
 
 # Fortune & Sorcery decks
-## Auto-created decks and discard piles
+## Auto-created decks
 This system natively supports [RTG's official Fortune Deck visuals](https://rtalsoriangames.com/2020/07/24/falkenstein-friday-the-fortune-deck/).
 
 <img src="../src/cards/01.png" alt="Ace of Hearts" width="200"/> <img src="../src/cards/13.png" alt="King of Hearts" width="200"/> <img src="../src/cards/54.png" alt="Joker" width="200"/>
 
-Fortune and Sorcery Decks and discard piles are automatically created when the world is first loaded by the Host. They may be renamed or moved to a different folder.
+Fortune and Sorcery Decks are automatically created when the world is first loaded by the Host. They may be renamed or moved to a different folder.
 
 Note that a deck with the same visuals can be manually created by selecting the dedicated preset within FoundryVTT:
 
@@ -31,7 +31,7 @@ The following text elements do not get automatically translated however:
 → However Babele adds a button in the header of character sheets which Hosts can use to translate them.
 2. Existing Fortune and Sorcery decks/cards\
 → To fix this, you need to:
-   + Delete the Fortune and Sorcery Decks (this will recall all cards from hands and discard piles if any)
+   + Delete the Fortune and Sorcery Decks (this will recall all cards from hands if any)
    + Press F5 to recreate the two decks
      Note this only affects the _names_ of cards. The visuals of cards produced by RTG are in English only.
 3. Any chat messages generated prior to the change\
@@ -43,9 +43,7 @@ Hosts may use custom decks if they so desire. The following setup is required.
 | Create a              |of type | which has player permissions                         |
 | :-------------------- | :----- | :--------------------------------------------------- |
 | Fortune deck          |Deck    | Limited                                              |
-| Fortune discard pile  |Pile    | Observer                                             |
 | Sorcery deck          |Deck    | Limited (relevant for Sorcerer/Dragon players only)  |
-| Sorcery discard pile  |Pile    | Observer (relevant for Sorcerer/Dragon players only) |
 
 The Host also has to pay special attention to the 'value' card property in Decks (e.g. value of Ace is 14 (not 1), Joker is 15).
 The 'suit' card property must also have a value in { spades, hearts, diamonds, clubs, joker }. Otherwise the deck won't work with the system.
@@ -57,10 +55,10 @@ Make sure you shuffle the decks before your players get a chance to draw cards f
 ## [Optional] 2+ player groups within the same world
 Hosts who have more than one group of players playing in the same world may wish to use separate decks for each group.
 
-To achieve this, the Host should duplicate newly created decks and piles and then decrease permissions on each deck/pile to match the permissions required by each player group (see table above).
+To achieve this, the Host should duplicate newly created decks and then decrease permissions on each deck to match the permissions required by each player group (see table above).
 
-The Host should however ensure that, at the beginning of each gaming session, the adequate set of decks and piles for each group is selected in the Castle Falkenstein system settings. Otherwise, the 2 may end get mixed, leading to errors down the road\
-To help remind the Host they have to do this, a warning is produced each time a player connects and they don't have access to one of the Deck/Piles.
+The Host should however ensure that, at the beginning of each gaming session, the adequate set of decks for each group is selected in the Castle Falkenstein system settings. Otherwise, the 2 may end get mixed, leading to errors down the road\
+To help remind the Host they have to do this, a warning is produced each time a player connects and they don't have access to one of the decks.
 
 Recommendation: due to the
 
@@ -108,11 +106,11 @@ The cards hand is first created when the link is clicked or the first Feat (resp
 The Host has a single Fortune Hand shared by all Host Characters.
 Host Character's Sorcery Hands function the same as for Dramatic Characters (one per character, created the first time it is needed).
 
-Deleting a hand will first discard all cards it contains.
+Deleting a hand will first return all cards it contains to the parent deck.
 
 ## Chance
 
-Fortune hands have a "? Chance" button, which draws the top card from the Fortune Deck and plays it immediately.
+Fortune hands have a "? Chance" button, which draws the top card from the Fortune Deck, plays it immediately, returns the card to to the Deck and shuffles it.
 
 # Alternative Cards UI
 The system supports [🦋Monarch](https://foundryvtt.com/packages/monarch) as an alternative user interface for card hands.

@@ -6,8 +6,6 @@
 
 ### Bugs
 + `[M🔥]` Jokers are supposed to be Red and Black
-+ `[M🔥]` Cards which are played are not supposed to go in a discard pile in CF. They are to go back to the deck directly.
-+ `[M🔥]` Cards cannot be dropped onto an empty hand because the contain (ol.cards) has a width and heigh of 0.
 + `[M🔥]` Button on cards are too big (go well beyond the icon)
 
 ### Derived stats & Racial abilities (a.k.a 'Other' tab)
@@ -34,9 +32,9 @@
 
 ### Cards
 
-+ `[C]` Macro to delete all Host character hands
++ `[C]` Macro to delete all Host character Sorcery hands
 + `[C]` Card hand button to show a Fortune or Sorcery hand in chat
-+ `[M]` deplete Host or character hands before changing the Fortune discard pile (maybe ask for confirmation first)
++ `[M]` deplete Host or character hands before changing Decks (maybe ask for confirmation first)
 + `[C]` allow actors to use another actor's (/ player's) Fortune hand ("Host Notes" tab becomes "Host tab")
   + consider attaching Fortune hands to players as opposed to actors? (although this may reduce options)
 

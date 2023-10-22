@@ -7,17 +7,9 @@
         "name": "Jeu du destin",
         "hint": "[Hôte uniquement] Le paquet de cartes faisant office de Jeu du destin."
       },
-      "fortuneDiscardPile": {
-        "name": "Défausse du Jeu du destin",
-        "hint": "[Hôte uniquement] La pile dans laquelle les cartes du Jeu du destin vont une fois jouées."
-      },
       "sorceryDeck": {
         "name": "Jeu de sorcellerie",
         "hint": "[Hôte uniquement] Le paquet de cartes faisant office de Jeu de sorcellerie."
-      },
-      "sorceryDiscardPile": {
-        "name": "Défausse du Jeu de sorcellerie",
-        "hint": "[Hôte uniquement] La pile dans laquelle les cartes du Jeu de sorcellerie vont une fois jouées ou défaussées."
       },
       "sorceryAbility": {
         "name": "Nom du talent de Sorcellerie",
@@ -46,11 +38,14 @@
       "noSorceryHandForSpell": "Main de Sorcellerie manquante pour lancer le sort.",
       "characterDoesNotHaveAbility": "Le personnage n'a pas le talent '{name}'.",
       "spellAlreadyBeingCast": "Un sort est déjà en cours de lancement. Annulez-le depuis la main de Sorcellerie si vous souhaitez en lancer un autre.",
-      "noItemNamed": "Le personnage que vous contrôlez ne possède pas d'item de type '{type}' nommé '{name}'."
+      "noItemNamed": "Le personnage que vous contrôlez ne possède pas d'item de type '{type}' nommé '{name}'.",
+      "cannotDraw": "Le paquet de cartes est épuisé. Impossible de piocher.",
+      "incompleteDraw": "Le paquet de cartes est épuisé. Seulement {nb1} cartes sur {nb2} ont pu être piochées.",
+      "lastCardDrawn": "Le paquet de cartes est épuisé. La dernière carte vient d'être piochée."
     },
 
     "cardsDirectory": {
-      "decksAndPilesFolder": "Jeux et défausses",
+      "decksFolder": "Jeux de cartes",
       "characterHandsFolder": "Mains des personnages"
     },
 
