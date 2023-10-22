@@ -176,7 +176,7 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     } else if (typeFlag == "sorcery") {
       actor.sheet.tabToOpen = "spells";
     }
-    actor.sheet.render(true, { focus: true });
+    actor.sheet.render(true);
   }
 
   static refillHandDisabled(hand) {
@@ -191,7 +191,7 @@ export class CastleFalkensteinHandSheet extends CardsHand {
       for (const form of Object.values(ui.windows)) {
         if (form instanceof CastleFalkensteinPerformFeat && form.hand.id == hand.id) {
           form.computeWrappedCards();
-          form.render(true);
+          form.render();
           break;
         }
       }
@@ -203,17 +203,22 @@ export class CastleFalkensteinHandSheet extends CardsHand {
   }
 
   static async chanceCard(hand) {
-    const actorId = hand.getFlag(CastleFalkenstein.id, "actor");
+    // pick a card out of the available ones in the deck
 
-    // draw a single card from the discard pile directly (avoids glitches)
-    const cardsDrawn = await CastleFalkenstein.draw("fortune", game.CastleFalkenstein.fortuneDiscardPile, 1);
+    const deck = CastleFalkenstein.fortuneDeck;
+    if (deck.availableCards.length <= 0) {
+      CastleFalkenstein.notif.error(game.i18n.localize("castle-falkenstein.notifications.cannotDraw"));
+      return;
+    }
+
+    const card = deck.availableCards[Math.floor(Math.random() * deck.availableCards.length)];
+    deck.shuffle({ chatNotification: false });
 
     // Post message to chat
-    const card = cardsDrawn[0];
     const flavor = `[${game.i18n.localize("castle-falkenstein.fortune.hand.chance")}]`;
-    
     const correctSuit = 'correct-suit'; // will be grayed out otherwise
     const content = `<div class="cards-drawn">${CastleFalkenstein.smallCardImg(card,`card-drawn ${correctSuit}`)}</div>`;
+    const actorId = hand.getFlag(CastleFalkenstein.id, "actor");
     CastleFalkenstein.createChatMessage(actorId === "host" ? "gm" : game.actors.get(actorId), flavor, content);
   }
 
@@ -265,7 +270,7 @@ export class CastleFalkensteinHandSheet extends CardsHand {
       return; // should never be able to click from host hand anyway (see 'disabled' above)
     const actor = game.actors.get(actorId);
 
-    await card.pass(CastleFalkenstein.sorceryDiscardPile, {chatNotification: false});
+    await hand.shuffleBackToDeck([card.id]);
 
     // Post message to chat
     const flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.hand.releasePower")}]`;
@@ -310,7 +315,7 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     // TODO add "<score> / <total>"" box.
     // TODO show harmonic type(s) (up to 3 for the GM to choose from in case of ex-aequo), if unaligned power was used.
 
-    await hand.pass(CastleFalkenstein.sorceryDiscardPile, hand.cards.map((c)=>{ return c.id; }), {chatNotification: false});
+    await hand.shuffleBackToDeck(hand.cards.map((c)=>{ return c.id; }));
 
     CastleFalkenstein.createChatMessage(actor, flavor, content);
 
@@ -330,7 +335,7 @@ export class CastleFalkensteinHandSheet extends CardsHand {
       return; // should never be able to click from host hand anyway (see 'disabled' above)
     const actor = game.actors.get(actorId);
 
-    await hand.pass(CastleFalkenstein.sorceryDiscardPile, hand.cards.map((c)=>{ return c.id; }), {chatNotification: false});
+    await hand.shuffleBackToDeck(hand.cards.map((c)=>{ return c.id; }));
 
     // Post message to chat
     let flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.hand.cancelSpell")}]`;

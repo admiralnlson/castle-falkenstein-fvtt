@@ -7,17 +7,9 @@
         "name": "Fortune Deck",
         "hint": "[Host only] The cards deck which represents the Fortune Deck."
       },
-      "fortuneDiscardPile": {
-        "name": "Forturne Deck discard pile",
-        "hint": "[Host only] The cards pile in which Fortune Deck cards go when played."
-      },
       "sorceryDeck": {
         "name": "Sorcery Deck",
         "hint": "[Host only] The cards deck which represents the Sorcery Deck."
-      },
-      "sorceryDiscardPile": {
-        "name": "Sorcery Deck discard pile",
-        "hint": "[Host only] The cards pile in which Sorcery Deck cards go when played or discarded."
       },
       "sorceryAbility": {
         "name": "Name of the Sorcery ability",
@@ -46,11 +38,14 @@
       "noSorceryHandForSpell": "No Sorcery hand to cast spell with.",
       "characterDoesNotHaveAbility": "Character does not have ability '{name}'.",
       "spellAlreadyBeingCast": "Spell is already being cast. Cancel it from the Sorcery hand if you wish to cast another.",
-      "noItemNamed": "Your controlled character does not have an item of type '{type}' named '{name}'."
+      "noItemNamed": "Your controlled character does not have an item of type '{type}' named '{name}'.",
+      "cannotDraw": "There are no available cards left in the deck. Cannot draw.",
+      "incompleteDraw": "There are no available cards left in the deck. Only {nb1} cards out of {nb2} could be drawn.",
+      "lastCardDrawn": "There are no available cards left in the deck. The last card was just drawn."
     },
 
     "cardsDirectory": {
-      "decksAndPilesFolder": "Decks and discard piles",
+      "decksFolder": "Decks",
       "characterHandsFolder": "Character hands"
     },
 

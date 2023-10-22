@@ -105,31 +105,26 @@ export default class CastleFalkensteinPerformFeat extends FormApplication {
    */
   async _updateObject(event, formData) {
     
-    // log the cards played, and compute total before they are discarded
+    // shuffle the cards played back into the deck
+    const wrappedCardsPlayed = this.wrappedCards.filter(w => w.checked);
+    if (wrappedCardsPlayed.length >0) {
+      const hand = await this.character.hand("fortune");
+      await hand.shuffleBackToDeck(wrappedCardsPlayed.map(w => w.card.id));
 
-    let idsOfCardsPlayed = [];
-    for (const w of this.wrappedCards) {
-      if (w.checked) {
-        idsOfCardsPlayed.push(w.card.id);
-      }
+      // move the hand sheet to the top, so that the player may easily refill their hand.
+      await hand.sheet.render(true);
     }
-
-    // discard the cards
-    const hand = await this.character.hand("fortune");
-    await hand.pass(game.CastleFalkenstein.fortuneDiscardPile, idsOfCardsPlayed, {chatNotification: false});
   
     //
-    // produce chat message
+    // produce the chat message
     //
 
     const flavor = `[${game.i18n.localize("castle-falkenstein.feat.perform")}]`;
     let content = CastleFalkenstein.abilityLevelAsSentenceHtml(this.ability);
     content += '<hr/><div class="cards-played">';
-    if (idsOfCardsPlayed.length > 0) {
-      this.wrappedCards.forEach(w => {
-        if (w.checked) {
-          content += CastleFalkenstein.smallCardImg(w.card, `card-played ${w.correctSuit}`);
-        }
+    if (wrappedCardsPlayed.length > 0) {
+      wrappedCardsPlayed.forEach(w => {
+        content += CastleFalkenstein.smallCardImg(w.card, `card-played ${w.correctSuit}`);
       });
     } else {
       content += game.i18n.localize("castle-falkenstein.feat.noCardsPlayed");

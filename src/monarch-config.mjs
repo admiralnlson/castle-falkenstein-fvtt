@@ -162,7 +162,7 @@ export default class CastleFalkensteinMonarchConfig {
         uuid: card.uuid,
         shareable: true,
         editable: true
-      }).render(true, { focus: true });
+      }).render(true);
 
       if (event.shiftKey) popout.shareImage();
 

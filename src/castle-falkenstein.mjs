@@ -76,25 +76,6 @@ export default class CastleFalkenstein {
     }
   }
 
-  static get fortuneDiscardPile() {
-    return game.cards.get(this.settings.fortuneDiscardPile);
-  }
-
-  static get sorceryDiscardPile() {
-    return game.cards.get(this.settings.sorceryDiscardPile);
-  }
-
-  static discardPile(type) {
-    if (type == "fortune") {
-      return this.fortuneDiscardPile;
-    } else if (type == "sorcery") {
-      return this.sorceryDiscardPile;
-    } else {
-      CastleFalkenstein.log.error(`Unknown discard pile type '${type}'`);
-      return;
-    }
-  }
-
   static async hostFortuneHand() {
     let hand = game.cards.filter(stack => stack.type === "hand" &&
       stack.getFlag(this.id, "type") === "fortune" &&
@@ -178,7 +159,7 @@ export default class CastleFalkenstein {
     deckData.name = game.i18n.localize(`castle-falkenstein.settings.${type}Deck.name`);
     deckData.ownership = deckData.ownership || {};
     deckData.ownership.default = CONST.DOCUMENT_OWNERSHIP_LEVELS.LIMITED;
-    deckData.folder = (await this.cardsFolder("decks-and-piles", game.i18n.localize("castle-falkenstein.cardsDirectory.decksAndPilesFolder"))).id;
+    deckData.folder = (await this.cardsFolder("decks-and-piles", game.i18n.localize("castle-falkenstein.cardsDirectory.decksFolder"))).id;
     deckData.flags[this.id] = {
       type: type
     };
@@ -192,23 +173,18 @@ export default class CastleFalkenstein {
     return deck;
   }
 
-  static async createDiscardPile(type) {
-    const pileData = {
-      name: game.i18n.localize(`castle-falkenstein.settings.${type}DiscardPile.name`),
-      type: "pile",
-      folder: (await this.cardsFolder("decks-and-piles", game.i18n.localize("castle-falkenstein.cardsDirectory.decksAndPilesFolder"))).id,
-      ownership: {
-        default: CONST.DOCUMENT_PERMISSION_LEVELS.OBSERVER
-      },
-      "flags.castle-falkenstein": { type: type }
-    }
-    const pile = await Cards.create(pileData);
-    return pile;
-  }
+  static async prepareCardStacks() {
 
-  static async createMissingCards() {
+    // Delete discard piles used in previous versions
+    await game.cards.filter(stack => stack.type === "pile").forEach(async (stack) => {
+      const type = stack.getFlag(CastleFalkenstein.id, "type");
+      if (type) {
+        // This should return cards they contain to their origin decks but also reshuffle these decks. See CastleFalkensteinCards.onReturnCards() override.
+        await stack.delete();
+      }
+    });
 
-    // Create Fortune/Sorcery Decks/Piles if missing
+    // Create Fortune/Sorcery Decks which are missing
 
     let cardsCreatedI18n = "";
 
@@ -218,22 +194,10 @@ export default class CastleFalkenstein {
       cardsCreatedI18n += "<br/>  - " + game.i18n.localize("castle-falkenstein.settings.fortuneDeck.name");
     }
 
-    if (!this.fortuneDiscardPile) {
-      const pile = await this.createDiscardPile("fortune");
-      await game.settings.set(this.id, "fortuneDiscardPile", pile.id);
-      cardsCreatedI18n += "<br/>  - " + game.i18n.localize("castle-falkenstein.settings.fortuneDiscardPile.name");
-    }
-
     if (!this.sorceryDeck) {
       const deck = await this.createPresetDeck("sorcery");
       await game.settings.set(this.id, "sorceryDeck", deck.id);
       cardsCreatedI18n += "<br/>  - " + game.i18n.localize("castle-falkenstein.settings.sorceryDeck.name");
-    }
-
-    if (!this.sorceryDiscardPile) {
-      const pile = await this.createDiscardPile("sorcery");
-      await game.settings.set(this.id, "sorceryDiscardPile", pile.id);
-      cardsCreatedI18n += "<br/>  - " + game.i18n.localize("castle-falkenstein.settings.sorceryDiscardPile.name");
     }
 
     // TBC Create Host Fortune hand if missing
@@ -249,16 +213,10 @@ export default class CastleFalkenstein {
 
   static onReturnCards(stack, returned, { fromDelete, toUpdate } = {}) {
     if (returned.length > 0) {
-      // shuffle the fortune (resp. sorcery) deck when cards from cards in a fortune/sorcery discard pile are recalled.
-      const handType = stack.getFlag(this.id, "type");
-      if (handType) {
-        if (stack.type == "pile") {
-          // shuffle the decks to which cards are being recalled
-          for (const deckId in toUpdate) {
-            const deck = game.cards.get(deckId);
-            deck?.shuffle(); // no 'await' so that the shuffle happens after the actual return of the cards
-          }
-        }
+      // shuffle the fortune (resp. sorcery) deck when cards are recalled to it
+      const stackType = stack.getFlag(this.id, "type");
+      if (stackType) {
+        this.deck(stackType)?.shuffle(); // no 'await' so that the shuffle happens after the actual return of the cards
       }
     }
   }
@@ -282,7 +240,7 @@ export default class CastleFalkenstein {
   }
 
   static async onRenderPlayerList(application, html, data) {
-    this.checkPermissionsOnDecksAndPiles();
+    this.checkPermissionsOnDecks();
   }
 
   static async onPopout(app, popout) {
@@ -296,7 +254,7 @@ export default class CastleFalkenstein {
 
       // cards in the hand besides the first overlap each other by 0.4x their width (the fact they rotate should not influence the overall width much).
       const innerWidth = cardWidth * (1 + (app.object.cards.size > 0 ? app.object.cards.size - 1 : 0) * 0.41);
-      // cards typically have a 2x3 ratio (width *1.5), may be focused (scale: 1.5) and there is a button to discard sorcery cards underneath them
+      // cards typically have a 2x3 ratio (width *1.5), may be focused (scale: 1.5) and there is a button to return sorcery cards underneath them
       const innerHeight = CastleFalkenstein.computeCardHeight(deck) + 60 + 50;
 
       popout.resizeTo(innerWidth + popout.outerWidth - app.options.width,
@@ -305,10 +263,10 @@ export default class CastleFalkenstein {
   }
 
   static async onRenderPlayerList(application, html, data) {
-    this.checkPermissionsOnDecksAndPiles();
+    this.checkPermissionsOnDecks();
   }
 
-  static async checkPermissionsOnDecksAndPiles() {
+  static async checkPermissionsOnDecks() {
     if (game.user.isGM) {
       game.users.contents.forEach((user) => {
         if (user.active && !user.isGM) {
@@ -316,11 +274,6 @@ export default class CastleFalkenstein {
           [this.fortuneDeck, this.sorceryDeck].forEach((deck) => {
             if (deck && !deck.testUserPermission(user, CONST.DOCUMENT_PERMISSION_LEVELS.LIMITED)) {
               stacks += `<br/>- ${deck.name}`;
-            }
-          });
-          [this.fortuneDiscardPile, this.sorceryDiscardPile].forEach((pile) => {
-            if (pile && !pile.testUserPermission(user, CONST.DOCUMENT_PERMISSION_LEVELS.OBSERVER)) {
-              stacks += `<br/>- ${pile.name}`;
             }
           });
           if (stacks) {
@@ -338,45 +291,33 @@ export default class CastleFalkenstein {
 
     const deck = CastleFalkenstein.deck(deckType);
 
-    let nbCardsLeftInDeck = deck.cards.size - deck.drawnCards.length;
+    const nbCardsLeftInDeck = deck.cards.size - deck.drawnCards.length;
 
-    let nbCardsDrawn = Math.min(nbCardsToDraw, nbCardsLeftInDeck);
+    if (nbCardsLeftInDeck <= 0 && nbCardsToDraw > 0) {
+      CastleFalkenstein.notif.error(game.i18n.localize("castle-falkenstein.notifications.cannotDraw"));
+      return 0;
+    }
 
-    if (nbCardsDrawn > 0)
-      cardsDrawn = cardsDrawn.concat(await destStack.draw(deck, nbCardsDrawn, { chatNotification: false }));
+    const nbCardsActuallyDrawn = Math.min(nbCardsToDraw, nbCardsLeftInDeck);
 
-    nbCardsLeftInDeck -= nbCardsDrawn;
+    if (nbCardsActuallyDrawn > 0)
+      cardsDrawn = cardsDrawn.concat(await destStack.draw(deck, nbCardsActuallyDrawn, { chatNotification: false }));
 
-    if (nbCardsLeftInDeck <= 0) {
-      await this.socket.executeAsGM("shuffleDiscardPile", deckType);
-
-      // draw cards now that there should be some available.
-      if (nbCardsDrawn < nbCardsToDraw) {
-        // resurive call would be imaginable, but all cards from the decks may already be distributed in hands (e.g. too many NPC hands non-emptied).
-        cardsDrawn = cardsDrawn.concat(await destStack.draw(deck, nbCardsToDraw - nbCardsDrawn, { chatNotification: false }));
-      }
+    if (nbCardsActuallyDrawn < nbCardsToDraw) {
+      CastleFalkenstein.notif.warn(game.i18n.format("castle-falkenstein.notifications.incompleteDraw", {
+        nb1: nbCardsActuallyDrawn,
+        nb2: nbCardsToDraw
+      }));
+    } else if (nbCardsActuallyDrawn == nbCardsLeftInDeck) {
+      CastleFalkenstein.notif.warn(game.i18n.localize("castle-falkenstein.notifications.lastCardDrawn"));
     }
 
     return cardsDrawn;
   }
 
-  static async shuffleDiscardPile(deckType) {
-    if (!game.user.isGM)
-      CastleFalkenstein.log.error("Unauthorized call to 'shuffleDiscardPile' from non-GM player");
-
-    const discardPile = CastleFalkenstein.discardPile(deckType);
-    if (game.release.generation == 9)
-      await discardPile.reset();
-    else
-      await discardPile.recall();
-
-    const deck = CastleFalkenstein.deck(deckType);
-    await deck.shuffle();
-  }
-
   static showActor(actorId) {
     const actor = game.actors.get(actorId);
-    actor.sheet.render(true, { focus: true });
+    actor.sheet.render(true);
   }
 
   static async createHand(handType, actorId) {
@@ -532,7 +473,7 @@ export default class CastleFalkenstein {
     }
 
     if (game.user.isGM) {
-      this.createMissingCards();
+      await this.prepareCardStacks();
     }
 
     await game.cards.updateAll(this.translateCardStack, (stack) => {
@@ -547,7 +488,6 @@ export default class CastleFalkenstein {
     this.socket = socketlib.registerSystem(this.id);
 
     // register socket functions
-    this.socket.register("shuffleDiscardPile", this.shuffleDiscardPile);
     this.socket.register("showActor", this.showActor);
     this.socket.register("createHand", this.createHand);
   }
@@ -581,9 +521,7 @@ export default class CastleFalkenstein {
 
     // Host settings
     fortuneDeck: this._cardStackSelect("deck"),
-    fortuneDiscardPile: this._cardStackSelect("pile"),
     sorceryDeck: this._cardStackSelect("deck"),
-    sorceryDiscardPile: this._cardStackSelect("pile"),
     sorceryAbility: {
       scope: "world",
       type: String,

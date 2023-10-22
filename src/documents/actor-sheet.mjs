@@ -104,12 +104,12 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
  
     html.find('.fortune-hand-show').click(async (ev) => {
       const hand = await this.actor.hand("fortune");
-      hand.sheet.render(true, { focus: true });
+      hand.sheet.render(true);
     });
 
     html.find('.sorcery-hand-show').click(async (ev) => {
       const hand = await this.actor.hand("sorcery");
-      hand.sheet.render(true, { focus: true });
+      hand.sheet.render(true);
     });
 
     html.find('.item-show').click(ev => {
@@ -122,7 +122,7 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
     html.find('.item-edit').click(ev => {
       const li = $(ev.currentTarget).parents(".item");
       const item = this.actor.items.get(li.data("itemId"));
-      item.sheet.render(true, { focus: true });
+      item.sheet.render(true);
     });
 
     // -------------------------------------------------------------
