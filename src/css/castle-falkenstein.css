@@ -538,9 +538,22 @@ html * {
 .chat-message .cards-played,
 .chat-message .cards-drawn {
   display: flex;
-  justify-content: center;
+  overflow-x: auto;
+  margin: auto;
+  max-width: 100%;
   gap: 5px;
-  /* TODO replace the horizontal scrollbar with arrows on the left and right */
+}
+
+.castle-falkenstein .cards-played *:first-child,
+.chat-message .cards-played *:first-child,
+.chat-message .cards-drawn *:first-child {
+  margin-left: auto;
+}
+
+.castle-falkenstein .cards-played *:last-child,
+.chat-message .cards-played *:last-child,
+.chat-message .cards-drawn *:last-child {
+  margin-right: auto;
 }
 
 .castle-falkenstein .cards-played img,
