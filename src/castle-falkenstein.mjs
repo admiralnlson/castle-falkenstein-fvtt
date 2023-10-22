@@ -129,7 +129,12 @@ export default class CastleFalkenstein {
   static async translateCardStack(stack) {
     const translateCard = (card) => {
       if (card.suit == "joker") {
-        card.name = card.faces[0].name = game.i18n.localize("castle-falkenstein.cards.joker");
+        if (card.faces[0].img == "systems/castle-falkenstein/src/cards/53.png")
+          card.name = card.faces[0].name = game.i18n.localize("castle-falkenstein.cards.blackJoker");
+        else if (card.faces[0].img == "systems/castle-falkenstein/src/cards/54.png")
+          card.name = card.faces[0].name = game.i18n.localize("castle-falkenstein.cards.redJoker");
+        else // just in case
+          card.name = card.faces[0].name = game.i18n.localize("castle-falkenstein.cards.joker");
       } else {
         card.name = card.faces[0].name = game.i18n.format("castle-falkenstein.cards.nonJokerCardName", {
           value: game.i18n.localize("castle-falkenstein.cards." + card.value),
@@ -374,7 +379,7 @@ export default class CastleFalkenstein {
 
   static smallCardImg(card, classes) {
     const suit = card.suit;
-    const value = card.suit == "joker" ? (card.name == "Black Joker" ? "black" : "red") : card.value;
+    const value = card.suit == "joker" ? (card.name == game.i18n.localize("castle-falkenstein.cards.blackJoker") ? "black" : "red") : card.value;
     return `<img class="${classes}" src="systems/castle-falkenstein/src/cards/small/${suit}-${value}.svg" alt="${card.name}" title="${card.name}"></img>`;
   }
 

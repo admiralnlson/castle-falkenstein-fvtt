@@ -125,6 +125,8 @@
       "diamonds": "carreau",
       "clubs": "trèfle",
       "joker": "Joker",
+      "blackJoker": "Black Joker",
+      "redJoker": "Red Joker",
 
       "nonJokerCardName": "{value} de {suit}",
       "2": "2",
