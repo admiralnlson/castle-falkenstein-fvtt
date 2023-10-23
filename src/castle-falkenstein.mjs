@@ -489,12 +489,23 @@ export default class CastleFalkenstein {
     CastleFalkenstein.log.info("Ready.");
   }
 
+  static async shuffleBackToDeck(stackId, idsOfCardsPlayed) {
+    const stack = game.cards.get(stackId);
+    const type = stack.getFlag(CastleFalkenstein.id, "type");
+    if (type) {
+      const deck = CastleFalkenstein.deck(type);
+      await stack.pass(deck, idsOfCardsPlayed, {chatNotification: false});
+      await deck.shuffle({ chatNotification: false });
+    }
+  }
+
   static setupSocket() {
     this.socket = socketlib.registerSystem(this.id);
 
     // register socket functions
     this.socket.register("showActor", this.showActor);
     this.socket.register("createHand", this.createHand);
+    this.socket.register("shuffleBackToDeck", this.shuffleBackToDeck)
   }
 
   static get cardsUi() {
