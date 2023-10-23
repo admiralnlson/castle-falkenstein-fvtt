@@ -5,8 +5,6 @@
 + `[🔥]` Project maintainer (admiralnlson)'s own GM needs
 
 ### Bugs
-+ `[M🔥]` Jokers are supposed to be Red and Black
-+ `[M🔥]` Button on cards are too big (go well beyond the icon)
 
 ### Derived stats & Racial abilities (a.k.a 'Other' tab)
 
