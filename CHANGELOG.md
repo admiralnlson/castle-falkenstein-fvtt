@@ -1,5 +1,9 @@
 # Changelog
 
+## [v2.7.1](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.7.1) - 2023/10/24
+### Fixed
++ Fixed an issue where players lacked permissions to shuffle back cards into decks.
+
 ## [v2.7.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.7.0) - 2023/10/23
 ### Changed
 + Fortune and Sorcery discard piles have been removed. As per official rules, a card, once played, is now directly shuffled back into the deck.
