@@ -270,7 +270,7 @@ export class CastleFalkensteinHandSheet extends CardsHand {
       return; // should never be able to click from host hand anyway (see 'disabled' above)
     const actor = game.actors.get(actorId);
 
-    await hand.shuffleBackToDeck([card.id]);
+    await CastleFalkenstein.socket.executeAsGM("shuffleBackToDeck", hand.id, [card.id]);
 
     // Post message to chat
     const flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.hand.releasePower")}]`;
@@ -315,7 +315,7 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     // TODO add "<score> / <total>"" box.
     // TODO show harmonic type(s) (up to 3 for the GM to choose from in case of ex-aequo), if unaligned power was used.
 
-    await hand.shuffleBackToDeck(hand.cards.map((c)=>{ return c.id; }));
+    await CastleFalkenstein.socket.executeAsGM("shuffleBackToDeck", hand.id, hand.cards.map((c)=>{ return c.id; }));
 
     CastleFalkenstein.createChatMessage(actor, flavor, content);
 
@@ -335,7 +335,7 @@ export class CastleFalkensteinHandSheet extends CardsHand {
       return; // should never be able to click from host hand anyway (see 'disabled' above)
     const actor = game.actors.get(actorId);
 
-    await hand.shuffleBackToDeck(hand.cards.map((c)=>{ return c.id; }));
+    await CastleFalkenstein.socket.executeAsGM("shuffleBackToDeck", hand.id, hand.cards.map((c)=>{ return c.id; }));
 
     // Post message to chat
     let flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.hand.cancelSpell")}]`;

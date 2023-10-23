@@ -5,15 +5,6 @@ import CastleFalkenstein from "../castle-falkenstein.mjs";
  */
 export class CastleFalkensteinCards extends Cards {
 
-  async shuffleBackToDeck(idsOfCardsPlayed) {
-    const type = this.getFlag(CastleFalkenstein.id, "type");
-    if (type) {
-      const deck = CastleFalkenstein.deck(type);
-      await this.pass(deck, idsOfCardsPlayed, {chatNotification: false});
-      await deck.shuffle({ chatNotification: false });
-    }
-  }
-
   // "spellBeingCast" flag object structure = {
   //    actorItemId: <id of the item within the actor>,
   //    definitions: {
