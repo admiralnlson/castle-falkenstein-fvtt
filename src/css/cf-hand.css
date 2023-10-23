@@ -9,6 +9,7 @@
 
 .app.castle-falkenstein.cards-hand .card-hand-controls .flexrow {
   width: 300px;
+  justify-content: space-evenly;
 }
 
 .app.castle-falkenstein.cards-hand .window-content {
@@ -91,7 +92,7 @@
 
 div.castle-falkenstein.cards-config a.card-control {
   color: var(--color-text-light-highlight);
-  width: min-content;
+  max-width: min-content;
 }
 
 div.castle-falkenstein.cards-config a[disabled].card-control {
