@@ -186,56 +186,67 @@
       "definition": {
         "duration": {
           "label": "Durée",
-          "1": "Instantanée",
-          "2": "1-30 minutes",
-          "3": "1 heure",
-          "4": "1 jour",
-          "6": "1 semaine",
-          "7": "1 mois",
-          "8": "1 an"
+          "a": "Instantanée",
+          "b": "1-30 minutes",
+          "c": "1 heure",
+          "d": "1 jour",
+          "e": "1 semaine",
+          "f": "1 mois",
+          "g": "1 année"
         },
         "complexity": {
-          "label": "Complexité",
-          "1": "Implique seulement un élément",
-          "2": "Implique seulement quelques éléments",
-          "3": "Implique de nombreux éléments",
-          "4": "Implique de nombreux éléments complexes",
-          "5": "Le sujet doit accomplir une seule tâche",
-          "6": "Le sujet doit accomplir plusieurs tâches"
+          "label": "Éléments et tâches",
+          "a": "Le sort implique seulement un élément",
+          "b": "Le sort implique seulement quelques éléments",
+          "c": "Le sort implique de nombreux éléments",
+          "d": "Le sort implique de nombreux éléments complexes",
+          "e": "Le sujet doit accomplir une seule tâche",
+          "f": "Le sujet doit accomplir plusieurs tâches"
         },
         "range": {
-          "label": "Zone d'effet",
-          "1": "Contact",
-          "2": "En vue, sans assistance",
-          "3": "À quelque kilomètres",
-          "4": "Dans une autre ville",
-          "5": "Dans un autre pays",
-          "6": "Dans une autre dimension",
-          "7": "À une autre époque"
+          "label": "Portée",
+          "a": "Contact ou soi-même",
+          "b": "En vue, sans assistance",
+          "c": "À quelque kilomètres",
+          "d": "Dans une autre ville",
+          "e": "Dans un autre pays",
+          "f": "Dans une autre dimension",
+          "g": "À une autre époque"
         },
         "nbSubjects": {
           "label": "Nombre de sujets affectés",
-          "1": "1",
-          "2": "Jusqu'à 10",
-          "3": "Jusqu'à 100",
-          "4": "Jusqu'à 1000",
-          "5": "Tout un pays"
+          "a": "1 ou 10 cm²",
+          "b": "Jusqu'à 10 ou 1 m²",
+          "c": "Jusqu'à 100 ou 10 m²",
+          "d": "Jusqu'à 1000 ou 100 m²",
+          "e": "Tout un pays"
         },
-        "resistance": {
-          "label": "Le sujet est",
-          "1": "Mortel (humain ou animal)",
-          "2": "Faë (ou une créature faë)",
-          "3": "Autre thaumaturge",
-          "6": "Dragon",
-          "8": "Démon ou autre entité naturelle",
-          "16": "Nain"
+        "typeSubjects": {
+          "label": "Type de sujets",
+          "a": "Objet inanimé",
+          "b": "Mortel (humain ou animal)",
+          "c": "Faë (ou une créature faë)",
+          "d": "Autre thaumaturge",
+          "e": "Dragon",
+          "f": "Artefact ou composé de fer froid",
+          "g": "Démon ou autre entité naturelle",
+          "h": "Nain"
         },
         "familiarity": {
-          "label": "Familiarité avec le sujet",
-          "1": "Bonne",
-          "2": "Limitée",
-          "3": "Inconnu",
-          "4": "Totalement inconnu"
+          "label": "Connaissance du sujet",
+          "a": "Bonne, soi-même",
+          "b": "Limitée",
+          "c": "Inconnu",
+          "d": "Totalement inconnu"
+        },
+        "damage": {
+          "label": "Dégâts",
+          "a": "A",
+          "b": "B",
+          "c": "C",
+          "d": "D",
+          "e": "E",
+          "f": "F"
         }
       }
     },

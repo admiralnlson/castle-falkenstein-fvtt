@@ -32,8 +32,8 @@ export default class CastleFalkensteinDefineSpell extends FormApplication {
       sorceryAbilityId: this.character.sorceryAbility.id
     };
 
-    for (const [key, value] of Object.entries(CASTLE_FALKENSTEIN.spellDefinitions)) {
-      this.spellBeingCast.definitions[key] = 0
+    for (const key in CASTLE_FALKENSTEIN.spellDefinitions) {
+      this.spellBeingCast.definitions[key] = "-";
     }
   }
   
@@ -41,7 +41,7 @@ export default class CastleFalkensteinDefineSpell extends FormApplication {
     let total = this.spell.system.level - CASTLE_FALKENSTEIN.abilityLevels[this.character.items.get(this.spellBeingCast.sorceryAbilityId).system.level].value;
 
     for (const [key, value] of Object.entries(this.spellBeingCast.definitions)) {
-      total += value;
+      total += CASTLE_FALKENSTEIN.spellDefinitions[key].levels[value].value;
     }
 
     return total > 0 ? total : 0;
@@ -73,7 +73,7 @@ export default class CastleFalkensteinDefineSpell extends FormApplication {
   }
 
   _onDefinitionSelectChange(event) {
-    this.spellBeingCast.definitions[event.currentTarget.name] = parseInt(event.currentTarget.value);
+    this.spellBeingCast.definitions[event.currentTarget.name] = event.currentTarget.value;
     this.render();
   }
 
@@ -99,7 +99,7 @@ export default class CastleFalkensteinDefineSpell extends FormApplication {
     content += '<hr/><div class="spell-definitions">';
 
     for (const [key, value] of Object.entries(CASTLE_FALKENSTEIN.spellDefinitions)) {
-      content += `${game.i18n.localize(value.label)}: <b>${game.i18n.localize(value.levels[this.spellBeingCast.definitions[key]])}</b><br/>`;
+      content += `${game.i18n.localize(value.label)}: <b>${game.i18n.localize(value.levels[this.spellBeingCast.definitions[key]].label)}</b><br/>`;
     }
 
     content += '</div><hr/>';

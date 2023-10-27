@@ -31,14 +31,13 @@
 ### Cards
 
 + `[C]` Macro to delete all Host character Sorcery hands
-+ `[C]` Card hand button to show a Fortune or Sorcery hand in chat
-+ `[M]` deplete Host or character hands before changing Decks (maybe ask for confirmation first)
++ `[C]` Card hand button to show a Fortune or Sorcery hand in chat (or simply on screen)
++ `[S]` deplete Host or character hands before changing Decks (maybe ask for confirmation first)
 + `[C]` allow actors to use another actor's (/ player's) Fortune hand ("Host Notes" tab becomes "Host tab")
   + consider attaching Fortune hands to players as opposed to actors? (although this may reduce options)
 
 ### Sorcery
 
-+ `[S🔥]` Define Spell - Add additional spell definitions from Comme Il Faut
 + `[M]` Define Spell - Allow user to specify a custom bonus/malus (with label?) at spell definition time
 + `[S]` Define Spell - explicit mechanic for using **Artefacts**
 + `[S]` Cast Spell - explicit mechanic for using **Unraveling**
@@ -49,7 +48,6 @@
 + `[C]` Cast Spell - chat message - merge consecutive chat messages dealing with Power being Gathered or Released
 + `[C]` Cast Spell - Open a dialog on GM side to ask which harmonic they prefer, then display the choice in chat.
 + `[C]` Cast Spell - When enough aligned Power has been drawn, the spell is immediately cast also (no harmonics generated) or a chat message is generated at least.
-
 + `[S]` Release Power - Prevent releasing of aligned Power (or at least add confirmation dialog)
 + `[S]` Release Power - Show the harmonic type on unaligned power cards
   + Spades / Spiritual (fr: spirituelle)
@@ -108,8 +106,10 @@
 
 ### Compendiums
 
-+ `[S]` Compendium pack for Abilities found in sourcebooks (English)
-+ `[S]` Compendium pack for Abilities found in sourcebooks (French)
++ `[S]` Compendium pack for 8 Abilities found in Comme Il Faut (English)
++ `[S]` Compendium pack for 8 Abilities found in Comme Il Faut (French)
++ `[S]` Compendium pack for Abilities found in other sourcebooks if any (English)
++ `[S]` Compendium pack for Abilities found in other sourcebooks if any (French)
 
 + `[S]` Compendium pack for Spells found in sourcebooks (English)
 + `[S]` Compendium pack for Spells found in sourcebooks (French)

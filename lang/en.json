@@ -185,57 +185,68 @@
       "thaumicLevelShort": "TL",
       "definition": {
         "duration": {
-          "label": "Spell Duration",
-          "1": "Momentary",
-          "2": "1-30 minutes",
-          "3": "1 hour",
-          "4": "1 day",
-          "6": "1 week",
-          "7": "1 month",
-          "8": "1 year"
+          "label": "Duration",
+          "a": "Momentary",
+          "b": "1-30 minutes",
+          "c": "1 hour",
+          "d": "1 day",
+          "e": "1 week",
+          "f": "1 month",
+          "g": "1 year"
         },
         "complexity": {
-          "label": "Complexity",
-          "1": "Involves only one element",
-          "2": "Involves only a few elements",
-          "3": "Involves many elements",
-          "4": "Involves many complex elements",
-          "5": "Subject must perform only one Task",
-          "6": "Subject must perform multiple Tasks"
+          "label": "Elements & Tasks",
+          "a": "Spell involves only one element",
+          "b": "Spell involves only a few elements",
+          "c": "Spell involves many elements",
+          "d": "Spell involves many complex elements",
+          "e": "Subject must perform only one Task",
+          "f": "Subject must perform multiple Tasks"
         },
         "range": {
-          "label": "Spell Range",
-          "1": "Touch",
-          "2": "Within unaided sight",
-          "3": "Within a few miles",
-          "4": "In another city",
-          "5": "In another country",
-          "6": "In another dimension",
-          "7": "in another time"
+          "label": "Range",
+          "a": "Touch, or Self",
+          "b": "Within your unaided sight",
+          "c": "Within a few miles",
+          "d": "In another city",
+          "e": "In another country",
+          "f": "In another dimension",
+          "g": "in another time"
         },
         "nbSubjects": {
-          "label": "Subjects Affected",
-          "1": "1",
-          "2": "Up to 10",
-          "3": "Up to 100",
-          "4": "Up to 1000",
-          "5": "An Entire Country"
+          "label": "Number of Subjects Affected",
+          "a": "1 person, or 5 sq. feet",
+          "b": "Up to 10 people, or 10 sq. feet",
+          "c": "Up to 100 people, or 100 sq. feet",
+          "d": "Up to 1000 people, or 1000 sq. feet",
+          "e": "An entire country"
         },
-        "resistance": {
-          "label": "Subject is",
-          "1": "Mortal (Human or Animal)",
-          "2": "Faerie (ou Faerie Creature)",
-          "3": "Another Wizard",
-          "6": "Dragon",
-          "8": "Demon or other supernatural entity",
-          "16": "Dwarf"
+        "typeSubjects": {
+          "label": "Type of Subject(s)",
+          "a": "Inanimate Object",
+          "b": "Mortal (Human or Animal)",
+          "c": "Faerie (ou Faerie Creature)",
+          "d": "Another Wizard",
+          "e": "Dragon",
+          "f": "Magickal / Star Metal Object",
+          "g": "Demon or other supernatural entity",
+          "h": "Dwarf"
         },
         "familiarity": {
-          "label": "Familiarity with the subject",
-          "1": "Know the Subject well",
-          "2": "Barely know the Subject",
-          "3": "Don't know the Subject",
-          "4": "Subject Totally Unknown to You"
+          "label": "Familiarity of Subject(s)",
+          "a": "Know the Subject well (also Self)",
+          "b": "Barely know the Subject",
+          "c": "Don't know the Subject",
+          "d": "Subject Totally Unknown to You"
+        },
+        "damage": {
+          "label": "Damage",
+          "a": "A",
+          "b": "B",
+          "c": "C",
+          "d": "D",
+          "e": "E",
+          "f": "F"
         }
       }
     },

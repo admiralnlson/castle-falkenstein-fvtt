@@ -9,7 +9,7 @@
       {{#with (lookup ../spellDefinitions @key)}}
       <label class="resource-label">{{localize label}}</label>
       <select class="spell-definition-select" name="{{@key}}">
-        {{selectOptions levels selected=../this localize=true}}
+        {{selectOptions levels labelAttr="label" selected=../this localize=true}}
       </select>
       {{/with}}
       {{/each}}
