@@ -79,26 +79,93 @@ CASTLE_FALKENSTEIN.cardSuitsSymbols = Object.fromEntries(Object.entries(CASTLE_F
 CASTLE_FALKENSTEIN.validNonJokerCardSuits = [ "spades", "hearts", "diamonds", "clubs" ];
 
 
-CASTLE_FALKENSTEIN.spellDefinitions = {};
-
-function addSpellDefinitionLevels(type, minLevel, maxLevel=minLevel) {
-  if (!CASTLE_FALKENSTEIN.spellDefinitions[type]) {
-    CASTLE_FALKENSTEIN.spellDefinitions[type] = {
-      label: `castle-falkenstein.spell.definition.${type}.label`,
-      levels: {
-        0: "-"
-      }
-    };
+CASTLE_FALKENSTEIN.spellDefinitions = {
+  "duration": {
+    "levels": {
+      "-": { label: "-", value : 0 },
+      "a": { value : 1 },
+      "b": { value : 2 },
+      "c": { value : 3 },
+      "d": { value : 4 },
+      "e": { value : 6 },
+      "f": { value : 7 },
+      "g": { value : 8 }
+    }
+  },
+  "complexity": {
+    "levels": {
+      "-": { label: "-", value : 0 },
+      "a": { value : 1 },
+      "b": { value : 2 },
+      "c": { value : 3 },
+      "d": { value : 4 },
+      "e": { value : 5 },
+      "f": { value : 6 }
+    }
+  },
+  "range": {
+    "levels": {
+      "-": { label: "-", value : 0 },
+      "a": { value : 1 },
+      "b": { value : 2 },
+      "c": { value : 3 },
+      "d": { value : 4 },
+      "e": { value : 5 },
+      "f": { value : 6 },
+      "g": { value : 7 },
+    }
+  },
+  "nbSubjects": {
+    "levels": {
+      "-": { label: "-", value : 0 },
+      "a": { value : 1 },
+      "b": { value : 2 },
+      "c": { value : 3 },
+      "d": { value : 4 },
+      "e": { value : 5 }
+    }
+  },
+  "typeSubjects": {
+    "levels": {
+      "-": { label: "-", value : 0 },
+      "a": { value : 1 },
+      "b": { value : 1 },
+      "c": { value : 2 },
+      "d": { value : 3 },
+      "e": { value : 6 },
+      "f": { value : 6 },
+      "g": { value : 8 },
+      "h": { value : 16 },
+    }
+  },
+  "familiarity": {
+    "levels": {
+      "-": { label: "-", value : 0 },
+      "a": { value : 1 },
+      "b": { value : 2 },
+      "c": { value : 3 },
+      "d": { value : 4 }
+    }
+  },
+  "damage": {
+    "levels": {
+      "-": { label: "-", value : 0 },
+      "a": { value : 2 },
+      "b": { value : 4 },
+      "c": { value : 8 },
+      "d": { value : 12 },
+      "e": { value : 16 },
+      "f": { value : 20 }
+    }
   }
+};
 
-  for(let level = minLevel; level <= maxLevel; ++level) {
-    CASTLE_FALKENSTEIN.spellDefinitions[type].levels[`${level}`] = `castle-falkenstein.spell.definition.${type}.${level}`;
+
+for(const type in CASTLE_FALKENSTEIN.spellDefinitions) {
+  CASTLE_FALKENSTEIN.spellDefinitions[type].label = `castle-falkenstein.spell.definition.${type}.label`;
+
+  for (let level in CASTLE_FALKENSTEIN.spellDefinitions[type].levels) {
+    if (level != "-")
+      CASTLE_FALKENSTEIN.spellDefinitions[type].levels[level].label = `castle-falkenstein.spell.definition.${type}.${level}`;
   }
 }
-
-addSpellDefinitionLevels("duration", 1, 4); addSpellDefinitionLevels("duration", 6, 8);
-addSpellDefinitionLevels("complexity", 1, 6);
-addSpellDefinitionLevels("range", 1, 7);
-addSpellDefinitionLevels("nbSubjects", 1, 5);
-addSpellDefinitionLevels("resistance", 1, 3); addSpellDefinitionLevels("resistance", 6); addSpellDefinitionLevels("resistance", 8); addSpellDefinitionLevels("resistance", 16);
-addSpellDefinitionLevels("familiarity", 1, 4);

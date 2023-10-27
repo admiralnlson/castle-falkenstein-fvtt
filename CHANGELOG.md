@@ -3,6 +3,7 @@
 ## [v2.8.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.8.0) - Unreleased
 ### Changed
 + The click area for controls in native UI card hands has been decreased to match their actual sizes.
++ Aligned Spell Definitions with the ones found in 'Comme Il Faut'
 ### Fixed
 + [French translation] Joker names now translate also.
 + [Firefox] Sorcery cards in focus now display correctly, with the 'Release Power' button below them
