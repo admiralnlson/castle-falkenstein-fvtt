@@ -13,10 +13,7 @@ export class CastleFalkensteinCards extends Cards {
   //  }
 
   get spellBeingCast() {
-    if (this.type === "hand" &&
-        this.getFlag(CastleFalkenstein.id, "type") === "sorcery") {
-      return this.getFlag(CastleFalkenstein.id, "spellBeingCast");
-    }
+    return this.getFlag(CastleFalkenstein.id, "spellBeingCast");
   }
 
   async defineSpell(spellBeingCast) {
