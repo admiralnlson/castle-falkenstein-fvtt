@@ -47,7 +47,7 @@
       "name": "Castle Falkenstein",
       "sorting": "m",
       "packs": [
-        "abilities-corebook",
+        "abilities",
         "weapons"
       ],
       "folders": [
@@ -77,9 +77,9 @@
   ],
   "packs": [
     {
-      "label": "Abilities (Corebook)",
-      "path": "build/packs/abilities-corebook.db",
-      "name": "abilities-corebook",
+      "label": "Abilities",
+      "path": "build/packs/abilities.db",
+      "name": "abilities",
       "type": "Item",
       "system": "castle-falkenstein",
       "module": "castle-falkenstein"

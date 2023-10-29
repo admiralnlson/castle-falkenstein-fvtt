@@ -23,6 +23,11 @@ type: ability
 system:
   suit: hearts
 ---
+name: Craftsmanship
+type: ability
+system:
+  suit: diamonds
+---
 name: Education
 type: ability
 system:
@@ -31,7 +36,7 @@ system:
 name: Etherealness
 type: ability
 system:
-  suit: spades
+  suit: clubs
 ---
 name: Exchequer
 type: ability
@@ -48,20 +53,50 @@ type: ability
 system:
   suit: clubs
 ---
+name: Gambling
+type: ability
+system:
+  suit: diamonds
+---
 name: Glamour
 type: ability
 system:
   suit: hearts
 ---
+name: Invention
+type: ability
+system:
+  suit: diamonds
+---
 name: Kindred Powers
 type: ability
 system:
-  suit: clubs
+  suit: diamonds
+---
+name: Leadership
+type: ability
+system:
+  suit: hearts
 ---
 name: Marksmanship
 type: ability
 system:
   suit: clubs
+---
+name: Mesmerism
+type: ability
+system:
+  suit: hearts
+---
+name: Motoring
+type: ability
+system:
+  suit: clubs
+---
+name: Natural Sciences
+type: ability
+system:
+  suit: diamonds
 ---
 name: Perception
 type: ability
@@ -79,6 +114,16 @@ system:
   suit: diamonds
 ---
 name: Physique
+type: ability
+system:
+  suit: clubs
+---
+name: Riding
+type: ability
+system:
+  suit: clubs
+---
+name: Shapeshifting
 type: ability
 system:
   suit: clubs

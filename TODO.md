@@ -41,8 +41,8 @@
 + `[M]` Define Spell - Allow user to specify a custom bonus/malus (with label?) at spell definition time
 + `[S]` Define Spell - explicit mechanic for using **Artefacts**
 + `[S]` Cast Spell - explicit mechanic for using **Unraveling**
-+ `[S]` Display the name of the spell being cast in the hand itself or in the cast/cancel tooltip only and/or in the char sheet
-+ `[S]` Cast Spell - chat message - add a box showing power gathered vs initial requirement.
++ `[S]` Display the name of the spell being cast in the hand itself
+  + `[S]` Cast Spell - chat message - add a box showing power gathered vs initial requirement.
 + `[S]` Cast Spell - chat message - if unaligned power was used, show harmonic type(s) (up to 3 for the GM to choose from in case of ex-aequo).
 + `[S]` Cast Spell - When a Joker is drawn, the spell is immediately cast a.k.a. **Wild Spell** (fr: Surcharge thaumique)
 + `[C]` Cast Spell - chat message - merge consecutive chat messages dealing with Power being Gathered or Released
@@ -90,7 +90,6 @@
 + `[S]` Support "Half-Off Variation" / "Variante de la demi-valeur"\
         en: In which the tyranny of off-Suit cards is limited.\
         fr: Dans laquelle on limite la frustration de n’avoir que des cartes mal assorties.
-  + `[🔥]` Harmonics
 
 + `[C]` Support "Six-Sided Variation" / "Variante à six faces"\
         en: In which rules are presented so those wicked individuals who so desire might use dice in the Great Game.\
@@ -106,28 +105,25 @@
 
 ### Compendiums
 
-+ `[S]` Compendium pack for 8 Abilities found in Comme Il Faut (English)
-+ `[S]` Compendium pack for 8 Abilities found in Comme Il Faut (French)
-+ `[S]` Compendium pack for Abilities found in other sourcebooks if any (English)
-+ `[S]` Compendium pack for Abilities found in other sourcebooks if any (French)
++ `[S🔥]` Weapons found in CiF (English & French)
++ `[S]` Abilities found in other sourcebooks than CiF, if any (English & French)
++ `[S]` Abilities found in other sourcebooks than CiF and MoAoF, if any (English & French)
++ `[S]` Lorebook from Curious Creatures (p27)
++ `[S]` Spells/Lorebooks found in other sourcebooks (English & French)
 
-+ `[S]` Compendium pack for Spells found in sourcebooks (English)
-+ `[S]` Compendium pack for Spells found in sourcebooks (French)
-
-+ `[S]` Shortcut to import Abilities into a character
-+ `[C]` Shortcut to import spells from a Lorebook into a character
++ `[C]` Shortcut to import all Abilities into a character (skip those already present)
++ `[C]` Shortcut to import a Lorebook into a character
 
 ### Cosmetic / Other
 
 + `[C]` add Castle Falkenstein logo somewhere in the character sheet
 
-+ `[C]` Have abilities display as 2+ columns if there is enough horizontal space (and ensure 2 in the default width) |
-
++ `[C]` Have abilities display as 2+ columns if there is enough horizontal space (and ensure 2 in the default width)
+,
 + `[C]` Compendium pack for non-weapon items found in the corebook (English)
 + `[C]` Compendium pack for non-weapon items found in the corebook (French)
 + `[C]` Compendium pack for non-weapon items found in sourcebooks (English)
-+ `[C]` Compendium pack for non-weapon items found in the corebook (French)
-+ `[C]` Shortcut to import Items from a data pack
++ `[C]` Compendium pack for non-weapon items found in sourcebooks (French)
 
 + `[C]` Display tweak: rework item (ability, spell, ..) CSS-flow display with CSS-subgrid when Chrome implements it (could try with display: contents in the meantime)
 
