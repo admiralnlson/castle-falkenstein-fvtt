@@ -269,7 +269,8 @@
           "e": "E",
           "f": "F"
         }
-      }
+      },
+      "customModifier": "Additional modifier"
     },
 
     "host": "Host",

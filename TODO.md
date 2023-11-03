@@ -41,9 +41,8 @@
 + `[S]` Add a lorebook for Cantrips & Wards (CiL-en p91 / -fr p161)
 + `[S]` Allow to combine multiple spells together (CiL-en p85)
 + `[C]` Add a message (Wild Spell / Surcharge thaumique !) when a Sorcery Joker is drawn
-+ `[M🔥]` Define Spell - Allow user to specify a custom bonus/malus (with label?) at spell definition time
-+ `[S🔥]` Define Spell - explicit mechanic for using **Artefacts**
-+ `[S]` Cast Spell - explicit mechanic for using **Unraveling**
++ `[S🔥]` Define Spell - explicit mechanic for **Artefacts**
++ `[S]` Cast Spell - explicit mechanic for **Unraveling**
 + `[S]` Display the name of the spell being cast in the hand itself
   + `[S]` Display the progress toward the target in the hand itself
 + `[S]` Cast Spell - chat message - if unaligned power was used, show harmonic type(s) (up to 3 for the GM to choose from in case of ex-aequo).

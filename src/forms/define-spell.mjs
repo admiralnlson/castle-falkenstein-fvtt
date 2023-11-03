@@ -29,7 +29,8 @@ export default class CastleFalkensteinDefineSpell extends FormApplication {
     this.spellBeingCast = {
       actorItemId: this.spell.id,
       definitionLevels: {},
-      sorceryAbilityId: this.character.sorceryAbility.id
+      sorceryAbilityId: this.character.sorceryAbility.id,
+      customModifier: 0
     };
 
     for (const key in CASTLE_FALKENSTEIN.spellDefinitions) {
@@ -38,11 +39,14 @@ export default class CastleFalkensteinDefineSpell extends FormApplication {
   }
   
   computeTotal() {
-    let total = this.spell.system.level - CASTLE_FALKENSTEIN.abilityLevels[this.character.items.get(this.spellBeingCast.sorceryAbilityId).system.level].value;
+    let total = this.spell.system.level;
+    total -= CASTLE_FALKENSTEIN.abilityLevels[this.character.items.get(this.spellBeingCast.sorceryAbilityId).system.level].value;
 
     for (const [key, value] of Object.entries(this.spellBeingCast.definitionLevels)) {
       total += CASTLE_FALKENSTEIN.spellDefinitions[key].levels[value].value;
     }
+
+    total += this.spellBeingCast.customModifier;
 
     return total > 0 ? total : 0;
   }
@@ -79,6 +83,8 @@ export default class CastleFalkensteinDefineSpell extends FormApplication {
     html.find('.spell-definition-select').change(event => this._onDefinitionSelectChange(event));
 
     html.find('.sorcery-ability-select').change(event => this._onAbilitySelectChange(event));
+
+    html.find('.custom-modifier').change(event => this._onCustomModifierChange(event));
   }
 
   _onDefinitionSelectChange(event) {
@@ -88,6 +94,11 @@ export default class CastleFalkensteinDefineSpell extends FormApplication {
 
   _onAbilitySelectChange(event) {
     this.spellBeingCast.sorceryAbilityId = event.currentTarget.value;
+    this.render();
+  }
+
+  _onCustomModifierChange(event) {
+    this.spellBeingCast.customModifier = parseInt(event.currentTarget.value);
     this.render();
   }
 
@@ -104,15 +115,19 @@ export default class CastleFalkensteinDefineSpell extends FormApplication {
 
     const suitSymbol = CASTLE_FALKENSTEIN.cardSuitsSymbols[this.spell.system.suit];
     let content = `<b>${this.spell.name}</b> [<span class="suit-symbol-${this.spell.system.suit}">${suitSymbol}</span>]<br/>`;
-    content += `${game.i18n.localize("castle-falkenstein.spell.thaumicLevel")}: ${this.spell.system.level}`;
+    content += `${game.i18n.localize("castle-falkenstein.spell.thaumicLevel")}: ${this.spell.system.level}<br/>`;
+    content += CastleFalkenstein.abilityLevelAsSentenceHtml(this.character.items.get(this.spellBeingCast.sorceryAbilityId), false);
     content += '<hr/><div class="spell-definitions">';
 
     for (const [key, value] of Object.entries(CASTLE_FALKENSTEIN.spellDefinitions)) {
       content += `${game.i18n.localize(value.label)}: <b>${game.i18n.localize(value.levels[this.spellBeingCast.definitionLevels[key]].label)}</b><br/>`;
     }
+    if (this.spellBeingCast.customModifier != 0) {
+      const label = game.i18n.localize("castle-falkenstein.spell.customModifier");
+      content += `${label}: <b>${this.spellBeingCast.customModifier}</b><br/>`;
+    }
 
-    content += '</div><hr/>';
-    content += CastleFalkenstein.abilityLevelAsSentenceHtml(this.character.items.get(this.spellBeingCast.sorceryAbilityId), false);
+    content += '</div>';
     const total = this.computeTotal();
     content += `<div class="define-spell-total">${total}</div>`;
 

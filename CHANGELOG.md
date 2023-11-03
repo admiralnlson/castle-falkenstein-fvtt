@@ -6,9 +6,10 @@
 + A new setting allows Hosts to defined whether Wounds, Harm Rank or both are displayed in character sheets, weapon sheets and the spell definitions dialog.
 + Compendium: replaced gunpowder weapons from the corebook with the 'over-exhaustive' list from "Comme Il Faut".
 + Compendium: added abilities from "Comme Il Faut" and "The Memoirs of Auberon of Faerie". This includes a suit change for Etherealness (♠->♣) and Kindred Powers (♣->♦).
++ Added ability to add a custom modifier to Spell Definitions
 ### Changed
++ Aligned Spell Definitions with the ones depicted in 'Comme Il Faut'
 + The click area for controls in native UI card hands has been decreased to match their actual sizes.
-+ Aligned Spell Definitions with the ones described in 'Comme Il Faut'.
 ### Fixed
 + [Firefox] In Sorcery hands, cards which are in focus now display correctly with the 'Release Power' control below them
 + [French translation] Joker names now translate also.

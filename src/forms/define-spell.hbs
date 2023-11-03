@@ -22,6 +22,8 @@
         {{/with}}
         {{/with}}
         {{/each}}
+        <label class="fixed resource-label">{{localize 'castle-falkenstein.spell.customModifier'}}</label>
+        <input type="number" step="1" class="value custom-modifier" value={{spellBeingCast.customModifier}}></input>
       </div>
       <br />
       <div class="define-spell-total">{{total}}</div>
