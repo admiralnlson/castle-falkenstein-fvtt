@@ -38,11 +38,14 @@
 
 ### Sorcery
 
-+ `[M]` Define Spell - Allow user to specify a custom bonus/malus (with label?) at spell definition time
-+ `[S]` Define Spell - explicit mechanic for using **Artefacts**
++ `[S]` Add a lorebook for Cantrips & Wards (CiL-en p91 / -fr p161)
++ `[S]` Allow to combine multiple spells together (CiL-en p85)
++ `[C]` Add a message (Wild Spell / Surcharge thaumique !) when a Sorcery Joker is drawn
++ `[M🔥]` Define Spell - Allow user to specify a custom bonus/malus (with label?) at spell definition time
++ `[S🔥]` Define Spell - explicit mechanic for using **Artefacts**
 + `[S]` Cast Spell - explicit mechanic for using **Unraveling**
 + `[S]` Display the name of the spell being cast in the hand itself
-  + `[S]` Cast Spell - chat message - add a box showing power gathered vs initial requirement.
+  + `[S]` Display the progress toward the target in the hand itself
 + `[S]` Cast Spell - chat message - if unaligned power was used, show harmonic type(s) (up to 3 for the GM to choose from in case of ex-aequo).
 + `[S]` Cast Spell - When a Joker is drawn, the spell is immediately cast a.k.a. **Wild Spell** (fr: Surcharge thaumique)
 + `[C]` Cast Spell - chat message - merge consecutive chat messages dealing with Power being Gathered or Released
@@ -74,8 +77,7 @@
 
 ### Mechanics from "Comme Il Faut"
 
-+ `[S]` Support for 'Harm Rank' alternative mechanics
-+ `[S]` Add "Damage" to Spell Definition (Comme Il Faut (FR), p154)
++ `[S]` Alternative Feat Resolution (EN p79, FR p128)
 
 ### Mechanics from "Variations on the Great Game"
 

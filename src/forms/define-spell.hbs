@@ -2,24 +2,26 @@
 	<section class="content">
     <div>
       <b>{{spell.name}}</b> [<span class="suit-symbol-{{spell.system.suit}}">{{spellSuitSymbol}}</span>]<br/>
-      {{localize "castle-falkenstein.spell.thaumicLevel"}}: {{spell.system.level}}
       <hr />
-      <div class="grid-2col spell-definitions">
-      {{#each spellBeingCast.definitions}}
-      {{#with (lookup ../spellDefinitions @key)}}
-      <label class="resource-label">{{localize label}}</label>
-      <select class="spell-definition-select" name="{{@key}}">
-        {{selectOptions levels labelAttr="label" selected=../this localize=true}}
-      </select>
-      {{/with}}
-      {{/each}}
-      </div>
-      <hr />
-      <div class="grid-2col">
+      <div class="grid grid-3col spell-definitions">
+        <label class="fixed resource-label">{{localize "castle-falkenstein.spell.thaumicLevel"}}</label>
+        <span class="value">{{spell.system.level}}</span>
         <label class="resource-label">{{localize 'castle-falkenstein.ability.ability'}}</label>
         <select class="sorcery-ability-select" name="spellBeingCast.sorceryAbilityId">
           {{selectOptions availableSorceryAbilities selected=spellBeingCast.sorceryAbilityId localize=false}}
         </select>
+        <span class="value">-{{selectedSorceryAbilityLevel}}</span>
+        {{#each spellBeingCast.definitionLevels}}
+        {{#with (lookup ../spellDefinitions @key)}}
+        <label class="resource-label">{{localize label}}</label>
+        <select class="spell-definition-select" name="{{@key}}">
+          {{selectOptions levels labelAttr="label" selected=../this localize=true}}
+        </select>
+        {{#with (lookup this.levels ../this)}}
+        <span class="value">{{value}}</span>
+        {{/with}}
+        {{/with}}
+        {{/each}}
       </div>
       <br />
       <div class="define-spell-total">{{total}}</div>

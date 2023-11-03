@@ -6,23 +6,39 @@
         <div class="grid weapon-sheet-header1">
           <label class="resource-label">{{localize 'castle-falkenstein.weapon.weapon'}}:</label>
           <input name="name" type="text" value="{{item.name}}" placeholder="Name" />
-          <label class="resource-label">{{localize 'castle-falkenstein.weapon.effectiveRange'}}:</label>
-          <input class="range" name="system.effectiveRange" type="text" value="{{system.effectiveRange}}" placeholder="" />
         </div>
         <div class="grid weapon-sheet-header2">
+          <label class="resource-label">{{localize 'castle-falkenstein.weapon.effectiveRange'}}:</label>
+          <input class="effective-range" name="system.effectiveRange" type="number" value="{{system.effectiveRange}}"/>
+          <label class="resource-label">{{localize 'castle-falkenstein.weapon.maxRange'}}:</label>
+          <input class="max-range" name="system.maxRange" type="number" value="{{system.maxRange}}" />
           <span class="separator"></span>
+          <label class="resource-label">{{localize 'castle-falkenstein.weapon.conceal'}}:</label>
+          <select name="system.conceal" class="conceal">
+            {{selectOptions concealSelectOptions selected=system.conceal localize=true}}
+          </select>
+        </div>
+        <div class="grid weapon-sheet-header3 {{#if hideWounds}}hide-wounds{{/if}}{{#if hideHarmRank}}hide-harm-rank{{/if}}">
           <label class="resource-label">{{localize 'castle-falkenstein.weapon.ammunition'}}:</label>
-          <input class="ammunition-current" name="system.ammunition" type="number" min="0" value="{{system.ammunition}}" placeholder="" />
+          <input class="ammunition-current" title="{{localize 'castle-falkenstein.weapon.ammunitionCurrent'}}" name="system.ammunition" type="number" min="0" value="{{system.ammunition}}" placeholder="" />
           <span>/</span>
-          <input class="ammunition-max" name="system.ammunition_max" type="number" min="0" value="{{system.ammunition_max}}" placeholder="" />
+          <input class="ammunition-max" title="{{localize 'castle-falkenstein.weapon.ammunitionMax'}}" name="system.ammunition_max" type="number" min="0" value="{{system.ammunition_max}}" placeholder="" />
+          {{#unless hideWounds}}
           <span class="separator"></span>
           <label class="resource-label">{{localize 'castle-falkenstein.weapon.wounds'}}:</label>
-          <input class="wounds-partial" name="system.woundsPartial" type="number" min="0" value="{{system.woundsPartial}}" placeholder="" />
+          <input class="wounds-partial" title="{{localize 'castle-falkenstein.weapon.woundsPartial'}}" name="system.woundsPartial" type="number" min="0" value="{{system.woundsPartial}}" placeholder="" />
           <span>/</span>
-          <input class="wounds-full" name="system.woundsFull" type="number" min="0" value="{{system.woundsFull}}" placeholder="" />
+          <input class="wounds-full" title="{{localize 'castle-falkenstein.weapon.woundsFull'}}" name="system.woundsFull" type="number" min="0" value="{{system.woundsFull}}" placeholder="" />
           <span>/</span>
-          <input class="wounds-high" name="system.woundsHigh" type="number" min="0" value="{{system.woundsHigh}}" placeholder="" />
+          <input class="wounds-high"  title="{{localize 'castle-falkenstein.weapon.woundsHigh'}}"name="system.woundsHigh" type="number" min="0" value="{{system.woundsHigh}}" placeholder="" />
+          {{/unless}}
+          {{#unless hideHarmRank}}
           <span class="separator"></span>
+          <label class="resource-label">{{localize 'castle-falkenstein.weapon.harmRank'}}:</label>
+          <select name="system.harmRank" class="harm-rank">
+            {{selectOptions harmRankSelectOptions selected=system.harmRank localize=false}}
+          </select>
+          {{/unless}}
         </div>
       </div>
     </div>

@@ -2,12 +2,20 @@
 @import "./cf-hand.css";
 
 :root {
-  --item-drag-width: 15px;
-  --item-roll-button-width: 20px;
-  --item-controls-width: 74px;
-  --label-2digits-width: 16px;
-  --input-2digits-width: 25px;
+  --grid-item-drag-width: 15px;
+  --grid-item-roll-button-width: 20px;
+  --grid-item-controls-width: 74px;
+  --grid-2digits-width: 16px;
+  --grid-1alpha-width: 8px;
   --grid-slash-width: 5px;
+  --grid-range-width: 25px;
+  --grid-maxrange-width: 30px;
+  --grid-conceal-width: 30px;
+  --grid-harm-rank-width: 30px;
+  --input-2digits-width: 25px;
+  --input-3digits-width: 33px;
+  --input-4digits-width: 41px;
+  --select-1alpha-width: 40px;
 }
 
 [class*='cf-']:before {
@@ -22,13 +30,15 @@
 
 /* Generic formatting stuff */
 
-.grid,
-.grid-2col {
+.grid {
   display: grid;
-  grid-column: span 2 / span 2;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 5px;
   padding: 0;
+}
+
+.grid-2col {
+  grid-column: span 2 / span 2;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .grid-3col {
@@ -39,6 +49,7 @@
 .grid-4col {
   grid-column: span 4 / span 4;
   grid-template-columns: repeat(4, minmax(0, 1fr));
+  .grid-3col
 }
 
 .grid-5col {
@@ -329,7 +340,7 @@ html * {
 }
 
 .castle-falkenstein .tab.abilities .items-list .item {
-  grid-template-columns: var(--item-drag-width) var(--item-roll-button-width) 1fr 110px var(--item-controls-width);
+  grid-template-columns: var(--grid-item-drag-width) var(--grid-item-roll-button-width) 1fr 110px var(--grid-item-controls-width);
 }
 
 .castle-falkenstein .tab.abilities .items-list .level {
@@ -337,9 +348,18 @@ html * {
 }
 
 .castle-falkenstein .tab.possessions .items-list.weapons .item {
-  grid-template-columns: var(--item-drag-width) 1fr 60px var(--input-2digits-width) var(--grid-slash-width) var(--label-2digits-width) var(--label-2digits-width) var(--grid-slash-width) var(--label-2digits-width) var(--grid-slash-width) var(--label-2digits-width) var(--item-controls-width);
+  grid-template-columns: var(--grid-item-drag-width) 1fr var(--grid-range-width) var(--grid-slash-width) var(--grid-maxrange-width) var(--input-2digits-width) var(--grid-slash-width) var(--grid-2digits-width) var(--grid-conceal-width) var(--grid-2digits-width) var(--grid-slash-width) var(--grid-2digits-width) var(--grid-slash-width) var(--grid-2digits-width) var(--grid-harm-rank-width) var(--grid-item-controls-width);
 }
 
+.castle-falkenstein .tab.possessions .items-list.weapons.hide-wounds .item {
+  grid-template-columns: var(--grid-item-drag-width) 1fr var(--grid-range-width) var(--grid-slash-width) var(--grid-maxrange-width) var(--input-2digits-width) var(--grid-slash-width) var(--grid-2digits-width) var(--grid-conceal-width) var(--grid-harm-rank-width) var(--grid-item-controls-width);
+}
+
+.castle-falkenstein .tab.possessions .items-list.weapons.hide-harm-rank .item {
+  grid-template-columns: var(--grid-item-drag-width) 1fr var(--grid-range-width) var(--grid-slash-width) var(--grid-maxrange-width) var(--input-2digits-width) var(--grid-slash-width) var(--grid-2digits-width) var(--grid-conceal-width) var(--grid-2digits-width) var(--grid-slash-width) var(--grid-2digits-width) var(--grid-slash-width) var(--grid-2digits-width) var(--grid-item-controls-width);
+}
+
+.castle-falkenstein .tab.possessions .items-list.weapons .item.items-header .range,
 .castle-falkenstein .tab.possessions .items-list.weapons .item.items-header .ammunition {
   grid-column: span 3;
 }
@@ -348,8 +368,12 @@ html * {
   grid-column: span 5;
 }
 
-.castle-falkenstein.item .weapon-sheet-header1 .range, 
-.castle-falkenstein .tab.possessions .items-list.weapons .range {
+.castle-falkenstein .tab.possessions .items-list.weapons .range,
+.castle-falkenstein .tab.possessions .items-list.weapons .effective-range,
+.castle-falkenstein .tab.possessions .items-list.weapons .max-range,
+.castle-falkenstein.item .weapon-sheet-header1 .range,
+.castle-falkenstein.item .weapon-sheet-header1 .effective-range,
+.castle-falkenstein.item .weapon-sheet-header1 .max-range {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -357,32 +381,43 @@ html * {
 
 .castle-falkenstein .tab.possessions .items-list.weapons .range,
 .castle-falkenstein .tab.possessions .items-list.weapons .ammunition,
+.castle-falkenstein .tab.possessions .items-list.weapons .conceal,
 .castle-falkenstein .tab.possessions .items-list.weapons .wounds,
 .castle-falkenstein .tab.possessions .items-list.weapons .wounds-partial,
 .castle-falkenstein .tab.possessions .items-list.weapons .wounds-full,
 .castle-falkenstein .tab.possessions .items-list.weapons .wounds-high,
-.castle-falkenstein.item .weapon-sheet-header2 .wounds-partial,
-.castle-falkenstein.item .weapon-sheet-header2 .wounds-full,
-.castle-falkenstein.item .weapon-sheet-header2 .wounds-high {
+.castle-falkenstein .tab.possessions .items-list.weapons .harm-rank,
+.castle-falkenstein.item .weapon-sheet-header3 .wounds-partial,
+.castle-falkenstein.item .weapon-sheet-header3 .wounds-full,
+.castle-falkenstein.item .weapon-sheet-header3 .wounds-high {
   text-align: center;
 }
 
+.castle-falkenstein .tab.possessions .items-list.weapons .effective-range,
 .castle-falkenstein .tab.possessions .items-list.weapons .ammunition-current,
-.castle-falkenstein.item .weapon-sheet-header2 .ammunition-current {
+.castle-falkenstein.item .weapon-sheet-header2 .effective-range,
+.castle-falkenstein.item .weapon-sheet-header2 .max-range,
+.castle-falkenstein.item .weapon-sheet-header3 .ammunition-current,
+.castle-falkenstein.item .weapon-sheet-header3 .ammunition-max {
   text-align: right;
 }
 
-.castle-falkenstein .tab.possessions .items-list.weapons .ammunition-max,
-.castle-falkenstein.item .weapon-sheet-header2 .ammunition-max {
+.castle-falkenstein .tab.possessions .items-list.weapons .max-range,
+.castle-falkenstein .tab.possessions .items-list.weapons .ammunition-max {
   text-align: left;
 }
 
+.castle-falkenstein.item .weapon-sheet-header2 .conceal,
+.castle-falkenstein.item .weapon-sheet-header3 .harm-rank {
+  margin-right: 2px;
+}
+
 .castle-falkenstein .tab.possessions .items-list.possessions .item {
-  grid-template-columns: var(--item-drag-width) 1fr var(--item-controls-width);
+  grid-template-columns: var(--grid-item-drag-width) 1fr var(--grid-item-controls-width);
 }
 
 .castle-falkenstein .tab.spells .items-list .item {
-  grid-template-columns: var(--item-drag-width) var(--item-roll-button-width) 1fr var(--label-2digits-width) var(--item-controls-width);
+  grid-template-columns: var(--grid-item-drag-width) var(--grid-item-roll-button-width) 1fr var(--grid-2digits-width) var(--grid-item-controls-width);
 }
 
 .castle-falkenstein .tab.spells .items-list .level {
@@ -424,13 +459,28 @@ html * {
 
 .castle-falkenstein.item .weapon-sheet-header1 {
   align-items: center;
-  grid-template-columns: auto 1fr auto 60px;
+  grid-template-columns: auto 1fr;
   margin-bottom: 5px;
 }
 
 .castle-falkenstein.item .weapon-sheet-header2 {
   align-items: center;
-  grid-template-columns: 1fr auto var(--input-2digits-width) 5px var(--input-2digits-width) 1fr auto var(--input-2digits-width) 5px var(--input-2digits-width) 5px var(--input-2digits-width) 1fr;
+  grid-template-columns: auto var(--input-3digits-width) auto var(--input-4digits-width) 1fr auto var(--select-1alpha-width);
+  margin-bottom: 5px;
+
+}
+
+.castle-falkenstein.item .weapon-sheet-header3 {
+  align-items: center;
+  grid-template-columns: auto var(--input-2digits-width) var(--grid-slash-width) var(--input-2digits-width) 1fr auto var(--input-2digits-width) var(--grid-slash-width) var(--input-2digits-width) var(--grid-slash-width) var(--input-2digits-width) 1fr auto var(--select-1alpha-width);
+}
+
+.castle-falkenstein.item .weapon-sheet-header3.hide-wounds {
+  grid-template-columns: auto var(--input-2digits-width) var(--grid-slash-width) var(--input-2digits-width) 1fr auto var(--select-1alpha-width);
+}
+
+.castle-falkenstein.item .weapon-sheet-header3.hide-harm-rank {
+  grid-template-columns: auto var(--input-2digits-width) var(--grid-slash-width) var(--input-2digits-width) 1fr auto var(--input-2digits-width) var(--grid-slash-width) var(--input-2digits-width) var(--grid-slash-width) var(--input-2digits-width);
 }
 
 .castle-falkenstein.item .possession-sheet-header {
@@ -604,6 +654,25 @@ html * {
   text-align: center;
 }
 
+.castle-falkenstein .spell-definitions {
+  grid-template-columns: 1fr 200px 30px;
+  grid-template-rows: repeat(auto-fill, auto);
+  align-items: center;
+}
+
+.castle-falkenstein .spell-definitions .resource-label {
+  line-height: 100%;
+}
+
+.castle-falkenstein .spell-definitions .fixed {
+  grid-column: 1 / span 2;
+}
+
+.castle-falkenstein .spell-definitions .value {
+  text-align: right;
+  margin-right: 7px;
+}
+
 
 /* compatibility for chat messages generated before 1.1.0 */
 .castle-falkenstein .cards-played .card-played::before,
@@ -646,4 +715,9 @@ html * {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+.grid-hide {
+  /*display: none;*/
+  visibility: hidden;
 }

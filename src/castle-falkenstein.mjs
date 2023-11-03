@@ -451,39 +451,58 @@ export default class CastleFalkenstein {
       src: "systems/castle-falkenstein/src/cards/deck-preset.json"
     };
 
-    if (game.modules.get('babele')?.active) {
-      Babele.get().setSystemTranslationsDir("lang/babele");
-    }
-
     this.registerSettings();
 
     this.registerSheets();
   }
 
-  static async onReady() {
+  static async onSetup() {
+    if (game.settings.get("core", "language") != "en" && game.modules.get('babele')?.active) {
+      Babele.get().setSystemTranslationsDir("lang/babele");
+    }
 
     await this.preLoadTemplates();
 
     if (CONFIG["Cards"].sheetClasses.hand["monarch.MonarchHand"])
-      CONFIG["Cards"].sheetClasses.hand["monarch.MonarchHand"].default = (this.cardsUi == this.CARDS_UI_OPTIONS.monarch);
+    CONFIG["Cards"].sheetClasses.hand["monarch.MonarchHand"].default = (this.cardsUi == this.CARDS_UI_OPTIONS.monarch);
 
     if (CONFIG["Cards"].sheetClasses.hand["castle-falkenstein.CastleFalkensteinHandSheet"])
       CONFIG["Cards"].sheetClasses.hand["castle-falkenstein.CastleFalkensteinHandSheet"].default = (this.cardsUi == this.CARDS_UI_OPTIONS.native);
 
-    const userLanguage = game.settings.get("core", "language");
-    if (userLanguage != "en" && Array.from(game.system.languages.map(el => el.lang)).includes(userLanguage)) {
-      if (!game.modules.get('babele')?.active) {
-        CastleFalkenstein.notif.warn(game.i18n.localize("castle-falkenstein.notifications.babeleRequired"));
-      }
-    }
-
+      
     if (game.user.isGM) {
       await this.prepareCardStacks();
     }
 
-    await game.cards.updateAll(this.translateCardStack, (stack) => {
-      return stack.flags[CastleFalkenstein.id];
-    });
+    const userLanguage = game.settings.get("core", "language");
+    if (userLanguage != "en" && Array.from(game.system.languages.map(el => el.lang)).includes(userLanguage)) {
+      await game.cards.updateAll(this.translateCardStack, (stack) => {
+        return stack.flags[CastleFalkenstein.id];
+      });
+    }
+
+    // align "Harm Rank" spell definition labels to the chosen damageSystem setting 
+    const harmRankDef = CASTLE_FALKENSTEIN.spellDefinitions["harmRank"];
+    for (let level in harmRankDef.levels) {
+      if (level != "-") {
+        harmRankDef.levels[level].label = game.i18n.localize(`castle-falkenstein.spell.definition.harmRank.${level}`);
+        if (this.settings.damageSystem != this.DAMAGE_SYSTEM_OPTIONS.harmRank)
+          harmRankDef.levels[level].label += ": " + harmRankDef.levels[level].wounds;
+      }
+    }
+  }
+
+  static async onReady() {
+
+    const userLanguage = game.settings.get("core", "language");
+    if (userLanguage != "en" && Array.from(game.system.languages.map(el => el.lang)).includes(userLanguage)) {
+      const babele = game.modules.get('babele');
+      if (!babele) {
+        CastleFalkenstein.notif.warn(game.i18n.localize("castle-falkenstein.notifications.babeleInstallRequired"));
+      } else if (!babele.active) {
+        CastleFalkenstein.notif.warn(game.i18n.localize("castle-falkenstein.notifications.babeleActivationRequired"));
+      }
+    }
 
     CastleFalkenstein.log.debug("Debug mode active.");
     CastleFalkenstein.log.info("Ready.");
@@ -533,6 +552,12 @@ export default class CastleFalkenstein {
     monarch: "monarch"
   };
 
+  static DAMAGE_SYSTEM_OPTIONS = {
+    both: "both",
+    wounds: "wounds",
+    harmRank: "harmRank"
+  };
+
   static SETTING_DEFINITIONS = {
 
     // Host settings
@@ -542,6 +567,16 @@ export default class CastleFalkenstein {
       scope: "world",
       type: String,
       default: "",
+      requiresReload: true
+    },
+    damageSystem: {
+      scope: "world",
+      choices: () => ({
+        [this.DAMAGE_SYSTEM_OPTIONS.both]: game.i18n.localize("castle-falkenstein.settings.damageSystem.both"),
+        [this.DAMAGE_SYSTEM_OPTIONS.wounds]: game.i18n.localize("castle-falkenstein.settings.damageSystem.wounds"),
+        [this.DAMAGE_SYSTEM_OPTIONS.harmRank]: game.i18n.localize("castle-falkenstein.settings.damageSystem.harmRank")
+      }),
+      default: this.DAMAGE_SYSTEM_OPTIONS.both,
       requiresReload: true
     },
     // Player settings
@@ -697,7 +732,7 @@ Hooks.once("devModeReady", ({ registerPackageDebugFlag }) => {
 });
 
 Hooks.once("init", () => CastleFalkenstein.onInit());
-
+Hooks.once("setup", () => CastleFalkenstein.onSetup());
 Hooks.once("ready", () => CastleFalkenstein.onReady());
 
 Hooks.on("renderChatMessage", (chatMessage, html, messageData) => CastleFalkenstein.onRenderChatMessage(chatMessage, html, messageData));
@@ -731,6 +766,14 @@ Handlebars.registerHelper('ifequal', function (a, b, options) {
 Handlebars.registerHelper('ifnotequal', function (a, b, options) {
   if (a != b) { return options.fn(this); }
   return options.inverse(this);
+});
+
+Handlebars.registerHelper('or', function() {
+  return Array.prototype.slice.call(arguments, 0, arguments.length - 1).some(Boolean);
+});
+
+Handlebars.registerHelper('isNumber', function(a) {
+  return typeof a == 'number';
 });
 
 Handlebars.registerHelper('times', function (n, block) {

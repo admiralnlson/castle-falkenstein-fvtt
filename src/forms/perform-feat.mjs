@@ -138,7 +138,7 @@ export default class CastleFalkensteinPerformFeat extends FormApplication {
     const fumbleMin = Math.round((total+0.6)*2);
     content += '<div class="feat-chat-ranges-collapsible">'
          //  + '  <hr />'
-             + '  <div class="grid-2col feat-chat-ranges">'
+             + '  <div class="grid grid-2col feat-chat-ranges">'
              + `    <span class="feat-chat-range">0-${highSuccessMax}</span><span>${game.i18n.localize("castle-falkenstein.feat.highSuccess")}</span>`;
     if (total > 2) { // when total is 2 (FAI with no cards), a full success is impossible
       content += `    <span class="feat-chat-range">${highSuccessMax+1}-${fullSuccessMax}</span><span>${game.i18n.localize("castle-falkenstein.feat.fullSuccess")}</span>`

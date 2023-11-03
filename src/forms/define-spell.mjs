@@ -28,19 +28,19 @@ export default class CastleFalkensteinDefineSpell extends FormApplication {
 
     this.spellBeingCast = {
       actorItemId: this.spell.id,
-      definitions: {},
+      definitionLevels: {},
       sorceryAbilityId: this.character.sorceryAbility.id
     };
 
     for (const key in CASTLE_FALKENSTEIN.spellDefinitions) {
-      this.spellBeingCast.definitions[key] = "-";
+      this.spellBeingCast.definitionLevels[key] = "-";
     }
   }
   
   computeTotal() {
     let total = this.spell.system.level - CASTLE_FALKENSTEIN.abilityLevels[this.character.items.get(this.spellBeingCast.sorceryAbilityId).system.level].value;
 
-    for (const [key, value] of Object.entries(this.spellBeingCast.definitions)) {
+    for (const [key, value] of Object.entries(this.spellBeingCast.definitionLevels)) {
       total += CASTLE_FALKENSTEIN.spellDefinitions[key].levels[value].value;
     }
 
@@ -52,8 +52,17 @@ export default class CastleFalkensteinDefineSpell extends FormApplication {
    */
   async getData() {
 
+    const selectedSorceryAbility = this.character.items.get(this.spellBeingCast.sorceryAbilityId);
+
+    // error if the selected sorcery ability has disappeared since
+    if (!selectedSorceryAbility) {
+      CastleFalkenstein.notif.error(game.i18n.format("castle-falkenstein.notifications.characterDoesNotHaveAbility", {
+        name: CastleFalkenstein.i18nSorceryAbility // approximation since the user may have selected a specialization in the meantime
+      }));
+    }
+
     return {
-      sorceryLevelAsSentenceHtml: CastleFalkenstein.abilityLevelAsSentenceHtml(this.character.items.get(this.spellBeingCast.sorceryAbilityId), false),
+      selectedSorceryAbilityLevel: selectedSorceryAbility ? selectedSorceryAbility.system.levelValue : "not found",
       spell: this.spell,
       spellSuitSymbol: CASTLE_FALKENSTEIN.cardSuitsSymbols[this.spell.system.suit],
       spellBeingCast: this.spellBeingCast,
@@ -73,7 +82,7 @@ export default class CastleFalkensteinDefineSpell extends FormApplication {
   }
 
   _onDefinitionSelectChange(event) {
-    this.spellBeingCast.definitions[event.currentTarget.name] = event.currentTarget.value;
+    this.spellBeingCast.definitionLevels[event.currentTarget.name] = event.currentTarget.value;
     this.render();
   }
 
@@ -99,7 +108,7 @@ export default class CastleFalkensteinDefineSpell extends FormApplication {
     content += '<hr/><div class="spell-definitions">';
 
     for (const [key, value] of Object.entries(CASTLE_FALKENSTEIN.spellDefinitions)) {
-      content += `${game.i18n.localize(value.label)}: <b>${game.i18n.localize(value.levels[this.spellBeingCast.definitions[key]].label)}</b><br/>`;
+      content += `${game.i18n.localize(value.label)}: <b>${game.i18n.localize(value.levels[this.spellBeingCast.definitionLevels[key]].label)}</b><br/>`;
     }
 
     content += '</div><hr/>';
