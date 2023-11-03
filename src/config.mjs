@@ -147,15 +147,15 @@ CASTLE_FALKENSTEIN.spellDefinitions = {
       "d": { value : 4 }
     }
   },
-  "damage": {
+  "harmRank": {
     "levels": {
-      "-": { label: "-", value : 0 },
-      "a": { value : 2 },
-      "b": { value : 4 },
-      "c": { value : 8 },
-      "d": { value : 12 },
-      "e": { value : 16 },
-      "f": { value : 20 }
+      "-": { value : 0, label: "-" },
+      "a": { value : 2,  wounds: "1 / 2 / 3" },
+      "b": { value : 4,  wounds: "2 / 3 / 4" },
+      "c": { value : 8,  wounds: "3 / 4 / 5" },
+      "d": { value : 12, wounds: "4 / 5 / 7" },
+      "e": { value : 16, wounds: "7 / 8 / 9" },
+      "f": { value : 20, wounds: "8 / 9 / 10" }
     }
   }
 };

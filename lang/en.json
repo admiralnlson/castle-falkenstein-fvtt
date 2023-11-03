@@ -15,6 +15,13 @@
         "name": "Name of the Sorcery ability",
         "hint": "[Host only] [Optional] Allows to have character ability names in the language spoken by your group, even if this language is not officially supporte by the system yet."
       },
+      "damageSystem": {
+        "name": "Damage system",
+        "hint": "[Host only] You may select the type of damage you wish to display in character sheets.",
+        "both": "Both",
+        "wounds": "Wounds (original system depicted in the corebook)",
+        "harmRank": "Harm Rank (alternative system depicted in Comme Il Faut)"
+      },
       "cardsUi": {
         "name": "Cards User Interface",
         "hint": "You may select your preferred user interface for cards here.",
@@ -27,7 +34,8 @@
     },
 
     "notifications": {
-      "babeleRequired": "In order for the Castle Falkenstein compendium packs to be translated in your language, you need to install and activate the 'Babele' module!",
+      "babeleInstallRequired": "The Babele module is not installed! Install and activate it in order for Compendiums to be translated.",
+      "babeleActivationRequired": "The Babele module is installed, but it is not active! Activate it in order for Compendiums to be translated.",
       "playerHasInsufficientPermissionsOnCardStacks": "Player '{player}' has insufficient permissions on:",
       "createdCards": "Created:",
       "characterWasShown": "Character '{name}' was shown to players.",
@@ -163,16 +171,29 @@
     "weapon": {
       "weapons":"Weapons",
       "weapon":"Weapon",
+      "range": "Range",
       "effectiveRange": "Effective Range",
-      "effectiveRangeAbbr": "Range",
+      "maxRange": "Max Range",
       "ammunition": "Ammunition",
       "ammunitionAbbr": "Ammo",
       "ammunitionCurrent": "Ammunition (Current)",
       "ammunitionMax": "Ammunition (Max)",
+      "conceal": "Conceal",
+      "concealAbbr": "Conc.",
+      "concealPocket": "P - Pockets, Pants Leg or Sleeve",
+      "concealPocketAbbr": "P",
+      "concealJacket": "J - Jacket or Coat",
+      "concealJacketAbbr": "J",
+      "concealLongCoat": "L - Long Coat",
+      "concealLongCoatAbbr": "L",
+      "concealNot": "N - Not Concealable",
+      "concealNotAbbr": "N",
       "wounds": "Wounds",
       "woundsPartial": "Wounds (Partial)",
       "woundsFull": "Wounds (Full)",
-      "woundsHigh": "Wounds (High)"
+      "woundsHigh": "Wounds (High)",
+      "harmRank": "Harm Rank",
+      "harmRankAbbr": "Rank"
     },
 
     "spell": {
@@ -239,8 +260,8 @@
           "c": "Don't know the Subject",
           "d": "Subject Totally Unknown to You"
         },
-        "damage": {
-          "label": "Damage",
+        "harmRank": {
+          "label": "Harm Rank",
           "a": "A",
           "b": "B",
           "c": "C",

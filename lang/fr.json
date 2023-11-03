@@ -15,9 +15,16 @@
         "name": "Nom du talent de Sorcellerie",
         "hint": "[Hôte uniquement] [Optionnel] Permet d'avoir les noms de Talents des personnages dans la langue parlée par le groupe, même si celle-ci n'est pas encore officiellement supportée par le système."
       },
+      "damageSystem": {
+        "name": "Système de dégâts",
+        "hint": "[Hôte uniquement] Vous pouvez ici sélectionner le type de dégâts que vous souhaitez afficher dans les feuilles de personnages.",
+        "both": "Les deux",
+        "wounds": "Blessures (système décrit dans le livre de base)",
+        "harmRank": "Rang de dégâts (système alternatif décrit dans Comme Il Faut)"
+      },
       "cardsUi": {
         "name": "Interface pour les cartes",
-        "hint": "Vous pouvez ici sélectionner l' interface utilisateur que vous préférez pour les cartes à jouer.",
+        "hint": "Vous pouvez ici sélectionner l'interface utilisateur que vous préférez pour les cartes à jouer.",
         "valueNative": "Native (défaut)"
       },
       "cardWidth": {
@@ -27,7 +34,8 @@
     },
 
     "notifications": {
-      "babeleRequired": "Pour que les compendiums de Château Falkenstein soient traduits dans votre langue, vous devez installer et activer le module 'Babele' !",
+      "babeleInstallRequired": "Le module 'Babele' n'est pas installé ! Installez et activez-le afin que les Compendiums puissent être traduits.",
+      "babeleActivationRequired": "Le module 'Babele' est installé, mais n'est pas activé ! Activez-le afin que les Compendiums puissent être traduits.",
       "playerHasInsufficientPermissionsOnCardStacks": "Le joueur '{player}' a des permissions insuffisantes sur :",
       "createdCards": "Créé:",
       "characterWasShown": "Le personnage '{name}' a été montré aux joueurs.",
@@ -163,16 +171,29 @@
     "weapon": {
       "weapons": "Armes",
       "weapon": "Arme",
+      "range": "Portée",
       "effectiveRange": "Portée effective",
-      "effectiveRangeAbbr": "Portée",
+      "maxRange": "Portée maximale",
       "ammunition": "Munitions",
       "ammunitionAbbr": "Mun.",
       "ammunitionCurrent": "Munitions (actuel)",
       "ammunitionMax": "Munitions (max)",
+      "conceal": "Dissimulation",
+      "concealAbbr": "Diss.",
+      "concealPocket": "P - Poche, jambe de pantalon ou manche",
+      "concealPocketAbbr": "P",
+      "concealJacket": "V - Veste ou manteau",
+      "concealJacketAbbr": "V",
+      "concealLongCoat": "L - Long manteau",
+      "concealLongCoatAbbr": "L",
+      "concealNot": "N - Non dissimulable",
+      "concealNotAbbr": "N",
       "wounds": "Blessures",
       "woundsPartial": "Blessures (succès partiel)",
       "woundsFull": "Blessures (franc succès)",
-      "woundsHigh": "Blessures (magnifique succès)"
+      "woundsHigh": "Blessures (magnifique succès)",
+      "harmRank": "Rang de dégâts",
+      "harmRankAbbr": "Rang"
     },
 
     "spell": {
@@ -229,7 +250,7 @@
           "d": "Autre thaumaturge",
           "e": "Dragon",
           "f": "Artefact ou composé de fer froid",
-          "g": "Démon ou autre entité naturelle",
+          "g": "Démon ou autre entité surnaturelle",
           "h": "Nain"
         },
         "familiarity": {
@@ -239,8 +260,8 @@
           "c": "Inconnu",
           "d": "Totalement inconnu"
         },
-        "damage": {
-          "label": "Dégâts",
+        "harmRank": {
+          "label": "Rang de dégâts",
           "a": "A",
           "b": "B",
           "c": "C",

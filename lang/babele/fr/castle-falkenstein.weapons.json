@@ -1,98 +1,206 @@
 {
   "label": "Armes",
   "mapping": {
-    "effectiveRange": "system.effectiveRange",
     "description": "system.description"
   },
   "entries": {
+    ".22 Derringer": {
+      "name": ".22 Derringer",
+      "description": "Colt, Smith & Wesson, Adams, Remington, choisissez. Toutes les marques en fabriquent."
+    },
+    ".36 Derringer": {
+      "name": ".36 Derringer",
+      "description": "Colt, Smith & Wesson, Adams, Remington, choisissez. Toutes les marques en fabriquent."
+    },
+    ".44 Derringer": {
+      "name": ".44 Derringer",
+      "description": "Colt, Smith & Wesson, Adams, Remington, choisissez. Toutes les marques en fabriquent."
+    },
+    ".577 Webley No. 1 (civilian)": {
+      "name": ".577 Webley n° 1 (civil)"
+    },
+    ".455 Webley Mark 1 (military)": {
+      "name": ".455 Webley Mark 1 (militaire)"
+    },
+    ".44 Drop Pistol": {
+      "name": ".44 Pistolet à bascule"
+    },
+    ".32 Beaumont-Adams Pocket Revolver": {
+      "name": ".32 Revolver de poche Beaumont Adams"
+    },
+    ".31 Robbins & Lawrence Pepperbox": {
+      "name": ".31 Poivrière Robbins & Lawrence"
+    },
+    ".22 Reide's Knuckleduster revolver": {
+      "name": ".22 Revolver Reid Knuckleduster"
+    },
+    ".41 Frank Wesson Dagger Pistol": {
+      "name": ".41 Pistolet-poignard Frank Wesson"
+    },
+    ".36 Allen & Thurber Pepperbox": {
+      "name": ".36 Poivrière Allen & Thurber"
+    },
+    ".34 Double Action Pepperbox": {
+      "name": ".34 Poivrière à double action"
+    },
+    ".22 Smith & Wesson No. l revolver": {
+      "name": ".22 Revolver Smith & Wesson n° 1"
+    },
+    ".32 Smith & Wesson 1861 No. 2": {
+      "name": ".32 Smith & Wesson 1861 n° 2"
+    },
+    ".36 Colt 1861 Navy": {
+      "name": ".36 Colt 1861 Navy"
+    },
+    ".38 Volcanic 1860 Pistol": {
+      "name": ".38 Pistolet Volcanic 1860"
+    },
+    ".44 Colt 1848 Dragoon": {
+      "name": ".44 Colt 1848 Dragoon"
+    },
+    ".44 Colt 1860 Army": {
+      "name": ".44 Colt 1860 Army"
+    },
+    ".44 Remington 1863 Army": {
+      "name": ".44 Remington 1863 Army"
+    },
+    ".44 Remington 1875 No. 3 Army": {
+      "name": ".44 Remington 1875 n° 3 Army"
+    },
+    ".45 Colt 1873 Single-action Army (a.k.a. Peacemaker)": {
+      "name": ".45 Colt 1873 Single Action Army (ou Pacificateur)"
+    },
+    ".45 Smith & Wesson 1869 No. 3": {
+      "name": ".45 Smith & Wesson 1869 n° 3"
+    },
+    ".493 Adams Dragoon Revolver": {
+      "name": ".493 Revolver Adams Dragoon"
+    },
+    ".42 LeMat Horse Pistol - main cylinder": {
+      "name": ".42 Pistolet de cavalerie LeMat - cylindre principal",
+      "description": "Revolver qui dispose d'un canon supplémentaire chargé de grenaille sous le canon principal. Permet de tirer un coup unique très puissant. Voir l'entrée séparée pour le canon à grenail."
+    },
+    ".42 LeMat Horse Pistol - shotgun": {
+      "name": ".42 Pistolet de cavalerie LeMat - canon à grenail",
+      "description": "Revolver qui dispose d'un canon supplémentaire chargé de grenaille sous le canon principal. Permet de tirer un coup unique très puissant. Voir l'entrée séparée pour le cylindre principal."
+    },
+    ".42 LeMat Dragoon - main cylinder": {
+      "name": ".42 Dragoon LeMat - cylindre principal",
+      "description": "Revolver qui dispose d'un canon supplémentaire chargé de grenaille sous le canon principal. Permet de tirer un coup unique très puissant. Voir l'entrée séparée pour le canon à grenail."
+    },
+    ".42 LeMat Dragoon - shotgun": {
+      "name": ".42 Dragoon LeMat - canon a grenail",
+      "description": "Revolver qui dispose d'un canon supplémentaire chargé de grenaille sous le canon principal. Permet de tirer un coup unique très puissant. Voir l'entrée séparée pour le cylindre principal."
+    },
+    ".32 Allen & Thurber Model 1870": {
+      "name": ".32 Allen & Thurber modèle 1870"
+    },
+    ".44 Allen & Thurber Model 1871": {
+      "name": ".44 Allen & Thurber modèle 1871"
+    },
+    "15mm Bayrisches Werder-Gewehr M 1869": {
+      "name": "15 mm Bayrisches Werder-Gewehr modèle 1870"
+    },
+    "15.4mm Prussian Needle Rifle M. 1849": {
+      "name": "15,4 mm Fusil Dreyse prussien modèle 1849"
+    },
+    "llmm French Chassepot Model 1866": {
+      "name": "11 mm Fusil Chassepot français modèle 1866"
+    },
+    "llmm Prussian Mauser 1871 bolt action": {
+      "name": "11 mm Fusil à verrou Mauser prussien modèle 1871"
+    },
+    ".450 Martini -Henry lever action": {
+      "name": ".450 Martini-Henry, fusil à chargement par la culasse"
+    },
+    ".577 Enfield Rifle M. 1857": {
+      "name": ".577 Fusil Enfield modèle 1857"
+    },
+    ".577 Snyder Swinging-block Conversion": {
+      "name": ".577 Fusil Snyder-Enfield converti (tabatière)"
+    },
+    ".58 Springfield Model 1858 [ML]": {
+      "name": ".58 Springfield modèle 1858 (chargement par le canon)"
+    },
+    ".50-.56 Breechloading Carbine": {
+      "name": ".50 - .56 Carabine à chargement par la culasse",
+      "description": "Spencer, Gwyn & Campbell, Gibbs, Galagher, Sharps & Hankins, Sharps, Burnside, Jenks, Hall, Starr, Peabody (Europe) ou Ball. Choisissez-en un, ils sont tous à peu près similaires."
+    },
+    ".44 1862 Henry Rifle": {
+      "name": ".44 Fusil Henry 1862"
+    },
+    ".44 Volcanic 1857 Carbine": {
+      "name": ".44 Carabine Volcanic 1857"
+    },
+    ".44 Winchester Model 1866": {
+      "name": ".44 Winchester modèle 1866"
+    },
+    ".44 Winchester Model 1873": {
+      "name": ".44 Winchester modèle 1873"
+    },
+    ".45 Remington 1873 Rolling Block Rifle": {
+      "name": ".45 Carabine Remington Rolling Block 1873"
+    },
+    ".45 Sharp's 1874 Buffalo Rifle": {
+      "name": ".45 Fusil Sharps 1874"
+    },
+    ".46 Remington 1876 Sport Rifle": {
+      "name": ".46 Fusil Remington Sport 1876"
+    },
+    ".50 Shotgun, 1873": {
+      "name": ".50 Fusil de chasse 1873"
+    },
+    ".50 Shotgun, Sawn-off": {
+      "name": ".50 Fusil à canon scié"
+    },
+    ".50 Sharps 1866 Rifle": {
+      "name": ".50 Fusil Sharps 1866"
+    },
+    ".56 Remington 1860 Carbine": {
+      "name": ".56 Carabine Remington 1860"
+    },
+    ".50 Colt 1867 Gatling Gun": {
+      "name": ".50 Mitrailleuse Gatling Colt 1867"
+    },
+    "11mm French Mitrailleuse": {
+      "name": "11 mm Mitrailleuse française Reffye"
+    },
+    "15mm Nordenfelt Gun": {
+      "name": "15 mm Mitrailleuse Nordenfelt"
+    },
     "Bow": {
-      "name": "Arc",
-      "effectiveRange": "30 m"
-    },
-    "Carbine": {
-      "name": "Carabine",
-      "effectiveRange": "90 m"
-    },
-    "Chassepot Rifle": {
-      "name": "Fusil Chassepot",
-      "effectiveRange": "140 m"
-    },
-    "Derringer": {
-      "name": "Derringer",
-      "effectiveRange": "10 m"
-    },
-    "Drop Pistol": {
-      "name": "Pistolet à bascule",
-      "effectiveRange": "20 m"
+      "name": "Arc"
     },
     "Elfshot": {
-      "name": "Flèche elfique",
-      "effectiveRange": "30 m"
-    },
-    "French Mitraillreuse": {
-      "name": "Mitrailleuse française Reffye",
-      "effectiveRange": "300 m"
-    },
-    "Gatling Gun": {
-      "name": "Mitrailleuse Gatling",
-      "effectiveRange": "300 m"
-    },
-    "Musket (rifled)": {
-      "name": "Mousquet (canon rayé)",
-      "effectiveRange": "80 m"
-    },
-    "Prussian Needle Rifle": {
-      "name": "Fusil Dreyse prussien",
-      "effectiveRange": "120 m"
-    },
-    "Pepperbox Revolver": {
-      "name": "Revolver Poivrière",
-      "effectiveRange": "20 m"
-    },
-    "Reciprocator": {
-      "name": "Réciprocateur",
-      "effectiveRange": "10 m"
-    },
-    "Shotgun": {
-      "name": "Fusil de chasse",
-      "effectiveRange": "30 m"
+      "name": "Flèche elfique"
     },
     "Shrapnel": {
       "name": "Shrapnel",
-      "effectiveRange": "6 m",
       "description": "Inclut les grenades, les obus d'artillerie et les autres explosifs. La portée est la distance par rapport au point d'impact du projectile."
     },
     "Thrown Dagger": {
-      "name": "Couteau de lancer",
-      "effectiveRange": "5 m"
+      "name": "Couteau de lancer"
     },
     "Thrown Spear": {
-      "name": "Javelot",
-      "effectiveRange": "10 m"
+      "name": "Javelot"
     },
     "Dragon Firecast (Poor Physique)": {
-      "name": "Jet de flammes de Dragon (Physique Faible)",
-      "effectiveRange": "10 m"
+      "name": "Jet de flammes de Dragon (Physique Faible)"
     },
     "Dragon Firecast (Average Physique)": {
-      "name": "Jet de flammes de Dragon (Physique Moyen)",
-      "effectiveRange": "20 m"
+      "name": "Jet de flammes de Dragon (Physique Moyen)"
     },
     "Dragon Firecast (Good Physique)": {
-      "name": "Jet de flammes de Dragon (Physique Bon)",
-      "effectiveRange": "30 m"
+      "name": "Jet de flammes de Dragon (Physique Bon)"
     },
     "Dragon Firecast (Great Physique)": {
-      "name": "Jet de flammes de Dragon (Physique Excellent)",
-      "effectiveRange": "40 m"
+      "name": "Jet de flammes de Dragon (Physique Excellent)"
     },
     "Dragon Firecast (Exceptional Physique)": {
-      "name": "Jet de flammes de Dragon (Physique Magistral)",
-      "effectiveRange": "50 m"
+      "name": "Jet de flammes de Dragon (Physique Magistral)"
     },
     "Dragon Firecast (Extraordinary Physique)": {
-      "name": "Jet de flammes de Dragon (Physique Prodigieux)",
-      "effectiveRange": "60 m"
+      "name": "Jet de flammes de Dragon (Physique Prodigieux)"
     },
     "Animal Attack (tiny)": {
       "name": "Attaque d'animal (minuscule)",

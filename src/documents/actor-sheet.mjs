@@ -88,6 +88,17 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
     context.userHasObserverOrOwnerAccess = game.user.isGM || (this.actor.visible && !this.actor.limited);
     context.userIsHost = game.user.isGM;
 
+    context.concealLabels = {
+      "-": {labelAbbr: game.i18n.localize("castle-falkenstein.empty"), label: game.i18n.localize("castle-falkenstein.empty")},
+      "P": {labelAbbr: game.i18n.localize("castle-falkenstein.weapon.concealPocketAbbr"), label: game.i18n.localize("castle-falkenstein.weapon.concealPocket")},
+      "J": {labelAbbr: game.i18n.localize("castle-falkenstein.weapon.concealJacketAbbr"), label: game.i18n.localize("castle-falkenstein.weapon.concealJacket")},
+      "L": {labelAbbr: game.i18n.localize("castle-falkenstein.weapon.concealLongCoatAbbr"), label: game.i18n.localize("castle-falkenstein.weapon.concealLongCoat")},
+      "N": {labelAbbr: game.i18n.localize("castle-falkenstein.weapon.concealNotAbbr"), label: game.i18n.localize("castle-falkenstein.weapon.concealNot")}
+    };
+
+    context.hideWounds = (CastleFalkenstein.settings.damageSystem == CastleFalkenstein.DAMAGE_SYSTEM_OPTIONS.harmRank);
+    context.hideHarmRank = (CastleFalkenstein.settings.damageSystem == CastleFalkenstein.DAMAGE_SYSTEM_OPTIONS.wounds);
+
     return context;
   }
 

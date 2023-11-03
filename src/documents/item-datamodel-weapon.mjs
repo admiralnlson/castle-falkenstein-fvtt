@@ -4,12 +4,26 @@ export class CastleFalkensteinWeaponDataModel extends CastleFalkensteinItemDataM
   static defineSchema() {
     return {
       ...super.defineSchema(),
-      effectiveRange: new foundry.data.fields.StringField({label: "castle-falkenstein.weapon.effectiveRange", initial: ""}),
-      ammunition: new foundry.data.fields.NumberField({label: "castle-falkenstein.weapon.ammunition", initial: 0}),
-      ammunition_max: new foundry.data.fields.NumberField({label: "castle-falkenstein.weapon.ammunitionMax", initial: 0}),
-      woundsPartial: new foundry.data.fields.NumberField({label: "castle-falkenstein.weapon.woundsPartial", initial: 0}),
-      woundsFull: new foundry.data.fields.NumberField({label: "castle-falkenstein.weapon.woundsFull", initial: 0}),
-      woundsHigh: new foundry.data.fields.NumberField({label: "castle-falkenstein.weapon.woundsHigh", initial: 0}),
+      effectiveRange: new foundry.data.fields.NumberField({label: "castle-falkenstein.weapon.effectiveRange", integer: true, nullable: true, initial: null}),
+      maxRange: new foundry.data.fields.NumberField({label: "castle-falkenstein.weapon.maxRange", integer: true, nullable: true, initial: null}),
+      ammunition: new foundry.data.fields.NumberField({label: "castle-falkenstein.weapon.ammunition", integer: true, nullable: true, initial: null}),
+      ammunition_max: new foundry.data.fields.NumberField({label: "castle-falkenstein.weapon.ammunitionMax", integer: true, nullable: true, initial: null}),
+      conceal: new foundry.data.fields.StringField({label: "castle-falkenstein.weapon.conceal", initial: "-"}),
+      woundsPartial: new foundry.data.fields.NumberField({label: "castle-falkenstein.weapon.woundsPartial", integer: true, nullable: true, initial: null}),
+      woundsFull: new foundry.data.fields.NumberField({label: "castle-falkenstein.weapon.woundsFull", integer: true, nullable: true, initial: null}),
+      woundsHigh: new foundry.data.fields.NumberField({label: "castle-falkenstein.weapon.woundsHigh", integer: true, nullable: true, initial: null}),
+      harmRank: new foundry.data.fields.StringField({label: "castle-falkenstein.weapon.harmRank", initial: "-"})
     }
+  }
+
+  static migrateData(source) {
+    // adapt pre-V2.8 content
+    if (source.effectiveRange != null && typeof source.effectiveRange != 'number') {
+      source.effectiveRange = parseInt(source.effectiveRange);
+      if (source.effectiveRange == 0 || isNaN(source.effectiveRange))
+        source.effectiveRange = null;
+    }
+
+    return super.migrateData(source);
   }
 }
