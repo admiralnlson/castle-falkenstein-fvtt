@@ -13,10 +13,10 @@ import { CastleFalkensteinWeaponSheet } from "./documents/item-sheet-weapon.mjs"
 import { CastleFalkensteinPossessionSheet } from "./documents/item-sheet-possession.mjs";
 import { CastleFalkensteinSpellSheet } from "./documents/item-sheet-spell.mjs";
 import { CastleFalkensteinItem } from "./documents/item.mjs";
-import CastleFalkensteinMonarchConfig from "./monarch-config.mjs";
-import CastleFalkensteinPerformFeat from "./forms/perform-feat.mjs";
+import { CastleFalkensteinMonarchConfig } from "./monarch-config.mjs";
+import { CastleFalkensteinPerformFeat } from "./forms/perform-feat.mjs";
 
-export default class CastleFalkenstein {
+export class CastleFalkenstein {
 
   static get id() { return "castle-falkenstein"; }
 

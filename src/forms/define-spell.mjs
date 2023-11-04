@@ -1,8 +1,9 @@
 import { CASTLE_FALKENSTEIN } from "../config.mjs";
-import CastleFalkenstein from "../castle-falkenstein.mjs";
+import { CastleFalkenstein } from "../castle-falkenstein.mjs";
+import { CastleFalkensteinCards } from "../documents/cards.mjs";
 
 // A form for initiating a spell
-export default class CastleFalkensteinDefineSpell extends FormApplication {
+export class CastleFalkensteinDefineSpell extends FormApplication {
 
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
@@ -39,16 +40,7 @@ export default class CastleFalkensteinDefineSpell extends FormApplication {
   }
   
   computeTotal() {
-    let total = this.spell.system.level;
-    total -= CASTLE_FALKENSTEIN.abilityLevels[this.character.items.get(this.spellBeingCast.sorceryAbilityId).system.level].value;
-
-    for (const [key, value] of Object.entries(this.spellBeingCast.definitionLevels)) {
-      total += CASTLE_FALKENSTEIN.spellDefinitions[key].levels[value].value;
-    }
-
-    total += this.spellBeingCast.customModifier.value;
-
-    return total > 0 ? total : 0;
+    return CastleFalkensteinCards.computeTotalPowerNeed(this.character, this.spellBeingCast);
   }
 
   /**

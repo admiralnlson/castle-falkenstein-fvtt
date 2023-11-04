@@ -1,7 +1,7 @@
 import { CASTLE_FALKENSTEIN } from "../config.mjs";
-import CastleFalkenstein from "../castle-falkenstein.mjs";
-import CastleFalkensteinPerformFeat from "../forms/perform-feat.mjs";
-import CastleFalkensteinDefineSpell from "../forms/define-spell.mjs";
+import { CastleFalkenstein } from "../castle-falkenstein.mjs";
+import { CastleFalkensteinPerformFeat } from "../forms/perform-feat.mjs";
+import { CastleFalkensteinDefineSpell } from "../forms/define-spell.mjs";
 
 /**
  * @extends {Actor}

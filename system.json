@@ -31,7 +31,7 @@
   ],
   "flags": {
     "hotReload": {
-      "extensions": ["css", "hbs", "mjs", "json"]
+      "extensions": ["css", "hbs", "json"]
     }
   },
   "esmodules": [

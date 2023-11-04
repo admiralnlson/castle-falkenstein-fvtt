@@ -38,20 +38,21 @@
 
 ### Sorcery
 
++ `[C]` Shortcut in Sorcery hands to cast any spell the character has (= add dropbox to the Define Spell form)
++ `[S🔥]` Display the name of the spell being cast in the hand itself
++ `[S🔥]` Display the progress toward the target in the hand itself
++ `[C]` When enough aligned Power has been drawn, the spell is immediately cast (no harmonics generated) or a chat message is generated at least.
 + `[S]` Add a lorebook for Cantrips & Wards (CiL-en p91 / -fr p161)
 + `[S]` Allow to combine multiple spells together (CiL-en p85)
-+ `[C]` Add a message (Wild Spell / Surcharge thaumique !) when a Sorcery Joker is drawn
-+ `[S🔥]` Define Spell - explicit mechanic for **Artefacts**
-+ `[S]` Cast Spell - explicit mechanic for **Unraveling**
-+ `[S]` Display the name of the spell being cast in the hand itself
-  + `[S]` Display the progress toward the target in the hand itself
-+ `[S]` Cast Spell - chat message - if unaligned power was used, show harmonic type(s) (up to 3 for the GM to choose from in case of ex-aequo).
-+ `[S]` Cast Spell - When a Joker is drawn, the spell is immediately cast a.k.a. **Wild Spell** (fr: Surcharge thaumique)
-+ `[C]` Cast Spell - chat message - merge consecutive chat messages dealing with Power being Gathered or Released
-+ `[C]` Cast Spell - Open a dialog on GM side to ask which harmonic they prefer, then display the choice in chat.
-+ `[C]` Cast Spell - When enough aligned Power has been drawn, the spell is immediately cast also (no harmonics generated) or a chat message is generated at least.
-+ `[S]` Release Power - Prevent releasing of aligned Power (or at least add confirmation dialog)
-+ `[S]` Release Power - Show the harmonic type on unaligned power cards
++ `[C]` In 'Gather Power' chaat messages, add a note "Wild Spell (en) / Surcharge thaumique (fr)" when a Sorcery Joker is drawn
++ `[S]` Explicit mechanic for **Artefacts**
++ `[S]` Explicit mechanic for **Unraveling**
++ `[S]` Chat message - if unaligned power was used, show harmonic type(s) (up to 3 for the GM to choose from in case of ex-aequo).
++ `[S]` When a Joker is drawn, the spell is immediately cast a.k.a. **Wild Spell** (fr: Surcharge thaumique)
++ `[C]` Merge consecutive chat messages dealing with Power being Gathered or Released
++ `[C]` Open a dialog on GM side to ask which harmonic they prefer, then display the choice in chat.
++ `[S]` Prevent releasing of aligned Power (or at least add confirmation dialog)
++ `[S]` Show the harmonic type on unaligned power cards
   + Spades / Spiritual (fr: spirituelle)
   + Hearts / Emotional (fr: émotionnelle)
   + Diamonds / Material (fr: matérielle)

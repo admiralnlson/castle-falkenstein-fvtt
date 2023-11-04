@@ -3,7 +3,7 @@
 
 import {libWrapper} from "../lib-wrapper-shim/shim.js";
 import * as errors from "./errors.js";
-import CastleFalkenstein from "../../castle-falkenstein.mjs";
+import { CastleFalkenstein } from "../../castle-falkenstein.mjs";
 
 const RECIPIENT_TYPES = {
 	ONE_GM: 0,

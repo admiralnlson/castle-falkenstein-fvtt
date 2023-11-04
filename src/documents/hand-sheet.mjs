@@ -1,6 +1,6 @@
 import { CASTLE_FALKENSTEIN } from "../config.mjs";
-import CastleFalkenstein from "../castle-falkenstein.mjs";
-import CastleFalkensteinPerformFeat from "../forms/perform-feat.mjs";
+import { CastleFalkenstein } from "../castle-falkenstein.mjs";
+import { CastleFalkensteinPerformFeat } from "../forms/perform-feat.mjs";
 
 /**
  * Sheet for the native Cards Hand.
@@ -8,17 +8,29 @@ import CastleFalkensteinPerformFeat from "../forms/perform-feat.mjs";
  */
 export class CastleFalkensteinHandSheet extends CardsHand {
 
+  static HEIGHT_WITHOUT_SPELL = 60;
+  static HEIGHT_WITH_SPELL = 97;
+
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: [CastleFalkenstein.id, "sheet", "cards-hand", "cards-config"],
       width: 300,
-      height: 60,
+      height: CastleFalkensteinHandSheet.HEIGHT_WITHOUT_SPELL,
       resizable: {
         resizeX: true,
         resizeY: false
       },
       template: "systems/castle-falkenstein/src/documents/hand-sheet.hbs",
     })
+  }
+
+  render(force=false, options={}) {
+    const hand = this.object;
+    const spellActive = hand.getFlag(CastleFalkenstein.id, 'spellBeingCast');
+
+    super.render(force, foundry.utils.mergeObject(options, {
+      height: (spellActive ? CastleFalkensteinHandSheet.HEIGHT_WITH_SPELL : CastleFalkensteinHandSheet.HEIGHT_WITHOUT_SPELL)
+    }));
   }
 
   /** @override */
@@ -36,16 +48,20 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     context.typeFlag =  hand.getFlag(CastleFalkenstein.id, "type");
     const deck = CastleFalkenstein.deck(context.typeFlag);
 
+    context.spellBeingCast = hand.spellBeingCast;
+    if (context.spellBeingCast)
+      context.spellBeingCast.suitSymbol = CASTLE_FALKENSTEIN.cardSuitsSymbols[context.spellBeingCast.spellObject.system.suit];
+   
     context.disabled = {};
 
     context.disabled.openActor = context.inCompendium || CastleFalkensteinHandSheet.openActorDisabled(hand);
     context.disabled.refillHand = context.inCompendium || CastleFalkensteinHandSheet.refillHandDisabled(hand);
     context.disabled.chanceCard = context.inCompendium || CastleFalkensteinHandSheet.chanceCardDisabled(hand);
 
-    context.disabled.gatherPower = context.inCompendium || CastleFalkensteinHandSheet.gatherPowerDisabled(hand);
-    //context.disabled.releasePower = context.inCompendium || CastleFalkensteinHandSheet.releasePowerDisabled(card, hand);
-    context.disabled.castSpell = context.inCompendium || CastleFalkensteinHandSheet.castSpellDisabled(hand);
-    context.disabled.cancelSpell = context.inCompendium || CastleFalkensteinHandSheet.cancelSpellDisabled(hand);
+    context.disabled.gatherPower = context.inCompendium || !context.spellBeingCast || CastleFalkensteinHandSheet.gatherPowerDisabled(hand);
+    //context.disabled.releasePower = context.inCompendium || !context.spellBeingCast || CastleFalkensteinHandSheet.releasePowerDisabled(card, hand);
+    context.disabled.castSpell = context.inCompendium || !context.spellBeingCast || CastleFalkensteinHandSheet.castSpellDisabled(hand);
+    context.disabled.cancelSpell = context.inCompendium || !context.spellBeingCast || CastleFalkensteinHandSheet.cancelSpellDisabled(hand);
 
     context.cardWidth = CastleFalkenstein.settings.cardWidth;
     context.cardHeight = CastleFalkenstein.computeCardHeight(deck);

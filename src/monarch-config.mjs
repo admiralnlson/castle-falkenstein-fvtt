@@ -1,7 +1,7 @@
-import CastleFalkenstein from "./castle-falkenstein.mjs";
+import { CastleFalkenstein } from "./castle-falkenstein.mjs";
 import { CastleFalkensteinHandSheet } from "./documents/hand-sheet.mjs";
 
-export default class CastleFalkensteinMonarchConfig {
+export class CastleFalkensteinMonarchConfig {
 
   static onCardDisplay(monarch, components) {
 

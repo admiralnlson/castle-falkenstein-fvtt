@@ -1,5 +1,4 @@
-import {CASTLE_FALKENSTEIN} from "../config.mjs";
-import CastleFalkenstein from "../castle-falkenstein.mjs";
+import { CastleFalkenstein } from "../castle-falkenstein.mjs";
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
