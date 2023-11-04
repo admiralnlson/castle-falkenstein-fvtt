@@ -30,7 +30,7 @@ export default class CastleFalkensteinDefineSpell extends FormApplication {
       actorItemId: this.spell.id,
       definitionLevels: {},
       sorceryAbilityId: this.character.sorceryAbility.id,
-      customModifier: 0
+      customModifier: { label: game.i18n.localize("castle-falkenstein.spell.customModifier"), value: 0 }
     };
 
     for (const key in CASTLE_FALKENSTEIN.spellDefinitions) {
@@ -46,7 +46,7 @@ export default class CastleFalkensteinDefineSpell extends FormApplication {
       total += CASTLE_FALKENSTEIN.spellDefinitions[key].levels[value].value;
     }
 
-    total += this.spellBeingCast.customModifier;
+    total += this.spellBeingCast.customModifier.value;
 
     return total > 0 ? total : 0;
   }
@@ -84,7 +84,9 @@ export default class CastleFalkensteinDefineSpell extends FormApplication {
 
     html.find('.sorcery-ability-select').change(event => this._onAbilitySelectChange(event));
 
-    html.find('.custom-modifier').change(event => this._onCustomModifierChange(event));
+    html.find('.custom-modifier-label').change(event => this._onCustomModifierLabelChange(event));
+
+    html.find('.custom-modifier-value').change(event => this._onCustomModifierValueChange(event));
   }
 
   _onDefinitionSelectChange(event) {
@@ -97,8 +99,13 @@ export default class CastleFalkensteinDefineSpell extends FormApplication {
     this.render();
   }
 
-  _onCustomModifierChange(event) {
-    this.spellBeingCast.customModifier = parseInt(event.currentTarget.value);
+  _onCustomModifierLabelChange(event) {
+    this.spellBeingCast.customModifier.label = event.currentTarget.label;
+    this.render();
+  }
+
+  _onCustomModifierValueChange(event) {
+    this.spellBeingCast.customModifier.value = parseInt(event.currentTarget.value);
     this.render();
   }
 
@@ -122,9 +129,8 @@ export default class CastleFalkensteinDefineSpell extends FormApplication {
     for (const [key, value] of Object.entries(CASTLE_FALKENSTEIN.spellDefinitions)) {
       content += `${game.i18n.localize(value.label)}: <b>${game.i18n.localize(value.levels[this.spellBeingCast.definitionLevels[key]].label)}</b><br/>`;
     }
-    if (this.spellBeingCast.customModifier != 0) {
-      const label = game.i18n.localize("castle-falkenstein.spell.customModifier");
-      content += `${label}: <b>${this.spellBeingCast.customModifier}</b><br/>`;
+    if (this.spellBeingCast.customModifier.value != 0) {
+      content += `${this.spellBeingCast.customModifier.label}: <b>${this.spellBeingCast.customModifier.value}</b><br/>`;
     }
 
     content += '</div>';
