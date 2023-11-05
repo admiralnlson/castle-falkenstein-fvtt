@@ -84,8 +84,8 @@
       "ability": "Sorcellerie",
       "defineSpell": "Définir le sort",
       "hand": {
-        "gatherPower": "Canaliser du pouvoir",
-        "releasePower": "Libérer du pouvoir",
+        "gatherPower": "Canaliser du Pouvoir",
+        "releasePower": "Libérer du Pouvoir",
         "castSpell": "Lancer le sort",
         "castSpellForced": "Lancer le sort (forcé)",
         "cancelSpell": "Annuler le sort",
