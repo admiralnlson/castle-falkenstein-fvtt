@@ -266,7 +266,7 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     const flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.hand.gatherPower")}]`;
     const spell = actor.items.get(hand.spellBeingCast.actorItemId);
     const correctSuit = (card.suit == spell.system.suit || card.suit == 'joker') ? 'correct-suit' : '';
-    const content = `<div class="cards-drawn">${CastleFalkenstein.smallCardImg(card, `card-played ${correctSuit}`)}</div>`;
+    const content = `<div class="cards-drawn">${CastleFalkenstein.smallCardImg(card, `card-drawn ${correctSuit}`)}</div>`;
     CastleFalkenstein.createChatMessage(actor, flavor, content);
   }
 
@@ -288,10 +288,10 @@ export class CastleFalkensteinHandSheet extends CardsHand {
 
     await CastleFalkenstein.socket.executeAsGM("shuffleBackToDeck", hand.id, [card.id]);
 
-    // Post message to chat
-    const flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.hand.releasePower")}]`;
+    // Post message to chat - TOO SPAMMY => DISABLED
+    /*const flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.hand.releasePower")}]`;
     const content = `<div class="cards-played">${CastleFalkenstein.smallCardImg(card, "card-played")}</div>`;
-    CastleFalkenstein.createChatMessage(actor, flavor, content);
+    CastleFalkenstein.createChatMessage(actor, flavor, content);*/
   }
 
   static castSpellDisabled(hand) {

@@ -38,8 +38,6 @@
 
 ### Sorcery
 
-+ `[S]` Gather Power - gray out misaligned cards in the chat
-+ `[C]` Release Power - Consider not showing chat messages for this
 + `[C]` Sorcery hands - shortcut to cast any spell the character has (= add dropbox to the Define Spell form)
 + `[S]` Auto spell cast - when a Joker is drawn
 + `[C]` Auto spell cast - when enough aligned Power has been drawn, deleting any harmonics beforehand
