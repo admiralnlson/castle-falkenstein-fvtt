@@ -1,6 +1,6 @@
 # Changelog
 
-## [v2.8.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.8.0) - Unreleased
+## [v2.8.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.8.0) - 2023/11/05
 ### Added
 + Weapons now have Max Range, Conceal & Harm Rank properties, as per Comme Il Faut.
 + A new setting allows Hosts to defined whether Wounds, Harm Rank or both are displayed in character sheets, weapon sheets and the spell definitions dialog.

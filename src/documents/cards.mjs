@@ -18,7 +18,9 @@ export class CastleFalkensteinCards extends Cards {
   //      famiiliarity: "[a-z]",
   //      harmRank: "[a-z]"
   //    },
-  //    customModifier: { label: "<label>", value: <value> }
+  //    customModifier: { label: "<label>", value: <value> },
+  //    isWildSpell: <true/false>,
+  //    harmonics: [ "<spades", "<hearts" ]
   //  }
 
   static computeTotalPowerNeed(actorObject, spellBeingCast) {
