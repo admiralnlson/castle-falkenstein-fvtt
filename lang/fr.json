@@ -17,7 +17,7 @@
       },
       "damageSystem": {
         "name": "Système de dégâts",
-        "hint": "[Hôte uniquement] Vous pouvez ici sélectionner le type de dégâts que vous souhaitez afficher dans les feuilles de personnages.",
+        "hint": "[Hôte uniquement] Vous pouvez ici sélectionner le type de dégâts que vous souhaitez afficher dans les feuilles, formulaires et messages chat.",
         "both": "Les deux",
         "wounds": "Blessures (système décrit dans le livre de base)",
         "harmRank": "Rang de dégâts (système alternatif décrit dans Comme Il Faut)"
@@ -29,7 +29,7 @@
       },
       "cardWidth": {
         "name": "Largeur des cartes",
-        "hint": "Si vous avez sélectionne l'interface par défaut pour les cartes, vous pouvez ici modifier ici la taille des cartes (défaut: 200). (Si à l'inverse vous utilisez 🦋 Monarch, alors dirigez-vous plutôt vers les paramètres du module Monarch lui-même."
+        "hint": "Si vous avez sélectionne l'interface par défaut pour les cartes, vous pouvez ici modifier ici la taille des cartes (défaut: 200). (Si à l'inverse vous utilisez 🦋 Monarch, alors dirigez-vous plutôt vers les paramètres du module Monarch lui-même.)"
       }
     },
 

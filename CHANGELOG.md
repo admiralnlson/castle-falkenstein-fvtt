@@ -16,7 +16,7 @@
 + The click area for controls in native UI card hands has been decreased to match their actual sizes.
 ### Fixed
 + When Gathered Power does not match the Spell Aspect, the card displayed in the chat message is now semi-transparent (same as in [Perform Feat] & [Cast Spell] messages).
-+ [Firefox] In Sorcery hands, cards which are in focus now display correctly with the 'Release Power' control below them
++ [Firefox] In Sorcery hands, cards which are in focus now display correctly with the 'Release Power' control below them.
 + [French translation] Joker names now translate also.
 + [French translation] Compendium folder names now translate also.
 

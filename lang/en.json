@@ -17,7 +17,7 @@
       },
       "damageSystem": {
         "name": "Damage system",
-        "hint": "[Host only] You may select the type of damage you wish to display in character sheets.",
+        "hint": "[Host only] You may select the type of damage you wish to display in sheets, forms and chat messages.",
         "both": "Both",
         "wounds": "Wounds (original system depicted in the corebook)",
         "harmRank": "Harm Rank (alternative system depicted in Comme Il Faut)"
@@ -29,7 +29,7 @@
       },
       "cardWidth": {
         "name": "Cards width",
-        "hint": "If you use the Default cards user interface, you may select your preferred size for cards here (default: 200). (If instead you chose the 🦋 Monarch interface, the see Monarch module settings instead)."
+        "hint": "If you use the Default cards user interface, you may select your preferred size for cards here (default: 200). (If you chose the 🦋 Monarch interface, the see Monarch module settings instead.)"
       }
     },
 
