@@ -3,7 +3,7 @@
 ## [v2.8.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.8.0) - 2023/11/05
 ### Added
 + Weapons now have Max Range, Conceal & Harm Rank properties, as per Comme Il Faut.
-+ A new system setting allows Hosts to define whether Wounds, Harm Rank or both are displayed in character sheets, weapon sheets and the spell definitions dialog.
++ A new system setting allows Hosts to define whether Wounds, Harm Rank or both are displayed in sheets, forms & chat messages.
 + Compendium: replaced gunpowder weapons from the corebook with the 'over-exhaustive' list from "Comme Il Faut".
 + Compendium: added abilities from "Comme Il Faut" and "The Memoirs of Auberon of Faerie". This includes a suit change for Etherealness (♠->♣) and Kindred Powers (♣->♦).
 + A custom modifier may now be added during Spell Definition, e.g. to account for an Artefact the character possesses.
