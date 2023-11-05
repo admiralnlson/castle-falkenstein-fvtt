@@ -52,6 +52,14 @@
       "lastCardDrawn": "There are no available cards left in the deck. The last card was just drawn."
     },
 
+    "dialogs": {
+      "confirmTitle": "Please confirm",
+      "notEnoughPowerGathered": {
+        "description1": "You do not appear to have gathered enough power yet.",
+        "description2": "Cast anyway?"
+      }
+    },
+
     "cardsDirectory": {
       "decksFolder": "Decks",
       "characterHandsFolder": "Character hands"
@@ -79,6 +87,7 @@
         "gatherPower": "Gather Power",
         "releasePower": "Release Power",
         "castSpell": "Cast Spell",
+        "castSpellForced": "Cast Spell (forced)",
         "cancelSpell": "Cancel Spell",
         "name": "Sorcery - {character}"
       }

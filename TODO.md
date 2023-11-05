@@ -39,8 +39,6 @@
 ### Sorcery
 
 + `[C]` Shortcut in Sorcery hands to cast any spell the character has (= add dropbox to the Define Spell form)
-+ `[S🔥]` Display the name of the spell being cast in the hand itself
-+ `[S🔥]` Display the progress toward the target in the hand itself
 + `[C]` When enough aligned Power has been drawn, the spell is immediately cast (no harmonics generated) or a chat message is generated at least.
 + `[S]` Add a lorebook for Cantrips & Wards (CiL-en p91 / -fr p161)
 + `[S]` Allow to combine multiple spells together (CiL-en p85)

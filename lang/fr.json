@@ -52,6 +52,14 @@
       "lastCardDrawn": "Le paquet de cartes est épuisé. La dernière carte vient d'être piochée."
     },
 
+    "dialogs": {
+      "confirmTitle": "Veuillez confirmer",
+      "notEnoughPowerGathered": {
+        "description1": "Vous ne semblez pas avoir canalisé assez de Pouvoir pour l'instant.",
+        "description2": "Lancer le sort malgré tout ?"
+      }
+    },
+
     "cardsDirectory": {
       "decksFolder": "Jeux de cartes",
       "characterHandsFolder": "Mains des personnages"
@@ -79,6 +87,7 @@
         "gatherPower": "Canaliser du pouvoir",
         "releasePower": "Libérer du pouvoir",
         "castSpell": "Lancer le sort",
+        "castSpellForced": "Lancer le sort (forcé)",
         "cancelSpell": "Annuler le sort",
         "name": "Sorcellerie - {character}"
       }

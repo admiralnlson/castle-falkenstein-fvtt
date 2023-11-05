@@ -2,13 +2,15 @@
 
 ## [v2.8.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.8.0) - Unreleased
 ### Added
-+ Weapon now have Max Range, Conceal & Harm Rank properties, as per Comme Il Faut.
++ Weapons now have Max Range, Conceal & Harm Rank properties, as per Comme Il Faut.
 + A new setting allows Hosts to defined whether Wounds, Harm Rank or both are displayed in character sheets, weapon sheets and the spell definitions dialog.
 + Compendium: replaced gunpowder weapons from the corebook with the 'over-exhaustive' list from "Comme Il Faut".
 + Compendium: added abilities from "Comme Il Faut" and "The Memoirs of Auberon of Faerie". This includes a suit change for Etherealness (♠->♣) and Kindred Powers (♣->♦).
-+ A custom, additional modifier may now be added during Spell Definition (e.g. to account for an Artefact the character possesses)
++ A custom, additional modifier may now be added during Spell Definition, e.g. to account for an Artefact the character possesses.
++ The name and aspect of the ongoing spell as well as Power Gathering progress are now displayed in Sorcery Hands.
++ When casting a spell before enough Power has been Gathered, a confirmation prompt appears. If confirmed, the spellcast is marked as 'forced' in the chat.
 ### Changed
-+ Aligned Spell Definitions with the ones depicted in 'Comme Il Faut'
++ Aligned Spell Definitions with the ones documented in 'Comme Il Faut'
 + The click area for controls in native UI card hands has been decreased to match their actual sizes.
 ### Fixed
 + [Firefox] In Sorcery hands, cards which are in focus now display correctly with the 'Release Power' control below them

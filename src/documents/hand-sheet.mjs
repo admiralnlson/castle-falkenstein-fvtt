@@ -304,15 +304,34 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     return !hand.spellBeingCast;
   }
 
-  static async castSpell(hand) {
+  static async castSpell(hand, force=false) {
+
     const actorId = hand.getFlag(CastleFalkenstein.id, "actor");
     if (actorId === "host")
       return; // should never be able to click from host hand anyway (see 'disabled' above)
+
+    const spellBeingCast = hand.spellBeingCast;
+    if (!spellBeingCast) return;
+
+    if (!force && spellBeingCast.powerGathered < spellBeingCast.powerNeed) {
+      const i18nTitle = game.i18n.localize("castle-falkenstein.dialogs.confirmTitle");
+      const i18nDescription1 = game.i18n.localize("castle-falkenstein.dialogs.notEnoughPowerGathered.description1");
+      const i18nDescription2 = game.i18n.localize("castle-falkenstein.dialogs.notEnoughPowerGathered.description2");
+
+      Dialog.confirm({
+        title: i18nTitle,
+        content: `<p>${i18nDescription1}</p><p>${i18nDescription2}</p>`,
+        yes: () => CastleFalkensteinHandSheet.castSpell(hand, true),
+        defaultYes: false
+      });
+      return;
+    }
+
     const actor = game.actors.get(actorId);
     const spell = actor.items.get(hand.spellBeingCast.actorItemId);
 
     // Post message to chat
-    let flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.hand.castSpell")}]`;
+    let flavor = `[${game.i18n.localize(`castle-falkenstein.sorcery.hand.castSpell${force?"Forced":""}`)}]`;
 
     const suitSymbol = CASTLE_FALKENSTEIN.cardSuitsSymbols[spell.system.suit];
     let content = `<b>${spell.name}</b> [<span class="suit-symbol-${spell.system.suit}">${suitSymbol}</span>]<hr/><div class="cards-played">`;
