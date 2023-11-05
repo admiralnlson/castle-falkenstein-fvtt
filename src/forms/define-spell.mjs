@@ -116,6 +116,7 @@ export class CastleFalkensteinDefineSpell extends FormApplication {
     let content = `<b>${this.spell.name}</b> [<span class="suit-symbol-${this.spell.system.suit}">${suitSymbol}</span>]<br/>`;
     content += `${game.i18n.localize("castle-falkenstein.spell.thaumicLevel")}: ${this.spell.system.level}<br/>`;
     content += CastleFalkenstein.abilityLevelAsSentenceHtml(this.character.items.get(this.spellBeingCast.sorceryAbilityId), false);
+
     content += '<hr/><div class="spell-definitions">';
 
     for (const [key, value] of Object.entries(CASTLE_FALKENSTEIN.spellDefinitions)) {
@@ -124,8 +125,8 @@ export class CastleFalkensteinDefineSpell extends FormApplication {
     if (this.spellBeingCast.customModifier.value != 0) {
       content += `${this.spellBeingCast.customModifier.label}: <b>${this.spellBeingCast.customModifier.value}</b><br/>`;
     }
-
     content += '</div>';
+    
     const total = this.computeTotal();
     content += `<div class="define-spell-total">${total}</div>`;
 

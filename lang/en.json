@@ -90,6 +90,15 @@
         "castSpellForced": "Cast Spell (forced)",
         "cancelSpell": "Cancel Spell",
         "name": "Sorcery - {character}"
+      },
+      "wildSpell": "Wild Spell!",
+      "harmonics": {
+        "labelOne": "Harmonics",
+        "labelMore": "Harmonics (the Host picks one)",
+        "spades": "Spiritual",
+        "hearts": "Emotional",
+        "diamonds": "Material",
+        "clubs": "Elemental"
       }
     },
 

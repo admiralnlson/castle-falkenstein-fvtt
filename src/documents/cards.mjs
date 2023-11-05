@@ -43,17 +43,33 @@ export class CastleFalkensteinCards extends Cards {
       spellBeingCast.spellObject = spellBeingCast.actorObject.items.get(spellBeingCast.actorItemId);
       spellBeingCast.powerNeed = CastleFalkensteinCards.computeTotalPowerNeed(spellBeingCast.actorObject, spellBeingCast);
       spellBeingCast.powerGathered = 0;
-      spellBeingCast.jokerDrawn = false;
+      spellBeingCast.isWildSpell = false;
+      spellBeingCast.harmonics = [];
+      let maxHarmonicValue = 0;
       for (const card of this.cards) {
         if (card.suit == "joker") {
-          spellBeingCast.jokerDrawn = true;
+          spellBeingCast.isWildSpell = true;
+          spellBeingCast.harmonics = [];
           spellBeingCast.powerGathered = spellBeingCast.powerNeed;
           break;
         } else {
-          spellBeingCast.powerGathered += (card.suit == spellBeingCast.spellObject.system.suit ? card.value : 1);
+          if (card.suit == spellBeingCast.spellObject.system.suit)
+            spellBeingCast.powerGathered += card.value;
+          else {
+            spellBeingCast.powerGathered += 1;
+            if (card.value > maxHarmonicValue) {
+              spellBeingCast.harmonics = [ card.suit ];
+              maxHarmonicValue = card.value;
+            } else if (card.value == maxHarmonicValue) {
+              spellBeingCast.harmonics.push(card.suit);
+            }
+          }
         }
       }
+      if (spellBeingCast.harmonics.length == 0)
+        delete spellBeingCast.harmonics;
     }
+
     return spellBeingCast;
   }
 

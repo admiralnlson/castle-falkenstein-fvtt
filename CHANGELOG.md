@@ -9,6 +9,7 @@
 + A custom, additional modifier may now be added during Spell Definition, e.g. to account for an Artefact the character possesses.
 + The name and aspect of the ongoing spell as well as Power Gathering progress are now displayed in Sorcery Hands.
 + When casting a spell before enough Power has been Gathered, a confirmation prompt appears. If confirmed, the spellcast is marked as 'forced' in the chat.
++ When casting a spell, the chat message will now display if it is a Wild Spell, or if there are any Harmonics.
 ### Changed
 + Aligned Spell Definitions with the ones documented in 'Comme Il Faut'
 + The click area for controls in native UI card hands has been decreased to match their actual sizes.

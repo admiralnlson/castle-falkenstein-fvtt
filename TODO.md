@@ -38,28 +38,18 @@
 
 ### Sorcery
 
-+ `[C]` Shortcut in Sorcery hands to cast any spell the character has (= add dropbox to the Define Spell form)
-+ `[C]` When enough aligned Power has been drawn, the spell is immediately cast (no harmonics generated) or a chat message is generated at least.
-+ `[S]` Add a lorebook for Cantrips & Wards (CiL-en p91 / -fr p161)
-+ `[S]` Allow to combine multiple spells together (CiL-en p85)
-+ `[C]` In 'Gather Power' chaat messages, add a note "Wild Spell (en) / Surcharge thaumique (fr)" when a Sorcery Joker is drawn
-+ `[S]` Explicit mechanic for **Artefacts**
-+ `[S]` Explicit mechanic for **Unraveling**
-+ `[S]` Chat message - if unaligned power was used, show harmonic type(s) (up to 3 for the GM to choose from in case of ex-aequo).
-+ `[S]` When a Joker is drawn, the spell is immediately cast a.k.a. **Wild Spell** (fr: Surcharge thaumique)
-+ `[C]` Merge consecutive chat messages dealing with Power being Gathered or Released
-+ `[C]` Open a dialog on GM side to ask which harmonic they prefer, then display the choice in chat.
-+ `[S]` Prevent releasing of aligned Power (or at least add confirmation dialog)
-+ `[S]` Show the harmonic type on unaligned power cards
-  + Spades / Spiritual (fr: spirituelle)
-  + Hearts / Emotional (fr: émotionnelle)
-  + Diamonds / Material (fr: matérielle)
-  + Clubs / Elemental (fr: élémentaire)
-
++ `[S]` Gather Power - gray out misaligned cards in the chat
++ `[C]` Release Power - Consider not showing chat messages for this
++ `[C]` Sorcery hands - shortcut to cast any spell the character has (= add dropbox to the Define Spell form)
++ `[S]` Auto spell cast - when a Joker is drawn
++ `[C]` Auto spell cast - when enough aligned Power has been drawn, deleting any harmonics beforehand
++ `[S]` Release Power - Prevent releasing of aligned Power (or at least add confirmation dialog)
++ `[S]` Sorcery hand - Show the harmonic type on unaligned power cards (on the cards themselves)
 + `[C]` Lorebook property on spells (and showing it in the spells list)
-
++ `[S]` Allow to combine multiple spells together (CiL-en p85)
 + `[C]` Cooperation on spellcasting - implement sopmething specific for this (ROI not great) or just document in the userguide how to do it with the current version of the system
-
++ `[S]` Explicit mechanic for Artefacts
++ `[S]` Explicit mechanic for Unraveling
 + `[C]` Confirmation dialog for Hosts when they 'Gather Power' for a Host character and 'Self Roll' isn't active
 
 ### Mechanics from "Corebook"
@@ -105,11 +95,10 @@
 
 ### Compendiums
 
-+ `[S🔥]` Weapons found in CiF (English & French)
-+ `[S]` Abilities found in other sourcebooks than CiF, if any (English & French)
-+ `[S]` Abilities found in other sourcebooks than CiF and MoAoF, if any (English & French)
++ `[S]` Lorebook for Cantrips & Wards (CiL-en p91 / -fr p161)
++ `[S]` Abilities found in other sourcebooks than CiF and MoAoF e.g. Curious Creatures (English & French)
 + `[S]` Lorebook from Curious Creatures (p27)
-+ `[S]` Spells/Lorebooks found in other sourcebooks (English & French)
++ `[S]` Spells/Lorebooks found in other sourcebooks than CiF and Curious Creatures (English & French)
 
 + `[C]` Shortcut to import all Abilities into a character (skip those already present)
 + `[C]` Shortcut to import a Lorebook into a character

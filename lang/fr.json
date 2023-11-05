@@ -90,6 +90,15 @@
         "castSpellForced": "Lancer le sort (forcé)",
         "cancelSpell": "Annuler le sort",
         "name": "Sorcellerie - {character}"
+      },
+      "wildSpell": "Surcharge thaumique !",
+      "harmonics": {
+        "labelOne": "Harmonique",
+        "labelMore": "Harmoniques (l'Hôte en choisit une)",
+        "spades": "Spirituelle",
+        "hearts": "Émotionelle",
+        "diamonds": "Matérielle",
+        "clubs": "Élémentaire"
       }
     },
 

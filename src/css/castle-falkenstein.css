@@ -718,6 +718,15 @@ html * {
   text-overflow: ellipsis;
 }
 
+.chat-message .wild-spell {
+  font-weight: bold;
+  text-align: center;
+}
+
+.chat-message .harmonics-desc {
+  font-weight: bold;
+}
+
 .grid-hide {
   /*display: none;*/
   visibility: hidden;

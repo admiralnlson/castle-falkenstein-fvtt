@@ -330,12 +330,18 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     const actor = game.actors.get(actorId);
     const spell = actor.items.get(hand.spellBeingCast.actorItemId);
 
-    // Post message to chat
+    // Chat message flavor
     let flavor = `[${game.i18n.localize(`castle-falkenstein.sorcery.hand.castSpell${force?"Forced":""}`)}]`;
 
+    // in the chat message, display the spell name and aspect
     const suitSymbol = CASTLE_FALKENSTEIN.cardSuitsSymbols[spell.system.suit];
-    let content = `<b>${spell.name}</b> [<span class="suit-symbol-${spell.system.suit}">${suitSymbol}</span>]<hr/><div class="cards-played">`;
+    let content = `<b>${spell.name}</b> [<span class="suit-symbol-${spell.system.suit}">${suitSymbol}</span>]`;
 
+    // TODO consider adding an expandable section which shows the original spell definitions:
+    // FIXME the corresponding code exists in define-spell.mjs
+
+    // in the chat message, display the cards played, if any
+    content += `<hr/><div class="cards-played">`;
     if (hand.cards.contents.length > 0) {
       hand.cards.contents.forEach(card => {
         // FIXME code duplication
@@ -347,16 +353,41 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     }
     content += `</div>`;
 
-    // TODO add "<score> / <total>"" box.
-    // TODO show harmonic type(s) (up to 3 for the GM to choose from in case of ex-aequo), if unaligned power was used.
+    // in the chat message, display info about the Spell being Wild or  the Harmonics, if any
+    if (spellBeingCast.isWildSpell) {
+      content += `<hr/><div class="wild-spell">`
+      content += game.i18n.localize("castle-falkenstein.sorcery.wildSpell");
+      content += "</div>";
+    } else if (spellBeingCast.harmonics) {
+      // show harmonic type(s) (up to 3 for the GM to choose from in case of ex-aequo), if unaligned power was used.
+      content += `<hr/><div class="harmonics">`
 
+      if (spellBeingCast.harmonics.length == 1)
+        content += game.i18n.localize("castle-falkenstein.sorcery.harmonics.labelOne") + ": ";
+      else
+        content += game.i18n.localize("castle-falkenstein.sorcery.harmonics.labelMore") + ":<br/>";
+
+      let firstH = true;
+      spellBeingCast.harmonics.forEach((hSuit) => {
+        const suitSymbol = CASTLE_FALKENSTEIN.cardSuitsSymbols[hSuit];
+        const description = game.i18n.localize(`castle-falkenstein.sorcery.harmonics.${hSuit}`);
+        if (!firstH) content += ", ";
+        content += `<span class="suit-symbol-${hSuit}">${suitSymbol}&nbsp;</span><span class="harmonics-desc">${description}</span></li>`
+        firstH = false;
+      });
+      content += ".</div>";
+    }
+
+    // shuffle back the cards in the deck
     await CastleFalkenstein.socket.executeAsGM("shuffleBackToDeck", hand.id, hand.cards.map((c)=>{ return c.id; }));
 
+    // Display the chat message only if the shuffle-back was successful
     CastleFalkenstein.createChatMessage(actor, flavor, content);
 
     // no spell being cast anymore
     await hand.stopCasting();
 
+    // refresh the Sorcery hand sheet
     hand.sheet.render();
   }
 
@@ -369,6 +400,7 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     if (actorId === "host")
       return; // should never be able to click from host hand anyway (see 'disabled' above)
     const actor = game.actors.get(actorId);
+
 
     await CastleFalkenstein.socket.executeAsGM("shuffleBackToDeck", hand.id, hand.cards.map((c)=>{ return c.id; }));
 
