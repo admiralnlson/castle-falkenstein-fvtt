@@ -39,16 +39,18 @@
 ### Sorcery
 
 + `[C]` Sorcery hands - shortcut to cast any spell the character has (= add dropbox to the Define Spell form)
-+ `[S]` Auto spell cast - when a Joker is drawn
++ `[S]` Gather Power - add counter to help with tracking the drawing limit for Dragons
++ `[S]` Gather Power (if no auto spell cast) - add a message indicating the Spell is ready to be cast
++ `[C]` Auto spell cast - when a Joker is drawn
 + `[C]` Auto spell cast - when enough aligned Power has been drawn, deleting any harmonics beforehand
 + `[S]` Release Power - Prevent releasing of aligned Power (or at least add confirmation dialog)
 + `[S]` Sorcery hand - Show the harmonic type on unaligned power cards (on the cards themselves)
-+ `[C]` Lorebook property on spells (and showing it in the spells list)
 + `[S]` Allow to combine multiple spells together (CiL-en p85)
 + `[C]` Cooperation on spellcasting - implement sopmething specific for this (ROI not great) or just document in the userguide how to do it with the current version of the system
 + `[S]` Explicit mechanic for Artefacts
 + `[S]` Explicit mechanic for Unraveling
 + `[C]` Confirmation dialog for Hosts when they 'Gather Power' for a Host character and 'Self Roll' isn't active
++ `[C]` Lorebook property on spells (and showing it in the spells list)
 
 ### Mechanics from "Corebook"
 
