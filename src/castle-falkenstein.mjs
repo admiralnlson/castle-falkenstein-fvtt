@@ -54,26 +54,42 @@ export class CastleFalkenstein {
         CastleFalkenstein.log.error(err);
         return undefined;
       };
+    },
+    set: async function (target, key, value) {
+      try {
+        await game.settings.set(CastleFalkenstein.id, key, value);
+        return true;
+      }
+      catch (err) {
+        CastleFalkenstein.log.error(err);
+        return false;
+      };
     }
   });
 
   static get fortuneDeck() {
-    return game.cards.get(this.settings.fortuneDeck);
+    return this.deck("fortune");
   }
 
   static get sorceryDeck() {
-    return game.cards.get(this.settings.sorceryDeck);
+    return this.deck("sorcery");
   }
 
   static deck(type) {
-    if (type == "fortune") {
-      return this.fortuneDeck;
-    } else if (type == "sorcery") {
-      return this.sorceryDeck;
-    } else {
-      CastleFalkenstein.log.error(`Unknown deck type '${type}'`);
+    const setting = this.settings[`${type}Deck`];
+
+    if (!setting) {
+      // invalid setting has already generated foundry native log error
       return;
     }
+
+    const deck = game.cards.get(setting);
+
+    if (!deck) {
+      CastleFalkenstein.notif.error(game.i18n.localize("castle-falkenstein.notifications.deckNotFound"));
+    }
+
+    return deck;
   }
 
   static async hostFortuneHand() {
@@ -152,18 +168,22 @@ export class CastleFalkenstein {
     if (stack.drawnCards)
       stack.drawnCards.forEach((card) => translateCard(card));
 
-    if (stack._source.cards)
-      stack._source.cards.forEach((card) => translateCard(card));
+    // Removed by Core it seems
+    //if (stack._source.cards)
+    //  stack._source.cards.forEach((card) => translateCard(card));
   }
 
   static async createPresetDeck(type) {
     const response = await fetch("systems/castle-falkenstein/src/cards/deck-preset.json");
     const deckData = await response.json();
-    // change the deck name to match its actual type and 
-    // add Limited permission on the Dec so that plays may draw from it but not see its contents.
+
+    // change the deck name to match its actual type 
     deckData.name = game.i18n.localize(`castle-falkenstein.settings.${type}Deck.name`);
+
+    // add Limited ownership on the Deck so that players may draw from it but not see its contents.
     deckData.ownership = deckData.ownership || {};
     deckData.ownership.default = CONST.DOCUMENT_OWNERSHIP_LEVELS.LIMITED;
+
     deckData.folder = (await this.cardsFolder("decks-and-piles", game.i18n.localize("castle-falkenstein.cardsDirectory.decksFolder"))).id;
     deckData.flags[this.id] = {
       type: type
@@ -172,8 +192,6 @@ export class CastleFalkenstein {
     this.translateCardStack(deckData);
 
     const deck = await Cards.create(deckData);
-
-    await deck.shuffle();
 
     return deck;
   }
@@ -184,7 +202,7 @@ export class CastleFalkenstein {
     await game.cards.filter(stack => stack.type === "pile").forEach(async (stack) => {
       const type = stack.getFlag(CastleFalkenstein.id, "type");
       if (type) {
-        // This should return cards they contain to their origin decks but also reshuffle these decks. See CastleFalkensteinCards.onReturnCards() override.
+        // This should return cards they contain to their origin decks.
         await stack.delete();
       }
     });
@@ -193,15 +211,15 @@ export class CastleFalkenstein {
 
     let cardsCreatedI18n = "";
 
-    if (!this.fortuneDeck) {
+    if (!game.cards.get(this.settings.fortuneDeck)) {
       const deck = await this.createPresetDeck("fortune");
-      await game.settings.set(this.id, "fortuneDeck", deck.id);
+      this.settings.fortuneDeck = deck.id;
       cardsCreatedI18n += "<br/>  - " + game.i18n.localize("castle-falkenstein.settings.fortuneDeck.name");
     }
 
-    if (!this.sorceryDeck) {
+    if (!game.cards.get(this.settings.sorceryDeck)) {
       const deck = await this.createPresetDeck("sorcery");
-      await game.settings.set(this.id, "sorceryDeck", deck.id);
+      this.settings.sorceryDeck = deck.id;
       cardsCreatedI18n += "<br/>  - " + game.i18n.localize("castle-falkenstein.settings.sorceryDeck.name");
     }
 
@@ -214,16 +232,6 @@ export class CastleFalkenstein {
 
     if (cardsCreatedI18n)
       CastleFalkenstein.notif.info(game.i18n.localize("castle-falkenstein.notifications.createdCards") + cardsCreatedI18n);
-  }
-
-  static onReturnCards(stack, returned, { fromDelete, toUpdate } = {}) {
-    if (returned.length > 0) {
-      // shuffle the fortune (resp. sorcery) deck when cards are recalled to it
-      const stackType = stack.getFlag(this.id, "type");
-      if (stackType) {
-        this.deck(stackType)?.shuffle(); // no 'await' so that the shuffle happens after the actual return of the cards
-      }
-    }
   }
 
   static searchUniqueHand(handType, actorOrHost) {
@@ -245,7 +253,7 @@ export class CastleFalkenstein {
   }
 
   static async onRenderPlayerList(application, html, data) {
-    this.checkPermissionsOnDecks();
+    this.checkOwnershipsOnDecks();
   }
 
   static async onPopout(app, popout) {
@@ -268,21 +276,21 @@ export class CastleFalkenstein {
   }
 
   static async onRenderPlayerList(application, html, data) {
-    this.checkPermissionsOnDecks();
+    this.checkOwnershipsOnDecks();
   }
 
-  static async checkPermissionsOnDecks() {
+  static async checkOwnershipsOnDecks() {
     if (game.user.isGM) {
       game.users.contents.forEach((user) => {
         if (user.active && !user.isGM) {
           let stacks = "";
           [this.fortuneDeck, this.sorceryDeck].forEach((deck) => {
-            if (deck && !deck.testUserPermission(user, CONST.DOCUMENT_PERMISSION_LEVELS.LIMITED)) {
+            if (deck && !deck.testUserPermission(user, CONST.DOCUMENT_OWNERSHIP_LEVELS.LIMITED)) {
               stacks += `<br/>- ${deck.name}`;
             }
           });
           if (stacks) {
-            CastleFalkenstein.notif.warn(game.i18n.format("castle-falkenstein.notifications.playerHasInsufficientPermissionsOnCardStacks", {
+            CastleFalkenstein.notif.warn(game.i18n.format("castle-falkenstein.notifications.playerHasInsufficientOwnershipOnCardStacks", {
               player: user.name
             }) + stacks);
           }
@@ -305,8 +313,9 @@ export class CastleFalkenstein {
 
     const nbCardsActuallyDrawn = Math.min(nbCardsToDraw, nbCardsLeftInDeck);
 
-    if (nbCardsActuallyDrawn > 0)
-      cardsDrawn = cardsDrawn.concat(await destStack.draw(deck, nbCardsActuallyDrawn, { chatNotification: false }));
+    if (nbCardsActuallyDrawn > 0) {
+      cardsDrawn = cardsDrawn.concat(await destStack.draw(deck, nbCardsActuallyDrawn, { how: CONST.CARD_DRAW_MODES.RANDOM, chatNotification: false }));
+    }
 
     if (nbCardsActuallyDrawn < nbCardsToDraw) {
       CastleFalkenstein.notif.warn(game.i18n.format("castle-falkenstein.notifications.incompleteDraw", {
@@ -333,7 +342,6 @@ export class CastleFalkenstein {
         type: "hand",
         name: game.i18n.format(`castle-falkenstein.fortune.hand.name`, { character: game.i18n.localize("castle-falkenstein.host") }),
         displayCount: true,
-        // permission: ??? // no special permissions (limited to GM)
         folder: null, // the GM may freely move the hand to whatever folder they wish afterwards
         "flags.castle-falkenstein": { type: handType, actor: actorId }
       };
@@ -469,11 +477,6 @@ export class CastleFalkenstein {
     if (CONFIG["Cards"].sheetClasses.hand["castle-falkenstein.CastleFalkensteinHandSheet"])
       CONFIG["Cards"].sheetClasses.hand["castle-falkenstein.CastleFalkensteinHandSheet"].default = (this.cardsUi == this.CARDS_UI_OPTIONS.native);
 
-      
-    if (game.user.isGM) {
-      await this.prepareCardStacks();
-    }
-
     const userLanguage = game.settings.get("core", "language");
     if (userLanguage != "en" && Array.from(game.system.languages.map(el => el.lang)).includes(userLanguage)) {
       await game.cards.updateAll(this.translateCardStack, (stack) => {
@@ -494,6 +497,10 @@ export class CastleFalkenstein {
 
   static async onReady() {
 
+    if (game.user.isGM) {
+      await this.prepareCardStacks();
+    }
+
     const userLanguage = game.settings.get("core", "language");
     if (userLanguage != "en" && Array.from(game.system.languages.map(el => el.lang)).includes(userLanguage)) {
       const babele = game.modules.get('babele');
@@ -508,14 +515,15 @@ export class CastleFalkenstein {
     CastleFalkenstein.log.info("Ready.");
   }
 
-  static async shuffleBackToDeck(stackId, idsOfCardsPlayed) {
+  static async returnBackToDeck(stackId, idsOfCardsPlayed) {
     const stack = game.cards.get(stackId);
     const type = stack.getFlag(CastleFalkenstein.id, "type");
-    if (type) {
-      const deck = CastleFalkenstein.deck(type);
-      await stack.pass(deck, idsOfCardsPlayed, {chatNotification: false});
-      await deck.shuffle({ chatNotification: false });
-    }
+    if (!type)
+      return;
+
+    const deck = CastleFalkenstein.deck(type);
+
+    await stack.pass(deck, idsOfCardsPlayed, {action: "play", chatNotification: false});
   }
 
   static setupSocket() {
@@ -524,7 +532,7 @@ export class CastleFalkenstein {
     // register socket functions
     this.socket.register("showActor", this.showActor);
     this.socket.register("createHand", this.createHand);
-    this.socket.register("shuffleBackToDeck", this.shuffleBackToDeck)
+    this.socket.register("returnBackToDeck", this.returnBackToDeck)
   }
 
   static get cardsUi() {
@@ -618,8 +626,8 @@ export class CastleFalkenstein {
     });
 
     // transparent migration from old setting value "default" to new value "native"
-    if (CastleFalkenstein.settings.cardsUi == "default")
-      game.settings.set(CastleFalkenstein.id, "cardsUi", CastleFalkenstein.CARDS_UI_OPTIONS.native);
+    if (this.settings.cardsUi == "default")
+      this.settings.cardsUi = this.CARDS_UI_OPTIONS.native;
   }
 
   static registerSheets() {
@@ -738,8 +746,6 @@ Hooks.once("ready", () => CastleFalkenstein.onReady());
 Hooks.on("renderChatMessage", (chatMessage, html, messageData) => CastleFalkenstein.onRenderChatMessage(chatMessage, html, messageData));
 
 Hooks.on("hotbarDrop", (hotbar, data, slot) => { return CastleFalkenstein.hotbarDrop(hotbar, data, slot) });
-
-Hooks.on("returnCards", (stack, returned, context) => CastleFalkenstein.onReturnCards(stack, returned, context));
 
 Hooks.on("renderPlayerList", (application, html, data) => CastleFalkenstein.onRenderPlayerList(application, html, data));
 

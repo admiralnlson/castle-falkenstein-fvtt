@@ -105,11 +105,11 @@ export class CastleFalkensteinPerformFeat extends FormApplication {
    */
   async _updateObject(event, formData) {
     
-    // shuffle the cards played back into the deck
+    // return the cards played back into the deck
     const wrappedCardsPlayed = this.wrappedCards.filter(w => w.checked);
     if (wrappedCardsPlayed.length >0) {
       const hand = await this.character.hand("fortune");
-      await CastleFalkenstein.socket.executeAsGM("shuffleBackToDeck", hand.id, wrappedCardsPlayed.map(w => w.card.id));
+      await CastleFalkenstein.socket.executeAsGM("returnBackToDeck", hand.id, wrappedCardsPlayed.map(w => w.card.id));
 
       // move the hand sheet to the top, so that the player may easily refill their hand.
       await hand.sheet.render(true);

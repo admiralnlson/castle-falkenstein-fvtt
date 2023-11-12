@@ -5,14 +5,14 @@
     "settings": {
       "fortuneDeck": {
         "name": "Jeu du destin",
-        "hint": "[Hôte uniquement] Le paquet de cartes faisant office de Jeu du destin."
+        "hint": "[Hôte uniquement] La pioche faisant office de Jeu du destin."
       },
       "sorceryDeck": {
         "name": "Jeu de sorcellerie",
-        "hint": "[Hôte uniquement] Le paquet de cartes faisant office de Jeu de sorcellerie."
+        "hint": "[Hôte uniquement] La pioche faisant office de Jeu de sorcellerie."
       },
       "sorceryAbility": {
-        "name": "Nom du talent de Sorcellerie",
+        "name": "Nom du talent de sorcellerie",
         "hint": "[Hôte uniquement] [Optionnel] Permet d'avoir les noms de Talents des personnages dans la langue parlée par le groupe, même si celle-ci n'est pas encore officiellement supportée par le système."
       },
       "damageSystem": {
@@ -36,20 +36,21 @@
     "notifications": {
       "babeleInstallRequired": "Le module 'Babele' n'est pas installé ! Installez et activez-le afin que les Compendiums puissent être traduits.",
       "babeleActivationRequired": "Le module 'Babele' est installé, mais n'est pas activé ! Activez-le afin que les Compendiums puissent être traduits.",
-      "playerHasInsufficientPermissionsOnCardStacks": "Le joueur '{player}' a des permissions insuffisantes sur :",
+      "playerHasInsufficientOwnershipOnCardStacks": "Le joueur '{player}' a des droits insuffisants sur :",
       "createdCards": "Créé:",
       "characterWasShown": "Le personnage '{name}' a été montré aux joueurs.",
       "macroForOwnedItems": "Vous ne pouvez créer des bouton de macros que pour les items que vous possédez.",
       "abilityInvalidSuit": "La couleur associée au talent n'est pas valide.",
       "spellInvalidAspect": "L'aspect associé au sort n'est pas valide.",
-      "noFortuneHandForFeat": "Main du Destin manquante pour accomplir la prouesse.",
-      "noSorceryHandForSpell": "Main de Sorcellerie manquante pour lancer le sort.",
+      "noFortuneHandForFeat": "Main du destin manquante pour accomplir la prouesse.",
+      "noSorceryHandForSpell": "Main de sorcellerie manquante pour lancer le sort.",
       "characterDoesNotHaveAbility": "Le personnage n'a pas le talent '{name}'.",
-      "spellAlreadyBeingCast": "Un sort est déjà en cours de lancement. Annulez-le depuis la main de Sorcellerie si vous souhaitez en lancer un autre.",
+      "spellAlreadyBeingCast": "Un sort est déjà en cours de lancement. Annulez-le depuis la main de sorcellerie si vous souhaitez en lancer un autre.",
       "noItemNamed": "Le personnage que vous contrôlez ne possède pas d'item de type '{type}' nommé '{name}'.",
-      "cannotDraw": "Le paquet de cartes est épuisé. Impossible de piocher.",
-      "incompleteDraw": "Le paquet de cartes est épuisé. Seulement {nb1} cartes sur {nb2} ont pu être piochées.",
-      "lastCardDrawn": "Le paquet de cartes est épuisé. La dernière carte vient d'être piochée."
+      "deckNotFound": "Il semble qu'une pioche soit manquante. Suggérez à votre Hôte de vérifier les jeux du destin et de sorcellerie, ainsi que les paramètres du système.",
+      "cannotDraw": "La pioche est épuisée. Impossible de tirer même une carte.",
+      "incompleteDraw": "La pioche est épuisée. Seulement {nb1} cartes sur {nb2} ont pu être tirées.",
+      "lastCardDrawn": "La pioche est épuisée. La dernière carte vient d'être tirée."
     },
 
     "dialogs": {
@@ -57,11 +58,15 @@
       "notEnoughPowerGathered": {
         "description1": "Vous ne semblez pas avoir canalisé assez de Pouvoir pour l'instant.",
         "description2": "Lancer le sort malgré tout ?"
+      },
+      "performFeatHandRefill": {
+        "description1": "Votre main du destin ne contient que {nb} cartes.",
+        "description2": "Souhaitez-vous la compléter ?"
       }
     },
 
     "cardsDirectory": {
-      "decksFolder": "Jeux de cartes",
+      "decksFolder": "Pioches",
       "characterHandsFolder": "Mains des personnages"
     },
 
@@ -172,7 +177,7 @@
 
     "feat": {
       "perform": "Accomplir une prouesse",
-      "noCardsPlayed": "Pas de carte jouée",
+      "noCardsPlayed": "Pas de carte jouée.",
       "total": "Total",
       "highSuccess": "Magnifique succès",
       "fullSuccess": "Franc succès",

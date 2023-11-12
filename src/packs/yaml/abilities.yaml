@@ -37,6 +37,7 @@ name: Etherealness
 type: ability
 system:
   suit: clubs
+  description: (Faerie only).
 ---
 name: Exchequer
 type: ability
@@ -62,6 +63,7 @@ name: Glamour
 type: ability
 system:
   suit: hearts
+  description: (Faerie only).
 ---
 name: Invention
 type: ability
@@ -72,6 +74,7 @@ name: Kindred Powers
 type: ability
 system:
   suit: diamonds
+  description: (Faerie only).
 ---
 name: Leadership
 type: ability
@@ -127,6 +130,7 @@ name: Shapeshifting
 type: ability
 system:
   suit: clubs
+  description: (Faerie only).
 ---
 name: Social Graces
 type: ability
@@ -137,6 +141,7 @@ name: Sorcery
 type: ability
 system:
   suit: diamonds
+  level: PR
 ---
 name: Stealth
 type: ability

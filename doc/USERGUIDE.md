@@ -40,7 +40,7 @@ The following text elements do not get automatically translated however:
 ## [Optional] Custom decks
 Hosts may use custom decks if they so desire. The following setup is required.
 
-| Create a              |of type | which has player permissions                         |
+| Create a              |of type | which has player ownership                           |
 | :-------------------- | :----- | :--------------------------------------------------- |
 | Fortune deck          |Deck    | Limited                                              |
 | Sorcery deck          |Deck    | Limited (relevant for Sorcerer/Dragon players only)  |
@@ -50,12 +50,10 @@ The 'suit' card property must also have a value in { spades, hearts, diamonds, c
 
 Once you're done, go to `Configure Settings > System Settings > Castle Falkenstein` to register your custom decks.
 
-Make sure you shuffle the decks before your players get a chance to draw cards from them also. The system nmay not do it for you.
-
 ## [Optional] 2+ player groups within the same world
 Hosts who have more than one group of players playing in the same world may wish to use separate decks for each group.
 
-To achieve this, the Host should duplicate newly created decks and then decrease permissions on each deck to match the permissions required by each player group (see table above).
+To achieve this, the Host should duplicate newly created decks and then decrease ownership on each deck to match the ownership required by each player group (see table above).
 
 The Host should however ensure that, at the beginning of each gaming session, the adequate set of decks for each group is selected in the Castle Falkenstein system settings. Otherwise, the 2 may end get mixed, leading to errors down the road\
 To help remind the Host they have to do this, a warning is produced each time a player connects and they don't have access to one of the decks.
@@ -67,7 +65,7 @@ The same character sheet is used for Dramatic Characters (= PC) and Host Charact
 
 As per FoundryVTT default behaviour, if the ownership level granted to a non-GM player on a character is 'None' (default), then the character does not appear to the player in the Actors tab.
 
-And here is what happens with higher permission levels:
+And here is what happens with higher ownership levels:
 
 | Character sheet part | Limited | Observer | Owner  | Host (GM) |
 |----------------------|:-------:|:--------:|:------:|:---------:|
@@ -83,9 +81,9 @@ And here is what happens with higher permission levels:
 
 Based on the above, a general recommendation for Hosts is to:
 - create an Actor for each Dramatic Character (= PC), and:
-  - use permission 'Default: Limited' so all players can see the Description of their fellow players's characters, and
-  - give each player an 'Owner' permission on their own Dramatic Character of course
-- create Host characters (= NPC) as Actors as well (rather than as Journal Entries) and, during sessions, give players a 'Limited' permission on the ones which Dramatic Characters meet before clicking on the Host Character's sheet 'Show Players' button to showcase them.
+  - use ownership 'Default: Limited' so all players can see the Description of their fellow players's characters, and
+  - give each player an 'Owner' ownership on their own Dramatic Character of course
+- create Host characters (= NPC) as Actors as well (rather than as Journal Entries) and, during sessions, give players a 'Limited' ownership on the ones which Dramatic Characters meet before clicking on the Host Character's sheet 'Show Players' button to showcase them.
 
 The system includes a Host-only 'Show Players' button in the header of all character sheets, similar to the one found on Journal Entries in Core FoundryVTT.
 
@@ -93,6 +91,8 @@ The system includes a Host-only 'Show Players' button in the header of all chara
 To initialize a character with all abilities (and, if they are a sorcerer, all spells from Lorebooks they know), go to the Items tab and drag-and-drop the adequate folder to the character sheet.
 
 The folder will only appear if the Host first goes to the Compendium tab, right clicks on each desired pack and selects 'Import All Content'.
+
+Once imported, the "Abilities" folder in Foundry's "Items" sidebar tab may be drag-and-dropped onto the "Abilities"tab of Character sheets to initialize it with all abilities.
 
 ## Alternative: Diaries as Journal Entries
 To reinforce the notion of character diaries being a part of the world, the Host may elect to have a dedicated Journal Entry for the diary of Dramatic (or Host) Characters.
@@ -110,7 +110,7 @@ Deleting a hand will first return all cards it contains to the parent deck.
 
 ## Chance
 
-Fortune hands have a "? Chance" button, which draws the top card from the Fortune Deck, plays it immediately, returns the card to to the Deck and shuffles it.
+Fortune hands have a "? Chance" button, which draws a random card from the Fortune Deck, plays it immediately and returns the card to to the Deck.
 
 # Alternative Cards UI
 The system supports [🦋Monarch](https://foundryvtt.com/packages/monarch) as an alternative user interface for card hands.

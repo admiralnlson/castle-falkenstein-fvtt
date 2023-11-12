@@ -43,13 +43,17 @@ function compilePacks() {
         for (item of json) {
           // supplement the definitions with some key properties
           if (item.type == "ability") {
-            item.system.level = "AV";
-            item.img = `systems/castle-falkenstein/src/cards/${item.system.suit}.svg`;
+            if (!item.system.level)
+              item.system.level = "AV";
+            if (!item.img)
+              item.img = `systems/castle-falkenstein/src/cards/${item.system.suit}.svg`;
           } else if (item.type == "spell") {
-            item.img = `systems/castle-falkenstein/src/cards/${item.system.suit}.svg`;
+            if (!item.img)
+              item.img = `systems/castle-falkenstein/src/cards/${item.system.suit}.svg`;
           } else if (item.type == "weapon") {
             item.system.ammunition = item.system.ammunition_max;
-            item.img = `icons/svg/item-bag.svg`;
+            if (!item.img)
+              item.img = `icons/svg/item-bag.svg`;
           }
 
           // add an nedb _id that is deterministic to avoid FoundryVTT reording them when saving

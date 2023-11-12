@@ -6,6 +6,22 @@
 
 ### Bugs
 
++ [🔥] When a deck is deleted, then re-reated by the system. It does seem to change the system value which  keeps pointing to the dead stack.
+
+### User Experience
+
++ [M] Forbid drag-and-drop between stacks of different CF types e.g. Sorcery to Fortune.
++ [S] Ability to sort Items in the Character Sheet based on 
+  + [S] name
+  + [S] ability+spell: suit 
+  + [S] ability: level
+  + [C] spell: TL
+  + [C] weapon: effective range, max Dmg
++ [C] Add info text in empty Abilities table, suggesting to drag-and-drop some entries from or the entire 'imported Abilities folder'
+  + [S] interrupt the drop and make changes or (see also "Species drop-down" list below):
+  + [S] Update the Sorcery entry in the Compendium to Poor so that starting characters don't assume they have an Average level by mistake
+  + [S] Mark Faerie Powers as "Faerie only" so starting characters don't assume they have an Average level in those by mistake (or even access to them plain & simply)
+
 ### Derived stats & Racial abilities (a.k.a 'Other' tab)
 
 + `[S]` Extra 'Other' tab for listing secondary attributes such as Speed (Run+Flight) or Languages known (see below)
@@ -30,6 +46,7 @@
 
 ### Cards
 
++ `[C]` Fortune hands - shortcut to perform any feat the character has (= add dropbox to the Perform Feat form)
 + `[C]` Macro to delete all Host character Sorcery hands
 + `[C]` Card hand button to show a Fortune or Sorcery hand in chat (or simply on screen)
 + `[S]` deplete Host or character hands before changing Decks (maybe ask for confirmation first)
@@ -97,7 +114,7 @@
 
 + `[S]` Lorebook for Cantrips & Wards (CiL-en p91 / -fr p161)
 + `[S]` Abilities found in other sourcebooks than CiF and MoAoF e.g. Curious Creatures (English & French)
-+ `[S]` Lorebook from Curious Creatures (p27)
++ `[S]` Lorebook from Curious Creatures (p27) + "Create Familiar"
 + `[S]` Spells/Lorebooks found in other sourcebooks than CiF and Curious Creatures (English & French)
 
 + `[C]` Shortcut to import all Abilities into a character (skip those already present)
@@ -116,7 +133,7 @@
 
 + `[C]` Display tweak: rework item (ability, spell, ..) CSS-flow display with CSS-subgrid when Chrome implements it (could try with display: contents in the meantime)
 
-+ `[C]` Make the Actor 'Show Players' button compatible with special dialog of 'Permission Viewer' module (pending feedback from PV owner)
++ `[C]` Make the Actor 'Show Players' button compatible with special dialog of 'Ownership Viewer' module (pending feedback from PV owner)
 
 + `[C]` Possessions: location (equipped, at home, in the bank, investments, ..)
 + `[C]` Possessions: dedicated input box for Cash/Money

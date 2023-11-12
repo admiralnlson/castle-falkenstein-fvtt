@@ -36,18 +36,19 @@
     "notifications": {
       "babeleInstallRequired": "The Babele module is not installed! Install and activate it in order for Compendiums to be translated.",
       "babeleActivationRequired": "The Babele module is installed, but it is not active! Activate it in order for Compendiums to be translated.",
-      "playerHasInsufficientPermissionsOnCardStacks": "Player '{player}' has insufficient permissions on:",
+      "playerHasInsufficientOwnershipOnCardStacks": "Player '{player}' has insufficient ownership on:",
       "createdCards": "Created:",
       "characterWasShown": "Character '{name}' was shown to players.",
       "macroForOwnedItems": "You can only create macro buttons for owned Items.",
       "abilityInvalidSuit": "The suit associated to the ability is invalid.",
       "spellInvalidAspect": "The aspect associated to the spell is invalid.",
-      "noFortuneHandForFeat": "No Fortune hand to perform feat with.",
-      "noSorceryHandForSpell": "No Sorcery hand to cast spell with.",
+      "noFortuneHandForFeat": "No Fortune Hand to perform feat with.",
+      "noSorceryHandForSpell": "No Sorcery Hand to cast spell with.",
       "characterDoesNotHaveAbility": "Character does not have ability '{name}'.",
-      "spellAlreadyBeingCast": "Spell is already being cast. Cancel it from the Sorcery hand if you wish to cast another.",
+      "spellAlreadyBeingCast": "Spell is already being cast. Cancel it from the Sorcery Hand if you wish to cast another.",
       "noItemNamed": "Your controlled character does not have an item of type '{type}' named '{name}'.",
-      "cannotDraw": "There are no available cards left in the deck. Cannot draw.",
+      "deckNotFound": "It appears a deck is missing. Suggest to your Host they verify Fortune and Sorcery Decks as well as system settings.",
+      "cannotDraw": "There are no available cards left in the deck. Cannot draw any.",
       "incompleteDraw": "There are no available cards left in the deck. Only {nb1} cards out of {nb2} could be drawn.",
       "lastCardDrawn": "There are no available cards left in the deck. The last card was just drawn."
     },
@@ -57,6 +58,10 @@
       "notEnoughPowerGathered": {
         "description1": "You do not appear to have gathered enough power yet.",
         "description2": "Cast anyway?"
+      },
+      "performFeatHandRefill": {
+        "description1": "Your Fortune Hand contains only {nb} cards.",
+        "description2": "Would you like to refill it?"
       }
     },
 
@@ -172,7 +177,7 @@
 
     "feat": {
       "perform": "Perform Feat",
-      "noCardsPlayed": "No cards played",
+      "noCardsPlayed": "No cards played.",
       "total": "Total",
       "highSuccess": "High Success",
       "fullSuccess": "Full Success",

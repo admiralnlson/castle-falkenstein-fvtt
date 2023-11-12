@@ -1,5 +1,14 @@
 # Changelog
 
+## [v2.9.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.8.1) - Unreleased
+### Changed
++ Cards are now drawn at random, instead of from the top of the deck. As a consequence, automatic reshuffling of the decks becomes unnecessary and has been removed.
++ When a Feat is performed, a Dialog now proposes to refill the Fortune hand beforehand, in case it contains fewer than 4 cards.
++ Compendium - Abilities: changed default Sorcery rank to 'Poor'
+### Fixed
++ When drawing a Chance card, an error notification was appearing despite everything actually working fine.
++ Fixed a regression introduced in v2.8.0 which prevented Decks, recreated after a manual deletion, from working correctly
+
 ## [v2.8.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.8.0) - 2023/11/05
 ### Added
 + Weapons now have Max Range, Conceal & Harm Rank properties, as per Comme Il Faut.

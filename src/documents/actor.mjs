@@ -2,6 +2,7 @@ import { CASTLE_FALKENSTEIN } from "../config.mjs";
 import { CastleFalkenstein } from "../castle-falkenstein.mjs";
 import { CastleFalkensteinPerformFeat } from "../forms/perform-feat.mjs";
 import { CastleFalkensteinDefineSpell } from "../forms/define-spell.mjs";
+import { CastleFalkensteinHandSheet } from "../documents/hand-sheet.mjs";
 
 /**
  * @extends {Actor}
@@ -22,7 +23,7 @@ export class CastleFalkensteinActor extends Actor {
         const hand = CastleFalkenstein.searchUniqueHand(handType, this);
         if (hand) {
           // No need for a socket here.
-          // Whoever updated the name on the Actor is expected to have permission to update the name of the Hand also (see below).
+          // Whoever updated the name on the Actor is expected to have the ownership level necessary to update the name of the Hand also (see below).
           await hand.update({
             name: this.computeHandName(handType)
           });
@@ -30,23 +31,23 @@ export class CastleFalkensteinActor extends Actor {
       });
     }
 
-    if (changed.permission) {
-      // If permissions on a Character changed and no player owns it anymore, delete their Fortune hand if it exists.
+    if (changed.ownership) {
+      // If ownership on a Character changed and no player owns it anymore, delete their Fortune hand if it exists.
       if (!this.hasPlayerOwner) {
         const fortuneHand = CastleFalkenstein.searchUniqueHand("fortune", this);
         if (fortuneHand) {
           // No need for a socket here.
-          // Whoever delete the Actor is expected to have permission to delete the Hand also (with default role permissions at least they should).
+          // Whoever delete the Actor is expected to have the ownership level necessary to delete the Hand also (with default role ownership at least they should).
           await fortuneHand.delete();
         }
       }
 
-      // If permissions on a Character changed, update the permissions of their Fortune/Sorcery hands to match, if they (still, see above) exist.
+      // If ownership on a Character changed, update the ownership of their Fortune/Sorcery hands to match, if they (still, see above) exist.
       [ "fortune", "sorcery" ].forEach(async (handType) => {
         const hand = CastleFalkenstein.searchUniqueHand(handType, this);
         if (hand) {
           // No need for a socket here.
-          // Whoever updated permissions on the the Actor is expected to have permission to update them on the Hand also (with default role permissions at least, they should).
+          // Whoever updated ownership on the the Actor is expected to have the ownership level necessary to update them on the Hand also (with default role ownership at least, they should).
           await hand.update({
             ownership: this.ownership
           });
@@ -114,7 +115,29 @@ export class CastleFalkensteinActor extends Actor {
       return;
     }
 
-    (new CastleFalkensteinPerformFeat(item)).render(true);
+    if (hand.cards.size < 4) {
+      const i18nTitle = game.i18n.localize("castle-falkenstein.dialogs.confirmTitle");
+      const i18nDescription1 = game.i18n.format("castle-falkenstein.dialogs.performFeatHandRefill.description1", {
+        nb: hand.cards.size
+      });
+      const i18nDescription2 = game.i18n.localize("castle-falkenstein.dialogs.performFeatHandRefill.description2");
+
+      Dialog.confirm({
+        title: i18nTitle,
+        content: `<p>${i18nDescription1}</p><p>${i18nDescription2}</p>`,
+        yes: async () => {
+          await CastleFalkensteinHandSheet.refillHand(hand) ;
+          (new CastleFalkensteinPerformFeat(item)).render(true);
+        },
+        no: () => {
+          (new CastleFalkensteinPerformFeat(item)).render(true);
+        },
+        defaultYes: true
+      });
+    }
+    else {
+      (new CastleFalkensteinPerformFeat(item)).render(true);
+    }
   }
 
   get sorceryAbility() {

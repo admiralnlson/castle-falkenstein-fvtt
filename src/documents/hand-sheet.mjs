@@ -222,13 +222,13 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     // pick a card out of the available ones in the deck
 
     const deck = CastleFalkenstein.fortuneDeck;
+
     if (deck.availableCards.length <= 0) {
       CastleFalkenstein.notif.error(game.i18n.localize("castle-falkenstein.notifications.cannotDraw"));
       return;
     }
 
-    const card = deck.availableCards[Math.floor(Math.random() * deck.availableCards.length)];
-    deck.shuffle({ chatNotification: false });
+    const card = deck.availableCards[Math.floor(randMath.random() * deck.availableCards.length)];
 
     // Post message to chat
     const flavor = `[${game.i18n.localize("castle-falkenstein.fortune.hand.chance")}]`;
@@ -286,7 +286,7 @@ export class CastleFalkensteinHandSheet extends CardsHand {
       return; // should never be able to click from host hand anyway (see 'disabled' above)
     const actor = game.actors.get(actorId);
 
-    await CastleFalkenstein.socket.executeAsGM("shuffleBackToDeck", hand.id, [card.id]);
+    await CastleFalkenstein.socket.executeAsGM("returnBackToDeck", hand.id, [card.id]);
 
     // Post message to chat - TOO SPAMMY => DISABLED
     /*const flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.hand.releasePower")}]`;
@@ -378,10 +378,10 @@ export class CastleFalkensteinHandSheet extends CardsHand {
       content += ".</div>";
     }
 
-    // shuffle back the cards in the deck
-    await CastleFalkenstein.socket.executeAsGM("shuffleBackToDeck", hand.id, hand.cards.map((c)=>{ return c.id; }));
+    // return back the cards in the deck
+    await CastleFalkenstein.socket.executeAsGM("returnBackToDeck", hand.id, hand.cards.map((c)=>{ return c.id; }));
 
-    // Display the chat message only if the shuffle-back was successful
+    // Display the chat message only if the return-back was successful
     CastleFalkenstein.createChatMessage(actor, flavor, content);
 
     // no spell being cast anymore
@@ -402,7 +402,7 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     const actor = game.actors.get(actorId);
 
 
-    await CastleFalkenstein.socket.executeAsGM("shuffleBackToDeck", hand.id, hand.cards.map((c)=>{ return c.id; }));
+    await CastleFalkenstein.socket.executeAsGM("returnBackToDeck", hand.id, hand.cards.map((c)=>{ return c.id; }));
 
     // Post message to chat
     let flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.hand.cancelSpell")}]`;

@@ -1,5 +1,8 @@
 {
   "label": "Talents",
+  "mapping": {
+    "description": "system.description"
+  },
   "entries": {
     "Athletics": { "name": "Athlétisme" },
     "Charisma": { "name": "Charisme" },
@@ -8,15 +11,15 @@
     "Courage": { "name": "Courage" },
     "Craftsmanship": { "name": "Artisanat" },
     "Education": { "name": "Instruction" },
-    "Etherealness": { "name": "Éthéralité" },
+    "Etherealness": { "name": "Éthéralité", "description": "(exclusivement pour les Faë)." },
     "Exchequer": { "name": "Finances" },
     "Fencing": { "name": "Escrime" },
     "Fisticuffs": { "name": "Pugilat" },
     "Gambling": { "name": "Jeu" },
-    "Glamour": { "name": "Charme" },
+    "Glamour": { "name": "Charme", "description": "(exclusivement pour les Faë)." },
     "Helmsmanship": { "name": "Pilotage" },
     "Invention": { "name": "Invention" },
-    "Kindred Powers": { "name": "Pouvoirs de l'espèce" },
+    "Kindred Powers": { "name": "Pouvoirs de l'espèce", "description": "(exclusivement pour les Faë)." },
     "Leadership": { "name": "Commandement" },
     "Marksmanship": { "name": "Tir" },
     "Mesmerism": { "name": "Hypnotisme" },
@@ -27,7 +30,7 @@
     "Physician": { "name": "Médecine" },
     "Physique": { "name": "Physique" },
     "Riding": { "name": "Équitation" },
-    "Shapeshifting": { "name": "Métamorphose" },
+    "Shapeshifting": { "name": "Métamorphose", "description": "(exclusivement pour les Faë)." },
     "Social Graces": { "name": "Aisance sociale" },
     "Sorcery": { "name": "Sorcellerie" },
     "Stealth": { "name": "Discrétion" },
