@@ -1,6 +1,6 @@
 # Changelog
 
-## [v2.9.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.8.1) - Unreleased
+## [v2.9.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.8.1) - 2023/11/19
 ### Added
 + When a Feat is being performed, in case the Fortune Hand contains fewer than 4 cards, a Dialog now proposes to refill it beforehand.
 ### Changed
@@ -10,7 +10,7 @@
 + [🦋 Monarch UI] Removed control labels to align with the minimalistic style of the Native UI.
 ### Fixed
 + [v2.8.0 regression] When drawing a Chance card, an error notification was appearing despite everything actually working fine.
-+ [v2.8.0 regression] After manual deletion of the Fortune or Sorcery deck, prevented the new automatically-created one from registering correctly.
++ [v2.8.0 regression] After manual deletion of the Fortune or Sorcery deck, the new automatically-created one failed to register correctly.
 
 ## [v2.8.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.8.0) - 2023/11/05
 ### Added
