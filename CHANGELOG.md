@@ -5,6 +5,7 @@
 + When a Feat is being performed, in case the Fortune Hand contains fewer than 4 cards, a Dialog now proposes to refill it beforehand.
 ### Changed
 + Cards are now drawn at random, instead of from the top of the deck. As a consequence, automatic reshuffling of decks becomes unnecessary and has been removed.
++ Cards in hands no longer overlap as much.
 + The 'Release Power' control on a Sorcery card now appears when the card is hovered. Clicking the card to zoom in on it is no longer required.
 + Compendium - Abilities: changed default Sorcery rank to 'Poor'.
 + [🦋 Monarch UI] Removed control labels to align with the minimalistic style of the Native UI.
