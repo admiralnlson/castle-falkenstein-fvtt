@@ -1,6 +1,6 @@
 # Changelog
 
-## [v2.9.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.8.1) - 2023/11/19
+## [v2.9.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.9.0) - 2023/11/19
 ### Added
 + When a Feat is being performed, in case the Fortune Hand contains fewer than 4 cards, a Dialog now proposes to refill it beforehand.
 ### Changed
