@@ -128,7 +128,7 @@ export class CastleFalkensteinDefineSpell extends FormApplication {
     content += '</div>';
     
     const total = this.computeTotal();
-    content += `<div class="define-spell-total">${total}</div>`;
+    content += `<hr /><div class="define-spell-total">${total}</div>`;
 
     let hand = await this.character.hand("sorcery");
     await hand.defineSpell(this.spellBeingCast);

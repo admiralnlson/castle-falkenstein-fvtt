@@ -79,6 +79,7 @@
 
     "fortune": {
       "hand": {
+        "render": "Afficher la main du destin",
         "name": "Destin - {character}",
         "refill": "Compléter",
         "chance": "Chance"
@@ -89,6 +90,7 @@
       "ability": "Sorcellerie",
       "defineSpell": "Définir le sort",
       "hand": {
+        "render": "Afficher la main de sorcellerie",
         "gatherPower": "Canaliser du Pouvoir",
         "releasePower": "Libérer du Pouvoir",
         "castSpell": "Lancer le sort",

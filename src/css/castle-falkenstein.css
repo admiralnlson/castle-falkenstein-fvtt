@@ -15,6 +15,7 @@
   --input-3digits-width: 33px;
   --input-4digits-width: 41px;
   --select-1alpha-width: 40px;
+  --card-hover-translateY: 0px;
 }
 
 [class*='cf-']:before {
@@ -814,9 +815,6 @@ html * {
   transition: all 0.1s;
   transition-timing-function: ease-in;
   box-shadow: 1px 1px 20px 5px #111111;
-  
-  /* antialiasing */
-  will-change: transform;
   justify-content: center;
 }
 
@@ -845,18 +843,6 @@ html * {
   box-shadow: 1px 1px 20px 5px #3a3a3a;
 }
 
-#handedCards li.card div.castle-falkenstein-card-controls {
-  display: none;
-  position: relative;
-  transition: none;
-  font-size: 1em;
-  flex-direction: row;
-  height: 20px;
-  /* bottom: 20px; */
-  justify-items: end;
-  align-items: end;
-}
-
 div.castle-falkenstein.cards-config a.card-control {
   color: var(--color-text-light-highlight);
   max-width: min-content;
@@ -866,11 +852,21 @@ div.castle-falkenstein.cards-config a[disabled].card-control {
   color: var(--color-text-dark-inactive);
 }
 
-/*
-#handedCards ol.cards li.card.focusedCard {
-  box-shadow: 0px 0px 20px 5px var(--color-shadow-primary);
+#handedCards li.card div.castle-falkenstein-card-controls {
+  display: none;
+  position: relative;
+  transition: none;
+  font-size: 1em;
+  flex-direction: row;
+  height: 20px;
+  bottom: 20px;
+  justify-items: end;
+  align-items: end;
 }
-*/
+
+#handedCards li.card a.card-control {
+  color: var(--color-text-dark-secondary);
+}
 
 #handedCards li.card.focusedCard div.castle-falkenstein-card-controls a.card-control {
   color: var(--color-text-light-highlight);
@@ -880,7 +876,23 @@ div.castle-falkenstein.cards-config a[disabled].card-control {
   font-size: 14px;
 }
 
-#handedCards li.card.focusedCard div.castle-falkenstein-card-controls {
-  display: flex;
-  flex-grow: 0;
+/*#handedCards li.card.focusedCard div.castle-falkenstein-card-controls,*/
+#handedCards li.card:not(.focusedCard) div.castle-falkenstein-card-controls:hover,
+#handedCards li.card:not(.focusedCard):hover div.castle-falkenstein-card-controls {
+  display: block;
+  width: 100%;
+  
+}
+
+/*#handedCards li.card:hover .card-face {
+  box-shadow: 0 0 5px var(--color-shadow-primary);
+}*/
+
+#handedCards li.card:hover {
+  --card-hover-translateY: 10px;
+}
+
+#handedCards li.card .card-face {
+  image-rendering: optimizequality;
+  will-change: transform; /* blurs the cards but removes flickering caused by cards moving while hovered */
 }

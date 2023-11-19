@@ -39,9 +39,9 @@ export class CastleFalkenstein {
   };
 
   static notif = {
-    info: (msg, ...args) => { this.log._log("info", msg, ...args); ui.notifications.info(msg, ...args); },
-    warn: (msg, ...args) => { this.log._log("warn", msg, ...args); ui.notifications.warn(msg, ...args); },
-    error: (msg, ...args) => { this.log._log("error", msg, ...args); ui.notifications.error(msg, ...args); }
+    info: (msg) => { this.log._log("info", msg); ui.notifications.info(msg, {console: false}); },
+    warn: (msg) => { this.log._log("warn", msg); ui.notifications.warn(msg, {console: false}); },
+    error: (msg) => { this.log._log("error", msg); ui.notifications.error(msg, {console: false}); }
   };
 
   /**
@@ -310,6 +310,10 @@ export class CastleFalkenstein {
       CastleFalkenstein.notif.error(game.i18n.localize("castle-falkenstein.notifications.cannotDraw"));
       return 0;
     }
+
+    /*if (nbCardsToDraw > nbCardsLeftInDeck) {
+      await deck.shuffle({chatNotification: false });
+    }*/
 
     const nbCardsActuallyDrawn = Math.min(nbCardsToDraw, nbCardsLeftInDeck);
 

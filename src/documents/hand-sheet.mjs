@@ -73,21 +73,19 @@ export class CastleFalkensteinHandSheet extends CardsHand {
 
   async activateListeners(html) {
     this.rotateCards(html);
-    html.find(".card img").click(this.cardClick.bind(this));
-    html.find(".card img").mouseenter(this.cardMouseEnter.bind(this));
-    html.find(".card img").mouseleave(this.cardMouseLeave.bind(this));
+    html.find(".card").click(this.cardClick.bind(this));
     super.activateListeners(html);
   }
 
   rotateCards(html) {
     let cardsAreas = html.find('.cards');
-    const halfTranslation = CastleFalkenstein.settings.cardWidth/5;
+    const halfTranslation = CastleFalkenstein.settings.cardWidth/4;
     const halfAngle = 2;
     for (let area of cardsAreas) {
       for (let i = 0; i < area.children.length; i++) {
         let card = area.children[i];
         const factor = 1 - area.children.length + 2*i;
-        card.style.transform = `rotateZ(${(factor * halfAngle)}deg) translateX(${factor * halfTranslation}px)`;
+        card.style.transform = `rotateZ(${(factor * halfAngle)}deg) translateX(${factor * halfTranslation}px) translateY(var(--card-hover-translateY))`;
         card.style["z-index"] = 302 + i*4;
       }
     }
@@ -118,29 +116,6 @@ export class CastleFalkensteinHandSheet extends CardsHand {
       eventCard.style["z-index"] = eventCard.getAttribute("data-zind");
       eventCard.children[1].style.transform = `scale(1)`;
     }
-  }
-
-  static CARD_MOUSE_ENTER_TRANSLATE = ` translateY(-10px)`;
-
-  cardMouseEnter(event) {
-    let eventCard = event.currentTarget.closest('li.card');
-
-    let oneIsFocused = false;
-
-    for (let card of eventCard.parentNode.children) {
-      if (card.classList.contains("focusedCard")) {
-        oneIsFocused = true;
-      }
-    };
-
-    if (!oneIsFocused) {
-      eventCard.style.transform = eventCard.style.transform += CastleFalkensteinHandSheet.CARD_MOUSE_ENTER_TRANSLATE;
-    }
-  }
-
-  cardMouseLeave(event) {
-    let eventCard = event.currentTarget.closest('li.card');
-    eventCard.style.transform = eventCard.style.transform.replace(CastleFalkensteinHandSheet.CARD_MOUSE_ENTER_TRANSLATE,'');
   }
 
   /** @override */
@@ -228,7 +203,7 @@ export class CastleFalkensteinHandSheet extends CardsHand {
       return;
     }
 
-    const card = deck.availableCards[Math.floor(randMath.random() * deck.availableCards.length)];
+    const card = deck.availableCards[Math.floor(Math.random() * deck.availableCards.length)];
 
     // Post message to chat
     const flavor = `[${game.i18n.localize("castle-falkenstein.fortune.hand.chance")}]`;

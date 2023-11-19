@@ -79,6 +79,7 @@
     
     "fortune": {
       "hand": {
+        "render": "Display the Fortune Hand",
         "name": "Fortune - {character}",
         "refill": "Refill",
         "chance": "Chance"
@@ -89,6 +90,7 @@
       "ability": "Sorcery",
       "defineSpell": "Define Spell",
       "hand": {
+        "render": "Display the Sorcery Hand",
         "gatherPower": "Gather Power",
         "releasePower": "Release Power",
         "castSpell": "Cast Spell",

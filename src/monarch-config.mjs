@@ -51,7 +51,8 @@ export class CastleFalkensteinMonarchConfig {
 
     // Fortune hand - Refill hand
     components.appControls.push({
-      label: "castle-falkenstein.fortune.hand.refill",
+      label: "castle-falkenstein.empty",
+      tooltip: "castle-falkenstein.fortune.hand.refill",
       icon: "cf-stack",
       class: "fortune-hand-refill",
       hide: (card, hand) => {
@@ -68,7 +69,8 @@ export class CastleFalkensteinMonarchConfig {
 
     // Fortune hand - Chance (draw a single Fortune card, immediately playing it)
     components.appControls.push({
-      label: "castle-falkenstein.fortune.hand.chance",
+      label: "castle-falkenstein.empty",
+      tooltip: "castle-falkenstein.fortune.hand.chance",
       icon: "fas fa-question",
       class: "fortune-hand-chance",
       hide: (card, hand) => {
@@ -85,7 +87,8 @@ export class CastleFalkensteinMonarchConfig {
 
     // Sorcery hand - Gather Power
     components.appControls.push({
-      label: "castle-falkenstein.sorcery.hand.gatherPower",
+      label: "castle-falkenstein.empty",
+      tooltip: "castle-falkenstein.sorcery.hand.gatherPower",
       icon: "fas fa-plus-circle",
       class: "sorcery-hand-gather-power",
       hide: (card, hand) => {
@@ -102,6 +105,7 @@ export class CastleFalkensteinMonarchConfig {
 
     // Sorcery card - Release power
     components.controls.push({
+      label: "castle-falkenstein.empty",
       tooltip: "castle-falkenstein.sorcery.hand.releasePower",
       icon: "fas fa-trash",
       class: "sorcery-hand-card-release",
@@ -119,7 +123,8 @@ export class CastleFalkensteinMonarchConfig {
 
     // Sorcery hands - Cast spell
     components.appControls.push({
-      label: "castle-falkenstein.sorcery.hand.castSpell",
+      label: "castle-falkenstein.empty",
+      tooltip: "castle-falkenstein.sorcery.hand.castSpell",
       icon: "fas fa-play-circle",
       class: "sorcery-hand-cast-spell",
       hide: (card, hand) => {
@@ -136,7 +141,8 @@ export class CastleFalkensteinMonarchConfig {
 
     // Sorcery hands - Cancel spell
     components.appControls.push({
-      label: "castle-falkenstein.sorcery.hand.cancelSpell",
+      label: "castle-falkenstein.empty",
+      tooltip: "castle-falkenstein.sorcery.hand.cancelSpell",
       icon: "fas fa-stop-circle",
       class: "sorcery-hand-cancel-spell",
       hide: (card, hand) => {

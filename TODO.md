@@ -4,9 +4,7 @@
 + MoSCoW: `[M]`ust, `[S]`hould, `[C]`ould, `[W]`on't
 + `[🔥]` Project maintainer (admiralnlson)'s own GM needs
 
-### Bugs
-
-+ [🔥] When a deck is deleted, then re-reated by the system. It does seem to change the system value which  keeps pointing to the dead stack.
+## Bugs
 
 ### User Experience
 
@@ -22,48 +20,69 @@
   + [S] Update the Sorcery entry in the Compendium to Poor so that starting characters don't assume they have an Average level by mistake
   + [S] Mark Faerie Powers as "Faerie only" so starting characters don't assume they have an Average level in those by mistake (or even access to them plain & simply)
 
+### Attributes to lock
+
++ Courage (all => health)
++ Physique (all => health ; Dragons => fly speed)
++ Etherealness (Faerie => fly speed)
++ Sorcery (sorcerers => spell def) -> partially implemented
+
 ### Derived stats & Racial abilities (a.k.a 'Other' tab)
 
 + `[S]` Extra 'Other' tab for listing secondary attributes such as Speed (Run+Flight) or Languages known (see below)
 + Free text (w/ compendium?), specific labels with rw input, specific labels with auto-computed values?
   + Languages
   + Corebook p140 / Libre de base p194
-    + Running speed (Athletics) / Vitesse de course (Athlétisme)
-    + Flying Speeds (Faerie Etherealness or Dragon/Animal Physique) / Vitesses de vol (Éthéralité et Physique)
-+ `[S]` Add a species drop-down list (Human/Fae/Dragon/Dwarf) and add species-specific behaviour:
+    + Running speed
+    + Flying Speed
++ Locked attributes (= should not be deletable)
+  + Athletics (all -> running speed)
+  + Courage (all -> health)
+  + Physique (all -> health ; Dragons => flying speed)
+  + Etherealness (Faerie only -> flying speed)
+  + Sorcery (Sorcerers+Dragons only -> spellcast)
++ `[S]` Add a species drop-down list (Human/Fae/Dragon/Dwarf)
+  + Sorcery tab unlocked by Dragon or Good Sorcery in Humans
   + give Fae talents to Fae characters only
-  + compute health automatically incl. Dragons' +2
+  + compute health automatically incl. Dragons' +2 (requires Courage and Physique to be locked attributes)
   + limit Dragon sorcery to 5 cards drawn
-  + list species features such as Dwarf's immunity to Fire, Fae sensibility to Iron in the sheet, ..
-    + Faerie Powers
-      + potentially split "Fae" into "Fae (generic) / Fae (Brownie) / Fae (Pixie) / Fae (Lord/Lady)" for extra setup of non-generic Fae characters.
-    + Dwarf Powers
+  + list species features in the sheet
+    + Faerie
+      + Sensibility to Iron
+      + ..
+    + Dwarf
+      + Immunity to Fire
+      + ..
     + Dragon
       + Flying
       + Shapeshift
       + Armor
       + 5 max Power drawn
 
-### Cards
-
-+ `[C]` Fortune hands - shortcut to perform any feat the character has (= add dropbox to the Perform Feat form)
-+ `[C]` Macro to delete all Host character Sorcery hands
+### Any card / hand
 + `[C]` Card hand button to show a Fortune or Sorcery hand in chat (or simply on screen)
 + `[S]` deplete Host or character hands before changing Decks (maybe ask for confirmation first)
+
+### Fortune
+
++ `[C]` Perform Feat - allow the use of a random card (Kessel Run optional rule from CiF p77)
++ `[C]` Fortune hands - shortcut to perform any feat the character has (= add dropbox to the Perform Feat form)
 + `[C]` allow actors to use another actor's (/ player's) Fortune hand ("Host Notes" tab becomes "Host tab")
   + consider attaching Fortune hands to players as opposed to actors? (although this may reduce options)
 
 ### Sorcery
 
++ `[C]` Macro to delete all Host character Sorcery hands
 + `[C]` Sorcery hands - shortcut to cast any spell the character has (= add dropbox to the Define Spell form)
 + `[S]` Gather Power - add counter to help with tracking the drawing limit for Dragons
++ `[C]` Gather Power - support Familiars more natively, drawing 2 cards at once, asking which one to keep (showing both with one grayed out in chat)
 + `[S]` Gather Power (if no auto spell cast) - add a message indicating the Spell is ready to be cast
 + `[C]` Auto spell cast - when a Joker is drawn
 + `[C]` Auto spell cast - when enough aligned Power has been drawn, deleting any harmonics beforehand
 + `[S]` Release Power - Prevent releasing of aligned Power (or at least add confirmation dialog)
 + `[S]` Sorcery hand - Show the harmonic type on unaligned power cards (on the cards themselves)
 + `[S]` Allow to combine multiple spells together (CiL-en p85)
-+ `[C]` Cooperation on spellcasting - implement sopmething specific for this (ROI not great) or just document in the userguide how to do it with the current version of the system
++ `[C]` Cooperation on spellcasting - implement something specific for this (ROI not great) or just document in the userguide how to do it with the current version of the system
 + `[S]` Explicit mechanic for Artefacts
 + `[S]` Explicit mechanic for Unraveling
 + `[C]` Confirmation dialog for Hosts when they 'Gather Power' for a Host character and 'Self Roll' isn't active
@@ -117,27 +136,22 @@
 + `[S]` Lorebook from Curious Creatures (p27) + "Create Familiar"
 + `[S]` Spells/Lorebooks found in other sourcebooks than CiF and Curious Creatures (English & French)
 
-+ `[C]` Shortcut to import all Abilities into a character (skip those already present)
-+ `[C]` Shortcut to import a Lorebook into a character
-
-### Cosmetic / Other
-
-+ `[C]` add Castle Falkenstein logo somewhere in the character sheet
-
-+ `[C]` Have abilities display as 2+ columns if there is enough horizontal space (and ensure 2 in the default width)
-,
 + `[C]` Compendium pack for non-weapon items found in the corebook (English)
 + `[C]` Compendium pack for non-weapon items found in the corebook (French)
 + `[C]` Compendium pack for non-weapon items found in sourcebooks (English)
 + `[C]` Compendium pack for non-weapon items found in sourcebooks (French)
 
++ `[C]` Shortcut to import all Abilities into a character (skip those already present)
++ `[C]` Shortcut to import a Lorebook into a character
+
+### Cosmetic / Other
+
++ `[C]` Use Castle Falkenstein logo as Pause logo
++ `[C]` Have abilities display as 2+ columns if there is enough horizontal space (and ensure 2 in the default width)
 + `[C]` Display tweak: rework item (ability, spell, ..) CSS-flow display with CSS-subgrid when Chrome implements it (could try with display: contents in the meantime)
-
-+ `[C]` Make the Actor 'Show Players' button compatible with special dialog of 'Ownership Viewer' module (pending feedback from PV owner)
-
++ `[C]` Make the Actor 'Show Players' button compatible with special dialog of 'Ownership Viewer' module (pending feedback from module owner)
 + `[C]` Possessions: location (equipped, at home, in the bank, investments, ..)
 + `[C]` Possessions: dedicated input box for Cash/Money
-
 + `[C]` Tours (a.k.a. tutorials)
   + Using compendiums
   + Casting spells
