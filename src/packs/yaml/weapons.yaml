@@ -68,10 +68,10 @@ system:
   maxRange: 80
   ammunition_max: 5
   conceal: J
-  woundsPartial: 4
-  woundsFull: 5
-  woundsHigh: 6
-  harmRank: D
+  woundsPartial: 3
+  woundsFull: 4
+  woundsHigh: 5
+  harmRank: C
 ---
 name: .32 Beaumont-Adams Pocket Revolver
 type: weapon

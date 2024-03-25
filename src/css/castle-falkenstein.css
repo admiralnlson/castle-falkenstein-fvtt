@@ -193,15 +193,15 @@ html * {
 }
 
 .castle-falkenstein .locked.character .item-drag,
-.castle-falkenstein .locked.character a.rollable,
+.castle-falkenstein:not(.gm-screen-grid-cell-content) .locked.character a.rollable,
 .castle-falkenstein .locked.character a.item-create,
 .castle-falkenstein .locked.character a.item-delete {
   cursor: default;
   color: gray;
 }
 
-.castle-falkenstein .locked.character a.rollable:hover,
-.castle-falkenstein .locked.character a.rollable:focus,
+.castle-falkenstein:not(.gm-screen-grid-cell-content) .locked.character a.rollable:hover,
+.castle-falkenstein:not(.gm-screen-grid-cell-content) .locked.character a.rollable:focus,
 .castle-falkenstein .locked.character a.item-create:hover,
 .castle-falkenstein .locked.character a.item-create:focus,
 .castle-falkenstein .locked.character a.item-delete:hover,
@@ -265,7 +265,7 @@ html * {
 
 .castle-falkenstein .items-list .item-controls {
   display: flex;
-  flex: 0 0 75px;
+  flex: 0 0 var(--grid-item-controls-width);
   justify-content: flex-end;
 }
 
@@ -895,4 +895,39 @@ div.castle-falkenstein.cards-config a[disabled].card-control {
 #handedCards li.card .card-face {
   image-rendering: optimizequality;
   will-change: transform; /* blurs the cards but removes flickering caused by cards moving while hovered */
+}
+
+/* gm-screen mod actor-sheet display improvements */
+
+.castle-falkenstein .items-list .name {
+  min-width: 20px;
+}
+
+div.gm-screen-grid-cell-content.castle-falkenstein.actor > form {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+div.gm-screen-grid-cell-content.castle-falkenstein.actor {
+  overflow-y: hidden;
+  --grid-item-drag-width: 0px;
+  --grid-item-controls-width: 20px;
+}
+
+div.gm-screen-grid-cell-content.castle-falkenstein.actor > form li.item > div.item-drag > .fa-bars::before {
+  display: none;
+}
+
+div.gm-screen-grid-cell-content.castle-falkenstein.actor > form li.item.items-header > div.item-controls > a {
+  display: none;
+}
+
+div.gm-screen-grid-cell-content.castle-falkenstein.actor > form li.item > div.item-controls > a.item-edit,
+div.gm-screen-grid-cell-content.castle-falkenstein.actor > form li.item > div.item-controls > a.item-delete {
+  display: none;
+}
+
+
+div.gm-screen-grid-cell-content.castle-falkenstein .window-resizable-handle {
+  display: none;
 }

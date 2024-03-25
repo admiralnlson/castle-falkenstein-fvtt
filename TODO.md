@@ -4,9 +4,13 @@
 + MoSCoW: `[M]`ust, `[S]`hould, `[C]`ould, `[W]`on't
 + `[🔥]` Project maintainer (admiralnlson)'s own GM needs
 
-## Bugs
+## Known Bugs
+
++ The suit associated to abilities often disappears when updating the level. Have not been able to establish the rootcause yet.
 
 ### User Experience
+
++ `[C]` Allow Hosts to suggest a Perform Feat or Spell Definition (for that one, could include the spell def itself or part of it?)
 
 + [M] Forbid drag-and-drop between stacks of different CF types e.g. Sorcery to Fortune.
 + [S] Ability to sort Items in the Character Sheet based on 

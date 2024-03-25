@@ -135,8 +135,14 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
       item.sheet.render(true);
     });
 
+
+    // Rollable items
+    if (this.isEditable || game.user.isGM) {
+      html.find('.rollable').click(this._onRoll.bind(this));
+    }
+
     // -------------------------------------------------------------
-    // Everything below here is only needed if the sheet is editable
+    // Everything below here is only allowed if the sheet is editable.
     if (!this.isEditable) return;
 
     // Add item
@@ -148,9 +154,6 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
       const item = this.actor.items.get(li.data("itemId"));
       item.delete();
     });
-
-    // Rollable items
-    html.find('.rollable').click(this._onRoll.bind(this));
 
     // Weapon ammunition
     html.find('.weapon-ammunition-current').change(ev => {
