@@ -311,10 +311,6 @@ export class CastleFalkenstein {
       return 0;
     }
 
-    /*if (nbCardsToDraw > nbCardsLeftInDeck) {
-      await deck.shuffle({chatNotification: false });
-    }*/
-
     const nbCardsActuallyDrawn = Math.min(nbCardsToDraw, nbCardsLeftInDeck);
 
     if (nbCardsActuallyDrawn > 0) {
