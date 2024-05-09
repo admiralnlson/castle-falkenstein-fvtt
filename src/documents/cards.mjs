@@ -52,7 +52,7 @@ export class CastleFalkensteinCards extends Cards {
         if (card.suit == "joker") {
           spellBeingCast.isWildSpell = true;
           spellBeingCast.harmonics = [];
-          spellBeingCast.powerGathered = spellBeingCast.powerNeed;
+          spellBeingCast.powerGathered = "∞";
           break;
         } else {
           if (card.suit == spellBeingCast.spellObject.system.suit)

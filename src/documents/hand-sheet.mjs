@@ -49,9 +49,21 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     const deck = CastleFalkenstein.deck(context.typeFlag);
 
     context.spellBeingCast = hand.spellBeingCast;
-    if (context.spellBeingCast)
+    if (context.spellBeingCast) {
       context.spellBeingCast.suitSymbol = CASTLE_FALKENSTEIN.cardSuitsSymbols[context.spellBeingCast.spellObject.system.suit];
+
+      context.cards.forEach(c => {
+        if (c.suit == "joker" || c.suit == context.spellBeingCast.spellObject.system.suit)
+          c.wrongSuit = "correct-suit";
+      });
+    }
    
+    context.readyToCast = context.spellBeingCast
+                          ? (context.spellBeingCast.powerGathered >= context.spellBeingCast.powerNeed || context.spellBeingCast.isWildSpell
+                            ? "ready-to-cast"
+                            : "")
+                          : "";
+
     context.disabled = {};
 
     context.disabled.openActor = context.inCompendium || CastleFalkensteinHandSheet.openActorDisabled(hand);
@@ -73,7 +85,20 @@ export class CastleFalkensteinHandSheet extends CardsHand {
 
   async activateListeners(html) {
     this.rotateCards(html);
+
     html.find(".card").click(this.cardClick.bind(this));
+
+    let handedCards = html.find(".handedCards");
+    handedCards.on("dragenter", (e) => {
+      e.target.classList.add('draghover');
+    });
+    handedCards.on("dragleave", (e) => {
+      e.target.classList.remove('draghover');
+    });
+    handedCards.on("drop", (e) => {
+      e.target.classList.remove('draghover');
+    });
+
     super.activateListeners(html);
   }
 
