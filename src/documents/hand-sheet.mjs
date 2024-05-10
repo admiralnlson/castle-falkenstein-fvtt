@@ -357,6 +357,14 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     // in the chat message, display info about the Spell being Wild or  the Harmonics, if any
     if (spellBeingCast.isWildSpell) {
       content += `<hr/><div class="wild-spell">`
+      content += `<span style="--x:0;   --y:0;  --xt:-13; --yt:12;  --xd:1;  --yd:2;   --w:25;  --d:1;  --o:.9; " class="pt s1"><b></b></span>`;
+      content += `<span style="--x:-17; --y:0;  --xt:17;  --yt:10;  --xd:2;  --yd:1;   --w:39;  --d:2;  --o:.5; " class="pt s2"><b></b></span>`;
+      content += `<span style="--x:34;  --y:0;  --xt:-17; --yt:10;  --xd:3;  --yd:3;   --w:28;  --d:3;  --o:.9; " class="pt s3"><b></b></span>`;
+      content += `<span style="--x:45;  --y:0;  --xt:21;  --yt:13;  --xd:1;  --yd:2;   --w:38;  --d:4;  --o:.9; " class="pt s4"><b></b></span>`;
+      content += `<span style="--x:6;   --y:-3; --xt:-21; --yt:10;  --xd:2;  --yd:1;   --w:58;  --d:5;  --o:.9; " class="pt s1"><b></b></span>`;
+      content += `<span style="--x:-35; --y:0;  --xt:17;  --yt:10;  --xd:3;  --yd:4;   --w:45;  --d:6;  --o:.7; " class="pt s2"><b></b></span>`;
+      content += `<span style="--x:-1;  --y:0;  --xt:-17; --yt:10;  --xd:1;  --yd:-4;  --w:65;  --d:7;  --o:.6; " class="pt s3"><b></b></span>`;
+      content += `<span style="--x:-30; --y:0;  --xt:13;  --yt:12;  --xd:2;  --yd:4;   --w:70;  --d:8;  --o:.9; " class="pt s4"><b></b></span>`;
       content += game.i18n.localize("castle-falkenstein.sorcery.wildSpell");
       content += "</div>";
     } else if (spellBeingCast.harmonics) {

@@ -2,10 +2,11 @@
 
 ## [v2.10.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.10.0) - Unreleased
 ### Added
-+ Particle effect on Native UI Hands
++ Support for "The Divorce Variation"
++ Particle effect in chat for Wild Spells
 ### Changed
-+ [with gm-screen module] Improved the display of character sheets
-+ [with gm-screen module] Allow usage of [Perform Feat] and [Define Spell]
++ [gm-screen module] Improved the display of character sheets
++ [gm-screen module] Allow usage of [Perform Feat] and [Define Spell]
 ### Fixed
 + Fixed statblock for the '.44 Drop Pistol' (damage: 4/5/6 (D) -> 3/4/5 (C))
 
