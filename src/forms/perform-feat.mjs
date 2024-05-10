@@ -27,6 +27,7 @@ export class CastleFalkensteinPerformFeat extends FormApplication {
     this.character = ability.actor;
     this.hand = this.character.handIfExists("fortune");
     this.computeWrappedCards();
+    this.divorceSuit = ability.system.suit;
   }
 
   computeWrappedCards() {
@@ -34,11 +35,21 @@ export class CastleFalkensteinPerformFeat extends FormApplication {
     for (const card of this.hand.cards) {
       this.wrappedCards.push({
         card: card,
-        correctSuit: (card.suit == this.ability.system.suit || card.suit == 'joker') ? 'correct-suit' : '',
         checked: ""
       });
     }
     this.wrappedCards.sort((a, b) => (a.card.sort > b.card.sort) ? 1 : -1);
+  }
+
+  isCorrectSuit(card) {
+    return (card.suit == "joker" ||
+            (CastleFalkenstein.settings.divorceVariation != CastleFalkenstein.DIVORCE_VARIATION_OPTIONS.disabled
+             ? (card.suit == this.divorceSuit)
+             : (card.suit == this.ability.system.suit)));
+  }
+
+  isDivorceUsed() {
+    return this.divorceSuit != this.ability.system.suit;
   }
 
   computeTotal() {
@@ -46,11 +57,15 @@ export class CastleFalkensteinPerformFeat extends FormApplication {
 
     for (const w of this.wrappedCards) {
       if (w.checked) {
-        // Core rules only, variants not supported (yet?)
-        if (w.card.suit == this.ability.system.suit || w.card.suit == "joker") {
-          total += w.card.value;
+        if (this.isCorrectSuit(w.card)) {
+          if (this.isDivorceUsed() &&
+              w.card.suit == this.divorceSuit &&
+              CastleFalkenstein.settings.divorceVariation == CastleFalkenstein.DIVORCE_VARIATION_OPTIONS.halfValue)
+            total += Math.floor(w.card.value / 2);
+          else
+            total += w.card.value;
         } else {
-          total += 1;
+          total += 1; // TODO The Half-Off Variation is not supported yet
         }
       }
     }
@@ -64,20 +79,49 @@ export class CastleFalkensteinPerformFeat extends FormApplication {
   async getData() {
     if (this.wrappedCards.length > 0) {
       this.wrappedCards.forEach(w => {
-        w.smallCardImg = CastleFalkenstein.smallCardImg(w.card, `card-played ${w.correctSuit}`);
+        const correctSuitTag = this.isCorrectSuit(w.card) ? "correct-suit": "";
+        w.smallCardImg = CastleFalkenstein.smallCardImg(w.card, `card-played ${correctSuitTag}`);
       });
     }
 
-    return {
-      abilityLevelAsSentenceHtml: CastleFalkenstein.abilityLevelAsSentenceHtml(this.ability),
-      wrappedCards: this.wrappedCards,
-      total: this.computeTotal()
-    }
+    let context = {};
+
+    context.abilityLevelAsSentenceHtml = CastleFalkenstein.abilityLevelAsSentenceHtml(this.ability);
+
+    context.wrappedCards = this.wrappedCards;
+
+    context.total = this.computeTotal();
+
+    context.suitHTML = {
+      spades: CastleFalkenstein.cardSuitHTML("spades"),
+      hearts: CastleFalkenstein.cardSuitHTML("hearts"),
+      diamonds: CastleFalkenstein.cardSuitHTML("diamonds"),
+      clubs: CastleFalkenstein.cardSuitHTML("clubs")
+    };
+
+    context.divorceSettingEnabled = (CastleFalkenstein.settings.divorceVariation != CastleFalkenstein.DIVORCE_VARIATION_OPTIONS.disabled);
+
+    context.divorceSuit = this.divorceSuit;
+
+    context.divorceHint = this.isDivorceUsed()
+                          ? game.i18n.localize(`castle-falkenstein.ability.suitValues.${this.divorceSuit}`)
+                          : game.i18n.localize(`castle-falkenstein.settings.divorceVariation.divorceNone`);
+
+    return context;
   }
 
   /** @override */
   activateListeners(html) {
     html.find('.feat-card-played-button').click(event => this.onClickCardSelect(event));
+    html.find(".divorce-button").click( event => this.onClickDivorceSuitSelect(event));
+  }
+
+  onClickDivorceSuitSelect(event) {
+    const suit = event.currentTarget.name;
+
+    this.divorceSuit = suit;
+
+    this.render();
   }
 
   onClickCardSelect(event) {
@@ -121,10 +165,17 @@ export class CastleFalkensteinPerformFeat extends FormApplication {
 
     const flavor = `[${game.i18n.localize("castle-falkenstein.feat.perform")}]`;
     let content = CastleFalkenstein.abilityLevelAsSentenceHtml(this.ability);
+    if (this.isDivorceUsed()) {
+      content += "<hr />";
+      content += `<label class="divorce-label">${game.i18n.localize('castle-falkenstein.settings.divorceVariation.divorceLabel')}</label>`;
+      content += '&nbsp;' + game.i18n.localize(`castle-falkenstein.ability.suitValues.${this.divorceSuit}`);
+      content += '&nbsp;' + CastleFalkenstein.cardSuitHTML(this.divorceSuit);
+    }
     content += '<hr/><div class="cards-played">';
     if (wrappedCardsPlayed.length > 0) {
       wrappedCardsPlayed.forEach(w => {
-        content += CastleFalkenstein.smallCardImg(w.card, `card-played ${w.correctSuit}`);
+        const correctSuitTag = this.isCorrectSuit(w.card) ? "correct-suit": "";
+        content += CastleFalkenstein.smallCardImg(w.card, `card-played ${correctSuitTag}`);
       });
     } else {
       content += game.i18n.localize("castle-falkenstein.feat.noCardsPlayed");

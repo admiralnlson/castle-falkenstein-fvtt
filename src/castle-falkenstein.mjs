@@ -391,15 +391,19 @@ export class CastleFalkenstein {
     return `<img class="${classes}" src="systems/castle-falkenstein/src/cards/small/${suit}-${value}.svg" alt="${card.name}" title="${card.name}"></img>`;
   }
 
+  static cardSuitHTML(suit) {
+    const suitSymbol = CASTLE_FALKENSTEIN.cardSuitsSymbols[suit];
+    return `[<span class="suit-symbol-${suit}">${suitSymbol}</span>]`;
+  }
+
   static abilityLevelAsSentenceHtml(abilityItem, includeAbilitySuit = true) {
     const levelI18nKey = game.i18n.localize(CASTLE_FALKENSTEIN.abilityLevels[abilityItem.system.level].full);
     const levelValue = CASTLE_FALKENSTEIN.abilityLevels[abilityItem.system.level].value;
-    const suitSymbol = CASTLE_FALKENSTEIN.cardSuitsSymbols[abilityItem.system.suit];
 
     const level = `${game.i18n.localize(levelI18nKey)} [${levelValue}]`;
-    let ability = `${abilityItem.system.displayName}`;
+    let ability = `<b>${abilityItem.system.displayName}</b>`;
     if (includeAbilitySuit)
-      ability += ` [<span class="suit-symbol-${abilityItem.system.suit}">${suitSymbol}</span>]`;
+      ability += ' ' + CastleFalkenstein.cardSuitHTML(abilityItem.system.suit);
 
     const html = game.i18n.format("castle-falkenstein.ability.levelAsSentence", {
       level: level,
@@ -555,15 +559,21 @@ export class CastleFalkenstein {
     }
   };
 
-  static CARDS_UI_OPTIONS = {
-    native: "native",
-    monarch: "monarch"
-  };
-
   static DAMAGE_SYSTEM_OPTIONS = {
     both: "both",
     wounds: "wounds",
     harmRank: "harmRank"
+  };
+  
+  static DIVORCE_VARIATION_OPTIONS = {
+    disabled: "disabled",
+    halfValue: "halfValue",
+    fullValue: "fullValue"
+  };
+
+  static CARDS_UI_OPTIONS = {
+    native: "native",
+    monarch: "monarch"
   };
 
   static SETTING_DEFINITIONS = {
@@ -586,6 +596,16 @@ export class CastleFalkenstein {
       }),
       default: this.DAMAGE_SYSTEM_OPTIONS.both,
       requiresReload: true
+    },
+    divorceVariation: {
+      scope: "world",
+      choices: () => ({
+        [this.DIVORCE_VARIATION_OPTIONS.disabled]: game.i18n.localize("castle-falkenstein.settings.divorceVariation.disabled"),
+        [this.DIVORCE_VARIATION_OPTIONS.halfValue]: game.i18n.localize("castle-falkenstein.settings.divorceVariation.halfValue"),
+        [this.DIVORCE_VARIATION_OPTIONS.fullValue]: game.i18n.localize("castle-falkenstein.settings.divorceVariation.fullValue")
+      }),
+      default: this.DAMAGE_SYSTEM_OPTIONS.disabled,
+      requiresReload: false
     },
     // Player settings
     cardsUi: {

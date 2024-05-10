@@ -56,8 +56,7 @@ export class CastleFalkensteinItem extends Item {
       // default content
     } else if (this.type == 'spell') {
       flavor += ` - ${game.i18n.localize('castle-falkenstein.spell.spell')}]`;
-      const suitSymbol = CASTLE_FALKENSTEIN.cardSuitsSymbols[this.system.suit];
-      content = `${this.name} [<span class="suit-symbol-${this.system.suit}">${suitSymbol}</span>]<hr/>`
+      content = `${this.name} ` + CastleFalkenstein.cardSuitHTML(this.system.suit) + `<hr/>`;
             + `${game.i18n.localize("castle-falkenstein.spell.thaumicLevel")}: ${this.system.level}<br/>`
             + `${this.system.description}`;
     } else {

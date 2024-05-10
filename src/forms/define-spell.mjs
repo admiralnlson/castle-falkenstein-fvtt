@@ -112,8 +112,7 @@ export class CastleFalkensteinDefineSpell extends FormApplication {
 
     const flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.defineSpell")}]`;
 
-    const suitSymbol = CASTLE_FALKENSTEIN.cardSuitsSymbols[this.spell.system.suit];
-    let content = `<b>${this.spell.name}</b> [<span class="suit-symbol-${this.spell.system.suit}">${suitSymbol}</span>]<br/>`;
+    let content = `<b>${this.spell.name}</b> ` + CastleFalkenstein.cardSuitHTML(this.spell.system.suit) + `<br/>`;
     content += `${game.i18n.localize("castle-falkenstein.spell.thaumicLevel")}: ${this.spell.system.level}<br/>`;
     content += CastleFalkenstein.abilityLevelAsSentenceHtml(this.character.items.get(this.spellBeingCast.sorceryAbilityId), false);
 

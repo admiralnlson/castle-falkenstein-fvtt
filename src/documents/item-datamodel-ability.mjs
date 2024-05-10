@@ -15,7 +15,7 @@ export class CastleFalkensteinAbilityDataModel extends CastleFalkensteinItemData
         suit: new foundry.data.fields.StringField({
           required: true,
           initial: "?",
-          label: "castle-falkenstein.ability.suit",
+          label: "castle-falkenstein.cards.suit",
         })
       }),
       isSpecialization: new foundry.data.fields.BooleanField({

@@ -500,6 +500,11 @@ html * {
   height: calc(100% - 76px); /* will need to be adjusted for either of the item sheets if their headers are no longer one-liners */
 }
 
+.chat-message .message-sender {
+  font-weight: bold;
+  width: 100%;
+}
+
 .castle-falkenstein span.feat-chat-range {
   text-align: right !important;
 }
@@ -613,6 +618,22 @@ html * {
   width: 25px;
 }
 
+div.divorce {
+  display: grid;
+  grid-template-columns: max-content 1fr min-content 5px min-content 5px min-content 5px min-content;
+  align-items: center;
+}
+
+
+div.divorce {
+  overflow: hidden;
+}
+
+.castle-falkenstein .divorce-button {
+  height: 20px;
+}
+
+.castle-falkenstein .divorce-button,
 .castle-falkenstein .feat-card-played-button {
   width: auto;
   padding: 0;
@@ -624,18 +645,25 @@ html * {
   background: transparent;
   cursor: pointer;
   border: 0;
-  border-bottom: 2px ridge transparent; /* see card-selected below */
+  border-bottom: 2px ridge transparent; /* see suit-selected & card-selected below */
 }
 
+.castle-falkenstein .divorce-button:focus,
 .castle-falkenstein .feat-card-played-button:focus {
   box-shadow: none;
 }
 
+.castle-falkenstein .divorce-button:hover,
+.castle-falkenstein .divorce-button:focus-visible,
 .castle-falkenstein .feat-card-played-button:hover,
 .castle-falkenstein .feat-card-played-button:focus-visible {
   box-shadow: 0 0 5px var(--color-shadow-primary);
 }
 
+.castle-falkenstein .divorce-button.divorce-spades.spades,
+.castle-falkenstein .divorce-button.divorce-hearts.hearts,
+.castle-falkenstein .divorce-button.divorce-diamonds.diamonds,
+.castle-falkenstein .divorce-button.divorce-clubs.clubs,
 .castle-falkenstein .feat-card-played-button.card-selected {
   border-bottom: 2px ridge gray;
 }
@@ -988,21 +1016,17 @@ div.gm-screen-grid-cell-content.castle-falkenstein .window-resizable-handle {
   display: none;
 }
 
-form.sorcery {
-  --timescale: 0.5s;
-}
-
-form.sorcery.ready-to-cast {
+.castle-falkenstein.cards-hand {
   --timescale: 0.1s;
+  --saturation: 5;
 }
 
-
-.pt {
+.castle-falkenstein.cards-hand .pt {
   z-index: -1;
   display:block;
   position:absolute;
   left:calc( 50% + var(--x) * 1%);
-  top:calc( -50% + var(--y) * 1% );
+  top:calc(60px + -50% + var(--y) * 1% );
   transform: translate(-50%, -50%);
   text-align: center;
   width: 10px;
@@ -1012,44 +1036,64 @@ form.sorcery.ready-to-cast {
   animation-delay:calc( -1s * var(--d, 0) );
 
 }
-.pt b{
+
+.castle-falkenstein.cards-hand .pt b {
   display:block;
   transform-origin: 50% 50%;
-  background: url(../img/particle.png);
   background-blend-mode: darken, luminosity;
-  background-size: contain;
   /*border:dotted 3px green;*/
-  width: calc( 0.1vw * var(--w) );
-  height:calc( 0.1vw * var(--w) );
+  width: calc( 0.01vw * var(--w) );
+  height:calc( 0.01vw * var(--w) );
   position:absolute;
   opacity:var(--o, 1);
   animation: moveRightLeft calc( var(--timescale) * var(--xt)) infinite cubic-bezier(.45,.05,.55,.95) alternate,
              flicker calc( 2s * var(--xd) ) infinite cubic-bezier(.45,.05,.55,.95) alternate;
   animation-delay:calc( -1s * var(--d, 0) ) , calc( -0.2s * var(--d, 0) );
 }
+
+.pt.s1 b {
+  background: url(../cards/spades.svg);
+  background-size: contain;
+}
+
+.pt.s2 b {
+  background: url(../cards/hearts.svg);
+  background-size: contain;
+}
+
+.pt.s3 b {
+  background: url(../cards/diamonds.svg);
+  background-size: contain;
+}
+
+.pt.s4 b {
+  background: url(../cards/clubs.svg);
+  background-size: contain;
+}
+
 @keyframes moveUpDown {
   0% {
-    transform:translateY(calc(-50% - 25% * var(--yd, 3)));
+    transform:translateY(calc(-50% - 50% * var(--yd, 3)));
   }
   100% {
-    transform:translateY(calc(-50% + 25% * var(--yd, 3)));
+    transform:translateY(calc(-50% + 50% * var(--yd, 3)));
   } 
 }
 @keyframes moveRightLeft {
   0% {
-    transform:translateX(calc(-50% - 25% * var(--xd, 3)));
+    transform:translateX(calc(-50% - 200% * var(--xd, 3)));
   }
   100% {
-    transform:translateX(calc(-50% + 25% * var(--xd, 3)));
+    transform:translateX(calc(-50% + 200% * var(--xd, 3)));
   }
 }
 @keyframes flicker{
   0% {
     opacity:calc( var(--o, 1) - .5);
-    filter: invert(28%) sepia(100%) hue-rotate(calc(var(--d)*-270deg)) saturate(1);
+    /*filter: invert(28%) sepia(100%) hue-rotate(calc(var(--d) * 45deg)) saturate(var(--saturation));*/
   }
   100% {
     opacity:calc( var(--o, 1) + .5);
-    filter: invert(28%) sepia(1%) hue-rotate(calc(var(--d)*-270deg)) saturate(1);
+    /*filter: invert(28%) sepia(1%) hue-rotate(calc(var(--d) * 45deg)) saturate(var(--saturation));*/
   }
 }

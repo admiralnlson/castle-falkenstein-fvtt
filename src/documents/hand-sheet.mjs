@@ -54,7 +54,9 @@ export class CastleFalkensteinHandSheet extends CardsHand {
 
       context.cards.forEach(c => {
         if (c.suit == "joker" || c.suit == context.spellBeingCast.spellObject.system.suit)
-          c.wrongSuit = "correct-suit";
+          c.correctSuit = "correct-suit";
+        if (c.suit == "joker")
+          c.joker = "joker";
       });
     }
    
@@ -334,8 +336,7 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     let flavor = `[${game.i18n.localize(`castle-falkenstein.sorcery.hand.castSpell${force?"Forced":""}`)}]`;
 
     // in the chat message, display the spell name and aspect
-    const suitSymbol = CASTLE_FALKENSTEIN.cardSuitsSymbols[spell.system.suit];
-    let content = `<b>${spell.name}</b> [<span class="suit-symbol-${spell.system.suit}">${suitSymbol}</span>]`;
+    let content = `<b>${spell.name}</b> ` + CastleFalkenstein.cardSuitHTML(spell.system.suit);
 
     // TODO consider adding an expandable section which shows the original spell definitions:
     // FIXME the corresponding code exists in define-spell.mjs
@@ -369,10 +370,9 @@ export class CastleFalkensteinHandSheet extends CardsHand {
 
       let firstH = true;
       spellBeingCast.harmonics.forEach((hSuit) => {
-        const suitSymbol = CASTLE_FALKENSTEIN.cardSuitsSymbols[hSuit];
         const description = game.i18n.localize(`castle-falkenstein.sorcery.harmonics.${hSuit}`);
         if (!firstH) content += ", ";
-        content += `<span class="suit-symbol-${hSuit}">${suitSymbol}&nbsp;</span><span class="harmonics-desc">${description}</span></li>`
+        content += CastleFalkenstein.cardSuitHTML(hSuit) + `&nbsp;<span class="harmonics-desc">${description}</span></li>`
         firstH = false;
       });
       content += ".</div>";

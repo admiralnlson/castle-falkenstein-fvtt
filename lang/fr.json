@@ -22,6 +22,15 @@
         "wounds": "Blessures (système décrit dans le livre de base)",
         "harmRank": "Rang de dégâts (système alternatif décrit dans Comme Il Faut)"
       },
+      "divorceVariation": {
+        "name": "La Variante de la Séparation",
+        "hint": "[Hôte uniquement] Dans laquelles les Talents ne sont plus aussi fermement liés aux domaines qui les gouvernent.",
+        "disabled": "Désactivée (défaut)",
+        "halfValue": "Demi-valeur",
+        "fullValue": "Valeur totale",
+        "divorceLabel": "Séparation :",
+        "divorceNone": "non"
+      },
       "cardsUi": {
         "name": "Interface pour les cartes",
         "hint": "Vous pouvez ici sélectionner l'interface utilisateur que vous préférez pour les cartes à jouer.",
@@ -40,7 +49,7 @@
       "createdCards": "Créé:",
       "characterWasShown": "Le personnage '{name}' a été montré aux joueurs.",
       "macroForOwnedItems": "Vous ne pouvez créer des bouton de macros que pour les items que vous possédez.",
-      "abilityInvalidSuit": "La couleur associée au talent n'est pas valide.",
+      "abilityInvalidSuit": "L'enseigne associée au talent n'est pas valide.",
       "spellInvalidAspect": "L'aspect associé au sort n'est pas valide.",
       "noFortuneHandForFeat": "Main du destin manquante pour accomplir la prouesse.",
       "noSorceryHandForSpell": "Main de sorcellerie manquante pour lancer le sort.",
@@ -131,8 +140,14 @@
       "level": "Niveau",
       "levelAsSentence": "{level} en {ability}",
       "name": "Nom",
-      "suit": "Couleur",
   
+      "suitValues": {
+        "spades": "sociale / liée au statut social",
+        "hearts": "romantique / émotionnelle",
+        "diamonds": "mentale / intellectuelle",
+        "clubs": "physique"
+      },
+
       "poor": "Faible",
       "average": "Moyen",
       "good": "Bon",
@@ -152,7 +167,7 @@
     },
 
     "cards": {
-      "suit": "Couleur",
+      "suit": "Enseigne",
       "spades": "pique",
       "hearts": "coeur",
       "diamonds": "carreau",

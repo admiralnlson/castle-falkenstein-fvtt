@@ -2,7 +2,7 @@
 
 ## [v2.10.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.10.0) - Unreleased
 ### Added
-+ Particle effect on Native UI Sorcery Hands
++ Particle effect on Native UI Hands
 ### Changed
 + [with gm-screen module] Improved the display of character sheets
 + [with gm-screen module] Allow usage of [Perform Feat] and [Define Spell]

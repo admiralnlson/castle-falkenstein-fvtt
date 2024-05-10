@@ -22,6 +22,15 @@
         "wounds": "Wounds (original system depicted in the corebook)",
         "harmRank": "Harm Rank (alternative system depicted in Comme Il Faut)"
       },
+      "divorceVariation": {
+        "name": "The Divorce Variation",
+        "hint": "[Host only] In which Abilities loosen the bonds which hold them tight to their governing Suits.",
+        "disabled": "Disabled (default)",
+        "halfValue": "Half Value",
+        "fullValue": "Full Value",
+        "divorceLabel": "Divorce:",
+        "divorceNone": "none"
+      },
       "cardsUi": {
         "name": "Cards User Interface",
         "hint": "You may select your preferred user interface for cards here.",
@@ -131,7 +140,13 @@
       "level": "Level",
       "levelAsSentence": "{level} {ability}",
       "name": "Name",
-      "suit": "Suit",
+
+      "suitValues": {
+        "spades": "Social or Status-related",
+        "hearts": "Emotional or Romantic",
+        "diamonds": "Mental or Intellectual",
+        "clubs": "Physical"
+      },
   
       "poor": "Poor",
       "average": "Average",
