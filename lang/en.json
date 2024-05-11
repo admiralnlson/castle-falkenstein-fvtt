@@ -26,19 +26,30 @@
         "name": "The Divorce Variation",
         "hint": "[Host only] In which Abilities loosen the bonds which hold them tight to their governing Suits.",
         "disabled": "Disabled (default)",
-        "halfValue": "Half Value",
-        "fullValue": "Full Value",
+        "halfValue": "1. Half Value",
+        "fullValue": "2. Full Value",
         "divorceLabel": "Divorce:",
         "divorceNone": "none"
       },
-      "cardsUi": {
-        "name": "Cards User Interface",
-        "hint": "You may select your preferred user interface for cards here.",
-        "valueNative": "Native (default)"
+      "hardLimitVariation": {
+        "name": "The Hard Limit Variation",
+        "hint": "In which rules are presented to limit the practice known as “hand dumping”.",
+        "disabled": "Disabled (default)",
+        "option1": "1. PR/AV:1 ; GD/GR:2 ; EXC:3 ; EXT:4",
+        "option2": "2. PR:1 ; AV/GD:2 ; GR:3 ; EXC/EXT:4",
+        "maxCardsDrawableSingular": "(max {nb} card)",
+        "maxCardsDrawablePlural": "(max {nb} cards)"
+      },
+      "halfOffVariation": {
+        "name": "The Half-Off Variation",
+        "hint": "In which the tyranny of off-Suit cards is limited.",
+        "disabled": "Disabled (default)",
+        "option1": "1. Any cards of an improper Suit",
+        "option2": "2. Only if they which match the color"
       },
       "cardWidth": {
         "name": "Cards width",
-        "hint": "If you use the Default cards user interface, you may select your preferred size for cards here (default: 200). (If you chose the 🦋 Monarch interface, the see Monarch module settings instead.)"
+        "hint": "You may select your preferred size for cards here (default: 200)."
       }
     },
 
@@ -59,7 +70,8 @@
       "deckNotFound": "It appears a deck is missing. Suggest to your Host they verify Fortune and Sorcery Decks as well as system settings.",
       "cannotDraw": "There are no available cards left in the deck. Cannot draw any.",
       "incompleteDraw": "There are no available cards left in the deck. Only {nb1} cards out of {nb2} could be drawn.",
-      "lastCardDrawn": "There are no available cards left in the deck. The last card was just drawn."
+      "lastCardDrawn": "There are no available cards left in the deck. The last card was just drawn.",
+      "mismatchingCardTypeInDrop": "Cannot drop card this card here. It has the wrong type: Sorcellerie <> Destin."
     },
 
     "dialogs": {
@@ -167,6 +179,9 @@
     },
 
     "cards": {
+      "handSheet": "Castle Falkenstein - Cards Hand Sheet",
+      "deckSheet": "Castle Falkenstein - Cards Deck Sheet",
+
       "suit": "Suit",
       "spades": "Spades",
       "hearts": "Hearts",

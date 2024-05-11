@@ -111,8 +111,3 @@ Deleting a hand will first return all cards it contains to the parent deck.
 ## Chance
 
 Fortune hands have a "? Chance" button, which draws a random card from the Fortune Deck, plays it immediately and returns the card to to the Deck.
-
-# Alternative Cards UI
-The system supports [🦋Monarch](https://foundryvtt.com/packages/monarch) as an alternative user interface for card hands.
-
-In order to use it, the Host must first install and activate the module. Then host and players may individually enable it in their client settings.

@@ -23,7 +23,7 @@
         "harmRank": "Rang de dégâts (système alternatif décrit dans Comme Il Faut)"
       },
       "divorceVariation": {
-        "name": "La Variante de la Séparation",
+        "name": "La variante de la séparation",
         "hint": "[Hôte uniquement] Dans laquelles les Talents ne sont plus aussi fermement liés aux domaines qui les gouvernent.",
         "disabled": "Désactivée (défaut)",
         "halfValue": "Demi-valeur",
@@ -31,14 +31,25 @@
         "divorceLabel": "Séparation :",
         "divorceNone": "non"
       },
-      "cardsUi": {
-        "name": "Interface pour les cartes",
-        "hint": "Vous pouvez ici sélectionner l'interface utilisateur que vous préférez pour les cartes à jouer.",
-        "valueNative": "Native (défaut)"
+      "hardLimitVariation": {
+        "name": "La variante de la modération",
+        "hint": "Dans laquelle on présente des règles limitant la pratique consistant à toujours jouer toute sa main.",
+        "disabled": "Désactivée (défaut)",
+        "option1": "1. Rien ne vaut le savoir-faire !",
+        "option2": "2. Il faut savoir provoquer la chance !",
+        "maxCardsDrawableSingular": "(max {nb} carte)",
+        "maxCardsDrawablePlural": "(max {nb} cartes)"
+      },
+      "halfOffVariation": {
+        "name": "La variante de la demi-valeur",
+        "hint": "Dans laquelle on limite la frustration de n’avoir que des cartes mal assorties.",
+        "disabled": "Désactivée (défaut)",
+        "option1": "1. Trois couleurs",
+        "option2": "2. Une seule couleur"
       },
       "cardWidth": {
         "name": "Largeur des cartes",
-        "hint": "Si vous avez sélectionne l'interface par défaut pour les cartes, vous pouvez ici modifier ici la taille des cartes (défaut: 200). (Si à l'inverse vous utilisez 🦋 Monarch, alors dirigez-vous plutôt vers les paramètres du module Monarch lui-même.)"
+        "hint": "Vous pouvez ici modifier ici la taille des cartes (défaut: 200)."
       }
     },
 
@@ -49,7 +60,7 @@
       "createdCards": "Créé:",
       "characterWasShown": "Le personnage '{name}' a été montré aux joueurs.",
       "macroForOwnedItems": "Vous ne pouvez créer des bouton de macros que pour les items que vous possédez.",
-      "abilityInvalidSuit": "L'enseigne associée au talent n'est pas valide.",
+      "abilityInvalidSuit": "La couleur associée au talent n'est pas valide.",
       "spellInvalidAspect": "L'aspect associé au sort n'est pas valide.",
       "noFortuneHandForFeat": "Main du destin manquante pour accomplir la prouesse.",
       "noSorceryHandForSpell": "Main de sorcellerie manquante pour lancer le sort.",
@@ -59,7 +70,8 @@
       "deckNotFound": "Il semble qu'une pioche soit manquante. Suggérez à votre Hôte de vérifier les jeux du destin et de sorcellerie, ainsi que les paramètres du système.",
       "cannotDraw": "La pioche est épuisée. Impossible de tirer même une carte.",
       "incompleteDraw": "La pioche est épuisée. Seulement {nb1} cartes sur {nb2} ont pu être tirées.",
-      "lastCardDrawn": "La pioche est épuisée. La dernière carte vient d'être tirée."
+      "lastCardDrawn": "La pioche est épuisée. La dernière carte vient d'être tirée.",
+      "mismatchingCardTypeInDrop": "Impossible de transférer cette carte qui est du mauvais type : Sorcellerie <> Destin."
     },
 
     "dialogs": {
@@ -167,7 +179,10 @@
     },
 
     "cards": {
-      "suit": "Enseigne",
+      "handSheet": "Castle Falkenstein - Main de cartes",
+      "deckSheet": "Castle Falkenstein - Pioche de cartes",
+
+      "suit": "Couleur",
       "spades": "pique",
       "hearts": "coeur",
       "diamonds": "carreau",

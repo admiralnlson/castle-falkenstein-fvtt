@@ -3,8 +3,12 @@
 ## [v2.10.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.10.0) - Unreleased
 ### Added
 + Support for "The Divorce Variation"
++ Support for "The Hard Limit Variation"
++ Support for "The Half-Off Variation"
 + Particle effect in chat for Wild Spells
++ A check now prevents Hosts from inadvertently drag-and-dropping a card from a Fortune stack (deck, hand) onto a Sorcery one, or vice versa.
 ### Changed
++ [🦋Monarch module] Dropped support for this alternative (now somewhat outdated) cards UI module.
 + [gm-screen module] Improved the display of character sheets
 + [gm-screen module] Allow usage of [Perform Feat] and [Define Spell]
 ### Fixed
@@ -18,7 +22,7 @@
 + Cards in hands no longer overlap as much.
 + The 'Release Power' control on a Sorcery card now appears when the card is hovered. Clicking the card to zoom in on it is no longer required.
 + Compendium - Abilities: changed default Sorcery rank to 'Poor'.
-+ [🦋 Monarch UI] Removed control labels to align with the minimalistic style of the Native UI.
++ [🦋Monarch module] Removed control labels to align with the minimalistic style of the Native UI.
 ### Fixed
 + [v2.8.0 regression] When drawing a Chance card, an error notification was appearing despite everything actually working fine.
 + [v2.8.0 regression] After manual deletion of the Fortune or Sorcery deck, the new automatically-created one failed to register correctly.

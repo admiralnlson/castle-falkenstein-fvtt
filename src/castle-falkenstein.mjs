@@ -3,6 +3,7 @@ import { CastleFalkensteinActorDataModel } from "./documents/actor-datamodel.mjs
 import { CastleFalkensteinActorSheet } from "./documents/actor-sheet.mjs";
 import { CastleFalkensteinActor } from "./documents/actor.mjs";
 import { CastleFalkensteinCards } from "./documents/cards.mjs";
+import { CastleFalkensteinDeckSheet } from "./documents/deck-sheet.mjs";
 import { CastleFalkensteinHandSheet } from "./documents/hand-sheet.mjs";
 import { CastleFalkensteinAbilityDataModel } from "./documents/item-datamodel-ability.mjs";
 import { CastleFalkensteinWeaponDataModel } from "./documents/item-datamodel-weapon.mjs";
@@ -13,7 +14,6 @@ import { CastleFalkensteinWeaponSheet } from "./documents/item-sheet-weapon.mjs"
 import { CastleFalkensteinPossessionSheet } from "./documents/item-sheet-possession.mjs";
 import { CastleFalkensteinSpellSheet } from "./documents/item-sheet-spell.mjs";
 import { CastleFalkensteinItem } from "./documents/item.mjs";
-import { CastleFalkensteinMonarchConfig } from "./monarch-config.mjs";
 import { CastleFalkensteinPerformFeat } from "./forms/perform-feat.mjs";
 
 export class CastleFalkenstein {
@@ -475,12 +475,6 @@ export class CastleFalkenstein {
 
     await this.preLoadTemplates();
 
-    if (CONFIG["Cards"].sheetClasses.hand["monarch.MonarchHand"])
-    CONFIG["Cards"].sheetClasses.hand["monarch.MonarchHand"].default = (this.cardsUi == this.CARDS_UI_OPTIONS.monarch);
-
-    if (CONFIG["Cards"].sheetClasses.hand["castle-falkenstein.CastleFalkensteinHandSheet"])
-      CONFIG["Cards"].sheetClasses.hand["castle-falkenstein.CastleFalkensteinHandSheet"].default = (this.cardsUi == this.CARDS_UI_OPTIONS.native);
-
     const userLanguage = game.settings.get("core", "language");
     if (userLanguage != "en" && Array.from(game.system.languages.map(el => el.lang)).includes(userLanguage)) {
       await game.cards.updateAll(this.translateCardStack, (stack) => {
@@ -504,6 +498,11 @@ export class CastleFalkenstein {
     if (game.user.isGM) {
       await this.prepareCardStacks();
     }
+
+    DocumentSheetConfig.unregisterSheet("Actor", "core", ActorSheet);
+    DocumentSheetConfig.unregisterSheet("Item", "core", ItemSheet);
+    DocumentSheetConfig.unregisterSheet("Cards", "core", CardsConfig);
+    DocumentSheetConfig.unregisterSheet("Cards", "core", CardsHand);
 
     const userLanguage = game.settings.get("core", "language");
     if (userLanguage != "en" && Array.from(game.system.languages.map(el => el.lang)).includes(userLanguage)) {
@@ -539,10 +538,6 @@ export class CastleFalkenstein {
     this.socket.register("returnBackToDeck", this.returnBackToDeck)
   }
 
-  static get cardsUi() {
-    return game.modules.get('monarch')?.active ? this.settings.cardsUi : this.CARDS_UI_OPTIONS.native;
-  }
-
   static _cardStackSelect = (stackType) => {
     return {
       scope: "world",
@@ -571,9 +566,46 @@ export class CastleFalkenstein {
     fullValue: "fullValue"
   };
 
-  static CARDS_UI_OPTIONS = {
-    native: "native",
-    monarch: "monarch"
+  static HARD_LIMIT_VARIATION_OPTIONS = {
+    disabled: {
+      str: "disabled",
+      maxCards: {
+        PR:  4,
+        AV:  4,
+        GD:  4,
+        GR:  4,
+        EXC: 4,
+        EXT: 4
+      }
+    },
+    option1: {
+      str: "option1",
+      maxCards: {
+        PR:  1,
+        AV:  1,
+        GD:  2,
+        GR:  2,
+        EXC: 3,
+        EXT: 4
+      }
+    },
+    option2: {
+      str: "option2",
+      maxCards: {
+        PR:  1,
+        AV:  2,
+        GD:  2,
+        GR:  3,
+        EXC: 4,
+        EXT: 4
+      }
+    }
+  };
+
+  static HALF_OFF_VARIATION_OPTIONS = {
+    disabled: "disabled",
+    option1: "option1",
+    option2: "option2"
   };
 
   static SETTING_DEFINITIONS = {
@@ -607,16 +639,27 @@ export class CastleFalkenstein {
       default: this.DAMAGE_SYSTEM_OPTIONS.disabled,
       requiresReload: false
     },
-    // Player settings
-    cardsUi: {
-      scope: "client",
-      choices: () => ({ // TODO  make it more dynamic (checking that Monarch is active and if not disable the setting)
-        [this.CARDS_UI_OPTIONS.native]: game.i18n.localize("castle-falkenstein.settings.cardsUi.valueNative"),
-        [this.CARDS_UI_OPTIONS.monarch]: "🦋 Monarch"
+    hardLimitVariation: {
+      scope: "world",
+      choices: () => ({
+        [this.HARD_LIMIT_VARIATION_OPTIONS.disabled.str]: game.i18n.localize("castle-falkenstein.settings.hardLimitVariation.disabled"),
+        [this.HARD_LIMIT_VARIATION_OPTIONS.option1.str]: game.i18n.localize("castle-falkenstein.settings.hardLimitVariation.option1"),
+        [this.HARD_LIMIT_VARIATION_OPTIONS.option2.str]: game.i18n.localize("castle-falkenstein.settings.hardLimitVariation.option2")
       }),
-      default: this.CARDS_UI_OPTIONS.native,
-      requiresReload: true
+      default: this.HARD_LIMIT_VARIATION_OPTIONS.disabled.str,
+      requiresReload: false
     },
+    halfOffVariation: {
+      scope: "world",
+      choices: () => ({
+        [this.HALF_OFF_VARIATION_OPTIONS.disabled]: game.i18n.localize("castle-falkenstein.settings.halfOffVariation.disabled"),
+        [this.HALF_OFF_VARIATION_OPTIONS.option1]: game.i18n.localize("castle-falkenstein.settings.halfOffVariation.option1"),
+        [this.HALF_OFF_VARIATION_OPTIONS.option2]: game.i18n.localize("castle-falkenstein.settings.halfOffVariation.option2")
+      }),
+      default: this.HALF_OFF_VARIATION_OPTIONS.disabled,
+      requiresReload: false
+    },
+    // Player settings
     cardWidth: {
       scope: "client",
       type: Number,
@@ -644,20 +687,16 @@ export class CastleFalkenstein {
         hint: `castle-falkenstein.settings.${key}.hint`
       });
     });
-
-    // transparent migration from old setting value "default" to new value "native"
-    if (this.settings.cardsUi == "default")
-      this.settings.cardsUi = this.CARDS_UI_OPTIONS.native;
+    
   }
 
   static registerSheets() {
-    Actors.unregisterSheet("core", ActorSheet);
+
     Actors.registerSheet(this.id, CastleFalkensteinActorSheet, {
       label: "castle-falkenstein.character",
       makeDefault: true
     });
 
-    Items.unregisterSheet("core", ItemSheet);
     Items.registerSheet(this.id, CastleFalkensteinAbilitySheet, {
       types: ["ability"],
       label: "castle-falkenstein.ability.ability",
@@ -679,12 +718,17 @@ export class CastleFalkenstein {
       makeDefault: true
     });
 
-    CardStacks.registerSheet(this.id, CastleFalkensteinHandSheet, {
-      types: ["hand"],
-      label: "castle-falkenstein.settings.cardsUi.valueNative",
-      makeDefault: this.cardsUi == this.CARDS_UI_OPTIONS.native
+    CardStacks.registerSheet(this.id, CastleFalkensteinDeckSheet, {
+      types: ["deck"],
+      label: "castle-falkenstein.cards.deckSheet",
+      makeDefault: true
     });
 
+    CardStacks.registerSheet(this.id, CastleFalkensteinHandSheet, {
+      types: ["hand"],
+      label: "castle-falkenstein.cards.handSheet",
+      makeDefault: true
+    });
   }
 
   // Load all the templates for handlebars partials.
@@ -699,6 +743,25 @@ export class CastleFalkenstein {
 
   static async onRenderChatMessage(chatMessage, html, messageData) {
     CastleFalkensteinPerformFeat.onRenderChatMessage(chatMessage, html, messageData);
+  }
+
+  static async onDropOnCardStack(event, cardsSheet) {
+    const dragData = TextEditor.getDragEventData(event);
+    if ( dragData.type !== "Card" )
+      return false;
+
+    const draggedCard = await Card.implementation.fromDropData(dragData);
+    const cardParentType =  draggedCard.parent.getFlag(CastleFalkenstein.id, "type");
+    
+    const dstStack = cardsSheet.object;
+    const dstType = dstStack.getFlag(CastleFalkenstein.id, "type");
+    
+    if (cardParentType != dstType) {
+      CastleFalkenstein.notif.error(game.i18n.localize("castle-falkenstein.notifications.mismatchingCardTypeInDrop"));
+      return false;
+    }
+
+    return true;
   }
 
   static async addItemMacroAtHotbarSlot(item, slot) {
@@ -772,13 +835,6 @@ Hooks.on("renderPlayerList", (application, html, data) => CastleFalkenstein.onRe
 Hooks.on("PopOut:popout", (app, popout) => { return CastleFalkenstein.onPopout(app, popout) });
 
 Hooks.once("socketlib.ready", () => CastleFalkenstein.setupSocket());
-
-Hooks.on("getMonarchCardComponents", (monarch, components) => CastleFalkensteinMonarchConfig.onCardDisplay(monarch, components));
-
-Hooks.on("getMonarchHandComponents", (monarch, components) => CastleFalkensteinMonarchConfig.onHandDisplay(monarch, components));
-
-Hooks.on("clickMonarchCard", (event, app, card) => { return CastleFalkensteinMonarchConfig.onCardClick(event, app, card) });
-
 
 /* -------------------------------------------- */
 /*  Handlebars Helpers                          */

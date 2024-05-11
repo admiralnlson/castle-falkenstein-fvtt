@@ -8,6 +8,10 @@
 
 + The suit associated to abilities often disappears when updating the level. Have not been able to establish the rootcause yet.
 
+## V12 Migration
+
++ Upgrade to Node 18
+
 ### User Experience
 
 + `[C]` Allow Hosts to suggest a Perform Feat or Spell Definition (for that one, could include the spell def itself or part of it?)
