@@ -1,7 +1,7 @@
 {
-  "name": "Castle Falkenstein Deck",
+  "name": "Castle Falkenstein Fortune Deck",
   "type": "deck",
-  "description": "Castle Falkenstein Deck",
+  "description": "Castle Falkenstein Fortune Deck",
   "img": "systems/castle-falkenstein/src/cards/back-square.png",
   "system": {},
   "cards": [
@@ -1576,5 +1576,9 @@
   "height": null,
   "rotation": 0,
   "displayCount": true,
-  "flags": {}
+  "flags": {
+    "castle-falkenstein": {
+      "type": "fortune"
+    }
+  }
 }

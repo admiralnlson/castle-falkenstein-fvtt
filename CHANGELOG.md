@@ -6,9 +6,9 @@
 + Support for "The Hard Limit Variation"
 + Support for "The Half-Off Variation"
 + Particle effect in chat for Wild Spells
-+ A check now prevents Hosts from inadvertently drag-and-dropping a card from a Fortune stack (deck, hand) onto a Sorcery one, or vice versa.
++ A check now prevents Hosts from inadvertently dropping a card from a Fortune stack (deck, hand) onto a Sorcery one, or vice versa.
 ### Changed
-+ [🦋Monarch module] Dropped support for this alternative (now somewhat outdated) cards UI module.
++ [🦋Monarch module] Dropped support for it as alternative cards UI module.
 + [gm-screen module] Improved the display of character sheets
 + [gm-screen module] Allow usage of [Perform Feat] and [Define Spell]
 ### Fixed

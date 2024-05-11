@@ -112,8 +112,8 @@
       "defineSpell": "Définir le sort",
       "hand": {
         "render": "Afficher la main de sorcellerie",
-        "gatherPower": "Canaliser du Pouvoir",
-        "releasePower": "Libérer du Pouvoir",
+        "gatherPower": "Canaliser le Pouvoir",
+        "releasePower": "Disperser le Pouvoir",
         "castSpell": "Lancer le sort",
         "castSpellForced": "Lancer le sort (forcé)",
         "cancelSpell": "Annuler le sort",

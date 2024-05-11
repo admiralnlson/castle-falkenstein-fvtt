@@ -17,12 +17,6 @@ This system natively supports [RTG's official Fortune Deck visuals](https://rtal
 
 Fortune and Sorcery Decks are automatically created when the world is first loaded by the Host. They may be renamed or moved to a different folder.
 
-Note that a deck with the same visuals can be manually created by selecting the dedicated preset within FoundryVTT:
-
-![](./deck-preset.jpg)
-
-At this stage however, such manually created decks, unlike automatically created ones, will always have card names in English.
-
 ## [Optional] Other supported languages
 Selecting one of the languages this system officially supports (see [README](../README.md)) in Foundry VTT core settings automatically translates most text (including Compendium text if you have the Babele module installed and activated).
 
@@ -48,17 +42,21 @@ Hosts may use custom decks if they so desire. The following setup is required.
 The Host also has to pay special attention to the 'value' card property in Decks (e.g. value of Ace is 14 (not 1), Joker is 15).
 The 'suit' card property must also have a value in { spades, hearts, diamonds, clubs, joker }. Otherwise the deck won't work with the system.
 
-Once you're done, go to `Configure Settings > System Settings > Castle Falkenstein` to register your custom decks.
+## [Optional] Extra standard decks
 
-## [Optional] 2+ player groups within the same world
-Hosts who have more than one group of players playing in the same world may wish to use separate decks for each group.
+Extra 'standard' Fortune or Sorcery decks may be created by selecting the dedicated preset within FoundryVTT:
 
-To achieve this, the Host should duplicate newly created decks and then decrease ownership on each deck to match the ownership required by each player group (see table above).
+![](./deck-preset.jpg)
 
-The Host should however ensure that, at the beginning of each gaming session, the adequate set of decks for each group is selected in the Castle Falkenstein system settings. Otherwise, the 2 may end get mixed, leading to errors down the road\
-To help remind the Host they have to do this, a warning is produced each time a player connects and they don't have access to one of the decks.
+N.B. At this stage, unlike automatically created ones, these decks are not automaticalled translated and are always in English.
 
-Recommendation: due to the
+## [Optional] Configuring custom or extra standard decks as default
+
+Go to `Configure Settings > System Settings > Castle Falkenstein` to change which deck is the current Fortune or Sorcery one.
+
+When the game loads for a players, a warning is produced if they don't have access to either the current Fortune or Sorcery deck.
+
+Warning: it is not recommended to change the current Fortune or Sorcery deck while a PC or Host hand contains cards. Performing a Feat or Casting a Spell wich these cards would result in them been shuffled into a deck they do no belong.
 
 # Character Sheet
 The same character sheet is used for Dramatic Characters (= PC) and Host Characters (= NPC).
@@ -101,10 +99,10 @@ In this case, a link to the Journal Entry should probably be added in the Journa
 # Card hands
 
 A Dramatic character's Fortune (resp. Sorcery) hand is accessible via a link at the top-left of the Talents (resp. Spells) tab in the character sheet.
-The cards hand is first created when the link is clicked or the first Feat (resp. Spell) is performed (resp. defined).
+The cards hand, unless it already exists, is created when this link is clicked or when the first Feat (resp. Spell) is performed (resp. defined).
 
 The Host has a single Fortune Hand shared by all Host Characters.
-Host Character's Sorcery Hands function the same as for Dramatic Characters (one per character, created the first time it is needed).
+Host Characters' Sorcery Hands function the same as for Dramatic Characters: one per character.
 
 Deleting a hand will first return all cards it contains to the parent deck.
 

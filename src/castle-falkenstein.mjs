@@ -174,7 +174,7 @@ export class CastleFalkenstein {
   }
 
   static async createPresetDeck(type) {
-    const response = await fetch("systems/castle-falkenstein/src/cards/deck-preset.json");
+    const response = await fetch(`systems/castle-falkenstein/src/cards/deck-preset-${type}.json`);
     const deckData = await response.json();
 
     // change the deck name to match its actual type 
@@ -456,11 +456,16 @@ export class CastleFalkenstein {
       game.packs.forEach(p => p.getIndex({fields: ["name", "system.description"]}));
     }
 
-    // Declare Castle Falkenstein deck preset
-    CONFIG.Cards.presets.castleFalkensteinDeck = {
+    // Declare Castle Falkenstein deck presets
+    CONFIG.Cards.presets.castleFalkensteinFortuneDeck = {
       type: "deck",
-      label: "castle-falkenstein.system",
-      src: "systems/castle-falkenstein/src/cards/deck-preset.json"
+      label: "castle-falkenstein.settings.fortuneDeck.name",
+      src: "systems/castle-falkenstein/src/cards/deck-preset-fortune.json"
+    };
+    CONFIG.Cards.presets.castleFalkensteinSorceryDeck = {
+      type: "deck",
+      label: "castle-falkenstein.settings.sorceryDeck.name",
+      src: "systems/castle-falkenstein/src/cards/deck-preset-sorcery.json"
     };
 
     this.registerSettings();
@@ -520,13 +525,11 @@ export class CastleFalkenstein {
 
   static async returnBackToDeck(stackId, idsOfCardsPlayed) {
     const stack = game.cards.get(stackId);
-    const type = stack.getFlag(CastleFalkenstein.id, "type");
-    if (!type)
-      return;
 
-    const deck = CastleFalkenstein.deck(type);
-
-    await stack.pass(deck, idsOfCardsPlayed, {action: "play", chatNotification: false});
+    for (let id of idsOfCardsPlayed) {
+      const card = stack.cards.find(c => c.id == id);
+      card.recall();
+    }
   }
 
   static setupSocket() {
@@ -538,7 +541,7 @@ export class CastleFalkenstein {
     this.socket.register("returnBackToDeck", this.returnBackToDeck)
   }
 
-  static _cardStackSelect = (stackType) => {
+  static _cardStackSelect = (stackType, deckType) => {
     return {
       scope: "world",
       type: String,
@@ -547,7 +550,7 @@ export class CastleFalkenstein {
       choices: () => ({
         ...Object.fromEntries(
           game.cards
-            .filter(stack => stack.type === stackType)
+            .filter(stack => stack.type == stackType && stack.getFlag(CastleFalkenstein.id,"type") != (deckType == "fortune" ? "sorcery" : "fortune"))
             .map(stack => [stack.id, stack.name])
         )
       })
@@ -611,8 +614,8 @@ export class CastleFalkenstein {
   static SETTING_DEFINITIONS = {
 
     // Host settings
-    fortuneDeck: this._cardStackSelect("deck"),
-    sorceryDeck: this._cardStackSelect("deck"),
+    fortuneDeck: this._cardStackSelect("deck", "fortune"),
+    sorceryDeck: this._cardStackSelect("deck", "sorcery"),
     sorceryAbility: {
       scope: "world",
       type: String,
@@ -751,11 +754,17 @@ export class CastleFalkenstein {
       return false;
 
     const draggedCard = await Card.implementation.fromDropData(dragData);
-    const cardParentType =  draggedCard.parent.getFlag(CastleFalkenstein.id, "type");
-    
     const dstStack = cardsSheet.object;
+
+    if (draggedCard.parent.id === dstStack.id) {
+      // user is sorting only
+      return true;
+    }
+
+    const cardParentType =  draggedCard.parent.getFlag(CastleFalkenstein.id, "type");
     const dstType = dstStack.getFlag(CastleFalkenstein.id, "type");
-    
+
+
     if (cardParentType != dstType) {
       CastleFalkenstein.notif.error(game.i18n.localize("castle-falkenstein.notifications.mismatchingCardTypeInDrop"));
       return false;

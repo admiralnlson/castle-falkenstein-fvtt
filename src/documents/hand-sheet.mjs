@@ -405,7 +405,7 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     }
 
     // return back the cards in the deck
-    await CastleFalkenstein.socket.executeAsGM("returnBackToDeck", hand.id, hand.cards.map((c)=>{ return c.id; }));
+    await CastleFalkenstein.socket.executeAsGM("returnBackToDeck", hand.id, hand.cards.map(c => c.id));
 
     // Display the chat message only if the return-back was successful
     CastleFalkenstein.createChatMessage(actor, flavor, content);
@@ -428,7 +428,7 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     const actor = game.actors.get(actorId);
 
 
-    await CastleFalkenstein.socket.executeAsGM("returnBackToDeck", hand.id, hand.cards.map((c)=>{ return c.id; }));
+    await CastleFalkenstein.socket.executeAsGM("returnBackToDeck", hand.id, hand.cards.map(c => c.id));
 
     // Post message to chat
     let flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.hand.cancelSpell")}]`;
