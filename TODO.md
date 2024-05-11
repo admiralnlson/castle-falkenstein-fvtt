@@ -12,11 +12,21 @@
 
 + Upgrade to Node 18
 
+### Mechanics from "Corebook"
+
++ `[M]` Duel mechanics
+  + [M] Duel hand initiated with 2 Red cards, 2 Black cards and 2 Jokers
+  + [M] Hand action to reset it back to 2 Red, 2 Black, 2 Jokers
+  + [M] Form to play 2 cards at once out of the 6.
+  + [C] Macro for Host to start a duel b/w 2 characters based on a given Ability (not necessarily Fencing)
+  + [C] Exchange cards are shown only when both characters have selected them
+  + [C] Rest counter
+  + [C] Exchanges & Rounds materialized in combat tracker
+
 ### User Experience
 
 + `[C]` Allow Hosts to suggest a Perform Feat or Spell Definition (for that one, could include the spell def itself or part of it?)
 
-+ [M] Forbid drag-and-drop between stacks of different CF types e.g. Sorcery to Fortune.
 + [S] Ability to sort Items in the Character Sheet based on 
   + [S] name
   + [S] ability+spell: suit 
@@ -71,9 +81,10 @@
 + `[C]` Card hand button to show a Fortune or Sorcery hand in chat (or simply on screen)
 + `[S]` deplete Host or character hands before changing Decks (maybe ask for confirmation first)
 
+
 ### Fortune
 
-+ `[C]` Perform Feat - allow the use of a random card (Kessel Run optional rule from CiF p77)
++ `[C]` Perform Feat - allow the use of a random card (Kessel Run optional rule from CiF p77) ->> partially available thanks to Chance Card option
 + `[C]` Fortune hands - shortcut to perform any feat the character has (= add dropbox to the Perform Feat form)
 + `[C]` allow actors to use another actor's (/ player's) Fortune hand ("Host Notes" tab becomes "Host tab")
   + consider attaching Fortune hands to players as opposed to actors? (although this may reduce options)
@@ -96,34 +107,11 @@
 + `[C]` Confirmation dialog for Hosts when they 'Gather Power' for a Host character and 'Self Roll' isn't active
 + `[C]` Lorebook property on spells (and showing it in the spells list)
 
-### Mechanics from "Corebook"
-
-+ `[M]` Duel mechanics
-  + [M] Duel hand initiated with 2 Red cards, 2 Black cards and 2 Jokers
-  + [M] Hand action to reset it back to 2 Red, 2 Black, 2 Jokers
-  + [M] Form to play 2 cards at once out of the 6.
-  + [C] Macro for Host to start a duel b/w 2 characters based on a given Ability (not necessarily Fencing)
-  + [C] Exchange cards are shown only when both characters have selected them
-  + [C] Rest counter
-  + [C] Exchanges & Rounds materialized in combat tracker
-
 ### Mechanics from "Comme Il Faut"
 
 + `[S]` Alternative Feat Resolution (EN p79, FR p128)
 
 ### Mechanics from "Variations on the Great Game"
-
-+ `[C]` Support "Divorce Variation" / "Variante de la séparation"\
-        en: In which Abilities loosen the bonds which hold them tight to their governing Suits.\
-        fr: Dans laquelle les Talents ne sont plus aussi fermement liés aux domaines qui les gouvernent.
-
-+ `[C]` Support "Hard Limit Variation" / "Variante de la modération"\
-        en: In which rules are presented to limit the practice known as “hand dumping”.\ 
-        fr: Dans laquelle on présente des règles limitant la pratique consistant à toujours jouer toute sa main.
-
-+ `[S]` Support "Half-Off Variation" / "Variante de la demi-valeur"\
-        en: In which the tyranny of off-Suit cards is limited.\
-        fr: Dans laquelle on limite la frustration de n’avoir que des cartes mal assorties.
 
 + `[C]` Support "Six-Sided Variation" / "Variante à six faces"\
         en: In which rules are presented so those wicked individuals who so desire might use dice in the Great Game.\
