@@ -322,6 +322,18 @@ html * {
   text-align: center;
 }
 
+.castle-falkenstein-perform-feat .header {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.castle-falkenstein-perform-feat .header .max-cards {
+  margin-left: auto; 
+  margin-right: 0;
+}
+
 .castle-falkenstein .items-list .items-header .cf-poker-hand:before {
   font-size: 26px;
 }
@@ -547,45 +559,6 @@ html * {
   color: red;
 }
 
-/* Monarch display tweak */
-
-/* No editing cards while playing. Expecting system users to use presets (core, CF, RTUC or custom-made).
- * Plus, if they want to edit cards, they may deactivate the Monarch sheet and use the default Card sheet temporarily. */
-/*.monarch .card-data {
-  display: none !important;
-}*/
-
-/* When they are long, app control labels affect the display too much. Ellipsis is preferrable for them.
-   Also card names get truncated. */
-
-.monarch .app-control,
-.monarch-card .name input {
-  overflow: hidden !important;
-  white-space: nowrap !important;
-  text-overflow: ellipsis !important;
-}
-
-.monarch-card .name {
-  max-width: 60% !important;
-}
-
-/* Required until https://github.com/zeel01/monarch/issues/51 is fixed */
-.monarch .app-control[disabled] {
-  opacity: 0.4 !important;
-  cursor: default !important;
-}
-
-/* disabling the context menu does not fully hide it, it leaves a dot */
-.monarch .card.show-ctx .context-menu {
-  display: none !important;
-}
-
-.monarch-hand footer.sheet-footer button {
-  max-width: -moz-fit-content;
-  max-width: fit-content;
-  margin-left: 10px;
-}
-
 /* perform-feat and define-spell */
 
 .castle-falkenstein .cards-played,
@@ -620,7 +593,7 @@ html * {
 
 div.divorce {
   display: grid;
-  grid-template-columns: max-content 1fr min-content 5px min-content 5px min-content 5px min-content;
+  grid-template-columns: max-content 1fr min-content 5px min-content 5px min-content 5px min-content 5px;
   align-items: center;
 }
 
@@ -1026,9 +999,9 @@ div.gm-screen-grid-cell-content.castle-falkenstein .window-resizable-handle {
   display: block;
   position: absolute;
   left: calc(50% + var(--x) * 1%);
-  top: calc(10px + -50% + var(--y) * 1% );
-  transform: translate(-50%, -50%);
-  text-align: center;
+  top: calc(-5px + -50% + var(--y) * 1% );
+  transform-origin: 50% 50%;
+  /*text-align: center;*/
   width: 40px;
   height: 5px;
   /*border:dotted thin gray;*/
@@ -1042,7 +1015,6 @@ div.gm-screen-grid-cell-content.castle-falkenstein .window-resizable-handle {
 
 .chat-sidebar .wild-spell .pt b {
   display: block;
-  transform-origin: 50% 50%;
   background-blend-mode: darken, luminosity;
   position: absolute;
   /*border: dotted 3px green;*/
@@ -1051,7 +1023,7 @@ div.gm-screen-grid-cell-content.castle-falkenstein .window-resizable-handle {
   opacity: var(--o, 1);
   animation: moveRightLeft calc(var(--timescale) * var(--xt)) infinite cubic-bezier(.45,.05,.55,.95) alternate,
              flicker calc(var(--timescale) * var(--xt)) infinite cubic-bezier(.45,.05,.55,.95) alternate;
-  animation-delay: calc( -1s * var(--d, 0) ) , calc( -0.2s * var(--d, 0) );
+  animation-delay: calc(-1s * var(--d, 0));
 }
 
 .pt.s1 b {

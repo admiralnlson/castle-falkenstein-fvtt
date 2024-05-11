@@ -29,6 +29,7 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
   }
 
   /** @override */
+  // TODO V12 migration - check this override against https://github.com/foundryvtt/foundryvtt/issues/8872
   async _onDropItem(event, data) {
     if ( !this.actor.isOwner ) return false;
     const item = await Item.implementation.fromDropData(data);

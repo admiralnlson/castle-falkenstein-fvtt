@@ -65,7 +65,28 @@ export class CastleFalkensteinPerformFeat extends FormApplication {
           else
             total += w.card.value;
         } else {
-          total += 1; // TODO The Half-Off Variation is not supported yet
+          if (CastleFalkenstein.settings.halfOffVariation == CastleFalkenstein.HALF_OFF_VARIATION_OPTIONS.option1) {
+            // always half-off
+            total += Math.floor(w.card.value / 2);
+          } else if (CastleFalkenstein.settings.halfOffVariation == CastleFalkenstein.HALF_OFF_VARIATION_OPTIONS.option2) {
+            // Decision taken (b/c it's more natural):
+            // In case Divorce is used, color-matching is based on the selected suit, not the original one from the Ability.
+            const referenceSuit = this.isDivorceUsed() ? this.divorceSuit : this.ability.system.suit;
+
+            if (w.card.suit == "spades"   && referenceSuit == "clubs"    ||
+                w.card.suit == "clubs"    && referenceSuit == "spades"   ||
+                w.card.suit == "hearts"   && referenceSuit == "diamonds" ||
+                w.card.suit == "diamonds" && referenceSuit == "hearts") {
+              // same color
+              total += Math.floor(w.card.value / 2);
+            } else {
+              // different color
+              total += 1;
+            }
+          } else {
+            // half-off variation not used
+            total += 1;
+          }
         }
       }
     }
@@ -107,6 +128,14 @@ export class CastleFalkensteinPerformFeat extends FormApplication {
                           ? game.i18n.localize(`castle-falkenstein.ability.suitValues.${this.divorceSuit}`)
                           : game.i18n.localize(`castle-falkenstein.settings.divorceVariation.divorceNone`);
 
+    context.displayMaxCards = (CastleFalkenstein.settings.hardLimitVariation != CastleFalkenstein.HARD_LIMIT_VARIATION_OPTIONS.disabled.str);
+
+    const maxCards = CastleFalkenstein.HARD_LIMIT_VARIATION_OPTIONS[CastleFalkenstein.settings.hardLimitVariation].maxCards[this.ability.system.level];
+    const format = (maxCards == 1)
+                   ? "castle-falkenstein.settings.hardLimitVariation.maxCardsDrawableSingular"
+                   : "castle-falkenstein.settings.hardLimitVariation.maxCardsDrawablePlural";
+    context.maxCardsStr = game.i18n.format(format, { nb: maxCards });
+
     return context;
   }
 
@@ -127,7 +156,17 @@ export class CastleFalkensteinPerformFeat extends FormApplication {
   onClickCardSelect(event) {
     const cardId = event.currentTarget.name;
     const w = this.wrappedCards.find(w => {return w.card.id == cardId});
-    w.checked = (w.checked == "card-selected") ? "" : "card-selected";
+
+    if (w.checked == "card-selected") {
+      w.checked = "";
+    } else {
+      const alreadyCheckedCards = this.wrappedCards.filter(w => w.checked).length;
+
+      const maxCards = CastleFalkenstein.HARD_LIMIT_VARIATION_OPTIONS[CastleFalkenstein.settings.hardLimitVariation].maxCards[this.ability.system.level];
+
+      if (alreadyCheckedCards < maxCards)
+        w.checked = "card-selected";
+    }
 
     this.render();
   }
@@ -151,7 +190,7 @@ export class CastleFalkensteinPerformFeat extends FormApplication {
     
     // return the cards played back into the deck
     const wrappedCardsPlayed = this.wrappedCards.filter(w => w.checked);
-    if (wrappedCardsPlayed.length >0) {
+    if (wrappedCardsPlayed.length > 0) {
       const hand = await this.character.hand("fortune");
       await CastleFalkenstein.socket.executeAsGM("returnBackToDeck", hand.id, wrappedCardsPlayed.map(w => w.card.id));
 

@@ -1,7 +1,10 @@
 <form class="flexcol" autocomplete="off">
 	<section class="content">
     <div>
-      <div class ="ability-level-as-sentence">{{{abilityLevelAsSentenceHtml}}}</div>
+      <div class="header">
+        <div class="ability-level-as-sentence">{{{abilityLevelAsSentenceHtml}}}</div>
+        <div class="max-cards">{{#if displayMaxCards}}{{maxCardsStr}}{{/if}}</div>
+      </div>
       <hr />
       {{#if divorceSettingEnabled}}
       <div class="divorce">
@@ -14,6 +17,7 @@
         <button type="button" name="diamonds" class="divorce-button divorce-diamonds {{divorceSuit}}">{{{suitHTML.diamonds}}}</button>
         <span class="sep"></span>
         <button type="button" name="clubs" class="divorce-button divorce-clubs {{divorceSuit}}">{{{suitHTML.clubs}}}</button>
+        <span class="sep"></span>
       </div>
       <hr />
       {{/if}}
