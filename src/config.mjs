@@ -169,3 +169,6 @@ for(const type in CASTLE_FALKENSTEIN.spellDefinitions) {
       CASTLE_FALKENSTEIN.spellDefinitions[type].levels[level].label = `castle-falkenstein.spell.definition.${type}.${level}`;
   }
 }
+
+// home-made Variation on the Great Game used by @admiralnlson's table. Will test it further before proposing it as an option in this FVTT system.
+CASTLE_FALKENSTEIN.SHOW_THAUMIXOLOGY_VARIATION = false;
