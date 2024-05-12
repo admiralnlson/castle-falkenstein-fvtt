@@ -109,39 +109,3 @@ Deleting a hand will first return all cards it contains to the parent deck.
 ## Chance
 
 Fortune hands have a "? Chance" button, which draws a random card from the Fortune Deck, plays it immediately and returns the card to to the Deck.
-
-## Special notes
-
-### The Thaumixology Variation
-
-This Variation on the Great Game by FVTT system author @admiralnlson, is not official in any way. However it shows up in System Settings because.. well I use this FoundryVTT system for my own personal Hosts needs also! It is entirely optional of course!
-
----
-**The Thaumixology Variation**\
-*In which Sorcerers find themselves inspired by their local bartender.*
-
-When casting a spell, a Sorcerer may elect to use Thaumixology, which is the art of mixing Aligned and Unaligned Power in order to accelerate the casting of a spell, in exchange for a very probable Harmonic.
-
-When using Thaumixology, the card of Unaligned power with the highest value (the one that determines the Harmonic, chosen by the Host in case of a tie) grants a number of points of Thaumic Energy equal to half of its value, rounded down (rather than just 1 point).
-On the other hand, the Sorcerer cannot release Unaligned Power. The only way to release Power is to cancel the Spell entirely.
-
-__Example:__
-
-Sorcerer Eliasz attempts to Shake the Earth [♣].
-After determining the Definitions of the Spell, the Total Thaumic Energy Requirement is 17. Eliasz decides to leverage Thaumixology for this spell.
-
-He gathers Power: [J♣].
-Aligned Power: 11 points of Thaumic Energy. Insufficient to trigger the spell.
-
-He keeps gathering Power: [5♥].
-11 + (5 / 2) = 13 points of Thaumic Energy. Still insufficient.
-
-He persists in gathering Power: [8♥].
-11 + 1 + (8 / 2) = 15 points of Thaumic Energy. Still insufficient.
-
-Eliasz could Unravel, inflicting himself a Wound to gain the 2 points he lacks. But the situation isn't that dire.
-
-He persists: [A♦].
-11 + 1 + 1 + (14 / 2) = 20 points of Thaumic Energy. The spell triggers, with a Material Harmonic [♦].
-
----
