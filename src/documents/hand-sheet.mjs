@@ -422,17 +422,14 @@ export class CastleFalkensteinHandSheet extends CardsHand {
 
     let content = "";
 
-    if (!hand.spellBeingCast?.harmonics || hand.spellBeingCast.harmonics.length == 1 || short)
-      content += game.i18n.localize("castle-falkenstein.sorcery.harmonics.label") + " ";
-    else
-      content += game.i18n.localize("castle-falkenstein.sorcery.harmonics.labelHint") + ":<br/>";
+    content += game.i18n.localize("castle-falkenstein.sorcery.harmonics.label") + " ";
 
     if (hand.spellBeingCast?.harmonics?.length > 0) {
       let firstH = true;
       hand.spellBeingCast.harmonics.forEach((hSuit) => {
         const description = game.i18n.localize(`castle-falkenstein.sorcery.harmonics.${hSuit}`);
         if (!firstH) content += ", ";
-        content += CastleFalkenstein.cardSuitHTML(hSuit) + `&nbsp;<span class="harmonics-desc">${description}</span></li>`
+        content += `<span class="harmonics-desc">${description}</span>&nbsp;${CastleFalkenstein.cardSuitHTML(hSuit)}</li>`
         firstH = false;
       });
     } else {

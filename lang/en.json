@@ -133,7 +133,6 @@
       "wildSpell": "Wild Spell!",
       "harmonics": {
         "label": "Harmonic:",
-        "labelHint": "Harmonic (the Host picks one):",
         "none": "none",
         "spades": "Spiritual",
         "hearts": "Emotional",

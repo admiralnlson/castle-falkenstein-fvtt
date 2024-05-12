@@ -133,12 +133,11 @@
       "wildSpell": "Surcharge thaumique !",
       "harmonics": {
         "label": "Harmonique :",
-        "labelHint": "Harmonique (l'Hôte en choisit une)",
         "none": "non",
-        "spades": "Spirituelle",
-        "hearts": "Émotionelle",
-        "diamonds": "Matérielle",
-        "clubs": "Élémentaire"
+        "spades": "spirituelle",
+        "hearts": "émotionelle",
+        "diamonds": "matérielle",
+        "clubs": "élémentaire"
       }
     },
 
