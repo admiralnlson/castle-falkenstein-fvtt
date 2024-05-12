@@ -5,13 +5,13 @@
 + Support for "The Divorce Variation"
 + Support for "The Hard Limit Variation"
 + Support for "The Half-Off Variation"
-+ Support for "The Thaumixology Variation" (unofficial, description in USERGUIDE.md)
 + Particle effect in chat for Wild Spells
 + A check now prevents Hosts from inadvertently dropping a card from a Fortune stack (deck, hand) onto a Sorcery one, or vice versa.
 ### Changed
 + [🦋Monarch module] Dropped support for this alternative cards UI module.
 + [GM Screen module] Improved the display of GM Screen character sheets, and allowed usage of [Perform Feat] and [Define Spell] from within them
 ### Fixed
++ The additional modifier label in the Define Spell dialog was going blank if edited.
 + Fixed statblock for the '.44 Drop Pistol' (damage: 4/5/6 (D) -> 3/4/5 (C))
 
 ## [v2.9.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.9.0) - 2023/11/19
