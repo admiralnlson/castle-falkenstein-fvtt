@@ -1,6 +1,6 @@
 # Changelog
 
-## [v2.10.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.10.0) - Unreleased
+## [v2.10.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.10.0) - 2024/05/13
 ### Added
 + Support for "The Divorce Variation"
 + Support for "The Hard Limit Variation"
@@ -12,6 +12,7 @@
 + [GM Screen module] Improved the display of GM Screen character sheets, and allowed usage of [Perform Feat] and [Define Spell] from within them
 ### Fixed
 + The additional modifier label in the Define Spell dialog was going blank if edited.
++ The 'Show Others' option on spells was not displaying the thaumic level and description of spells.
 + Fixed statblock for the '.44 Drop Pistol' (damage: 4/5/6 (D) -> 3/4/5 (C))
 
 ## [v2.9.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.9.0) - 2023/11/19
