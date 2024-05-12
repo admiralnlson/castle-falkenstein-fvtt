@@ -33,7 +33,7 @@ export class CastleFalkensteinCards extends Cards {
       total += CASTLE_FALKENSTEIN.spellDefinitions[key].levels[value].value;
     }
 
-    total += spellBeingCast.customModifier.value;
+    total += isNaN(spellBeingCast.customModifier.value) ? 0 : spellBeingCast.customModifier.value;
 
     return total > 0 ? total : 0;
   }

@@ -105,7 +105,7 @@ export class CastleFalkensteinDefineSpell extends FormApplication {
   }
 
   _onCustomModifierLabelChange(event) {
-    this.spellBeingCast.customModifier.label = event.currentTarget.label;
+    this.spellBeingCast.customModifier.label = event.currentTarget.value;
     this.render();
   }
 
