@@ -6,7 +6,7 @@
 
 ## Known Bugs
 
-+ The suit associated to abilities often disappears when updating the level. Have not been able to establish the rootcause yet.
++ The Suit associated to Abilities sometimes disappears. Have not been able to establish the rootcause yet.
 
 ## V12 Migration
 
@@ -22,6 +22,12 @@
   + [C] Exchange cards are shown only when both characters have selected them
   + [C] Rest counter
   + [C] Exchanges & Rounds materialized in combat tracker
+
+### Mechanics from sourcebooks
+
++ Curious Creatures > Familiars
+  + new form: Draw 2 Power cards / pick one to keep
+    + if implemented, trash(Release Power) button can be removed from Aligned Power cards
 
 ### User Experience
 
