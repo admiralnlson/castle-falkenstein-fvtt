@@ -735,6 +735,7 @@ div.divorce {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  font-weight: bold;
 }
 
 .app.castle-falkenstein.cards-hand div.spell-being-cast .power-gathering-progress {
