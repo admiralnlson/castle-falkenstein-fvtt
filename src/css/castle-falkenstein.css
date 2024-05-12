@@ -504,8 +504,8 @@ html * {
   grid-template-columns: auto 1fr auto 5px auto 25px;
 }
 
-.castle-falkenstein.item .spell-sheet-header .level {
-  text-align: center;
+.castle-falkenstein.item .spell-sheet-header .thaumic-level {
+  text-align: right;
 }
 
 .castle-falkenstein.item .sheet-body {
