@@ -5,6 +5,9 @@
     <span class="spell-suit">[<span class="suit-symbol-{{spellBeingCast.spellObject.system.suit}}">{{spellBeingCast.suitSymbol}}</span>]</span>
     <span class="power-gathering-progress">{{spellBeingCast.powerGathered}} / {{spellBeingCast.powerNeed}}</span>
   </div>
+  <div class="harmonics">
+    <span class="harmonic-txt">{{{harmonicHTML}}}</span>
+  </div>
   <hr class="spell-being-cast" />
   {{/if}}
   <div class="card-hand-controls">
@@ -45,9 +48,9 @@
         <div class="castle-falkenstein-card-controls flexcol">
           {{#if ../owner}}
           {{#ifequal ../typeFlag "sorcery"}}
-          <a class="card-control" data-action="releasePower" title="{{localize "castle-falkenstein.sorcery.hand.releasePower"}}" >
-            <i class="fas fa-trash"></i>
-          </a>
+            <a class="card-control" data-action="releasePower" title="{{localize "castle-falkenstein.sorcery.hand.releasePower"}}">
+              <i class="fas fa-trash"></i>
+            </a>
           {{/ifequal}}
           {{/if}}
         </div>

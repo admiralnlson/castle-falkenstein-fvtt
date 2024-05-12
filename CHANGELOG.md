@@ -5,12 +5,12 @@
 + Support for "The Divorce Variation"
 + Support for "The Hard Limit Variation"
 + Support for "The Half-Off Variation"
++ Support for "The Thaumixology Variation" (unofficial, description in USERGUIDE.md)
 + Particle effect in chat for Wild Spells
 + A check now prevents Hosts from inadvertently dropping a card from a Fortune stack (deck, hand) onto a Sorcery one, or vice versa.
 ### Changed
-+ [🦋Monarch module] Dropped support for it as alternative cards UI module.
-+ [gm-screen module] Improved the display of character sheets
-+ [gm-screen module] Allow usage of [Perform Feat] and [Define Spell]
++ [🦋Monarch module] Dropped support for this alternative cards UI module.
++ [GM Screen module] Improved the display of GM Screen character sheets, and allowed usage of [Perform Feat] and [Define Spell] from within them
 ### Fixed
 + Fixed statblock for the '.44 Drop Pistol' (damage: 4/5/6 (D) -> 3/4/5 (C))
 
@@ -104,7 +104,7 @@
 
 ## [v2.0.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.0.0) - 2022/11/13
 ### Added
-+ The system now has a native user interface for card hands. The '🦋 Monarch' module remains usable as an alternative.
++ The system now has a native user interface for card hands. The '🦋Monarch' module remains usable as an alternative.
 ### Changed
 + As from this version of the system, Foundry V10 is the minimum required generation. Hosts who cannot migrate from V9 to V10 will need to keep using Castle Falkenstein v1.x
 + Character descriptions, diaries, host notes and ability/spell/weapon/possession descriptions now make use of the ProseMirror editor (the one proposed by default in V10 journals).
@@ -149,7 +149,7 @@
 ## [v1.1.1](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.1.1) - 2022/05/05
 ### Fixed
 + Character health now defaults to empty (previously was given the arbitrary value of 10).
-+ Character sheets used on the 'GM screen' module will now also display correctly after a refresh.
++ Character sheets used on the 'GM Screen' module will now also display correctly after a refresh.
 + Non system-specific card hands will now display correctly.
 
 ## [v1.1.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.1.0) - 2022/04/03
@@ -170,7 +170,7 @@
 ## [v1.0.2](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.0.2) - 2022/03/22
 ### Fixed
 + False positive warning about Host lacking permissions on decks
-+ Replaced hard dependencies (on libWrapper and Monarch) which are not respected by the FoundryVTT client. Replaced with soft dependencies instead.
++ Replaced hard dependencies (on libWrapper and 🦋Monarch) which are not respected by the FoundryVTT client. Replaced with soft dependencies instead.
 
 ## [v1.0.1](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v1.0.1) - 2022/03/20
 ### Fixed
@@ -194,7 +194,7 @@
 ### Added
 + With permission from RTG, added a deck preset based on [R. Talsorian Games Castle Falkenstein Fortune Deck visuals](https://rtalsoriangames.com/2020/07/24/falkenstein-friday-the-fortune-deck/).
 + Fortune/Sorcery decks (based on preset above) and discard piles are now created automatically the first time the game is started. They are recreated on F5 if one of them is missing. Users may still use their own custom decks if preferred via system settings.
-+ Monarch (Card UI enhancement) module was made a dependency.
++ 🦋Monarch module (Card UI enhancement) module was made a dependency.
 + Card hand permissions are now updated accordingly each time character permissions are.
 + When a player draws a card from a deck and there are none left to draw, the corresponding discard pile is now shuffled back into the deck to satisfy the request.
 + Compendium pack for Abilities mentioned in the Corebook (English + French (requires Babele module))

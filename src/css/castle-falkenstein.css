@@ -521,44 +521,6 @@ html * {
   text-align: right !important;
 }
 
-.castle-falkenstein .suit-symbol-spades,
-.chat-message .suit-symbol-spades,
-.castle-falkenstein .suit-symbol-hearts,
-.chat-message .suit-symbol-hearts,
-.castle-falkenstein .suit-symbol-diamonds,
-.chat-message .suit-symbol-diamonds,
-.castle-falkenstein .suit-symbol-clubs,
-.chat-message .suit-symbol-clubs,
-.castle-falkenstein .suit-symbol-\?,
-.chat-message .suit-symbol-\?,
-.castle-falkenstein .suit-select {
-  font-size: 130%;
-}
-
-.castle-falkenstein .suit-symbol--,
-.chat-message span.suit-symbol--,
-.castle-falkenstein .suit-select *:nth-child(1) {
-  color: gray;
-}
-
-.castle-falkenstein .suit-symbol-spades,
-.chat-message .suit-symbol-spades,
-.castle-falkenstein .suit-select *:nth-child(2),
-.castle-falkenstein .suit-symbol-clubs,
-.chat-message .suit-symbol-clubs,
-.castle-falkenstein .suit-select *:nth-child(5) {
-  color: black;
-}
-
-.castle-falkenstein .suit-symbol-hearts,
-.chat-message .suit-symbol-hearts,
-.castle-falkenstein .suit-select *:nth-child(3),
-.castle-falkenstein .suit-symbol-diamonds,
-.chat-message .suit-symbol-diamonds,
-.castle-falkenstein .suit-select *:nth-child(4) {
-  color: red;
-}
-
 /* perform-feat and define-spell */
 
 .castle-falkenstein .cards-played,
@@ -677,6 +639,13 @@ div.divorce {
   margin-right: 2px;
 }
 
+.castle-falkenstein .spell-definitions .thaumixology {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+}
+
 /* compatibility for chat messages generated before 1.1.0 */
 .castle-falkenstein .cards-played .card-played::before,
 .chat-message .cards-played .card-played::before,
@@ -746,6 +715,7 @@ div.divorce {
 }
 
 .app.castle-falkenstein.cards-hand .spell-being-cast,
+.app.castle-falkenstein.cards-hand .harmonic-txt,
 .app.castle-falkenstein.cards-hand .suit-symbol-spades,
 .app.castle-falkenstein.cards-hand .suit-symbol-hearts,
 .app.castle-falkenstein.cards-hand .suit-symbol-diamonds,
@@ -855,8 +825,10 @@ div.castle-falkenstein.cards-config a.card-control {
   max-width: min-content;
 }
 
+div.castle-falkenstein.cards-config a.card-control.disabled,
 div.castle-falkenstein.cards-config a[disabled].card-control {
   color: var(--color-text-dark-inactive);
+  pointer-events: none;
 }
 
 .handedCards li.card div.castle-falkenstein-card-controls {
@@ -1024,6 +996,48 @@ div.gm-screen-grid-cell-content.castle-falkenstein .window-resizable-handle {
   animation: moveRightLeft calc(var(--timescale) * var(--xt)) infinite cubic-bezier(.45,.05,.55,.95) alternate,
              flicker calc(var(--timescale) * var(--xt)) infinite cubic-bezier(.45,.05,.55,.95) alternate;
   animation-delay: calc(-1s * var(--d, 0));
+}
+
+.castle-falkenstein .suit-symbol-spades,
+.chat-message .suit-symbol-spades,
+.castle-falkenstein .suit-symbol-hearts,
+.chat-message .suit-symbol-hearts,
+.castle-falkenstein .suit-symbol-diamonds,
+.chat-message .suit-symbol-diamonds,
+.castle-falkenstein .suit-symbol-clubs,
+.chat-message .suit-symbol-clubs,
+.castle-falkenstein .suit-symbol-\?,
+.chat-message .suit-symbol-\?,
+.castle-falkenstein .suit-select {
+  font-size: 130%;
+}
+
+.castle-falkenstein .suit-symbol--,
+.chat-message span.suit-symbol--,
+.castle-falkenstein .suit-select *:nth-child(1) {
+  color: gray;
+}
+
+.castle-falkenstein .suit-symbol-spades,
+.app.castle-falkenstein.cards-hand .suit-symbol-spades,
+.chat-message .suit-symbol-spades,
+.castle-falkenstein .suit-select *:nth-child(2),
+.castle-falkenstein .suit-symbol-clubs,
+.app.castle-falkenstein.cards-hand .suit-symbol-clubs,
+.chat-message .suit-symbol-clubs,
+.castle-falkenstein .suit-select *:nth-child(5) {
+  color: black;
+}
+
+.castle-falkenstein .suit-symbol-hearts,
+.app.castle-falkenstein.cards-hand .suit-symbol-hearts,
+.chat-message .suit-symbol-hearts,
+.castle-falkenstein .suit-select *:nth-child(3),
+.castle-falkenstein .suit-symbol-diamonds,
+.app.castle-falkenstein.cards-hand .suit-symbol-diamonds,
+.chat-message .suit-symbol-diamonds,
+.castle-falkenstein .suit-select *:nth-child(4) {
+  color: red;
 }
 
 .pt.s1 b {

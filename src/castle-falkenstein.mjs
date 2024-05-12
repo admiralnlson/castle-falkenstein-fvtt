@@ -611,6 +611,11 @@ export class CastleFalkenstein {
     option2: "option2"
   };
 
+  static THAUMIXOLOGY_VARIATION_OPTIONS = {
+    disabled: "disabled",
+    enabled: "enabled"
+  };
+
   static SETTING_DEFINITIONS = {
 
     // Host settings
@@ -658,6 +663,15 @@ export class CastleFalkenstein {
         [this.HALF_OFF_VARIATION_OPTIONS.disabled]: game.i18n.localize("castle-falkenstein.settings.halfOffVariation.disabled"),
         [this.HALF_OFF_VARIATION_OPTIONS.option1]: game.i18n.localize("castle-falkenstein.settings.halfOffVariation.option1"),
         [this.HALF_OFF_VARIATION_OPTIONS.option2]: game.i18n.localize("castle-falkenstein.settings.halfOffVariation.option2")
+      }),
+      default: this.HALF_OFF_VARIATION_OPTIONS.disabled,
+      requiresReload: false
+    },
+    thaumixologyVariation: {
+      scope: "world",
+      choices: () => ({
+        [this.THAUMIXOLOGY_VARIATION_OPTIONS.disabled]: game.i18n.localize("castle-falkenstein.settings.thaumixologyVariation.disabled"),
+        [this.THAUMIXOLOGY_VARIATION_OPTIONS.enabled]: game.i18n.localize("castle-falkenstein.settings.thaumixologyVariation.enabled")
       }),
       default: this.HALF_OFF_VARIATION_OPTIONS.disabled,
       requiresReload: false

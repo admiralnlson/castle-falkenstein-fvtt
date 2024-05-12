@@ -33,7 +33,7 @@
       },
       "hardLimitVariation": {
         "name": "The Hard Limit Variation",
-        "hint": "In which rules are presented to limit the practice known as “hand dumping”.",
+        "hint": "[Host only] In which rules are presented to limit the practice known as “hand dumping”.",
         "disabled": "Disabled (default)",
         "option1": "1. PR/AV:1 ; GD/GR:2 ; EXC:3 ; EXT:4",
         "option2": "2. PR:1 ; AV/GD:2 ; GR:3 ; EXC/EXT:4",
@@ -42,10 +42,17 @@
       },
       "halfOffVariation": {
         "name": "The Half-Off Variation",
-        "hint": "In which the tyranny of off-Suit cards is limited.",
+        "hint": "[Host only] In which the tyranny of off-Suit cards is limited.",
         "disabled": "Disabled (default)",
         "option1": "1. Any cards of an improper Suit",
         "option2": "2. Only if they which match the color"
+      },
+      "thaumixologyVariation": {
+        "name": "The Thaumixology Variation",
+        "hint": "[Host only] In which Sorcerers find themselves inspired by their local bartender (by system author @admiralnlson. Description of this Variation on the Great Game in USERGUIDE.md)",
+        "disabled": "Disabled (default)",
+        "enabled": "Enabled",
+        "leverageLabel": "Leverage Thaumixology"
       },
       "cardWidth": {
         "name": "Cards width",
@@ -83,6 +90,10 @@
       "performFeatHandRefill": {
         "description1": "Your Fortune Hand contains only {nb} cards.",
         "description2": "Would you like to refill it?"
+      },
+      "thaumixologyReleaseAllPower": {
+        "description1": "You are using Thaumixology for this spell, meaning you cannot normally release Power.",
+        "description2": "Are you sure?"
       }
     },
 
@@ -121,8 +132,9 @@
       },
       "wildSpell": "Wild Spell!",
       "harmonics": {
-        "labelOne": "Harmonics",
-        "labelMore": "Harmonics (the Host picks one)",
+        "label": "Harmonic:",
+        "labelHint": "Harmonic (the Host picks one):",
+        "none": "none",
         "spades": "Spiritual",
         "hearts": "Emotional",
         "diamonds": "Material",
@@ -325,7 +337,7 @@
           "f": "F"
         }
       },
-      "customModifier": "Additional modifier"
+      "customModifier": "Additional modifier..."
     },
 
     "host": "Host",

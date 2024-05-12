@@ -33,7 +33,7 @@
       },
       "hardLimitVariation": {
         "name": "La variante de la modération",
-        "hint": "Dans laquelle on présente des règles limitant la pratique consistant à toujours jouer toute sa main.",
+        "hint": "[Hôte uniquement] Dans laquelle on présente des règles limitant la pratique consistant à toujours jouer toute sa main.",
         "disabled": "Désactivée (défaut)",
         "option1": "1. Rien ne vaut le savoir-faire !",
         "option2": "2. Il faut savoir provoquer la chance !",
@@ -42,10 +42,17 @@
       },
       "halfOffVariation": {
         "name": "La variante de la demi-valeur",
-        "hint": "Dans laquelle on limite la frustration de n’avoir que des cartes mal assorties.",
+        "hint": "[Hôte uniquement] Dans laquelle on limite la frustration de n’avoir que des cartes mal assorties.",
         "disabled": "Désactivée (défaut)",
         "option1": "1. Trois couleurs",
         "option2": "2. Une seule couleur"
+      },
+      "thaumixologyVariation": {
+        "name": "La variante de la thaumixologie",
+        "hint": "[Hôte uniquement] Dans laquelle les Sorciers se voient inspirés par leur barman local (par l'auteur du système @admiralnlson. Description de cette Variation du Grand Jeu dans USERGUIDE.md)",
+        "disabled": "Désactivée (défaut)",
+        "enabled": "Activée",
+        "leverageLabel": "Faire appel à la thaumixologie"
       },
       "cardWidth": {
         "name": "Largeur des cartes",
@@ -83,6 +90,10 @@
       "performFeatHandRefill": {
         "description1": "Votre main du destin ne contient que {nb} cartes.",
         "description2": "Souhaitez-vous la compléter ?"
+      },
+      "thaumixologyReleaseAllPower": {
+        "description1": "Vous utilisez la thaumixologie pour ce sort, ce qui signifie que vous ne pouvez normalement pas disperser du Pouvoir.",
+        "description2": "Êtes-vous sûr(e) ?"
       }
     },
 
@@ -121,8 +132,9 @@
       },
       "wildSpell": "Surcharge thaumique !",
       "harmonics": {
-        "labelOne": "Harmonique",
-        "labelMore": "Harmoniques (l'Hôte en choisit une)",
+        "label": "Harmonique :",
+        "labelHint": "Harmonique (l'Hôte en choisit une)",
+        "none": "non",
         "spades": "Spirituelle",
         "hearts": "Émotionelle",
         "diamonds": "Matérielle",
@@ -325,7 +337,7 @@
           "f": "F"
         }
       },
-      "customModifier": "Modificateur additionnel"
+      "customModifier": "Modificateur additionnel..."
     },
 
     "host": "Hôte",

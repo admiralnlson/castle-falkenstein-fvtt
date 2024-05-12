@@ -31,7 +31,8 @@ export class CastleFalkensteinDefineSpell extends FormApplication {
       actorItemId: this.spell.id,
       definitionLevels: {},
       sorceryAbilityId: this.character.sorceryAbility.id,
-      customModifier: { label: game.i18n.localize("castle-falkenstein.spell.customModifier"), value: 0 }
+      customModifier: { label: game.i18n.localize("castle-falkenstein.spell.customModifier"), value: 0 },
+      usesThaumixology: false
     };
 
     for (const key in CASTLE_FALKENSTEIN.spellDefinitions) {
@@ -57,15 +58,25 @@ export class CastleFalkensteinDefineSpell extends FormApplication {
       }));
     }
 
-    return {
-      selectedSorceryAbilityLevel: selectedSorceryAbility ? selectedSorceryAbility.system.levelValue : "not found",
-      spell: this.spell,
-      spellSuitSymbol: CASTLE_FALKENSTEIN.cardSuitsSymbols[this.spell.system.suit],
-      spellBeingCast: this.spellBeingCast,
-      spellDefinitions: CASTLE_FALKENSTEIN.spellDefinitions,
-      total: this.computeTotal(),
-      availableSorceryAbilities: Object.fromEntries(this.character.sorceryAbilityAndSpecializations.map(a => [a.id, a.system.displayName]))
-    }
+    let context = {};
+    
+    context.selectedSorceryAbilityLevel = selectedSorceryAbility ? selectedSorceryAbility.system.levelValue : "not found";
+
+    context.spell = this.spell;
+
+    context.spellSuitSymbol = CASTLE_FALKENSTEIN.cardSuitsSymbols[this.spell.system.suit];
+
+    context.spellBeingCast = this.spellBeingCast;
+
+    context.spellDefinitions = CASTLE_FALKENSTEIN.spellDefinitions;
+
+    context.total = this.computeTotal();
+
+    context.availableSorceryAbilities = Object.fromEntries(this.character.sorceryAbilityAndSpecializations.map(a => [a.id, a.system.displayName]));
+
+    context.thaumixologySettingEnabled = CastleFalkenstein.settings.thaumixologyVariation == CastleFalkenstein.THAUMIXOLOGY_VARIATION_OPTIONS.enabled;
+    
+    return context;
   }
 
   /** @override */
@@ -79,6 +90,8 @@ export class CastleFalkensteinDefineSpell extends FormApplication {
     html.find('.custom-modifier-label').change(event => this._onCustomModifierLabelChange(event));
 
     html.find('.custom-modifier-value').change(event => this._onCustomModifierValueChange(event));
+
+    html.find(".thaumixology-checkbox").change(event => this._onThaumixologyCheckboxChange(event));
   }
 
   _onDefinitionSelectChange(event) {
@@ -98,6 +111,11 @@ export class CastleFalkensteinDefineSpell extends FormApplication {
 
   _onCustomModifierValueChange(event) {
     this.spellBeingCast.customModifier.value = parseInt(event.currentTarget.value);
+    this.render();
+  }
+
+  _onThaumixologyCheckboxChange(event) {
+    this.spellBeingCast.usesThaumixology = event.currentTarget.checked;
     this.render();
   }
 

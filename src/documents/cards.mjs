@@ -21,6 +21,7 @@ export class CastleFalkensteinCards extends Cards {
   //    customModifier: { label: "<label>", value: <value> },
   //    isWildSpell: <true/false>,
   //    harmonics: [ "<spades", "<hearts" ]
+  //    usesThaumixology: <true/false>
   //  }
 
   static computeTotalPowerNeed(actorObject, spellBeingCast) {
@@ -59,6 +60,7 @@ export class CastleFalkensteinCards extends Cards {
             spellBeingCast.powerGathered += card.value;
           else {
             spellBeingCast.powerGathered += 1;
+            
             if (card.value > maxHarmonicValue) {
               spellBeingCast.harmonics = [ card.suit ];
               maxHarmonicValue = card.value;
@@ -68,8 +70,13 @@ export class CastleFalkensteinCards extends Cards {
           }
         }
       }
-      if (spellBeingCast.harmonics.length == 0)
+
+      if (spellBeingCast.harmonics.length == 0) {
         delete spellBeingCast.harmonics;
+      } else if (spellBeingCast.usesThaumixology) {
+        // already added 1 point above for it
+        spellBeingCast.powerGathered += Math.floor(maxHarmonicValue / 2) - 1;
+      }
     }
 
     return spellBeingCast;

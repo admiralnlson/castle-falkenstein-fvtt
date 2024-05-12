@@ -22,8 +22,14 @@
         {{/with}}
         {{/with}}
         {{/each}}
-        <input type="texT" class="fixed resource-label custom-modifier-label" value="{{spellBeingCast.customModifier.label}}"></input>
+        <input type="text" class="fixed resource-label custom-modifier-label" value="{{spellBeingCast.customModifier.label}}"></input>
         <input type="number" step="1" class="value custom-modifier-value" value={{spellBeingCast.customModifier.value}}></input>
+        {{#if thaumixologySettingEnabled}}
+        <div class="thaumixology">
+          <input type="checkbox" id="thaumixology" name="spellBeingCast.usesThaumixology" class="thaumixology-checkbox" {{checked spellBeingCast.usesThaumixology}}/>
+          <label class="resource-label" for="thaumixology">{{localize 'castle-falkenstein.settings.thaumixologyVariation.leverageLabel'}}</label>
+        </div>
+        {{/if}}
       </div>
       <br />
       <div class="define-spell-total">{{total}}</div>

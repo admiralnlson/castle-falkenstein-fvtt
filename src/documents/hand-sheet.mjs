@@ -9,7 +9,7 @@ import { CastleFalkensteinPerformFeat } from "../forms/perform-feat.mjs";
 export class CastleFalkensteinHandSheet extends CardsHand {
 
   static HEIGHT_WITHOUT_SPELL = 60;
-  static HEIGHT_WITH_SPELL = 97;
+  static HEIGHT_WITH_SPELL = 119;
 
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -81,7 +81,6 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     context.disabled.chanceCard = context.inCompendium || CastleFalkensteinHandSheet.chanceCardDisabled(hand);
 
     context.disabled.gatherPower = context.inCompendium || !context.spellBeingCast || CastleFalkensteinHandSheet.gatherPowerDisabled(hand);
-    //context.disabled.releasePower = context.inCompendium || !context.spellBeingCast || CastleFalkensteinHandSheet.releasePowerDisabled(card, hand);
     context.disabled.castSpell = context.inCompendium || !context.spellBeingCast || CastleFalkensteinHandSheet.castSpellDisabled(hand);
     context.disabled.cancelSpell = context.inCompendium || !context.spellBeingCast || CastleFalkensteinHandSheet.cancelSpellDisabled(hand);
 
@@ -89,6 +88,8 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     context.cardHeight = CastleFalkenstein.computeCardHeight(deck);
 
     context.rtgVisuals = CastleFalkenstein.usingRTGCardVisuals(deck) ? "rtg-visuals" : "";
+
+    context.harmonicHTML = CastleFalkensteinHandSheet.harmonicHTML(hand, true);
 
     return context;
   }
@@ -155,6 +156,7 @@ export class CastleFalkensteinHandSheet extends CardsHand {
 
   /** @override */
   async _onCardControl(event) {
+
     super._onCardControl(event);
 
     const button = event.currentTarget;
@@ -174,12 +176,14 @@ export class CastleFalkensteinHandSheet extends CardsHand {
       case "gatherPower":
         return CastleFalkensteinHandSheet.gatherPower(hand);
       case "releasePower":
+        event.stopPropagation(); // prevents zoom on the card
         return CastleFalkensteinHandSheet.releasePower(card, hand);
       case "castSpell":
         return CastleFalkensteinHandSheet.castSpell(hand);
       case "cancelSpell":
         return CastleFalkensteinHandSheet.cancelSpell(hand);
     }
+
   }
 
   static openActorDisabled(hand) {
@@ -280,21 +284,30 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     CastleFalkenstein.createChatMessage(actor, flavor, content);
   }
 
-  static releasePowerDisabled(card, hand) {
-    // TODO disable the release of unaligned power (if done, maybe reconsider label & chat messages content)
-    //const actorId = hand.getFlag(CastleFalkenstein.id, "actor");
-    //if (actorId === "host")
-    //  return true;
-    //const actor = game.actors.get(actorId);
-    //return !actor.isSpellAligned(card);
-    return false;
-  }
-
-  static async releasePower(card, hand) {
-    const actorId = hand.getFlag(CastleFalkenstein.id, "actor");
+  static async releasePower(card, hand, force = false) {
+    const actorId =   hand.getFlag(CastleFalkenstein.id, "actor");
     if (actorId === "host")
       return; // should never be able to click from host hand anyway (see 'disabled' above)
     const actor = game.actors.get(actorId);
+
+    if (hand.spellBeingCast.usesThaumixology) {
+      const i18nTitle = game.i18n.localize("castle-falkenstein.dialogs.confirmTitle");
+      const i18nDescription1 = game.i18n.format("castle-falkenstein.dialogs.thaumixologyReleaseAllPower.description1");
+      const i18nDescription2 = game.i18n.localize("castle-falkenstein.dialogs.thaumixologyReleaseAllPower.description2");
+
+      if (!force) {
+        Dialog.confirm({
+          title: i18nTitle,
+          content: `<p>${i18nDescription1}</p><p>${i18nDescription2}</p>`,
+          yes: async () => {
+            CastleFalkensteinHandSheet.releasePower(card, hand, true);
+          },
+          defaultYes: false
+        });
+
+        return;
+      }
+    }
 
     await CastleFalkenstein.socket.executeAsGM("returnBackToDeck", hand.id, [card.id]);
 
@@ -388,20 +401,8 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     } else if (spellBeingCast.harmonics) {
       // show harmonic type(s) (up to 3 for the GM to choose from in case of ex-aequo), if unaligned power was used.
       content += `<hr/><div class="harmonics">`
-
-      if (spellBeingCast.harmonics.length == 1)
-        content += game.i18n.localize("castle-falkenstein.sorcery.harmonics.labelOne") + ": ";
-      else
-        content += game.i18n.localize("castle-falkenstein.sorcery.harmonics.labelMore") + ":<br/>";
-
-      let firstH = true;
-      spellBeingCast.harmonics.forEach((hSuit) => {
-        const description = game.i18n.localize(`castle-falkenstein.sorcery.harmonics.${hSuit}`);
-        if (!firstH) content += ", ";
-        content += CastleFalkenstein.cardSuitHTML(hSuit) + `&nbsp;<span class="harmonics-desc">${description}</span></li>`
-        firstH = false;
-      });
-      content += ".</div>";
+      content += CastleFalkensteinHandSheet.harmonicHTML(hand, false);
+      content += "</div>";
     }
 
     // return back the cards in the deck
@@ -415,6 +416,31 @@ export class CastleFalkensteinHandSheet extends CardsHand {
 
     // refresh the Sorcery hand sheet
     hand.sheet.render();
+  }
+
+  static harmonicHTML(hand, short) {
+
+    let content = "";
+
+    if (!hand.spellBeingCast?.harmonics || hand.spellBeingCast.harmonics.length == 1 || short)
+      content += game.i18n.localize("castle-falkenstein.sorcery.harmonics.label") + " ";
+    else
+      content += game.i18n.localize("castle-falkenstein.sorcery.harmonics.labelHint") + ":<br/>";
+
+    if (hand.spellBeingCast?.harmonics?.length > 0) {
+      let firstH = true;
+      hand.spellBeingCast.harmonics.forEach((hSuit) => {
+        const description = game.i18n.localize(`castle-falkenstein.sorcery.harmonics.${hSuit}`);
+        if (!firstH) content += ", ";
+        content += CastleFalkenstein.cardSuitHTML(hSuit) + `&nbsp;<span class="harmonics-desc">${description}</span></li>`
+        firstH = false;
+      });
+    } else {
+      content += " " + game.i18n.localize(`castle-falkenstein.sorcery.harmonics.none`);
+    }
+    content += ".";
+
+    return content;
   }
 
   static cancelSpellDisabled(hand) {
