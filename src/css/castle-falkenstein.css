@@ -724,6 +724,17 @@ div.divorce {
   color: var(--color-text-light-highlight);
 }
 
+.app.castle-falkenstein.cards-hand .harmonic {
+  min-height: 22px;
+  position: relative;
+}
+
+.app.castle-falkenstein.cards-hand .harmonic-txt {
+  line-height: 22px;
+  position: absolute;
+  bottom: 0;
+}
+
 .app.castle-falkenstein.cards-hand div.spell-being-cast {
   display: grid;
   grid-gap: 5px;
