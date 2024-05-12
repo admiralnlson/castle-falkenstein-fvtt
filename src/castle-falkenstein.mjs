@@ -673,6 +673,7 @@ export class CastleFalkenstein {
         [this.THAUMIXOLOGY_VARIATION_OPTIONS.disabled]: game.i18n.localize("castle-falkenstein.settings.thaumixologyVariation.disabled"),
         [this.THAUMIXOLOGY_VARIATION_OPTIONS.enabled]: game.i18n.localize("castle-falkenstein.settings.thaumixologyVariation.enabled")
       }),
+      config: CASTLE_FALKENSTEIN.SHOW_THAUMIXOLOGY_VARIATION,
       default: this.HALF_OFF_VARIATION_OPTIONS.disabled,
       requiresReload: false
     },
@@ -699,7 +700,7 @@ export class CastleFalkenstein {
     Object.entries(this.SETTING_DEFINITIONS).forEach(([key, def]) => {
       game.settings.register(this.id, key, {
         ...def,
-        config: true,
+        config: typeof(def.config) == "undefined" ? true : def.config,
         name: `castle-falkenstein.settings.${key}.name`,
         hint: `castle-falkenstein.settings.${key}.hint`
       });
