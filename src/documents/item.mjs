@@ -56,9 +56,9 @@ export class CastleFalkensteinItem extends Item {
       // default content
     } else if (this.type == 'spell') {
       flavor += ` - ${game.i18n.localize('castle-falkenstein.spell.spell')}]`;
-      content = `${this.name} ` + CastleFalkenstein.cardSuitHTML(this.system.suit) + `<hr/>`;
-            + `${game.i18n.localize("castle-falkenstein.spell.thaumicLevel")}: ${this.system.level}<br/>`
-            + `${this.system.description}`;
+      content = `${this.name} ` + CastleFalkenstein.cardSuitHTML(this.system.suit) + `<hr/>`
+              + `${game.i18n.localize("castle-falkenstein.spell.thaumicLevel")}: ${this.system.level}<br/>`
+              + `${this.system.description}`;
     } else {
       flavor += `]`;
       CastleFalkenstein.log.warn(`Attempting to 'show others' an item of type '${this.type}'`);
