@@ -122,8 +122,8 @@ This Variation on the Great Game by FVTT system author @admiralnlson, is not off
 
 When casting a spell, a Sorcerer may elect to use Thaumixology, which is the art of mixing Aligned and Unaligned Power in order to accelerate the casting of a spell, in exchange for a very probable Harmonic.
 
-When using Thaumixology, the card of Unaligned power with the highest value (the one that determines the Harmonic, chosen by the Host in case of a tie) grants a number of points of Thaumic Energy equal to half of its value, rounded down (instead of just 1 point).
-On the other hand, the Sorcerer cannot release Unaligned Power independently. They can only release the Power they have accumulated in its entirety (i.e. discard all cards from their Sorcery hand).
+When using Thaumixology, the card of Unaligned power with the highest value (the one that determines the Harmonic, chosen by the Host in case of a tie) grants a number of points of Thaumic Energy equal to half of its value, rounded down (rather than just 1 point).
+On the other hand, the Sorcerer cannot release Unaligned Power. The only way to release Power is to cancel the Spell entirely.
 
 __Example:__
 
