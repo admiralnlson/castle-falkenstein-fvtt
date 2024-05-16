@@ -120,7 +120,7 @@
 
     "sorcery": {
       "ability": "Sorcellerie",
-      "defineSpell": "Définir le sort",
+      "defineSpell": "Définir un sort",
       "hand": {
         "render": "Afficher la main de sorcellerie",
         "gatherPower": "Canaliser le Pouvoir",
