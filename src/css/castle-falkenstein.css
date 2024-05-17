@@ -880,7 +880,7 @@ div.castle-falkenstein.cards-config a[disabled].card-control {
 }*/
 
 .handedCards li.card:hover {
-  --card-hover-translateY: 10px;
+  --card-hover-translateY: -15px;
 }
 
 .handedCards li.card .card-face {

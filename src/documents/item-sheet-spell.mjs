@@ -7,11 +7,9 @@ import { CastleFalkenstein } from "../castle-falkenstein.mjs";
  */
 export class CastleFalkensteinSpellSheet extends ItemSheet {
 
-  /**
-   * @override
-   */
+  /** @override */
   static get defaultOptions() {
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       classes: [CastleFalkenstein.id, "sheet", "item"],
       template: "systems/castle-falkenstein/src/documents/item-sheet-spell.hbs",
       width: 460,

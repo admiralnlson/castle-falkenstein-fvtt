@@ -9,14 +9,14 @@ export class CastleFalkensteinCards extends Cards {
   // "spellBeingCast" flag object structure = {
   //    actorItemId: <id of the spell item within the actor>,
   //    sorceryAbilityId: "<id of the sorcery ability item within the actor>"
-  //    definitions: {
-  //      duration: "[a-z]",
-  //      complexity: "[a-z]",
-  //      range: "[a-z]",
-  //      nbSubjects: "[a-z]",
-  //      typeSubjects: "[a-z]",
-  //      famiiliarity: "[a-z]",
-  //      harmRank: "[a-z]"
+  //    definitionLevels: {
+  //      duration: "[-a-z]",
+  //      complexity: "[-a-z]",
+  //      range: "[-a-z]",
+  //      nbSubjects: "[-a-z]",
+  //      typeSubjects: "[-a-z]",
+  //      famiiliarity: "[-a-z]",
+  //      harmRank: "[-a-z]"
   //    },
   //    customModifier: { label: "<label>", value: <value> },
   //    isWildSpell: <true/false>,
@@ -30,7 +30,7 @@ export class CastleFalkensteinCards extends Cards {
     total -= CASTLE_FALKENSTEIN.abilityLevels[actorObject.items.get(spellBeingCast.sorceryAbilityId).system.level].value;
 
     for (const [key, value] of Object.entries(spellBeingCast.definitionLevels)) {
-      total += CASTLE_FALKENSTEIN.spellDefinitions[key].levels[value].value;
+      total += CASTLE_FALKENSTEIN.spellDefinitions[key].levels[value].energy;
     }
 
     total += isNaN(spellBeingCast.customModifier.value) ? 0 : spellBeingCast.customModifier.value;

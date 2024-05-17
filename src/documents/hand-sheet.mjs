@@ -11,6 +11,7 @@ export class CastleFalkensteinHandSheet extends CardsHand {
   static HEIGHT_WITHOUT_SPELL = 60;
   static HEIGHT_WITH_SPELL = 119;
 
+  /** @override */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: [CastleFalkenstein.id, "sheet", "cards-hand", "cards-config"],

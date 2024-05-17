@@ -1,5 +1,11 @@
 # Changelog
 
+## [v2.11.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.10.0) - Unreleased
+### Added
+- Support for Foundry V12
+### Fixed
++ If the Host deleted their Fortune hand without refreshing the game afterwards, Host characters could end up with a Fortune hand of their own.
+
 ## [v2.10.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.10.0) - 2024/05/13
 ### Added
 + Support for "The Divorce Variation"

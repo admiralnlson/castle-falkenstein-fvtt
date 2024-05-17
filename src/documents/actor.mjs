@@ -70,21 +70,17 @@ export class CastleFalkensteinActor extends Actor {
   }
 
   handIfExists(handType) {
-
-    let actorOrHost;
-    if (handType === "fortune" && !this.hasPlayerOwner)
-      actorOrHost = "host";
-    else
-      actorOrHost = this;
-
-    return CastleFalkenstein.searchUniqueHand(handType, actorOrHost);
+    return CastleFalkenstein.searchUniqueHand(handType, this);
   }
 
   async hand(handType) {
     let hand = this.handIfExists(handType);
 
-    if (!hand)
+    if (!hand) {
+      
+
       hand = await CastleFalkenstein.socket.executeAsGM("createHand", handType, this.id);
+    }
 
     return hand;
   }

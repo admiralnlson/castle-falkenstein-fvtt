@@ -6,8 +6,9 @@ import { CastleFalkenstein } from "../castle-falkenstein.mjs";
  */
 export class CastleFalkensteinActorSheet extends ActorSheet {
 
+  /** @override */
   static get defaultOptions() {
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       classes: [CastleFalkenstein.id, "sheet", "actor"],
       template: "systems/castle-falkenstein/src/documents/actor-sheet.hbs",
       width: 620,
@@ -29,7 +30,6 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
   }
 
   /** @override */
-  // TODO V12 migration - check this override against https://github.com/foundryvtt/foundryvtt/issues/8872
   async _onDropItem(event, data) {
     if ( !this.actor.isOwner ) return false;
     const item = await Item.implementation.fromDropData(data);
@@ -46,7 +46,11 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
     itemData.sort = this.newItemSortValue();
 
     // Create the owned item
-    return this._onDropItemCreate(itemData);
+    if (game.release.generation >= 12) {
+      return this._onDropItemCreate(itemData, event);
+    } else {
+      return this._onDropItemCreate(itemData);
+    }
   }
 
   /** @override */

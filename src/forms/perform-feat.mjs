@@ -4,8 +4,9 @@ import { CASTLE_FALKENSTEIN } from "../config.mjs";
 // A form for performing a Feat.
 export class CastleFalkensteinPerformFeat extends FormApplication {
 
+  /** @override */
   static get defaultOptions() {
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       id: "castle-falkenstein-perform-feat",
       title: game.i18n.localize("castle-falkenstein.feat.perform"),
       template: "./systems/castle-falkenstein/src/forms/perform-feat.hbs",
@@ -18,9 +19,7 @@ export class CastleFalkensteinPerformFeat extends FormApplication {
     });
   }
 
-  /**
-   * @override
-   */
+  /** @override */
   constructor(ability, options = {}) {
     super(ability, options);
     this.ability = ability;
@@ -94,9 +93,7 @@ export class CastleFalkensteinPerformFeat extends FormApplication {
     return total;
   }
 
-  /**
-   * @override
-   */
+  /** @override */
   async getData() {
     if (this.wrappedCards.length > 0) {
       this.wrappedCards.forEach(w => {
@@ -183,9 +180,7 @@ export class CastleFalkensteinPerformFeat extends FormApplication {
     });
   }
 
-  /**
-   * @override
-   */
+  /** @override */
   async _updateObject(event, formData) {
     
     // return the cards played back into the deck
