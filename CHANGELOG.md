@@ -3,6 +3,8 @@
 ## [v2.11.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.10.0) - Unreleased
 ### Added
 - Support for Foundry V12
+- Comme Il Faut Lorebook: The Manual of Primal Forces Raised
+- Comme Il Faut Lorebook: lshigami's Realm of the Senses
 ### Fixed
 + If the Host deleted their Fortune hand without refreshing the game afterwards, Host characters could end up with a Fortune hand of their own.
 

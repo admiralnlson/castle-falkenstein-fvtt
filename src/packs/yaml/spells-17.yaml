@@ -1,0 +1,27 @@
+name: Perception of the Everyday
+type: spell
+system:
+  level: 4
+  suit: spades
+  description: "Increases the caster's ability to notice (and feel) even the smallest details, increasing his Perception by two ranks."
+---
+name: Deprivation
+type: spell
+system:
+  level: 6
+  suit: spades
+  description: "Renders the victim both deaf and blind (although tough still remains)."
+---
+name: Maelstrom of the Senses
+type: spell
+system:
+  level: 8
+  suit: spades
+  description: "Heightens perceptions to a painful level of acuity, to where a feature touching the body can create waves of ectasy and a scratch can feel like being flayed alive (causing Courage to be reduced by 2 Ranks)."
+---
+name: Opening the Mystic Eye
+type: spell
+system:
+  level: 6
+  suit: spades
+  description: "Allows the mage to perceive things not always perceived, the tiny impressions left by sorcery or contact with Evil."
