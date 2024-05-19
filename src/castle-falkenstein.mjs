@@ -521,6 +521,10 @@ export class CastleFalkenstein {
       await this.prepareCardStacks();
     }
 
+    // HACK as from V12, because game.user is not defined early enough to be able to set this in CastleFalkensteinActorDataModel.defineSchema
+    CONFIG.Actor.dataModels.character.schema.fields.diary.textSearch = game.user.isGM;
+    CONFIG.Actor.dataModels.character.schema.fields.hostNotes.textSearch = game.user.isGM;
+
     DocumentSheetConfig.unregisterSheet("Actor", "core", ActorSheet);
     DocumentSheetConfig.unregisterSheet("Item", "core", ItemSheet);
     DocumentSheetConfig.unregisterSheet("Cards", "core", CardsConfig);
@@ -875,9 +879,9 @@ Hooks.once("devModeReady", ({ registerPackageDebugFlag }) => {
   registerPackageDebugFlag(CastleFalkenstein.id);
 });
 
-Hooks.once("init", () => CastleFalkenstein.onInit());
-Hooks.once("setup", () => CastleFalkenstein.onSetup());
-Hooks.once("ready", () => CastleFalkenstein.onReady());
+Hooks.on("init", () => CastleFalkenstein.onInit());
+Hooks.on("setup", () => CastleFalkenstein.onSetup());
+Hooks.on("ready", () => CastleFalkenstein.onReady());
 
 Hooks.on("renderChatMessage", (chatMessage, html, messageData) => CastleFalkenstein.onRenderChatMessage(chatMessage, html, messageData));
 
