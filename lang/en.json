@@ -89,7 +89,7 @@
       },
       "performFeatHandRefill": {
         "description1": "Your Fortune Hand contains only {nb} cards.",
-        "description2": "Would you like to refill it?"
+        "description2": "Would you like to complete it to 4 cards?"
       },
       "thaumixologyReleaseAllPower": {
         "description1": "You are using Thaumixology for this spell, meaning you cannot normally release Power.",
@@ -113,8 +113,10 @@
       "hand": {
         "render": "Display the Fortune Hand",
         "name": "Fortune - {character}",
-        "refill": "Refill",
-        "chance": "Chance"
+        "refillSingular": "Complete your Fortune hand (draw {nb} card)",
+        "refillPlural": "Complete your Fortune hand (draw {nb} cards)",
+        "chance": "Chance",
+        "chanceHint": "Draw a Fortune card, played immediately"
       }
     },
 

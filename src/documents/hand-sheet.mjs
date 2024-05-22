@@ -77,6 +77,11 @@ export class CastleFalkensteinHandSheet extends CardsHand {
 
     context.disabled = {};
 
+    let i18nRefillKey = (4 - hand.cards.size > 1 ? "refillPlural" : "refillSingular");
+    context.i18nRefill = game.i18n.format(`castle-falkenstein.fortune.hand.${i18nRefillKey}`, {
+      nb: 4 - hand.cards.size
+    });
+
     context.disabled.openActor = context.inCompendium || CastleFalkensteinHandSheet.openActorDisabled(hand);
     context.disabled.refillHand = context.inCompendium || CastleFalkensteinHandSheet.refillHandDisabled(hand);
     context.disabled.chanceCard = context.inCompendium || CastleFalkensteinHandSheet.chanceCardDisabled(hand);

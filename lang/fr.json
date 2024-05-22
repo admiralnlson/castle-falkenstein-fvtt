@@ -113,8 +113,10 @@
       "hand": {
         "render": "Afficher la main du destin",
         "name": "Destin - {character}",
-        "refill": "Compléter",
-        "chance": "Chance"
+        "refillSingular": "Compléter votre main du destin (piocher {nb} carte)",
+        "refillPlural": "Compléter votre main du destin (piocher {nb} cartes)",
+        "chance": "Chance",
+        "chanceHint": "Piocher une carte du destin, jouée immédiatement"
       }
     },
 

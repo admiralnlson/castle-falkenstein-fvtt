@@ -19,10 +19,10 @@
       {{/if}}
       {{#if owner}}
       {{#ifequal typeFlag "fortune"}}
-      <a class="card-control" data-action="refillHand" title="{{localize "castle-falkenstein.fortune.hand.refill"}}" {{ disabled disabled.refillHand }}>
+      <a class="card-control" data-action="refillHand" title="{{i18nRefill}}" {{ disabled disabled.refillHand }}>
         <i class="cf-stack"></i>
       </a>
-      <a class="card-control" data-action="chanceCard" title="{{localize "castle-falkenstein.fortune.hand.chance"}}" {{ disabled disabled.chanceCard }}>
+      <a class="card-control" data-action="chanceCard" title="{{localize "castle-falkenstein.fortune.hand.chanceHint"}}" {{ disabled disabled.chanceCard }}>
         <i class="fas fa-question"></i>
       </a>
       {{/ifequal}}
