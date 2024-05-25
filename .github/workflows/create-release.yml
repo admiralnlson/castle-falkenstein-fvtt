@@ -39,7 +39,6 @@ jobs:
         path: ./CHANGELOG.md
 
     - name:  Create release
-      if: success() || failure()
       id: create_version_release
       uses: ncipollo/release-action@v1
       with:
