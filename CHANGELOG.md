@@ -2,16 +2,16 @@
 
 ## [v3.5.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.0.0) - Unreleased
 ### Added
-- Support for Foundry V12
+- Support for Foundry V12 added
 - Comme Il Faut Lorebook: The Manual of Primal Forces Raised
 - Comme Il Faut Lorebook: lshigami's Realm of the Senses
 ### Changed
-- In versions 2.6.0 to 2.10.0, only Foundry v11 was actually supported. As a consequence, these versions have been renamed v3.0.0 to v3.4.0.
-- Changing Variations on the Great Game settings will now update any open [Perform Feat] windows accordingly.
+- As it turns out, versions 2.6.0 to 2.10.0 were not compatible with Foundry v10. As a consequence, these versions have been renamed v3.0.0 to v3.4.0.
+- Updating settings for The Divorce, Hard Limit & Half-Off Variations will now update [Perform Feat] windows accordingly.
 ### Fixed
-+ The Divorce Variation was enabled by default.
++ The Divorce Variation is now disabled by default.
 + If the Host deleted their Fortune hand without refreshing the game afterwards, Host characters could end up with a Fortune hand of their own.
-+ [Firefox] Removed white specks appearing at the bottom of selectable cards and suits in [Perform Feat] windows
++ [Firefox] Removed white specks appearing at the bottom of selectable cards and suits in the [Perform Feat] window.
 
 ## [v3.4.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.10.0) - 2024/05/13
 ### Renamed version
