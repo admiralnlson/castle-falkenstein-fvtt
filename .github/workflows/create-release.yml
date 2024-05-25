@@ -27,32 +27,24 @@ jobs:
         ref: ${{ github.ref }}
         submodules: recursive
 
-    - name: Echo tag output
-      run: echo ${{ steps.get_version.outputs.version }}
-
-    - name: Substitute version and download link in system.json
-      uses: microsoft/variable-substitution@v1
+    - name: Checkout the master branch to get the changelog
+      uses: actions/checkout@v2
       with:
-        files: 'system.json'
-      env:
-        version: ${{ steps.get_version.outputs.version }}
-        download: https://github.com/${{ github.repository }}/releases/download/${{ steps.get_version.outputs.version }}/castle-falkenstein.zip
+        ref: master
+        path: master_code
 
-    - name: Create minimal system zip file
-      run: zip -r ./castle-falkenstein.zip system.json template.json LICENSE src/ lang/ build/
-
-    - name: Get changelog entry
-      id: changelog_reader
+    - name: Get changelog entry from master
+      id: changelog_reader_master
       uses: mindsers/changelog-reader-action@v2
       with:
         version: ${{ steps.get_version.outputs.version }}
-        path: ./CHANGELOG.md
+        path: ./master_code/CHANGELOG.md
       continue-on-error: true
 
     - name: Set has_changelog output
       id: set_has_changelog
       run: |
-        if [ "${{ steps.changelog_reader.outcome }}" == "success" ]; then
+        if [ "${{ steps.changelog_reader_master.outcome }}" == "success" ]; then
           echo "::set-output name=has_changelog::true"
         else
           echo "::set-output name=has_changelog::false"
@@ -65,7 +57,7 @@ jobs:
       with:
         name: Release ${{ steps.get_version.outputs.version }}
         tag: ${{ steps.get_version.outputs.version }}
-        body: ${{ steps.changelog_reader.outputs.changes }}
+        body: ${{ steps.changelog_reader_master.outputs.changes }}
         artifacts: './system.json, ./castle-falkenstein.zip'
         draft: false
         allowUpdates: true
