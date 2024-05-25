@@ -580,7 +580,7 @@ div.divorce {
   background: transparent;
   cursor: pointer;
   border: 0;
-  border-bottom: 2px ridge transparent; /* see suit-selected & card-selected below */
+  border-bottom: 2px solid transparent; /* see suit-selected & card-selected below */
 }
 
 .castle-falkenstein .divorce-button:focus,

@@ -6,11 +6,15 @@
 
 ## Known Bugs
 
-+ The Suit associated to Abilities sometimes disappears. Have not been able to establish the rootcause yet.
++ The Suit associated to Abilities sometimes disappears. Have not been able to establish the rootcause yet. Could be a data schema issue.
++ When loading v10 world data with the latest system version,
+  + The config setup is unable to load, which may explain why:
+    + Talents appear as blank in the character sheet
+    + Spells aspects appaear as blank in the character sheet
+    + weapons Harm stat seems to not be initialized properly unless touched
 
-## V12 Migration
-
-+ Upgrade to Node 18
+## Quick Wins
+ + rerender forms after Variation settings updates
 
 ### Mechanics from "Corebook"
 

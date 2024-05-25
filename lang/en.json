@@ -78,7 +78,7 @@
       "cannotDraw": "There are no available cards left in the deck. Cannot draw any.",
       "incompleteDraw": "There are no available cards left in the deck. Only {nb1} cards out of {nb2} could be drawn.",
       "lastCardDrawn": "There are no available cards left in the deck. The last card was just drawn.",
-      "mismatchingCardTypeInDrop": "Cannot drop card this card here. It has the wrong type: Sorcellerie <> Destin."
+      "mismatchingCardTypeInDrop": "Cannot drop card this card here. It has an incompatible type (Sorcery vs Fortune)."
     },
 
     "dialogs": {

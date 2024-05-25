@@ -15,6 +15,7 @@ import { CastleFalkensteinPossessionSheet } from "./documents/item-sheet-possess
 import { CastleFalkensteinSpellSheet } from "./documents/item-sheet-spell.mjs";
 import { CastleFalkensteinItem } from "./documents/item.mjs";
 import { CastleFalkensteinPerformFeat } from "./forms/perform-feat.mjs";
+import { CastleFalkensteinDefineSpell } from "./forms/define-spell.mjs";
 
 export class CastleFalkenstein {
 
@@ -385,7 +386,7 @@ export class CastleFalkenstein {
     if (deck?.img == "systems/castle-falkenstein/src/cards/back-square.png") {
       return cardWidth * 670 / 470;
     }
-    else if (deck?.width > 0 && deck?.height > 0) {
+    else if (deck && deck.width > 0 && deck.height > 0) {
       return cardWidth * deck.height / deck.width;
     }
     else {
@@ -442,12 +443,6 @@ export class CastleFalkenstein {
 
 
   static onInit() {
-
-    // Disable deprecation warnings if the v9 track is used with v10
-    if (game.release.generation == 10 && (game.system.version >= '1.0.0' && game.system.version < '2.0.0')) {
-      CONFIG.compatibility.mode = CONST.COMPATIBILITY_MODES.SILENT;
-    }
-
     game.CastleFalkenstein = CastleFalkenstein;
 
     // Add custom constants for configuration.
@@ -491,6 +486,30 @@ export class CastleFalkenstein {
 
   static async onSetup() {
 
+    // Unregister default sheets
+    if (CONFIG["Actor"]?.sheetClasses?.base)
+      Actors.unregisterSheet("core", ActorSheet, {
+        types: ["base"]
+      });
+    Actors.unregisterSheet("core", ActorSheet, {
+      types: ["character"]
+    });
+    if (CONFIG["Item"]?.sheetClasses?.base)
+      Items.unregisterSheet("core", ItemSheet, {
+        types: ["base"]
+      });
+    Items.unregisterSheet("core", ItemSheet, {
+      types: ["ability", "possession", "weapon", "spell"]
+    });
+    CardStacks.unregisterSheet("core", CardsConfig, {
+      types: ["deck"]
+    });
+    // Default sheet still require for Duels for instance.
+    //
+    //CardStacks.unregisterSheet("core", CardsHand, {
+    //  types: ["hand"]
+    //});
+
     if (game.settings.get("core", "language") != "en" && game.modules.get('babele')?.active) {
       Babele.get().setSystemTranslationsDir("lang/babele");
     }
@@ -517,18 +536,17 @@ export class CastleFalkenstein {
 
   static async onReady() {
 
+    // game.user is not defined early enough to be able to set this in CastleFalkensteinActorDataModel.defineSchema
+    if (game.release.generation >= 11) {
+      CONFIG.Actor.dataModels.character.schema.fields.diary.textSearch = game.user.isGM;
+      CONFIG.Actor.dataModels.character.schema.fields.hostNotes.textSearch = game.user.isGM;
+    }
+  
+    CONFIG.Cards.sheetClasses.hand["core.CardsHand"].canBeDefault = false;
+
     if (game.user.isGM) {
       await this.prepareCardStacks();
     }
-
-    // HACK as from V12, because game.user is not defined early enough to be able to set this in CastleFalkensteinActorDataModel.defineSchema
-    CONFIG.Actor.dataModels.character.schema.fields.diary.textSearch = game.user.isGM;
-    CONFIG.Actor.dataModels.character.schema.fields.hostNotes.textSearch = game.user.isGM;
-
-    DocumentSheetConfig.unregisterSheet("Actor", "core", ActorSheet);
-    DocumentSheetConfig.unregisterSheet("Item", "core", ItemSheet);
-    DocumentSheetConfig.unregisterSheet("Cards", "core", CardsConfig);
-    DocumentSheetConfig.unregisterSheet("Cards", "core", CardsHand);
 
     const userLanguage = game.settings.get("core", "language");
     if (userLanguage != "en" && Array.from(game.system.languages.map(el => el.lang)).includes(userLanguage)) {
@@ -679,8 +697,15 @@ export class CastleFalkenstein {
           [this.DIVORCE_VARIATION_OPTIONS.halfValue]: "castle-falkenstein.settings.divorceVariation.halfValue",
           [this.DIVORCE_VARIATION_OPTIONS.fullValue]: "castle-falkenstein.settings.divorceVariation.fullValue"
         },
-        default: this.DAMAGE_SYSTEM_OPTIONS.disabled,
-        requiresReload: false
+        default: this.DIVORCE_VARIATION_OPTIONS.disabled,
+        requiresReload: false,
+        onChange: value => {
+          for (const window of Object.values(ui.windows)) {
+            if (window instanceof CastleFalkensteinPerformFeat) {
+              if (window.rendered) window.render();
+            }
+          }
+        }
       },
       hardLimitVariation: {
         scope: "world",
@@ -690,7 +715,14 @@ export class CastleFalkenstein {
           [this.HARD_LIMIT_VARIATION_OPTIONS.option2.str]: "castle-falkenstein.settings.hardLimitVariation.option2"
         },
         default: this.HARD_LIMIT_VARIATION_OPTIONS.disabled.str,
-        requiresReload: false
+        requiresReload: false,
+        onChange: value => {
+          for (const window of Object.values(ui.windows)) {
+            if (window instanceof CastleFalkensteinPerformFeat) {
+              if (window.rendered) window.render();
+            }
+          }
+        }
       },
       halfOffVariation: {
         scope: "world",
@@ -700,7 +732,14 @@ export class CastleFalkenstein {
           [this.HALF_OFF_VARIATION_OPTIONS.option2]: "castle-falkenstein.settings.halfOffVariation.option2"
         },
         default: this.HALF_OFF_VARIATION_OPTIONS.disabled,
-        requiresReload: false
+        requiresReload: false,
+        onChange: value => {
+          for (const window of Object.values(ui.windows)) {
+            if (window instanceof CastleFalkensteinPerformFeat) {
+              if (window.rendered) window.render();
+            }
+          }
+        }
       },
       thaumixologyVariation: {
         scope: "world",
@@ -709,8 +748,15 @@ export class CastleFalkenstein {
           [this.THAUMIXOLOGY_VARIATION_OPTIONS.enabled]: "castle-falkenstein.settings.thaumixologyVariation.enabled"
         },
         config: CASTLE_FALKENSTEIN.SHOW_THAUMIXOLOGY_VARIATION,
-        default: this.HALF_OFF_VARIATION_OPTIONS.disabled,
-        requiresReload: false
+        default: this.THAUMIXOLOGY_VARIATION_OPTIONS.disabled,
+        requiresReload: false,
+        onChange: value => {
+          for (const window of Object.values(ui.windows)) {
+            if (window instanceof CastleFalkensteinDefineSpell) {
+              if (window.rendered) window.render();
+            }
+          }
+        }
       },
       // Player settings
       cardWidth: {
@@ -724,9 +770,8 @@ export class CastleFalkenstein {
         default: 200,
         requiresReload: false,
         onChange: value => {
-          game.cards.filter(stack => stack.type == "hand" && stack.sheet.rendered).forEach(stack => stack.render());
+          game.cards.filter(stack => stack.type == "hand" && stack.sheet?.rendered).forEach(stack => stack.sheet.render());
         }
-  
       }
     };
 
@@ -768,19 +813,21 @@ export class CastleFalkenstein {
       label: "castle-falkenstein.spell.spell",
       makeDefault: true
     });
-
+    
     CardStacks.registerSheet(this.id, CastleFalkensteinDeckSheet, {
       types: ["deck"],
       label: "castle-falkenstein.cards.deckSheet",
       makeDefault: true
     });
-
+    
     CardStacks.registerSheet(this.id, CastleFalkensteinHandSheet, {
       types: ["hand"],
       label: "castle-falkenstein.cards.handSheet",
       makeDefault: true
     });
+
   }
+
 
   // Load all the templates for handlebars partials.
   static async preLoadTemplates() {
@@ -811,7 +858,6 @@ export class CastleFalkenstein {
 
     const cardParentType =  draggedCard.parent.getFlag(CastleFalkenstein.id, "type");
     const dstType = dstStack.getFlag(CastleFalkenstein.id, "type");
-
 
     if (cardParentType != dstType) {
       CastleFalkenstein.notif.error(game.i18n.localize("castle-falkenstein.notifications.mismatchingCardTypeInDrop"));

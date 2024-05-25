@@ -55,7 +55,11 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     const hand = this.object;
 
     context.typeFlag =  hand.getFlag(CastleFalkenstein.id, "type");
-    const deck = CastleFalkenstein.deck(context.typeFlag);
+    let deck;
+    if (context.typeFlag)
+      deck = CastleFalkenstein.deck(context.typeFlag);
+    context.cardHeight = CastleFalkenstein.computeCardHeight(deck);
+    context.rtgVisuals = CastleFalkenstein.usingRTGCardVisuals(deck) ? "rtg-visuals" : "";
 
     context.spellBeingCast = hand.spellBeingCast;
     if (context.spellBeingCast) {
@@ -91,9 +95,6 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     context.disabled.cancelSpell = context.inCompendium || !context.spellBeingCast || CastleFalkensteinHandSheet.cancelSpellDisabled(hand);
 
     context.cardWidth = CastleFalkenstein.settings.cardWidth;
-    context.cardHeight = CastleFalkenstein.computeCardHeight(deck);
-
-    context.rtgVisuals = CastleFalkenstein.usingRTGCardVisuals(deck) ? "rtg-visuals" : "";
 
     context.harmonicHTML = CastleFalkensteinHandSheet.harmonicHTML(hand, true);
 
@@ -224,10 +225,10 @@ export class CastleFalkensteinHandSheet extends CardsHand {
 
     // Refresh the local "Perform Feat" window, if any
     if (cardsDrawn.length > 0) {
-      for (const form of Object.values(ui.windows)) {
-        if (form instanceof CastleFalkensteinPerformFeat && form.hand.id == hand.id) {
-          form.computeWrappedCards();
-          form.render();
+      for (const window of Object.values(ui.windows)) {
+        if (window instanceof CastleFalkensteinPerformFeat && window.hand.id == hand.id) {
+          window.computeWrappedCards();
+          window.render();
           break;
         }
       }
