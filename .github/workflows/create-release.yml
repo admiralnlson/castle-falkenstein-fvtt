@@ -15,6 +15,7 @@ jobs:
       uses: actions/checkout@v2
       with:
         ref: master
+        path: .github/workflows
 
     - name: Extract tag version number
       id: get_version
@@ -27,18 +28,12 @@ jobs:
         ref: ${{ github.ref }}
         submodules: recursive
 
-    - name: Checkout the master branch to get the changelog
-      uses: actions/checkout@v2
-      with:
-        ref: master
-        path: master_code
-
     - name: Get changelog entry from master
       id: changelog_reader_master
       uses: mindsers/changelog-reader-action@v2
       with:
         version: ${{ steps.get_version.outputs.version }}
-        path: ./master_code/CHANGELOG.md
+        path: ./CHANGELOG.md
       continue-on-error: true
 
     - name: Set has_changelog output
