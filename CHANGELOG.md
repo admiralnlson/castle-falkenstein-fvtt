@@ -1,6 +1,6 @@
 # Changelog
 
-## [v3.5.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.0.0) - Unreleased
+## [v3.5.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.5.0) - 2024/05/25
 ### Added
 - Support for Foundry V12 added
 - Comme Il Faut Lorebook: The Manual of Primal Forces Raised
@@ -13,7 +13,7 @@
 + If the Host deleted their Fortune hand without refreshing the game afterwards, Host characters could end up with a Fortune hand of their own.
 + [Firefox] Removed white specks appearing at the bottom of selectable cards and suits in the [Perform Feat] window.
 
-## [v3.4.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.10.0) - 2024/05/13
+## [v3.4.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.4.0) - 2024/05/13
 ### Renamed version
 - **This version was initially named 2.10.0. But it broke support for Foundry V10 so it was later renamed.**
 ### Added
@@ -30,7 +30,7 @@
 + The 'Show Others' option on spells was not displaying the thaumic level and description of spells.
 + Fixed statblock for the '.44 Drop Pistol' (damage: 4/5/6 (D) -> 3/4/5 (C))
 
-## [v3.3.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.9.0) - 2023/11/19
+## [v3.3.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.3.0) - 2023/11/19
 ### Renamed version
 - **This version was initially named 2.9.0. But it broke support for Foundry V10 so it was later renamed.**
 ### Added
@@ -45,7 +45,7 @@
 + [v2.8.0 regression] When drawing a Chance card, an error notification was appearing despite everything actually working fine.
 + [v2.8.0 regression] After manual deletion of the Fortune or Sorcery deck, the new automatically-created one failed to register correctly.
 
-## [v3.2.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.8.0) - 2023/11/05
+## [v3.2.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.2.0) - 2023/11/05
 ### Renamed version
 - **This version was initially named 2.8.0. But it broke support for Foundry V10 so it was later renamed.**
 ### Added
@@ -67,13 +67,13 @@
 + [French translation] Joker names now translate also.
 + [French translation] Compendium folder names now translate also.
 
-## [v3.1.1](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.7.1) - 2023/10/24
+## [v3.1.1](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.1.1) - 2023/10/24
 ### Renamed version
 - **This version was initially named 2.7.1. But it broke support for Foundry V10 so it was later renamed.**
 ### Fixed
 + Fixed an issue where players lacked permissions to shuffle back cards into decks.
 
-## [v3.1.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.7.0) - 2023/10/23
+## [v3.1.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.1.0) - 2023/10/23
 ### Renamed version
 - **This version was initially named 2.7.0. But it broke support for Foundry V10 so it was later renamed.**
 ### Changed
@@ -83,14 +83,14 @@
 + The Black Joker no longer disguises himself as a Red Joker.
 + A horizontal scrollbar now appears if a large number of cards are played at once, e.g. as part of a spellcast.
 
-## [v3.0.1](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.6.1) - 2023/07/24
+## [v3.0.1](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.0.1) - 2023/07/24
 ### Renamed version
 - **This version was initially named 2.6.1. But it broke support for Foundry V10 so it was later renamed.**
 ### Fixed
 + Abilities in the Compendium were not displaying correctly.
 + Sorting Items (abilities, weapons, possessions, spells) on a character sheet was not always behaving as expected.
 
-## [v3.0.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.6.0) - 2023/07/02
+## [v3.0.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.0.0) - 2023/07/02
 ### Renamed version
 - **This version was initially named 2.6.0. But it broke support for Foundry V10 so it was later renamed.**
 ### Added [The Specializations Variation]
