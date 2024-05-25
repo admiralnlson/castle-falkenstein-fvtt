@@ -1,71 +1,59 @@
-name: Create Release on tag push
+name: Create Release on v* tag pushed
 
-on:
+on: 
   push:
     tags:
       - 'v*'
-  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
 
     steps:
-    - name: Checkout the workflow definition from master
+    - name: Checkout code
       uses: actions/checkout@v2
       with:
-        ref: master
-        path: .github/workflows
+        submodules: 'recursive'
 
     - name: Extract tag version number
       id: get_version
-      run: |
-        echo "##[set-output name=version;]${GITHUB_REF#refs/tags/}"
+      uses: battila7/get-version-action@v2
 
-    - name: Checkout the tagged code
-      uses: actions/checkout@v2
+    - name: Echo tag output
+      run: echo ${{ steps.get_version.outputs.version-without-v }}
+
+    - name: Substitute version and download link in system.json
+      uses: microsoft/variable-substitution@v1
       with:
-        ref: ${{ github.ref }}
-        submodules: recursive
+        files: 'system.json'
+      env:
+        version: ${{steps.get_version.outputs.version-without-v}}
+        download: https://github.com/${{github.repository}}/releases/download/${{steps.get_version.outputs.version}}/castle-falkenstein.zip
 
-    - name: Get changelog entry from master
-      id: changelog_reader_master
+    - name: Create minimal system zip file
+      run: zip -r ./castle-falkenstein.zip system.json template.json LICENSE src/ lang/ build/
+
+    - name: Get changelog entry from master branch
+      run: |
+        git fetch origin master:master
+        cp ./master/CHANGELOG.md ./CHANGELOG_MASTER.md
+
+    - name: Get changelog entry
+      id: changelog_reader
       uses: mindsers/changelog-reader-action@v2
       with:
-        version: ${{ steps.get_version.outputs.version }}
-        path: ./CHANGELOG.md
-      continue-on-error: true
-
-    - name: Set has_changelog output
-      id: set_has_changelog
-      run: |
-        if [ "${{ steps.changelog_reader_master.outcome }}" == "success" ]; then
-          echo "::set-output name=has_changelog::true"
-        else
-          echo "::set-output name=has_changelog::false"
-        fi
+        version: master
+        path: ./CHANGELOG_MASTER.md
 
     - name: Create release
-      if: steps.set_has_changelog.outputs.has_changelog == 'true'
       id: create_version_release
       uses: ncipollo/release-action@v1
       with:
-        name: Release ${{ steps.get_version.outputs.version }}
-        tag: ${{ steps.get_version.outputs.version }}
-        body: ${{ steps.changelog_reader_master.outputs.changes }}
+        name: Release ${{ steps.get_version.outputs.version-without-v }}
+        tag: ${{ steps.get_version.outputs.version-without-v }}
+        body: ${{ steps.changelog_reader.outputs.changes }}
         artifacts: './system.json, ./castle-falkenstein.zip'
         draft: false
-        allowUpdates: true
-        token: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Create release (no changelog)
-      if: steps.set_has_changelog.outputs.has_changelog == 'false'
-      id: create_version_release_no_changelog
-      uses: ncipollo/release-action@v1
-      with:
-        name: Release ${{ steps.get_version.outputs.version }}
-        tag: ${{ steps.get_version.outputs.version }}
-        artifacts: './system.json, ./castle-falkenstein.zip'
-        draft: true
         allowUpdates: true
         token: ${{ secrets.GITHUB_TOKEN }}
