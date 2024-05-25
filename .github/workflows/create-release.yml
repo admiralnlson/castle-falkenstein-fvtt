@@ -33,24 +33,17 @@ jobs:
 
     - name: Get changelog entry
       id: changelog_reader
-      uses: mindsers/changelog-reader-action@v2
-      with:
-        version: ${{ steps.get_version.outputs.version }}
-        path: ./CHANGELOG.md
-      continue-on-error: true
-
-    - name: Set has_changelog output
-      id: set_has_changelog
       run: |
-        if [ "${{ steps.changelog_reader.outcome }}" == "success" ]; then
+        {
+          changelog_output=$(mindsers/changelog-reader-action@v2 --version ${{ steps.get_version.outputs.version }} --path ./CHANGELOG.md) &&
+          echo "::set-output name=changelog_changes::$changelog_output" &&
           echo "::set-output name=has_changelog::true"
-        else
+        } || {
           echo "::set-output name=has_changelog::false"
-        fi
-      continue-on-error: true
+        }
 
     - name:  Create release
-      if: steps.set_has_changelog.outputs.has_changelog == 'true'
+      if: steps.changelog_reader.outputs.has_changelog == 'true'
       id: create_version_release
       uses: ncipollo/release-action@v1
       with:
@@ -63,7 +56,7 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
 
     - name:  Create release (no changelog)
-      if: steps.set_has_changelog.outputs.has_changelog == 'false'
+      if: steps.changelog_reader.outputs.has_changelog == 'false'
       id: create_version_release-no-changelog
       uses: ncipollo/release-action@v1
       with:
