@@ -5,8 +5,8 @@
   "version": "0.0.0",
   "compatibility": {
     "minimum": "10",
-    "verified": "11.315",
-    "maximum": "11"
+    "verified": "12.324",
+    "maximum": "12"
   },
   "authors": [ {
       "name": "admiralnlson",
@@ -69,7 +69,9 @@
             "spells-12",
             "spells-13",
             "spells-14",
-            "spells-15"
+            "spells-15",
+            "spells-16",
+            "spells-17"
           ]
         }
       ]
@@ -200,6 +202,22 @@
       "label": "Burton's On the Raised Forces of Nature",
       "path": "build/packs/spells-15.db",
       "name": "spells-15",
+      "type": "Item",
+      "system": "castle-falkenstein",
+      "module": "castle-falkenstein"
+    },
+    {
+      "label": "The Manual of Primal Forces Raised",
+      "path": "build/packs/spells-16.db",
+      "name": "spells-16",
+      "type": "Item",
+      "system": "castle-falkenstein",
+      "module": "castle-falkenstein"
+    },
+    {
+      "label": "lshigami's Realm of the Senses",
+      "path": "build/packs/spells-17.db",
+      "name": "spells-17",
       "type": "Item",
       "system": "castle-falkenstein",
       "module": "castle-falkenstein"

@@ -1,0 +1,24 @@
+{
+  "label": "Le Soulèvement des forces primordiales",
+  "mapping": {
+    "description": "system.description"
+  },
+  "entries": {
+    "Le Discipline d'Énergie Photomique": {
+      "name": "Discipline de l'énergie photonique",
+      "description": "Permet de créer, de supprimer et d'altérer l'énergie lumineuse, et donc d'assombrir ou d'eclairer certains lieux, mais également de modifier les teintes et les couleurs de nombreux objects."
+    },
+    "Le Discipline d'Énergie Atomique": {
+      "name": "Discipline de l'énergie atomique",
+      "description": "permet au lanceur du sort de manipuler les structures atomiques. Il peut alors réchauffer, refroidir, désintégrer un élément ou le rendre immatériel."
+    },
+    "Le Discipline des Forces Intégrales": {
+      "name": "Discipline des forces intégrales",
+      "description": "Présuppose l'existence d'une force universelle, invisible, semblable à la gravité. Elle permet au sorcier de transformer et de déplacer des parties de cette énergie, comme pour ériger des champs de force ou envoyer des projectiles."
+    },
+    "Le Discipline d'Énergie Parapsychique": {
+      "name": "Discipline de l'énergie parapsychique",
+      "description": "Concerne la création de champs qui rendent les noeuds thaumaturgiques plus difficiles à manipuler, menant au quasi-abandon du recours à la magie dans certains lieux."
+    }
+  }
+}

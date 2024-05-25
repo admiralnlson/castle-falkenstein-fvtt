@@ -7,11 +7,9 @@ import { CastleFalkenstein } from "../castle-falkenstein.mjs";
  */
 export class CastleFalkensteinWeaponSheet extends ItemSheet {
 
-  /**
-   * @override
-   */
+  /** @override */
   static get defaultOptions() {
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       classes: [CastleFalkenstein.id, "sheet", "item"],
       template: "systems/castle-falkenstein/src/documents/item-sheet-weapon.hbs",
       width: 490,

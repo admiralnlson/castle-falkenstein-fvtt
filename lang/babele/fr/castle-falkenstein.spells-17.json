@@ -1,0 +1,24 @@
+{
+  "label": "Le Royaume des sens d'lshigami",
+  "mapping": {
+    "description": "system.description"
+  },
+  "entries": {
+    "Perception of the Everyday": {
+      "name": "Perception du quotidien",
+      "description": "Améliore la capacité du lanceur du sort à remarquer (et à ressentir) les moindres détails et augmente le niveau de son Talent de Perception de deux crans."
+    },
+    "Deprivation": {
+      "name": "Privation sensorielle",
+      "description": "Rend la victime incapable de voir et d'entendre, mais ne lui enlève pas son sens du toucher."
+    },
+    "Maelstrom of the Senses": {
+      "name": "Maleström sensoriel",
+      "description": "Augmente tellement l'acuité sensorielle que la moindre stimulation devient douloureuse. Une plume frôlant un corps suffit à créer des vagues d'extase, et une égratignure à donner l'impression d'être écorché vif. Le niveau de Courage de la cible est réduit de deux crans."
+    },
+    "Opening the Mystic Eye": {
+      "name": "Ouverture de l'oeil mystique",
+      "description": "Permet au mage de percevoir des choses qui passent souvent inaperçues, comme de légères traces laissées par l'utilisation de la sorcellerie ou un contact avec le Mal."
+    }
+  }
+}

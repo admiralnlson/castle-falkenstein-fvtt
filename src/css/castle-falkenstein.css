@@ -580,7 +580,7 @@ div.divorce {
   background: transparent;
   cursor: pointer;
   border: 0;
-  border-bottom: 2px ridge transparent; /* see suit-selected & card-selected below */
+  border-bottom: 2px solid transparent; /* see suit-selected & card-selected below */
 }
 
 .castle-falkenstein .divorce-button:focus,
@@ -880,7 +880,7 @@ div.castle-falkenstein.cards-config a[disabled].card-control {
 }*/
 
 .handedCards li.card:hover {
-  --card-hover-translateY: 10px;
+  --card-hover-translateY: -15px;
 }
 
 .handedCards li.card .card-face {

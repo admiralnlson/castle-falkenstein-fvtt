@@ -1,6 +1,21 @@
 # Changelog
 
-## [v2.10.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.10.0) - 2024/05/13
+## [v3.5.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.0.0) - Unreleased
+### Added
+- Support for Foundry V12
+- Comme Il Faut Lorebook: The Manual of Primal Forces Raised
+- Comme Il Faut Lorebook: lshigami's Realm of the Senses
+### Changed
+- In versions 2.6.0 to 2.10.0, only Foundry v11 was actually supported. As a consequence, these versions have been renamed v3.0.0 to v3.4.0.
+- Changing Variations on the Great Game settings will now update any open [Perform Feat] windows accordingly.
+### Fixed
++ The Divorce Variation was enabled by default.
++ If the Host deleted their Fortune hand without refreshing the game afterwards, Host characters could end up with a Fortune hand of their own.
++ [Firefox] Removed white specks appearing at the bottom of selectable cards and suits in [Perform Feat] windows
+
+## [v3.4.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.10.0) - 2024/05/13
+### Renamed version
+- **This version was initially named 2.10.0. But it broke support for Foundry V10 so it was later renamed.**
 ### Added
 + Support for "The Divorce Variation"
 + Support for "The Hard Limit Variation"
@@ -15,7 +30,9 @@
 + The 'Show Others' option on spells was not displaying the thaumic level and description of spells.
 + Fixed statblock for the '.44 Drop Pistol' (damage: 4/5/6 (D) -> 3/4/5 (C))
 
-## [v2.9.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.9.0) - 2023/11/19
+## [v3.3.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.9.0) - 2023/11/19
+### Renamed version
+- **This version was initially named 2.9.0. But it broke support for Foundry V10 so it was later renamed.**
 ### Added
 + When a Feat is being performed, in case the Fortune Hand contains fewer than 4 cards, a Dialog now proposes to refill it beforehand.
 ### Changed
@@ -28,7 +45,9 @@
 + [v2.8.0 regression] When drawing a Chance card, an error notification was appearing despite everything actually working fine.
 + [v2.8.0 regression] After manual deletion of the Fortune or Sorcery deck, the new automatically-created one failed to register correctly.
 
-## [v2.8.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.8.0) - 2023/11/05
+## [v3.2.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.8.0) - 2023/11/05
+### Renamed version
+- **This version was initially named 2.8.0. But it broke support for Foundry V10 so it was later renamed.**
 ### Added
 + Weapons now have Max Range, Conceal & Harm Rank properties, as per Comme Il Faut.
 + A new system setting allows Hosts to define whether Wounds, Harm Rank or both, must appear.
@@ -48,11 +67,15 @@
 + [French translation] Joker names now translate also.
 + [French translation] Compendium folder names now translate also.
 
-## [v2.7.1](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.7.1) - 2023/10/24
+## [v3.1.1](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.7.1) - 2023/10/24
+### Renamed version
+- **This version was initially named 2.7.1. But it broke support for Foundry V10 so it was later renamed.**
 ### Fixed
 + Fixed an issue where players lacked permissions to shuffle back cards into decks.
 
-## [v2.7.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.7.0) - 2023/10/23
+## [v3.1.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.7.0) - 2023/10/23
+### Renamed version
+- **This version was initially named 2.7.0. But it broke support for Foundry V10 so it was later renamed.**
 ### Changed
 + Fortune and Sorcery discard piles have been removed. As per official rules, a card, once played, is now directly shuffled back into the deck.
 ### Fixed
@@ -60,12 +83,16 @@
 + The Black Joker no longer disguises himself as a Red Joker.
 + A horizontal scrollbar now appears if a large number of cards are played at once, e.g. as part of a spellcast.
 
-## [v2.6.1](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.6.1) - 2023/07/24
+## [v3.0.1](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.6.1) - 2023/07/24
+### Renamed version
+- **This version was initially named 2.6.1. But it broke support for Foundry V10 so it was later renamed.**
 ### Fixed
 + Abilities in the Compendium were not displaying correctly.
 + Sorting Items (abilities, weapons, possessions, spells) on a character sheet was not always behaving as expected.
 
-## [v2.6.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.6.0) - 2023/07/02
+## [v3.0.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v2.6.0) - 2023/07/02
+### Renamed version
+- **This version was initially named 2.6.0. But it broke support for Foundry V10 so it was later renamed.**
 ### Added [The Specializations Variation]
 + Ability specializations can now be formally defined in the Abilities tab of the character sheet.
 + A sorcery specialization may now be used when casting a spell.

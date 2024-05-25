@@ -44,8 +44,6 @@ export const CASTLE_FALKENSTEIN = {};
 };
 
 CASTLE_FALKENSTEIN.abilityFullLevels = Object.fromEntries(Object.entries(CASTLE_FALKENSTEIN.abilityLevels).map(([key, level]) => [key, level.full]));
-CASTLE_FALKENSTEIN.abilityAbbrLevels = Object.fromEntries(Object.entries(CASTLE_FALKENSTEIN.abilityLevels).map(([key, level]) => [key, level.abbr]));
-CASTLE_FALKENSTEIN.abilityValues = Object.fromEntries(Object.entries(CASTLE_FALKENSTEIN.abilityLevels).map(([key, level]) => [key, level.value]));
 
 
 /**
@@ -82,80 +80,80 @@ CASTLE_FALKENSTEIN.validNonJokerCardSuits = [ "spades", "hearts", "diamonds", "c
 CASTLE_FALKENSTEIN.spellDefinitions = {
   "duration": {
     "levels": {
-      "-": { label: "-", value : 0 },
-      "a": { value : 1 },
-      "b": { value : 2 },
-      "c": { value : 3 },
-      "d": { value : 4 },
-      "e": { value : 6 },
-      "f": { value : 7 },
-      "g": { value : 8 }
+      "-": { label: "-", energy : 0 },
+      "a": { energy : 1 },
+      "b": { energy : 2 },
+      "c": { energy : 3 },
+      "d": { energy : 4 },
+      "e": { energy : 6 },
+      "f": { energy : 7 },
+      "g": { energy : 8 }
     }
   },
   "complexity": {
     "levels": {
-      "-": { label: "-", value : 0 },
-      "a": { value : 1 },
-      "b": { value : 2 },
-      "c": { value : 3 },
-      "d": { value : 4 },
-      "e": { value : 5 },
-      "f": { value : 6 }
+      "-": { label: "-", energy : 0 },
+      "a": { energy : 1 },
+      "b": { energy : 2 },
+      "c": { energy : 3 },
+      "d": { energy : 4 },
+      "e": { energy : 5 },
+      "f": { energy : 6 }
     }
   },
   "range": {
     "levels": {
-      "-": { label: "-", value : 0 },
-      "a": { value : 1 },
-      "b": { value : 2 },
-      "c": { value : 3 },
-      "d": { value : 4 },
-      "e": { value : 5 },
-      "f": { value : 6 },
-      "g": { value : 7 },
+      "-": { label: "-", energy : 0 },
+      "a": { energy : 1 },
+      "b": { energy : 2 },
+      "c": { energy : 3 },
+      "d": { energy : 4 },
+      "e": { energy : 5 },
+      "f": { energy : 6 },
+      "g": { energy : 7 },
     }
   },
   "nbSubjects": {
     "levels": {
-      "-": { label: "-", value : 0 },
-      "a": { value : 1 },
-      "b": { value : 2 },
-      "c": { value : 3 },
-      "d": { value : 4 },
-      "e": { value : 5 }
+      "-": { label: "-", energy : 0 },
+      "a": { energy : 1 },
+      "b": { energy : 2 },
+      "c": { energy : 3 },
+      "d": { energy : 4 },
+      "e": { energy : 5 }
     }
   },
   "typeSubjects": {
     "levels": {
-      "-": { label: "-", value : 0 },
-      "a": { value : 1 },
-      "b": { value : 1 },
-      "c": { value : 2 },
-      "d": { value : 3 },
-      "e": { value : 6 },
-      "f": { value : 6 },
-      "g": { value : 8 },
-      "h": { value : 16 },
+      "-": { label: "-", energy : 0 },
+      "a": { energy : 1 },
+      "b": { energy : 1 },
+      "c": { energy : 2 },
+      "d": { energy : 3 },
+      "e": { energy : 6 },
+      "f": { energy : 6 },
+      "g": { energy : 8 },
+      "h": { energy : 16 },
     }
   },
   "familiarity": {
     "levels": {
-      "-": { label: "-", value : 0 },
-      "a": { value : 1 },
-      "b": { value : 2 },
-      "c": { value : 3 },
-      "d": { value : 4 }
+      "-": { label: "-", energy : 0 },
+      "a": { energy : 1 },
+      "b": { energy : 2 },
+      "c": { energy : 3 },
+      "d": { energy : 4 }
     }
   },
   "harmRank": {
     "levels": {
-      "-": { value : 0, label: "-" },
-      "a": { value : 2,  wounds: "1 / 2 / 3" },
-      "b": { value : 4,  wounds: "2 / 3 / 4" },
-      "c": { value : 8,  wounds: "3 / 4 / 5" },
-      "d": { value : 12, wounds: "4 / 5 / 7" },
-      "e": { value : 16, wounds: "7 / 8 / 9" },
-      "f": { value : 20, wounds: "8 / 9 / 10" }
+      "-": { energy : 0, label: "-" },
+      "a": { energy : 2,  wounds: "1 / 2 / 3" },
+      "b": { energy : 4,  wounds: "2 / 3 / 4" },
+      "c": { energy : 8,  wounds: "3 / 4 / 5" },
+      "d": { energy : 12, wounds: "4 / 5 / 7" },
+      "e": { energy : 16, wounds: "7 / 8 / 9" },
+      "f": { energy : 20, wounds: "8 / 9 / 10" }
     }
   }
 };

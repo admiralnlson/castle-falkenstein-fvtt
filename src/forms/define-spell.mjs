@@ -5,8 +5,9 @@ import { CastleFalkensteinCards } from "../documents/cards.mjs";
 // A form for initiating a spell
 export class CastleFalkensteinDefineSpell extends FormApplication {
 
+  /** @override */
   static get defaultOptions() {
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       id: "castle-falkenstein-define-spell",
       title: game.i18n.localize("castle-falkenstein.sorcery.defineSpell"),
       template: "./systems/castle-falkenstein/src/forms/define-spell.hbs",
@@ -19,9 +20,7 @@ export class CastleFalkensteinDefineSpell extends FormApplication {
     });
   }
 
-  /**
-   * @override
-   */
+  /** @override */
   constructor(spell, options = {}) {
     super(spell, options);
     this.spell = spell;
@@ -44,9 +43,7 @@ export class CastleFalkensteinDefineSpell extends FormApplication {
     return CastleFalkensteinCards.computeTotalPowerNeed(this.character, this.spellBeingCast);
   }
 
-  /**
-   * @override
-   */
+  /** @override */
   async getData() {
 
     const selectedSorceryAbility = this.character.items.get(this.spellBeingCast.sorceryAbilityId);
@@ -59,7 +56,7 @@ export class CastleFalkensteinDefineSpell extends FormApplication {
     }
 
     let context = {};
-    
+
     context.selectedSorceryAbilityLevel = selectedSorceryAbility ? selectedSorceryAbility.system.levelValue : "not found";
 
     context.spell = this.spell;
@@ -119,9 +116,7 @@ export class CastleFalkensteinDefineSpell extends FormApplication {
     this.render();
   }
 
-  /**
-   * @override
-   */
+  /** @override */
   async _updateObject(event, formData) {
     
     //

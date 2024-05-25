@@ -11,6 +11,7 @@ export class CastleFalkensteinHandSheet extends CardsHand {
   static HEIGHT_WITHOUT_SPELL = 60;
   static HEIGHT_WITH_SPELL = 119;
 
+  /** @override */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: [CastleFalkenstein.id, "sheet", "cards-hand", "cards-config"],
@@ -54,7 +55,11 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     const hand = this.object;
 
     context.typeFlag =  hand.getFlag(CastleFalkenstein.id, "type");
-    const deck = CastleFalkenstein.deck(context.typeFlag);
+    let deck;
+    if (context.typeFlag)
+      deck = CastleFalkenstein.deck(context.typeFlag);
+    context.cardHeight = CastleFalkenstein.computeCardHeight(deck);
+    context.rtgVisuals = CastleFalkenstein.usingRTGCardVisuals(deck) ? "rtg-visuals" : "";
 
     context.spellBeingCast = hand.spellBeingCast;
     if (context.spellBeingCast) {
@@ -76,6 +81,11 @@ export class CastleFalkensteinHandSheet extends CardsHand {
 
     context.disabled = {};
 
+    let i18nRefillKey = (4 - hand.cards.size > 1 ? "refillPlural" : "refillSingular");
+    context.i18nRefill = game.i18n.format(`castle-falkenstein.fortune.hand.${i18nRefillKey}`, {
+      nb: 4 - hand.cards.size
+    });
+
     context.disabled.openActor = context.inCompendium || CastleFalkensteinHandSheet.openActorDisabled(hand);
     context.disabled.refillHand = context.inCompendium || CastleFalkensteinHandSheet.refillHandDisabled(hand);
     context.disabled.chanceCard = context.inCompendium || CastleFalkensteinHandSheet.chanceCardDisabled(hand);
@@ -85,9 +95,6 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     context.disabled.cancelSpell = context.inCompendium || !context.spellBeingCast || CastleFalkensteinHandSheet.cancelSpellDisabled(hand);
 
     context.cardWidth = CastleFalkenstein.settings.cardWidth;
-    context.cardHeight = CastleFalkenstein.computeCardHeight(deck);
-
-    context.rtgVisuals = CastleFalkenstein.usingRTGCardVisuals(deck) ? "rtg-visuals" : "";
 
     context.harmonicHTML = CastleFalkensteinHandSheet.harmonicHTML(hand, true);
 
@@ -218,10 +225,10 @@ export class CastleFalkensteinHandSheet extends CardsHand {
 
     // Refresh the local "Perform Feat" window, if any
     if (cardsDrawn.length > 0) {
-      for (const form of Object.values(ui.windows)) {
-        if (form instanceof CastleFalkensteinPerformFeat && form.hand.id == hand.id) {
-          form.computeWrappedCards();
-          form.render();
+      for (const window of Object.values(ui.windows)) {
+        if (window instanceof CastleFalkensteinPerformFeat && window.hand.id == hand.id) {
+          window.computeWrappedCards();
+          window.render();
           break;
         }
       }

@@ -78,7 +78,7 @@
       "cannotDraw": "There are no available cards left in the deck. Cannot draw any.",
       "incompleteDraw": "There are no available cards left in the deck. Only {nb1} cards out of {nb2} could be drawn.",
       "lastCardDrawn": "There are no available cards left in the deck. The last card was just drawn.",
-      "mismatchingCardTypeInDrop": "Cannot drop card this card here. It has the wrong type: Sorcellerie <> Destin."
+      "mismatchingCardTypeInDrop": "Cannot drop card this card here. It has an incompatible type (Sorcery vs Fortune)."
     },
 
     "dialogs": {
@@ -89,7 +89,7 @@
       },
       "performFeatHandRefill": {
         "description1": "Your Fortune Hand contains only {nb} cards.",
-        "description2": "Would you like to refill it?"
+        "description2": "Would you like to complete it to 4 cards?"
       },
       "thaumixologyReleaseAllPower": {
         "description1": "You are using Thaumixology for this spell, meaning you cannot normally release Power.",
@@ -113,8 +113,10 @@
       "hand": {
         "render": "Display the Fortune Hand",
         "name": "Fortune - {character}",
-        "refill": "Refill",
-        "chance": "Chance"
+        "refillSingular": "Complete your Fortune hand (draw {nb} card)",
+        "refillPlural": "Complete your Fortune hand (draw {nb} cards)",
+        "chance": "Chance",
+        "chanceHint": "Draw a Fortune card, played immediately"
       }
     },
 

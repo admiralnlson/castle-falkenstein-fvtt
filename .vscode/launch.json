@@ -5,7 +5,7 @@
       "name": "Run FoundryVTT",
       "cwd": "${config:foundryvttDevFolder}",
       "type": "node",
-      "program": "code/resources/app/main.js",
+      "program": "${config:foundryvttNodeJS}/resources/app/main.js",
       "args": [
         "--port=30001",
         "--dataPath=data",
@@ -28,7 +28,7 @@
       "type": "chrome",
       "request": "launch",
       "url": "http://localhost:30001",
-      "webRoot": "${config:foundryvttDevFolder}/code/resources/app/public",
+      "webRoot": "${config:foundryvttDevFolder}/${config:foundryvttNodeJS}/resources/app/public",
       "resolveSourceMapLocations": [
         "${workspaceFolder}/**",
         "!**/node_modules/**"
@@ -38,8 +38,8 @@
         "/systems/castle-falkenstein": "${workspaceFolder}",
         // ... and use the default for everything else.
         // Note the slightly different formats - swap them for a module.
-        "/systems/*": "${config:foundryvttDevFolder}/data/Data/systems/*",
-        "/modules": "${config:foundryvttDevFolder}/data/Data/modules"
+        "/systems/*": "${config:foundryvttDevFolder}/${config:foundryvttUserData}/Data/systems/*",
+        "/modules": "${config:foundryvttDevFolder}/${config:foundryvttUserData}/Data/modules"
       },
       "skipFiles": [
         "<node_internals>/**/*.js",
@@ -55,7 +55,7 @@
       "request": "launch",
       "type": "msedge",
       "url": "http://localhost:30001",
-      "webRoot": "${config:foundryvttDevFolder}/code/resources/app/public",
+      "webRoot": "${config:foundryvttDevFolder}/${config:foundryvttNodeJS}/resources/app/public",
       "resolveSourceMapLocations": [
         "${workspaceFolder}/**",
         "!**/node_modules/**"
@@ -65,8 +65,8 @@
         "/systems/castle-falkenstein": "${workspaceFolder}",
         // ... and use the default for everything else.
         // Note the slightly different formats - swap them for a module.
-        "/systems/*": "${config:foundryvttDevFolder}/data/Data/systems/*",
-        "/modules": "${config:foundryvttDevFolder}/data/Data/modules"
+        "/systems/*": "${config:foundryvttDevFolder}/${config:foundryvttUserData}/Data/systems/*",
+        "/modules": "${config:foundryvttDevFolder}/${config:foundryvttUserData}/Data/modules"
       },
       "skipFiles": [
         "<node_internals>/**/*.js",

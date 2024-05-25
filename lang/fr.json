@@ -78,7 +78,7 @@
       "cannotDraw": "La pioche est épuisée. Impossible de tirer même une carte.",
       "incompleteDraw": "La pioche est épuisée. Seulement {nb1} cartes sur {nb2} ont pu être tirées.",
       "lastCardDrawn": "La pioche est épuisée. La dernière carte vient d'être tirée.",
-      "mismatchingCardTypeInDrop": "Impossible de transférer cette carte qui est du mauvais type : Sorcellerie <> Destin."
+      "mismatchingCardTypeInDrop": "Impossible de transférer cette carte ici. Elle est du mauvais type (Destin vs Sorcellerie)."
     },
 
     "dialogs": {
@@ -113,8 +113,10 @@
       "hand": {
         "render": "Afficher la main du destin",
         "name": "Destin - {character}",
-        "refill": "Compléter",
-        "chance": "Chance"
+        "refillSingular": "Compléter votre main du destin (piocher {nb} carte)",
+        "refillPlural": "Compléter votre main du destin (piocher {nb} cartes)",
+        "chance": "Chance",
+        "chanceHint": "Piocher une carte du destin, jouée immédiatement"
       }
     },
 
