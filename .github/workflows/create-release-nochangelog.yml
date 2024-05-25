@@ -1,4 +1,4 @@
-name: Create Release on v* tag pushed
+name: Create Release on v* tag pushed (no changelog)
 
 on: 
   push:
