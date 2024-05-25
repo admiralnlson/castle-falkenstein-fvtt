@@ -39,6 +39,7 @@ jobs:
         path: ./CHANGELOG.md
 
     - name:  Create release
+      if: steps.changelog_reader.outcome == 'success'
       id: create_version_release
       uses: ncipollo/release-action@v1
       with:
@@ -47,5 +48,17 @@ jobs:
         body: ${{ steps.changelog_reader.outputs.changes }}
         artifacts: './system.json, ./castle-falkenstein.zip'
         draft: false
+        allowUpdates: true
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name:  Create release (no changelog)
+      if: steps.changelog_reader.outcome == 'failure'
+      id: create_version_release-no-changelog
+      uses: ncipollo/release-action@v1
+      with:
+        name: Release ${{ steps.get_version.outputs.version }}
+        tag: ${{ steps.get_version.outputs.version }}
+        artifacts: './system.json, ./castle-falkenstein.zip'
+        draft: true
         allowUpdates: true
         token: ${{ secrets.GITHUB_TOKEN }}
