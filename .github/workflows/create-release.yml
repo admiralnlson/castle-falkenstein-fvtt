@@ -37,6 +37,7 @@ jobs:
       with:
         version: ${{ steps.get_version.outputs.version }}
         path: ./CHANGELOG.md
+      continue-on-error: true
 
     - name:  Create release
       if: steps.changelog_reader.outcome == 'success'
