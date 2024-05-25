@@ -21,7 +21,7 @@ jobs:
       id: checkout-master
       uses: actions/checkout@v2
       with:
-        ref: 'refs/master'
+        ref: 'master'
         fetch-depth: 0
   
     - name: Get changelog entry
