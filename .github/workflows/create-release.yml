@@ -1,57 +1,60 @@
-name: Create Release on v* tag pushed
+name: Create Release on Manual Trigger
 
-on: 
-  push:
-    tags:
-      - 'v*'
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version for the release'
+        required: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: startsWith(github.ref, 'refs/tags/v')
-
     steps:
-    - name: Checkout code
+
+    - name: Get version without v
+      id: get-version-without-v
+      run: |
+        echo "version_without_v=$(echo ${{ github.event.inputs.version }} | sed 's/^v//')" >> $GITHUB_OUTPUT
+
+    - name: Checkout master
+      id: checkout-master
       uses: actions/checkout@v2
       with:
-        submodules: 'recursive'
-
-    - name: Extract tag version number
-      id: get_version
-      uses: battila7/get-version-action@v2
-
-    - name: Echo tag output
-      run: echo ${{ steps.get_version.outputs.version-without-v }}
+        ref: 'refs/master'
+        fetch-depth: 0
+  
+    - name: Get changelog entry
+      id: changelog_reader
+      uses: mindsers/changelog-reader-action@v2
+      with:
+        version: ${{ github.event.inputs.version }}
+        path: ./CHANGELOG.md
+  
+    - name: Checkout tag
+      id: checkout-tag
+      uses: actions/checkout@v2
+      with:
+        ref: 'refs/tags/${{ github.event.inputs.version }}'
+        fetch-depth: 0
 
     - name: Substitute version and download link in system.json
       uses: microsoft/variable-substitution@v1
       with:
         files: 'system.json'
       env:
-        version: ${{steps.get_version.outputs.version-without-v}}
-        download: https://github.com/${{github.repository}}/releases/download/${{steps.get_version.outputs.version}}/castle-falkenstein.zip
+        version: ${{steps.get-version-without-v.outputs.version_without_v}}
+        download: https://github.com/${{github.repository}}/releases/download/${{github.event.inputs.version}}/castle-falkenstein.zip
 
     - name: Create minimal system zip file
       run: zip -r ./castle-falkenstein.zip system.json template.json LICENSE src/ lang/ build/
 
-    - name: Get changelog entry from master branch
-      run: |
-        git fetch origin master:master
-        cp ./master/CHANGELOG.md ./CHANGELOG_MASTER.md
-
-    - name: Get changelog entry
-      id: changelog_reader
-      uses: mindsers/changelog-reader-action@v2
-      with:
-        version: master
-        path: ./CHANGELOG_MASTER.md
-
-    - name: Create release
+    - name:  Create release
       id: create_version_release
       uses: ncipollo/release-action@v1
       with:
-        name: Release ${{ steps.get_version.outputs.version-without-v }}
-        tag: ${{ steps.get_version.outputs.version-without-v }}
+        name: Release ${{ github.event.inputs.version }}
+        tag: ${{ github.event.inputs.version }}
         body: ${{ steps.changelog_reader.outputs.changes }}
         artifacts: './system.json, ./castle-falkenstein.zip'
         draft: false
