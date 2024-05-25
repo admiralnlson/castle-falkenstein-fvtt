@@ -39,8 +39,16 @@ jobs:
         path: ./CHANGELOG.md
       continue-on-error: true
 
+    - name: Check changelog reader outcome
+      id: check_changelog_reader_outcome
+      run: |
+        echo "Outcome of changelog_reader: ${{ steps.changelog_reader.outcome }}"
+        if [ "${{ steps.changelog_reader.outcome }}" == "failure" ]; then
+          echo "Changelog entry not found" >> $GITHUB_ENV
+        fi
+
     - name:  Create release
-      if: steps.changelog_reader.outcome == 'success'
+      if: ${{ steps.changelog_reader.outcome == 'success' }}
       id: create_version_release
       uses: ncipollo/release-action@v1
       with:
@@ -53,7 +61,7 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
 
     - name:  Create release (no changelog)
-      if: steps.changelog_reader.outcome == 'failure'
+      if: ${{ steps.changelog_reader.outcome == 'failure' }}
       id: create_version_release-no-changelog
       uses: ncipollo/release-action@v1
       with:
