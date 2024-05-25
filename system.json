@@ -4,7 +4,7 @@
   "description": "FoundryVTT system for Castle Falkenstein.",
   "version": "0.0.0",
   "compatibility": {
-    "minimum": "10",
+    "minimum": "11",
     "verified": "12.324",
     "maximum": "12"
   },
