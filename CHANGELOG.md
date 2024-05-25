@@ -10,7 +10,7 @@
 - Updating settings for The Divorce, Hard Limit & Half-Off Variations will now update [Perform Feat] windows accordingly.
 ### Fixed
 + The Divorce Variation is now disabled by default.
-+ If the Host deleted their Fortune hand without refreshing the game afterwards, Host characters could end up with a Fortune hand of their own.
++ If the Host deleted their Fortune hand without refreshing the game afterwards to recreate it, Host characters could end up with a Fortune hand of their own.
 + [Firefox] Removed white specks appearing at the bottom of selectable cards and suits in the [Perform Feat] window.
 
 ## [v3.4.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.4.0) - 2024/05/13
