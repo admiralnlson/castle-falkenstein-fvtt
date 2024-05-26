@@ -7,7 +7,7 @@
 - Comme Il Faut Lorebook: lshigami's Realm of the Senses
 ### Changed
 - As it turns out, versions 2.6.0 to 2.10.0 were not compatible with Foundry v10. As a consequence, these versions have been renamed v3.0.0 to v3.4.0.
-- Updating settings for The Divorce, Hard Limit & Half-Off Variations will now update [Perform Feat] windows accordingly.
+- Updating settings for the Divorce, Hard Limit & Half-Off Variations will now update [Perform Feat] windows accordingly.
 ### Fixed
 + The Divorce Variation is now disabled by default.
 + If the Host deleted their Fortune hand without refreshing the game afterwards to recreate it, Host characters could end up with a Fortune hand of their own.
