@@ -10,7 +10,10 @@ To install this system in FoundryVTT, simply go to "Configuration and Setup" (st
 See [USERGUIDE](./doc/USERGUIDE.md)
 
 ## Release notes
-See [CHANGELOG](./CHANGELOG.md)
+All notable changes to this project are documented in [CHANGELOG](./CHANGELOG.md).
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## Supported languages
 The system supports localization. At this stage, the following languages are supported:
@@ -36,4 +39,4 @@ Please do not address issues you're facing with this system to R. Talsorian Game
 
 <hr />
 
-> DISCLAIMER: This [Castle Falkenstein](https://rtalsoriangames.com/castle-falkenstien/) system for [Foundry Virtual Tabletop](https://foundryvtt.com/) is unofficial content provided under the [Homebrew Content Policy of R. Talsorian Games](https://rtalsoriangames.com/homebrew-content-policy/) and is not approved or endorsed by RTG. This content references materials that are the property of R. Talsorian Games and its licensees.
+DISCLAIMER: This [Castle Falkenstein](https://rtalsoriangames.com/castle-falkenstien/) system for [Foundry Virtual Tabletop](https://foundryvtt.com/) is unofficial content provided under the [Homebrew Content Policy of R. Talsorian Games](https://rtalsoriangames.com/homebrew-content-policy/) and is not approved or endorsed by RTG. This content references materials that are the property of R. Talsorian Games and its licensees.

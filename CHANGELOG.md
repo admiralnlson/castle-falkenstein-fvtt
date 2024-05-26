@@ -6,7 +6,7 @@
 - Comme Il Faut Lorebook: The Manual of Primal Forces Raised
 - Comme Il Faut Lorebook: lshigami's Realm of the Senses
 ### Changed
-- As it turns out, versions 2.6.0 to 2.10.0 were not compatible with Foundry v10. As a consequence, these versions have been renamed v3.0.0 to v3.4.0.
+- As it turns out, versions v2.6.0 to v2.10.0 were not compatible with Foundry v10. As a consequence, these versions have been renamed v3.0.0 to v3.4.0.
 - Updating settings for the Divorce, Hard Limit & Half-Off Variations will now update [Perform Feat] windows accordingly.
 ### Fixed
 + The Divorce Variation is now disabled by default.
@@ -23,12 +23,13 @@
 + Particle effect in chat for Wild Spells
 + A check now prevents Hosts from inadvertently dropping a card from a Fortune stack (deck, hand) onto a Sorcery one, or vice versa.
 ### Changed
-+ [🦋Monarch module] Dropped support for this alternative cards UI module.
 + [GM Screen module] Improved the display of GM Screen character sheets, and allowed usage of [Perform Feat] and [Define Spell] from within them
 ### Fixed
 + The additional modifier label in the Define Spell dialog was going blank if edited.
 + The 'Show Others' option on spells was not displaying the thaumic level and description of spells.
 + Fixed statblock for the '.44 Drop Pistol' (damage: 4/5/6 (D) -> 3/4/5 (C))
+### Removed
++ [🦋Monarch module] Dropped support for this alternative cards UI module.
 
 ## [v3.3.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.3.0) - 2023/11/19
 ### Renamed version
