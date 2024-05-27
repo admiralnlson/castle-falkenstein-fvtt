@@ -694,7 +694,7 @@ div.divorce {
   text-align: center;
 }
 
-.chat-message .harmonics-desc {
+.harmonics-desc {
   font-weight: bold;
 }
 
@@ -712,16 +712,6 @@ div.divorce {
 .app.castle-falkenstein.cards-hand .card-hand-controls {
   display: flex;
   justify-content: center;
-}
-
-.app.castle-falkenstein.cards-hand .spell-being-cast,
-.app.castle-falkenstein.cards-hand .harmonic-txt,
-.app.castle-falkenstein.cards-hand .suit-symbol-spades,
-.app.castle-falkenstein.cards-hand .suit-symbol-hearts,
-.app.castle-falkenstein.cards-hand .suit-symbol-diamonds,
-.app.castle-falkenstein.cards-hand .suit-symbol-clubs,
-.app.castle-falkenstein.cards-hand .suit-symbol-\? {
-  color: var(--color-text-light-highlight);
 }
 
 .app.castle-falkenstein.cards-hand .harmonic {
@@ -761,11 +751,6 @@ div.divorce {
 .app.castle-falkenstein.cards-hand .card-hand-controls .flexrow {
   width: 300px;
   justify-content: space-evenly;
-}
-
-.app.castle-falkenstein.cards-hand .window-content {
-  overflow: visible;
-  background: transparent;
 }
 
 .handedCards {
@@ -819,7 +804,7 @@ div.divorce {
 
 .handedCards ol.cards li.card.rtg-visuals,
 .handedCards ol.cards li.card.rtg-visuals img.card-face {
-  border-radius: 4.5% / 3%;
+  border-radius: 2.5% / 1.5%;
 }
 
 .handedCards ol.cards li.card.rtg-visuals img.card-face {
@@ -833,8 +818,11 @@ div.divorce {
 }
 
 div.castle-falkenstein.cards-config a.card-control {
-  color: var(--color-text-light-highlight);
   max-width: min-content;
+}
+
+div.castle-falkenstein.cards-config a.card-control i {
+  vertical-align: bottom;
 }
 
 div.castle-falkenstein.cards-config a.card-control.disabled,
@@ -855,32 +843,22 @@ div.castle-falkenstein.cards-config a[disabled].card-control {
   align-items: end;
 }
 
-.handedCards li.card a.card-control {
-  color: var(--color-text-dark-secondary);
-}
-
-.handedCards li.card.focusedCard div.castle-falkenstein-card-controls a.card-control {
-  color: var(--color-text-light-highlight);
-}
-
 .handedCards li.card.focusedCard div.castle-falkenstein-card-controls i:before {
   font-size: 14px;
 }
 
-/*.handedCards li.card.focusedCard div.castle-falkenstein-card-controls,*/
 .handedCards li.card:not(.focusedCard) div.castle-falkenstein-card-controls:hover,
 .handedCards li.card:not(.focusedCard):hover div.castle-falkenstein-card-controls {
   display: block;
   width: 100%;
-  
+  transform: scale(var(--card-control-scale));
+  transform-origin: bottom left;
+  left: 1%;
+  bottom: 20px;
 }
 
-/*.handedCards li.card:hover .card-face {
-  box-shadow: 0 0 5px var(--color-shadow-primary);
-}*/
-
 .handedCards li.card:hover {
-  --card-hover-translateY: -15px;
+  --card-hover-translateY: -2px;
 }
 
 .handedCards li.card .card-face {
@@ -1099,4 +1077,22 @@ div.gm-screen-grid-cell-content.castle-falkenstein .window-resizable-handle {
   100% {
     opacity: calc( var(--o, 1) + .5);
   }
+}
+
+.app.castle-falkenstein.cards-hand section.window-content {
+  overflow: visible;
+  height: calc(100% - 30px);
+  background: url(../../../../ui/parchment.jpg) repeat;
+  color: var(--color-text-dark-primary) !important;
+  color: #191813 !important;
+}
+
+.app.castle-falkenstein.cards-hand section.window-content div.spell-being-cast,
+.app.castle-falkenstein.cards-hand section.window-content div.harmonic {
+  color: var(--color-text-dark-primary);
+}
+
+.app.castle-falkenstein.cards-hand section.window-content .handedCards {
+  background: transparent;
+  overflow: visible;
 }

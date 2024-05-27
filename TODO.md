@@ -4,17 +4,12 @@
 + MoSCoW: `[M]`ust, `[S]`hould, `[C]`ould, `[W]`on't
 + `[🔥]` Project maintainer (admiralnlson)'s own GM needs
 
-## Known Bugs
+## Known issues
 
 + The Suit associated to Abilities sometimes disappears. Have not been able to establish the rootcause yet. Could be a data schema issue.
-+ When loading v10 world data with the latest system version,
-  + The config setup is unable to load, which may explain why:
-    + Talents appear as blank in the character sheet
-    + Spells aspects appaear as blank in the character sheet
-    + weapons Harm stat seems to not be initialized properly unless touched
-
-## Quick Wins
- + rerender forms after Variation settings updates
++ Cards sorting
+  + Cards drawn don't always get added to the right.
+  + They also don't always appear in the same order in chat messages once they're played.
 
 ### Mechanics from "Corebook"
 

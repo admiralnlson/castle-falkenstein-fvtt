@@ -30,6 +30,12 @@ export class CastleFalkensteinPerformFeat extends FormApplication {
   }
 
   computeWrappedCards() {
+
+    let checkedCardsIds = [];
+    if (this.wrappedCards) {
+      checkedCardsIds = this.wrappedCards.filter(w => w.checked).map(w => w.card.id);
+    }
+
     this.wrappedCards = [];
     for (const card of this.hand.cards) {
       this.wrappedCards.push({
@@ -37,7 +43,14 @@ export class CastleFalkensteinPerformFeat extends FormApplication {
         checked: ""
       });
     }
-    this.wrappedCards.sort((a, b) => (a.card.sort > b.card.sort) ? 1 : -1);
+    
+    this.wrappedCards.sort((wa, wb) => ((wa.card.sort || 0) - (wb.card.sort || 0)));
+
+    for (const w of this.wrappedCards) {
+      if (checkedCardsIds.includes(w.card.id)) {
+        w.checked = "card-selected";
+      }
+    }
   }
 
   isCorrectSuit(card) {

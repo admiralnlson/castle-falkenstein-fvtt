@@ -1,5 +1,13 @@
 # Changelog
 
+## [v3.6.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.6.0) - Unreleased
+## Changed
+- Drawn cards will now always be added to the right.
+- If the composition of a Fortune hand changes (including its card order), the change will now be reflected in the [Perform Feat] window if one is opened.
+- Removed transparency from part of Fortune and Sorcery hands.
+## Fixed
+- Small cards in chat messages will now display in the same order as they were in the Fortune and Sorcery hand.
+
 ## [v3.5.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.5.0) - 2024/05/25
 ### Added
 - Support for Foundry V12 added

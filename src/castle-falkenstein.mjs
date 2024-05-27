@@ -330,6 +330,18 @@ export class CastleFalkenstein {
 
     return cardsDrawn;
   }
+  
+  static onPassCards(from, to, { toCreate }) {
+    // unless 'to' is empty, in which case we might as well keep the default sort from 'from'
+    if (to.cards.contents.length > 0) {
+      // ensure passed cards are added "at the end"
+      let maxSort = Math.max.apply(Math, to.cards.contents.map(c => c.sort));
+      for (const card of toCreate) {
+        card.sort = (maxSort += CONST.SORT_INTEGER_DENSITY);
+      }
+    }
+    return true;
+  }
 
   static showActor(actorId) {
     const actor = game.actors.get(actorId);
@@ -938,6 +950,8 @@ Hooks.on("renderPlayerList", (application, html, data) => CastleFalkenstein.onRe
 Hooks.on("PopOut:popout", (app, popout) => { return CastleFalkenstein.onPopout(app, popout) });
 
 Hooks.once("socketlib.ready", () => CastleFalkenstein.setupSocket());
+
+Hooks.on("passCards", (from, to, options) => CastleFalkenstein.onPassCards(from, to, options));
 
 /* -------------------------------------------- */
 /*  Handlebars Helpers                          */

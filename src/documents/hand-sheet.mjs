@@ -8,8 +8,8 @@ import { CastleFalkensteinPerformFeat } from "../forms/perform-feat.mjs";
  */
 export class CastleFalkensteinHandSheet extends CardsHand {
 
-  static HEIGHT_WITHOUT_SPELL = 60;
-  static HEIGHT_WITH_SPELL = 119;
+  static HEIGHT_WITHOUT_SPELL = 57;
+  static HEIGHT_WITH_SPELL = 116;
 
   /** @override */
   static get defaultOptions() {
@@ -44,7 +44,19 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     if (! await CastleFalkenstein.onDropOnCardStack(event, this))
       return;
 
-    return super._onDrop(event);
+    const dropRet = await super._onDrop(event);
+
+    // in case a [Perform Feat] window is open, let's reflect the reorder if any
+    for (const window of Object.values(ui.windows)) {
+      if (window instanceof CastleFalkensteinPerformFeat) {
+        if (window.rendered) {
+          window.computeWrappedCards();
+          window.render();
+        }
+      }
+    }
+
+    return dropRet;
   }
 
   /** @override */
@@ -95,6 +107,7 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     context.disabled.cancelSpell = context.inCompendium || !context.spellBeingCast || CastleFalkensteinHandSheet.cancelSpellDisabled(hand);
 
     context.cardWidth = CastleFalkenstein.settings.cardWidth;
+    context.cardControlScale = Math.max(1, 1.5 * context.cardWidth / 400);
 
     context.harmonicHTML = CastleFalkensteinHandSheet.harmonicHTML(hand, true);
 
@@ -372,7 +385,7 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     // in the chat message, display the cards played, if any
     content += `<hr/><div class="cards-played">`;
     if (hand.cards.contents.length > 0) {
-      hand.cards.contents.forEach(card => {
+      hand.cards.contents.sort((a,b) => ((a.sort || 0) - (b.sort || 0))).forEach(card => {
         // FIXME code duplication
         const correctSuit = (card.suit == spell.system.suit || card.suit == 'joker') ? 'correct-suit' : '';
         content += CastleFalkenstein.smallCardImg(card,`card-played ${correctSuit}`);
