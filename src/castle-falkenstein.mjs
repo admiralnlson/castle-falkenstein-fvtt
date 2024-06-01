@@ -570,8 +570,58 @@ export class CastleFalkenstein {
       }
     }
 
+    await this.iconUpgrade();
+
     CastleFalkenstein.log.debug("Debug mode active.");
     CastleFalkenstein.log.info("Ready.");
+  }
+
+  static async iconUpgrade() {
+    // upgrade weapons image
+    game.settings.register(this.id, "iconUpgradeDone", {
+      scope: 'world',
+      config: false,
+      type: Boolean,
+      default: false
+    });
+    if (game.user.isGM && !this.settings.iconUpgradeDone) {
+
+      const itemUpdates = (items) => {
+        return items.filter(i => i.type == "weapon" && i.img=="icons/svg/item-bag.svg").map(item => {
+          return {_id: item.id, img: "systems/castle-falkenstein/src/img/saber-and-pistol.png"};
+        }).concat(items.filter(i => (i.type == "ability" || i.type == "spell") && i.img=="icons/svg/item-bag.svg").map(item => {
+          return {_id: item.id, img: `systems/castle-falkenstein/src/cards/${item.system.suit}.svg`};
+        }));
+      };
+
+      // Items in the Items tab
+      {
+        const itemsToUpdate = itemUpdates(game.items);
+        if (itemsToUpdate.length > 0) {
+          await Item.updateDocuments(itemsToUpdate);
+        }
+      }
+
+      // Embedded items in each Actor
+      game.actors.forEach(actor => {
+        const actoritemsToUpdate = itemUpdates(actor.items);
+        if (actoritemsToUpdate.length > 0) {
+          actor.updateEmbeddedDocuments("Item", actoritemsToUpdate);
+        }
+      });
+
+      {
+        const macrosToUpdate = game.macros.filter(m => m.img=="icons/svg/item-bag.svg" && m.command?.startsWith('game.CastleFalkenstein.rollItemMacro("weapon",')).map(macro => {
+          return {_id: macro.id, img: "systems/castle-falkenstein/src/img/saber-and-pistol.png"};
+        });
+        // no update for spell and ability macros, because no info on which suit they depend on.
+        if (macrosToUpdate.length > 0) {
+          Macro.updateDocuments(macrosToUpdate);
+        }
+      }
+
+      this.settings.iconUpgradeDone = true;
+    }
   }
 
   static async returnBackToDeck(stackId, idsOfCardsPlayed) {

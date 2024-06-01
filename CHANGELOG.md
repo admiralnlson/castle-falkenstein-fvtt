@@ -2,9 +2,10 @@
 
 ## [v3.6.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.6.0) - Unreleased
 ## Changed
-- Drawn cards will now always be added to the right.
+- Drawn cards will now always appear on the right of the hand.
 - If the composition of a Fortune hand changes (including its card order), the change will now be reflected in the [Perform Feat] window if one is opened.
 - Removed transparency from part of Fortune and Sorcery hands.
+- Default icon for weapons is now a saber and pistol.
 ## Fixed
 - Small cards in chat messages will now display in the same order as they were in the Fortune and Sorcery hand.
 

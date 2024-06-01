@@ -51,6 +51,8 @@ function compilePacks() {
             if (!item.img)
               item.img = `systems/castle-falkenstein/src/cards/${item.system.suit}.svg`;
           } else if (item.type == "weapon") {
+            if (!item.img)
+              item.img = "systems/castle-falkenstein/src/img/saber-and-pistol.png";
             item.system.ammunition = item.system.ammunition_max;
             if (!item.img)
               item.img = `icons/svg/item-bag.svg`;

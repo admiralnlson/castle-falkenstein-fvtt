@@ -4,27 +4,28 @@
 + MoSCoW: `[M]`ust, `[S]`hould, `[C]`ould, `[W]`on't
 + `[🔥]` Project maintainer (admiralnlson)'s own GM needs
 
-## Known issues
+## Potential issues
 
-+ The Suit associated to Abilities sometimes disappears. Have not been able to establish the rootcause yet. Could be a data schema issue.
-+ Cards sorting
-  + Cards drawn don't always get added to the right.
-  + They also don't always appear in the same order in chat messages once they're played.
++ The Suit associated to Abilities at times used to disappear. Haven't happened in a while though.
+
+## Ideas
+
++ `[🔥]` Replace [Perform Feat] window with adaptations to the Fortune hand.
 
 ### Mechanics from "Corebook"
 
 + `[M]` Duel mechanics
-  + [M] Duel hand initiated with 2 Red cards, 2 Black cards and 2 Jokers
-  + [M] Hand action to reset it back to 2 Red, 2 Black, 2 Jokers
-  + [M] Form to play 2 cards at once out of the 6.
-  + [C] Macro for Host to start a duel b/w 2 characters based on a given Ability (not necessarily Fencing)
-  + [C] Exchange cards are shown only when both characters have selected them
-  + [C] Rest counter
-  + [C] Exchanges & Rounds materialized in combat tracker
+  + `[M]` Duel hand initiated with 2 Red cards, 2 Black cards and 2 Jokers
+  + `[M]` Hand action to reset it back to 2 Red, 2 Black, 2 Jokers
+  + `[M]` Form to play 2 cards at once out of the 6.
+  + `[C]` Macro for Host to start a duel b/w 2 characters based on a given Ability (not necessarily Fencing)
+  + `[C]` Exchange cards are shown only when both characters have selected them
+  + `[C]` Rest counter
+  + `[C]` Exchanges & Rounds materialized in combat tracker
 
 ### Mechanics from sourcebooks
 
-+ Curious Creatures > Familiars
++ `[C🔥]` Curious Creatures > Familiars
   + new form: Draw 2 Power cards / pick one to keep
     + if implemented, trash(Release Power) button can be removed from Aligned Power cards
 
@@ -32,16 +33,15 @@
 
 + `[C]` Allow Hosts to suggest a Perform Feat or Spell Definition (for that one, could include the spell def itself or part of it?)
 
-+ [S] Ability to sort Items in the Character Sheet based on 
-  + [S] name
-  + [S] ability+spell: suit 
-  + [S] ability: level
-  + [C] spell: TL
-  + [C] weapon: effective range, max Dmg
-+ [C] Add info text in empty Abilities table, suggesting to drag-and-drop some entries from or the entire 'imported Abilities folder'
-  + [S] interrupt the drop and make changes or (see also "Species drop-down" list below):
-  + [S] Update the Sorcery entry in the Compendium to Poor so that starting characters don't assume they have an Average level by mistake
-  + [S] Mark Faerie Powers as "Faerie only" so starting characters don't assume they have an Average level in those by mistake (or even access to them plain & simply)
++ `[C]` Ability to sort Items in the Character Sheet based on 
+  + `[C]` name
+  + `[C]` ability+spell: suit 
+  + `[C]` ability: level
+  + `[C]` spell: TL
+  + `[C]` weapon: effective range, max Dmg
++ `[S] Add info text in empty Abilities table, suggesting to drag-and-drop some entries from or the entire 'imported Abilities folder'
+  + `[C]` interrupt the drop and make changes or (see also "Species drop-down" list below):
+  + `[C]` Mark Faerie Powers as "Faerie only"
 
 ### Attributes to lock
 

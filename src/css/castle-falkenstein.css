@@ -867,7 +867,7 @@ div.castle-falkenstein.cards-config a[disabled].card-control {
 }
 
 .handedCards.sorcery .card {
-  background: url(../../../../ui/parchment.jpg) repeat;
+  background: white;
 }
 
 .handedCards.sorcery .card img.card-face {
