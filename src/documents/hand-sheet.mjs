@@ -187,7 +187,10 @@ export class CastleFalkensteinHandSheet extends CardsHand {
 
     this.rotateCards(html);
   
-    //html.find(".card").click(this.cardZoom.bind(this));
+    // TODO if added, let's make sure this does not conflict left-click which selects cards when performing a feat
+    // Adding a :not(.focusedCards) below does not seem to do the job.
+    //html.find(".card").contextmenu(this.cardZoom.bind(this));
+    //html.find(".card.focusedCard").click((event) => { this.cardZoom(event); event.preventDefault();});
 
     html.find('.card').click(async(event) => { await this.onClickCard(event); });
 
