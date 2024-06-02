@@ -52,7 +52,8 @@
         "hint": "[Hôte uniquement] Dans laquelle les Sorciers se voient inspirés par leur barman local (par l'auteur du système @admiralnlson. Description de cette Variation du Grand Jeu dans USERGUIDE.md)",
         "disabled": "Désactivée (défaut)",
         "enabled": "Activée",
-        "leverageLabel": "Faire appel à la thaumixologie"
+        "leverageLabel": "Utilisation de la thaumixologie",
+        "leverageChatHint": "Thaumixologie utilisée."
       },
       "cardWidth": {
         "name": "Largeur des cartes",
