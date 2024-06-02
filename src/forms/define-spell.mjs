@@ -138,6 +138,10 @@ export class CastleFalkensteinDefineSpell extends FormApplication {
       content += `${this.spellBeingCast.customModifier.label}: <b>${this.spellBeingCast.customModifier.value}</b><br/>`;
     }
     content += '</div>';
+
+    if (this.spellBeingCast.usesThaumixology) {
+      content += `<b>${game.i18n.localize("castle-falkenstein.settings.thaumixologyVariation.leverageChatHint")}</b><br/>`;
+    }
     
     const total = this.computeTotal();
     content += `<hr /><div class="define-spell-total">${total}</div>`;
