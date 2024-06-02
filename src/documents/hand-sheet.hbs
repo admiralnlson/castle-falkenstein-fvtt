@@ -1,42 +1,80 @@
 <form class="{{cssClass}} {{typeFlag}} {{readyToCast}}" autocomplete="off">
+  {{#if featBeingPerformed}}
+    <div class="header">
+      <div class="ability-level-as-sentence">{{{abilityLevelAsSentenceHtml}}}</div>
+      <div class="max-cards">{{#if displayMaxCards}}{{maxCardsStr}}{{/if}}</div>
+    </div>
+    {{#if divorceSettingEnabled}}
+      <div class="divorce">
+        <label class="divorce-label">{{localize 'castle-falkenstein.settings.divorceVariation.divorceLabel'}}</label>
+        <span class="divorce-hint">&nbsp;{{divorceHint}}</span>
+        <button type="button" name="spades" class="divorce-button divorce-spades {{featBeingPerformed.divorceSuit}}">{{{suitHTML.spades}}}</button>
+        <span class="sep"></span>
+        <button type="button" name="hearts" class="divorce-button divorce-hearts {{featBeingPerformed.divorceSuit}}">{{{suitHTML.hearts}}}</button>
+        <span class="sep"></span>
+        <button type="button" name="diamonds" class="divorce-button divorce-diamonds {{featBeingPerformed.divorceSuit}}">{{{suitHTML.diamonds}}}</button>
+        <span class="sep"></span>
+        <button type="button" name="clubs" class="divorce-button divorce-clubs {{featBeingPerformed.divorceSuit}}">{{{suitHTML.clubs}}}</button>
+        <span class="sep"></span>
+      </div>
+    {{/if}}
+    <hr class="feat-being-performed" />
+  {{/if}}
   {{#if spellBeingCast}}
-  <div class="spell-being-cast">
-    <span class="spell-name" title="{{spellBeingCast.spellObject.name}}">{{spellBeingCast.spellObject.name}}</span>
-    <span class="spell-suit">[<span class="suit-symbol-{{spellBeingCast.spellObject.system.suit}}">{{spellBeingCast.suitSymbol}}</span>]</span>
-    <span class="power-gathering-progress">{{spellBeingCast.powerGathered}} / {{spellBeingCast.powerNeed}}</span>
-  </div>
-  <div class="harmonic">
-    <span class="harmonic-txt">{{{harmonicHTML}}}</span>
-  </div>
-  <hr class="spell-being-cast" />
+    <div class="spell-being-cast">
+      <span class="spell-name" title="{{spellBeingCast.spell.name}}">{{spellBeingCast.spell.name}}</span>
+      <span class="spell-suit">[<span class="suit-symbol-{{spellBeingCast.spell.system.suit}}">{{spellBeingCast.suitSymbol}}</span>]</span>
+    </div>
+    <div class="harmonic">
+      <span class="harmonic-txt">{{{harmonicHTML}}}</span>
+    </div>
+    <hr class="spell-being-cast" />
   {{/if}}
   <div class="card-hand-controls">
     <div class="flexrow">
       {{#if typeFlag}}
-      <a class="card-control" data-action="openActor" title="{{localize "castle-falkenstein.openCharacterSheet"}}" {{ disabled disabled.openActor }}>
-        <i class="fas fa-user"></i>
-      </a>
+        <span class="card-control-sep"></span>
+        <a class="card-control" data-action="openActor" title="{{localize "castle-falkenstein.openCharacterSheet"}}" {{ disabled disabled.openActor }}>
+          <i class="fas fa-user"></i>
+        </a>
       {{/if}}
       {{#if owner}}
-      {{#ifequal typeFlag "fortune"}}
-      <a class="card-control" data-action="refillHand" title="{{i18nRefill}}" {{ disabled disabled.refillHand }}>
-        <i class="fas fa-cards-blank"></i>
-      </a>
-      <a class="card-control" data-action="chanceCard" title="{{localize "castle-falkenstein.fortune.hand.chanceHint"}}" {{ disabled disabled.chanceCard }}>
-        <i class="fas fa-circle-question"></i>
-      </a>
-      {{/ifequal}}
-      {{#ifequal typeFlag "sorcery"}}
-      <a class="card-control" data-action="gatherPower" title="{{localize "castle-falkenstein.sorcery.hand.gatherPower"}}" {{ disabled disabled.gatherPower }}>
-        <i class="fas fa-cards-blank"></i>
-      </a>
-      <a class="card-control" data-action="castSpell" title="{{localize "castle-falkenstein.sorcery.hand.castSpell"}}" {{ disabled disabled.castSpell }}>
-        <i class="fas fa-play-circle"></i>
-      </a>
-      <a class="card-control" data-action="cancelSpell" title="{{localize "castle-falkenstein.sorcery.hand.cancelSpell"}}" {{ disabled disabled.cancelSpell }}>
-        <i class="fas fa-stop-circle"></i>
-      </a>
-      {{/ifequal}}
+        {{#ifequal typeFlag "fortune"}}
+          <a class="card-control" data-action="refillHand" title="{{i18nRefill}}" {{ disabled disabled.refillHand }}>
+            <i class="fas fa-cards-blank"></i>
+          </a>
+          <span class="card-control-sep"></span>
+          <span class="perform-feat-total">
+            {{total}}
+          </span>
+          <a class="card-control" data-action="triggerFeat" title="{{localize "castle-falkenstein.fortune.hand.triggerFeat"}}" {{ disabled disabled.triggerFeat }}>
+            <i class="fas fa-play-circle"></i>
+          </a>
+          <a class="card-control" data-action="cancelFeat" title="{{localize "castle-falkenstein.fortune.hand.cancelFeat"}}" {{ disabled disabled.cancelFeat }}>
+            <i class="fas fa-stop-circle"></i>
+          </a>
+          <span class="card-control-sep"></span>
+          <a class="card-control" data-action="chanceCard" title="{{localize "castle-falkenstein.fortune.hand.chanceHint"}}" {{ disabled disabled.chanceCard }}>
+            <i class="fas fa-circle-question"></i>
+          </a>
+          <span class="card-control-sep"></span>
+        {{/ifequal}}
+        {{#ifequal typeFlag "sorcery"}}
+          <a class="card-control" data-action="gatherPower" title="{{localize "castle-falkenstein.sorcery.hand.gatherPower"}}" {{ disabled disabled.gatherPower }}>
+            <i class="fas fa-cards-blank"></i>
+          </a>
+          <span class="card-control-sep"></span>
+          <span class="power-gathering-progress">
+            {{spellBeingCast.powerGathered}} / {{spellBeingCast.powerNeed}}
+          </span>
+          <a class="card-control" data-action="castSpell" title="{{localize "castle-falkenstein.sorcery.hand.castSpell"}}" {{ disabled disabled.castSpell }}>
+            <i class="fas fa-play-circle"></i>
+          </a>
+          <a class="card-control" data-action="cancelSpell" title="{{localize "castle-falkenstein.sorcery.hand.cancelSpell"}}" {{ disabled disabled.cancelSpell }}>
+            <i class="fas fa-stop-circle"></i>
+          </a>
+          <span class="card-control-sep"></span>
+        {{/ifequal}}
       {{/if}}
     </div>
   </div>
@@ -44,18 +82,18 @@
 <div class="handedCards {{typeFlag}}">
   <ol class="cards">
     {{#each cards as |card|}}
-    <li class="card flexrow {{../rtgVisuals}} {{card.correctSuit}} {{card.joker}}" data-card-id="{{card.id}}" title="{{card.name}}" style="width: {{../cardWidth}}px; height: {{../cardHeight}}px; margin-left: calc(-1/2*{{../cardWidth}}px); margin-right: calc(-1/2*{{../cardWidth}}px);">
-      <img class="card-face" src="{{card.img}}" alt="{{card.name}}" style="width: {{../cardWidth}}px">
-      <div class="castle-falkenstein-card-controls flexcol" style="--card-control-scale: {{../cardControlScale}}">
-        {{#if ../owner}}
-        {{#ifequal ../typeFlag "sorcery"}}
-          <a class="card-control" data-action="releasePower" title="{{localize "castle-falkenstein.sorcery.hand.releasePower"}}">
-            <i class="fas fa-trash"></i>
-          </a>
-        {{/ifequal}}
-        {{/if}}
-      </div>
-    </li>
+      <li class="card flexrow {{../rtgVisuals}} {{card.correctSuit}} {{card.joker}} {{card.selected}}" data-card-id="{{card.id}}" title="{{card.name}}" style="width: {{../cardWidth}}px; height: {{../cardHeight}}px; margin-left: calc(-1/2*{{../cardWidth}}px); margin-right: calc(-1/2*{{../cardWidth}}px);">
+        <img class="card-face" src="{{card.img}}" alt="{{card.name}}" style="width: {{../cardWidth}}px">
+        <div class="castle-falkenstein-card-controls flexcol" style="--card-control-scale: {{../cardControlScale}}">
+          {{#if ../owner}}
+            {{#ifequal ../typeFlag "sorcery"}}
+              <a class="card-control" data-action="releasePower" title="{{localize "castle-falkenstein.sorcery.hand.releasePower"}}">
+                <i class="fas fa-trash"></i>
+              </a>
+            {{/ifequal}}
+          {{/if}}
+        </div>
+      </li>
     {{/each}}
   </ol>
 </div>

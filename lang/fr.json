@@ -87,10 +87,6 @@
         "description1": "Vous ne semblez pas avoir canalisé assez de Pouvoir pour l'instant.",
         "description2": "Lancer le sort malgré tout ?"
       },
-      "performFeatHandRefill": {
-        "description1": "Votre main du destin ne contient que {nb} cartes.",
-        "description2": "Souhaitez-vous la compléter ?"
-      },
       "thaumixologyReleaseAllPower": {
         "description1": "Vous utilisez la thaumixologie pour ce sort, ce qui signifie que vous ne pouvez normalement pas disperser du Pouvoir.",
         "description2": "Êtes-vous sûr(e) ?"
@@ -115,6 +111,8 @@
         "name": "Destin - {character}",
         "refillSingular": "Compléter votre main du destin (piocher {nb} carte)",
         "refillPlural": "Compléter votre main du destin (piocher {nb} cartes)",
+        "triggerFeat": "Accoomplir la prouesse",
+        "cancelFeat": "Annuler la prouesse",
         "chance": "Chance",
         "chanceHint": "Piocher une carte du destin, jouée immédiatement"
       }

@@ -143,7 +143,7 @@ export class CastleFalkensteinDefineSpell extends FormApplication {
     content += `<hr /><div class="define-spell-total">${total}</div>`;
 
     let hand = await this.character.hand("sorcery");
-    await hand.defineSpell(this.spellBeingCast);
+    await hand.startCasting(this.spellBeingCast);
 
     // Post message to chat
     CastleFalkenstein.createChatMessage(this.character, flavor, content);

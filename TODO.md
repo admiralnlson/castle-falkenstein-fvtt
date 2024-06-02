@@ -6,11 +6,7 @@
 
 ## Potential issues
 
-+ The Suit associated to Abilities at times used to disappear. Haven't happened in a while though.
-
-## Ideas
-
-+ `[🔥]` Replace [Perform Feat] window with adaptations to the Fortune hand.
++ The Suit associated to Abilities sometimes disappear. Haven't found steps to reproduce it though.
 
 ### Mechanics from "Corebook"
 
