@@ -808,7 +808,7 @@ export class CastleFalkenstein {
           [this.THAUMIXOLOGY_VARIATION_OPTIONS.disabled]: "castle-falkenstein.settings.thaumixologyVariation.disabled",
           [this.THAUMIXOLOGY_VARIATION_OPTIONS.enabled]: "castle-falkenstein.settings.thaumixologyVariation.enabled"
         },
-        config: CASTLE_FALKENSTEIN.SHOW_THAUMIXOLOGY_VARIATION,
+        config: true,
         default: this.THAUMIXOLOGY_VARIATION_OPTIONS.disabled,
         requiresReload: false,
         onChange: value => {

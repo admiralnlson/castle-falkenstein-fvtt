@@ -1,10 +1,12 @@
 # Changelog
 
-## [v3.6.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.6.0) - Unreleased
+## [v3.6.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.6.0) - 2024/06/02
+##
+- Support for "The Thaumixology Variation". The description of this Variation on the Great Game by @admiralnlson may be found in the USERGUIDE.
 ## Changed
 - Cards played as part of a Feat are now selected from within the Fortune hand itself, rather than a separate form.
-- Drawn cards will now consistently appear on the right side of the hand.
-- Removed transparency from part of Fortune and Sorcery hands for better readability.
+- Drawn cards will now consistently appear on the right side of hands.
+- Partially removed transparency in Fortune and Sorcery hands for better readability.
 - The default icon for weapons is now a saber and pistol.
 ## Fixed
 - Drag-and-dropping a card onto itself no longer changes the order of cards in one's hand.
