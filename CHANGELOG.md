@@ -2,7 +2,7 @@
 
 ## [v3.6.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.6.0) - 2024/06/02
 ## Added
-- Support for "The Thaumixology Variation". The description of this Variation on the Great Game by @admiralnlson may be found in the USERGUIDE.
+- Support for "The Thaumixology Variation". The description of this Variation on the Great Game by @admiralnlson may be found in the [USERGUIDE](./doc/USERGUIDE.md).
 ## Changed
 - Cards played as part of a Feat are now selected from within the Fortune hand itself, rather than a separate form.
 - Drawn cards will now consistently appear on the right side of hands.
