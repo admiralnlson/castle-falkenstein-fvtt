@@ -52,7 +52,8 @@
         "hint": "[Host only] In which Sorcerers find themselves inspired by their local bartender (by system author @admiralnlson. Description of this Variation on the Great Game in USERGUIDE.md)",
         "disabled": "Disabled (default)",
         "enabled": "Enabled",
-        "leverageLabel": "Leverage Thaumixology"
+        "leverageLabel": "Use Thaumixology",
+        "leverageChatHint": "Thaumixology used."
       },
       "cardWidth": {
         "name": "Cards width",
@@ -87,10 +88,6 @@
         "description1": "You do not appear to have gathered enough power yet.",
         "description2": "Cast anyway?"
       },
-      "performFeatHandRefill": {
-        "description1": "Your Fortune Hand contains only {nb} cards.",
-        "description2": "Would you like to complete it to 4 cards?"
-      },
       "thaumixologyReleaseAllPower": {
         "description1": "You are using Thaumixology for this spell, meaning you cannot normally release Power.",
         "description2": "Are you sure?"
@@ -115,6 +112,8 @@
         "name": "Fortune - {character}",
         "refillSingular": "Complete your Fortune hand (draw {nb} card)",
         "refillPlural": "Complete your Fortune hand (draw {nb} cards)",
+        "triggerFeat": "Trigger Feat",
+        "cancelFeat": "Cancel Feat",
         "chance": "Chance",
         "chanceHint": "Draw a Fortune card, played immediately"
       }

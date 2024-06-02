@@ -138,12 +138,16 @@ export class CastleFalkensteinDefineSpell extends FormApplication {
       content += `${this.spellBeingCast.customModifier.label}: <b>${this.spellBeingCast.customModifier.value}</b><br/>`;
     }
     content += '</div>';
+
+    if (this.spellBeingCast.usesThaumixology) {
+      content += `<b>${game.i18n.localize("castle-falkenstein.settings.thaumixologyVariation.leverageChatHint")}</b><br/>`;
+    }
     
     const total = this.computeTotal();
     content += `<hr /><div class="define-spell-total">${total}</div>`;
 
     let hand = await this.character.hand("sorcery");
-    await hand.defineSpell(this.spellBeingCast);
+    await hand.startCasting(this.spellBeingCast);
 
     // Post message to chat
     CastleFalkenstein.createChatMessage(this.character, flavor, content);

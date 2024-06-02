@@ -1,8 +1,6 @@
 import { CASTLE_FALKENSTEIN } from "../config.mjs";
 import { CastleFalkenstein } from "../castle-falkenstein.mjs";
-import { CastleFalkensteinPerformFeat } from "../forms/perform-feat.mjs";
 import { CastleFalkensteinDefineSpell } from "../forms/define-spell.mjs";
-import { CastleFalkensteinHandSheet } from "../documents/hand-sheet.mjs";
 
 /**
  * @extends {Actor}
@@ -111,29 +109,12 @@ export class CastleFalkensteinActor extends Actor {
       return;
     }
 
-    if (hand.cards.size < 4) {
-      const i18nTitle = game.i18n.localize("castle-falkenstein.dialogs.confirmTitle");
-      const i18nDescription1 = game.i18n.format("castle-falkenstein.dialogs.performFeatHandRefill.description1", {
-        nb: hand.cards.size
-      });
-      const i18nDescription2 = game.i18n.localize("castle-falkenstein.dialogs.performFeatHandRefill.description2");
+    // unselect cards
+    hand.cards.forEach(card => {
+      card.unsetFlag(CastleFalkenstein.id, "selected");
+    });
 
-      Dialog.confirm({
-        title: i18nTitle,
-        content: `<p>${i18nDescription1}</p><p>${i18nDescription2}</p>`,
-        yes: async () => {
-          await CastleFalkensteinHandSheet.refillHand(hand) ;
-          (new CastleFalkensteinPerformFeat(item)).render(true);
-        },
-        no: () => {
-          (new CastleFalkensteinPerformFeat(item)).render(true);
-        },
-        defaultYes: true
-      });
-    }
-    else {
-      (new CastleFalkensteinPerformFeat(item)).render(true);
-    }
+    await hand.startPerformingFeat(item);
   }
 
   get sorceryAbility() {

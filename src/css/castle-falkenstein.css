@@ -322,16 +322,18 @@ html * {
   text-align: center;
 }
 
-.castle-falkenstein-perform-feat .header {
+.castle-falkenstein.cards-hand .header {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
   align-items: end;
+  flex-wrap: nowrap;
 }
 
-.castle-falkenstein-perform-feat .header .max-cards {
+.castle-falkenstein.cards-hand .header .max-cards {
   margin-left: auto; 
   margin-right: 0;
+  text-wrap: nowrap;
 }
 
 .castle-falkenstein .items-list .items-header .cf-poker-hand:before {
@@ -559,6 +561,13 @@ div.divorce {
   align-items: center;
 }
 
+.ability-level-as-sentence,
+div.divorce .divorce-hint {
+  min-width: 0;
+  text-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 div.divorce {
   overflow: hidden;
@@ -603,7 +612,7 @@ div.divorce {
   border-bottom: 2px ridge gray;
 }
 
-.castle-falkenstein .perform-feat-total,
+.castle-falkenstein .chat-message .perform-feat-total,
 .castle-falkenstein .define-spell-total,
 .chat-message .define-spell-total {
   width: 100%;
@@ -732,17 +741,17 @@ div.divorce {
   align-items: center;
 }
 
+.app.castle-falkenstein.cards-hand div.feat-being-performed .ability-level-as-sentence,
 .app.castle-falkenstein.cards-hand div.spell-being-cast .spell-name {
-  text-overflow: ellipsis;
+  min-width: 0;
   overflow: hidden;
+  text-overflow: ellipsis;
+  text-wrap: nowrap;
   white-space: nowrap;
   font-weight: bold;
 }
 
-.app.castle-falkenstein.cards-hand div.spell-being-cast .power-gathering-progress {
-  text-align: right;
-}
-
+.app.castle-falkenstein.cards-hand hr.feat-being-performed,
 .app.castle-falkenstein.cards-hand hr.spell-being-cast {
   margin-top: 7px;
   margin-bottom: 7px;
@@ -799,7 +808,6 @@ div.divorce {
 .handedCards ol.cards li.card img.card-face {
   width: 100%;
   height: 100%;
-  cursor: zoom-in;
 }
 
 .handedCards ol.cards li.card.rtg-visuals,
@@ -817,11 +825,31 @@ div.divorce {
   box-shadow: 1px 1px 20px 5px #3a3a3a;
 }
 
-div.castle-falkenstein.cards-config a.card-control {
+div.castle-falkenstein.cards-config .perform-feat-total,
+div.castle-falkenstein.cards-config .power-gathering-progress,
+div.castle-falkenstein.cards-config .card-control {
   max-width: min-content;
 }
 
-div.castle-falkenstein.cards-config a.card-control i {
+div.castle-falkenstein.cards-config .card-control-sep {
+  width: 10px;
+  max-width: 10px;
+}
+
+div.castle-falkenstein.cards-config .perform-feat-total,
+div.castle-falkenstein.cards-config .power-gathering-progress {
+  width: 50px;
+  max-width: 50px;
+  background: rgba(255, 255, 240, 0.8);
+  border: 1px solid var(--color-border-light-primary);
+  border-radius: 3px;
+  text-align: center;
+  /*bottom: 1px;
+  position: relative;*/
+  line-height: 16px;
+}
+
+div.castle-falkenstein.cards-config .card-control i {
   vertical-align: bottom;
 }
 
@@ -859,6 +887,7 @@ div.castle-falkenstein.cards-config a[disabled].card-control {
 
 .handedCards li.card:hover {
   --card-hover-translateY: -2px;
+  cursor: grab;
 }
 
 .handedCards li.card .card-face {
@@ -866,14 +895,22 @@ div.castle-falkenstein.cards-config a[disabled].card-control {
   will-change: transform; /* blurs the cards but removes flickering caused by cards moving while hovered */
 }
 
+.handedCards.fortune .card.selected:hover,
+.handedCards.fortune .card.selected {
+  box-shadow: 0 0 20px var(--color-shadow-primary);
+}
+
+.handedCards.fortune .card,
 .handedCards.sorcery .card {
   background: white;
 }
 
+.handedCards.fortune .card img.card-face,
 .handedCards.sorcery .card img.card-face {
   opacity: 0.4;
 }
 
+.handedCards.fortune .card.correct-suit img.card-face,
 .handedCards.sorcery .card.correct-suit img.card-face,
 .handedCards.sorcery .card.focusedCard img.card-face {
   opacity: 1;

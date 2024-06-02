@@ -14,7 +14,6 @@ import { CastleFalkensteinWeaponSheet } from "./documents/item-sheet-weapon.mjs"
 import { CastleFalkensteinPossessionSheet } from "./documents/item-sheet-possession.mjs";
 import { CastleFalkensteinSpellSheet } from "./documents/item-sheet-spell.mjs";
 import { CastleFalkensteinItem } from "./documents/item.mjs";
-import { CastleFalkensteinPerformFeat } from "./forms/perform-feat.mjs";
 import { CastleFalkensteinDefineSpell } from "./forms/define-spell.mjs";
 
 export class CastleFalkenstein {
@@ -763,7 +762,7 @@ export class CastleFalkenstein {
         requiresReload: false,
         onChange: value => {
           for (const window of Object.values(ui.windows)) {
-            if (window instanceof CastleFalkensteinPerformFeat) {
+            if (window instanceof CastleFalkensteinHandSheet) {
               if (window.rendered) window.render();
             }
           }
@@ -780,7 +779,7 @@ export class CastleFalkenstein {
         requiresReload: false,
         onChange: value => {
           for (const window of Object.values(ui.windows)) {
-            if (window instanceof CastleFalkensteinPerformFeat) {
+            if (window instanceof CastleFalkensteinHandSheet) {
               if (window.rendered) window.render();
             }
           }
@@ -797,7 +796,7 @@ export class CastleFalkenstein {
         requiresReload: false,
         onChange: value => {
           for (const window of Object.values(ui.windows)) {
-            if (window instanceof CastleFalkensteinPerformFeat) {
+            if (window instanceof CastleFalkensteinHandSheet) {
               if (window.rendered) window.render();
             }
           }
@@ -902,7 +901,15 @@ export class CastleFalkenstein {
   }
 
   static async onRenderChatMessage(chatMessage, html, messageData) {
-    CastleFalkensteinPerformFeat.onRenderChatMessage(chatMessage, html, messageData);
+    html.find(".feat-chat-ranges-button").click(event => {
+      let button = event.currentTarget;
+      var content = button.nextElementSibling;
+      if (content.style.display === "block") {
+        content.style.display = "none";
+      } else {
+        content.style.display = "block";
+      }
+    });
   }
 
   static async onDropOnCardStack(event, cardsSheet) {
