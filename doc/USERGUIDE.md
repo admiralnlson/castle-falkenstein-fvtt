@@ -127,21 +127,21 @@ On the other hand, the Sorcerer cannot release Unaligned Power independently. Th
 
 __Example:__
 
-Sorcerer Rupert attempts to cast Psychic Bond [♥].
+Sorcerer Rupert attempts to cast Psychic Bond [♥]. \
 After determining the Definitions of the Spell, the Total Thaumic Energy Requirement is 17. Rupert decides to leverage Thaumixology for this spell.
 
-He gathers Power: [J♥].
+He gathers Power: [J♥]. \
 Aligned Power: 11 points of Thaumic Energy. Insufficient to trigger the spell.
 
-He keeps gathering Power: [5♣].
+He keeps gathering Power: [5♣]. \
 11 + (5 / 2) = 13 points of Thaumic Energy. Still insufficient.
 
-He persists in gathering Power: [8♣].
+He persists in gathering Power: [8♣]. \
 11 + 1 + (8 / 2) = 15 points of Thaumic Energy. Still insufficient.
 
 Rupert could Unravel, inflicting himself a Wound to gain the 2 points he lacks. But the situation is not that dire.
 
-He persists: [A♦].
+He persists: [A♦]. \
 11 + 1 + 1 + (14 / 2) = 20 points of Thaumic Energy. The spell triggers with a Material Harmonic [♦].
 
 ---
