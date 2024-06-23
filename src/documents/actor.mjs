@@ -20,11 +20,14 @@ export class CastleFalkensteinActor extends Actor {
       [ "fortune", "sorcery" ].forEach(async (handType) => {
         const hand = CastleFalkenstein.searchUniqueHand(handType, this);
         if (hand) {
-          // No need for a socket here.
-          // Whoever updated the name on the Actor is expected to have the ownership level necessary to update the name of the Hand also (see below).
-          await hand.update({
-            name: this.computeHandName(handType)
-          });
+          const actorId = hand.getFlag(CastleFalkenstein.id, "actor");
+          if (actorId != "host") {
+            // No need for a socket here.
+            // Whoever updated the name on the Actor is expected to have the ownership level necessary to update the name of the Hand also (see below).
+            await hand.update({
+              name: this.computeHandName(handType)
+            });
+          }
         }
       });
     }
@@ -32,11 +35,12 @@ export class CastleFalkensteinActor extends Actor {
     if (changed.ownership) {
       // If ownership on a Character changed and no player owns it anymore, delete their Fortune hand if it exists.
       if (!this.hasPlayerOwner) {
-        const fortuneHand = CastleFalkenstein.searchUniqueHand("fortune", this);
-        if (fortuneHand) {
-          // No need for a socket here.
-          // Whoever delete the Actor is expected to have the ownership level necessary to delete the Hand also (with default role ownership at least they should).
-          await fortuneHand.delete();
+        const hand = CastleFalkenstein.searchUniqueHand("fortune", this, true);
+        if (hand) {
+          const actorId = hand.getFlag(CastleFalkenstein.id, "actor");
+          if (actorId != "host") {
+            await hand.delete();
+          }
         }
       }
 
@@ -44,11 +48,14 @@ export class CastleFalkensteinActor extends Actor {
       [ "fortune", "sorcery" ].forEach(async (handType) => {
         const hand = CastleFalkenstein.searchUniqueHand(handType, this);
         if (hand) {
-          // No need for a socket here.
-          // Whoever updated ownership on the the Actor is expected to have the ownership level necessary to update them on the Hand also (with default role ownership at least, they should).
-          await hand.update({
-            ownership: this.ownership
-          });
+          const actorId = hand.getFlag(CastleFalkenstein.id, "actor");
+          if (actorId != "host") {
+            // No need for a socket here.
+            // Whoever updated ownership on the the Actor is expected to have the ownership level necessary to update them on the Hand also (with default role ownership at least, they should).
+            await hand.update({
+              ownership: this.ownership
+            });
+          }
         }
       });
     }
@@ -62,7 +69,10 @@ export class CastleFalkensteinActor extends Actor {
     [ "fortune", "sorcery" ].forEach(async (handType) => {
       const hand = CastleFalkenstein.searchUniqueHand(handType, this);
       if (hand) {
-        await hand.delete();
+        const actorId = hand.getFlag(CastleFalkenstein.id, "actor");
+        if (actorId != "host") {
+          await hand.delete();
+        }
       }
     });
   }

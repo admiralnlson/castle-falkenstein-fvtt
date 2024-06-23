@@ -198,47 +198,51 @@ export class CastleFalkenstein {
 
   static async prepareCardStacks() {
 
-    // Delete discard piles used in previous versions
-    await game.cards.filter(stack => stack.type === "pile").forEach(async (stack) => {
-      const type = stack.getFlag(CastleFalkenstein.id, "type");
-      if (type) {
-        // This should return cards they contain to their origin decks.
-        await stack.delete();
+    if (game.user.isGM) {
+      // Delete discard piles used in previous versions
+      await game.cards.filter(stack => stack.type === "pile").forEach(async (stack) => {
+        const type = stack.getFlag(CastleFalkenstein.id, "type");
+        if (type) {
+          // This should return cards they contain to their origin decks.
+          await stack.delete();
+        }
+      });
+
+      // Create Fortune/Sorcery Decks which are missing
+
+      let cardsCreatedI18n = "";
+
+      if (!game.cards.get(this.settings.fortuneDeck)) {
+        const deck = await this.createPresetDeck("fortune");
+        this.settings.fortuneDeck = deck.id;
+        cardsCreatedI18n += "<br/>  - " + game.i18n.localize("castle-falkenstein.settings.fortuneDeck.name");
       }
-    });
 
-    // Create Fortune/Sorcery Decks which are missing
+      if (!game.cards.get(this.settings.sorceryDeck)) {
+        const deck = await this.createPresetDeck("sorcery");
+        this.settings.sorceryDeck = deck.id;
+        cardsCreatedI18n += "<br/>  - " + game.i18n.localize("castle-falkenstein.settings.sorceryDeck.name");
+      }
 
-    let cardsCreatedI18n = "";
+      // TBC Create Host Fortune hand if missing
+      await this.hostFortuneHand();
 
-    if (!game.cards.get(this.settings.fortuneDeck)) {
-      const deck = await this.createPresetDeck("fortune");
-      this.settings.fortuneDeck = deck.id;
-      cardsCreatedI18n += "<br/>  - " + game.i18n.localize("castle-falkenstein.settings.fortuneDeck.name");
+      // TBC Create PC-owned actors' hands if missing
+
+      // Notify the user
+
+      if (cardsCreatedI18n)
+        CastleFalkenstein.notif.info(game.i18n.localize("castle-falkenstein.notifications.createdCards") + cardsCreatedI18n);
     }
-
-    if (!game.cards.get(this.settings.sorceryDeck)) {
-      const deck = await this.createPresetDeck("sorcery");
-      this.settings.sorceryDeck = deck.id;
-      cardsCreatedI18n += "<br/>  - " + game.i18n.localize("castle-falkenstein.settings.sorceryDeck.name");
-    }
-
-    // TBC Create Host Fortune hand if missing
-    await this.hostFortuneHand();
-
-    // TBC Create PC-owned actors' hands if missing
-
-    // Notify the user
-
-    if (cardsCreatedI18n)
-      CastleFalkenstein.notif.info(game.i18n.localize("castle-falkenstein.notifications.createdCards") + cardsCreatedI18n);
   }
 
-  static searchUniqueHand(handType, actor) {
+  static searchUniqueHand(handType, actor, searchDedicatedFortuneHand=false) {
 
-    const actorFlag = (handType === "fortune" && !actor.hasPlayerOwner) ? "host" : actor.id;
+    const actorFlag = searchDedicatedFortuneHand
+                      ? actor.id
+                      : (handType === "fortune" && !actor.hasPlayerOwner ? "host" : actor.id);
 
-    const search = game.cards.filter(stack => stack.type === "hand" &&
+                      const search = game.cards.filter(stack => stack.type === "hand" &&
       stack.getFlag(this.id, "type") === handType &&
       stack.getFlag(this.id, "actor") === actorFlag);
 
@@ -555,9 +559,7 @@ export class CastleFalkenstein {
   
     CONFIG.Cards.sheetClasses.hand["core.CardsHand"].canBeDefault = false;
 
-    if (game.user.isGM) {
-      await this.prepareCardStacks();
-    }
+    await this.prepareCardStacks();
 
     const userLanguage = game.settings.get("core", "language");
     if (userLanguage != "en" && Array.from(game.system.languages.map(el => el.lang)).includes(userLanguage)) {
