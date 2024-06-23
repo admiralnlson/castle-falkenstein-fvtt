@@ -3,7 +3,7 @@
 ## [v3.6.1](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.6.1) - 2023/06/23
 ## Fixed
 - When a Host Character's name or permissions change, players will no longer see an error saying they're lacking permissions to update cards.
-- When a Host Character is deleted, the Host's Fortune hand no longer also gets deleted.
+- When a Host Character is deleted, the Host's Fortune Hand no longer also gets deleted.
 - When removing Player permissions on a Character, turning it into a Host Character, the Character's dedicated Fortune Hand is now automatically deleted.
 
 ## [v3.6.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.6.0) - 2024/06/02
