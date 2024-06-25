@@ -352,8 +352,8 @@ export class CastleFalkenstein {
   }
 
   static async createHand(handType, actorFlag) {
-    let handData = {};
-    
+    let handData = null;
+
     let actor;
     if (actorFlag != "host") {
       actor = game.actors.get(actorFlag);
@@ -361,7 +361,7 @@ export class CastleFalkenstein {
         actorFlag = "host";
     }
 
-    if (actorFlag == "host") {
+    if (actorFlag == "host" && handType == "fortune") {
       // create host hand
       handData = {
         type: "hand",
@@ -382,13 +382,15 @@ export class CastleFalkenstein {
       };
     }
 
-    const hand = await Cards.create(handData);
+    if (handData) {
+      const hand = await Cards.create(handData);
 
-    if (hand) {
-      CastleFalkenstein.notif.info(game.i18n.localize("castle-falkenstein.notifications.createdCards") + "<br/>  - " + hand.name);
+      if (hand) {
+        CastleFalkenstein.notif.info(game.i18n.localize("castle-falkenstein.notifications.createdCards") + "<br/>  - " + hand.name);
+      }
+
+      return hand;
     }
-
-    return hand;
   }
 
   static usingRTGCardVisuals(deck) {

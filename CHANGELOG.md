@@ -1,5 +1,11 @@
 # Changelog
 
+## [v3.6.2](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.6.2) - 2023/06/26
+## Fixed
++ Host Characters may use Feats again.
++ Attempting to open a Host character's Sorcery hand will no longer create extraneous Host Fortune Hands.
++ Host Characters may cast spells again.
+
 ## [v3.6.1](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.6.1) - 2023/06/23
 ## Fixed
 - When a Host Character's name or permissions change, players will no longer see an error saying they're lacking permissions to update cards.

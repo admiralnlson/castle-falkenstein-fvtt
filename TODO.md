@@ -4,9 +4,10 @@
 + MoSCoW: `[M]`ust, `[S]`hould, `[C]`ould, `[W]`on't
 + `[🔥]` Project maintainer (admiralnlson)'s own GM needs
 
-## Potential issues
+## Known issues
 
 + The Suit associated to Abilities sometimes disappear. Haven't found steps to reproduce it though.
++ The invisible rectangle in a cards hand prevent selection below it.
 
 ### Mechanics from "Corebook"
 

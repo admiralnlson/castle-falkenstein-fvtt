@@ -41,7 +41,14 @@ export class CastleFalkensteinHandSheet extends CardsHand {
 
   /** @override */
   get title() {
-    return this.object.name;
+    const hand = this.object;
+
+    const actorFlag = hand.getFlag(CastleFalkenstein.id, "actor");
+    const feat = hand.featBeingPerformed;
+    if (actorFlag === "host" && feat && feat.actor)
+      return `${hand.name} (${feat.actor.name})`;
+    else
+      return hand.name;
   }
 
   /** @override */
@@ -295,6 +302,7 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     const actorFlag = hand.getFlag(CastleFalkenstein.id, "actor");
     if (actorFlag === "host")
       return;
+
     const actor = game.actors.get(actorFlag);
     if (!actor)
       return;
@@ -375,8 +383,7 @@ export class CastleFalkensteinHandSheet extends CardsHand {
               + '</div>';
 
     // Post message to chat
-    const actorId = hand.getFlag(CastleFalkenstein.id, "actor");
-    CastleFalkenstein.createChatMessage(actorId === "host" ? "gm" : game.actors.get(actorId), flavor, content);
+    CastleFalkenstein.createChatMessage(hand.featBeingPerformed.actor, flavor, content);
 
     // return the cards played back into the deck
     if (cardsPlayed.length > 0) {
@@ -391,11 +398,6 @@ export class CastleFalkensteinHandSheet extends CardsHand {
   }
 
   static async cancelFeat(hand) {
-    const actorId = hand.getFlag(CastleFalkenstein.id, "actor");
-    if (actorId === "host")
-      return; // should never be able to click from host hand anyway (see 'disabled' above)
-    const actor = game.actors.get(actorId);
-
     // unselect cards
     hand.cards.forEach(card => {
       card.unsetFlag(CastleFalkenstein.id, "selected");

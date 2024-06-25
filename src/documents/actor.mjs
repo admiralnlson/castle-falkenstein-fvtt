@@ -85,8 +85,6 @@ export class CastleFalkensteinActor extends Actor {
     let hand = this.handIfExists(handType);
 
     if (!hand) {
-      
-
       hand = await CastleFalkenstein.socket.executeAsGM("createHand", handType, this.id);
     }
 
@@ -124,7 +122,7 @@ export class CastleFalkensteinActor extends Actor {
       card.unsetFlag(CastleFalkenstein.id, "selected");
     });
 
-    await hand.startPerformingFeat(item);
+    await hand.startPerformingFeat(this, item);
   }
 
   get sorceryAbility() {

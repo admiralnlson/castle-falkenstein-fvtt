@@ -7,13 +7,15 @@ import { CASTLE_FALKENSTEIN } from "../config.mjs";
 export class CastleFalkensteinCards extends Cards {
 
   // "featBeingPerformed" flag object structure = {
+  //    actorId:     <(string) id of the actor performing the feat (important because the Host Fortune Hand is used for all Host characters)>,
   //    actorItemId: <(string) id of the ability item within the actor>,
   //    divorceSuit: <(string) ability.system.suit or other suit chosen>
   //  }
 
-  async startPerformingFeat(ability) {
+  async startPerformingFeat(actor, ability) {
     await this.unsetFlag(CastleFalkenstein.id, 'featBeingPerformed');
     const featBeingPerformed = {
+      actorId: actor.id,
       actorItemId: ability.id,
       divorceSuit: ability.system.suit
     };
@@ -25,8 +27,7 @@ export class CastleFalkensteinCards extends Cards {
   get featBeingPerformed() {
     let featBeingPerformed = this.getFlag(CastleFalkenstein.id, "featBeingPerformed");
     if (featBeingPerformed) {
-      const actorId = this.getFlag(CastleFalkenstein.id, "actor");
-      featBeingPerformed.actor = game.actors.get(actorId);
+      featBeingPerformed.actor = game.actors.get(featBeingPerformed.actorId);
       featBeingPerformed.ability = featBeingPerformed.actor?.items.get(featBeingPerformed.actorItemId);
     }
 
