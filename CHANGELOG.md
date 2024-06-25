@@ -1,26 +1,26 @@
 # Changelog
 
 ## [v3.6.2](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.6.2) - 2023/06/26
-## Fixed
+### Fixed
 + Host Characters may use Feats again.
 + Attempting to open a Host character's Sorcery hand will no longer create extraneous Host Fortune Hands.
 + Host Characters may cast spells again.
 
 ## [v3.6.1](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.6.1) - 2023/06/23
-## Fixed
+### Fixed
 - When a Host Character's name or permissions change, players will no longer see an error saying they're lacking permissions to update cards.
 - When a Host Character is deleted, the Host's Fortune Hand no longer also gets deleted.
 - When removing Player permissions on a Character, turning it into a Host Character, the Character's dedicated Fortune Hand is now automatically deleted.
 
 ## [v3.6.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.6.0) - 2024/06/02
-## Added
+### Added
 - Support for "The Thaumixology Variation". The description of this Variation on the Great Game by @admiralnlson may be found in the [USERGUIDE](./doc/USERGUIDE.md).
-## Changed
+### Changed
 - Cards played as part of a Feat are now selected from within the Fortune hand itself, rather than a separate form.
 - Drawn cards will now consistently appear on the right side of hands.
 - Partially removed transparency in Fortune and Sorcery hands for better readability.
 - The default icon for weapons is now a saber and pistol.
-## Fixed
+### Fixed
 - Drag-and-dropping a card onto itself no longer changes the order of cards in one's hand.
 - Cards in chat messages will now display in the same order as they appeared in the Fortune or Sorcery hand from which they originate.
 
