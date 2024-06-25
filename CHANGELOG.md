@@ -3,7 +3,7 @@
 ## [v3.6.2](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.6.2) - 2023/06/26
 ### Fixed
 + Host Characters may perform Feats again.
-+ Opening a Host character's Sorcery Hand was creating an extraneous Fortune Hand.
++ Opening a Host Character's Sorcery Hand was creating an extraneous Fortune Hand.
 + Host Characters may cast Spells again.
 
 ## [v3.6.1](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.6.1) - 2023/06/23
