@@ -31,13 +31,21 @@ export class CastleFalkensteinAbilityDataModel extends CastleFalkensteinItemData
 
   static migrateData(source) {
     // adapt pre-V2.6.0 DB
-    if (!source.specializationOf && !source.own) {
+    if (!source.own)
       source.own = {};
+
+    if (!source.own.level && source.level) {
       source.own.level = source.level;
       delete source.level;
+    }
+
+    if (!source.own.suit && source.suit) {
       source.own.suit = source.suit;
       delete source.suit;
-      source.isSpecialization = false;
+    }
+
+    if (source.specializationOf && source.specializationOf != "null" && source.specializationOf != "") {
+      source.isSpecialization = true;
     }
 
     return super.migrateData(source);

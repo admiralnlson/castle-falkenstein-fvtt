@@ -1,5 +1,11 @@
 # Changelog
 
+## [v3.6.3](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.6.3) - 2023/06/29
+### Fixed
++ In games created before v3.2.0, when updating an Ability,
+  + changing its Level could blank out its Suit.
+  + changing its Suit could set its Level to Average.
+
 ## [v3.6.2](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.6.2) - 2023/06/26
 ### Fixed
 + Host Characters may perform Feats again.

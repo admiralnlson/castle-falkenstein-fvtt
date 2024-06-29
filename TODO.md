@@ -6,7 +6,6 @@
 
 ## Known issues
 
-+ The Suit associated to Abilities sometimes disappear. Haven't found steps to reproduce it though.
 + The invisible rectangle in a cards hand prevent selection below it.
 
 ### Mechanics from "Corebook"
@@ -23,12 +22,10 @@
 ### Mechanics from sourcebooks
 
 + `[C🔥]` Curious Creatures > Familiars
-  + new form: Draw 2 Power cards / pick one to keep
+  + new form(?): Draw 2 Power cards / pick one to keep
     + if implemented, trash(Release Power) button can be removed from Aligned Power cards
 
 ### User Experience
-
-+ `[C]` Allow Hosts to suggest a Perform Feat or Spell Definition (for that one, could include the spell def itself or part of it?)
 
 + `[C]` Ability to sort Items in the Character Sheet based on 
   + `[C]` name
