@@ -22,27 +22,19 @@
 ### Mechanics from sourcebooks
 
 + `[C🔥]` Curious Creatures > Familiars
-  + new form(?): Draw 2 Power cards / pick one to keep
+  + new form, new kind of hand, or within the Fortune hand itself: Draw 2 Power cards / pick one to keep
     + if implemented, trash(Release Power) button can be removed from Aligned Power cards
 
 ### User Experience
 
 + `[C]` Ability to sort Items in the Character Sheet based on 
   + `[C]` name
-  + `[C]` ability+spell: suit 
+  + `[C]` ability+spell: suit
   + `[C]` ability: level
   + `[C]` spell: TL
   + `[C]` weapon: effective range, max Dmg
 + `[S] Add info text in empty Abilities table, suggesting to drag-and-drop some entries from or the entire 'imported Abilities folder'
-  + `[C]` interrupt the drop and make changes or (see also "Species drop-down" list below):
-  + `[C]` Mark Faerie Powers as "Faerie only"
-
-### Attributes to lock
-
-+ Courage (all => health)
-+ Physique (all => health ; Dragons => fly speed)
-+ Etherealness (Faerie => fly speed)
-+ Sorcery (sorcerers => spell def) -> partially implemented
+  + `[C]` interrupt the drop and make changes (see also "Species drop-down" list)
 
 ### Derived stats & Racial abilities (a.k.a 'Other' tab)
 
@@ -151,5 +143,5 @@
 
 ### Technical
 
-+ `[C]` See if Cards would benefit from DataModel functions (value computation, unicode suit from textual one, etc.)
-+ `[C]` See if Spells would benefit from DataModel functional (unicode aspect(suit) from textual one)
++ `[C]` See if Cards would benefit from DataModel (value computation, unicode suit from textual one, etc.)
++ `[C]` See if Spells would benefit from DataModel (unicode aspect(suit) from textual one)
