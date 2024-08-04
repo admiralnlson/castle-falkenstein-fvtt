@@ -1133,3 +1133,7 @@ div.gm-screen-grid-cell-content.castle-falkenstein .window-resizable-handle {
   background: transparent;
   overflow: visible;
 }
+
+.castle-falkenstein.sheet nav.sheet-tabs > [data-tab] {
+  padding: 0;
+}

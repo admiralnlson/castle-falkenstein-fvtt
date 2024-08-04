@@ -99,7 +99,7 @@
 + `[C]` Auto spell cast - when enough aligned Power has been drawn, deleting any harmonics beforehand
 + `[S]` Release Power - Prevent releasing of aligned Power (or at least add confirmation dialog)
 + `[S]` Sorcery hand - Show the harmonic type on unaligned power cards (on the cards themselves)
-+ `[S]` Allow to combine multiple spells together (CiL-en p85)
++ `[C]` Allow to combine multiple spells together (CiL-en p85)
 + `[C]` Cooperation on spellcasting - implement something specific for this (ROI not great) or just document in the userguide how to do it with the current version of the system
 + `[S]` Explicit mechanic for Artefacts
 + `[S]` Explicit mechanic for Unraveling
@@ -127,14 +127,12 @@
 ### Compendiums
 
 + `[S]` Lorebook for Cantrips & Wards (CiL-en p91 / -fr p161)
-+ `[S]` Abilities found in other sourcebooks than CiF and MoAoF e.g. Curious Creatures (English & French)
++ `[S]` Abilities found in other sourcebooks than CiF and MoAoF
 + `[S]` Lorebook from Curious Creatures (p27) + "Create Familiar"
-+ `[S]` Spells/Lorebooks found in other sourcebooks than CiF and Curious Creatures (English & French)
++ `[S]` Spells/Lorebooks found in other sourcebooks than CiF and Curious Creatures
 
-+ `[C]` Compendium pack for non-weapon items found in the corebook (English)
-+ `[C]` Compendium pack for non-weapon items found in the corebook (French)
-+ `[C]` Compendium pack for non-weapon items found in sourcebooks (English)
-+ `[C]` Compendium pack for non-weapon items found in sourcebooks (French)
++ `[C]` Compendium pack for non-weapon items found in the corebook
++ `[C]` Compendium pack for non-weapon items found in sourcebooks
 
 + `[C]` Shortcut to import all Abilities into a character (skip those already present)
 + `[C]` Shortcut to import a Lorebook into a character
