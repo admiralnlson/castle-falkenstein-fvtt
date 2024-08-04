@@ -126,12 +126,16 @@ export class CastleFalkensteinActor extends Actor {
   }
 
   get sorceryAbility() {
-    return this.items.find(item => item.type == 'ability' && item.name == CastleFalkenstein.i18nSorceryAbility);
+    return this.items.find(item => item.type == 'ability' && item.name == CastleFalkenstein.i18nAbility("sorcery"));
   }
 
   get sorceryAbilityAndSpecializations() {
-    return this.items.filter(item => item.type == "ability" && (item.name == CastleFalkenstein.i18nSorceryAbility ||
-      item.system.isSpecialization && item.system.rootAbility?.name == CastleFalkenstein.i18nSorceryAbility));
+    return this.items.filter(item => item.type == "ability" && (item.name == CastleFalkenstein.i18nAbility("sorcery") ||
+      item.system.isSpecialization && item.system.rootAbility?.name == CastleFalkenstein.i18nAbility("sorcery")));
+  }
+    
+  get perceptionAbility() {
+    return this.items.find(item => item.type == 'ability' && item.name == CastleFalkenstein.i18nAbility("perception"));
   }
 
   /**
@@ -158,7 +162,7 @@ export class CastleFalkensteinActor extends Actor {
 
     if (!this.sorceryAbility) {
       CastleFalkenstein.notif.error(game.i18n.format("castle-falkenstein.notifications.characterDoesNotHaveAbility", {
-        name: CastleFalkenstein.i18nSorceryAbility
+        name: CastleFalkenstein.i18nAbility("sorcery")
       }));
       return;
     }
@@ -170,4 +174,5 @@ export class CastleFalkensteinActor extends Actor {
 
     (new CastleFalkensteinDefineSpell(item)).render(true);
   }
+
 }

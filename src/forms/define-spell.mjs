@@ -51,7 +51,7 @@ export class CastleFalkensteinDefineSpell extends FormApplication {
     // error if the selected sorcery ability has disappeared since
     if (!selectedSorceryAbility) {
       CastleFalkenstein.notif.error(game.i18n.format("castle-falkenstein.notifications.characterDoesNotHaveAbility", {
-        name: CastleFalkenstein.i18nSorceryAbility // approximation since the user may have selected a specialization in the meantime
+        name: CastleFalkenstein.i18nAbility("sorcery") // approximation since the user may have selected a specialization in the meantime
       }));
     }
 

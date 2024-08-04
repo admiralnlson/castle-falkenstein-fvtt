@@ -13,7 +13,13 @@
       },
       "sorceryAbility": {
         "name": "Name of the Sorcery ability",
-        "hint": "[Host only] [Optional] Allows to have character ability names in the language spoken by your group, even if this language is not officially supporte by the system yet."
+        "default": "Sorcery",
+        "hint": "[Host only] [Optional] Allows to have character ability names in the language spoken by your group, even if this language is not officially supported by the system yet."
+      },
+      "perceptionAbility": {
+        "name": "Name of the Perception ability",
+        "default": "Perception",
+        "hint": "[Host only] [Optional] Allows to have character ability names in the language spoken by your group, even if this language is not officially supported by the system yet."
       },
       "damageSystem": {
         "name": "Damage system",
@@ -120,7 +126,6 @@
     },
 
     "sorcery": {
-      "ability": "Sorcery",
       "defineSpell": "Define Spell",
       "hand": {
         "render": "Display the Sorcery Hand",

@@ -12,7 +12,13 @@
         "hint": "[Hôte uniquement] La pioche faisant office de Jeu de sorcellerie."
       },
       "sorceryAbility": {
-        "name": "Nom du talent de sorcellerie",
+        "name": "Nom du talent de Sorcellerie",
+        "default": "Sorcellerie",
+        "hint": "[Hôte uniquement] [Optionnel] Permet d'avoir les noms de Talents des personnages dans la langue parlée par le groupe, même si celle-ci n'est pas encore officiellement supportée par le système."
+      },
+      "perceptionAbility": {
+        "name": "Nom du talent de Perception",
+        "default": "Perception",
         "hint": "[Hôte uniquement] [Optionnel] Permet d'avoir les noms de Talents des personnages dans la langue parlée par le groupe, même si celle-ci n'est pas encore officiellement supportée par le système."
       },
       "damageSystem": {
@@ -120,7 +126,6 @@
     },
 
     "sorcery": {
-      "ability": "Sorcellerie",
       "defineSpell": "Définir un sort",
       "hand": {
         "render": "Afficher la main de sorcellerie",

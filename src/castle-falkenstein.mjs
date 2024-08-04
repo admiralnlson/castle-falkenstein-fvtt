@@ -2,6 +2,7 @@ import { CASTLE_FALKENSTEIN } from "./config.mjs";
 import { CastleFalkensteinActorDataModel } from "./documents/actor-datamodel.mjs";
 import { CastleFalkensteinActorSheet } from "./documents/actor-sheet.mjs";
 import { CastleFalkensteinActor } from "./documents/actor.mjs";
+import { CastleFalkensteinCombatant } from "./documents/combatant.mjs";
 import { CastleFalkensteinCards } from "./documents/cards.mjs";
 import { CastleFalkensteinDeckSheet } from "./documents/deck-sheet.mjs";
 import { CastleFalkensteinHandSheet } from "./documents/hand-sheet.mjs";
@@ -104,13 +105,13 @@ export class CastleFalkenstein {
     return hand;
   }
 
-  static get i18nSorceryAbility() {
-    this.settings.sorceryAbility = this.settings.sorceryAbility.trim();
+  static i18nAbility(ability) {
+    this.settings[ability + "Ability"] = this.settings[ability + "Ability"].trim();
 
-    if (this.settings.sorceryAbility != "")
-      return this.settings.sorceryAbility;
+    if (this.settings[ability + "Ability"] != "")
+      return this.settings[ability + "Ability"];
 
-    return game.i18n.localize("castle-falkenstein.sorcery.ability");
+    return game.i18n.localize(`castle-falkenstein.settings.${ability}Ability.default`);
   }
 
   static async cardsFolder(type, name) {
@@ -468,6 +469,7 @@ export class CastleFalkenstein {
     // Define custom Document classes
     CONFIG.Actor.documentClass = CastleFalkensteinActor;
     CONFIG.Item.documentClass = CastleFalkensteinItem;
+    CONFIG.Combatant.documentClass = CastleFalkensteinCombatant;
     CONFIG.Cards.documentClass = CastleFalkensteinCards;
 
     if (game.release.generation >= 11) {
@@ -740,6 +742,12 @@ export class CastleFalkenstein {
       fortuneDeck: deckSelect("fortune"),
       sorceryDeck: deckSelect("sorcery"),
       sorceryAbility: {
+        scope: "world",
+        type: String,
+        default: "",
+        requiresReload: true
+      },
+      perceptionAbility: {
         scope: "world",
         type: String,
         default: "",

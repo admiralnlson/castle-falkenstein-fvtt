@@ -1,8 +1,10 @@
 # Changelog
 
 ## [v3.7.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.7.0) - Unreleased
+### Added
+- Characters added to combat are now ordered based on their Perception ranks.
 ### Fixed
-- V12 added extra padding around tab names in character sheets
+- Removed extra padding added by V12 to the character sheets tabs bar.
 
 ## [v3.6.3](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.6.3) - 2023/06/29
 ### Fixed
