@@ -2,7 +2,7 @@
 
 ## [v3.7.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.7.0) - Unreleased
 ### Added
-- In Combat Encounters, the Initiative value of a combatant is now initialized to its Perception rank numeric value (or 4 (AVG) if they do not possess the Perception ability).
+- In Combat Encounters, the Initiative value of a combatant is now initialized to its Perception rank numeric value (or 4 (AV) if they do not possess the Perception ability).
 - [Host only] Initiative values are manually editable from within the Combat Tracker.
 ### Fixed
 - Removed extra padding added by V12 to the character sheets tabs bar.
