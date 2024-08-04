@@ -1,3 +1,4 @@
+
 /**
  * @extends {foundry.abstract.DataModel}
  */

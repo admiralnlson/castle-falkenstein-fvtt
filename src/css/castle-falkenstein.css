@@ -1137,3 +1137,11 @@ div.gm-screen-grid-cell-content.castle-falkenstein .window-resizable-handle {
 .castle-falkenstein.sheet nav.sheet-tabs > [data-tab] {
   padding: 0;
 }
+
+.system-castle-falkenstein input.initiative-input {
+  color: inherit !important;
+}
+
+.system-castle-falkenstein .combat-sidebar li.combatant .token-initiative {
+  margin-right: 10px;
+}

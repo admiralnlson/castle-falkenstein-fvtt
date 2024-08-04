@@ -1,22 +1,24 @@
 import { CASTLE_FALKENSTEIN } from "../config.mjs";
-import { CastleFalkenstein } from "../castle-falkenstein.mjs";
-import { CastleFalkensteinDefineSpell } from "../forms/define-spell.mjs";
 
 /**
  * @extends {Combatant}
  */
 export class CastleFalkensteinCombatant extends Combatant {
 
-  // @override
-  async _onCreate(data, options, userId) {
-    await super._onCreate(data, options, userId);
-    return this.update({initiative: game.actors.get(data?.actorId)?.perceptionAbility?.system.levelValue});
+  get #defaultInitiative() {
+    // if the actor is not found or it does not have the perception ability, then default to Average (4)
+    return this.actor?.perceptionAbility?.system.levelValue ?? CASTLE_FALKENSTEIN.abilityLevels.AV.value;
   }
 
   // @override
-  get isNPC() {
-    return !this.actor || !this.hasPlayerOwner;
-    // TODO TBC
-    return !this.hasPlayerOwner;
+  async _onCreate(data, options, userId) {
+    await super._onCreate(data, options, userId);
+    return this.update({initiative: this.#defaultInitiative});
+  }
+
+  // @override
+  getInitiativeRoll(formula) {
+    return super.getInitiativeRoll(`${this.#defaultInitiative}`);
   }
 }
+

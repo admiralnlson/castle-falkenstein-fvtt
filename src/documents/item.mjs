@@ -1,4 +1,3 @@
-import {CASTLE_FALKENSTEIN} from "../config.mjs";
 import { CastleFalkenstein } from "../castle-falkenstein.mjs";
 
 /**

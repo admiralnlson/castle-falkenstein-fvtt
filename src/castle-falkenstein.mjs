@@ -3,6 +3,7 @@ import { CastleFalkensteinActorDataModel } from "./documents/actor-datamodel.mjs
 import { CastleFalkensteinActorSheet } from "./documents/actor-sheet.mjs";
 import { CastleFalkensteinActor } from "./documents/actor.mjs";
 import { CastleFalkensteinCombatant } from "./documents/combatant.mjs";
+import { CastleFalkensteinCombat } from "./documents/combat.mjs";
 import { CastleFalkensteinCards } from "./documents/cards.mjs";
 import { CastleFalkensteinDeckSheet } from "./documents/deck-sheet.mjs";
 import { CastleFalkensteinHandSheet } from "./documents/hand-sheet.mjs";
@@ -470,6 +471,7 @@ export class CastleFalkenstein {
     CONFIG.Actor.documentClass = CastleFalkensteinActor;
     CONFIG.Item.documentClass = CastleFalkensteinItem;
     CONFIG.Combatant.documentClass = CastleFalkensteinCombatant;
+    CONFIG.Combat.documentClass = CastleFalkensteinCombat;
     CONFIG.Cards.documentClass = CastleFalkensteinCards;
 
     if (game.release.generation >= 11) {
@@ -1021,6 +1023,8 @@ Hooks.on("PopOut:popout", (app, popout) => { return CastleFalkenstein.onPopout(a
 Hooks.once("socketlib.ready", () => CastleFalkenstein.setupSocket());
 
 Hooks.on("passCards", (from, to, options) => CastleFalkenstein.onPassCards(from, to, options));
+
+Hooks.on("renderCombatTracker", (app, html, options) => game.combat?.onRenderCombatTracker(app, html, options));
 
 /* -------------------------------------------- */
 /*  Handlebars Helpers                          */
