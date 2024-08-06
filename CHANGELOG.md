@@ -7,6 +7,7 @@
 - To prevent issues, Sorcery is now disabled for tokens not linked to their actor.
 ### Fixed
 - Card translations have been reviewed to prevent a revert to the language chosen by the Host when they first created the deck, and now always match the user's preference.
+- Since v3.4.0, it was no longer possible to right-click individual chat messages e.g. to change their visibility.
 
 ## [v3.7.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.7.0) - 2024/08/04
 ### Added

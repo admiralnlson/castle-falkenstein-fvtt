@@ -19,12 +19,6 @@
   + `[C]` Rest counter
   + `[C]` Exchanges & Rounds materialized in combat tracker
 
-### Mechanics from sourcebooks
-
-+ `[C🔥]` Curious Creatures > Familiars
-  + new form, new kind of hand, or within the Fortune hand itself: Draw 2 Power cards / pick one to keep
-    + if implemented, trash(Release Power) button can be removed from Aligned Power cards
-
 ### User Experience
 
 + `[C]` Ability to sort Items in the Character Sheet based on 
@@ -54,7 +48,7 @@
   + Sorcery tab unlocked by Dragon or Good Sorcery in Humans
   + give Fae talents to Fae characters only
   + compute health automatically incl. Dragons' +2 (requires Courage and Physique to be locked attributes)
-  + limit Dragon sorcery to 5 cards drawn
+  + add counter in Sorcery Hand to help with tracking the drawing limit for Dragons
   + list species features in the sheet
     + Faerie
       + Sensibility to Iron
@@ -72,7 +66,6 @@
 + `[C]` Card hand button to show a Fortune or Sorcery hand in chat (or simply on screen)
 + `[S]` deplete Host or character hands before changing Decks (maybe ask for confirmation first)
 
-
 ### Fortune
 
 + `[C]` Perform Feat - allow the use of a random card (Kessel Run optional rule from CiF p77) ->> partially available thanks to Chance Card option
@@ -82,19 +75,20 @@
 
 ### Sorcery
 
-+ `[C]` Macro to delete all Host character Sorcery hands
-+ `[C]` Sorcery hands - shortcut to cast any spell the character has (= add dropbox to the Define Spell form)
-+ `[S]` Gather Power - add counter to help with tracking the drawing limit for Dragons
-+ `[C]` Gather Power - support Familiars more natively, drawing 2 cards at once, asking which one to keep (showing both with one grayed out in chat)
++ `[S🔥]` Curious Creatures > Familiars
+  + new form, new kind of hand, or within the Fortune hand itself: Draw 2 Power cards / pick one to keep
+    + if implemented, trash(Release Power) button can probably be removed from Aligned Power cards
 + `[S]` Gather Power (if no auto spell cast) - add a message indicating the Spell is ready to be cast
-+ `[C]` Auto spell cast - when a Joker is drawn
-+ `[C]` Auto spell cast - when enough aligned Power has been drawn, deleting any harmonics beforehand
 + `[S]` Release Power - Prevent releasing of aligned Power (or at least add confirmation dialog)
-+ `[S]` Sorcery hand - Show the harmonic type on unaligned power cards (on the cards themselves)
-+ `[C]` Allow to combine multiple spells together (CiL-en p85)
-+ `[C]` Cooperation on spellcasting - implement something specific for this (ROI not great) or just document in the userguide how to do it with the current version of the system
 + `[S]` Explicit mechanic for Artefacts
 + `[S]` Explicit mechanic for Unraveling
++ `[C]` Macro to delete all Host character Sorcery hands
++ `[C]` Sorcery hands - shortcut to cast any spell the character has (= add dropbox to the Define Spell form)
++ `[C]` Auto spell cast - when a Joker is drawn
++ `[C]` Auto spell cast - when enough aligned Power has been drawn, deleting any harmonics beforehand
++ `[C]` Sorcery hand - Show the harmonic type on unaligned power cards (on the cards themselves)
++ `[C]` Allow to combine multiple spells together (CiL-en p85)
++ `[C]` Cooperation on spellcasting - implement something specific for this (ROI not great) or just document in the userguide how to do it with the current version of the system
 + `[C]` Confirmation dialog for Hosts when they 'Gather Power' for a Host character and 'Self Roll' isn't active
 + `[C]` Lorebook property on spells (and showing it in the spells list)
 

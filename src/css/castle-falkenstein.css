@@ -1008,10 +1008,6 @@ div.gm-screen-grid-cell-content.castle-falkenstein .window-resizable-handle {
   animation-delay: calc( -1s * var(--d, 0) );
 }
 
-.chat-sidebar .chat-message {
-  overflow: hidden;
-}
-
 .chat-sidebar .wild-spell .pt b {
   display: block;
   background-blend-mode: darken, luminosity;

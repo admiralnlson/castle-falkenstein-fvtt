@@ -2,7 +2,7 @@
   // Absolute path of parent directory containing both {foundryvttNodeJS} and {foundryvttUserData}
   "foundryvttDevFolder": "D:\\FoundryVTT Dev\\",
   // Relative path where FVTT NodeJS is located
-  "foundryvttNodeJS": "FoundryVTT-12.328",
+  "foundryvttNodeJS": "FoundryVTT-12.330",
   // Relative path for User Data
   "foundryvttUserData": "data",
   // name of the world opened by FoundryVTT before debug starts
