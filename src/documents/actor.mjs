@@ -12,30 +12,11 @@ export class CastleFalkensteinActor extends Actor {
   }
 
   /** @override */
-  async _onCreate(data, options, user) {
-    super._onCreate(data, options, user);
-    
-    if (this.isToken && this.parent && this.name != this.parent.name) {
-      // reuse the token name for the synthetic actor
-      await this.update({
-        name: this.parent.name
-      });
-    }
-  }
-
-  /** @override */
   async _onUpdate(changed, options, user) {
-    super._onUpdate(changed, options, user);
-    
-    if (changed.name && this.isToken && this.parent && this.name != this.parent.name) {
-      // propagate the new synthetic actor name to the token
-      await this.parent.update({
-        name: this.name
-      });
-    }
+    await super._onUpdate(changed, options, user);
 
     // If the character name changed, update the names of their Fortune/Sorcery hands also, if they exist.
-    if (changed.name && !this.isToken) {
+    if (game.user.id == user && changed.name && !this.isToken) {
       [ "fortune", "sorcery" ].forEach(async (handType) => {
         const hand = CastleFalkenstein.searchUniqueHand(handType, this);
         if (hand) {
@@ -51,8 +32,9 @@ export class CastleFalkensteinActor extends Actor {
       });
     }
 
-    if (changed.ownership) {
+    if (game.user.id == user && changed.ownership) {
       // If ownership on a Character changed and no player owns it anymore, delete their Fortune hand if it exists.
+      // We assume here that whoever triggered this change has the required permissions to do it (Actor and Fortune Hand permissions are sync'ed).
       if (!this.hasPlayerOwner) {
         const hand = CastleFalkenstein.searchUniqueHand("fortune", this, true);
         if (hand) {
@@ -83,7 +65,9 @@ export class CastleFalkensteinActor extends Actor {
 
   /** @override */
   async _preDelete(changed, options, user) {
-    super._preDelete(changed, options, user);
+    await super._preDelete(changed, options, user);
+
+    if (game.user.id != user) return;
 
     if (this.isToken)
       return;

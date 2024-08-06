@@ -2,10 +2,11 @@
 
 ## [v3.8.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.8.0) - Unreleased
 ### Added
-- A warning notification is now displayed when a token or character with no Perception ability is added to combat (with its Initiative defaulted to 4 (AV)).
+- A warning notification is now displayed when a token or character with no Perception ability is added to combat with its Initiative defaulted to 4 (AV).
 ### Changed
-- To avoid confusion, Sorcery is now disabled on tokens not linked to their actor.
-- The names of an unlinked token and of its synthetic actor are now kept in sync when either is updated.
+- To prevent issues, Sorcery is now disabled for tokens not linked to their actor.
+### Fixed
+- Card translations have been reviewed to prevent a revert to the language chosen by the Host when they first created the deck, and now always match the user's preference.
 
 ## [v3.7.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.7.0) - 2024/08/04
 ### Added

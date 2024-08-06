@@ -14,4 +14,15 @@ export class CastleFalkensteinDeckSheet extends CardsConfig {
     return super._onDrop(event);
   }
 
+   /** @override */
+   async getData(options) {
+    // Retrieve the data structure from the base sheet.
+    const context = await super.getData(options);
+
+    const deck = this.object;
+
+    CastleFalkenstein.translateCardStack(deck);
+
+    return context;
+   }
 }

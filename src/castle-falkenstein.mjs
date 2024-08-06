@@ -4,7 +4,6 @@ import { CastleFalkensteinActorSheet } from "./documents/actor-sheet.mjs";
 import { CastleFalkensteinActor } from "./documents/actor.mjs";
 import { CastleFalkensteinCombatant } from "./documents/combatant.mjs";
 import { CastleFalkensteinCombat } from "./documents/combat.mjs";
-import { CastleFalkensteinToken } from "./documents/token.mjs";
 import { CastleFalkensteinCards } from "./documents/cards.mjs";
 import { CastleFalkensteinDeckSheet } from "./documents/deck-sheet.mjs";
 import { CastleFalkensteinHandSheet } from "./documents/hand-sheet.mjs";
@@ -145,7 +144,7 @@ export class CastleFalkenstein {
     return newFolder;
   }
 
-  static async translateCardStack(stack) {
+  static translateCardStack(stack) {
     const translateCard = (card) => {
       if (card.suit == "joker") {
         if (card.faces[0].img == "systems/castle-falkenstein/src/cards/53.png")
@@ -170,10 +169,6 @@ export class CastleFalkenstein {
 
     if (stack.drawnCards)
       stack.drawnCards.forEach((card) => translateCard(card));
-
-    // Removed by Core it seems
-    //if (stack._source.cards)
-    //  stack._source.cards.forEach((card) => translateCard(card));
   }
 
   static async createPresetDeck(type) {
@@ -191,8 +186,6 @@ export class CastleFalkenstein {
     deckData.flags[this.id] = {
       type: type
     };
-
-    this.translateCardStack(deckData);
 
     const deck = await Cards.create(deckData);
 
@@ -473,7 +466,6 @@ export class CastleFalkenstein {
     CONFIG.Actor.documentClass = CastleFalkensteinActor;
     CONFIG.Item.documentClass = CastleFalkensteinItem;
     CONFIG.Combatant.documentClass = CastleFalkensteinCombatant;
-    CONFIG.Token.documentClass = CastleFalkensteinToken;
     CONFIG.Combat.documentClass = CastleFalkensteinCombat;
     CONFIG.Cards.documentClass = CastleFalkensteinCards;
 
@@ -539,13 +531,6 @@ export class CastleFalkenstein {
     }
 
     await this.preLoadTemplates();
-
-    const userLanguage = game.settings.get("core", "language");
-    if (userLanguage != "en" && Array.from(game.system.languages.map(el => el.lang)).includes(userLanguage)) {
-      await game.cards.updateAll(this.translateCardStack, (stack) => {
-        return stack.flags[CastleFalkenstein.id];
-      });
-    }
 
     // align "Harm Rank" spell definition labels to the chosen damageSystem setting 
     const harmRankDef = CASTLE_FALKENSTEIN.spellDefinitions["harmRank"];

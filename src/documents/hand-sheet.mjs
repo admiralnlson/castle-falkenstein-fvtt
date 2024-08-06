@@ -80,6 +80,8 @@ export class CastleFalkensteinHandSheet extends CardsHand {
 
     const hand = this.object;
 
+    CastleFalkenstein.translateCardStack(hand);
+
     context.typeFlag =  hand.getFlag(CastleFalkenstein.id, "type");
     let deck;
     if (context.typeFlag)

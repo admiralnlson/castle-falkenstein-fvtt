@@ -82,9 +82,6 @@ export class CastleFalkensteinCombat extends Combat {
 					options.combat.setInitiative(combatant.id, initiative);
 				});
 			}
-			else {
-        // there should not be any roll buttons (see coalesce to 0 in Combatant.*)
-			}
 		}
 	}
 }
