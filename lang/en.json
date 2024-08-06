@@ -78,7 +78,8 @@
       "spellInvalidAspect": "The aspect associated to the spell is invalid.",
       "noFortuneHandForFeat": "No Fortune Hand to perform feat with.",
       "noSorceryHandForSpell": "No Sorcery Hand to cast spell with.",
-      "characterDoesNotHaveAbility": "Character does not have ability '{name}'.",
+      "characterDoesNotHaveAbility": "Character '{character}' does not have ability '{ability}'.",
+      "tokenDoesNotHaveAbility": "Token '{token}' does not have ability '{ability}'.",
       "spellAlreadyBeingCast": "Spell is already being cast. Cancel it from the Sorcery Hand if you wish to cast another.",
       "noItemNamed": "Your controlled character does not have an item of type '{type}' named '{name}'.",
       "deckNotFound": "It appears a deck is missing. Suggest to your Host they verify Fortune and Sorcery Decks as well as system settings.",
@@ -144,7 +145,8 @@
         "hearts": "Emotional",
         "diamonds": "Material",
         "clubs": "Elemental"
-      }
+      },
+      "cannotBeUsedOnUnlinkedTokens": "Sorcery cannot be used from a token which is not linked to its Actor."
     },
 
     "empty": "",

@@ -50,7 +50,7 @@
   + Physique (all -> health ; Dragons => flying speed)
   + Etherealness (Faerie only -> flying speed)
   + Sorcery (Sorcerers+Dragons only -> spellcast)
-+ `[S]` Add a species drop-down list (Human/Fae/Dragon/Dwarf)
++ `[S]` Add a species drop-down list (Human/Faerie/Dragon/Dwarf)
   + Sorcery tab unlocked by Dragon or Good Sorcery in Humans
   + give Fae talents to Fae characters only
   + compute health automatically incl. Dragons' +2 (requires Courage and Physique to be locked attributes)

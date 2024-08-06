@@ -1145,3 +1145,12 @@ div.gm-screen-grid-cell-content.castle-falkenstein .window-resizable-handle {
 .system-castle-falkenstein .combat-sidebar li.combatant .token-initiative {
   margin-right: 10px;
 }
+
+.system-castle-falkenstein .tab-link[disabled] {
+  color: var(--color-text-dark-inactive);
+  pointer-events: auto; /* allows to still display the hint */
+}
+
+.system-castle-falkenstein a.tab-link[disabled]:hover {
+  text-shadow: none;
+}

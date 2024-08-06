@@ -50,9 +50,17 @@ export class CastleFalkensteinDefineSpell extends FormApplication {
 
     // error if the selected sorcery ability has disappeared since
     if (!selectedSorceryAbility) {
-      CastleFalkenstein.notif.error(game.i18n.format("castle-falkenstein.notifications.characterDoesNotHaveAbility", {
-        name: CastleFalkenstein.i18nAbility("sorcery") // approximation since the user may have selected a specialization in the meantime
-      }));
+      if (this.character.isToken) {
+        CastleFalkenstein.notif.error(game.i18n.format("castle-falkenstein.notifications.tokenDoesNotHaveAbility", {
+          token: this.character.parent.name,
+          ability: CastleFalkenstein.i18nAbility("sorcery") // approximation since the user may have selected a specialization in the meantime
+        }));
+      } else {
+        CastleFalkenstein.notif.error(game.i18n.format("castle-falkenstein.notifications.characterDoesNotHaveAbility", {
+          character: this.character.name,
+          ability: CastleFalkenstein.i18nAbility("sorcery") // approximation since the user may have selected a specialization in the meantime
+        }));
+      }
     }
 
     let context = {};

@@ -12,11 +12,30 @@ export class CastleFalkensteinActor extends Actor {
   }
 
   /** @override */
+  async _onCreate(data, options, user) {
+    super._onCreate(data, options, user);
+    
+    if (this.isToken && this.parent && this.name != this.parent.name) {
+      // reuse the token name for the synthetic actor
+      await this.update({
+        name: this.parent.name
+      });
+    }
+  }
+
+  /** @override */
   async _onUpdate(changed, options, user) {
     super._onUpdate(changed, options, user);
     
+    if (changed.name && this.isToken && this.parent && this.name != this.parent.name) {
+      // propagate the new synthetic actor name to the token
+      await this.parent.update({
+        name: this.name
+      });
+    }
+
     // If the character name changed, update the names of their Fortune/Sorcery hands also, if they exist.
-    if (changed.name) {
+    if (changed.name && !this.isToken) {
       [ "fortune", "sorcery" ].forEach(async (handType) => {
         const hand = CastleFalkenstein.searchUniqueHand(handType, this);
         if (hand) {
@@ -66,6 +85,9 @@ export class CastleFalkensteinActor extends Actor {
   async _preDelete(changed, options, user) {
     super._preDelete(changed, options, user);
 
+    if (this.isToken)
+      return;
+
     [ "fortune", "sorcery" ].forEach(async (handType) => {
       const hand = CastleFalkenstein.searchUniqueHand(handType, this);
       if (hand) {
@@ -84,7 +106,7 @@ export class CastleFalkensteinActor extends Actor {
   async hand(handType) {
     let hand = this.handIfExists(handType);
 
-    if (!hand) {
+    if (!hand && !this.isToken) {
       hand = await CastleFalkenstein.socket.executeAsGM("createHand", handType, this.id);
     }
 
@@ -142,7 +164,11 @@ export class CastleFalkensteinActor extends Actor {
    * Define a Spell.
    */
   async defineSpell(item) {
-    if (!this.isOwner) return;
+    if (!this.isOwner)
+      return;
+
+    if (this.isToken)
+      return;
 
     if (item.type != 'spell') {
       CastleFalkenstein.log.error("Trying to cast a spell from non-spell item.");
@@ -154,16 +180,24 @@ export class CastleFalkensteinActor extends Actor {
       return;
     }
 
-    let hand = await this.hand("sorcery");
-    if (!hand) {
-      CastleFalkenstein.notif.error(game.i18n.localize("castle-falkenstein.notifications.noSorceryHandforSpell"));
+    if (!this.sorceryAbility) {
+      if (this.isToken) {
+        CastleFalkenstein.notif.error(game.i18n.format("castle-falkenstein.notifications.tokenDoesNotHaveAbility", {
+          token: this.parent.name,
+          ability: CastleFalkenstein.i18nAbility("sorcery")
+        }));
+      } else {
+        CastleFalkenstein.notif.error(game.i18n.format("castle-falkenstein.notifications.characterDoesNotHaveAbility", {
+          character: this.name,
+          ability: CastleFalkenstein.i18nAbility("sorcery")
+        }));
+      }
       return;
     }
 
-    if (!this.sorceryAbility) {
-      CastleFalkenstein.notif.error(game.i18n.format("castle-falkenstein.notifications.characterDoesNotHaveAbility", {
-        name: CastleFalkenstein.i18nAbility("sorcery")
-      }));
+    let hand = await this.hand("sorcery");
+    if (!hand) {
+      CastleFalkenstein.notif.error(game.i18n.localize("castle-falkenstein.notifications.noSorceryHandforSpell"));
       return;
     }
     
