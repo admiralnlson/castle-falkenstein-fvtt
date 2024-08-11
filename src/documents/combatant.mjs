@@ -30,8 +30,13 @@ export class CastleFalkensteinCombatant extends Combatant {
 
   // @override
   async _onCreate(data, options, userId) {
-    await super._onCreate(data, options, userId);
-    return this.update({initiative: this.#defaultInitiative});
+    let ret = await super._onCreate(data, options, userId);
+
+    if (game.user.id == userId) {
+      ret = this.update({initiative: this.#defaultInitiative});
+    }
+
+    return ret;
   }
 
   // @override
