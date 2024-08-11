@@ -205,7 +205,7 @@ export class CastleFalkensteinHandSheet extends CardsHand {
 
     html.find(".divorce-button").click(async(event) => { await this.onClickDivorceSuitSelect(event); });
     
-    let handedCards = html.find(".handedCards");
+    let handedCards = html.find("ol.cards");
     handedCards.on("dragenter", (e) => {
       e.target.classList.add('draghover');
     });

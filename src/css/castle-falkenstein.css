@@ -767,6 +767,14 @@ div.divorce {
   flex-direction: row;
   justify-content: center;
   margin-top: 15px;
+
+  background: transparent;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.handedCards > * {
+  pointer-events: auto;
 }
 
 .handedCards h2 {
@@ -776,22 +784,23 @@ div.divorce {
 }
 
 .handedCards ol.cards {
-  display: contents;
-  overflow: visible;
-}
-
-/* when there are no cards in the hand, add a semi-transparent area in which cards may be dropped */
-.handedCards ol.cards:not(:has(> *)) {
-  display: block; 
+  display: block;
   width: 200px;
   height: 285px;
   border-radius: 4.5% / 3%;
 }
 
 /* when there are no cards in the hand, add a semi-transparent area in which cards may be dropped */
-.handedCards ol.cards.draghover:not(:has(> *)) {
-  /*transition: background-color ease-in-out .15s;*/
-  background: linear-gradient(180deg,rgba(255,255,255,.3), rgba(0,0,0,0));
+.handedCards ol.cards:not(:has(> *)):hover,
+.handedCards ol.cards:not(:has(> *)).draghover {
+  display: block;
+  /*background: linear-gradient(180deg,rgba(127,127,127,.3), rgba(0,0,0,0));*/
+  background: rgba(127,127,127,.2);
+}
+
+.handedCards ol.cards:has(> *) {
+  display: contents;
+  overflow: visible;
 }
 
 .handedCards ol.cards li.card {
@@ -1123,11 +1132,6 @@ div.gm-screen-grid-cell-content.castle-falkenstein .window-resizable-handle {
 .app.castle-falkenstein.cards-hand section.window-content div.spell-being-cast,
 .app.castle-falkenstein.cards-hand section.window-content div.harmonic {
   color: var(--color-text-dark-primary);
-}
-
-.app.castle-falkenstein.cards-hand section.window-content .handedCards {
-  background: transparent;
-  overflow: visible;
 }
 
 .castle-falkenstein.sheet nav.sheet-tabs > [data-tab] {
