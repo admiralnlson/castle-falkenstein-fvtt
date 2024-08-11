@@ -2,12 +2,14 @@
 
 ## [v3.8.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.8.0) - Unreleased
 ### Added
-- A warning notification is now displayed when a token or character with no Perception ability is added to combat with its Initiative defaulted to 4 (AV).
+- A warning notification is now displayed when a token or character with no Perception ability is added to combat with an Initiative defaulted to 4 (AV).
 ### Changed
-- To prevent issues, Sorcery is now disabled for tokens not linked to their actor.
+- To prevent unintuitive behavior, Sorcery is now disabled for tokens not linked to their actor.
+- Function 'Show others' has been renamed 'Send to chat'.
+- In the 'Chat Messages' sidebar tab, the "Default Roll Mode" has been replaced with "Default Message Visibility", featuring two options: "Public Message" and "Private Host Message". When "Private Host Message" is selected, chat messages that aren't already whispers are converted into whispers to the Host.
 ### Fixed
-- Card name translations should no longer revert to the language chosen by the Host when they first created the deck and now always match the user's language settings.
-- Since v3.4.0, it was no longer possible to right-click individual chat messages e.g. to change their visibility.
+- Since v3.4.0, it was no longer possible to right-click individual chat messages e.g. to change their visibility. This has been resolved.
+- Card name translations will no longer revert to the language selected by the Host when they first created the deck, and will now always match the user's currently selected language.
 
 ## [v3.7.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.7.0) - 2024/08/04
 ### Added
@@ -72,7 +74,7 @@
 + [GM Screen module] Improved the display of GM Screen character sheets, and allowed usage of [Perform Feat] and [Define Spell] from within them
 ### Fixed
 + The additional modifier label in the Define Spell dialog was going blank if edited.
-+ The 'Show Others' option on spells was not displaying the thaumic level and description of spells.
++ The 'Show in Chat 👁' control for spells was not displaying their thaumic level or description.
 + Fixed statblock for the '.44 Drop Pistol' (damage: 4/5/6 (D) -> 3/4/5 (C))
 ### Removed
 + [🦋Monarch module] Dropped support for this alternative cards UI module.
@@ -276,3 +278,7 @@
 
 ## [v0.2.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v0.2.0) - 2022/03/07
 Core system functions available.
+
+### Notes
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).

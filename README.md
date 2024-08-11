@@ -12,9 +12,6 @@ See [USERGUIDE](./doc/USERGUIDE.md)
 ## Release notes
 All notable changes to this project are documented in [CHANGELOG](./CHANGELOG.md).
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
-
 ## Supported languages
 The system supports localization. At this stage, the following languages are supported:
 + English
@@ -37,6 +34,6 @@ I am reachable as [admiralnlson](https://discordapp.com/users/198160826853490688
 
 Please do not address issues you're facing with this system to R. Talsorian Games. They would not be in a position to help you.
 
-<hr />
+----
 
 DISCLAIMER: This [Castle Falkenstein](https://rtalsoriangames.com/castle-falkenstien/) system for [Foundry Virtual Tabletop](https://foundryvtt.com/) is unofficial content provided under the [Homebrew Content Policy of R. Talsorian Games](https://rtalsoriangames.com/homebrew-content-policy/) and is not approved or endorsed by RTG. This content references materials that are the property of R. Talsorian Games and its licensees.
