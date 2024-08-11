@@ -1,13 +1,12 @@
 # TODO
 
-## Legend
-+ MoSCoW: [M]ust, [S]hould, [C]ould, [W]on't
-+ [🔥] Project maintainer (admiralnlson)'s own GM needs
-
 ## Known issues
+None.
 
-+ The invisible rectangle in a cards hand prevents selection below it.
-  + It also does not show up as a shadow when dropping cards anymore
+## Considered improvements
+
++ MoSCoW: [M]ust, [S]hould, [C]ould, [W]on't
++ [🔥] Project maintainer (admiralnlson)'s own Host needs
 
 ### Mechanics from "Corebook"
 
