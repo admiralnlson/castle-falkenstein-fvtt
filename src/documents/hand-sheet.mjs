@@ -385,7 +385,7 @@ export class CastleFalkensteinHandSheet extends CardsHand {
               + '</div>';
 
     // Post message to chat
-    CastleFalkenstein.createChatMessage(hand.featBeingPerformed.actor, flavor, content);
+    CastleFalkenstein.createChatMessage(hand.featBeingPerformed.actor, flavor, content, true);
 
     // return the cards played back into the deck
     if (cardsPlayed.length > 0) {
@@ -463,7 +463,7 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     const correctSuit = 'correct-suit'; // will be grayed out otherwise
     const content = `<div class="cards-drawn">${CastleFalkenstein.smallCardImg(card,`card-drawn ${correctSuit}`)}</div>`;
     const actorId = hand.getFlag(CastleFalkenstein.id, "actor");
-    CastleFalkenstein.createChatMessage(actorId === "host" ? "gm" : game.actors.get(actorId), flavor, content);
+    CastleFalkenstein.createChatMessage(actorId === "host" ? "gm" : game.actors.get(actorId), flavor, content, true);
   }
 
   static gatherPowerDisabled(hand) {
@@ -495,16 +495,15 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     const spell = actor.items.get(hand.spellBeingCast.actorItemId);
     const correctSuit = (card.suit == spell.system.suit || card.suit == 'joker') ? 'correct-suit' : '';
     const content = `<div class="cards-drawn">${CastleFalkenstein.smallCardImg(card, `card-drawn ${correctSuit}`)}</div>`;
-    CastleFalkenstein.createChatMessage(actor, flavor, content);
+    CastleFalkenstein.createChatMessage(actor, flavor, content, true);
   }
 
   static async releasePower(card, hand, force = false) {
     const actorId = hand.getFlag(CastleFalkenstein.id, "actor");
     if (actorId === "host")
       return; // should never be able to click from host hand anyway (see 'disabled' above)
-    const actor = game.actors.get(actorId);
 
-    if (hand.spellBeingCast.usesThaumixology) {
+    if (hand.spellBeingCast?.usesThaumixology) {
       const i18nTitle = game.i18n.localize("castle-falkenstein.dialogs.confirmTitle");
       const i18nDescription1 = game.i18n.format("castle-falkenstein.dialogs.thaumixologyReleaseAllPower.description1");
       const i18nDescription2 = game.i18n.localize("castle-falkenstein.dialogs.thaumixologyReleaseAllPower.description2");
@@ -528,7 +527,7 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     // Post message to chat - TOO SPAMMY => DISABLED
     /*const flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.hand.releasePower")}]`;
     const content = `<div class="cards-played">${CastleFalkenstein.smallCardImg(card, "card-played")}</div>`;
-    CastleFalkenstein.createChatMessage(actor, flavor, content);*/
+    CastleFalkenstein.createChatMessage(actor, flavor, content, true);*/
   }
 
   static castSpellDisabled(hand) {
@@ -623,7 +622,7 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     await CastleFalkenstein.socket.executeAsGM("returnBackToDeck", hand.id, hand.cards.map(c => c.id));
 
     // Display the chat message only if the return-back was successful
-    CastleFalkenstein.createChatMessage(actor, flavor, content);
+    CastleFalkenstein.createChatMessage(actor, flavor, content, true);
 
     // no spell being cast anymore
     await hand.stopCasting();
@@ -662,13 +661,12 @@ export class CastleFalkensteinHandSheet extends CardsHand {
       return; // should never be able to click from host hand anyway (see 'disabled' above)
     const actor = game.actors.get(actorId);
 
-
     await CastleFalkenstein.socket.executeAsGM("returnBackToDeck", hand.id, hand.cards.map(c => c.id));
 
     // Post message to chat
     let flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.hand.cancelSpell")}]`;
     let content = ""; // TODO add info on spell which was canceled
-    CastleFalkenstein.createChatMessage(actor, flavor, content);
+    CastleFalkenstein.createChatMessage(actor, flavor, content, true);
 
     // no spell being cast anymore
     await hand.stopCasting();

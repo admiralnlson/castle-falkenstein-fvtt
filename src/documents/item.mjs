@@ -26,16 +26,16 @@ export class CastleFalkensteinItem extends Item {
       await this.actor?.defineSpell(this);
     } else {
       // default (other item types, if any)
-      await this.showOthers();
+      await this.sendToChat();
     }
   }
 
   /**
    * Show the item in chat.
    */
-  async showOthers() {
+  async sendToChat() {
 
-    let flavor = `[${game.i18n.localize('castle-falkenstein.item.showOthers')}`;
+    let flavor = `[${game.i18n.localize('castle-falkenstein.item.sendToChat')}`;
     let content = `${this.name}<hr/>`
                 + `${this.system.description}`;
 
@@ -60,11 +60,11 @@ export class CastleFalkensteinItem extends Item {
               + `${this.system.description}`;
     } else {
       flavor += `]`;
-      CastleFalkenstein.log.warn(`Attempting to 'show others' an item of type '${this.type}'`);
+      CastleFalkenstein.log.warn(`[Function not supported] Attempting to 'show in chat' an item of type '${this.type}'`);
     }
  
      // Post message to chat
-    CastleFalkenstein.createChatMessage(this.actor, flavor, content);
+    CastleFalkenstein.createChatMessage(this.actor, flavor, content, false);
   }
 
 }

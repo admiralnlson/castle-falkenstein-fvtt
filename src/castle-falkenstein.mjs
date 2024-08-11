@@ -438,23 +438,25 @@ export class CastleFalkenstein {
 
   static createChatMessage(actor, flavor, content) {
 
-    const message = {
-      speaker: ChatMessage.getSpeaker({ actor: actor }),
-      rollMode: game.settings.get('core', 'rollMode'),
+    const messageData = {
       flavor: flavor,
       content: content,
       "flags.castle-falkenstein": { type: flavor }
     };
 
-    if (game.release.generation >= 12) {
-      message.type = CONST.CHAT_MESSAGE_STYLES.OOC;
-    } else {
-      message.type = CONST.CHAT_MESSAGE_TYPES.OOC;
+    if (actor != "gm") {
+      messageData.speaker = ChatMessage.getSpeaker({ actor: actor });
+      messageData.borderColor = game.user.color.css;
     }
 
-    ChatMessage.create(message);
-  }
+    if (game.release.generation >= 12) {
+      messageData.type = messageData.speaker ? CONST.CHAT_MESSAGE_STYLES.IC : CONST.CHAT_MESSAGE_STYLES.OOC;
+    } else {
+      messageData.type = messageData.speaker ? CONST.CHAT_MESSAGE_TYPES.IC : CONST.CHAT_MESSAGE_TYPES.OOC;
+    }
 
+    return ChatMessage.create(messageData);
+  }
 
   static onInit() {
     game.CastleFalkenstein = CastleFalkenstein;
@@ -903,7 +905,8 @@ export class CastleFalkenstein {
   }
 
   static async onRenderChatMessage(chatMessage, html, messageData) {
-    html.find(".feat-chat-ranges-button").click(event => {
+    // make the 'success ranges' section expand/collapse on click
+    html.find(".feat-chat-ranges-button")?.click(event => {
       let button = event.currentTarget;
       var content = button.nextElementSibling;
       if (content.style.display === "block") {
@@ -912,6 +915,9 @@ export class CastleFalkenstein {
         content.style.display = "block";
       }
     });
+
+    // make the overall message have the same color as its author
+    html[0].style.borderColor = messageData.author?.color.css;
   }
 
   static async onDropOnCardStack(event, cardsSheet) {
@@ -986,6 +992,63 @@ export class CastleFalkenstein {
     // Trigger the item roll
     return item.roll();
   }
+
+  static onRenderSidebarTab(app, html, data) {
+    if (app.tabName !== "chat")
+      return;
+
+    const diceIcon = html.find("#chat-controls .chat-control-icon i");
+    if (diceIcon) {
+      diceIcon[0].classList = "cf-poker-hand";
+    }
+
+    // hijack of "Roll Mode" into something which makes more sense for a card-based system like Castle Falkenstein
+
+    const optgroup = html.find("#chat-controls .roll-type-select optgroup");
+    if (optgroup)
+      optgroup[0].label = game.i18n.localize("castle-falkenstein.chat.messageVisibility");
+
+    const optionReplacements = {
+      [CONST.DICE_ROLL_MODES.PUBLIC]: game.i18n.localize("castle-falkenstein.chat.publicMessage"),
+      [CONST.DICE_ROLL_MODES.PRIVATE]: game.i18n.localize("castle-falkenstein.chat.privateHostMessage"),
+      [CONST.DICE_ROLL_MODES.BLIND]: null, // Remove this option
+      [CONST.DICE_ROLL_MODES.SELF]: null   // Remove this option
+    };
+
+    // Select the <select> element
+    const select = document.querySelector('#chat-controls .roll-type-select');
+
+    // Loop through options in the optgroup (in reverse order because we're removing some options)
+    for (let i = select.options.length - 1; i >= 0; --i) {
+      const option = select.options[i];
+
+      // Check if the option should be renamed or removed
+      if (optionReplacements[option.value] !== undefined) {
+        if (optionReplacements[option.value] === null) {
+            // Remove the option
+            select.remove(i);
+        } else {
+            // Rename the option
+            option.text = optionReplacements[option.value];
+        }
+      }
+    }
+  }
+
+  static onPreCreateChatMessage(message, options, userId) {
+    // Alter the visibility of both system-generated and manually-created messages.
+    //
+    // See onRenderSidebarTab(): only 2 modes are allowed: PUBLIC and PRIVATE. BLIND and SELF have been disabled.
+    //
+    const messageVisibility = game.settings.get("core", "rollMode");
+    if (messageVisibility == CONST.DICE_ROLL_MODES.PRIVATE && (!message.whisper || message.whisper.length == 0)) {
+      message.updateSource({
+        whisper: ChatMessage.getWhisperRecipients("GM").map(u => u.id),
+        speaker: null
+      });
+    }
+    
+  }
 }
 
 /* -------------------------------------------- */
@@ -1013,6 +1076,10 @@ Hooks.once("socketlib.ready", () => CastleFalkenstein.setupSocket());
 Hooks.on("passCards", (from, to, options) => CastleFalkenstein.onPassCards(from, to, options));
 
 Hooks.on("renderCombatTracker", (app, html, options) => game.combat?.onRenderCombatTracker(app, html, options));
+
+Hooks.on("renderSidebarTab", (app, html, data) => CastleFalkenstein.onRenderSidebarTab(app, html, data));
+
+Hooks.on("preCreateChatMessage", (message, options, userId) => CastleFalkenstein.onPreCreateChatMessage(message, options, userId));
 
 /* -------------------------------------------- */
 /*  Handlebars Helpers                          */

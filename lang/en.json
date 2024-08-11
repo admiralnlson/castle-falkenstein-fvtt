@@ -160,7 +160,7 @@
     "item": {
       "add": "Add",
       "sort": "Drag-and-drop to reorder the list",
-      "showOthers": "Show others",
+      "sendToChat": "Send to chat",
       "edit": "Edit",
       "delete": "Delete"
     },
@@ -348,6 +348,12 @@
     },
 
     "host": "Host",
-    "hostNotes": "Host notes"
+    "hostNotes": "Host notes",
+
+    "chat": {
+      "messageVisibility": "Default Message Visibility",
+      "publicMessage": "Public Message",
+      "privateHostMessage": "Private Host Message"
+    }
   }
 }

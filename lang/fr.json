@@ -160,7 +160,7 @@
     "item": {
       "add": "Ajouter",
       "sort": "Glisser-déplacer pour réordonner la liste",
-      "showOthers": "Montrer aux autres",
+      "sendToChat": "Envoyer dans le chat",
       "edit": "Éditer",
       "delete": "Supprimer"
     },
@@ -348,6 +348,12 @@
     },
 
     "host": "Hôte",
-    "hostNotes": "Notes de l'Hôte"
+    "hostNotes": "Notes de l'Hôte",
+
+    "chat": {
+      "messageVisibility": "Visibilité des messages par défaut",
+      "publicMessage": "Message public",
+      "privateHostMessage": "Message privé pour l'Hôte"
+    }
   }
 }
