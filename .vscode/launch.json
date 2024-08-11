@@ -57,6 +57,49 @@
       "cleanUp": "onlyTab"
     },
     {
+      "name": "Launch Firefox",
+      "type": "firefox",
+      "request": "launch",
+      "url": "http://localhost:30001",
+      "webRoot": "${config:foundryvttDevFolder}/${config:foundryvttNodeJS}/resources/app/public",
+      "skipFiles": [
+          "<node_internals>/**/*.js",
+          "node_modules/**/*.js"
+      ],
+      "timeout": 5000,
+      "internalConsoleOptions": "openOnSessionStart",
+    },
+    {
+      "name": "Launch Brave",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:30001",
+      "webRoot": "${config:foundryvttDevFolder}/${config:foundryvttNodeJS}/resources/app/public",
+      "resolveSourceMapLocations": [
+          "${workspaceFolder}/**",
+          "!**/node_modules/**"
+      ],
+      "pathMapping": {
+          "/systems/castle-falkenstein": "${workspaceFolder}",
+          "/systems/*": "${config:foundryvttDevFolder}/${config:foundryvttUserData}/Data/systems/*",
+          "/modules": "${config:foundryvttDevFolder}/${config:foundryvttUserData}/Data/modules"
+      },
+      "skipFiles": [
+          "<node_internals>/**/*.js",
+          "node_modules/**/*.js"
+      ],
+      "sourceMaps": true,
+      "timeout": 5000,
+      "internalConsoleOptions": "openOnSessionStart",
+      "cleanUp": "onlyTab",
+      "runtimeExecutable": "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe",
+      "runtimeArgs": [
+          "--disable-infobars",
+          "--new-window",
+          "--user-data-dir=${workspaceFolder}/.vscode/brave-debug" // Specify the user data directory
+      ]
+    },
+    {
       "name": "Launch Edge",
       "request": "launch",
       "type": "msedge",
