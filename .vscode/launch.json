@@ -34,10 +34,7 @@
         "!**/node_modules/**"
       ],
       "pathMapping": {
-        // Override the path for own system...
         "/systems/castle-falkenstein": "${workspaceFolder}",
-        // ... and use the default for everything else.
-        // Note the slightly different formats - swap them for a module.
         "/systems/*": "${config:foundryvttDevFolder}/${config:foundryvttUserData}/Data/systems/*",
         "/modules": "${config:foundryvttDevFolder}/${config:foundryvttUserData}/Data/modules"
       },
@@ -51,7 +48,6 @@
         "--new-window",
         "--user-data-dir=${workspaceFolder}/.vscode/chrome-debug"
       ],
-      // How long to wait for the launcher. Increase this for potato debugging.
       "timeout": 5000,
       "internalConsoleOptions": "openOnSessionStart",
       "cleanUp": "onlyTab"
@@ -62,12 +58,26 @@
       "request": "launch",
       "url": "http://localhost:30001",
       "webRoot": "${config:foundryvttDevFolder}/${config:foundryvttNodeJS}/resources/app/public",
+      "pathMappings": [
+        {
+          "url": "http://localhost:30001/scripts/foundry.js",
+          "path": "${config:foundryvttDevFolder}/${config:foundryvttNodeJS}/resources/app/public/scripts/foundry.js"
+        },
+        {
+          "url": "http://localhost:30001/systems",
+          "path": "${config:foundryvttDevFolder}/${config:foundryvttUserData}/Data/systems"
+        },
+        {
+          "url": "http://localhost:30001/modules",
+          "path": "${config:foundryvttDevFolder}/${config:foundryvttUserData}/Data/modules"
+        }
+      ],
       "skipFiles": [
-          "<node_internals>/**/*.js",
-          "node_modules/**/*.js"
+        "<node_internals>/**/*.js",
+        "node_modules/**/*.js"
       ],
       "timeout": 5000,
-      "internalConsoleOptions": "openOnSessionStart",
+      "internalConsoleOptions": "openOnSessionStart"
     },
     {
       "name": "Launch Brave",
@@ -76,17 +86,17 @@
       "url": "http://localhost:30001",
       "webRoot": "${config:foundryvttDevFolder}/${config:foundryvttNodeJS}/resources/app/public",
       "resolveSourceMapLocations": [
-          "${workspaceFolder}/**",
-          "!**/node_modules/**"
+        "${workspaceFolder}/**",
+        "!**/node_modules/**"
       ],
       "pathMapping": {
-          "/systems/castle-falkenstein": "${workspaceFolder}",
-          "/systems/*": "${config:foundryvttDevFolder}/${config:foundryvttUserData}/Data/systems/*",
-          "/modules": "${config:foundryvttDevFolder}/${config:foundryvttUserData}/Data/modules"
+        "/systems/castle-falkenstein": "${workspaceFolder}",
+        "/systems/*": "${config:foundryvttDevFolder}/${config:foundryvttUserData}/Data/systems/*",
+        "/modules": "${config:foundryvttDevFolder}/${config:foundryvttUserData}/Data/modules"
       },
       "skipFiles": [
-          "<node_internals>/**/*.js",
-          "node_modules/**/*.js"
+        "<node_internals>/**/*.js",
+        "node_modules/**/*.js"
       ],
       "sourceMaps": true,
       "timeout": 5000,
@@ -94,9 +104,9 @@
       "cleanUp": "onlyTab",
       "runtimeExecutable": "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe",
       "runtimeArgs": [
-          "--disable-infobars",
-          "--new-window",
-          "--user-data-dir=${workspaceFolder}/.vscode/brave-debug" // Specify the user data directory
+        "--disable-infobars",
+        "--new-window",
+        "--user-data-dir=${workspaceFolder}/.vscode/brave-debug"
       ]
     },
     {
@@ -110,10 +120,7 @@
         "!**/node_modules/**"
       ],
       "pathMapping": {
-        // Override the path for own system...
         "/systems/castle-falkenstein": "${workspaceFolder}",
-        // ... and use the default for everything else.
-        // Note the slightly different formats - swap them for a module.
         "/systems/*": "${config:foundryvttDevFolder}/${config:foundryvttUserData}/Data/systems/*",
         "/modules": "${config:foundryvttDevFolder}/${config:foundryvttUserData}/Data/modules"
       },
@@ -127,7 +134,6 @@
         "--new-window",
         "--user-data-dir=${workspaceFolder}/.vscode/edge-debug"
       ],
-      // How long to wait for the launcher. Increase this for potato debugging.
       "timeout": 5000
     }
   ]
