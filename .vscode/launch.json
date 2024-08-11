@@ -45,6 +45,12 @@
         "<node_internals>/**/*.js",
         "node_modules/**/*.js"
       ],
+      "sourceMaps": true,
+      "runtimeArgs": [
+        "--disable-infobars",
+        "--new-window",
+        "--user-data-dir=${workspaceFolder}/.vscode/chrome-debug"
+      ],
       // How long to wait for the launcher. Increase this for potato debugging.
       "timeout": 5000,
       "internalConsoleOptions": "openOnSessionStart",
@@ -71,6 +77,12 @@
       "skipFiles": [
         "<node_internals>/**/*.js",
         "node_modules/**/*.js"
+      ],
+      "sourceMaps": true,
+      "runtimeArgs": [
+        "--disable-infobars",
+        "--new-window",
+        "--user-data-dir=${workspaceFolder}/.vscode/edge-debug"
       ],
       // How long to wait for the launcher. Increase this for potato debugging.
       "timeout": 5000
