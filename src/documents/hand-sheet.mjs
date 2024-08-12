@@ -174,14 +174,14 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     context.disabled = {};
 
     context.disabled.openActor = context.inCompendium || CastleFalkensteinHandSheet.openActorDisabled(hand);
-    context.disabled.refillHand = context.inCompendium || CastleFalkensteinHandSheet.refillHandDisabled(hand);
-    context.disabled.triggerFeat = context.inCompendium || !context.featBeingPerformed || CastleFalkensteinHandSheet.triggerFeatDisabled(hand);
-    context.disabled.cancelFeat = context.inCompendium || !context.featBeingPerformed || CastleFalkensteinHandSheet.cancelFeatDisabled(hand);
-    context.disabled.chanceCard = context.inCompendium || CastleFalkensteinHandSheet.chanceCardDisabled(hand);
+    context.disabled.refillHand = !context.owner || context.inCompendium || CastleFalkensteinHandSheet.refillHandDisabled(hand);
+    context.disabled.triggerFeat = !context.owner || context.inCompendium || !context.featBeingPerformed || CastleFalkensteinHandSheet.triggerFeatDisabled(hand);
+    context.disabled.cancelFeat = !context.owner || context.inCompendium || !context.featBeingPerformed || CastleFalkensteinHandSheet.cancelFeatDisabled(hand);
+    context.disabled.chanceCard = !context.owner || context.inCompendium || CastleFalkensteinHandSheet.chanceCardDisabled(hand);
 
-    context.disabled.gatherPower = context.inCompendium || !context.spellBeingCast || CastleFalkensteinHandSheet.gatherPowerDisabled(hand);
-    context.disabled.castSpell = context.inCompendium || !context.spellBeingCast || CastleFalkensteinHandSheet.castSpellDisabled(hand);
-    context.disabled.cancelSpell = context.inCompendium || !context.spellBeingCast || CastleFalkensteinHandSheet.cancelSpellDisabled(hand);
+    context.disabled.gatherPower = !context.owner || context.inCompendium || !context.spellBeingCast || CastleFalkensteinHandSheet.gatherPowerDisabled(hand);
+    context.disabled.castSpell = !context.owner || context.inCompendium || !context.spellBeingCast || CastleFalkensteinHandSheet.castSpellDisabled(hand);
+    context.disabled.cancelSpell = !context.owner || context.inCompendium || !context.spellBeingCast || CastleFalkensteinHandSheet.cancelSpellDisabled(hand);
     context.harmonicHTML = CastleFalkensteinHandSheet.harmonicHTML(hand, true);
 
     context.cardWidth = CastleFalkenstein.settings.cardWidth;
