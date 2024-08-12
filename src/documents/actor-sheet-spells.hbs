@@ -1,29 +1,29 @@
 <ol class="items-list">
   <li class="item items-header">
-    <div class="define-spell" title="{{localize 'castle-falkenstein.sorcery.hand.render'}}"><a class="sorcery-hand-show" draggable="true" data-type="Cards" data-uuid="{{sorceryHandUuid}}"><i class="cf-poker-hand"></i></a></div>
-    <div class="name" title="{{localize 'castle-falkenstein.spell.nameAndAspect'}}">{{localize 'castle-falkenstein.spell.nameAndAspect'}}</div>
-    <div class="level" title="{{localize 'castle-falkenstein.spell.thaumicLevel'}}">{{localize 'castle-falkenstein.spell.thaumicLevelShort'}}</div>
+    <div class="define-spell" data-tooltip="{{localize 'castle-falkenstein.sorcery.hand.render'}}"><a class="sorcery-hand-show" draggable="true" data-type="Cards" data-uuid="{{sorceryHandUuid}}"><i class="cf-poker-hand"></i></a></div>
+    <div class="name">{{localize 'castle-falkenstein.spell.nameAndAspect'}}</div>
+    <div class="level" data-tooltip="{{localize 'castle-falkenstein.spell.thaumicLevel'}}">{{localize 'castle-falkenstein.spell.thaumicLevelAbbr'}}</div>
     <div class="item-controls">
-      <a class="item-control item-create" title="{{localize 'castle-falkenstein.item.add'}}" data-type="spell"><i class="fas fa-plus"></i> {{localize 'castle-falkenstein.item.add'}}</a>
+      <a class="item-control item-create" data-type="spell"><i class="fas fa-plus"></i> {{localize 'castle-falkenstein.item.add'}}</a>
     </div>
   </li>
   {{#each items as |item id|}}
   {{#if (eq item.type "spell")}}
     <li class="item" data-item-id="{{item._id}}">
-      <div class="item-drag" data-item-id="{{item._id}}" title="{{localize 'castle-falkenstein.item.sort'}}"><i class="far fa-bars"></i></div>
-      <div class="define-spell" title="{{localize 'castle-falkenstein.sorcery.defineSpell'}}">
-        <a class="rollable" data-roll-type="item" title="{{localize 'castle-falkenstein.sorcery.defineSpell'}}"><i class="far fa-play-circle"></i></a>
+      <div class="item-drag" data-item-id="{{item._id}}" data-tooltip="{{localize 'castle-falkenstein.item.sort'}}"><i class="far fa-bars"></i></div>
+      <div class="define-spell">
+        <a class="rollable" data-roll-type="item" data-tooltip="{{localize 'castle-falkenstein.sorcery.defineSpell'}}"><i class="far fa-play-circle"></i></a>
       </div>
-      <div class="name" title="{{item.name}} [{{item.system.suitSymbol}}]">
+      <div class="name">
         {{item.name}} [<span class="suit-symbol-{{item.system.suit}}">{{item.system.suitSymbol}}</span>]
       </div>
       <div class="level">
         {{item.system.level}}
       </div>
       <div class="item-controls">
-        <a class="item-control item-show" title="{{localize 'castle-falkenstein.item.sendToChat'}} - {{localize 'castle-falkenstein.spell.spell'}}"><i class="far fa-comments"></i></a>
-        <a class="item-control item-edit" title="{{localize 'castle-falkenstein.item.edit'}}"><i class="far fa-edit"></i></a>
-        <a class="item-control item-delete" title="{{localize 'castle-falkenstein.item.delete'}}"><i class="far fa-trash"></i></a>
+        <a class="item-control item-show" data-tooltip="{{localize 'castle-falkenstein.item.sendToChat'}} - {{localize 'castle-falkenstein.spell.spell'}}"><i class="far fa-comments"></i></a>
+        <a class="item-control item-edit" data-tooltip="{{localize 'castle-falkenstein.item.edit'}}"><i class="far fa-edit"></i></a>
+        <a class="item-control item-delete" data-tooltip="{{localize 'castle-falkenstein.item.delete'}}"><i class="far fa-trash"></i></a>
       </div>
     </li>
   {{/if}}

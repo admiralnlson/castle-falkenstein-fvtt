@@ -1,28 +1,28 @@
 <ol class="items-list weapons {{#if hideWounds}}hide-wounds{{/if}}{{#if hideHarmRank}}hide-harm-rank{{/if}}">
   <li class="item items-header">
     <div class="item-drag-placeholder"></div>
-    <div class="name" title="{{localize 'castle-falkenstein.weapon.weapon'}}">{{localize 'castle-falkenstein.weapon.weapon'}}</div>
-    <div class="range" title="{{localize 'castle-falkenstein.weapon.range'}}">{{localize 'castle-falkenstein.weapon.range'}}</div>
-    <div class="ammunition" title="{{localize 'castle-falkenstein.weapon.ammunition'}}">{{localize 'castle-falkenstein.weapon.ammunitionAbbr'}}</div>
-    <div class="conceal" title="{{localize 'castle-falkenstein.weapon.conceal'}}">{{localize 'castle-falkenstein.weapon.concealAbbr'}}</div>
+    <div class="name">{{localize 'castle-falkenstein.weapon.weapon'}}</div>
+    <div class="range">{{localize 'castle-falkenstein.weapon.range'}}</div>
+    <div class="ammunition" data-tooltip="{{localize 'castle-falkenstein.weapon.ammunition'}}">{{localize 'castle-falkenstein.weapon.ammunitionAbbr'}}</div>
+    <div class="conceal" data-tooltip="{{localize 'castle-falkenstein.weapon.conceal'}}">{{localize 'castle-falkenstein.weapon.concealAbbr'}}</div>
     {{#unless hideWounds}}
-      <div class="wounds" title="{{localize 'castle-falkenstein.weapon.wounds'}}">{{localize 'castle-falkenstein.weapon.wounds'}}</div>
+      <div class="wounds">{{localize 'castle-falkenstein.weapon.wounds'}}</div>
     {{/unless}}
     {{#unless hideHarmRank}}
-    <div class="harm-rank" title="{{localize 'castle-falkenstein.weapon.harmRank'}}">{{localize 'castle-falkenstein.weapon.harmRankAbbr'}}</div>
+    <div class="harm-rank" data-tooltip="{{localize 'castle-falkenstein.weapon.harmRank'}}">{{localize 'castle-falkenstein.weapon.harmRankAbbr'}}</div>
     {{/unless}}
     <div class="item-controls">
-      <a class="item-control item-create" title="{{localize 'castle-falkenstein.item.add'}}" data-type="weapon"><i class="fas fa-plus"></i> {{localize 'castle-falkenstein.item.add'}}</a>
+      <a class="item-control item-create" data-type="weapon"><i class="fas fa-plus"></i> {{localize 'castle-falkenstein.item.add'}}</a>
     </div>
   </li>
   {{#each items as |item id|}}
   {{#if (eq item.type "weapon")}}
     <li class="item" data-item-id="{{item._id}}">
-      <div class="item-drag" data-item-id="{{item._id}}" title="{{localize 'castle-falkenstein.item.sort'}}"><i class="far fa-bars"></i></div>
-      <div class="name" title="{{item.name}}">
+      <div class="item-drag" data-item-id="{{item._id}}" data-tooltip="{{localize 'castle-falkenstein.item.sort'}}"><i class="far fa-bars"></i></div>
+      <div class="name">
         {{item.name}}
       </div>
-      <div class="effective-range" title="{{localize 'castle-falkenstein.weapon.effectiveRange'}}">
+      <div class="effective-range" data-tooltip="{{localize 'castle-falkenstein.weapon.effectiveRange'}}">
         {{item.system.effectiveRange}}
       </div>
       <div class="slash">
@@ -32,10 +32,10 @@
           {{/if}}
 		    {{/if}}
       </div>
-      <div class="max-range" title="{{localize 'castle-falkenstein.weapon.maxRange'}}">
+      <div class="max-range" data-tooltip="{{localize 'castle-falkenstein.weapon.maxRange'}}">
         {{item.system.maxRange}}
       </div>
-      <div class="ammunition-current" title="{{localize 'castle-falkenstein.weapon.ammunitionCurrent'}}">
+      <div class="ammunition-current" data-tooltip="{{localize 'castle-falkenstein.weapon.ammunitionCurrent'}}">
         {{#if (isNumber item.system.ammunition)}}
           <input class="weapon-ammunition-current" name="item.system.ammunition" type="number" min="0" value="{{item.system.ammunition}}" placeholder="" />
         {{/if}}
@@ -45,17 +45,17 @@
 			    /
 		    {{/if}}
       </div>
-      <div class="ammunition-max" title="{{localize 'castle-falkenstein.weapon.ammunitionMax'}}">
+      <div class="ammunition-max" data-tooltip="{{localize 'castle-falkenstein.weapon.ammunitionMax'}}">
         {{item.system.ammunition_max}}
       </div>
       {{#with (lookup ../concealLabels item.system.conceal)}}
-      <div class="conceal" title="{{this.label}}">
+      <div class="conceal" data-tooltip="{{this.label}}">
           {{this.labelAbbr}}
       </div>
       {{/with}}
       {{#unless ../hideWounds}}
         {{#if (or item.system.woundsPartial item.system.woundsFull item.system.woundsHigh)}}
-        <div class="wounds-partial" title="{{localize 'castle-falkenstein.weapon.woundsPartial'}}">
+        <div class="wounds-partial" data-tooltip="{{localize 'castle-falkenstein.weapon.woundsPartial'}}">
           {{#if item.system.woundsPartial}}
             {{item.system.woundsPartial}}
           {{else}}
@@ -63,7 +63,7 @@
           {{/if}}
         </div>
         <div class="slash">/</div>
-        <div class="wounds-full" title="{{localize 'castle-falkenstein.weapon.woundsFull'}}">
+        <div class="wounds-full" data-tooltip="{{localize 'castle-falkenstein.weapon.woundsFull'}}">
           {{#if item.system.woundsFull}}
             {{item.system.woundsFull}}
           {{else}}
@@ -71,7 +71,7 @@
           {{/if}}
         </div>
         <div class="slash">/</div>
-        <div class="wounds-high" title="{{localize 'castle-falkenstein.weapon.woundsHigh'}}">
+        <div class="wounds-high" data-tooltip="{{localize 'castle-falkenstein.weapon.woundsHigh'}}">
           {{#if item.system.woundsHigh}}
             {{item.system.woundsHigh}}
           {{else}}
@@ -87,16 +87,16 @@
         {{/if}}
       {{/unless}}
       {{#unless ../hideHarmRank}}
-        <div class="harm-rank" title="{{localize 'castle-falkenstein.weapon.harmRank'}}">
+        <div class="harm-rank" data-tooltip="{{localize 'castle-falkenstein.weapon.harmRank'}}">
           {{#ifnotequal item.system.harmRank "-"}}
             {{item.system.harmRank}}
           {{/ifnotequal}}
         </div>
       {{/unless}}
       <div class="item-controls">
-        <a class="item-control item-show" title="{{localize 'castle-falkenstein.item.sendToChat'}} - {{localize 'castle-falkenstein.weapon.weapon'}}"><i class="far fa-comments"></i></a>
-        <a class="item-control item-edit" title="{{localize 'castle-falkenstein.item.edit'}}"><i class="far fa-edit"></i></a>
-        <a class="item-control item-delete" title="{{localize 'castle-falkenstein.item.delete'}}"><i class="far fa-trash"></i></a>
+        <a class="item-control item-show" data-tooltip="{{localize 'castle-falkenstein.item.sendToChat'}} - {{localize 'castle-falkenstein.weapon.weapon'}}"><i class="far fa-comments"></i></a>
+        <a class="item-control item-edit" data-tooltip="{{localize 'castle-falkenstein.item.edit'}}"><i class="far fa-edit"></i></a>
+        <a class="item-control item-delete" data-tooltip="{{localize 'castle-falkenstein.item.delete'}}"><i class="far fa-trash"></i></a>
       </div>
     </li>
   {{/if}}
@@ -106,22 +106,22 @@
 <ol class="items-list possessions">
   <li class="item items-header">
     <div class="item-drag-placeholder"></div>
-    <div class="name" title="{{localize 'castle-falkenstein.possession.possession'}}">{{localize 'castle-falkenstein.possession.possession'}}</div>
+    <div class="name">{{localize 'castle-falkenstein.possession.possession'}}</div>
     <div class="item-controls">
-      <a class="item-control item-create" title="{{localize 'castle-falkenstein.item.add'}}" data-type="possession"><i class="fas fa-plus"></i> {{localize 'castle-falkenstein.item.add'}}</a>
+      <a class="item-control item-create" data-tooltip="{{localize 'castle-falkenstein.item.add'}}" data-type="possession"><i class="fas fa-plus"></i> {{localize 'castle-falkenstein.item.add'}}</a>
     </div>
   </li>
   {{#each items as |item id|}}
   {{#if (eq item.type "possession")}}
     <li class="item" data-item-id="{{item._id}}">
-      <div class="item-drag" data-item-id="{{item._id}}" title="{{localize 'castle-falkenstein.item.sort'}}"><i class="far fa-bars"></i></div>
-      <div class="name" title="{{item.name}}">
+      <div class="item-drag" data-item-id="{{item._id}}" data-tooltip="{{localize 'castle-falkenstein.item.sort'}}"><i class="far fa-bars"></i></div>
+      <div class="name">
         {{item.name}}
       </div>
       <div class="item-controls">
-        <a class="item-control item-show" title="{{localize 'castle-falkenstein.item.sendToChat'}} - {{localize 'castle-falkenstein.possession.possession'}}"><i class="far fa-comments"></i></a>
-        <a class="item-control item-edit" title="{{localize 'castle-falkenstein.item.edit'}}"><i class="far fa-edit"></i></a>
-        <a class="item-control item-delete" title="{{localize 'castle-falkenstein.item.delete'}}"><i class="far fa-trash"></i></a>
+        <a class="item-control item-show" data-tooltip="{{localize 'castle-falkenstein.item.sendToChat'}} - {{localize 'castle-falkenstein.possession.possession'}}"><i class="far fa-comments"></i></a>
+        <a class="item-control item-edit" data-tooltip="{{localize 'castle-falkenstein.item.edit'}}"><i class="far fa-edit"></i></a>
+        <a class="item-control item-delete" data-tooltip="{{localize 'castle-falkenstein.item.delete'}}"><i class="far fa-trash"></i></a>
       </div>
     </li>
   {{/if}}

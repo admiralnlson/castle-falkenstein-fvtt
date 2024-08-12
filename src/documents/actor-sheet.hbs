@@ -2,7 +2,7 @@
 
   {{!-- Sheet Header --}}
   <header class="sheet-header">
-    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
+    <img class="profile-img" src="{{actor.img}}" data-edit="img" alt="{{actor.name}}" height="100" width="100"/>
     <div class="header-fields">
       <h1 class="charname"><input name="name" type="text" value="{{actor.name}}"/></h1>
       <div class="grid grid-2col health-and-wounds">
@@ -29,7 +29,7 @@
       <a class="tab-link" data-tab="abilities">{{localize 'castle-falkenstein.ability.abilities'}}</a>
       <a class="tab-link" data-tab="possessions">{{localize 'castle-falkenstein.possession.possessions'}}</a>
       {{#if actor.isToken}}
-      <a class="tab-link" disabled title="{{localize 'castle-falkenstein.sorcery.cannotBeUsedOnUnlinkedTokens'}}">{{localize 'castle-falkenstein.spell.spells'}}</a>
+      <a class="tab-link" disabled data-tooltip="{{localize 'castle-falkenstein.sorcery.cannotBeUsedOnUnlinkedTokens'}}">{{localize 'castle-falkenstein.spell.spells'}}</a>
       {{else}}
       <a class="tab-link" data-tab="spells">{{localize 'castle-falkenstein.spell.spells'}}</a>
       {{/if}}

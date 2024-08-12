@@ -119,7 +119,7 @@
         "name": "Destin - {character}",
         "refillSingular": "Compléter votre main du destin (piocher {nb} carte)",
         "refillPlural": "Compléter votre main du destin (piocher {nb} cartes)",
-        "triggerFeat": "Accoomplir la prouesse",
+        "triggerFeat": "Accomplir la prouesse",
         "cancelFeat": "Annuler la prouesse",
         "chance": "Chance",
         "chanceHint": "Piocher une carte du destin, jouée immédiatement"
@@ -127,7 +127,7 @@
     },
 
     "sorcery": {
-      "defineSpell": "Définir un sort",
+      "defineSpell": "Définir le sort",
       "hand": {
         "render": "Afficher la main de sorcellerie",
         "gatherPower": "Canaliser le Pouvoir",
@@ -227,7 +227,7 @@
     },
 
     "feat": {
-      "perform": "Accomplir une prouesse",
+      "perform": "Accomplir la prouesse",
       "noCardsPlayed": "Pas de carte jouée.",
       "total": "Total",
       "highSuccess": "Magnifique succès",
@@ -277,7 +277,7 @@
       "aspect": "Aspect",
       "nameAndAspect": "Sort",
       "thaumicLevel": "Niveau thaumique",
-      "thaumicLevelShort": "NT",
+      "thaumicLevelAbbr": "NT",
       "definition": {
         "duration": {
           "label": "Durée",

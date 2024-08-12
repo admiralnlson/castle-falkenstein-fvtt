@@ -22,7 +22,7 @@
   {{/if}}
   {{#if spellBeingCast}}
     <div class="spell-being-cast">
-      <span class="spell-name" title="{{spellBeingCast.spell.name}}">{{spellBeingCast.spell.name}}</span>
+      <span class="spell-name" data-tooltip="{{spellBeingCast.spell.name}}">{{spellBeingCast.spell.name}}</span>
       <span class="spell-suit">[<span class="suit-symbol-{{spellBeingCast.spell.system.suit}}">{{spellBeingCast.suitSymbol}}</span>]</span>
     </div>
     <div class="harmonic">
@@ -34,43 +34,43 @@
     <div class="flexrow">
       {{#if typeFlag}}
         <span class="card-control-sep"></span>
-        <a class="card-control" data-action="openActor" title="{{localize "castle-falkenstein.openCharacterSheet"}}" {{ disabled disabled.openActor }}>
+        <a class="card-control" data-action="openActor" data-tooltip="{{localize "castle-falkenstein.openCharacterSheet"}}" {{ disabled disabled.openActor }}>
           <i class="fas fa-user"></i>
         </a>
         <span class="card-control-sep"></span>
       {{/if}}
         {{#ifequal typeFlag "fortune"}}
-          <a class="card-control" data-action="refillHand" title="{{i18nRefill}}" {{ disabled disabled.refillHand }}>
+          <a class="card-control" data-action="refillHand" data-tooltip="{{i18nRefill}}" {{ disabled disabled.refillHand }}>
             <i class="fas fa-cards-blank"></i>
           </a>
           <span class="card-control-sep"></span>
           <span class="perform-feat-total">
             {{total}}
           </span>
-          <a class="card-control" data-action="triggerFeat" title="{{localize "castle-falkenstein.fortune.hand.triggerFeat"}}" {{ disabled disabled.triggerFeat }}>
+          <a class="card-control" data-action="triggerFeat" data-tooltip="{{localize "castle-falkenstein.fortune.hand.triggerFeat"}}" {{ disabled disabled.triggerFeat }}>
             <i class="fas fa-play-circle"></i>
           </a>
-          <a class="card-control" data-action="cancelFeat" title="{{localize "castle-falkenstein.fortune.hand.cancelFeat"}}" {{ disabled disabled.cancelFeat }}>
+          <a class="card-control" data-action="cancelFeat" data-tooltip="{{localize "castle-falkenstein.fortune.hand.cancelFeat"}}" {{ disabled disabled.cancelFeat }}>
             <i class="fas fa-stop-circle"></i>
           </a>
           <span class="card-control-sep"></span>
-          <a class="card-control" data-action="chanceCard" title="{{localize "castle-falkenstein.fortune.hand.chanceHint"}}" {{ disabled disabled.chanceCard }}>
+          <a class="card-control" data-action="chanceCard" data-tooltip="{{localize "castle-falkenstein.fortune.hand.chanceHint"}}" {{ disabled disabled.chanceCard }}>
             <i class="fas fa-circle-question"></i>
           </a>
           <span class="card-control-sep"></span>
         {{/ifequal}}
         {{#ifequal typeFlag "sorcery"}}
-          <a class="card-control" data-action="gatherPower" title="{{localize "castle-falkenstein.sorcery.hand.gatherPower"}}" {{ disabled disabled.gatherPower }}>
+          <a class="card-control" data-action="gatherPower" data-tooltip="{{localize "castle-falkenstein.sorcery.hand.gatherPower"}}" {{ disabled disabled.gatherPower }}>
             <i class="fas fa-cards-blank"></i>
           </a>
           <span class="card-control-sep"></span>
           <span class="power-gathering-progress">
             {{spellBeingCast.powerGathered}} / {{spellBeingCast.powerNeed}}
           </span>
-          <a class="card-control" data-action="castSpell" title="{{localize "castle-falkenstein.sorcery.hand.castSpell"}}" {{ disabled disabled.castSpell }}>
+          <a class="card-control" data-action="castSpell" data-tooltip="{{localize "castle-falkenstein.sorcery.hand.castSpell"}}" {{ disabled disabled.castSpell }}>
             <i class="fas fa-play-circle"></i>
           </a>
-          <a class="card-control" data-action="cancelSpell" title="{{localize "castle-falkenstein.sorcery.hand.cancelSpell"}}" {{ disabled disabled.cancelSpell }}>
+          <a class="card-control" data-action="cancelSpell" data-tooltip="{{localize "castle-falkenstein.sorcery.hand.cancelSpell"}}" {{ disabled disabled.cancelSpell }}>
             <i class="fas fa-stop-circle"></i>
           </a>
           <span class="card-control-sep"></span>
@@ -81,12 +81,12 @@
 <div class="handedCards {{typeFlag}}">
   <ol class="cards">
     {{#each cards as |card|}}
-      <li class="card flexrow {{../rtgVisuals}} {{card.correctSuit}} {{card.joker}} {{card.selected}}" data-card-id="{{card.id}}" title="{{card.name}}" style="width: {{../cardWidth}}px; height: {{../cardHeight}}px; margin-left: calc(-1/2*{{../cardWidth}}px); margin-right: calc(-1/2*{{../cardWidth}}px);">
+      <li class="card flexrow {{../rtgVisuals}} {{card.correctSuit}} {{card.joker}} {{card.selected}}" data-card-id="{{card.id}}" style="width: {{../cardWidth}}px; height: {{../cardHeight}}px; margin-left: calc(-1/2*{{../cardWidth}}px); margin-right: calc(-1/2*{{../cardWidth}}px);">
         <img class="card-face" src="{{card.img}}" alt="{{card.name}}" style="width: {{../cardWidth}}px">
         <div class="castle-falkenstein-card-controls flexcol" style="--card-control-scale: {{../cardControlScale}}">
           {{#if ../owner}}
             {{#ifequal ../typeFlag "sorcery"}}
-              <a class="card-control" data-action="releasePower" title="{{localize "castle-falkenstein.sorcery.hand.releasePower"}}">
+              <a class="card-control" data-action="releasePower" data-tooltip="{{localize "castle-falkenstein.sorcery.hand.releasePower"}}">
                 <i class="far fa-trash"></i>
               </a>
             {{/ifequal}}

@@ -20,17 +20,17 @@
         </div>
         <div class="grid weapon-sheet-header3 {{#if hideWounds}}hide-wounds{{/if}}{{#if hideHarmRank}}hide-harm-rank{{/if}}">
           <label class="resource-label">{{localize 'castle-falkenstein.weapon.ammunition'}}:</label>
-          <input class="ammunition-current" title="{{localize 'castle-falkenstein.weapon.ammunitionCurrent'}}" name="system.ammunition" type="number" min="0" value="{{system.ammunition}}" placeholder="" />
+          <input class="ammunition-current" data-tooltip="{{localize 'castle-falkenstein.weapon.ammunitionCurrent'}}" name="system.ammunition" type="number" min="0" value="{{system.ammunition}}" placeholder="" />
           <span>/</span>
-          <input class="ammunition-max" title="{{localize 'castle-falkenstein.weapon.ammunitionMax'}}" name="system.ammunition_max" type="number" min="0" value="{{system.ammunition_max}}" placeholder="" />
+          <input class="ammunition-max" data-tooltip="{{localize 'castle-falkenstein.weapon.ammunitionMax'}}" name="system.ammunition_max" type="number" min="0" value="{{system.ammunition_max}}" placeholder="" />
           {{#unless hideWounds}}
           <span class="separator"></span>
           <label class="resource-label">{{localize 'castle-falkenstein.weapon.wounds'}}:</label>
-          <input class="wounds-partial" title="{{localize 'castle-falkenstein.weapon.woundsPartial'}}" name="system.woundsPartial" type="number" min="0" value="{{system.woundsPartial}}" placeholder="" />
+          <input class="wounds-partial" data-tooltip="{{localize 'castle-falkenstein.weapon.woundsPartial'}}" name="system.woundsPartial" type="number" min="0" value="{{system.woundsPartial}}" placeholder="" />
           <span>/</span>
-          <input class="wounds-full" title="{{localize 'castle-falkenstein.weapon.woundsFull'}}" name="system.woundsFull" type="number" min="0" value="{{system.woundsFull}}" placeholder="" />
+          <input class="wounds-full" data-tooltip="{{localize 'castle-falkenstein.weapon.woundsFull'}}" name="system.woundsFull" type="number" min="0" value="{{system.woundsFull}}" placeholder="" />
           <span>/</span>
-          <input class="wounds-high"  title="{{localize 'castle-falkenstein.weapon.woundsHigh'}}"name="system.woundsHigh" type="number" min="0" value="{{system.woundsHigh}}" placeholder="" />
+          <input class="wounds-high" data-tooltip="{{localize 'castle-falkenstein.weapon.woundsHigh'}}"name="system.woundsHigh" type="number" min="0" value="{{system.woundsHigh}}" placeholder="" />
           {{/unless}}
           {{#unless hideHarmRank}}
           <span class="separator"></span>
@@ -61,7 +61,7 @@
 
     {{!-- Icon Tab --}}
     <div class="tab" data-group="primary" data-tab="icon">
-      <center><img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}" height="100" width="100"/></center>
+      <center><img class="profile-img" src="{{item.img}}" data-edit="img" alt="{{item.name}}" height="100" width="100"/></center>
     </div>
 
   </section>

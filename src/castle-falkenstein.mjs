@@ -420,7 +420,7 @@ export class CastleFalkenstein {
   static smallCardImg(card, classes) {
     const suit = card.suit;
     const value = card.suit == "joker" ? (card.name == game.i18n.localize("castle-falkenstein.cards.blackJoker") ? "black" : "red") : card.value;
-    return `<img class="${classes}" src="systems/castle-falkenstein/src/cards/small/${suit}-${value}.svg" alt="${card.name}" title="${card.name}"></img>`;
+    return `<img class="${classes}" src="systems/castle-falkenstein/src/cards/small/${suit}-${value}.svg" alt="${card.name}"></img>`;
   }
 
   static cardSuitHTML(suit) {
