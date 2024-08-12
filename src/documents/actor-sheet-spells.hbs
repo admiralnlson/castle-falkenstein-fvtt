@@ -1,6 +1,6 @@
 <ol class="items-list">
   <li class="item items-header">
-    <div class="define-spell" title="{{localize 'castle-falkenstein.sorcery.hand.render'}}"><a class="sorcery-hand-show"><i class="cf-poker-hand"></i></a></div>
+    <div class="define-spell" title="{{localize 'castle-falkenstein.sorcery.hand.render'}}"><a class="sorcery-hand-show" draggable="true" data-type="Cards" data-uuid="{{sorceryHandUuid}}"><i class="cf-poker-hand"></i></a></div>
     <div class="name" title="{{localize 'castle-falkenstein.spell.nameAndAspect'}}">{{localize 'castle-falkenstein.spell.nameAndAspect'}}</div>
     <div class="level" title="{{localize 'castle-falkenstein.spell.thaumicLevel'}}">{{localize 'castle-falkenstein.spell.thaumicLevelShort'}}</div>
     <div class="item-controls">
@@ -10,9 +10,9 @@
   {{#each items as |item id|}}
   {{#if (eq item.type "spell")}}
     <li class="item" data-item-id="{{item._id}}">
-      <div class="item-drag" data-item-id="{{item._id}}" title="{{localize 'castle-falkenstein.item.sort'}}"><i class="fas fa-bars"></i></div>
+      <div class="item-drag" data-item-id="{{item._id}}" title="{{localize 'castle-falkenstein.item.sort'}}"><i class="far fa-bars"></i></div>
       <div class="define-spell" title="{{localize 'castle-falkenstein.sorcery.defineSpell'}}">
-        <a class="rollable" data-roll-type="item" title="{{localize 'castle-falkenstein.sorcery.defineSpell'}}"><i class="fas fa-play-circle"></i></a>
+        <a class="rollable" data-roll-type="item" title="{{localize 'castle-falkenstein.sorcery.defineSpell'}}"><i class="far fa-play-circle"></i></a>
       </div>
       <div class="name" title="{{item.name}} [{{item.system.suitSymbol}}]">
         {{item.name}} [<span class="suit-symbol-{{item.system.suit}}">{{item.system.suitSymbol}}</span>]

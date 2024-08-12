@@ -944,38 +944,42 @@ export class CastleFalkenstein {
     return true;
   }
 
-  static async addItemMacroAtHotbarSlot(item, slot) {
-    // Create the macro command
-    const command = `game.CastleFalkenstein.rollItemMacro("${item.type}", "${item.name}");`;
-    let macro = game.macros.find(m => (m.name === item.name) && (m.command === command));
+  static async addMacroAtHotbarSlot(name, img, command, slot) {
+    let macro = game.macros.find(m => (m.name === name) && (m.command === command));
     if (!macro) {
       macro = await Macro.create({
-        name: item.name,
-        type: "script",
-        img: item.img,
-        command: command,
-        "flags.castle-falkenstein": { itemMacro: true }
+        name: name,
+        type: CONST.MACRO_TYPES.SCRIPT,
+        img: img,
+        command: command
       });
     }
+    
     game.user.assignHotbarMacro(macro, slot);
   }
 
-  static hotbarDrop(hotbar, data, slot) {
-    // Create a Macro from an Item drop.
-    // Get an existing item macro if one exists, otherwise create a new one.
-    if (data.type !== "Item") return;
-    if (!data.uuid) return;
-    const uuidParts = data.uuid.split(".");
-    if (uuidParts.length != 4 || uuidParts[0] != "Actor" || uuidParts[2] != "Item") return;
-    const actor = game.actors.get(uuidParts[1]);
-    if (!actor) return;
-    const item = actor.items.get(uuidParts[3]);
-    if (!item) return;
+  static onHotbarDrop(hotbar, data, slot) {
+    if (!data.uuid) return true;
+    const doc = fromUuidSync(data.uuid);
 
-    CastleFalkenstein.addItemMacroAtHotbarSlot(item, slot);
-    return false;
+    if (doc instanceof CastleFalkensteinItem && doc.parent instanceof CastleFalkensteinActor) {
+      const macroName = `${doc.rollType.i18nLabel} ${doc.name} ${game.user.isGM ? "(" + doc.parent.name + ")" : ""}`;
+      CastleFalkenstein.addMacroAtHotbarSlot(macroName, doc.img, `fromUuidSync("${doc.uuid}").roll();`, slot);
+      return false;
+    } else {
+      const macroName = `${game.i18n.localize("Display")} ${doc.name}`;
+      if (!doc.img) {
+        if (doc instanceof JournalEntry)
+          doc.img = 'icons/svg/book.svg';
+      }
+      CastleFalkenstein.addMacroAtHotbarSlot(macroName, doc.img, `await Hotbar.toggleDocumentSheet("${doc.uuid}");`, slot);
+      return false;
+    }
+
+    //return true;
   }
 
+  // kept so pre-v3.8.0 actor item macros continue to work
   static rollItemMacro(itemType, itemName) {
     const speaker = ChatMessage.getSpeaker();
     let actor;
@@ -991,6 +995,10 @@ export class CastleFalkenstein {
 
     // Trigger the item roll
     return item.roll();
+  }
+
+  static openDocument(documentUuid) {
+    fromUuidSync(documentUuid)
   }
 
   static onRenderSidebarTab(app, html, data) {
@@ -1065,7 +1073,7 @@ Hooks.on("ready", () => CastleFalkenstein.onReady());
 
 Hooks.on("renderChatMessage", (chatMessage, html, messageData) => CastleFalkenstein.onRenderChatMessage(chatMessage, html, messageData));
 
-Hooks.on("hotbarDrop", (hotbar, data, slot) => { return CastleFalkenstein.hotbarDrop(hotbar, data, slot) });
+Hooks.on("hotbarDrop", (hotbar, data, slot) => { return CastleFalkenstein.onHotbarDrop(hotbar, data, slot) });
 
 Hooks.on("renderPlayerList", (application, html, data) => CastleFalkenstein.onRenderPlayerList(application, html, data));
 

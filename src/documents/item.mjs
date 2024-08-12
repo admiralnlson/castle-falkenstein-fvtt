@@ -16,18 +16,28 @@ export class CastleFalkensteinItem extends Item {
     return rollData;
   }
 
+  get rollType() {
+    const ret = {};
+
+    if (this.type == 'ability') {
+      ret.i18nLabel = `[${game.i18n.localize('castle-falkenstein.feat.perform')}]`;
+      ret.rollFunc = (item) => item.actor?.performFeat(item);
+    } else if (this.type == 'spell') {
+      ret.i18nLabel = `[${game.i18n.localize('castle-falkenstein.sorcery.defineSpell')}]`;
+      ret.rollFunc = (item) => item.actor?.defineSpell(item);
+    } else { // other item types
+      ret.i18nLabel = `[${game.i18n.localize('castle-falkenstein.item.sendToChat')}]`;
+      ret.rollFunc = (item) => item.sendToChat();
+    }
+
+    return ret;
+  }
+
   /**
-   * Handle clickable rolls.
+   * Handle rolls.
    */
   async roll() {
-     if (this.type == 'ability') {
-      await this.actor?.performFeat(this);
-    } else if (this.type == 'spell') {
-      await this.actor?.defineSpell(this);
-    } else {
-      // default (other item types, if any)
-      await this.sendToChat();
-    }
+    await this.rollType.rollFunc(this);
   }
 
   /**

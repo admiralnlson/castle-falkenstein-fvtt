@@ -15,7 +15,7 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
       height: 600,
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }],
       dragDrop: [{
-        dragSelector: ".items-list > .item > .item-drag",
+        dragSelector: ".items-list > .item > .item-drag, .fortune-hand-show, .sorcery-hand-show",
         dropSelector: ".items-list"
       }],
       scrollY: [".items-list"]
@@ -103,6 +103,9 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
     context.hideWounds = (CastleFalkenstein.settings.damageSystem == CastleFalkenstein.DAMAGE_SYSTEM_OPTIONS.harmRank);
     context.hideHarmRank = (CastleFalkenstein.settings.damageSystem == CastleFalkenstein.DAMAGE_SYSTEM_OPTIONS.wounds);
 
+    context.fortuneHandUuid = (await context.actor.handIfExists("fortune"))?.uuid;
+    context.sorceryHandUuid = (await context.actor.handIfExists("sorcery"))?.uuid;
+
     return context;
   }
 
@@ -175,6 +178,13 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
     super._onDragStart(event);
 
     event.dataTransfer.setDragImage(event.target.parentElement, 0, 0);
+
+    if (event.target.dataset.type="Cards" && event.target.dataset.uuid) {
+      const dragData = {
+        uuid: event.target.dataset.uuid
+      };
+      event.dataTransfer.setData("text/plain", JSON.stringify(dragData));
+    }
   }
   
   /**

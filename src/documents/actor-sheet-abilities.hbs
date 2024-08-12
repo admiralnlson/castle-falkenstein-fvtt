@@ -1,6 +1,6 @@
 <ol class="items-list">
   <li class="item items-header">
-    <div class="perform-feat" title="{{localize 'castle-falkenstein.fortune.hand.render'}}"><a class="fortune-hand-show"><i class="cf-poker-hand"></i></a></div>
+    <div class="perform-feat" title="{{localize 'castle-falkenstein.fortune.hand.render'}}"><a class="fortune-hand-show" draggable="true" data-type="Cards" data-uuid="{{fortuneHandUuid}}"><i class="cf-poker-hand"></i></a></div>
     <div class="name" title="{{localize 'castle-falkenstein.ability.ability'}}">{{localize 'castle-falkenstein.ability.ability'}}</div>
     <div class="level" title="{{localize 'castle-falkenstein.ability.level'}}">{{localize 'castle-falkenstein.ability.level'}}</div>
     <div class="item-controls">
@@ -10,9 +10,9 @@
   {{#each items as |item id|}}
   {{#if (eq item.type "ability")}}
     <li class="item" data-item-id="{{item._id}}">
-      <div class="item-drag" data-item-id="{{item._id}}" title="{{localize 'castle-falkenstein.item.sort'}}"><i class="fas fa-bars"></i></div>
+      <div class="item-drag" data-item-id="{{item._id}}" title="{{localize 'castle-falkenstein.item.sort'}}"><i class="far fa-bars"></i></div>
       <div class="perform-feat" title="{{localize 'castle-falkenstein.feat.perform'}}">
-        <a class="rollable" data-roll-type="item" title="{{localize 'castle-falkenstein.feat.perform'}}"><i class="fas fa-play-circle"></i></a>
+        <a class="rollable" data-roll-type="item" title="{{localize 'castle-falkenstein.feat.perform'}}"><i class="far fa-play-circle"></i></a>
       </div>
       <div class="name" title="{{item.system.prefixedDisplayName}} [{{item.system.suitSymbol}}]">
         {{item.system.prefixedDisplayName}} [<span class="suit-symbol-{{item.system.suit}}">{{item.system.suitSymbol}}</span>]

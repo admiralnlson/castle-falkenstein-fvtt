@@ -37,8 +37,8 @@
         <a class="card-control" data-action="openActor" title="{{localize "castle-falkenstein.openCharacterSheet"}}" {{ disabled disabled.openActor }}>
           <i class="fas fa-user"></i>
         </a>
+        <span class="card-control-sep"></span>
       {{/if}}
-      {{#if owner}}
         {{#ifequal typeFlag "fortune"}}
           <a class="card-control" data-action="refillHand" title="{{i18nRefill}}" {{ disabled disabled.refillHand }}>
             <i class="fas fa-cards-blank"></i>
@@ -75,7 +75,6 @@
           </a>
           <span class="card-control-sep"></span>
         {{/ifequal}}
-      {{/if}}
     </div>
   </div>
 </form>

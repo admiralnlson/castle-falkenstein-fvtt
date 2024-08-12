@@ -7,7 +7,12 @@
 - To prevent unintuitive behavior, Sorcery is now disabled for tokens not linked to their actor.
 - Function 'Show others' has been renamed 'Send to chat'.
 - In the 'Chat Messages' sidebar tab, the "Default Roll Mode" has been replaced with "Default Message Visibility", featuring two options: "Public Message" and "Private Host Message". When "Private Host Message" is selected, chat messages that aren't already whispers are converted into whispers to the Host.
+- Drag-and-dropping an ability, weapon, possession, or spell from the character sheet onto the hotbar now generates a macro specific to that character.
+- It is now possible to drag-and-drop the Fortune and Sorcery hand link from the character onto the macro hotbar.
+- Drag-and-dropping a cards hand or an item from the sidebar onto the hotbar now generates a macro with a more relevant icon.
+- Improved the display of non-owned card hands.
 ### Fixed
+- Permission errors, although harmless, could appear for players when tokens or actors were being added to combat.
 - Since v3.4.0, it was no longer possible to right-click individual chat messages e.g. to change their visibility. This has been resolved.
 - Card name translations will no longer revert to the language selected by the Host when they first created the deck, and will now always match the user's currently selected language.
 

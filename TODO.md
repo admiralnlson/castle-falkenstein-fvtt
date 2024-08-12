@@ -1,7 +1,8 @@
 # TODO
 
 ## Known issues
-None.
+
++ Actor abilities, weapons & spells which are manually created (i.e. not copied from the compendium) have the default 'bag' item icon.
 
 ## Considered improvements
 
