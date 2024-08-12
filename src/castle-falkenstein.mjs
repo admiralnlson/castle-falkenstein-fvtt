@@ -145,7 +145,16 @@ export class CastleFalkenstein {
   }
 
   static translateCardStack(stack) {
+
+    // if a deck but not a system-provided deck, then don't translate it.
+    if (stack.type == "deck" && !stack.getFlag("castle-falkenstein", "type"))
+      return;
+
     const translateCard = (card) => {
+      // if the card does not belong to a system-provided deck, then don't translate it.
+      if (card.origin && !card.origin.getFlag("castle-falkenstein", "type"))
+        return;
+
       if (card.suit == "joker") {
         if (card.faces[0].img == "systems/castle-falkenstein/src/cards/53.png")
           card.name = card.faces[0].name = game.i18n.localize("castle-falkenstein.cards.blackJoker");
