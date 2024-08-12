@@ -60,15 +60,15 @@
       "webRoot": "${config:foundryvttDevFolder}/${config:foundryvttNodeJS}/resources/app/public",
       "pathMappings": [
         {
-          "url": "http://localhost:30001/scripts/foundry.js",
+          "url": "/scripts/foundry.js",
           "path": "${config:foundryvttDevFolder}/${config:foundryvttNodeJS}/resources/app/public/scripts/foundry.js"
         },
         {
-          "url": "http://localhost:30001/systems",
+          "url": "/systems",
           "path": "${config:foundryvttDevFolder}/${config:foundryvttUserData}/Data/systems"
         },
         {
-          "url": "http://localhost:30001/modules",
+          "url": "/modules",
           "path": "${config:foundryvttDevFolder}/${config:foundryvttUserData}/Data/modules"
         }
       ],
