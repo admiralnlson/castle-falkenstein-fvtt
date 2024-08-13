@@ -965,7 +965,7 @@ div.castle-falkenstein.cards-config a[disabled].card-control {
 /* gm-screen mod actor-sheet display improvements */
 
 .castle-falkenstein .items-list .name {
-  min-width: 20px;
+  min-width: 15px;
 }
 
 div.gm-screen-grid-cell-content.castle-falkenstein.actor > form {
@@ -987,14 +987,21 @@ div.gm-screen-grid-cell-content.castle-falkenstein.actor > form li.item.items-he
   display: none;
 }
 
+div.gm-screen-grid-cell-content.castle-falkenstein.actor > form li.item > div.item-drag {
+  visibility: none;
+  width: 0px;
+}
 div.gm-screen-grid-cell-content.castle-falkenstein.actor > form li.item > div.item-controls > a.item-edit,
 div.gm-screen-grid-cell-content.castle-falkenstein.actor > form li.item > div.item-controls > a.item-delete {
   display: none;
 }
 
-
 div.gm-screen-grid-cell-content.castle-falkenstein .window-resizable-handle {
   display: none;
+}
+
+div.gm-screen-grid-cell-content.castle-falkenstein.actor > form li.item {
+  column-gap: 1px;
 }
 
 .chat-sidebar .wild-spell {
