@@ -44,8 +44,14 @@ export class CastleFalkensteinAbilityDataModel extends CastleFalkensteinItemData
       delete source.suit;
     }
 
-    if (source.specializationOf && source.specializationOf != "null" && source.specializationOf != "") {
+    if (source.isSpecialization == "true")
       source.isSpecialization = true;
+    else if (source.isSpecialization == "false")
+      source.isSpecialization = false;
+
+    if (source.specializationOf && source.specializationOf != "null" && source.specializationOf != "") {
+      if (!source.isSpecialization == false)
+        source.isSpecialization = true;
     }
 
     return super.migrateData(source);
@@ -64,8 +70,7 @@ export class CastleFalkensteinAbilityDataModel extends CastleFalkensteinItemData
   }
 
   get level() {
-    let root = this.rootAbility;
-
+    const root = this.rootAbility;
     if (root) {
       return CASTLE_FALKENSTEIN.abilityLevels[root.system.level].specialized;
     } else {
@@ -74,7 +79,7 @@ export class CastleFalkensteinAbilityDataModel extends CastleFalkensteinItemData
   }
 
   get suit() {
-    let root = this.rootAbility;
+    const root = this.rootAbility;
     if (root) {
       return root.system.suit;
     } else {
