@@ -16,6 +16,38 @@ export class CastleFalkensteinItem extends Item {
     return rollData;
   }
 
+  async _preCreate(data, options, user) {
+    let img;
+    if (data.type == "ability" || data.type == "spell")
+      img = `systems/castle-falkenstein/src/cards/suits.svg`;
+    else if (data.type == "weapon")
+      img = `systems/castle-falkenstein/src/img/saber-and-pistol.png`;
+    else if (data.type == "possession")
+      img = `icons/svg/item-bag.svg`;
+
+    if (img)
+      this.updateSource({img: img});
+
+    await super._preCreate(data, options, user);
+  }
+
+  async _onUpdate(changed, options, user) {
+
+    await super._onUpdate(changed, options, user);
+
+    if (!changed.img && game.user.id == user && (this.type == "ability" || this.type == "spell") &&
+        [`systems/castle-falkenstein/src/cards/suits.svg`,
+         `systems/castle-falkenstein/src/cards/spades.svg`,
+         `systems/castle-falkenstein/src/cards/hearts.svg`,
+         `systems/castle-falkenstein/src/cards/diamonds.svg`,
+         `systems/castle-falkenstein/src/cards/clubs.svg`].includes(this.img)) {
+      const newSuitStr = this.system.suit == "?" ? "suits" : this.system.suit;
+      const targetImg = `systems/castle-falkenstein/src/cards/${newSuitStr}.svg`
+      if (this.img != targetImg)
+        await this.update({img: targetImg});
+    }
+  }
+
   get rollType() {
     const ret = {};
 

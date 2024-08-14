@@ -10,10 +10,12 @@
 - Drag-and-dropping an ability, weapon, possession, or spell from the character sheet onto the hotbar now generates a macro specific to that character.
 - It is now possible to drag-and-drop the Fortune and Sorcery hand link from the character onto the macro hotbar.
 - Drag-and-dropping a cards hand or an item from the sidebar onto the hotbar now generates a macro with a more relevant icon.
+- Abilities, weapons & spells that are manually created now have a more relevant icon.
 - Improved the display of non-owned card hands.
 - Tooltips now match the Foundry VTT tooltip style.
 - Card suit colors across the system no longer use the primary digital black and red; instead, they now match the shades of red and black from the official RTG card visuals.
 ### Fixed
+- Converting a specialization into a regular ability will no longer require blanking out the ability associated to the specialization first.
 - Since v3.7.0, permission errors, although harmless, could appear for players when tokens or actors were being added to combat.
 - Since v3.4.0, it was no longer possible to right-click individual chat messages e.g. to change their visibility. This has been resolved.
 - The translation of system-provided decks will no longer revert to the language selected by the Host when they first created the deck, and will now always match the user's currently selected language.
