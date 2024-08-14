@@ -9,6 +9,10 @@ None.
 + MoSCoW: [M]ust, [S]hould, [C]ould, [W]on't
 + [🔥] Project maintainer (admiralnlson)'s own Host needs
 
+## Shortlist
+
+- [M] Allow Host to play a (single) Fortune Card, when no Host Character Feat is active
+
 ### Mechanics from "Corebook"
 
 + [M] Duel mechanics
@@ -65,21 +69,18 @@ None.
 ### Fortune
 
 + [C] Perform Feat - allow the use of a random card (Kessel Run optional rule from CiF p77) ->> partially available thanks to Chance Card option
-+ [C] Fortune hands - shortcut to perform any feat the character has (= add dropbox to the Perform Feat form)
-+ [C] allow actors to use another actor's (/ player's) Fortune hand ("Host Notes" tab becomes "Host tab")
-  + consider attaching Fortune hands to players as opposed to actors? (although this may reduce options)
++ [C] allow actors to use another actor's (/ player's) Fortune hand (e.g. Familiar --> "Host Notes" tab becomes "Host"?)
+  + consider attaching Fortune hands to players as opposed to actors
 
 ### Sorcery
 
-+ [S🔥] Curious Creatures > Familiars
++ [C🔥] Curious Creatures > Familiars
   + new form, new kind of hand, or within the Fortune hand itself: Draw 2 Power cards / pick one to keep
     + if implemented, trash(Release Power) button can probably be removed from Aligned Power cards
-+ [S] Gather Power (if no auto spell cast) - add a message indicating the Spell is ready to be cast
-+ [S] Release Power - Prevent releasing of aligned Power (or at least add confirmation dialog)
-+ [S] Explicit mechanic for Artefacts
-+ [S] Explicit mechanic for Unraveling
++ [C] Gather Power (if no auto spell cast) - add a message indicating the Spell is ready to be cast
++ [C] Explicit mechanic for Artefacts
++ [C] Explicit mechanic for Unraveling
 + [C] Macro to delete all Host character Sorcery hands
-+ [C] Sorcery hands - shortcut to cast any spell the character has (= add dropbox to the Define Spell form)
 + [C] Auto spell cast - when a Joker is drawn
 + [C] Auto spell cast - when enough aligned Power has been drawn, deleting any harmonics beforehand
 + [C] Sorcery hand - Show the harmonic type on unaligned power cards (on the cards themselves)

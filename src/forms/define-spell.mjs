@@ -158,7 +158,7 @@ export class CastleFalkensteinDefineSpell extends FormApplication {
     await hand.startCasting(this.spellBeingCast);
 
     // Post message to chat
-    CastleFalkenstein.createChatMessage(this.character, flavor, content, true);
+    CastleFalkenstein.createChatMessage(this.character, flavor, content);
 
     // rerenders the FormApp with the new data (will disappear soon though)
     this.render();

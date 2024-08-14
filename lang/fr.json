@@ -121,6 +121,7 @@
         "refillPlural": "Compléter votre main du destin (piocher {nb} cartes)",
         "triggerFeat": "Accomplir la prouesse",
         "cancelFeat": "Annuler la prouesse",
+        "playCard": "Jouer la carte",
         "chance": "Chance",
         "chanceHint": "Piocher une carte du destin, jouée immédiatement"
       }

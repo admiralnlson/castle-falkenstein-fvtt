@@ -91,6 +91,8 @@ export class CastleFalkensteinHandSheet extends CardsHand {
 
     if (context.typeFlag == "fortune") {
 
+      context.hostFortune = game.user.isGM && hand.getFlag(CastleFalkenstein.id, "actor") === "host";
+
       context.featBeingPerformed = hand.featBeingPerformed;
 
       let i18nRefillKey = (4 - hand.cards.size > 1 ? "refillPlural" : "refillSingular");
@@ -171,17 +173,20 @@ export class CastleFalkensteinHandSheet extends CardsHand {
                             : "";
     }
 
+
+
     context.disabled = {};
 
-    context.disabled.openActor = context.inCompendium || CastleFalkensteinHandSheet.openActorDisabled(hand);
-    context.disabled.refillHand = !context.owner || context.inCompendium || CastleFalkensteinHandSheet.refillHandDisabled(hand);
-    context.disabled.triggerFeat = !context.owner || context.inCompendium || !context.featBeingPerformed || CastleFalkensteinHandSheet.triggerFeatDisabled(hand);
-    context.disabled.cancelFeat = !context.owner || context.inCompendium || !context.featBeingPerformed || CastleFalkensteinHandSheet.cancelFeatDisabled(hand);
-    context.disabled.chanceCard = !context.owner || context.inCompendium || CastleFalkensteinHandSheet.chanceCardDisabled(hand);
+    context.disabled.openActor =                            context.inCompendium || CastleFalkensteinHandSheet.openActorDisabled(hand);
 
-    context.disabled.gatherPower = !context.owner || context.inCompendium || !context.spellBeingCast || CastleFalkensteinHandSheet.gatherPowerDisabled(hand);
-    context.disabled.castSpell = !context.owner || context.inCompendium || !context.spellBeingCast || CastleFalkensteinHandSheet.castSpellDisabled(hand);
-    context.disabled.cancelSpell = !context.owner || context.inCompendium || !context.spellBeingCast || CastleFalkensteinHandSheet.cancelSpellDisabled(hand);
+    context.disabled.refillHand =        !context.owner  || context.inCompendium || CastleFalkensteinHandSheet.refillHandDisabled(hand);
+    context.disabled.triggerFeat =       !context.owner  || context.inCompendium || CastleFalkensteinHandSheet.triggerFeatDisabled(hand);
+    context.disabled.cancelFeat =        !context.owner  || context.inCompendium || CastleFalkensteinHandSheet.cancelFeatDisabled(hand);
+    context.disabled.chanceCard =        !context.owner  || context.inCompendium || CastleFalkensteinHandSheet.chanceCardDisabled(hand);
+
+    context.disabled.gatherPower = !context.owner || context.inCompendium || CastleFalkensteinHandSheet.gatherPowerDisabled(hand);
+    context.disabled.castSpell =   !context.owner || context.inCompendium || CastleFalkensteinHandSheet.castSpellDisabled(hand);
+    context.disabled.cancelSpell = !context.owner || context.inCompendium || CastleFalkensteinHandSheet.cancelSpellDisabled(hand);
     context.harmonicHTML = CastleFalkensteinHandSheet.harmonicHTML(hand, true);
 
     context.cardWidth = CastleFalkenstein.settings.cardWidth;
@@ -196,11 +201,6 @@ export class CastleFalkensteinHandSheet extends CardsHand {
 
     this.rotateCards(html);
   
-    // TODO if added, let's make sure this does not conflict left-click which selects cards when performing a feat
-    // Adding a :not(.focusedCards) below does not seem to do the job.
-    //html.find(".card").contextmenu(this.cardZoom.bind(this));
-    //html.find(".card.focusedCard").click((event) => { this.cardZoom(event); event.preventDefault();});
-
     html.find('.card').click(async(event) => { await this.onClickCard(event); });
 
     html.find(".divorce-button").click(async(event) => { await this.onClickDivorceSuitSelect(event); });
@@ -276,6 +276,8 @@ export class CastleFalkensteinHandSheet extends CardsHand {
         return CastleFalkensteinHandSheet.openActor(hand);
       case "refillHand":
         return CastleFalkensteinHandSheet.refillHand(hand);
+      case "playHostFortuneCard":
+        return CastleFalkensteinHandSheet.playHostFortuneCard(card, hand);
       case "triggerFeat":
         return CastleFalkensteinHandSheet.triggerFeat(hand);
       case "cancelFeat":
@@ -385,7 +387,7 @@ export class CastleFalkensteinHandSheet extends CardsHand {
               + '</div>';
 
     // Post message to chat
-    CastleFalkenstein.createChatMessage(hand.featBeingPerformed.actor, flavor, content, true);
+    CastleFalkenstein.createChatMessage(hand.featBeingPerformed.actor, flavor, content);
 
     // return the cards played back into the deck
     if (cardsPlayed.length > 0) {
@@ -426,7 +428,7 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     const hand = this.object;
     const typeFlag = hand.getFlag(CastleFalkenstein.id, "type");
 
-    if (typeFlag == "fortune" && hand.featBeingPerformed) {
+    if (typeFlag == "fortune" && (hand.featBeingPerformed || (game.user.isGM && !hand.featBeingPerformed))) {
       const cardId = event.currentTarget.getAttribute("data-card-id");
       const card = hand.cards.find(card => {return card.id == cardId});
 
@@ -435,7 +437,9 @@ export class CastleFalkensteinHandSheet extends CardsHand {
       } else {
         const alreadySelectedCards = hand.cards.filter(card => card.getFlag(CastleFalkenstein.id, "selected")).length;
 
-        const maxCards = CastleFalkenstein.HARD_LIMIT_VARIATION_OPTIONS[CastleFalkenstein.settings.hardLimitVariation].maxCards[hand.featBeingPerformed.ability.system.level];
+        let maxCards= 4;
+        if (hand.featBeingPerformed)
+          maxCards = CastleFalkenstein.HARD_LIMIT_VARIATION_OPTIONS[CastleFalkenstein.settings.hardLimitVariation].maxCards[hand.featBeingPerformed.ability.system.level];
 
         if (alreadySelectedCards < maxCards)
           await card.setFlag(CastleFalkenstein.id, "selected", true);
@@ -461,9 +465,9 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     // Post message to chat
     const flavor = `[${game.i18n.localize("castle-falkenstein.fortune.hand.chance")}]`;
     const correctSuit = 'correct-suit'; // will be grayed out otherwise
-    const content = `<div class="cards-drawn">${CastleFalkenstein.smallCardImg(card,`card-drawn ${correctSuit}`)}</div>`;
+    const content = `<div class="cards-played">${CastleFalkenstein.smallCardImg(card,`card-played ${correctSuit}`)}</div>`;
     const actorId = hand.getFlag(CastleFalkenstein.id, "actor");
-    CastleFalkenstein.createChatMessage(actorId === "host" ? "gm" : game.actors.get(actorId), flavor, content, true);
+    CastleFalkenstein.createChatMessage(actorId === "host" ? "gm" : game.actors.get(actorId), flavor, content);
   }
 
   static gatherPowerDisabled(hand) {
@@ -495,7 +499,24 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     const spell = actor.items.get(hand.spellBeingCast.actorItemId);
     const correctSuit = (card.suit == spell.system.suit || card.suit == 'joker') ? 'correct-suit' : '';
     const content = `<div class="cards-drawn">${CastleFalkenstein.smallCardImg(card, `card-drawn ${correctSuit}`)}</div>`;
-    CastleFalkenstein.createChatMessage(actor, flavor, content, true);
+    CastleFalkenstein.createChatMessage(actor, flavor, content);
+  }
+
+  static async playHostFortuneCard(card, hand) {
+    if (!game.user.isGM)
+      return;
+
+    const actorId = hand.getFlag(CastleFalkenstein.id, "actor");
+    if (actorId !== "host")
+      return;
+
+    // Post message to chat
+    const flavor = `[${game.i18n.localize("castle-falkenstein.fortune.hand.playCard")}]`;
+    const correctSuit = 'correct-suit'; // will be grayed out otherwise
+    const content = `<div class="cards-played">${CastleFalkenstein.smallCardImg(card,`card-played ${correctSuit}`)}</div>`;
+    CastleFalkenstein.createChatMessage("gm", flavor, content);
+    
+    CastleFalkenstein.returnBackToDeck(hand.id, [card.id]);
   }
 
   static async releasePower(card, hand, force = false) {
@@ -527,7 +548,7 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     // Post message to chat - TOO SPAMMY => DISABLED
     /*const flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.hand.releasePower")}]`;
     const content = `<div class="cards-played">${CastleFalkenstein.smallCardImg(card, "card-played")}</div>`;
-    CastleFalkenstein.createChatMessage(actor, flavor, content, true);*/
+    CastleFalkenstein.createChatMessage(actor, flavor, content);*/
   }
 
   static castSpellDisabled(hand) {
@@ -622,7 +643,7 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     await CastleFalkenstein.socket.executeAsGM("returnBackToDeck", hand.id, hand.cards.map(c => c.id));
 
     // Display the chat message only if the return-back was successful
-    CastleFalkenstein.createChatMessage(actor, flavor, content, true);
+    CastleFalkenstein.createChatMessage(actor, flavor, content);
 
     // no spell being cast anymore
     await hand.stopCasting();
@@ -666,7 +687,7 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     // Post message to chat
     let flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.hand.cancelSpell")}]`;
     let content = ""; // TODO add info on spell which was canceled
-    CastleFalkenstein.createChatMessage(actor, flavor, content, true);
+    CastleFalkenstein.createChatMessage(actor, flavor, content);
 
     // no spell being cast anymore
     await hand.stopCasting();

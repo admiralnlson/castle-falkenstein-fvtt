@@ -10,9 +10,9 @@
   {{#each items as |item id|}}
   {{#if (eq item.type "ability")}}
     <li class="item" data-item-id="{{item._id}}">
-      <div class="item-drag" data-item-id="{{item._id}}" data-tooltip="{{localize 'castle-falkenstein.item.sort'}}"><i class="far fa-bars"></i></div>
+      <div class="item-drag" data-item-id="{{item._id}}" data-tooltip="{{localize 'castle-falkenstein.item.sort'}}"><i class="fas fa-bars"></i></div>
       <div class="perform-feat">
-        <a class="rollable" data-roll-type="item" data-tooltip="{{localize 'castle-falkenstein.feat.perform'}}"><i class="far fa-play-circle"></i></a>
+        <a class="rollable" data-roll-type="item" data-tooltip="{{localize 'castle-falkenstein.feat.perform'}}"><i class="fas fa-play-circle"></i></a>
       </div>
       <div class="name">
         {{item.system.prefixedDisplayName}} [<span class="suit-symbol-{{item.system.suit}}">{{item.system.suitSymbol}}</span>]
@@ -21,9 +21,9 @@
         {{localize item.system.levelI18nKey}} [<span>{{item.system.levelValue}}</span>]
       </div>
       <div class="item-controls">
-        <a class="item-control item-show" data-tooltip="{{localize 'castle-falkenstein.item.sendToChat'}} - {{localize 'castle-falkenstein.ability.ability'}}"><i class="far fa-comments"></i></a>
-        <a class="item-control item-edit" data-tooltip="{{localize 'castle-falkenstein.item.edit'}}"><i class="far fa-edit"></i></a>
-        <a class="item-control item-delete" data-tooltip="{{localize 'castle-falkenstein.item.delete'}}"><i class="far fa-trash"></i></a>
+        <a class="item-control item-show" data-tooltip="{{localize 'castle-falkenstein.item.sendToChat'}} - {{localize 'castle-falkenstein.ability.ability'}}"><i class="fas fa-comments"></i></a>
+        <a class="item-control item-edit" data-tooltip="{{localize 'castle-falkenstein.item.edit'}}"><i class="fas fa-edit"></i></a>
+        <a class="item-control item-delete" data-tooltip="{{localize 'castle-falkenstein.item.delete'}}"><i class="fas fa-trash"></i></a>
       </div>
     </li>
   {{/if}}

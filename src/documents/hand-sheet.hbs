@@ -84,10 +84,17 @@
       <li class="card flexrow {{../rtgVisuals}} {{card.correctSuit}} {{card.joker}} {{card.selected}}" data-card-id="{{card.id}}" style="width: {{../cardWidth}}px; height: {{../cardHeight}}px; margin-left: calc(-1/2*{{../cardWidth}}px); margin-right: calc(-1/2*{{../cardWidth}}px);">
         <img class="card-face" src="{{card.img}}" alt="{{card.name}}" style="width: {{../cardWidth}}px">
         <div class="castle-falkenstein-card-controls flexcol" style="--card-control-scale: {{../cardControlScale}}">
+          {{#if ../hostFortune}}
+            {{#unless ../featBeingPerformed}}
+              <a class="card-control" data-action="playHostFortuneCard" data-tooltip="{{localize "castle-falkenstein.fortune.hand.playCard"}}">
+                <i class="fas fa-play-circle"></i>
+              </a>
+            {{/unless}}
+          {{/if}}
           {{#if ../owner}}
             {{#ifequal ../typeFlag "sorcery"}}
               <a class="card-control" data-action="releasePower" data-tooltip="{{localize "castle-falkenstein.sorcery.hand.releasePower"}}">
-                <i class="far fa-trash"></i>
+                <i class="fas fa-trash"></i>
               </a>
             {{/ifequal}}
           {{/if}}

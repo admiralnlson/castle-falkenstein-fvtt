@@ -121,6 +121,7 @@
         "refillPlural": "Complete your Fortune hand (draw {nb} cards)",
         "triggerFeat": "Trigger Feat",
         "cancelFeat": "Cancel Feat",
+        "playCard": "Play Card",
         "chance": "Chance",
         "chanceHint": "Draw a Fortune card, played immediately"
       }

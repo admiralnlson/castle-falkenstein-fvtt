@@ -106,7 +106,7 @@ export class CastleFalkensteinItem extends Item {
     }
  
      // Post message to chat
-    CastleFalkenstein.createChatMessage(this.actor, flavor, content, false);
+    CastleFalkenstein.createChatMessage(this.actor, flavor, content);
   }
 
 }

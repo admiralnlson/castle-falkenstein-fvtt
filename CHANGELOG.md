@@ -2,22 +2,23 @@
 
 ## [v3.8.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.8.0) - Unreleased
 ### Added
-- A warning notification is now displayed when a token or character with no Perception ability is added to combat with an Initiative defaulted to 4 (AV).
+- The Host may now play a card from their Fortune Hand via a new, dedicated control on each card. This should make life easier for Hosts who do not use the Dwarf Variation.
+- A warning notification is now displayed when a character with no Perception ability is added to combat with an Initiative defaulted to 4 (AV).
 ### Changed
 - To prevent unintuitive behavior, Sorcery is now disabled for tokens not linked to their actor.
 - Function 'Show others' has been renamed 'Send to chat'.
 - In the 'Chat Messages' sidebar tab, the "Default Roll Mode" has been replaced with "Default Message Visibility", featuring two options: "Public Message" and "Private Host Message". When "Private Host Message" is selected, chat messages that aren't already whispers are converted into whispers to the Host.
 - Drag-and-dropping an ability, weapon, possession, or spell from the character sheet onto the hotbar now generates a macro specific to that character.
-- It is now possible to drag-and-drop the Fortune and Sorcery hand link from the character onto the macro hotbar.
+- It is now possible to drag-and-drop the Fortune or Sorcery hand link from the character sheet onto the macro hotbar (as alternative to doing it from the sidebar).
 - Drag-and-dropping a cards hand or an item from the sidebar onto the hotbar now generates a macro with a more relevant icon.
 - Abilities, weapons & spells that are manually created now have a more relevant icon.
 - Improved the display of non-owned card hands.
 - Tooltips now match the Foundry VTT tooltip style.
-- Card suit colors across the system no longer use the primary digital black and red; instead, they now match the shades of red and black from the official RTG card visuals.
+- Card suit colors across the system no longer use primary digital black and red; instead, they now match the shades of red and black from the official RTG card visuals.
 ### Fixed
 - Converting a specialization into a regular ability will no longer require blanking out the ability associated to the specialization first.
-- Since v3.7.0, permission errors, although harmless, could appear for players when tokens or actors were being added to combat.
-- Since v3.4.0, it was no longer possible to right-click individual chat messages e.g. to change their visibility. This has been resolved.
+- Since v3.7.0, permission errors, although harmless, could appear for players when characters were being added to combat.
+- Since v3.4.0, it was no longer possible to right-click individual chat messages to change their visibility. This has been resolved.
 - The translation of system-provided decks will no longer revert to the language selected by the Host when they first created the deck, and will now always match the user's currently selected language.
 
 ## [v3.7.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.7.0) - 2024/08/04

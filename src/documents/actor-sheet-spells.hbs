@@ -10,9 +10,9 @@
   {{#each items as |item id|}}
   {{#if (eq item.type "spell")}}
     <li class="item" data-item-id="{{item._id}}">
-      <div class="item-drag" data-item-id="{{item._id}}" data-tooltip="{{localize 'castle-falkenstein.item.sort'}}"><i class="far fa-bars"></i></div>
+      <div class="item-drag" data-item-id="{{item._id}}" data-tooltip="{{localize 'castle-falkenstein.item.sort'}}"><i class="fas fa-bars"></i></div>
       <div class="define-spell">
-        <a class="rollable" data-roll-type="item" data-tooltip="{{localize 'castle-falkenstein.sorcery.defineSpell'}}"><i class="far fa-play-circle"></i></a>
+        <a class="rollable" data-roll-type="item" data-tooltip="{{localize 'castle-falkenstein.sorcery.defineSpell'}}"><i class="fas fa-play-circle"></i></a>
       </div>
       <div class="name">
         {{item.name}} [<span class="suit-symbol-{{item.system.suit}}">{{item.system.suitSymbol}}</span>]
@@ -21,9 +21,9 @@
         {{item.system.level}}
       </div>
       <div class="item-controls">
-        <a class="item-control item-show" data-tooltip="{{localize 'castle-falkenstein.item.sendToChat'}} - {{localize 'castle-falkenstein.spell.spell'}}"><i class="far fa-comments"></i></a>
-        <a class="item-control item-edit" data-tooltip="{{localize 'castle-falkenstein.item.edit'}}"><i class="far fa-edit"></i></a>
-        <a class="item-control item-delete" data-tooltip="{{localize 'castle-falkenstein.item.delete'}}"><i class="far fa-trash"></i></a>
+        <a class="item-control item-show" data-tooltip="{{localize 'castle-falkenstein.item.sendToChat'}} - {{localize 'castle-falkenstein.spell.spell'}}"><i class="fas fa-comments"></i></a>
+        <a class="item-control item-edit" data-tooltip="{{localize 'castle-falkenstein.item.edit'}}"><i class="fas fa-edit"></i></a>
+        <a class="item-control item-delete" data-tooltip="{{localize 'castle-falkenstein.item.delete'}}"><i class="fas fa-trash"></i></a>
       </div>
     </li>
   {{/if}}
