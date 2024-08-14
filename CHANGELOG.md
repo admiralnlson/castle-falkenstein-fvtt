@@ -12,6 +12,7 @@
 - Drag-and-dropping a cards hand or an item from the sidebar onto the hotbar now generates a macro with a more relevant icon.
 - Improved the display of non-owned card hands.
 - Tooltips now match the Foundry VTT tooltip style.
+- Card suit colors across the system no longer use the primary digital black and red; instead, they now match the shades of red and black from the official RTG card visuals.
 ### Fixed
 - Since v3.7.0, permission errors, although harmless, could appear for players when tokens or actors were being added to combat.
 - Since v3.4.0, it was no longer possible to right-click individual chat messages e.g. to change their visibility. This has been resolved.

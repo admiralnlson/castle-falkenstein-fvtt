@@ -1065,7 +1065,7 @@ div.gm-screen-grid-cell-content.castle-falkenstein.actor > form li.item {
 .app.castle-falkenstein.cards-hand .suit-symbol-clubs,
 .chat-message .suit-symbol-clubs,
 .castle-falkenstein .suit-select *:nth-child(5) {
-  color: black;
+  color: #222032;
 }
 
 .castle-falkenstein .suit-symbol-hearts,
@@ -1076,7 +1076,7 @@ div.gm-screen-grid-cell-content.castle-falkenstein.actor > form li.item {
 .app.castle-falkenstein.cards-hand .suit-symbol-diamonds,
 .chat-message .suit-symbol-diamonds,
 .castle-falkenstein .suit-select *:nth-child(4) {
-  color: red;
+  color: #D9262A;
 }
 
 .pt.s1 b {
