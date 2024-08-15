@@ -2,6 +2,16 @@
   "castle-falkenstein": {
     "system": "Castle Falkenstein",
 
+    "sheets": {
+      "character": "Castle Falkenstein - Character",
+      "hand": "Castle Falkenstein - Cards Hand",
+      "deck": "Castle Falkenstein - Cards Deck",
+      "ability": "Castle Falkenstein - Ability",
+      "weapon": "Castle Falkenstein - Weapon",
+      "possession": "Castle Falkenstein - Possession",
+      "spell": "Castle Falkenstein - Spell"
+    },
+
     "settings": {
       "fortuneDeck": {
         "name": "Fortune Deck",
@@ -199,9 +209,6 @@
     },
 
     "cards": {
-      "handSheet": "Castle Falkenstein - Cards Hand Sheet",
-      "deckSheet": "Castle Falkenstein - Cards Deck Sheet",
-
       "suit": "Suit",
       "spades": "Spades",
       "hearts": "Hearts",

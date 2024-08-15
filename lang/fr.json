@@ -2,6 +2,16 @@
   "castle-falkenstein": {
     "system": "Château Falkenstein",
 
+    "sheets": {
+      "character": "Château Falkenstein - Personnage",
+      "hand": "Château Falkenstein - Main de cartes",
+      "deck": "Château Falkenstein - Pioche de cartes",
+      "ability": "Château Falkenstein - Talent",
+      "weapon": "Château Falkenstein - Arme",
+      "possession": "Château Falkenstein - Possession",
+      "spell": "Château Falkenstein - Sort"
+    },
+
     "settings": {
       "fortuneDeck": {
         "name": "Jeu du destin",
@@ -199,9 +209,6 @@
     },
 
     "cards": {
-      "handSheet": "Castle Falkenstein - Main de cartes",
-      "deckSheet": "Castle Falkenstein - Pioche de cartes",
-
       "suit": "Couleur",
       "spades": "pique",
       "hearts": "coeur",

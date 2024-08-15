@@ -863,40 +863,40 @@ export class CastleFalkenstein {
   static registerSheets() {
 
     Actors.registerSheet(this.id, CastleFalkensteinActorSheet, {
-      label: "castle-falkenstein.character",
+      label: "castle-falkenstein.sheets.character",
       makeDefault: true
     });
 
     Items.registerSheet(this.id, CastleFalkensteinAbilitySheet, {
       types: ["ability"],
-      label: "castle-falkenstein.ability.ability",
+      label: "castle-falkenstein.sheets.ability",
       makeDefault: true
     });
     Items.registerSheet(this.id, CastleFalkensteinPossessionSheet, {
       types: ["possession"],
-      label: "castle-falkenstein.possession.possession",
+      label: "castle-falkenstein.sheets.possession",
       makeDefault: true
     });
     Items.registerSheet(this.id, CastleFalkensteinWeaponSheet, {
       types: ["weapon"],
-      label: "castle-falkenstein.weapon.weapon",
+      label: "castle-falkenstein.sheets.weapon",
       makeDefault: true
     });
     Items.registerSheet(this.id, CastleFalkensteinSpellSheet, {
       types: ["spell"],
-      label: "castle-falkenstein.spell.spell",
+      label: "castle-falkenstein.sheets.spell",
       makeDefault: true
     });
     
     CardStacks.registerSheet(this.id, CastleFalkensteinDeckSheet, {
       types: ["deck"],
-      label: "castle-falkenstein.cards.deckSheet",
+      label: "castle-falkenstein.sheets.deck",
       makeDefault: true
     });
     
     CardStacks.registerSheet(this.id, CastleFalkensteinHandSheet, {
       types: ["hand"],
-      label: "castle-falkenstein.cards.handSheet",
+      label: "castle-falkenstein.sheets.hand",
       makeDefault: true
     });
 
