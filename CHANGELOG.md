@@ -2,7 +2,7 @@
 
 ## [v3.8.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.8.0) - 2024/08/15
 ### Added
-- The Host may now play a card from their Fortune Hand via a new, dedicated control on each card. This should make life easier for Hosts who do not use the Dwarf Variation.
+- The Host may now play a card from their Fortune Hand via a new, dedicated control on each card. This should make life easier for Hosts who do not use the Dwarfish Requirement Variation.
 - A warning notification is now displayed when a character with no Perception ability is added to combat with an Initiative defaulted to 4 (AV).
 ### Changed
 - To prevent unintuitive behavior, Sorcery is now disabled for tokens not linked to their actor.
