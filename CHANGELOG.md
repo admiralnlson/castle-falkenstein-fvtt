@@ -10,7 +10,7 @@
 - In the 'Chat Messages' sidebar tab, the "Default Roll Mode" has been replaced with "Default Message Visibility", featuring two options: "Public Message" and "Private Host Message". When "Private Host Message" is selected, chat messages that aren't already whispers are converted into whispers to the Host.
 - Drag-and-dropping an ability, weapon, possession, or spell from the character sheet onto the hotbar now generates a macro specific to that character.
 - It is now possible to drag-and-drop the Fortune or Sorcery hand link from the character sheet onto the macro hotbar (as alternative to doing it from the sidebar).
-- Drag-and-dropping a cards hand or an item from the sidebar onto the hotbar now generates a macro with a more relevant icon.
+* Drag-and-drops onto the hotbar generate macros with more relevant icons.
 - Abilities, weapons & spells that are manually created now have a more relevant icon.
 - Improved the display of non-owned card hands.
 - Tooltips now match the Foundry VTT tooltip style.
