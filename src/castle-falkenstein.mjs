@@ -339,18 +339,6 @@ export class CastleFalkenstein {
 
     return cardsDrawn;
   }
-  
-  static onPassCards(from, to, { toCreate }) {
-    // unless 'to' is empty, in which case we might as well keep the default sort from 'from'
-    if (to.cards.contents.length > 0) {
-      // ensure passed cards are added "at the end"
-      let maxSort = Math.max.apply(Math, to.cards.contents.map(c => c.sort));
-      for (const card of toCreate) {
-        card.sort = (maxSort += CONST.SORT_INTEGER_DENSITY);
-      }
-    }
-    return true;
-  }
 
   static showActor(actorId) {
     const actor = game.actors.get(actorId);
@@ -531,14 +519,14 @@ export class CastleFalkenstein {
     CardStacks.unregisterSheet("core", CardsConfig, {
       types: ["deck"]
     });
-    // Default sheet still require for Duels for instance.
+    // Default sheet still required for Duels for instance.
     //
     //CardStacks.unregisterSheet("core", CardsHand, {
     //  types: ["hand"]
     //});
 
-    if (game.settings.get("core", "language") != "en" && game.modules.get('babele')?.active) {
-      Babele.get().setSystemTranslationsDir("lang/babele");
+    if (game.settings.get("core", "language") != "en") {
+      game.babele?.setSystemTranslationsDir("lang/babele");
     }
 
     await this.preLoadTemplates();
@@ -929,30 +917,6 @@ export class CastleFalkenstein {
     html[0].style.borderColor = messageData.author?.color.css;
   }
 
-  static async onDropOnCardStack(event, cardsSheet) {
-    const dragData = TextEditor.getDragEventData(event);
-    if ( dragData.type !== "Card" )
-      return false;
-
-    const draggedCard = await Card.implementation.fromDropData(dragData);
-    const dstStack = cardsSheet.object;
-
-    if (draggedCard.parent.id === dstStack.id) {
-      // user is sorting only
-      return true;
-    }
-
-    const cardParentType =  draggedCard.parent.getFlag(CastleFalkenstein.id, "type");
-    const dstType = dstStack.getFlag(CastleFalkenstein.id, "type");
-
-    if (cardParentType != dstType) {
-      CastleFalkenstein.notif.error(game.i18n.localize("castle-falkenstein.notifications.mismatchingCardTypeInDrop"));
-      return false;
-    }
-
-    return true;
-  }
-
   static async addMacroAtHotbarSlot(name, img, command, slot) {
     let macro = game.macros.find(m => (m.name === name) && (m.command === command));
     if (!macro) {
@@ -1090,13 +1054,14 @@ Hooks.on("PopOut:popout", (app, popout) => { return CastleFalkenstein.onPopout(a
 
 Hooks.once("socketlib.ready", () => CastleFalkenstein.setupSocket());
 
-Hooks.on("passCards", (from, to, options) => CastleFalkenstein.onPassCards(from, to, options));
-
 Hooks.on("renderCombatTracker", (app, html, options) => game.combat?.onRenderCombatTracker(app, html, options));
 
 Hooks.on("renderSidebarTab", (app, html, data) => CastleFalkenstein.onRenderSidebarTab(app, html, data));
 
 Hooks.on("preCreateChatMessage", (message, options, userId) => CastleFalkenstein.onPreCreateChatMessage(message, options, userId));
+
+Hooks.on("passCards", (from, to, options) => CastleFalkensteinCards.onPassCards(from, to, options));
+
 
 /* -------------------------------------------- */
 /*  Handlebars Helpers                          */

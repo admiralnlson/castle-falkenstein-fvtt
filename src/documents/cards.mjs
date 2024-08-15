@@ -12,6 +12,28 @@ export class CastleFalkensteinCards extends Cards {
   //    divorceSuit: <(string) ability.system.suit or other suit chosen>
   //  }
 
+  
+  static onPassCards(from, to, { toCreate }) {
+
+    const fromType =  from.getFlag(CastleFalkenstein.id, "type");
+    const toType = to.getFlag(CastleFalkenstein.id, "type");
+
+    if (fromType != toType) {
+      CastleFalkenstein.notif.error(game.i18n.localize("castle-falkenstein.notifications.mismatchingCardTypeInDrop"));
+      return false;
+    }
+
+    // unless 'to' is empty, in which case we might as well keep the default sort from 'from'
+    if (to.cards.contents.length > 0) {
+      // ensure passed cards are added "at the end"
+      let maxSort = Math.max.apply(Math, to.cards.contents.map(c => c.sort));
+      for (const card of toCreate) {
+        card.sort = (maxSort += CONST.SORT_INTEGER_DENSITY);
+      }
+    }
+    return true;
+  }
+
   async startPerformingFeat(actor, ability) {
     await this.unsetFlag(CastleFalkenstein.id, 'featBeingPerformed');
     const featBeingPerformed = {

@@ -6,14 +6,6 @@ import { CastleFalkenstein } from "../castle-falkenstein.mjs";
  */
 export class CastleFalkensteinDeckSheet extends CardsConfig {
 
-  /** @override */
-  async _onDrop(event) {
-    if (! await CastleFalkenstein.onDropOnCardStack(event, this))
-      return;
-
-    return super._onDrop(event);
-  }
-
    /** @override */
    async getData(options) {
     // Retrieve the data structure from the base sheet.

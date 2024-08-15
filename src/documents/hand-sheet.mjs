@@ -52,14 +52,6 @@ export class CastleFalkensteinHandSheet extends CardsHand {
   }
 
   /** @override */
-  async _onDrop(event) {
-    if (! await CastleFalkenstein.onDropOnCardStack(event, this))
-      return;
-
-    return await super._onDrop(event);
-  }
-
-  /** @override */
   _onSortCard(event, card) {
 
     // Identify a specific card as the drop target
