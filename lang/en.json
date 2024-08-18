@@ -24,12 +24,12 @@
       "sorceryAbility": {
         "name": "Name of the Sorcery ability",
         "default": "Sorcery",
-        "hint": "[Host only] [Optional] Allows to have character ability names in the language spoken by your group, even if this language is not officially supported by the system yet."
+        "hint": "[Host only] This ability (or its specializations) is used for casting spells."
       },
       "perceptionAbility": {
         "name": "Name of the Perception ability",
         "default": "Perception",
-        "hint": "[Host only] [Optional] Allows to have character ability names in the language spoken by your group, even if this language is not officially supported by the system yet."
+        "hint": "[Host only] The ability is used to determine initiative in combat."
       },
       "damageSystem": {
         "name": "Damage system",

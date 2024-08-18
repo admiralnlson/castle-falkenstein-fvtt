@@ -24,12 +24,12 @@
       "sorceryAbility": {
         "name": "Nom du talent de Sorcellerie",
         "default": "Sorcellerie",
-        "hint": "[Hôte uniquement] [Optionnel] Permet d'avoir les noms de Talents des personnages dans la langue parlée par le groupe, même si celle-ci n'est pas encore officiellement supportée par le système."
+        "hint": "[Hôte uniquement] Ce Talent (ou ses spécialisations) est utilisée dans le lancement de sorts."
       },
       "perceptionAbility": {
         "name": "Nom du talent de Perception",
         "default": "Perception",
-        "hint": "[Hôte uniquement] [Optionnel] Permet d'avoir les noms de Talents des personnages dans la langue parlée par le groupe, même si celle-ci n'est pas encore officiellement supportée par le système."
+        "hint": "[Hôte uniquement] Ce Talent (ou ses spécialisations) est utilisée pour déterminer l'initiative en combat."
       },
       "damageSystem": {
         "name": "Système de dégâts",
