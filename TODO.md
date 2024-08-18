@@ -5,32 +5,6 @@
 + MoSCoW: [M]ust, [S]hould, [C]ould, [W]on't
 + [🔥] Project maintainer (admiralnlson)'s own Host needs
 
-### Shortlist
-
-+ [🔥] Card hands popouts don't display as well as they used to. Need to revise the CSS for popouts specifically.
-
-### Shortlist
-
-+ [C🔥] Make full text search recursive to include Text page content search as well in the Journal directory (possibly as an option) or Open as request to Core
-
-### Duel mechanics
-
-  + [M] Duel hand initiated with 2 Red cards, 2 Black cards and 2 Jokers
-  + [M] Hand action to reset it back to 2 Red, 2 Black, 2 Jokers
-  + [M] Form to play 2 cards at once out of the 6.
-  + [C] Macro for Host to start a duel b/w 2 characters based on a given Ability (not necessarily Fencing)
-  + [C] Exchange cards are shown only when both characters have selected them
-  + [C] Rest counter
-  + [C] Exchanges & Rounds materialized in combat tracker
-
-### User XP
-
-+ [C] Ability to sort abilities or spells in the Character Sheet
-+ [S] Add info text in empty Abilities table, suggesting to drag-and-drop some entries from or the entire 'imported Abilities folder'
-  + [C] interrupt the drop and make necessary changes (see also "Species drop-down" list)
-+ [C] Shortcut to import all Abilities into a character (skip those already present)
-+ [C] Shortcut to import a Lorebook into a character
-
 ### Derived stats & Racial abilities (a.k.a 'Other' tab)
 
 + [S] Extra 'Other' tab for listing secondary attributes such as Speed (Run+Flight) or Languages known (see below)
@@ -63,6 +37,24 @@
       + Shapeshift
       + Armor
       + 5 max Power drawn
+
+### Duel mechanics
+
+  + [M] Duel hand initiated with 2 Red cards, 2 Black cards and 2 Jokers
+  + [M] Hand action to reset it back to 2 Red, 2 Black, 2 Jokers
+  + [M] Form to play 2 cards at once out of the 6.
+  + [C] Macro for Host to start a duel b/w 2 characters based on a given Ability (not necessarily Fencing)
+  + [C] Exchange cards are shown only when both characters have selected them
+  + [C] Rest counter
+  + [C] Exchanges & Rounds materialized in combat tracker
+
+### User XP
+
++ [C] Ability to sort abilities or spells in the Character Sheet
++ [S] Add info text in empty Abilities table, suggesting to drag-and-drop some entries from or the entire 'imported Abilities folder'
+  + [C] interrupt the drop and make necessary changes (see also "Species drop-down" list)
++ [C] Shortcut to import all Abilities into a character (skip those already present)
++ [C] Shortcut to import a Lorebook into a character
 
 ### Cards
 + [C] Card hand button to show a Fortune or Sorcery hand in chat (or simply on screen)
