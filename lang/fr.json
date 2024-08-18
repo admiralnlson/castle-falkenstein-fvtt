@@ -89,7 +89,7 @@
       "noFortuneHandForFeat": "Main du destin manquante pour accomplir la prouesse.",
       "noSorceryHandForSpell": "Main de sorcellerie manquante pour lancer le sort.",
       "characterDoesNotHaveAbility": "Le personnage '{character}' n'a pas le talent '{ability}'.",
-      "tokenDoesNotHaveAbility": "Le jeton '{token}' n'a pas le talent '{ability}'.",
+      "tokenDoesNotHaveAbility": "Le token '{token}' n'a pas le talent '{ability}'.",
       "spellAlreadyBeingCast": "Un sort est déjà en cours de lancement. Annulez-le depuis la main de sorcellerie si vous souhaitez en lancer un autre.",
       "noItemNamed": "Le personnage que vous contrôlez ne possède pas d'item de type '{type}' nommé '{name}'.",
       "deckNotFound": "Il semble qu'une pioche soit manquante. Suggérez à votre Hôte de vérifier les jeux du destin et de sorcellerie, ainsi que les paramètres du système.",
@@ -164,7 +164,7 @@
         "diamonds": "matérielle",
         "clubs": "élémentaire"
       },
-      "cannotBeUsedOnUnlinkedTokens": "La Sorcellerie ne peut pas être utilisée depuis un jeton qui n'est pas lié à son acteur."
+      "cannotBeUsedOnUnlinkedTokens": "La Sorcellerie ne peut pas être utilisée depuis un token qui n'est pas lié à son acteur."
     },
 
     "empty": "",
@@ -177,7 +177,7 @@
       "self": "Journal",
       "name": "Journal - {character}",
       "render": "Afficher le journal du personnage",
-      "cannotBeUsedOnUnlinkedTokens": "Impossible d'afficher le journal d'un jeton qui n'est pas lié à son acteur."
+      "cannotBeUsedOnUnlinkedTokens": "Impossible d'afficher le journal d'un token qui n'est pas lié à son acteur."
     },
 
     "item": {
@@ -367,8 +367,11 @@
       "customModifier": "Modificateur additionnel..."
     },
 
+    "playerNotes": "Notes du Joueur",
+
     "host": "Hôte",
     "hostNotes": "Notes de l'Hôte",
+    "hostNotesTooltip": "Seul l'Hôte peut voir cet onglet.",
 
     "chat": {
       "messageVisibility": "Visibilité des messages par défaut",

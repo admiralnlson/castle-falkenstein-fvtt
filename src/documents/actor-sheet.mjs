@@ -87,9 +87,9 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
     context.diaryUuid = context.diaryIfExists?.uuid;
     context.diaryName = context.diaryIfExists ? context.diaryIfExists.name : context.actor.computeDiaryName();
 
-    context.enrichedDescription = await TextEditor.enrichHTML(context.system.description, {async: true});
-    context.enrichedDiary = await TextEditor.enrichHTML(context.system.diary, {async: true});
-    context.enrichedHostNotes = await TextEditor.enrichHTML(context.system.hostNotes, {async: true});
+    context.enrichedDescription = await TextEditor.enrichHTML(context.system.description);
+    context.enrichedPlayerNotes = await TextEditor.enrichHTML(context.system.playerNotes);
+    context.enrichedHostNotes = await TextEditor.enrichHTML(context.system.hostNotes);
 
     context.items = [...context.actor.items.contents];
     context.items.sort((a,b) => ((a.sort || 0) - (b.sort || 0)));

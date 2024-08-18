@@ -125,6 +125,15 @@
   border-bottom: 0;
 }
 
+.castle-falkenstein .sheet-header h1 {
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+}
+.castle-falkenstein .sheet-header h1 .token {
+  vertical-align: middle;
+}
+
 .castle-falkenstein .sheet-header h1.charname input {
   width: 100%;
   height: 100%;
@@ -1184,4 +1193,11 @@ div.gm-screen-grid-cell-content.castle-falkenstein.actor > form li.item {
 .system-castle-falkenstein a.tab-link[disabled]:hover,
 .system-castle-falkenstein a.diary-show[disabled]:hover {
   text-shadow: none;
+}
+
+.system-castle-falkenstein .unlinked-token-notice {
+  font-style: italic;
+  color: var(--color-text-dark-inactive);
+  max-height: 20px;
+  align-self: center;
 }

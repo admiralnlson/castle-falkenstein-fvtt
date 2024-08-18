@@ -367,8 +367,11 @@
       "customModifier": "Additional modifier..."
     },
 
+    "playerNotes": "Player Notes",
+
     "host": "Host",
-    "hostNotes": "Host notes",
+    "hostNotes": "Host Notes",
+    "hostNotesTooltip": "Only the Host can see this tab.",
 
     "chat": {
       "messageVisibility": "Default Message Visibility",

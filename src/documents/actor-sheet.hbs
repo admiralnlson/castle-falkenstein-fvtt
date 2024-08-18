@@ -1,16 +1,16 @@
-<form class="{{cssClass}} {{actor.type}} flexcol" autocomplete="off">
+<form class="{{cssClass}} {{actor.type}} {{#if actor.isToken}}token{{/if}} flexcol" autocomplete="off">
 
   {{!-- Sheet Header --}}
   <header class="sheet-header">
     <img class="profile-img" src="{{actor.img}}" data-edit="img" alt="{{actor.name}}" height="100" width="100"/>
     <div class="header-fields">
       <div class="grid grid-3col name-and-diary">
-        <h1 class="charname"><input name="name" type="text" value="{{actor.name}}"/></h1>
+        <h1 class="charname"><span class="token-prefix">{{#if actor.isToken}}[{{localize "Token"}}]{{/if}}</span><input name="name" type="text" value="{{actor.name}}"/></h1>
         <div class="diary flexcol">
           {{#if canOpenDiary}}
           <a class="diary-show" draggable="true" data-type="Journal" data-uuid="{{diaryUuid}}" data-tooltip="{{localize "castle-falkenstein.diary.render"}}">
           {{else}}
-          <a class="diary-show" disabled {{#if actor.isToken}}data-tooltip="{{localize "castle-falkenstein.diary.cannotBeUsedOnUnlinkedTokens"}}"{{/if}}>
+          <a class="diary-show" disabled {{#if userHasObserverOrOwnerAccess}}{{#if actor.isToken}}data-tooltip="{{localize "castle-falkenstein.diary.cannotBeUsedOnUnlinkedTokens"}}"{{/if}}{{/if}}>
           {{/if}}
           {{#if diaryVisible}}
             <img alt="{{diaryName}}" src="systems/castle-falkenstein/src/img/bookmarklet-444.svg">
@@ -51,9 +51,12 @@
       {{else}}
       <a class="tab-link" data-tab="spells">{{localize "castle-falkenstein.spell.spells"}}</a>
       {{/if}}
+      {{#if actor.hasPlayerOwner}}
+      <a class="tab-link" data-tab="player-notes">{{localize "castle-falkenstein.playerNotes"}}</a>
+      {{/if}}
     {{/if}}
     {{#if userIsHost}}
-      <a class="tab-link" data-tab="host-notes">{{localize "castle-falkenstein.hostNotes"}}</a>
+      <a class="tab-link" data-tab="host-notes" data-tooltip="{{localize "castle-falkenstein.hostNotesTooltip"}}">{{localize "castle-falkenstein.hostNotes"}}</a>
     {{/if}}
   </nav>
 
@@ -85,6 +88,11 @@
       {{!-- Spells Tab --}}
       <div class="tab spells" data-group="primary" data-tab="spells">
         {{> "systems/castle-falkenstein/src/documents/actor-sheet-spells.hbs"}}
+      </div>
+
+      {{!-- Host Notes Tab --}}
+      <div class="tab player-notes" data-group="primary" data-tab="player-notes" spellcheck="false">
+        {{editor enrichedPlayerNotes target="system.playerNotes" button=true editable=editable engine="prosemirror"}}
       </div>
     {{/if}}
 

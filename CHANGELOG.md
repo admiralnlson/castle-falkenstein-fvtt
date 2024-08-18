@@ -1,11 +1,14 @@
 # Changelog
 
 ## [v3.9.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.9.0) - Unreleased
+### Added
++ Added a 'Player Notes' tab on played-owned character sheets
 ### Changed
 + Character journals are now full-fledged, multi-page Journals by default. In games where these were already in use, the Host may elect to copy their contents to the new Journals (pages can be drag-and-dropped).
-+ An error notification is now displayed if a player attempts an action that requires the Host to be present, while the Host is not connected.
++ An error notification is now displayed when the Host is not connected and a player attempts an action that requires the Host to be present.
++ Character sheets for unlinked tokens now display the prefix 'Token' before the character name.
 ### Fixed
-+ Improved the display of card hands when PopOut! is used
++ The default dimensions of PopOut! card hands have been corrected.
 
 ## [v3.8.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.8.0) - 2024/08/15
 ### Added

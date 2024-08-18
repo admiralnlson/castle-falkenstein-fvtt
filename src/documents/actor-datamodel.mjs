@@ -20,6 +20,8 @@ export class CastleFalkensteinActorDataModel extends foundry.abstract.TypeDataMo
       // obsolete -> replaced with separate JournalEntry
       diary: new foundry.data.fields.HTMLField({label: "castle-falkenstein.diary.self", required: false, nullable: true}),
 
+      playerNotes: new foundry.data.fields.HTMLField({label: "castle-falkenstein.playerNotes", textSearch: true}),
+
       // Because `game.user.isGM` is not defined early enough, textSearch is allowed for Hosts in CastleFalkenstein.onReady
       hostNotes: new foundry.data.fields.HTMLField({label: "castle-falkenstein.hostNotes", textSearch: false})
     };
