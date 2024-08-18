@@ -98,7 +98,8 @@
       "lastCardDrawn": "La pioche est épuisée. La dernière carte vient d'être tirée.",
       "mismatchingCardTypeInDrop": "Impossible de transférer cette carte ici. Elle est du mauvais type (Destin vs Sorcellerie).",
       "deletedCharacterHadADiary": "Le personnage '{character}' avait un journal, que vous pourriez également vouloir supprimer.",
-      "cannotCarryOutActionWithoutHost": "Impossible d'effectuer cette action sans la présence de l'hôte. Cela entraînerait des erreurs."
+      "cannotCarryOutActionWithoutHost": "Impossible d'effectuer cette action sans la présence de l'hôte. Cela entraînerait des erreurs.",
+      "popoutBoundingBoxDisabled": "Le mode de compatibilité 'bounding box' du module PopOut! est incompatible avec le système Castle Falkenstein et a été désactivé."
     },
 
     "dialogs": {

@@ -98,7 +98,8 @@
       "lastCardDrawn": "There are no available cards left in the deck. The last card was just drawn.",
       "mismatchingCardTypeInDrop": "Cannot drop card this card here. It has an incompatible type (Sorcery vs Fortune).",
       "deletedCharacterHadADiary": "Character '{character}' had a Diary, which you may want to delete also.",
-      "cannotCarryOutActionWithoutHost": "Cannot carry out this action without the Host present. It would lead to errors."
+      "cannotCarryOutActionWithoutHost": "Cannot carry out this action without the Host present. It would lead to errors.",
+      "popoutBoundingBoxDisabled": "The 'bounding box' compatibility mode of module PopOut! is incompatible with the Castle Falkenstein system and has been disabled."
     },
 
     "dialogs": {

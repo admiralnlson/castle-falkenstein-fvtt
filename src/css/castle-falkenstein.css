@@ -1153,6 +1153,7 @@ div.gm-screen-grid-cell-content.castle-falkenstein.actor > form li.item {
 .app.castle-falkenstein.cards-hand section.window-content {
   overflow: visible;
   height: calc(100% - 30px);
+  max-height: calc(100% - 30px);
   background: url(../../../../ui/parchment.jpg) repeat;
   color: var(--color-text-dark-primary) !important;
   color: #191813 !important;

@@ -637,8 +637,12 @@ export class CastleFalkenstein {
 
     await this.iconUpgrade();
 
-    CastleFalkenstein.log.debug("Debug mode active.");
-    CastleFalkenstein.log.info("Ready.");
+    if (game.modules.get("popout")) {
+      if (game.settings.get("popout", "trueBoundingBox")) {
+        game.settings.set("popout", "trueBoundingBox", false);
+        CastleFalkenstein.notif.info(game.i18n.localize("castle-falkenstein.notifications.popoutBoundingBoxDisabled"));
+      }
+    }
   }
 
   static async iconUpgrade() {
