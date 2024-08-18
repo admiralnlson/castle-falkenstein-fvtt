@@ -42,8 +42,8 @@ export class CastleFalkensteinWeaponSheet extends ItemSheet {
       "F": "F"
     };
 
-    context.hideWounds = (CastleFalkenstein.settings.damageSystem == CastleFalkenstein.DAMAGE_SYSTEM_OPTIONS.harmRank);
-    context.hideHarmRank = (CastleFalkenstein.settings.damageSystem == CastleFalkenstein.DAMAGE_SYSTEM_OPTIONS.wounds);
+    context.hideWounds = (CastleFalkenstein.settings.damageSystem === CastleFalkenstein.DAMAGE_SYSTEM_OPTIONS.harmRank);
+    context.hideHarmRank = (CastleFalkenstein.settings.damageSystem === CastleFalkenstein.DAMAGE_SYSTEM_OPTIONS.wounds);
 
     return context;
   }

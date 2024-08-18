@@ -39,7 +39,7 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
     if ( this.actor.uuid === item.parent?.uuid ) {
       const li = event.target.closest(".items-list > .item");
       if ( !li ) return;
-      Object.defineProperty(event, 'target', {writable: false, value: li});
+      Object.defineProperty(event, "target", {writable: false, value: li});
       return this._onSortItem(event, itemData);
     }
 
@@ -106,8 +106,8 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
       "N": {labelAbbr: game.i18n.localize("castle-falkenstein.weapon.concealNotAbbr"), label: game.i18n.localize("castle-falkenstein.weapon.concealNot")}
     };
 
-    context.hideWounds = (CastleFalkenstein.settings.damageSystem == CastleFalkenstein.DAMAGE_SYSTEM_OPTIONS.harmRank);
-    context.hideHarmRank = (CastleFalkenstein.settings.damageSystem == CastleFalkenstein.DAMAGE_SYSTEM_OPTIONS.wounds);
+    context.hideWounds = (CastleFalkenstein.settings.damageSystem === CastleFalkenstein.DAMAGE_SYSTEM_OPTIONS.harmRank);
+    context.hideHarmRank = (CastleFalkenstein.settings.damageSystem === CastleFalkenstein.DAMAGE_SYSTEM_OPTIONS.wounds);
 
     context.fortuneHandIfExists = (await context.actor.handIfExists("fortune"));
     context.fortuneHandVisible = context.fortuneHandIfExists?.sheet.rendered;
@@ -131,30 +131,30 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
     super.activateListeners(html);
  
     if (this.object.isOwner) {
-      html.find('.diary-show').click(async (ev) => {
+      html.find(".diary-show").click(async (ev) => {
         const diary = await this.actor.diary();
         diary.sheet.render(true);
       });
     }
 
-    html.find('.fortune-hand-show').click(async (ev) => {
+    html.find(".fortune-hand-show").click(async (ev) => {
       const hand = await this.actor.hand("fortune");
       hand.sheet.render(true);
     });
 
-    html.find('.sorcery-hand-show').click(async (ev) => {
+    html.find(".sorcery-hand-show").click(async (ev) => {
       const hand = await this.actor.hand("sorcery");
       hand.sheet.render(true);
     });
 
-    html.find('.item-show').click(ev => {
+    html.find(".item-show").click(ev => {
       const li = $(ev.currentTarget).parents(".item");
       const item = this.actor.items.get(li.data("itemId"));
       item.sendToChat();
     });
 
     // Render the item sheet for viewing/editing prior to the editable check.
-    html.find('.item-edit').click(ev => {
+    html.find(".item-edit").click(ev => {
       const li = $(ev.currentTarget).parents(".item");
       const item = this.actor.items.get(li.data("itemId"));
       item.sheet.render(true);
@@ -163,7 +163,7 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
 
     // Rollable items
     if (this.isEditable || game.user.isGM) {
-      html.find('.rollable').click(this._onRoll.bind(this));
+      html.find(".rollable").click(this._onRoll.bind(this));
     }
 
     // -------------------------------------------------------------
@@ -171,17 +171,17 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
     if (!this.isEditable) return;
 
     // Add item
-    html.find('.item-create').click(this._onItemCreate.bind(this));
+    html.find(".item-create").click(this._onItemCreate.bind(this));
 
     // Delete item
-    html.find('.item-delete').click(ev => {
+    html.find(".item-delete").click(ev => {
       const li = $(ev.currentTarget).parents(".item");
       const item = this.actor.items.get(li.data("itemId"));
       item.delete();
     });
 
     // Weapon ammunition
-    html.find('.weapon-ammunition-current').change(ev => {
+    html.find(".weapon-ammunition-current").change(ev => {
       const li = $(ev.currentTarget).parents(".item");
       const item = this.actor.items.get(li.data("itemId"));
       item.update({
@@ -241,8 +241,8 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
 
     // Handle item rolls.
     if (dataset.rollType) {
-      if (dataset.rollType == 'item') {
-        const itemId = element.closest('.item').dataset.itemId;
+      if (dataset.rollType === "item") {
+        const itemId = element.closest(".item").dataset.itemId;
         const item = this.actor.items.get(itemId);
         if (item) return item.roll();
       }
@@ -250,12 +250,12 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
 
     // Handle rolls that supply the formula directly.
     if (dataset.roll) {
-      let label = dataset.label ? `[ability] ${dataset.label}` : '';
+      let label = dataset.label ? `[ability] ${dataset.label}` : "";
       let roll = new Roll(dataset.roll, this.actor.getRollData());
       roll.toMessage({
         speaker: ChatMessage.getSpeaker({ actor: this.actor }),
         flavor: label,
-        rollMode: game.settings.get('core', 'rollMode'),
+        rollMode: game.settings.get("core", "rollMode"),
       });
       return roll;
     }

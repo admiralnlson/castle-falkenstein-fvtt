@@ -30,27 +30,27 @@ function compilePacks() {
 
   // process each folder into a compendium db
   const packs = files.map((file) => {
-    const fileNoExt = file.replace('.yaml', '');
+    const fileNoExt = file.replace(".yaml", "");
     const db = new Datastore({ filename: path.resolve(__dirname, PACKS_DST, `${fileNoExt}.db`), autoload: true });
     return gulp.src(path.join(PACKS_SRC, file)).pipe(
       through2.obj((file, enc, cb) => {
         let json = yaml.loadAll(file.contents.toString());
-        //json = sortArray(json, { by: 'name' });
+        //json = sortArray(json, { by: "name" });
 
         const filenameHash13 = hash(fileNoExt, 13); // 13 chars from filename + 3 from item = 16 (nedb id length)
 
         let counter = 1;
         for (item of json) {
           // supplement the definitions with some key properties
-          if (item.type == "ability") {
+          if (item.type === "ability") {
             if (!item.system.level)
               item.system.level = "AV";
             if (!item.img)
               item.img = `systems/castle-falkenstein/src/cards/${item.system.suit}.svg`;
-          } else if (item.type == "spell") {
+          } else if (item.type === "spell") {
             if (!item.img)
               item.img = `systems/castle-falkenstein/src/cards/${item.system.suit}.svg`;
-          } else if (item.type == "weapon") {
+          } else if (item.type === "weapon") {
             if (!item.img)
               item.img = "systems/castle-falkenstein/src/img/saber-and-pistol.png";
             item.system.ammunition = item.system.ammunition_max;

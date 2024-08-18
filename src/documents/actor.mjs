@@ -21,12 +21,12 @@ export class CastleFalkensteinActor extends Actor {
     await super._onUpdate(changed, options, user);
 
     // If the character name changed, update the names of their Fortune/Sorcery hands also, if they exist.
-    if (game.user.id == user && changed.name && !this.isToken) {
+    if (game.user.id === user && changed.name && !this.isToken) {
       [ "fortune", "sorcery" ].forEach(async (handType) => {
         const hand = CastleFalkenstein.searchUniqueHand(handType, this);
         if (hand) {
           const actorId = hand.getFlag(CastleFalkenstein.id, "actor");
-          if (actorId != "host") {
+          if (actorId !== "host") {
             // No need for a socket here.
             // Whoever updated the name on the Actor is expected to have the ownership level necessary to update the name of the Hand also (see below).
             await hand.update({
@@ -46,7 +46,7 @@ export class CastleFalkensteinActor extends Actor {
     }
 
     // If ownership on a Character changed
-    if (game.user.id == user && changed.ownership) {
+    if (game.user.id === user && changed.ownership) {
       
       // if no player owns it anymore, delete their Fortune hand if it exists.
       // We assume here that whoever triggered this change has the required permissions to do it (Actor and Hands permissions are sync'ed).
@@ -94,7 +94,7 @@ export class CastleFalkensteinActor extends Actor {
       const hand = CastleFalkenstein.searchUniqueHand(handType, this);
       if (hand) {
         const actorId = hand.getFlag(CastleFalkenstein.id, "actor");
-        if (actorId != "host") {
+        if (actorId !== "host") {
           await hand.delete();
         }
       }
@@ -163,7 +163,7 @@ export class CastleFalkensteinActor extends Actor {
   async performFeat(item) {
     if (!this.isOwner) return;
  
-    if (item.type != 'ability') {
+    if (item.type !== "ability") {
       CastleFalkenstein.log.error("Trying to perform a feat with non-ability item.");
       return;
     }
@@ -188,16 +188,16 @@ export class CastleFalkensteinActor extends Actor {
   }
 
   get sorceryAbility() {
-    return this.items.find(item => item.type == 'ability' && item.name == CastleFalkenstein.i18nAbility("sorcery"));
+    return this.items.find(item => item.type === "ability" && item.name === CastleFalkenstein.i18nAbility("sorcery"));
   }
 
   get sorceryAbilityAndSpecializations() {
-    return this.items.filter(item => item.type == "ability" && (item.name == CastleFalkenstein.i18nAbility("sorcery") ||
-      item.system.isSpecialization && item.system.rootAbility?.name == CastleFalkenstein.i18nAbility("sorcery")));
+    return this.items.filter(item => item.type === "ability" && (item.name === CastleFalkenstein.i18nAbility("sorcery") ||
+      item.system.isSpecialization && item.system.rootAbility?.name === CastleFalkenstein.i18nAbility("sorcery")));
   }
     
   get perceptionAbility() {
-    return this.items.find(item => item.type == 'ability' && item.name == CastleFalkenstein.i18nAbility("perception"));
+    return this.items.find(item => item.type === "ability" && item.name === CastleFalkenstein.i18nAbility("perception"));
   }
 
   /**
@@ -210,7 +210,7 @@ export class CastleFalkensteinActor extends Actor {
     if (this.isToken)
       return;
 
-    if (item.type != 'spell') {
+    if (item.type !== "spell") {
       CastleFalkenstein.log.error("Trying to cast a spell from non-spell item.");
       return;
     }

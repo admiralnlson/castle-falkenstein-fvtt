@@ -18,10 +18,12 @@ export class CastleFalkensteinWeaponDataModel extends CastleFalkensteinItemDataM
 
   static migrateData(source) {
     // adapt pre-V2.8 content
-    if (source.effectiveRange != null && typeof source.effectiveRange != 'number') {
-      source.effectiveRange = parseInt(source.effectiveRange);
-      if (source.effectiveRange == 0 || isNaN(source.effectiveRange))
-        source.effectiveRange = null;
+    if (source.effectiveRange) {
+      if (source.effectiveRange !== null && typeof source.effectiveRange !== "number") {
+        source.effectiveRange = parseInt(source.effectiveRange);
+        if (source.effectiveRange === 0 || isNaN(source.effectiveRange))
+          source.effectiveRange = null;
+      }
     }
 
     return super.migrateData(source);

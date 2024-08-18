@@ -4,13 +4,13 @@
     <div class="header-fields">
       <div class="flexcol">
         <div class="grid grid-6col spell-sheet-header">
-          <label class="resource-label">{{localize 'castle-falkenstein.spell.spell'}}:</label>
+          <label class="resource-label">{{localize "castle-falkenstein.spell.spell"}}:</label>
           <input name="name" type="text" value="{{item.name}}" placeholder="Name" />
           <select name="system.suit" class="suit-select">
             {{selectOptions CASTLE_FALKENSTEIN.cardSuitsSymbols selected=system.suit localize=false}}
           </select>
           <span></span>
-          <label class="resource-label">{{localize 'castle-falkenstein.spell.thaumicLevel'}}:</label>
+          <label class="resource-label">{{localize "castle-falkenstein.spell.thaumicLevel"}}:</label>
           <input class="thaumic-level" name="system.level" type="number" min="0" value="{{system.level}}" placeholder="" />
         </div>
       </div>
@@ -20,8 +20,8 @@
 
   {{!-- Sheet Tab Navigation --}}
   <nav class="sheet-tabs tabs" data-group="primary">
-    <a class="tab-link" data-tab="description">{{localize 'castle-falkenstein.description'}}</a>
-    <a class="tab-link" data-tab="icon">{{localize 'castle-falkenstein.icon'}}</a>
+    <a class="tab-link" data-tab="description">{{localize "castle-falkenstein.description"}}</a>
+    <a class="tab-link" data-tab="icon">{{localize "castle-falkenstein.icon"}}</a>
   </nav>
 
   {{!-- Sheet Body --}}

@@ -6,7 +6,7 @@
       <div class="grid grid-3col spell-definitions">
         <label class="fixed resource-label">{{localize "castle-falkenstein.spell.thaumicLevel"}}</label>
         <span class="value">{{spell.system.level}}</span>
-        <label class="resource-label">{{localize 'castle-falkenstein.ability.ability'}}</label>
+        <label class="resource-label">{{localize "castle-falkenstein.ability.ability"}}</label>
         <select class="sorcery-ability-select" name="spellBeingCast.sorceryAbilityId">
           {{selectOptions availableSorceryAbilities selected=spellBeingCast.sorceryAbilityId localize=false}}
         </select>
@@ -27,7 +27,7 @@
         {{#if thaumixologySettingEnabled}}
         <div class="thaumixology">
           <input type="checkbox" id="thaumixology" name="spellBeingCast.usesThaumixology" class="thaumixology-checkbox" {{checked spellBeingCast.usesThaumixology}}/>
-          <label class="resource-label" for="thaumixology">{{localize 'castle-falkenstein.settings.thaumixologyVariation.leverageLabel'}}</label>
+          <label class="resource-label" for="thaumixology">{{localize "castle-falkenstein.settings.thaumixologyVariation.leverageLabel"}}</label>
         </div>
         {{/if}}
       </div>

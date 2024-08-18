@@ -41,7 +41,7 @@ export class CastleFalkensteinActorDataModel extends foundry.abstract.TypeDataMo
     if (source.health?.min) // used to default to 0 in earlier versions of the system
       delete source.health.min;
 
-    //if (source.diary == null) // cannot delete it as it's still mentioned in the data model schema
+    //if (source.diary === null) // cannot delete it as it's still mentioned in the data model schema
     //  delete source.diary;
 
       return super.migrateData(source);

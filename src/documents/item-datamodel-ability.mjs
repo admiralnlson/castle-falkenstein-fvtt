@@ -44,13 +44,13 @@ export class CastleFalkensteinAbilityDataModel extends CastleFalkensteinItemData
       delete source.suit;
     }
 
-    if (source.isSpecialization == "true")
+    if (source.isSpecialization === "true")
       source.isSpecialization = true;
-    else if (source.isSpecialization == "false")
+    else if (source.isSpecialization === "false")
       source.isSpecialization = false;
 
-    if (source.specializationOf && source.specializationOf != "null" && source.specializationOf != "") {
-      if (!source.isSpecialization == false)
+    if (source.specializationOf && source.specializationOf !== "null" && source.specializationOf !== "") {
+      if (!source.isSpecialization === false)
         source.isSpecialization = true;
     }
 
@@ -61,10 +61,10 @@ export class CastleFalkensteinAbilityDataModel extends CastleFalkensteinItemData
     if (this.isSpecialization) {
 
       // attempt at avoiding circular definitions
-      if (this.parent.name == this.specializationOf) return;
+      if (this.parent.name === this.specializationOf) return;
 
-      let matches = this.parent.actor.items.filter(a => a.type == "ability" && a.name == this.specializationOf);
-      if (matches && matches.length == 1)
+      let matches = this.parent.actor.items.filter(a => a.type === "ability" && a.name === this.specializationOf);
+      if (matches && matches.length === 1)
         return matches[0];
     }
   }

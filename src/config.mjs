@@ -163,7 +163,7 @@ for(const type in CASTLE_FALKENSTEIN.spellDefinitions) {
   CASTLE_FALKENSTEIN.spellDefinitions[type].label = `castle-falkenstein.spell.definition.${type}.label`;
 
   for (let level in CASTLE_FALKENSTEIN.spellDefinitions[type].levels) {
-    if (level != "-")
+    if (level !== "-")
       CASTLE_FALKENSTEIN.spellDefinitions[type].levels[level].label = `castle-falkenstein.spell.definition.${type}.${level}`;
   }
 }

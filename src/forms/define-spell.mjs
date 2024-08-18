@@ -11,7 +11,7 @@ export class CastleFalkensteinDefineSpell extends FormApplication {
       id: "castle-falkenstein-define-spell",
       title: game.i18n.localize("castle-falkenstein.sorcery.defineSpell"),
       template: "./systems/castle-falkenstein/src/forms/define-spell.hbs",
-      classes: ["castle-falkenstein castle-falkenstein-define-spell", "sheet"],
+      classes: [CastleFalkenstein.id, "castle-falkenstein-define-spell", "sheet"],
       width: 400,
       height: "auto",
       closeOnSubmit: true,
@@ -79,7 +79,7 @@ export class CastleFalkensteinDefineSpell extends FormApplication {
 
     context.availableSorceryAbilities = Object.fromEntries(this.character.sorceryAbilityAndSpecializations.map(a => [a.id, a.system.displayName]));
 
-    context.thaumixologySettingEnabled = CastleFalkenstein.settings.thaumixologyVariation == CastleFalkenstein.THAUMIXOLOGY_VARIATION_OPTIONS.enabled;
+    context.thaumixologySettingEnabled = CastleFalkenstein.settings.thaumixologyVariation === CastleFalkenstein.THAUMIXOLOGY_VARIATION_OPTIONS.enabled;
     
     return context;
   }
@@ -88,13 +88,13 @@ export class CastleFalkensteinDefineSpell extends FormApplication {
   activateListeners(html) {
     super.activateListeners(html);
 
-    html.find('.spell-definition-select').change(event => this._onDefinitionSelectChange(event));
+    html.find(".spell-definition-select").change(event => this._onDefinitionSelectChange(event));
 
-    html.find('.sorcery-ability-select').change(event => this._onAbilitySelectChange(event));
+    html.find(".sorcery-ability-select").change(event => this._onAbilitySelectChange(event));
 
-    html.find('.custom-modifier-label').change(event => this._onCustomModifierLabelChange(event));
+    html.find(".custom-modifier-label").change(event => this._onCustomModifierLabelChange(event));
 
-    html.find('.custom-modifier-value').change(event => this._onCustomModifierValueChange(event));
+    html.find(".custom-modifier-value").change(event => this._onCustomModifierValueChange(event));
 
     html.find(".thaumixology-checkbox").change(event => this._onThaumixologyCheckboxChange(event));
   }
@@ -137,15 +137,15 @@ export class CastleFalkensteinDefineSpell extends FormApplication {
     content += `${game.i18n.localize("castle-falkenstein.spell.thaumicLevel")}: ${this.spell.system.level}<br/>`;
     content += CastleFalkenstein.abilityLevelAsSentenceHtml(this.character.items.get(this.spellBeingCast.sorceryAbilityId), false);
 
-    content += '<hr/><div class="spell-definitions">';
+    content += "<hr/><div class=\"spell-definitions\">";
 
     for (const [key, value] of Object.entries(CASTLE_FALKENSTEIN.spellDefinitions)) {
       content += `${game.i18n.localize(value.label)}: <b>${game.i18n.localize(value.levels[this.spellBeingCast.definitionLevels[key]].label)}</b><br/>`;
     }
-    if (this.spellBeingCast.customModifier.value != 0) {
+    if (this.spellBeingCast.customModifier.value !== 0) {
       content += `${this.spellBeingCast.customModifier.label}: <b>${this.spellBeingCast.customModifier.value}</b><br/>`;
     }
-    content += '</div>';
+    content += "</div>";
 
     if (this.spellBeingCast.usesThaumixology) {
       content += `<b>${game.i18n.localize("castle-falkenstein.settings.thaumixologyVariation.leverageChatHint")}</b><br/>`;

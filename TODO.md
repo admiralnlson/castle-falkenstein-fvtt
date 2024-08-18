@@ -13,12 +13,12 @@
   + Corebook p140 / Libre de base p194
     + Running speed
     + Flying Speed
-+ Locked attributes (= should not be deletable)
++ Locked attributes (= should not be deletable if computations below are computed)
   + Athletics (all -> running speed)
   + Courage (all -> health)
-  + Physique (all -> health ; Dragons => flying speed)
+  + Physique (all -> health ; Dragons => flying speed / firecast dmg)
   + Etherealness (Faerie only -> flying speed)
-  + Sorcery (Sorcerers+Dragons only -> spellcast)
+  + Sorcery (Sorcerers+Dragons -> spellcast)
   + Perception (initiative)
 + [S] Add a species drop-down list (Human/Faerie/Dragon/Dwarf)
   + Sorcery tab unlocked by Dragon or Good Sorcery in Humans

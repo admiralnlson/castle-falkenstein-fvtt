@@ -114,7 +114,7 @@ export class CastleFalkenstein {
   static i18nAbility(ability) {
     this.settings[ability + "Ability"] = this.settings[ability + "Ability"].trim();
 
-    if (this.settings[ability + "Ability"] != "")
+    if (this.settings[ability + "Ability"] !== "")
       return this.settings[ability + "Ability"];
 
     return game.i18n.localize(`castle-falkenstein.settings.${ability}Ability.default`);
@@ -129,10 +129,10 @@ export class CastleFalkenstein {
 
     // Does the folder already exist?
     const existingFolder = game.folders.find(f => {
-      if (f.type != documentType) { return false; }
+      if (f.type !== documentType) { return false; }
 
-      const flag = f.flags['castle-falkenstein'] ?? {};
-      return flag?.type == folderFlag.type;
+      const flag = f.flags[CastleFalkenstein.id] ?? {};
+      return flag?.type === folderFlag.type;
     });
 
     if (existingFolder) {
@@ -143,7 +143,7 @@ export class CastleFalkenstein {
     const newFolder = await Folder.create({
       name: name,
       type: documentType,
-      sorting: 'm',
+      sorting: "m",
       "flags.castle-falkenstein": folderFlag
     });
     return newFolder;
@@ -160,18 +160,18 @@ export class CastleFalkenstein {
   static translateCardStack(stack) {
 
     // if a deck but not a system-provided deck, then don't translate it.
-    if (stack.type == "deck" && !stack.getFlag("castle-falkenstein", "type"))
+    if (stack.type === "deck" && !stack.getFlag(CastleFalkenstein.id, "type"))
       return;
 
     const translateCard = (card) => {
       // if the card does not belong to a system-provided deck, then don't translate it.
-      if (card.origin && !card.origin.getFlag("castle-falkenstein", "type"))
+      if (card.origin && !card.origin.getFlag(CastleFalkenstein.id, "type"))
         return;
 
-      if (card.suit == "joker") {
-        if (card.faces[0].img == "systems/castle-falkenstein/src/cards/53.png")
+      if (card.suit === "joker") {
+        if (card.faces[0].img === "systems/castle-falkenstein/src/cards/53.png")
           card.name = card.faces[0].name = game.i18n.localize("castle-falkenstein.cards.blackJoker");
-        else if (card.faces[0].img == "systems/castle-falkenstein/src/cards/54.png")
+        else if (card.faces[0].img === "systems/castle-falkenstein/src/cards/54.png")
           card.name = card.faces[0].name = game.i18n.localize("castle-falkenstein.cards.redJoker");
         else // just in case
           card.name = card.faces[0].name = game.i18n.localize("castle-falkenstein.cards.joker");
@@ -270,7 +270,7 @@ export class CastleFalkenstein {
       return null;
     }
     
-    if (search.length == 1)
+    if (search.length === 1)
       return search[0];
 
     return null;
@@ -290,7 +290,7 @@ export class CastleFalkenstein {
       return;
     }
     
-    if (search.length == 1)
+    if (search.length === 1)
       return search[0];
 
     return;
@@ -347,7 +347,7 @@ export class CastleFalkenstein {
         nb1: nbCardsActuallyDrawn,
         nb2: nbCardsToDraw
       }));
-    } else if (nbCardsActuallyDrawn == nbCardsLeftInDeck) {
+    } else if (nbCardsActuallyDrawn === nbCardsLeftInDeck) {
       CastleFalkenstein.notif.warn(game.i18n.localize("castle-falkenstein.notifications.lastCardDrawn"));
     }
 
@@ -363,7 +363,7 @@ export class CastleFalkenstein {
     let handData = null;
 
     let actor;
-    if (actorFlag != "host") {
+    if (actorFlag !== "host") {
       actor = game.actors.get(actorFlag);
       if (!actor)
         return;
@@ -371,7 +371,7 @@ export class CastleFalkenstein {
         actorFlag = "host";
     }
 
-    if (actorFlag == "host" && handType == "fortune") {
+    if (actorFlag === "host" && handType === "fortune") {
       // create host hand
       handData = {
         type: "hand",
@@ -427,7 +427,7 @@ export class CastleFalkenstein {
 
       if (actor.system.diary) {
 
-        if (actor.system.diary != "") {
+        if (actor.system.diary !== "") {
           const pageData = {
             name: "---",
             type: "text",
@@ -437,7 +437,7 @@ export class CastleFalkenstein {
             },
             sort: CONST.SORT_INTEGER_DENSITY,
             flags: {
-              ["castle-falkenstein"]: {
+              [CastleFalkenstein.id]: {
                 "copiedFromLegacyDiary": true
               }
             }
@@ -447,7 +447,7 @@ export class CastleFalkenstein {
 
         // whoever is creating the diary associated to this actor has ownership on the ACtor, otherwise they would not be able to click the button that opens it.
         await actor.update({
-          ["system.diary"]: null
+          "system.diary": null
         });
       }
       
@@ -460,13 +460,13 @@ export class CastleFalkenstein {
   }
 
   static usingRTGCardVisuals(deck) {
-    return deck?.img == "systems/castle-falkenstein/src/cards/back-square.png";
+    return deck?.img === "systems/castle-falkenstein/src/cards/back-square.png";
   }
 
   static computeCardHeight(deck) {
     const cardWidth = CastleFalkenstein.settings.cardWidth;
 
-    if (deck?.img == "systems/castle-falkenstein/src/cards/back-square.png") {
+    if (deck?.img === "systems/castle-falkenstein/src/cards/back-square.png") {
       return cardWidth * 670 / 470;
     }
     else if (deck && deck.width > 0 && deck.height > 0) {
@@ -479,7 +479,7 @@ export class CastleFalkenstein {
 
   static smallCardImg(card, classes) {
     const suit = card.suit;
-    const value = card.suit == "joker" ? (card.name == game.i18n.localize("castle-falkenstein.cards.blackJoker") ? "black" : "red") : card.value;
+    const value = card.suit === "joker" ? (card.name === game.i18n.localize("castle-falkenstein.cards.blackJoker") ? "black" : "red") : card.value;
     return `<img class="${classes}" src="systems/castle-falkenstein/src/cards/small/${suit}-${value}.svg" alt="${card.name}"></img>`;
   }
 
@@ -495,7 +495,7 @@ export class CastleFalkenstein {
     const level = `${game.i18n.localize(levelI18nKey)} [${levelValue}]`;
     let ability = `<b>${abilityItem.system.displayName}</b>`;
     if (includeAbilitySuit)
-      ability += ' ' + CastleFalkenstein.cardSuitHTML(abilityItem.system.suit);
+      ability += " " + CastleFalkenstein.cardSuitHTML(abilityItem.system.suit);
 
     const html = game.i18n.format("castle-falkenstein.ability.levelAsSentence", {
       level: level,
@@ -513,7 +513,7 @@ export class CastleFalkenstein {
       "flags.castle-falkenstein": { type: flavor }
     };
 
-    if (actor != "gm") {
+    if (actor !== "gm") {
       messageData.speaker = ChatMessage.getSpeaker({ actor: actor });
       messageData.borderColor = game.user.color.css;
     }
@@ -597,7 +597,7 @@ export class CastleFalkenstein {
     //  types: ["hand"]
     //});
 
-    if (game.settings.get("core", "language") != "en") {
+    if (game.settings.get("core", "language") !== "en") {
       game.babele?.setSystemTranslationsDir("lang/babele");
     }
 
@@ -606,9 +606,9 @@ export class CastleFalkenstein {
     // align "Harm Rank" spell definition labels to the chosen damageSystem setting 
     const harmRankDef = CASTLE_FALKENSTEIN.spellDefinitions["harmRank"];
     for (let level in harmRankDef.levels) {
-      if (level != "-") {
+      if (level !== "-") {
         harmRankDef.levels[level].label = game.i18n.localize(`castle-falkenstein.spell.definition.harmRank.${level}`);
-        if (this.settings.damageSystem != this.DAMAGE_SYSTEM_OPTIONS.harmRank)
+        if (this.settings.damageSystem !== this.DAMAGE_SYSTEM_OPTIONS.harmRank)
           harmRankDef.levels[level].label += ": " + harmRankDef.levels[level].wounds;
       }
     }
@@ -626,8 +626,8 @@ export class CastleFalkenstein {
     await this.prepareCardStacks();
 
     const userLanguage = game.settings.get("core", "language");
-    if (userLanguage != "en" && Array.from(game.system.languages.map(el => el.lang)).includes(userLanguage)) {
-      const babele = game.modules.get('babele');
+    if (userLanguage !== "en" && Array.from(game.system.languages.map(el => el.lang)).includes(userLanguage)) {
+      const babele = game.modules.get("babele");
       if (!babele) {
         CastleFalkenstein.notif.warn(game.i18n.localize("castle-falkenstein.notifications.babeleInstallRequired"));
       } else if (!babele.active) {
@@ -648,7 +648,7 @@ export class CastleFalkenstein {
   static async iconUpgrade() {
     // upgrade weapons image
     game.settings.register(this.id, "iconUpgradeDone", {
-      scope: 'world',
+      scope: "world",
       config: false,
       type: Boolean,
       default: false
@@ -656,9 +656,9 @@ export class CastleFalkenstein {
     if (game.user.isGM && !this.settings.iconUpgradeDone) {
 
       const itemUpdates = (items) => {
-        return items.filter(i => i.type == "weapon" && i.img=="icons/svg/item-bag.svg").map(item => {
+        return items.filter(i => i.type === "weapon" && i.img === "icons/svg/item-bag.svg").map(item => {
           return {_id: item.id, img: "systems/castle-falkenstein/src/img/saber-and-pistol.png"};
-        }).concat(items.filter(i => (i.type == "ability" || i.type == "spell") && i.img=="icons/svg/item-bag.svg").map(item => {
+        }).concat(items.filter(i => (i.type === "ability" || i.type === "spell") && i.img === "icons/svg/item-bag.svg").map(item => {
           return {_id: item.id, img: `systems/castle-falkenstein/src/cards/${item.system.suit}.svg`};
         }));
       };
@@ -680,7 +680,7 @@ export class CastleFalkenstein {
       });
 
       {
-        const macrosToUpdate = game.macros.filter(m => m.img=="icons/svg/item-bag.svg" && m.command?.startsWith('game.CastleFalkenstein.rollItemMacro("weapon",')).map(macro => {
+        const macrosToUpdate = game.macros.filter(m => m.img === "icons/svg/item-bag.svg" && m.command?.startsWith("game.CastleFalkenstein.rollItemMacro(\"weapon\",")).map(macro => {
           return {_id: macro.id, img: "systems/castle-falkenstein/src/img/saber-and-pistol.png"};
         });
         // no update for spell and ability macros, because no info on which suit they depend on.
@@ -697,7 +697,7 @@ export class CastleFalkenstein {
     const stack = game.cards.get(stackId);
 
     for (let id of idsOfCardsPlayed) {
-      const card = stack.cards.find(c => c.id == id);
+      const card = stack.cards.find(c => c.id === id);
       card.recall();
     }
   }
@@ -783,7 +783,7 @@ export class CastleFalkenstein {
   
       const choicesLambda = () => ({
         ...Object.fromEntries(
-          game?.cards?.filter(stack => stack.type == "deck" && stack.getFlag(CastleFalkenstein.id,"type") != (deckType == "fortune" ? "sorcery" : "fortune"))
+          game?.cards?.filter(stack => stack.type === "deck" && stack.getFlag(CastleFalkenstein.id,"type") !== (deckType === "fortune" ? "sorcery" : "fortune"))
                       .map(stack => [stack.id, stack.name])
         )
       });
@@ -908,7 +908,7 @@ export class CastleFalkenstein {
         default: 200,
         requiresReload: false,
         onChange: value => {
-          game.cards.filter(stack => stack.type == "hand" && stack.sheet?.rendered).forEach(stack => stack.sheet.render());
+          game.cards.filter(stack => stack.type === "hand" && stack.sheet?.rendered).forEach(stack => stack.sheet.render());
         }
       }
     };
@@ -916,7 +916,7 @@ export class CastleFalkenstein {
     Object.entries(settingsDefinitions).forEach(([key, def]) => {
       game.settings.register(this.id, key, {
         ...def,
-        config: typeof(def.config) == "undefined" ? true : def.config,
+        config: typeof(def.config) === "undefined" ? true : def.config,
         name: `castle-falkenstein.settings.${key}.name`,
         hint: `castle-falkenstein.settings.${key}.hint`
       });
@@ -1017,10 +1017,10 @@ export class CastleFalkenstein {
       const macroName = `${doc.name}`;
       if (!doc.img) {
         if (doc instanceof JournalEntry) {
-          if (doc.getFlag("castle-falkenstein", "type") == "diary")
-            doc.img = 'systems/castle-falkenstein/src/img/secret-book-white.svg';
+          if (doc.getFlag(CastleFalkenstein.id, "type") === "diary")
+            doc.img = "systems/castle-falkenstein/src/img/secret-book-white.svg";
           else
-            doc.img = 'icons/svg/book.svg';
+            doc.img = "icons/svg/book.svg";
         }
       }
       CastleFalkenstein.addMacroAtHotbarSlot(macroName, doc.img, `await Hotbar.toggleDocumentSheet("${doc.uuid}");`, slot);
@@ -1075,7 +1075,7 @@ export class CastleFalkenstein {
     };
 
     // Select the <select> element
-    const select = document.querySelector('#chat-controls .roll-type-select');
+    const select = document.querySelector("#chat-controls .roll-type-select");
 
     // Loop through options in the optgroup (in reverse order because we're removing some options)
     for (let i = select.options.length - 1; i >= 0; --i) {
@@ -1100,7 +1100,7 @@ export class CastleFalkenstein {
     // See onRenderSidebarTab(): only 2 modes are allowed: PUBLIC and PRIVATE. BLIND and SELF have been disabled.
     //
     const messageVisibility = game.settings.get("core", "rollMode");
-    if (messageVisibility == CONST.DICE_ROLL_MODES.PRIVATE && (!message.whisper || message.whisper.length == 0)) {
+    if (messageVisibility === CONST.DICE_ROLL_MODES.PRIVATE && (!message.whisper || message.whisper.length === 0)) {
       message.updateSource({
         whisper: ChatMessage.getWhisperRecipients("GM").map(u => u.id),
         speaker: null
@@ -1112,9 +1112,9 @@ export class CastleFalkenstein {
   static refreshActorSheetIfDiary(sheet) {
     // if a Diary, refresh the matching (not Token) Actor's sheet if open
     const journalEntry = sheet.object;
-    if (!journalEntry.getFlag("castle-falkenstein", "type") == "diary")
+    if (!journalEntry.getFlag(CastleFalkenstein.id, "type") === "diary")
       return;
-    const actorId = journalEntry.getFlag("castle-falkenstein", "actor");
+    const actorId = journalEntry.getFlag(CastleFalkenstein.id, "actor");
     game.actors.get(actorId)?.sheet.render(false);
   }
 
@@ -1167,46 +1167,46 @@ Hooks.on("closeJournalSheet", (sheet, html) =>  CastleFalkenstein.onCloseJournal
 /*  Handlebars Helpers                          */
 /* -------------------------------------------- */
 
-Handlebars.registerHelper('ifequal', function (a, b, options) {
-  if (a == b) { return options.fn(this); }
+Handlebars.registerHelper("ifequal", function (a, b, options) {
+  if (a === b) { return options.fn(this); }
   return options.inverse(this);
 });
 
-Handlebars.registerHelper('ifnotequal', function (a, b, options) {
-  if (a != b) { return options.fn(this); }
+Handlebars.registerHelper("ifnotequal", function (a, b, options) {
+  if (a !== b) { return options.fn(this); }
   return options.inverse(this);
 });
 
-Handlebars.registerHelper('or', function() {
+Handlebars.registerHelper("or", function() {
   return Array.prototype.slice.call(arguments, 0, arguments.length - 1).some(Boolean);
 });
 
-Handlebars.registerHelper('isNumber', function(a) {
-  return typeof a == 'number';
+Handlebars.registerHelper("isNumber", function(a) {
+  return typeof a === "number";
 });
 
-Handlebars.registerHelper('times', function (n, block) {
-  var accum = '';
+Handlebars.registerHelper("times", function (n, block) {
+  var accum = "";
   for (var i = 0; i < n; ++i)
     accum += block.fn(i);
   return accum;
 });
 
-Handlebars.registerHelper('add', function (a, b) {
+Handlebars.registerHelper("add", function (a, b) {
 
   return parseInt(a) + parseInt(b);
 });
 
-Handlebars.registerHelper('concat', function () {
-  var outStr = '';
+Handlebars.registerHelper("concat", function () {
+  var outStr = "";
   for (var arg in arguments) {
-    if (typeof arguments[arg] != 'object') {
+    if (typeof arguments[arg] !== "object") {
       outStr += arguments[arg];
     }
   }
   return outStr;
 });
 
-Handlebars.registerHelper('toLowerCase', function (str) {
+Handlebars.registerHelper("toLowerCase", function (str) {
   return str.toLowerCase();
 });

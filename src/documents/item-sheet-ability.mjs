@@ -30,7 +30,7 @@ export class CastleFalkensteinAbilitySheet extends ItemSheet {
         false: "castle-falkenstein.ability.ability",
         true: "castle-falkenstein.ability.specialization"
       };
-      let availableRootAbilities = context.item.actor.items.filter(it => it.type == "ability" && !it.system.isSpecialization).map(a => a.name).sort();
+      let availableRootAbilities = context.item.actor.items.filter(it => it.type === "ability" && !it.system.isSpecialization).map(a => a.name).sort();
       context.availableRootAbilities = { "": null };
       if (availableRootAbilities && availableRootAbilities.length > 0)
         context.availableRootAbilities = { ...context.availableRootAbilities, ...Object.fromEntries(availableRootAbilities?.map(a => [a, a])) };

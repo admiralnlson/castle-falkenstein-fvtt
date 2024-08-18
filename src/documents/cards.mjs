@@ -18,7 +18,7 @@ export class CastleFalkensteinCards extends Cards {
     const fromType =  from.getFlag(CastleFalkenstein.id, "type");
     const toType = to.getFlag(CastleFalkenstein.id, "type");
 
-    if (fromType != toType) {
+    if (fromType !== toType) {
       CastleFalkenstein.notif.error(game.i18n.localize("castle-falkenstein.notifications.mismatchingCardTypeInDrop"));
       return false;
     }
@@ -35,13 +35,13 @@ export class CastleFalkensteinCards extends Cards {
   }
 
   async startPerformingFeat(actor, ability) {
-    await this.unsetFlag(CastleFalkenstein.id, 'featBeingPerformed');
+    await this.unsetFlag(CastleFalkenstein.id, "featBeingPerformed");
     const featBeingPerformed = {
       actorId: actor.id,
       actorItemId: ability.id,
       divorceSuit: ability.system.suit
     };
-    await this.setFlag(CastleFalkenstein.id, 'featBeingPerformed', featBeingPerformed);
+    await this.setFlag(CastleFalkenstein.id, "featBeingPerformed", featBeingPerformed);
     
     this.sheet.render(true);
   }
@@ -62,14 +62,14 @@ export class CastleFalkensteinCards extends Cards {
   }
 
   isCorrectFeatSuit(card) {
-    return (card.suit == "joker" ||
-            (CastleFalkenstein.settings.divorceVariation != CastleFalkenstein.DIVORCE_VARIATION_OPTIONS.disabled
-             ? (card.suit == this.featBeingPerformed?.divorceSuit)
-             : (card.suit == this.featBeingPerformed?.ability.system.suit)));
+    return (card.suit === "joker" ||
+            (CastleFalkenstein.settings.divorceVariation !== CastleFalkenstein.DIVORCE_VARIATION_OPTIONS.disabled
+             ? (card.suit === this.featBeingPerformed?.divorceSuit)
+             : (card.suit === this.featBeingPerformed?.ability.system.suit)));
   }
 
   isDivorceUsed() {
-    return this.featBeingPerformed?.divorceSuit != this.featBeingPerformed?.ability.system.suit;
+    return this.featBeingPerformed?.divorceSuit !== this.featBeingPerformed?.ability.system.suit;
   }
 
   computeFeatTotal() {
@@ -79,24 +79,24 @@ export class CastleFalkensteinCards extends Cards {
       if (card.getFlag(CastleFalkenstein.id, "selected")) {
         if (this.isCorrectFeatSuit(card)) {
           if (this.isDivorceUsed() &&
-              card.suit == this.featBeingPerformed?.divorceSuit &&
-              CastleFalkenstein.settings.divorceVariation == CastleFalkenstein.DIVORCE_VARIATION_OPTIONS.halfValue)
+              card.suit === this.featBeingPerformed?.divorceSuit &&
+              CastleFalkenstein.settings.divorceVariation === CastleFalkenstein.DIVORCE_VARIATION_OPTIONS.halfValue)
             total += Math.floor(card.value / 2);
           else
             total += card.value;
         } else {
-          if (CastleFalkenstein.settings.halfOffVariation == CastleFalkenstein.HALF_OFF_VARIATION_OPTIONS.option1) {
+          if (CastleFalkenstein.settings.halfOffVariation === CastleFalkenstein.HALF_OFF_VARIATION_OPTIONS.option1) {
             // always half-off
             total += Math.floor(card.value / 2);
-          } else if (CastleFalkenstein.settings.halfOffVariation == CastleFalkenstein.HALF_OFF_VARIATION_OPTIONS.option2) {
+          } else if (CastleFalkenstein.settings.halfOffVariation === CastleFalkenstein.HALF_OFF_VARIATION_OPTIONS.option2) {
             // Decision taken (b/c it's more natural):
             // In case Divorce is used, color-matching is based on the selected suit, not the original one from the Ability.
             const referenceSuit = this.isDivorceUsed() ? this.featBeingPerformed?.divorceSuit : this.featBeingPerformed?.ability.system.suit;
 
-            if (card.suit == "spades"   && referenceSuit == "clubs"    ||
-                card.suit == "clubs"    && referenceSuit == "spades"   ||
-                card.suit == "hearts"   && referenceSuit == "diamonds" ||
-                card.suit == "diamonds" && referenceSuit == "hearts") {
+            if (card.suit === "spades"   && referenceSuit === "clubs"    ||
+                card.suit === "clubs"    && referenceSuit === "spades"   ||
+                card.suit === "hearts"   && referenceSuit === "diamonds" ||
+                card.suit === "diamonds" && referenceSuit === "hearts") {
               // same color
               total += Math.floor(card.value / 2);
             } else {
@@ -158,13 +158,13 @@ export class CastleFalkensteinCards extends Cards {
       spellBeingCast.harmonics = [];
       let maxHarmonicValue = 0;
       for (const card of this.cards) {
-        if (card.suit == "joker") {
+        if (card.suit === "joker") {
           spellBeingCast.isWildSpell = true;
           spellBeingCast.harmonics = [];
           spellBeingCast.powerGathered = "∞";
           break;
         } else {
-          if (card.suit == spellBeingCast.spell.system.suit)
+          if (card.suit === spellBeingCast.spell.system.suit)
             spellBeingCast.powerGathered += card.value;
           else {
             spellBeingCast.powerGathered += 1;
@@ -172,14 +172,14 @@ export class CastleFalkensteinCards extends Cards {
             if (card.value > maxHarmonicValue) {
               spellBeingCast.harmonics = [ card.suit ];
               maxHarmonicValue = card.value;
-            } else if (card.value == maxHarmonicValue) {
+            } else if (card.value === maxHarmonicValue) {
               spellBeingCast.harmonics.push(card.suit);
             }
           }
         }
       }
 
-      if (spellBeingCast.harmonics.length == 0) {
+      if (spellBeingCast.harmonics.length === 0) {
         delete spellBeingCast.harmonics;
       } else if (spellBeingCast.usesThaumixology) {
         // already added 1 point above for it
@@ -191,17 +191,17 @@ export class CastleFalkensteinCards extends Cards {
   }
 
   async startCasting(spellBeingCast) {
-    await this.unsetFlag(CastleFalkenstein.id, 'spellBeingCast');
-    await this.setFlag(CastleFalkenstein.id, 'spellBeingCast', spellBeingCast);
+    await this.unsetFlag(CastleFalkenstein.id, "spellBeingCast");
+    await this.setFlag(CastleFalkenstein.id, "spellBeingCast", spellBeingCast);
     this.sheet.render(true);
   }
 
   async stopPerformingFeat() {
-    await this.unsetFlag(CastleFalkenstein.id, 'featBeingPerformed');
+    await this.unsetFlag(CastleFalkenstein.id, "featBeingPerformed");
   }
 
   async stopCasting() {
-    await this.unsetFlag(CastleFalkenstein.id, 'spellBeingCast');
+    await this.unsetFlag(CastleFalkenstein.id, "spellBeingCast");
   }
 
 }
