@@ -8,7 +8,7 @@
 + An error notification is now displayed when the Host is not connected and a player attempts an action that requires the Host to be present.
 + Character sheets for unlinked tokens now display the prefix 'Token' before the character name.
 ### Fixed
-+ The default dimensions of PopOut! card hands have been corrected.
++ The default dimensions of PopOut! card hands have been adjusted.
 
 ## [v3.8.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.8.0) - 2024/08/15
 ### Added
