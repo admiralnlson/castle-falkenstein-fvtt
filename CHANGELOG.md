@@ -1,5 +1,10 @@
 # Changelog
 
+## [v3.9.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.9.0) - Unreleased
+### Changed
++ Character journals are now full-fledged, multi-page Journals by default. In games where these were already in use, the Host may elect to copy their contents to the new Journals (pages can be drag-and-dropped).
++ An error notification is now displayed if a player attempts an action that requires the Host to be present, while the Host is not connected.
+
 ## [v3.8.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.8.0) - 2024/08/15
 ### Added
 - The Host may now play a card from their Fortune Hand via a new, dedicated control on each card. This should make life easier for Hosts who do not use the Dwarfish Requirement Variation.

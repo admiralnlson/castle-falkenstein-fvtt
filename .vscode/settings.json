@@ -6,5 +6,7 @@
   // Relative path for User Data
   "foundryvttUserData": "data",
   // name of the world opened by FoundryVTT before debug starts
-  "foundryvttDebugWorld": "chateau-falkenstein"
+  "foundryvttDebugWorld": "chateau-falkenstein",
+  // Whether to inspect Node (use "--inspect") or not (use "")
+  "inspectNode": "--inspect"
 }

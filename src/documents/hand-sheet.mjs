@@ -39,6 +39,23 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     }));
   }
 
+  static async onPopout(app, popout) {
+    if (app?.options?.template == "systems/castle-falkenstein/src/documents/hand-sheet.hbs") {
+      const cardWidth = CastleFalkenstein.settings.cardWidth;
+
+      const hand = app.object;
+      const deckType = hand.getFlag(CastleFalkenstein.id, "type");
+      const deck = CastleFalkenstein.deck(deckType);
+
+      const innerWidth = cardWidth * (deckType == "fortune" ? 2.5 : 3.5);
+      const innerHeight = CastleFalkenstein.computeCardHeight(deck) * (deckType == "fortune" ? 1.2 : 1.3)
+        + (deckType == "fortune" ? CastleFalkensteinHandSheet.HEIGHT_WITH_FEAT : CastleFalkensteinHandSheet.HEIGHT_WITH_SPELL) + 5;
+
+      popout.resizeTo(innerWidth + popout.outerWidth - app.options.width,
+                      innerHeight + popout.outerHeight - app.options.height);
+    }
+  }
+
   /** @override */
   get title() {
     const hand = this.object;
@@ -165,8 +182,6 @@ export class CastleFalkensteinHandSheet extends CardsHand {
                             : "";
     }
 
-
-
     context.disabled = {};
 
     context.disabled.openActor =                            context.inCompendium || CastleFalkensteinHandSheet.openActorDisabled(hand);
@@ -220,34 +235,6 @@ export class CastleFalkensteinHandSheet extends CardsHand {
         card.style.transform = `rotateZ(${(factor * halfAngle)}deg) translateX(${factor * halfTranslation}px) translateY(var(--card-hover-translateY))`;
         card.style["z-index"] = 302 + i*4;
       }
-    }
-  }
-
-  // not used
-  cardZoom(event) {
-    let eventCard = event.currentTarget.closest('li.card');
-    eventCard.classList.toggle('focusedCard');
-
-    const parent = eventCard.parentNode;
-    const index = Array.prototype.indexOf.call(parent.children, eventCard);
-
-    if (eventCard.classList.contains("focusedCard")) {
-      eventCard.setAttribute("data-transf", eventCard.style.transform);
-      eventCard.setAttribute("data-zind", eventCard.style["z-index"]);
-
-      const hand = this.object;
-      const typeFlag =  hand.getFlag(CastleFalkenstein.id, "type");
-      const deck = CastleFalkenstein.deck(typeFlag);
-      const cardHeight = CastleFalkenstein.computeCardHeight(deck);
-      const scaleFactor = (cardHeight + 60) / cardHeight;
-      eventCard.style.transform = `scale(${scaleFactor}) translateY(-25px)`;
-      eventCard.children[1].style.transform = `scale(${1/scaleFactor})`;
-
-      eventCard.style["z-index"] = 400 + index * 4;
-    } else {
-      eventCard.style.transform = eventCard.getAttribute("data-transf");
-      eventCard.style["z-index"] = eventCard.getAttribute("data-zind");
-      eventCard.children[1].style.transform = `scale(1)`;
     }
   }
 
@@ -334,7 +321,12 @@ export class CastleFalkensteinHandSheet extends CardsHand {
   }
 
   static async triggerFeat(hand) {
-  
+    if (!game.users.activeGM) {
+      // planning to use executeAsGM below
+      CastleFalkenstein.notif.warn(game.i18n.localize("castle-falkenstein.notifications.cannotCarryOutActionWithoutHost"));
+      return;
+    }
+
     const cardsPlayed = hand.cards.filter(card => card.getFlag(CastleFalkenstein.id, "selected"));
 
     //
@@ -512,6 +504,12 @@ export class CastleFalkensteinHandSheet extends CardsHand {
   }
 
   static async releasePower(card, hand, force = false) {
+    if (!game.users.activeGM) {
+      // planning to use executeAsGM below
+      CastleFalkenstein.notif.warn(game.i18n.localize("castle-falkenstein.notifications.cannotCarryOutActionWithoutHost"));
+      return;
+    }
+
     const actorId = hand.getFlag(CastleFalkenstein.id, "actor");
     if (actorId === "host")
       return; // should never be able to click from host hand anyway (see 'disabled' above)
@@ -554,6 +552,11 @@ export class CastleFalkensteinHandSheet extends CardsHand {
   }
 
   static async castSpell(hand, force=false) {
+    if (!game.users.activeGM) {
+      // planning to use executeAsGM below
+      CastleFalkenstein.notif.warn(game.i18n.localize("castle-falkenstein.notifications.cannotCarryOutActionWithoutHost"));
+      return;
+    }
 
     const actorId = hand.getFlag(CastleFalkenstein.id, "actor");
     if (actorId === "host")
@@ -669,6 +672,12 @@ export class CastleFalkensteinHandSheet extends CardsHand {
   }
 
   static async cancelSpell(hand) {
+    if (!game.users.activeGM) {
+      // planning to use executeAsGM below
+      CastleFalkenstein.notif.warn(game.i18n.localize("castle-falkenstein.notifications.cannotCarryOutActionWithoutHost"));
+      return;
+    }
+
     const actorId = hand.getFlag(CastleFalkenstein.id, "actor");
     if (actorId === "host")
       return; // should never be able to click from host hand anyway (see 'disabled' above)

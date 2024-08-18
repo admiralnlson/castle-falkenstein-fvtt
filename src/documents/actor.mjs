@@ -1,6 +1,7 @@
 import { CASTLE_FALKENSTEIN } from "../config.mjs";
 import { CastleFalkenstein } from "../castle-falkenstein.mjs";
 import { CastleFalkensteinDefineSpell } from "../forms/define-spell.mjs";
+import { CastleFalkensteinCards } from "./cards.mjs";
 
 /**
  * @extends {Actor}
@@ -9,6 +10,10 @@ export class CastleFalkensteinActor extends Actor {
 
   computeHandName(handType) {
     return game.i18n.format(`castle-falkenstein.${handType}.hand.name`, {character: this.name});
+  }
+
+  computeDiaryName() {
+    return game.i18n.format(`castle-falkenstein.diary.name`, {character: this.name});
   }
 
   /** @override */
@@ -30,48 +35,61 @@ export class CastleFalkensteinActor extends Actor {
           }
         }
       });
+
+      // rename the diary as well, if it exists
+      const diary = CastleFalkenstein.searchUniqueDiary(this);
+      if (diary) {
+        await diary.update({
+          name: this.computeDiaryName()
+        });
+      }
     }
 
+    // If ownership on a Character changed
     if (game.user.id == user && changed.ownership) {
-      // If ownership on a Character changed and no player owns it anymore, delete their Fortune hand if it exists.
-      // We assume here that whoever triggered this change has the required permissions to do it (Actor and Fortune Hand permissions are sync'ed).
+      
+      // if no player owns it anymore, delete their Fortune hand if it exists.
+      // We assume here that whoever triggered this change has the required permissions to do it (Actor and Hands permissions are sync'ed).
       if (!this.hasPlayerOwner) {
         const hand = CastleFalkenstein.searchUniqueHand("fortune", this, true);
         if (hand) {
-          const actorId = hand.getFlag(CastleFalkenstein.id, "actor");
-          if (actorId != "host") {
-            await hand.delete();
-          }
+         // No need for a socket here.
+         // Whoever is updating ownership on the Actor is expected to have the ownership level necessary to delete the Hand also.
+          await hand.delete();
         }
       }
 
-      // If ownership on a Character changed, update the ownership of their Fortune/Sorcery hands to match, if they (still, see above) exist.
+      // Update the ownership of their Fortune/Sorcery hands and Diary to match, if they still (see above) exist.
       [ "fortune", "sorcery" ].forEach(async (handType) => {
-        const hand = CastleFalkenstein.searchUniqueHand(handType, this);
+        const hand = CastleFalkenstein.searchUniqueHand(handType, this, true);
         if (hand) {
-          const actorId = hand.getFlag(CastleFalkenstein.id, "actor");
-          if (actorId != "host") {
-            // No need for a socket here.
-            // Whoever updated ownership on the the Actor is expected to have the ownership level necessary to update them on the Hand also (with default role ownership at least, they should).
-            await hand.update({
-              ownership: this.ownership
-            });
-          }
+          // No need for a socket here.
+          // Whoever is updating ownership on the Actor is expected to have the ownership level necessary to update them on the Hand also.
+          await hand.update({
+            ownership: this.ownership
+          });
         }
       });
+
+      // Update the ownership of their Diary to match, if it exists.
+      const diary = CastleFalkenstein.searchUniqueDiary(this);
+      if (diary) {
+        await diary.update({
+          ownership: this.ownership
+        });
+      }
     }
   }
-  
 
   /** @override */
   async _preDelete(changed, options, user) {
     await super._preDelete(changed, options, user);
 
-    if (game.user.id != user) return;
-
     if (this.isToken)
       return;
 
+    // Delete their Fortune/Sorcery hand if it exists.
+    // We assume here that whoever triggered this deletion has the required permissions to do it (Actor and Hands permissions are sync'ed).
     [ "fortune", "sorcery" ].forEach(async (handType) => {
       const hand = CastleFalkenstein.searchUniqueHand(handType, this);
       if (hand) {
@@ -81,6 +99,14 @@ export class CastleFalkensteinActor extends Actor {
         }
       }
     });
+
+    // Diaries are not deleted. But a notification saying it still exists does not hurt
+    const diary = CastleFalkenstein.searchUniqueDiary(this);
+    if (diary) {
+      CastleFalkenstein.notif.info("castle-falkenstein.notifications.deletedCharacterHadADiary", {
+        character: this.name
+      });
+    }
   }
 
   handIfExists(handType) {
@@ -91,10 +117,40 @@ export class CastleFalkensteinActor extends Actor {
     let hand = this.handIfExists(handType);
 
     if (!hand && !this.isToken) {
+      if (!game.users.activeGM) {
+        // planning to use executeAsGM below
+        CastleFalkenstein.notif.warn(game.i18n.localize("castle-falkenstein.notifications.cannotCarryOutActionWithoutHost"));
+        return;
+      }
       hand = await CastleFalkenstein.socket.executeAsGM("createHand", handType, this.id);
+
+      if (hand && !(hand instanceof CONFIG.Cards.documentClass))
+        hand = new CONFIG.Cards.documentClass(hand);
     }
 
     return hand;
+  }
+
+  diaryIfExists() {
+    return CastleFalkenstein.searchUniqueDiary(this);
+  }
+
+  async diary() {
+    let diary = this.diaryIfExists();
+
+    if (!diary && !this.isToken) {
+      if (!game.users.activeGM) {
+        // planning to use executeAsGM below
+        CastleFalkenstein.notif.warn(game.i18n.localize("castle-falkenstein.notifications.cannotCarryOutActionWithoutHost"));
+        return;
+      }
+      diary = await CastleFalkenstein.socket.executeAsGM("createDiary", this.id);
+
+    if (diary && !(diary instanceof CONFIG.JournalEntry.documentClass))
+      diary = new CONFIG.JournalEntry.documentClass(diary);
+    }
+
+    return diary;
   }
 
   spellBeingCast() {

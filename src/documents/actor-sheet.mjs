@@ -15,7 +15,7 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
       height: 600,
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }],
       dragDrop: [{
-        dragSelector: ".items-list > .item > .item-drag, .fortune-hand-show, .sorcery-hand-show",
+        dragSelector: ".items-list > .item > .item-drag, .diary-show, .fortune-hand-show, .sorcery-hand-show",
         dropSelector: ".items-list"
       }],
       scrollY: [".items-list"]
@@ -81,6 +81,12 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
     // convenience so context and name/target are aligned for system properties
     context.system = context.actor.system;
 
+    context.canOpenDiary = !context.actor.isToken && context.actor.isOwner;
+    context.diaryIfExists = (await context.actor.diaryIfExists());
+    context.diaryVisible = context.diaryIfExists?.sheet.rendered;
+    context.diaryUuid = context.diaryIfExists?.uuid;
+    context.diaryName = context.diaryIfExists ? context.diaryIfExists.name : context.actor.computeDiaryName();
+
     context.enrichedDescription = await TextEditor.enrichHTML(context.system.description, {async: true});
     context.enrichedDiary = await TextEditor.enrichHTML(context.system.diary, {async: true});
     context.enrichedHostNotes = await TextEditor.enrichHTML(context.system.hostNotes, {async: true});
@@ -103,8 +109,12 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
     context.hideWounds = (CastleFalkenstein.settings.damageSystem == CastleFalkenstein.DAMAGE_SYSTEM_OPTIONS.harmRank);
     context.hideHarmRank = (CastleFalkenstein.settings.damageSystem == CastleFalkenstein.DAMAGE_SYSTEM_OPTIONS.wounds);
 
-    context.fortuneHandUuid = (await context.actor.handIfExists("fortune"))?.uuid;
-    context.sorceryHandUuid = (await context.actor.handIfExists("sorcery"))?.uuid;
+    context.fortuneHandIfExists = (await context.actor.handIfExists("fortune"));
+    context.fortuneHandVisible = context.fortuneHandIfExists?.sheet.rendered;
+    context.fortuneHandUuid = context.fortuneHandIfExists?.uuid;
+    context.sorceryHandIfExists = (await context.actor.handIfExists("sorcery"));
+    context.sorceryHandVisible = context.sorceryHandIfExists?.sheet.rendered;
+    context.sorceryHandUuid = context.sorceryHandIfExists?.uuid;
 
     return context;
   }
@@ -120,6 +130,13 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
   activateListeners(html) {
     super.activateListeners(html);
  
+    if (this.object.isOwner) {
+      html.find('.diary-show').click(async (ev) => {
+        const diary = await this.actor.diary();
+        diary.sheet.render(true);
+      });
+    }
+
     html.find('.fortune-hand-show').click(async (ev) => {
       const hand = await this.actor.hand("fortune");
       hand.sheet.render(true);
@@ -179,9 +196,11 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
 
     event.dataTransfer.setDragImage(event.target.parentElement, 0, 0);
 
-    if (event.target.dataset.type="Cards" && event.target.dataset.uuid) {
+    const targetA = event.target.closest("a");
+
+    if (targetA.dataset.uuid) {
       const dragData = {
-        uuid: event.target.dataset.uuid
+        uuid: targetA.dataset.uuid
       };
       event.dataTransfer.setData("text/plain", JSON.stringify(dragData));
     }
@@ -244,4 +263,3 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
 
 }
 
-Hooks.on("renderCastleFalkensteinActorSheet", (app, html, data) => CastleFalkensteinActorSheet.onRender(app, html, data));

@@ -81,7 +81,7 @@
       "babeleInstallRequired": "The Babele module is not installed! Install and activate it in order for Compendiums to be translated.",
       "babeleActivationRequired": "The Babele module is installed, but it is not active! Activate it in order for Compendiums to be translated.",
       "playerHasInsufficientOwnershipOnCardStacks": "Player '{player}' has insufficient ownership on:",
-      "createdCards": "Created:",
+      "created": "Created:",
       "characterWasShown": "Character '{name}' was shown to players.",
       "macroForOwnedItems": "You can only create macro buttons for owned Items.",
       "abilityInvalidSuit": "The suit associated to the ability is invalid.",
@@ -96,7 +96,9 @@
       "cannotDraw": "There are no available cards left in the deck. Cannot draw any.",
       "incompleteDraw": "There are no available cards left in the deck. Only {nb1} cards out of {nb2} could be drawn.",
       "lastCardDrawn": "There are no available cards left in the deck. The last card was just drawn.",
-      "mismatchingCardTypeInDrop": "Cannot drop card this card here. It has an incompatible type (Sorcery vs Fortune)."
+      "mismatchingCardTypeInDrop": "Cannot drop card this card here. It has an incompatible type (Sorcery vs Fortune).",
+      "deletedCharacterHadADiary": "Character '{character}' had a Diary, which you may want to delete also.",
+      "cannotCarryOutActionWithoutHost": "Cannot carry out this action without the Host present. It would lead to errors."
     },
 
     "dialogs": {
@@ -114,6 +116,10 @@
     "cardsDirectory": {
       "decksFolder": "Decks",
       "characterHandsFolder": "Character hands"
+    },
+
+    "journalDirectory": {
+      "characterDiariesFolder": "Character diaries"
     },
 
     "character": "Character",
@@ -157,16 +163,21 @@
         "diamonds": "Material",
         "clubs": "Elemental"
       },
-      "cannotBeUsedOnUnlinkedTokens": "Sorcery cannot be used from a token which is not linked to its Actor."
+      "cannotBeUsedOnUnlinkedTokens": "Sorcery cannot be used from a Token which is not linked to its Actor."
     },
 
     "empty": "",
-    "openCharacterSheet": "Open the character sheet",
+    "openCharacterSheet": "Display the character sheet",
 
     "description": "Description",
     "icon": "Icon",
 
-    "diary": "Diary",
+    "diary": {
+      "self": "Diary",
+      "name": "Diary - {character}",
+      "render": "Display the character's diary",
+      "cannotBeUsedOnUnlinkedTokens": "Cannot display the diary of a Token which is not linked to its Actor."
+    },
 
     "item": {
       "add": "Add",

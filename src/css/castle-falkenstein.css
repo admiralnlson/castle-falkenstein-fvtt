@@ -113,7 +113,12 @@
   flex: 1;
 }
 
-.castle-falkenstein .sheet-header h1.charname {
+.castle-falkenstein .name-and-diary {
+  grid-template-columns: 1fr max-content;
+}
+
+.castle-falkenstein .sheet-header h1.charname,
+.castle-falkenstein .sheet-header div.diary {
   height: 50px;
   padding: 0px;
   margin: 5px 0;
@@ -124,6 +129,19 @@
   width: 100%;
   height: 100%;
   margin: 0;
+}
+
+.castle-falkenstein .name-and-diary > .diary > a > img {
+  height: 50px;
+  border: none;
+}
+
+.castle-falkenstein .name-and-diary > .diary > a > img:hover {
+  filter: drop-shadow(0 0 5px var(--color-shadow-primary));
+}
+
+.castle-falkenstein .name-and-diary > .diary > a[disabled] > img:hover {
+  filter: none;
 }
 
 .castle-falkenstein .resource {
@@ -762,6 +780,10 @@ div.divorce {
   justify-content: space-evenly;
 }
 
+.app.castle-falkenstein.cards-hand form {
+  max-height: 80px;
+}
+
 .handedCards {
   display: flex;
   flex-direction: row;
@@ -1153,11 +1175,12 @@ div.gm-screen-grid-cell-content.castle-falkenstein.actor > form li.item {
   margin-right: 10px;
 }
 
-.system-castle-falkenstein .tab-link[disabled] {
+.system-castle-falkenstein .tab-link[disabled],
+.system-castle-falkenstein a.diary-show[disabled] {
   color: var(--color-text-dark-inactive);
   pointer-events: auto; /* allows to still display the hint */
 }
-
-.system-castle-falkenstein a.tab-link[disabled]:hover {
+.system-castle-falkenstein a.tab-link[disabled]:hover,
+.system-castle-falkenstein a.diary-show[disabled]:hover {
   text-shadow: none;
 }

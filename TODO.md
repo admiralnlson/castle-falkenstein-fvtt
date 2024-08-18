@@ -7,8 +7,11 @@
 
 ### Shortlist
 
-+ [M] Replace the Journal tab in the sheet with a link to a full-fledged Journal item
-  + [C🔥] Allow a simple transition for those who already use one in their world
++ [🔥] Card hands popouts don't display as well as they used to. Need to revise the CSS for popouts specifically.
+
+### Shortlist
+
++ [C🔥] Make full text search recursive to include Text page content search as well in the Journal directory (possibly as an option) or Open as request to Core
 
 ### Duel mechanics
 
@@ -64,6 +67,7 @@
 ### Cards
 + [C] Card hand button to show a Fortune or Sorcery hand in chat (or simply on screen)
 + [S] deplete Host and Character hands before changing Decks (maybe ask for confirmation first)
++ [C] Add default controls (draw, pass, reset) on non-system specific card hands
 
 ### Fortune Hand
 

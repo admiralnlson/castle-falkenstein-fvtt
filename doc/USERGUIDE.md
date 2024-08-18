@@ -92,17 +92,22 @@ The folder will only appear if the Host first goes to the Compendium tab, right 
 
 Once imported, the "Abilities" folder in Foundry's "Items" sidebar tab may be drag-and-dropped onto the "Abilities"tab of Character sheets to initialize it with all abilities.
 
-## Alternative: Diaries as Journal Entries
-To reinforce the notion of character diaries being a part of the world, the Host may elect to have a dedicated Journal Entry for the diary of Dramatic (or Host) Characters.
-In this case, a link to the Journal Entry should probably be added in the Journal tab of the Character Sheet, for easier access by the Player or Host.
+# Diary
 
-# Card hands
+A Dramatic character's Diary is accessible via a link at the top-right of the character sheet.
+The Diary, unless it already exists, is created when this link is first clicked.
+
+Host Characters may have Diaries as well.
+
+When a diary is no longer needed, the Host must manually delete it from the Journal sidebar. The system will not automatically delete any diary.
+
+# Fortune and Sorcery hands
 
 A Dramatic character's Fortune (resp. Sorcery) hand is accessible via a link at the top-left of the Talents (resp. Spells) tab in the character sheet.
 The cards hand, unless it already exists, is created when this link is clicked or when the first Feat (resp. Spell) is performed (resp. defined).
 
 The Host has a single Fortune Hand shared by all Host Characters.
-Host Characters' Sorcery Hands function the same as for Dramatic Characters: one per character.
+Host Characters' Sorcery Hands work the same as for Dramatic Characters: one per character.
 
 Deleting a hand will first return all cards it contains to the parent deck.
 

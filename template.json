@@ -1,12 +1,10 @@
 {
   "Actor": {
     "types": ["character"],
-    "htmlFields": ["description", "diary", "hostNotes"],
     "character": {}
   },
   "Item": {
     "types": ["ability", "weapon", "possession", "spell"],
-    "htmlFields": ["description"],
     "ability": {},
     "weapon": {},
     "possession": {},

@@ -81,7 +81,7 @@
       "babeleInstallRequired": "Le module 'Babele' n'est pas installé ! Installez et activez-le afin que les Compendiums puissent être traduits.",
       "babeleActivationRequired": "Le module 'Babele' est installé, mais n'est pas activé ! Activez-le afin que les Compendiums puissent être traduits.",
       "playerHasInsufficientOwnershipOnCardStacks": "Le joueur '{player}' a des droits insuffisants sur :",
-      "createdCards": "Créé:",
+      "created": "Créé:",
       "characterWasShown": "Le personnage '{name}' a été montré aux joueurs.",
       "macroForOwnedItems": "Vous ne pouvez créer des bouton de macros que pour les items que vous possédez.",
       "abilityInvalidSuit": "La couleur associée au talent n'est pas valide.",
@@ -96,7 +96,9 @@
       "cannotDraw": "La pioche est épuisée. Impossible de tirer même une carte.",
       "incompleteDraw": "La pioche est épuisée. Seulement {nb1} cartes sur {nb2} ont pu être tirées.",
       "lastCardDrawn": "La pioche est épuisée. La dernière carte vient d'être tirée.",
-      "mismatchingCardTypeInDrop": "Impossible de transférer cette carte ici. Elle est du mauvais type (Destin vs Sorcellerie)."
+      "mismatchingCardTypeInDrop": "Impossible de transférer cette carte ici. Elle est du mauvais type (Destin vs Sorcellerie).",
+      "deletedCharacterHadADiary": "Le personnage '{character}' avait un journal, que vous pourriez également vouloir supprimer.",
+      "cannotCarryOutActionWithoutHost": "Impossible d'effectuer cette action sans la présence de l'hôte. Cela entraînerait des erreurs."
     },
 
     "dialogs": {
@@ -114,6 +116,10 @@
     "cardsDirectory": {
       "decksFolder": "Pioches",
       "characterHandsFolder": "Mains des personnages"
+    },
+
+    "journalDirectory": {
+      "characterDiariesFolder": "Journaux des personnages"
     },
 
     "character": "Personnage",
@@ -161,12 +167,17 @@
     },
 
     "empty": "",
-    "openCharacterSheet": "Ouvrir la feuille de personnage",
+    "openCharacterSheet": "Afficher la feuille de personnage",
 
     "description": "Description",
     "icon": "Icone",
 
-    "diary": "Journal",
+    "diary": {
+      "self": "Journal",
+      "name": "Journal - {character}",
+      "render": "Afficher le journal du personnage",
+      "cannotBeUsedOnUnlinkedTokens": "Impossible d'afficher le journal d'un jeton qui n'est pas lié à son acteur."
+    },
 
     "item": {
       "add": "Ajouter",

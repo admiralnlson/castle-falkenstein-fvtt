@@ -102,6 +102,11 @@ export class CastleFalkenstein {
     if (hand.length > 0)
       return hand[0];
 
+    if (!game.users.activeGM) {
+      // planning to use executeAsGM below
+      CastleFalkenstein.notif.warn(game.i18n.localize("castle-falkenstein.notifications.cannotCarryOutActionWithoutHost"));
+      return;
+    }
     hand = await this.socket.executeAsGM("createHand", "fortune", "host");
     return hand;
   }
@@ -115,16 +120,16 @@ export class CastleFalkenstein {
     return game.i18n.localize(`castle-falkenstein.settings.${ability}Ability.default`);
   }
 
-  static async cardsFolder(type, name) {
+  static async folder(documentType, flagType, name) {
 
-    // Flags which should be owned by the folder
+    // Flags for the folder
     const folderFlag = {
-      type: type
+      type: flagType
     };
 
     // Does the folder already exist?
     const existingFolder = game.folders.find(f => {
-      if (f.type != "Cards") { return false; }
+      if (f.type != documentType) { return false; }
 
       const flag = f.flags['castle-falkenstein'] ?? {};
       return flag?.type == folderFlag.type;
@@ -137,11 +142,19 @@ export class CastleFalkenstein {
     // Create a new folder
     const newFolder = await Folder.create({
       name: name,
-      type: 'Cards',
+      type: documentType,
       sorting: 'm',
       "flags.castle-falkenstein": folderFlag
     });
     return newFolder;
+  }
+
+  static async cardsFolder(flagType, name) {
+    return CastleFalkenstein.folder("Cards", flagType, name);
+  }
+
+  static async diariesFolder(name) {
+    return CastleFalkenstein.folder("JournalEntry", "character-diaries", name);
   }
 
   static translateCardStack(stack) {
@@ -229,15 +242,15 @@ export class CastleFalkenstein {
         cardsCreatedI18n += "<br/>  - " + game.i18n.localize("castle-falkenstein.settings.sorceryDeck.name");
       }
 
-      // TBC Create Host Fortune hand if missing
+      // Create Host Fortune hand if missing
       await this.hostFortuneHand();
 
       // TBC Create PC-owned actors' hands if missing
 
-      // Notify the user
+      // Notify the user (Host)
 
       if (cardsCreatedI18n)
-        CastleFalkenstein.notif.info(game.i18n.localize("castle-falkenstein.notifications.createdCards") + cardsCreatedI18n);
+        CastleFalkenstein.notif.info(game.i18n.localize("castle-falkenstein.notifications.created") + cardsCreatedI18n);
     }
   }
 
@@ -263,27 +276,28 @@ export class CastleFalkenstein {
     return null;
   }
 
-  static async onRenderPlayerList(application, html, data) {
-    this.checkOwnershipsOnDecks();
+  static searchUniqueDiary(actor) {
+
+    if (!actor || actor.isToken)
+      return;
+
+    const actorFlag = actor.id;
+
+    const search = game.journal.filter(je => je.getFlag(this.id, "type") === "diary" && je.getFlag(this.id, "actor") === actorFlag);
+
+    if (search.length > 1) {
+      CastleFalkenstein.notif.error("Multiple " + handType + " hands found for " + actor.name);
+      return;
+    }
+    
+    if (search.length == 1)
+      return search[0];
+
+    return;
   }
 
-  static async onPopout(app, popout) {
-
-    if (app?.options?.template == "systems/castle-falkenstein/src/documents/hand-sheet.hbs") {
-      const cardWidth = CastleFalkenstein.settings.cardWidth;
-
-      const hand = app.object;
-      const deckType = hand.getFlag(CastleFalkenstein.id, "type");
-      const deck = CastleFalkenstein.deck(deckType);
-
-      // cards in the hand besides the first overlap each other by 0.4x their width (the fact they rotate should not influence the overall width much).
-      const innerWidth = cardWidth * (1 + (app.object.cards.size > 0 ? app.object.cards.size - 1 : 0) * 0.41);
-      // cards typically have a 2x3 ratio (width *1.5), may be focused (scale: 1.5) and there is a button to return sorcery cards underneath them
-      const innerHeight = CastleFalkenstein.computeCardHeight(deck) + 60 + 50;
-
-      popout.resizeTo(innerWidth + popout.outerWidth - app.options.width,
-                      innerHeight + popout.outerHeight - app.options.height);
-    }
+  static async onRenderPlayerList(application, html, data) {
+    this.checkOwnershipsOnDecks();
   }
 
   static async onRenderPlayerList(application, html, data) {
@@ -351,7 +365,9 @@ export class CastleFalkenstein {
     let actor;
     if (actorFlag != "host") {
       actor = game.actors.get(actorFlag);
-      if (actor && !actor.hasPlayerOwner)
+      if (!actor)
+        return;
+      if (!actor.hasPlayerOwner)
         actorFlag = "host";
     }
 
@@ -380,10 +396,66 @@ export class CastleFalkenstein {
       const hand = await Cards.create(handData);
 
       if (hand) {
-        CastleFalkenstein.notif.info(game.i18n.localize("castle-falkenstein.notifications.createdCards") + "<br/>  - " + hand.name);
+        CastleFalkenstein.notif.info(game.i18n.localize("castle-falkenstein.notifications.created") + "<br/>  - " + hand.name);
       }
 
       return hand;
+    }
+  }
+
+  static async createDiary(actorFlag) {
+
+    const actor = game.actors.get(actorFlag);
+    if (!actor)
+      return;
+ 
+    // create diary
+    const diaryData = {
+      name: actor.computeDiaryName(),
+      ownership: actor.ownership, // diary inherit the ownership from the actor they belong to
+      folder: (await CastleFalkenstein.diariesFolder(game.i18n.localize("castle-falkenstein.journalDirectory.characterDiariesFolder"))).id,
+      "flags.castle-falkenstein": { type: "diary", actor: actor.id }
+    };
+
+    if (diaryData) {
+      const diary = await JournalEntry.create(diaryData);
+
+      if (!diary) {
+        CastleFalkenstein.log.error(`Could not generate diary for character '${actor.name}' (${actor.id})`);
+        return;
+      }
+
+      if (actor.system.diary) {
+
+        if (actor.system.diary != "") {
+          const pageData = {
+            name: "---",
+            type: "text",
+            text: {
+              content: actor.system.diary,
+              format: CONST.JOURNAL_ENTRY_PAGE_FORMATS.HTML
+            },
+            sort: CONST.SORT_INTEGER_DENSITY,
+            flags: {
+              ["castle-falkenstein"]: {
+                "copiedFromLegacyDiary": true
+              }
+            }
+          };
+          await JournalEntryPage.create(pageData, {parent: diary});
+        }
+
+        // whoever is creating the diary associated to this actor has ownership on the ACtor, otherwise they would not be able to click the button that opens it.
+        await actor.update({
+          ["system.diary"]: null
+        });
+      }
+      
+      CastleFalkenstein.notif.info(game.i18n.localize("castle-falkenstein.notifications.created") + "<br/>  - " + diary.name);
+
+      CastleFalkenstein.log.info("createDiary():");
+      CastleFalkenstein.log.info(diary);
+      return diary;
     }
   }
 
@@ -546,7 +618,6 @@ export class CastleFalkenstein {
 
     // game.user is not defined early enough to be able to set this in CastleFalkensteinActorDataModel.defineSchema
     if (game.release.generation >= 11) {
-      CONFIG.Actor.dataModels.character.schema.fields.diary.textSearch = game.user.isGM;
       CONFIG.Actor.dataModels.character.schema.fields.hostNotes.textSearch = game.user.isGM;
     }
   
@@ -633,6 +704,7 @@ export class CastleFalkenstein {
     // register socket functions
     this.socket.register("showActor", this.showActor);
     this.socket.register("createHand", this.createHand);
+    this.socket.register("createDiary", this.createDiary);
     this.socket.register("returnBackToDeck", this.returnBackToDeck)
   }
 
@@ -918,32 +990,34 @@ export class CastleFalkenstein {
   }
 
   static async addMacroAtHotbarSlot(name, img, command, slot) {
-    let macro = game.macros.find(m => (m.name === name) && (m.command === command));
-    if (!macro) {
-      macro = await Macro.create({
-        name: name,
-        type: CONST.MACRO_TYPES.SCRIPT,
-        img: img,
-        command: command
-      });
-    }
-    
+    const macro = await Macro.create({
+      name: name,
+      type: CONST.MACRO_TYPES.SCRIPT,
+      img: img,
+      command: command
+    });
     game.user.assignHotbarMacro(macro, slot);
   }
 
   static onHotbarDrop(hotbar, data, slot) {
     if (!data.uuid) return true;
     const doc = fromUuidSync(data.uuid);
+    if (!doc)
+      return;
 
     if (doc instanceof CastleFalkensteinItem && doc.parent instanceof CastleFalkensteinActor) {
       const macroName = `${doc.rollType.i18nLabel} ${doc.name} ${game.user.isGM ? "(" + doc.parent.name + ")" : ""}`;
       CastleFalkenstein.addMacroAtHotbarSlot(macroName, doc.img, `fromUuidSync("${doc.uuid}").roll();`, slot);
       return false;
     } else {
-      const macroName = `${game.i18n.localize("Display")} ${doc.name}`;
+      const macroName = `${doc.name}`;
       if (!doc.img) {
-        if (doc instanceof JournalEntry)
-          doc.img = 'icons/svg/book.svg';
+        if (doc instanceof JournalEntry) {
+          if (doc.getFlag("castle-falkenstein", "type") == "diary")
+            doc.img = 'systems/castle-falkenstein/src/img/secret-book-white.svg';
+          else
+            doc.img = 'icons/svg/book.svg';
+        }
       }
       CastleFalkenstein.addMacroAtHotbarSlot(macroName, doc.img, `await Hotbar.toggleDocumentSheet("${doc.uuid}");`, slot);
       return false;
@@ -1030,6 +1104,23 @@ export class CastleFalkenstein {
     }
     
   }
+
+  static refreshActorSheetIfDiary(sheet) {
+    // if a Diary, refresh the matching (not Token) Actor's sheet if open
+    const journalEntry = sheet.object;
+    if (!journalEntry.getFlag("castle-falkenstein", "type") == "diary")
+      return;
+    const actorId = journalEntry.getFlag("castle-falkenstein", "actor");
+    game.actors.get(actorId)?.sheet.render(false);
+  }
+
+  static onRenderJournalSheet(sheet, html, data) {
+    CastleFalkenstein.refreshActorSheetIfDiary(sheet);
+  }
+
+  static onCloseJournalSheet(sheet, html) {
+    CastleFalkenstein.refreshActorSheetIfDiary(sheet);
+  }
 }
 
 /* -------------------------------------------- */
@@ -1050,7 +1141,7 @@ Hooks.on("hotbarDrop", (hotbar, data, slot) => { return CastleFalkenstein.onHotb
 
 Hooks.on("renderPlayerList", (application, html, data) => CastleFalkenstein.onRenderPlayerList(application, html, data));
 
-Hooks.on("PopOut:popout", (app, popout) => { return CastleFalkenstein.onPopout(app, popout) });
+Hooks.on("PopOut:popout", (app, popout) => { return CastleFalkensteinHandSheet.onPopout(app, popout) });
 
 Hooks.once("socketlib.ready", () => CastleFalkenstein.setupSocket());
 
@@ -1062,6 +1153,11 @@ Hooks.on("preCreateChatMessage", (message, options, userId) => CastleFalkenstein
 
 Hooks.on("passCards", (from, to, options) => CastleFalkensteinCards.onPassCards(from, to, options));
 
+Hooks.on("renderCastleFalkensteinActorSheet", (app, html, data) => CastleFalkensteinActorSheet.onRender(app, html, data));
+
+Hooks.on("renderJournalSheet", (sheet, html, data) => CastleFalkenstein.onRenderJournalSheet(sheet, html, data));
+
+Hooks.on("closeJournalSheet", (sheet, html) =>  CastleFalkenstein.onCloseJournalSheet(sheet, html));
 
 /* -------------------------------------------- */
 /*  Handlebars Helpers                          */

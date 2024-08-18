@@ -7,6 +7,7 @@
       "type": "node",
       "program": "${config:foundryvttNodeJS}/resources/app/main.js",
       "args": [
+        "${config:inspectNode}",
         "--port=30001",
         "--dataPath=data",
         "--world=${config:foundryvttDebugWorld}"
