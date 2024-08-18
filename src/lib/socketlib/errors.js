@@ -1,6 +1,3 @@
-// SPDX-License-Identifier: MIT
-// Copyright (c) 2021 Manuel Vögele
-
 export class SocketlibError extends Error {
 	constructor(...args) {
 		super(...args);

@@ -1,9 +1,4 @@
-// SPDX-License-Identifier: MIT
-// Copyright (c) 2021 Manuel Vögele
-
-import {libWrapper} from "../lib-wrapper-shim/shim.js";
 import * as errors from "./errors.js";
-import { CastleFalkenstein } from "../../castle-falkenstein.mjs";
 
 const RECIPIENT_TYPES = {
 	ONE_GM: 0,
@@ -22,16 +17,34 @@ const MESSAGE_TYPES = {
 
 Hooks.once("init", () => {
 	window.socketlib = new Socketlib();
-  // Castle Falkenstein patch applied: have to change socket name
-	libWrapper.register(CastleFalkenstein.id, "Users.prototype.constructor._handleUserActivity", handleUserActivity);
 	Hooks.callAll("socketlib.ready");
-}, "WRAPPER");
+});
+
+Hooks.on("userConnected", handleUserActivity);
 
 class Socketlib {
 	constructor() {
 		this.modules = new Map();
 		this.system = undefined;
 		this.errors = errors;
+	}
+
+	registerModule(moduleName) {
+		const existingSocket = this.modules.get(moduleName);
+		if (existingSocket)
+			return existingSocket;
+		const module = game.modules.get(moduleName);
+		if (!module?.active) {
+			console.error(`socketlib | Someone tried to register module '${moduleName}', but no module with that name is active. As a result the registration request has been ignored.`);
+			return undefined;
+		}
+		if (!module.socket) {
+			console.error(`socketlib | Failed to register socket for module '${moduleName}'. Please set '"socket":true' in your manifset and restart foundry (you need to reload your world - simply reloading your browser won't do).`);
+			return undefined;
+		}
+		const newSocket = new SocketlibSocket(moduleName, "module");
+		this.modules.set(moduleName, newSocket);
+		return newSocket;
 	}
 
 	registerSystem(systemId) {
@@ -77,7 +90,7 @@ class SocketlibSocket {
 			return this._executeLocal(func, ...args);
 		}
 		else {
-			if (!game.users.find(isActiveGM)) {
+			if (!game.users.activeGM) {
 				throw new errors.SocketlibNoGMConnectedError(`Could not execute handler '${name}' (${func.name}) as GM, because no GM is connected.`);
 			}
 			return this._sendRequest(name, args, RECIPIENT_TYPES.ONE_GM);
@@ -149,7 +162,7 @@ class SocketlibSocket {
 
 	_sendRequest(handlerName, args, recipient) {
 		const message = {handlerName, args, recipient};
-		message.id = randomID();
+		message.id = foundry.utils.randomID();
 		message.type = MESSAGE_TYPES.REQUEST;
 		const promise = new Promise((resolve, reject) => this.pendingRequests.set(message.id, {handlerName, resolve, reject, recipient}));
 		game.socket.emit(this.socketName, message);
@@ -211,7 +224,7 @@ class SocketlibSocket {
 		else {
 			switch (recipient) {
 				case RECIPIENT_TYPES.ONE_GM:
-					if (!isResponsibleGM())
+					if (!game.users.activeGM?.isSelf)
 						return;
 					break;
 				case RECIPIENT_TYPES.ALL_GMS:
@@ -290,42 +303,25 @@ class SocketlibSocket {
 	}
 }
 
-function isResponsibleGM() {
-	if (!game.user.isGM)
-		return false;
-	const connectedGMs = game.users.filter(isActiveGM);
-	return !connectedGMs.some(other => other.id < game.user.id);
-}
-
-function isActiveGM(user) {
-	return user.active && user.isGM;
-}
-
-function handleUserActivity(wrapper, userId, activityData={}) {
-	const user = game.users.get(userId);
-	const wasActive = user.active;
-	const result = wrapper(userId, activityData);
-
-	// If user disconnected
-	if (!user.active && wasActive) {
+function handleUserActivity(user, active) {
+	if (!active) {
 		const modules = Array.from(socketlib.modules.values());
 		if (socketlib.system)
 			modules.concat(socketlib.system);
-		const GMConnected = Boolean(game.users.find(isActiveGM));
 		// Reject all promises that are still waiting for a response from this player
 		for (const socket of modules) {
 			const failedRequests = Array.from(socket.pendingRequests.entries()).filter(([id, request]) => {
 				const recipient = request.recipient;
 				const handlerName = request.handlerName;
 				if (recipient === RECIPIENT_TYPES.ONE_GM) {
-					if (!GMConnected) {
+					if (!game.users.activeGM) {
 						request.reject(new errors.SocketlibNoGMConnectedError(`Could not execute handler '${handlerName}' as GM, because all GMs disconnected while the execution was being dispatched.`));
 						return true;
 					}
 				}
 				else if (recipient instanceof Array) {
-					if (recipient.includes(userId)) {
-						request.reject(new errors.SocketlibInvalidUserError(`User '${game.users.get(userId).name}' (${userId}) disconnected while handler '${handlerName}' was being dispatched.`));
+					if (recipient.includes(user.id)) {
+						request.reject(new errors.SocketlibInvalidUserError(`User '${user.name}' (${user.id}) disconnected while handler '${handlerName}' was being dispatched.`));
 						return true;
 					}
 				}
@@ -336,5 +332,4 @@ function handleUserActivity(wrapper, userId, activityData={}) {
 			}
 		}
 	}
-	return result;
 }
