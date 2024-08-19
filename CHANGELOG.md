@@ -1,6 +1,6 @@
 # Changelog
 
-## [v3.10.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.9.0) - Unreleased
+## [v3.10.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.10.0) - Unreleased
 ### Fixed
 +  Using 'sent to chat' on a weapon was not sharing all the information.
 
