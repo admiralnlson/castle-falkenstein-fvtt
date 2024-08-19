@@ -1,6 +1,10 @@
 # Changelog
 
 ## [v3.9.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.9.0) - Unreleased
+### Fixed
++  Using 'sent to chat' on a weapon was not sharing all the information.
+
+## [v3.9.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.9.0) - Unreleased
 ### Added
 + Added a 'Player Notes' tab on played-owned character sheets
 ### Changed
