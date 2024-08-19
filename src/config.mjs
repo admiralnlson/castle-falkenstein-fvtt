@@ -158,7 +158,6 @@ CASTLE_FALKENSTEIN.spellDefinitions = {
   }
 };
 
-
 for(const type in CASTLE_FALKENSTEIN.spellDefinitions) {
   CASTLE_FALKENSTEIN.spellDefinitions[type].label = `castle-falkenstein.spell.definition.${type}.label`;
 
@@ -167,3 +166,26 @@ for(const type in CASTLE_FALKENSTEIN.spellDefinitions) {
       CASTLE_FALKENSTEIN.spellDefinitions[type].levels[level].label = `castle-falkenstein.spell.definition.${type}.${level}`;
   }
 }
+
+CASTLE_FALKENSTEIN.weaponConceals = {
+  "-": {
+    labelAbbr: "castle-falkenstein.empty",
+    label: "-"
+  },
+  "P": {
+    labelAbbr: "castle-falkenstein.weapon.concealPocketAbbr",
+    label: "castle-falkenstein.weapon.concealPocket"
+  },
+  "J": {
+    labelAbbr: "castle-falkenstein.weapon.concealJacketAbbr",
+    label: "castle-falkenstein.weapon.concealJacket"
+  },
+  "L": {
+    labelAbbr: "castle-falkenstein.weapon.concealLongCoatAbbr",
+    label: "castle-falkenstein.weapon.concealLongCoat"
+  },
+  "N": {
+    labelAbbr:"castle-falkenstein.weapon.concealNotAbbr",
+    label: "castle-falkenstein.weapon.concealNot"
+  }
+};

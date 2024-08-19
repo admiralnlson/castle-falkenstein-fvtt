@@ -1,3 +1,4 @@
+import { CASTLE_FALKENSTEIN } from "../config.mjs";
 import { CastleFalkenstein } from "../castle-falkenstein.mjs";
 
 /**
@@ -78,32 +79,60 @@ export class CastleFalkensteinItem extends Item {
   async sendToChat() {
 
     let flavor = `[${game.i18n.localize("castle-falkenstein.item.sendToChat")}`;
-    let content = `${this.name}<hr/>`
-                + `${this.system.description}`;
+    let content = `<b>${this.name}</b>`;
 
     // change label based on item type
     if (this.type === "ability") {
       flavor += ` - ${game.i18n.localize("castle-falkenstein.ability.ability")}]`;
-      content = CastleFalkenstein.abilityLevelAsSentenceHtml(this);
+      // replace the default name with a name + level as a sentence
+      content = `<b>${CastleFalkenstein.abilityLevelAsSentenceHtml(this)}</b>`;
     } else if (this.type === "weapon") {
       flavor += ` - ${game.i18n.localize("castle-falkenstein.weapon.weapon")}]`;
-      content = `${this.name}<hr/>`
-              + (this.system.effectiveRange === "" ? `` : `${game.i18n.localize("castle-falkenstein.weapon.effectiveRange")}: ${this.system.effectiveRange}<br/>`)
-              + (this.system.ammunition === null && this.system.ammunition_max === null ? `` : `${game.i18n.localize("castle-falkenstein.weapon.ammunition")}: ${this.system.ammunition} / ${this.system.ammunition_max}<br/>`)
-              + `${game.i18n.localize("castle-falkenstein.weapon.wounds")}: ${this.system.woundsPartial ?? 0} / ${this.system.woundsFull ?? 0} / ${this.system.woundsHigh ?? 0}<br/>`
-              + `${this.system.description}`;
+      // carriage return
+      content += `<br/>`;
+      // range label : effective value / max value
+      if (this.system.effectiveRange !== null || this.system.maxRange !== null) {
+        content += `${game.i18n.localize("castle-falkenstein.weapon.range")}: ${this.system.effectiveRange || "-"}`;
+        if (this.system.maxRange !== null)
+          content += ` / ${this.system.maxRange || "-"}`;
+        content += `<br\/>`;
+      }
+      // ammo label : current ammo / max ammo
+      if (this.system.ammunition !== null || this.system.ammunition_max !== null) {
+        content += `${game.i18n.localize("castle-falkenstein.weapon.ammunition")}: ${this.system.ammunition || "-"}`;
+        if (this.system.ammunition_max !== null)
+          content += ` / ${this.system.ammunition_max}`;
+        content += `<br\/>`;
+      }
+      // conceal
+      content += `${game.i18n.localize("castle-falkenstein.weapon.conceal")}: ${game.i18n.localize(CASTLE_FALKENSTEIN.weaponConceals[this.system.conceal].label)}<br/>`;
+      // wounds label : partial / full / high
+      if (CastleFalkenstein.settings.damageSystem !== CastleFalkenstein.DAMAGE_SYSTEM_OPTIONS.harmRank)
+        content += `${game.i18n.localize("castle-falkenstein.weapon.wounds")}: ${this.system.woundsPartial || "-"} / ${this.system.woundsFull || "-"} / ${this.system.woundsHigh || "-"}<br/>`;
+      // harm rank
+      if (CastleFalkenstein.settings.damageSystem !== CastleFalkenstein.DAMAGE_SYSTEM_OPTIONS.wounds)
+        content += `${game.i18n.localize("castle-falkenstein.weapon.harmRank")}: ${this.system.harmRank}<br/>`;
     } else if (this.type === "possession") {
       flavor += ` - ${game.i18n.localize("castle-falkenstein.possession.possession")}]`;
-      // default content
+      // default content (name)
     } else if (this.type === "spell") {
       flavor += ` - ${game.i18n.localize("castle-falkenstein.spell.spell")}]`;
-      content = `${this.name} ` + CastleFalkenstein.cardSuitHTML(this.system.suit) + `<hr/>`
-              + `${game.i18n.localize("castle-falkenstein.spell.thaumicLevel")}: ${this.system.level}<br/>`
-              + `${this.system.description}`;
+      // name
+      content    // aspect, on the same line as the name
+              += ` <b>${CastleFalkenstein.cardSuitHTML(this.system.suit)}</b>`
+                 // carriage return
+               + "<br/>"
+                 // thaumic level label & value
+               + `${game.i18n.localize("castle-falkenstein.spell.thaumicLevel")}: ${this.system.level}<br/>`;
     } else {
       flavor += `]`;
       CastleFalkenstein.log.warn(`[Function not supported] Attempting to 'show in chat' an item of type '${this.type}'`);
+      // default content (name)
     }
+
+    if (this.system.description)
+      content += `<hr/>`
+                 + `${this.system.description}`;
  
      // Post message to chat
     CastleFalkenstein.createChatMessage(this.actor, flavor, content);

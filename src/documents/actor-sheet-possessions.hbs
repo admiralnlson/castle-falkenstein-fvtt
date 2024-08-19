@@ -49,8 +49,8 @@
         {{item.system.ammunition_max}}
       </div>
       {{#with (lookup ../concealLabels item.system.conceal)}}
-      <div class="conceal" data-tooltip="{{this.label}}">
-          {{this.labelAbbr}}
+      <div class="conceal" data-tooltip="{{localize this.label}}">
+          {{localize this.labelAbbr}}
       </div>
       {{/with}}
       {{#unless ../hideWounds}}
