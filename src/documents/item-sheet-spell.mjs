@@ -27,5 +27,10 @@ export class CastleFalkensteinSpellSheet extends ItemSheet {
     context.CASTLE_FALKENSTEIN = CASTLE_FALKENSTEIN;
     return context;
   }
-
+  
+  /** @override */
+  activateListeners(html) {
+    super.activateListeners(html);
+    CastleFalkenstein.colorizeSuitSelect(html.find('.suit-select')[0]);
+  }
 }

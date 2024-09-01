@@ -43,4 +43,9 @@ export class CastleFalkensteinAbilitySheet extends ItemSheet {
     return context;
   }
 
+  /** @override */
+  activateListeners(html) {
+    super.activateListeners(html);
+    CastleFalkenstein.colorizeSuitSelect(html.find('.suit-select')[0]);
+  }
 }

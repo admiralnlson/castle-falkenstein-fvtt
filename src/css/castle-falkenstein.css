@@ -96,21 +96,31 @@
 }
 
 .castle-falkenstein .sheet-header {
-  flex: 0 0 120px;
+  flex: 0 0 100px;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
   overflow: visible;
+  margin-bottom: 5px;
 }
 
 .castle-falkenstein .sheet-header .profile-img {
   flex: 0 0 100px;
   height: 100px;
-  margin-right: 10px;
+  margin-right: 5px;
+  border: 1px solid var(--color-border-light-tertiary);
 }
 
 .castle-falkenstein .sheet-header .header-fields {
   flex: 1;
+}
+
+.castle-falkenstein .character .header-fields {
+  flex: 1;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .castle-falkenstein .name-and-diary {
@@ -119,10 +129,10 @@
 
 .castle-falkenstein .sheet-header h1.charname,
 .castle-falkenstein .sheet-header div.diary {
-  height: 50px;
+  height: 46px;
   padding: 0px;
-  margin: 5px 0;
   border-bottom: 0;
+
 }
 
 .castle-falkenstein .sheet-header h1 {
@@ -141,7 +151,7 @@
 }
 
 .castle-falkenstein .name-and-diary > .diary > a > img {
-  height: 50px;
+  height: 46px;
   border: none;
 }
 
@@ -1007,6 +1017,7 @@ div.gm-screen-grid-cell-content.castle-falkenstein.actor > form {
 div.gm-screen-grid-cell-content.castle-falkenstein.actor {
   overflow-y: hidden;
   --grid-item-drag-width: 0px;
+  --grid-item-roll-button-width: 30px;
   --grid-item-controls-width: 20px;
 }
 
@@ -1084,8 +1095,10 @@ div.gm-screen-grid-cell-content.castle-falkenstein.actor > form li.item {
 
 .castle-falkenstein .suit-symbol--,
 .chat-message span.suit-symbol--,
-.castle-falkenstein .suit-select *:nth-child(1) {
-  color: gray;
+.castle-falkenstein .suit-select *:nth-child(1),
+.castle-falkenstein .suit-select.suit-gray,
+.castle-falkenstein .suit-select > button {
+  color: var(--color-text-dark-primary);
 }
 
 .castle-falkenstein .suit-symbol-spades,
@@ -1095,7 +1108,8 @@ div.gm-screen-grid-cell-content.castle-falkenstein.actor > form li.item {
 .castle-falkenstein .suit-symbol-clubs,
 .app.castle-falkenstein.cards-hand .suit-symbol-clubs,
 .chat-message .suit-symbol-clubs,
-.castle-falkenstein .suit-select *:nth-child(5) {
+.castle-falkenstein .suit-select *:nth-child(5),
+.castle-falkenstein .suit-select.suit-black {
   color: #222032;
 }
 
@@ -1106,8 +1120,21 @@ div.gm-screen-grid-cell-content.castle-falkenstein.actor > form li.item {
 .castle-falkenstein .suit-symbol-diamonds,
 .app.castle-falkenstein.cards-hand .suit-symbol-diamonds,
 .chat-message .suit-symbol-diamonds,
-.castle-falkenstein .suit-select *:nth-child(4) {
+.castle-falkenstein .suit-select *:nth-child(4),
+.castle-falkenstein .suit-select.suit-red {
   color: #D9262A;
+}
+
+.castle-falkenstein .suit-select {
+  color: inherit;
+}
+
+.castle-falkenstein .suit-select + i.fa {
+  display: none;
+}
+
+.castle-falkenstein .suit-select {
+  color: inherit;
 }
 
 .pt.s1 b {

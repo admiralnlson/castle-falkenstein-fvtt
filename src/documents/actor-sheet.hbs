@@ -2,10 +2,10 @@
 
   {{!-- Sheet Header --}}
   <header class="sheet-header">
-    <img class="profile-img" src="{{actor.img}}" data-edit="img" alt="{{actor.name}}" height="100" width="100"/>
+    <img class="profile-img" src="{{actor.img}}" {{#if actor.isOwner}}data-edit="img"{{/if}} alt="{{actor.name}}"/>
     <div class="header-fields">
       <div class="grid grid-3col name-and-diary">
-        <h1 class="charname"><span class="token-prefix">{{#if actor.isToken}}[{{localize "Token"}}]{{/if}}</span><input name="name" type="text" value="{{actor.name}}"/></h1>
+        <h1 class="charname"><span class="token-prefix {{#unless actor.isToken}}hidden{{/unless}}">{{#if actor.isToken}}[{{localize "Token"}}]{{/if}}</span><input name="name" type="text" value="{{actor.name}}"/></h1>
         <div class="diary flexcol">
           {{#if canOpenDiary}}
           <a class="diary-show" draggable="true" data-type="Journal" data-uuid="{{diaryUuid}}" data-tooltip="{{localize "castle-falkenstein.diary.render"}}">

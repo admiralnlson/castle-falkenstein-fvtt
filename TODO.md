@@ -5,6 +5,12 @@
 + MoSCoW: [M]ust, [S]hould, [C]ould, [W]on't
 + [🔥] Project maintainer (admiralnlson)'s own Host needs
 
+## Shortlist
+
++ compatibility with module Item Piles
++ card hand flag `altActors: [ id1, id2 ]` to indicate actors which also leverage the hand even though they're not the main actor for it (e.g. familiar, golem, ..)
+  + provide a UI for this link, possibly implementing the Familiar mechanic at the same time.
+
 ### Derived stats & Racial abilities (a.k.a 'Other' tab)
 
 + [S] Extra 'Other' tab for listing secondary attributes such as Speed (Run+Flight) or Languages known (see below)

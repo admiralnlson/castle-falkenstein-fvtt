@@ -1125,6 +1125,40 @@ export class CastleFalkenstein {
   static onCloseJournalSheet(sheet, html) {
     CastleFalkenstein.refreshActorSheetIfDiary(sheet);
   }
+
+  static colorizeSuitSelect(suitSelect) {
+
+    function updateSelectClass() {
+      const selectedIndex = suitSelect.selectedIndex;
+
+      // Remove any existing suit-related classes
+      suitSelect.classList.remove('suit-gray', 'suit-black', 'suit-red');
+
+      // Add the class based on the selected index
+      switch (selectedIndex) {
+        case 0:
+          suitSelect.classList.add('suit-gray');  // For "-"
+          break;
+        case 1:
+        case 4:
+          suitSelect.classList.add('suit-black');  // For "♠" and "♣"
+          break;
+        case 2:
+        case 3:
+          suitSelect.classList.add('suit-red');  // For "♥" and "♦"
+          break;
+        default:
+          // If needed, handle any other cases or add a default class
+          break;
+      }
+    }
+
+    // Update the class on initial load
+    updateSelectClass();
+
+    // Update the class whenever the selection changes
+    suitSelect.addEventListener('change', updateSelectClass);
+  }
 }
 
 /* -------------------------------------------- */

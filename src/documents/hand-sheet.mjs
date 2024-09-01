@@ -25,6 +25,7 @@ export class CastleFalkensteinHandSheet extends CardsHand {
     })
   }
 
+  /** @override */
   render(force=false, options={}) {
     const hand = this.object;
     const spellActive = hand.getFlag(CastleFalkenstein.id, "spellBeingCast");
@@ -323,13 +324,13 @@ export class CastleFalkensteinHandSheet extends CardsHand {
   }
 
   static async triggerFeat(hand) {
-    if (!game.users.activeGM) {
+    const cardsPlayed = hand.cards.filter(card => card.getFlag(CastleFalkenstein.id, "selected"));
+
+    if (cardsPlayed.length > 0 && !game.users.activeGM) {
       // planning to use executeAsGM below
       CastleFalkenstein.notif.warn(game.i18n.localize("castle-falkenstein.notifications.cannotCarryOutActionWithoutHost"));
       return;
     }
-
-    const cardsPlayed = hand.cards.filter(card => card.getFlag(CastleFalkenstein.id, "selected"));
 
     //
     // produce the chat message
