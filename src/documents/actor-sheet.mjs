@@ -190,10 +190,10 @@ export class CastleFalkensteinActorSheet extends ActorSheet {
     super._onDragStart(event);
 
     event.dataTransfer.setDragImage(event.target.parentElement, 0, 0);
-
+    
     const targetA = event.target.closest("a");
 
-    if (targetA.dataset.uuid) {
+    if (targetA?.dataset.uuid) {
       const dragData = {
         uuid: targetA.dataset.uuid
       };
