@@ -5,6 +5,7 @@
 + Minor cosmetic improvements
 ### Fixed
 + Using 'sent to chat' on a weapon was not sharing all the information.
++ Dragging abilities, weapons, possessions or spells –e.g. onto the Macro bar– was generating (harmless) console errors.
 
 ## [v3.9.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.9.0) - 2024/08/18
 ### Added
