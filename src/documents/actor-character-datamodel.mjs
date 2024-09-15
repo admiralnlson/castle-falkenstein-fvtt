@@ -1,7 +1,7 @@
 /**
- * @extends {foundry.abstract.DataModel}
+ * @extends {foundry.abstract.TypeDataModel}
  */
-export class CastleFalkensteinActorDataModel extends foundry.abstract.TypeDataModel {
+export class CastleFalkensteinCharacterDataModel extends foundry.abstract.TypeDataModel {
   static defineSchema() {
 
     const schema = {

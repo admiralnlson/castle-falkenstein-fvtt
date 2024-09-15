@@ -41,7 +41,7 @@
 
   {{!-- Sheet Tab Navigation --}}
   <nav class="sheet-tabs tabs" data-group="primary">
-    {{!-- Default tab is specified in actor-sheet.mjs --}}
+    {{!-- Default tab is specified in actor-character-sheet.mjs --}}
     <a class="tab-link" data-tab="description">{{localize "castle-falkenstein.description"}}</a>
     {{#if userHasObserverOrOwnerAccess}}
       <a class="tab-link" data-tab="abilities">{{localize "castle-falkenstein.ability.abilities"}}</a>
@@ -70,24 +70,19 @@
     </div>
 
     {{#if userHasObserverOrOwnerAccess}}
-      {{!-- Diary Tab --}}
-      <div class="tab diary" data-group="primary" data-tab="diary" spellcheck="false">
-        {{editor enrichedDiary target="system.diary" button=true editable=editable engine="prosemirror"}}
-      </div>
-
       {{!-- Abilities Tab --}}
       <div class="tab abilities" data-group="primary" data-tab="abilities">
-        {{> "systems/castle-falkenstein/src/documents/actor-sheet-abilities.hbs"}}
+        {{> "systems/castle-falkenstein/src/documents/actor-character-sheet-abilities.hbs"}}
       </div>
 
       {{!-- Possessions Tab --}}
       <div class="tab possessions" data-group="primary" data-tab="possessions">
-        {{> "systems/castle-falkenstein/src/documents/actor-sheet-possessions.hbs"}}
+        {{> "systems/castle-falkenstein/src/documents/actor-character-sheet-possessions.hbs"}}
       </div>
 
       {{!-- Spells Tab --}}
       <div class="tab spells" data-group="primary" data-tab="spells">
-        {{> "systems/castle-falkenstein/src/documents/actor-sheet-spells.hbs"}}
+        {{> "systems/castle-falkenstein/src/documents/actor-character-sheet-spells.hbs"}}
       </div>
 
       {{!-- Host Notes Tab --}}

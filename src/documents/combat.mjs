@@ -4,9 +4,11 @@
  */
 export class CastleFalkensteinCombat extends Combat {
 
-  // @override
-  // Implementation is supposed to be the same as in Core, except without any chat messages or dice roll sound generated.
-  // Didn't find a way to avoid the code duplication..
+  /**
+   * @override 
+   * Implementation is supposed to be the same as in Core, except without any chat messages or dice roll sound generated.
+   * Didn't find a way to avoid the code duplication..
+   */
   async rollInitiative(ids, {formula=null, updateTurn=true, messageOptions={}}={}) {
 
     // Structure input data

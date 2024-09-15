@@ -1,6 +1,8 @@
 import { CASTLE_FALKENSTEIN } from "./config.mjs";
-import { CastleFalkensteinActorDataModel } from "./documents/actor-datamodel.mjs";
-import { CastleFalkensteinActorSheet } from "./documents/actor-sheet.mjs";
+import { CastleFalkensteinModuleIntegration } from "./module-integration.mjs";
+import { CastleFalkensteinCharacterDataModel } from "./documents/actor-character-datamodel.mjs";
+import { CastleFalkensteinCharacterSheet } from "./documents/actor-character-sheet.mjs";
+import { CastleFalkensteinLootSheet } from "./documents/actor-loot-sheet.mjs";
 import { CastleFalkensteinActor } from "./documents/actor.mjs";
 import { CastleFalkensteinCombatant } from "./documents/combatant.mjs";
 import { CastleFalkensteinCombat } from "./documents/combat.mjs";
@@ -541,17 +543,19 @@ export class CastleFalkenstein {
     CONFIG.Cards.documentClass = CastleFalkensteinCards;
 
     if (game.release.generation >= 11) {
-      CONFIG.Actor.dataModels.character = CastleFalkensteinActorDataModel;
+      CONFIG.Actor.dataModels.character = CastleFalkensteinCharacterDataModel;
+      //CONFIG.Actor.dataModels.loot = CastleFalkensteinLootDataModel;
       // the system does not have Actor packs, but users might.
-      CONFIG.Actor.compendiumIndexFields = ["name", "system.description"];
+      //CONFIG.Actor.compendiumIndexFields = ["name", "system.description"];
       
       CONFIG.Item.dataModels.ability = CastleFalkensteinAbilityDataModel;
       CONFIG.Item.dataModels.weapon = CastleFalkensteinWeaponDataModel;
       CONFIG.Item.dataModels.possession = CastleFalkensteinPossessionDataModel;
       CONFIG.Item.dataModels.spell = CastleFalkensteinSpellDataModel;
-      CONFIG.Item.compendiumIndexFields = ["name", "system.description"];
+      //CONFIG.Item.compendiumIndexFields = ["name", "system.description"];
 
-      game.packs.forEach(p => p.getIndex({fields: ["name", "system.description"]}));
+      //game.packs.forEach(p => p.getIndex({fields: ["name", "system.description"]}));
+      //game.packs.forEach(p => p.getIndex({fields: ["name"]}));
     }
 
     // Declare Castle Falkenstein deck presets
@@ -616,7 +620,7 @@ export class CastleFalkenstein {
 
   static async onReady() {
 
-    // game.user is not defined early enough to be able to set this in CastleFalkensteinActorDataModel.defineSchema
+    // game.user is not defined early enough to be able to set this in CastleFalkensteinCharacterDataModel.defineSchema
     if (game.release.generation >= 11) {
       CONFIG.Actor.dataModels.character.schema.fields.hostNotes.textSearch = game.user.isGM;
     }
@@ -926,8 +930,15 @@ export class CastleFalkenstein {
 
   static registerSheets() {
 
-    Actors.registerSheet(this.id, CastleFalkensteinActorSheet, {
+    Actors.registerSheet(this.id, CastleFalkensteinCharacterSheet, {
+      types: ["character"],
       label: "castle-falkenstein.sheets.character",
+      makeDefault: true
+    });
+
+    Actors.registerSheet(this.id, CastleFalkensteinLootSheet, {
+      types: ["loot"],
+      label: "castle-falkenstein.sheets.loot",
       makeDefault: true
     });
 
@@ -966,14 +977,14 @@ export class CastleFalkenstein {
 
   }
 
-
   // Load all the templates for handlebars partials.
   static async preLoadTemplates() {
     return loadTemplates([
       // Actor partials
-      "systems/castle-falkenstein/src/documents/actor-sheet-abilities.hbs",
-      "systems/castle-falkenstein/src/documents/actor-sheet-possessions.hbs",
-      "systems/castle-falkenstein/src/documents/actor-sheet-spells.hbs",
+      "systems/castle-falkenstein/src/documents/actor-character-sheet-abilities.hbs",
+      "systems/castle-falkenstein/src/documents/actor-character-sheet-possessions.hbs",
+      "systems/castle-falkenstein/src/documents/actor-character-sheet-spells.hbs",
+      "systems/castle-falkenstein/src/documents/actor-loot-items-sheet.hbs"
     ]);
   }
 
@@ -1009,7 +1020,7 @@ export class CastleFalkenstein {
     if (!doc)
       return;
 
-    if (doc instanceof CastleFalkensteinItem && doc.parent instanceof CastleFalkensteinActor) {
+    if (doc instanceof CastleFalkensteinItem && doc.parent instanceof CastleFalkensteinCharacter) {
       const macroName = `${doc.rollType.i18nLabel} ${doc.name} ${game.user.isGM ? "(" + doc.parent.name + ")" : ""}`;
       CastleFalkenstein.addMacroAtHotbarSlot(macroName, doc.img, `fromUuidSync("${doc.uuid}").roll();`, slot);
       return false;
@@ -1191,11 +1202,13 @@ Hooks.on("preCreateChatMessage", (message, options, userId) => CastleFalkenstein
 
 Hooks.on("passCards", (from, to, options) => CastleFalkensteinCards.onPassCards(from, to, options));
 
-Hooks.on("renderCastleFalkensteinActorSheet", (app, html, data) => CastleFalkensteinActorSheet.onRender(app, html, data));
+Hooks.on("renderCastleFalkensteinCharacterSheet", (app, html, data) => CastleFalkensteinCharacterSheet.onRender(app, html, data));
 
 Hooks.on("renderJournalSheet", (sheet, html, data) => CastleFalkenstein.onRenderJournalSheet(sheet, html, data));
 
 Hooks.on("closeJournalSheet", (sheet, html) =>  CastleFalkenstein.onCloseJournalSheet(sheet, html));
+
+Hooks.on("item-piles-ready", async () => CastleFalkensteinModuleIntegration.integrateItemPiles());
 
 /* -------------------------------------------- */
 /*  Handlebars Helpers                          */

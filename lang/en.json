@@ -4,6 +4,7 @@
 
     "sheets": {
       "character": "Castle Falkenstein - Character",
+      "loot": "Castle Falkenstein - Loot",
       "hand": "Castle Falkenstein - Cards Hand",
       "deck": "Castle Falkenstein - Cards Deck",
       "ability": "Castle Falkenstein - Ability",
@@ -181,6 +182,8 @@
     },
 
     "item": {
+      "items": "Items",
+      "item": "Item",
       "add": "Add",
       "sort": "Drag-and-drop to reorder the list",
       "sendToChat": "Send to chat",

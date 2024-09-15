@@ -4,6 +4,7 @@
 
     "sheets": {
       "character": "Château Falkenstein - Personnage",
+      "loot": "Castle Falkenstein - Butin",
       "hand": "Château Falkenstein - Main de cartes",
       "deck": "Château Falkenstein - Pioche de cartes",
       "ability": "Château Falkenstein - Talent",
@@ -181,6 +182,8 @@
     },
 
     "item": {
+      "items": "Objets",
+      "item": "Objet",
       "add": "Ajouter",
       "sort": "Glisser-déplacer pour réordonner la liste",
       "sendToChat": "Envoyer dans le chat",

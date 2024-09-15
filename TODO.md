@@ -8,6 +8,13 @@
 ## Shortlist
 
 + compatibility with module Item Piles
+  + quantity = 1 by default (unless improvement suggestion to module is accepted)
+    + ammunition
+  + cost/currency
+    + add weapon costs in the compendium
+  + make "natural" weapons (Blow, Animal Attack, Dragon Firecast, ..) non-droppable
+    possibly give them a different icon.
+
 + card hand flag `altActors: [ id1, id2 ]` to indicate actors which also leverage the hand even though they're not the main actor for it (e.g. familiar, golem, ..)
   + provide a UI for this link, possibly implementing the Familiar mechanic at the same time.
 

@@ -109,6 +109,7 @@
   height: 100px;
   margin-right: 5px;
   border: 1px solid var(--color-border-light-tertiary);
+  border-radius: 3px;
 }
 
 .castle-falkenstein .sheet-header .header-fields {
@@ -118,6 +119,22 @@
 .castle-falkenstein .character .header-fields {
   flex: 1;
   height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.castle-falkenstein .loot .sheet-header {
+  flex: 0 0 46px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  overflow: visible;
+  margin-bottom: 5px;
+}
+
+.castle-falkenstein .loot .header-fields {
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -278,6 +295,7 @@ html * {
   padding-bottom:22px;
 }
 
+.castle-falkenstein .items-list.loot,
 .castle-falkenstein .items-list.possessions {
   flex-grow: 1;
   overflow-y: visible;
@@ -462,6 +480,7 @@ html * {
   margin-right: 2px;
 }
 
+.castle-falkenstein .tab.items .items-list.loot .item,
 .castle-falkenstein .tab.possessions .items-list.possessions .item {
   grid-template-columns: var(--grid-item-drag-width) 1fr var(--grid-item-controls-width);
 }

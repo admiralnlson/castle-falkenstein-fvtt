@@ -28,7 +28,7 @@ export class CastleFalkensteinCombatant extends Combatant {
     return ability?.system.levelValue ?? CASTLE_FALKENSTEIN.abilityLevels.AV.value;
   }
 
-  // @override
+  /** @override */
   async _onCreate(data, options, userId) {
     let ret = await super._onCreate(data, options, userId);
 
@@ -39,7 +39,7 @@ export class CastleFalkensteinCombatant extends Combatant {
     return ret;
   }
 
-  // @override
+  /** @override */
   getInitiativeRoll(formula) {
     return super.getInitiativeRoll(`${this.#defaultInitiative}`);
   }
