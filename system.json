@@ -42,6 +42,28 @@
   "styles": [
     "src/css/castle-falkenstein.css"
   ],
+  "documentTypes": {
+    "Actor": {
+      "character": {
+        "htmlFields": ["description", "playerNotes", "hostNotes"]
+      },
+      "loot": {}
+    },
+    "Item": {
+      "ability": {
+        "htmlFields": ["description"]
+      },
+      "weapon": {
+        "htmlFields": ["description"]
+      },
+      "possession": {
+        "htmlFields": ["description"]
+      },
+      "spell": {
+        "htmlFields": ["description"]
+      }
+    }
+  },
   "packFolders": [
     {
       "name": "Castle Falkenstein",
