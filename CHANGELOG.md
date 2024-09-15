@@ -1,6 +1,6 @@
 # Changelog
 
-## [v3.10.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.10.0) - Unreleased
+## [v3.10.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.10.0) - 2024/09/15
 ### Added
 + Compatibility with module 'Item Piles' (basic support only)
 ### Changed
