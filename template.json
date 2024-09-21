@@ -1,0 +1,24 @@
+{
+  "Actor": {
+    "types": ["character", "loot"],
+    "character": {
+      "htmlFields": ["description", "playerNotes", "hostNotes"]
+    },
+    "loot": {}
+  },
+  "Item": {
+    "types": ["ability", "weapon", "possession", "spell", "loot"],
+    "ability": {
+      "htmlFields": ["description"]
+    },
+    "weapon": {
+      "htmlFields": ["description"]
+    },
+    "possession": {
+      "htmlFields": ["description"]
+    },
+    "spell": {
+      "htmlFields": ["description"]
+    }
+  }
+}

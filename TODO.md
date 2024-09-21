@@ -5,6 +5,10 @@
 + MoSCoW: [M]ust, [S]hould, [C]ould, [W]on't
 + [🔥] Project maintainer (admiralnlson)'s own Host needs
 
+## Foundry Versions
+
++ Remove template.json from any future release which is compatible with V12 or later only (file was needed up to V12.317)
+
 ## Shortlist
 
 + compatibility with module Item Piles

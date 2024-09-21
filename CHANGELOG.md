@@ -1,5 +1,9 @@
 # Changelog
 
+## [v3.10.1](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.10.1) - 2024/09/21
+### Fixed
++ Resolved an issue with Foundry V11 where worlds would not launch in v3.10.0.
+
 ## [v3.10.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.10.0) - 2024/09/15
 ### Added
 + Compatibility with module 'Item Piles' (basic support only)
