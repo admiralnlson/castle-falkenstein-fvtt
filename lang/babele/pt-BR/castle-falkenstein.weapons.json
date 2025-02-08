@@ -1,0 +1,324 @@
+{
+  "label": "Armas",
+  "mapping": {
+      "description": "system.description"
+  },
+  "entries": {
+      ".22 Derringer": {
+          "description": "",
+          "name": ".22 Derringer"
+      },
+      ".22 Reide's Knuckleduster revolver": {
+          "description": "",
+          "name": ".22 Reide's Knuckleduster revolver"
+      },
+      ".22 Smith & Wesson No. l revolver": {
+          "description": "",
+          "name": ".22 Smith & Wesson No. l revolver"
+      },
+      ".31 Robbins & Lawrence Pepperbox": {
+          "description": "",
+          "name": ".31 Robbins & Lawrence Pepperbox"
+      },
+      ".32 Allen & Thurber Model 1870": {
+          "description": "",
+          "name": ".32 Allen & Thurber Model 1870"
+      },
+      ".32 Beaumont-Adams Pocket Revolver": {
+          "description": "",
+          "name": ".32 Beaumont-Adams Pocket Revolver"
+      },
+      ".32 Smith & Wesson 1861 No. 2": {
+          "description": "",
+          "name": ".32 Smith & Wesson 1861 No. 2"
+      },
+      ".34 Double Action Pepperbox": {
+          "description": "",
+          "name": ".34 Double Action Pepperbox"
+      },
+      ".36 Allen & Thurber Pepperbox": {
+          "description": "",
+          "name": ".36 Allen & Thurber Pepperbox"
+      },
+      ".36 Colt 1861 Navy": {
+          "description": "",
+          "name": ".36 Colt 1861 Navy"
+      },
+      ".36 Derringer": {
+          "description": "",
+          "name": ".36 Derringer"
+      },
+      ".38 Volcanic 1860 Pistol": {
+          "description": "",
+          "name": ".38 Volcanic 1860 Pistol"
+      },
+      ".41 Frank Wesson Dagger Pistol": {
+          "description": "",
+          "name": ".41 Frank Wesson Dagger Pistol"
+      },
+      ".42 LeMat Dragoon - main cylinder": {
+          "description": "",
+          "name": ".42 LeMat Dragoon - main cylinder"
+      },
+      ".42 LeMat Dragoon - shotgun": {
+          "description": "",
+          "name": ".42 LeMat Dragoon - shotgun"
+      },
+      ".42 LeMat Horse Pistol - main cylinder": {
+          "description": "",
+          "name": ".42 LeMat Horse Pistol - main cylinder"
+      },
+      ".42 LeMat Horse Pistol - shotgun": {
+          "description": "",
+          "name": ".42 LeMat Horse Pistol - shotgun"
+      },
+      ".44 1862 Henry Rifle": {
+          "description": "",
+          "name": ".44 1862 Henry Rifle"
+      },
+      ".44 Allen & Thurber Model 1871": {
+          "description": "",
+          "name": ".44 Allen & Thurber Model 1871"
+      },
+      ".44 Colt 1848 Dragoon": {
+          "description": "",
+          "name": ".44 Colt 1848 Dragoon"
+      },
+      ".44 Colt 1860 Army": {
+          "description": "",
+          "name": ".44 Colt 1860 Army"
+      },
+      ".44 Derringer": {
+          "description": "",
+          "name": ".44 Derringer"
+      },
+      ".44 Drop Pistol": {
+          "description": "",
+          "name": ".44 Drop Pistol"
+      },
+      ".44 Remington 1863 Army": {
+          "description": "",
+          "name": ".44 Remington 1863 Army"
+      },
+      ".44 Remington 1875 No. 3 Army": {
+          "description": "",
+          "name": ".44 Remington 1875 No. 3 Army"
+      },
+      ".44 Volcanic 1857 Carbine": {
+          "description": "",
+          "name": ".44 Volcanic 1857 Carbine"
+      },
+      ".44 Winchester Model 1866": {
+          "description": "",
+          "name": ".44 Winchester Model 1866"
+      },
+      ".44 Winchester Model 1873": {
+          "description": "",
+          "name": ".44 Winchester Model 1873"
+      },
+      ".45 Colt 1873 Single-action Army (a.k.a. Peacemaker)": {
+          "description": "",
+          "name": ".45 Colt 1873 Single-action Army (a.k.a. Peacemaker)"
+      },
+      ".45 Remington 1873 Rolling Block Rifle": {
+          "description": "",
+          "name": ".45 Remington 1873 Rolling Block Rifle"
+      },
+      ".45 Sharp's 1874 Buffalo Rifle": {
+          "description": "",
+          "name": ".45 Sharp's 1874 Buffalo Rifle"
+      },
+      ".45 Smith & Wesson 1869 No. 3": {
+          "description": "",
+          "name": ".45 Smith & Wesson 1869 No. 3"
+      },
+      ".450 Martini -Henry lever action": {
+          "description": "",
+          "name": ".450 Martini -Henry lever action"
+      },
+      ".455 Webley Mark 1 (military)": {
+          "description": "",
+          "name": ".455 Webley Mark 1 (military)"
+      },
+      ".46 Remington 1876 Sport Rifle": {
+          "description": "",
+          "name": ".46 Remington 1876 Sport Rifle"
+      },
+      ".493 Adams Dragoon Revolver": {
+          "description": "",
+          "name": ".493 Adams Dragoon Revolver"
+      },
+      ".50 Colt 1867 Gatling Gun": {
+          "description": "",
+          "name": ".50 Colt 1867 Gatling Gun"
+      },
+      ".50 Sharps 1866 Rifle": {
+          "description": "",
+          "name": ".50 Sharps 1866 Rifle"
+      },
+      ".50 Shotgun, 1873": {
+          "description": "",
+          "name": ".50 Shotgun, 1873"
+      },
+      ".50 Shotgun, Sawn-off": {
+          "description": "",
+          "name": ".50 Shotgun, Sawn-off"
+      },
+      ".50-.56 Breechloading Carbine": {
+          "description": "",
+          "name": ".50-.56 Breechloading Carbine"
+      },
+      ".56 Remington 1860 Carbine": {
+          "description": "",
+          "name": ".56 Remington 1860 Carbine"
+      },
+      ".577 Enfield Rifle M. 1857": {
+          "description": "",
+          "name": ".577 Enfield Rifle M. 1857"
+      },
+      ".577 Snyder Swinging-block Conversion": {
+          "description": "",
+          "name": ".577 Snyder Swinging-block Conversion"
+      },
+      ".577 Webley No. 1 (civilian)": {
+          "description": "",
+          "name": ".577 Webley No. 1 (civilian)"
+      },
+      ".58 Springfield Model 1858 [ML]": {
+          "description": "",
+          "name": ".58 Springfield Model 1858 [ML]"
+      },
+      "11mm French Chassepot Model 1866": {
+          "description": "",
+          "name": "11mm French Chassepot Model 1866"
+      },
+      "11mm French Mitrailleuse": {
+          "description": "",
+          "name": "11mm French Mitrailleuse"
+      },
+      "11mm Prussian Mauser 1871 bolt action": {
+          "description": "",
+          "name": "11mm Prussian Mauser 1871 bolt action"
+      },
+      "15.4mm Prussian Needle Rifle M. 1849": {
+          "description": "",
+          "name": "15.4mm Prussian Needle Rifle M. 1849"
+      },
+      "15mm Bayrisches Werder-Gewehr M 1869": {
+          "description": "",
+          "name": "15mm Bayrisches Werder-Gewehr M 1869"
+      },
+      "15mm Nordenfelt Gun": {
+          "description": "",
+          "name": "15mm Nordenfelt Gun"
+      },
+      "Animal Attack (gigantic)": {
+          "description": "",
+          "name": "Ataque Animal (Enorme)"
+      },
+      "Animal Attack (huge)": {
+          "description": "",
+          "name": "Ataque Animal (Muito Grande)"
+      },
+      "Animal Attack (large)": {
+          "description": "",
+          "name": "Ataque Animal (Grande)"
+      },
+      "Animal Attack (medium)": {
+          "description": "",
+          "name": "Ataque Animal (Médio)"
+      },
+      "Animal Attack (small)": {
+          "description": "",
+          "name": "Ataque Animal (Pequeno)"
+      },
+      "Animal Attack (tiny)": {
+          "description": "",
+          "name": "Ataque Animal (Minúsculo)"
+      },
+      "Blow (EXC to EXT Physique)": {
+          "description": "",
+          "name": "Briga (EXC to EXT Compleição Física)"
+      },
+      "Blow (GD to GR Physique)": {
+          "description": "",
+          "name": "Briga (BOM OU OTI Compleição Física)"
+      },
+      "Blow (PR to AV Physique)": {
+          "description": "",
+          "name": "Briga (FRA OU  MED Compleição Física)"
+      },
+      "Bow": {
+          "description": "",
+          "name": "Arco e Flecha"
+      },
+      "Cudgel / Club": {
+          "description": "",
+          "name": "Porrete /taco"
+      },
+      "Dagger / Bayonet / Knife": {
+          "description": "",
+          "name": "Adaga / Baioneta / Faca"
+      },
+      "Dragon Firecast (Average Physique)": {
+          "description": "",
+          "name": "Fogo de Dragão (Medio Compleição Fisica)"
+      },
+      "Dragon Firecast (Exceptional Physique)": {
+          "description": "",
+          "name": "Fogo de Dragão (Excepcional Compleição Fisica)"
+      },
+      "Dragon Firecast (Extraordinary Physique)": {
+          "description": "",
+          "name": "Fogo de Dragão (Extraordinária Compleição Fisica)"
+      },
+      "Dragon Firecast (Good Physique)": {
+          "description": "",
+          "name": "Fogo de Dragão (BOM Compleição Fisica)"
+      },
+      "Dragon Firecast (Great Physique)": {
+          "description": "",
+          "name": "Fogo de Dragão (Otimo Compleição Fisica)"
+      },
+      "Dragon Firecast (Poor Physique)": {
+          "description": "",
+          "name": "Fogo de Dragão (Compleição Fisica Fraco)"
+      },
+      "Elfshot": {
+          "description": "",
+          "name": "Seta Elfica"
+      },
+      "Hatpin": {
+          "description": "",
+          "name": "Alfinete de chapéu"
+      },
+      "Life Preserver": {
+          "description": "",
+          "name": "Life Preserver"
+      },
+      "Rapier / Court Sword": {
+          "description": "",
+          "name": "Rapiera / Espada Curta"
+      },
+      "Saber": {
+          "description": "",
+          "name": "Sabre"
+      },
+      "Shrapnel": {
+          "description": "",
+          "name": "Estilhaça"
+      },
+      "Spear": {
+          "description": "",
+          "name": "Lança"
+      },
+      "Thrown Dagger": {
+          "description": "",
+          "name": "Punhal Arremessado"
+      },
+      "Thrown Spear": {
+          "description": "",
+          "name": "Lança Arremessada"
+      }
+  }
+}

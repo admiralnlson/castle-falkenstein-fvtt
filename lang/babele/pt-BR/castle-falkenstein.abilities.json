@@ -1,0 +1,125 @@
+{
+	"label": "Habilidades",
+	"entries": {
+		"Athletics": {
+			"name": "Atletismo",
+			"description": ""
+		},
+		"Charisma": {
+			"name": "Carisma",
+			"description": ""
+		},
+		"Comeliness": {
+			"name": "Aparência",
+			"description": ""
+		},
+		"Connections": {
+			"name": "Conexão",
+			"description": ""
+		},
+		"Courage": {
+			"name": "Coragem",
+			"description": ""
+		},
+		"Craftsmanship": {
+			"name": "Artesanato",
+			"description": ""
+		},
+		"Education": {
+			"name": "Educação",
+			"description": ""
+		},
+		"Etherealness": {
+			"name": "Eteralidade"
+		},
+		"Exchequer": {
+			"name": "Situação Financeira",
+			"description": ""
+		},
+		"Fencing": {
+			"name": "Esgrima",
+			"description": ""
+		},
+		"Fisticuffs": {
+			"name": "Briga",
+			"description": ""
+		},
+		"Gambling": {
+			"name": "jogatina",
+			"description": ""
+		},
+		"Glamour": {
+			"name": "Glamour"
+		},
+		"Helmsmanship": {
+			"name": "Timoneiro",
+			"description": ""
+		},
+		"Invention": {
+			"name": "Invenção",
+			"description": ""
+		},
+		"Kindred Powers": {
+			"name": "Poderes Raciais"
+		},
+		"Leadership": {
+			"name": "Liderança",
+			"description": ""
+		},
+		"Marksmanship": {
+			"name": "Tiro",
+			"description": ""
+		},
+		"Mesmerism": {
+			"name": "Mesmerismo",
+			"description": ""
+		},
+		"Motoring": {
+			"name": "Condução",
+			"description": ""
+		},
+		"Natural Sciences": {
+			"name": "Ciências Naturais",
+			"description": ""
+		},
+		"Perception": {
+			"name": "Percepção",
+			"description": ""
+		},
+		"Performance": {
+			"name": "Atuação",
+			"description": ""
+		},
+		"Physician": {
+			"name": "Médico",
+			"description": ""
+		},
+		"Physique": {
+			"name": "Compleição Física",
+			"description": ""
+		},
+		"Riding": {
+			"name": "Calvagada",
+			"description": ""
+		},
+		"Shapeshifting": {
+			"name": "Mudança de forma"
+		},
+		"Social Graces": {
+			"name": "Trato Social",
+			"description": ""
+		},
+		"Sorcery": {
+			"name": "Feitiçaria",
+			"description": ""
+		},
+		"Stealth": {
+			"name": "Furtividade",
+			"description": ""
+		},
+		"Tinkering": {
+			"name": "Mecânica",
+			"description": ""
+		}
+	}
+}

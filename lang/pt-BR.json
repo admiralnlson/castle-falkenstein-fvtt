@@ -1,0 +1,385 @@
+{
+  "castle-falkenstein": {
+    "system": "Castelo Falkenstein",
+
+    "sheets": {
+      "character": "Castelo Falkenstein - Personagem",
+      "loot": "Castelo Falkenstein - Saque",
+      "hand": "Castelo Falkenstein - Baralho da Magia",
+      "deck": "Castelo Falkenstein - baralho da Sorte",
+      "ability": "Castelo Falkenstein - Habilidade",
+      "weapon": "Castelo Falkenstein - Armas",
+      "possession": "Castelo Falkenstein - Posses",
+      "spell": "Castelo Falkenstein - Feitiços"
+    },
+
+    "settings": {
+      "fortuneDeck": {
+        "name": "Baralho da Fortuna",
+        "hint": "[Apenas o anfitrião] O baralho de cartas que representa o Baralho da Sorte."
+      },
+      "sorceryDeck": {
+        "name": "Baralho da Magia",
+        "hint": "[Apenas o anfitrião] O baralho de cartas que representa o baralho da magia."
+      },
+      "sorceryAbility": {
+        "name": "Nome da habilidade de Feitiçaria",
+        "default": "Feitiçaria",
+        "hint": "[Apenas anfitrião] Esta habilidade (ou suas especializações) é usada para lançar feitiços."
+      },
+      "perceptionAbility": {
+        "name": "Nome da habilidade de Perceção",
+        "default": "Perceção",
+        "hint": "[Apenas anfitrião] A habilidade é usada para determinar a iniciativa em combate."
+      },
+      "damageSystem": {
+        "name": "Sistema de Dano",
+        "hint": "[Apenas o anfitrião] Pode selecionar o tipo de danos que pretende apresentar nas fichas, e mensagens de chat.",
+        "both": "Pancada",
+        "wounds": "Ferimentos (original system depicted in the corebook)",
+        "harmRank": "Classificação de danos (sistema alternativo descrito em Comme Il Faut)"
+      },
+      "divorceVariation": {
+        "name": "A variação de separação ",
+        "hint": "[Apenas anfitrião] Em que as Habilidades afrouxam os laços que as prendem aos seus Naipes de controle.",
+        "disabled": "Desativado (padrão)",
+        "halfValue": "1. Metade do valor",
+        "fullValue": "2. Valor total",
+        "divorceLabel": "Separação:",
+        "divorceNone": "none"
+      },
+      "hardLimitVariation": {
+        "name": "A variação do limite rígido",
+        "hint": "[Apenas o anfitrião]. Em que são apresentadas regras para limitar a prática conhecida como “dumping manual”.",
+        "disabled": "Desativado (padrão)",
+        "option1": "1. FRA/MED:1 ; BOM/OTI:2 ; EXC:3 ; EXT:4",
+        "option2": "2. FRA:1 ; MED/BOM:2 ; OTI:3 ; EXC/EXT:4",
+        "maxCardsDrawableSingular": "(max {nb} card)",
+        "maxCardsDrawablePlural": "(max {nb} cards)"
+      },
+      "halfOffVariation": {
+        "name": "A variação de meia-volta",
+        "hint": "[[Somente anfitrião] Em que a tirania das cartas de naipes diferentes é limitada.",
+        "disabled": "Desativado (padrão)",
+        "option1": "1. Quaisquer cartas de um naipe impróprio",
+        "option2": "2. Só se corresponderem à cor"
+      },
+      "thaumixologyVariation": {
+        "name": "A Variação da Taumixologia",
+        "hint": "[Apenas para anfitriões] Em que os Feiticeiros se vêem inspirados pelo seu barman local (pelo autor do sistema @admiralnlson. Descrição desta Variação do Grande Jogo em USERGUIDE.md)",
+        "disabled": "Desativado (padrão)",
+        "enabled": "Ativado",
+        "leverageLabel": "Usar Taumixologia",
+        "leverageChatHint": "Taumixologia utilizada."
+      },
+      "cardWidth": {
+        "name": "Largura dos cartões",
+        "hint": "Pode selecionar aqui o seu tamanho preferido para os cartões (padrão: 200)."
+      }
+    },
+
+    "notifications": {
+      "babeleInstallRequired": "O módulo Babele não está instalado! Instale-o e active-o para que os compêndios sejam traduzidos.",
+      "babeleActivationRequired": "O módulo Babele está instalado, mas não está ativo! Active-o para que os compêndios sejam traduzidos.",
+      "playerHasInsufficientOwnershipOnCardStacks": "O jogador '{player}' não tem propriedade suficiente em:",
+      "created": "Created:",
+      "characterWasShown": "A personagem '{name}' foi mostrada aos jogadores.",
+      "macroForOwnedItems": "Só é possível criar botões de macro para items próprios.",
+      "abilityInvalidSuit": "O naipe associado à habilidade é inválido.",
+      "spellInvalidAspect": "O aspeto associado ao feitiço é inválido.",
+      "noFortuneHandForFeat": "Nenhum baralho da sorte para executar a ação .",
+      "noSorceryHandForSpell": "Sem baralho de magia para lançar feitiço .",
+      "characterDoesNotHaveAbility": "O personagem '{character}' não tem a habilidade '{ability}'.",
+      "tokenDoesNotHaveAbility": "Token '{token}' não tem a habilidade “{ability}'.",
+      "spellAlreadyBeingCast": "O feitiço já está a ser conjurado. Cancela-o na Mão de magia se quiseres lançar outro.",
+      "noItemNamed": "A sua personagem controlada não tem um item do tipo '{type}' chamado '{name}'.",
+      "deckNotFound": "Parece que está a faltar um baralho. Sugere ao teu Anfitrião que confirme os baralhos Sorte e Magia, bem como as definições do sistema.",
+      "cannotDraw": "Não há mais cartas disponíveis no baralho. Não é possível comprar nenhuma.",
+      "incompleteDraw": "Não há mais cartas disponíveis no baralho. Apenas {nb1} cartas de {nb2} podem ser compradas.",
+      "lastCardDrawn": "Não há mais cartas disponíveis no baralho. A última carta acabou de ser retirada.",
+      "mismatchingCardTypeInDrop": "Não é possível descartar esta carta aqui. Ele tem um tipo incompatível (Magia vs Sorte).",
+      "deletedCharacterHadADiary": "O personagem '{character}' tinha um Diário, que pode querer eliminar também.",
+      "cannotCarryOutActionWithoutHost": "Não é possível executar esta ação sem a presença do Anfitrião. Isso daria origem a erros.",
+      "popoutBoundingBoxDisabled": "O modo de compatibilidade “caixa delimitadora” do módulo PopOut! é incompatível com o sistema do Castelo Falkenstein e foi desativado."
+    },
+
+    "dialogs": {
+      "confirmTitle": "Confirme por favor",
+      "notEnoughPowerGathered": {
+        "description1": "Parece que ainda não reuniste energia suficiente.",
+        "description2": "Elenco de qualquer maneira?"
+      },
+      "thaumixologyReleaseAllPower": {
+        "description1": "Está a usar Taumixologia para este feitiço, o que significa que não pode libertar Poder normalmente.",
+        "description2": "Tem certeza??"
+      }
+    },
+
+    "cardsDirectory": {
+      "decksFolder": "Baralho",
+      "characterHandsFolder": "Mão do Personagem"
+    },
+
+    "journalDirectory": {
+      "characterDiariesFolder": "Diário do Personagem"
+    },
+
+    "character": "Ficha",
+
+    "showPlayers": "Mostrar Ficha",
+
+    "maxHealth": "Vida",
+    "wounds": "Ferimento",
+
+    "fortune": {
+      "hand": {
+        "render": "Mostrar a Mão da Fortuna",
+        "name": "Sorte - {character}",
+        "refillSingular": "Completar a mão da sorte (comprar uma carta {nb})",
+        "refillPlural": "Complete a sua mão da sorte (compre cartas {nb})",
+        "triggerFeat": "Trigger Feat",
+        "cancelFeat": "Cancel Feat",
+        "playCard": "Play Card",
+        "chance": "Chance",
+        "chanceHint": "Comprar uma carta de Sorte, jogada imediatamente"
+      }
+    },
+
+    "sorcery": {
+      "defineSpell": "Define Feitiço",
+      "hand": {
+        "render": "Mostrar a Mão de Feitiçaria",
+        "gatherPower": "Acomulo de Poder",
+        "releasePower": "Poder de libertação",
+        "castSpell": "Lançar feitiço",
+        "castSpellForced": "Lançar feitiço (forçado)",
+        "cancelSpell": "Cancelar feitiço",
+        "name": "Feitiçaria - {character}"
+      },
+      "wildSpell": "Aspectos do Feitiço!",
+      "harmonics": {
+        "label": "Harmonico:",
+        "none": "none",
+        "spades": "Espiritual",
+        "hearts": "Emocional",
+        "diamonds": "Material",
+        "clubs": "Elemental"
+      },
+      "cannotBeUsedOnUnlinkedTokens": "A feitiçaria não pode ser usada a partir de uma ficha que não esteja ligada ao seu ator."
+    },
+
+    "empty": "",
+    "openCharacterSheet": "Mostrar a ficha de personagem",
+
+    "description": "Descrição",
+    "icon": "Icon",
+
+    "diary": {
+      "self": "Diário",
+      "name": "Diário - {character}",
+      "render": "Exibir o diário do personagem",
+      "cannotBeUsedOnUnlinkedTokens": "Não é possível exibir o diário de um Token que não está vinculado ao seu Ator."
+    },
+
+    "item": {
+      "items": "Items",
+      "item": "Item",
+      "add": "Add",
+      "sort": "Arrastar e largar para reordenar a lista",
+      "sendToChat": "Enviar para o chat",
+      "edit": "Editar",
+      "delete": "Delete"
+    },
+
+    "ability": {
+      "abilities": "Habilidades",
+      "ability": "Habilidade",
+      "level": "Nível",
+      "levelAsSentence": "{level} {ability}",
+      "name": "Nome",
+
+      "suitValues": {
+        "spades": "Social ou relacionado ao status",
+        "hearts": "Emocional ou romântico",
+        "diamonds": "Mental ou Intelectuais",
+        "clubs": "Atividades Fisicas"
+      },
+
+      "poor": "Fraco",
+      "average": "Médio",
+      "good": "Bom",
+      "great": "Otimo",
+      "exceptional": "Excepcional",
+      "extraordinary": "Extraordinário",
+
+      "poorAbbr": "PR",
+      "averageAbbr": "AV",
+      "goodAbbr": "GD",
+      "greatAbbr": "GR",
+      "exceptionalAbbr": "EXC",
+      "extraordinaryAbbr": "EXT",
+
+      "specialization": "Specialization",
+      "specializationDisplayName": "{rootAbility}: {specialization}"
+    },
+
+    "cards": {
+      "suit": "Naipe",
+      "spades": "Espadas",
+      "hearts": "Copas",
+      "diamonds": "Ouros",
+      "clubs": "Paus",
+      "joker": "Curinga",
+      "blackJoker": " Curinga Negro ",
+      "redJoker": "Curinga Vermelho",
+
+      "nonJokerCardName": "{value} de {suit}",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "10": "10",
+      "11": "Valete",
+      "12": "Dama",
+      "13": "Rei",
+      "14": "Ás"
+    },
+
+    "feat": {
+      "perform": "Feitos Heroicos",
+      "noCardsPlayed": "Nenhuma carta jogada.",
+      "total": "Total",
+      "highSuccess": "Successo Decisivo",
+      "fullSuccess": "Successo Completo",
+      "partialSuccess": "Successo Parcial",
+      "failure": "Falha",
+      "fumble": "Atrapalhada"
+    },
+
+    "possession": {
+      "possessions": "Posses",
+      "possession": "Posse"
+    },
+
+    "weapon": {
+      "weapons": "Armas",
+      "weapon": "Arma",
+      "range": "Alcance",
+      "effectiveRange": "Alcance Efetivo",
+      "maxRange": "Alcance Max",
+      "ammunition": "Muniçoes",
+      "ammunitionAbbr": "Muni",
+      "ammunitionCurrent": "Munições (Atual)",
+      "ammunitionMax": "Munições (Max)",
+      "conceal": "ocultabilidade",
+      "concealAbbr": "Ocult.",
+      "concealPocket": "B - Bolsos, perna da calça ou manga",
+      "concealPocketAbbr": "B",
+      "concealJacket": "P - Casaco ou jaqueta",
+      "concealJacketAbbr": "P",
+      "concealLongCoat": "C - Casaco comprido",
+      "concealLongCoatAbbr": "C",
+      "concealNot": "N - Não ocultável",
+      "concealNotAbbr": "N",
+      "wounds": "Ferimentos",
+      "woundsPartial": "Ferimento (Parcial)",
+      "woundsFull": "Ferimento (Completo)",
+      "woundsHigh": "Ferimento (Decisivo)",
+      "harmRank": "Classificação de Dano",
+      "harmRankAbbr": "Nível"
+    },
+
+    "spell": {
+      "spells": "Feitiços",
+      "spell": "Feitiço",
+      "name": "Nome",
+      "aspect": "Aspecto",
+      "nameAndAspect": "Feitiço",
+      "thaumicLevel": "Custo Taúmico",
+      "thaumicLevelAbbr": "CT",
+      "definition": {
+        "duration": {
+          "label": "Duração",
+          "a": "Momentaneo",
+          "b": "1-30 minutos",
+          "c": "1 hora",
+          "d": "1 dia",
+          "e": "1 semana",
+          "f": "1 mes",
+          "g": "1 ano"
+        },
+        "complexity": {
+          "label": "Elementos e tarefas",
+          "a": "O feitiço envolve apenas um elemento",
+          "b": "O feitiço envolve apenas alguns elementos",
+          "c": "O feitiço envolve muitos elementos",
+          "d": "O feitiço envolve muitos elementos complexos",
+          "e": "O sujeito deve executar apenas uma tarefa",
+          "f": "O sujeito tem de executar várias tarefas"
+        },
+        "range": {
+          "label": "Alcance",
+          "a": "Toque, ou si mesmo",
+          "b": "Dentro da sua visão",
+          "c": "A poucos quilómetros",
+          "d": "Em outra cidade",
+          "e": "Num outro país",
+          "f": "Em outro dimensão",
+          "g": "Em outro ponto do Tempo Espaço"
+        },
+        "nbSubjects": {
+          "label": "Total de pessoas Afetados",
+          "a": "1 pessoa, ou 5 metros quadrados",
+          "b": "Até 10 pessoas, ou 10 metros quadrados",
+          "c": "Até 100 pessoas, ou 100 metros quadrados",
+          "d": "Até 1000 pessoas, ou 1000 metros quadrados",
+          "e": "Um país inteiro"
+        },
+        "typeSubjects": {
+          "label": "Tipo de Alvo(s)",
+          "a": "Objeto Inanimado",
+          "b": "Mortal (Humano ou Animal)",
+          "c": "Faerie (ou Criatura Faerie)",
+          "d": "Um outro Magista",
+          "e": "Dragão",
+          "f": "Objeto Magico / Metal Estelar",
+          "g": "Demonio ou outra entidade Supernatural",
+          "h": "Anão"
+        },
+        "familiarity": {
+          "label": "Familaridade com Alvo(s)",
+          "a": "Conhecer bem o assunto (também o alvo)",
+          "b": "Mal conhece o Alvo",
+          "c": "Não conheço o alvo",
+          "d": "O alvo é totalmente desconhecido para si"
+        },
+        "harmRank": {
+          "label": "Classificação de Dano",
+          "a": "A",
+          "b": "B",
+          "c": "C",
+          "d": "D",
+          "e": "E",
+          "f": "F"
+        }
+      },
+      "customModifier": "Modificador adicional..."
+    },
+
+    "playerNotes": "Notas do jogador",
+
+    "host": "Anfitrião",
+    "hostNotes": "Notas do anfitrião",
+    "hostNotesTooltip": "Apenas o Anfitrião pode ver este separador.",
+
+    "chat": {
+      "messageVisibility": "Visibilidade predefinida da mensagem",
+      "publicMessage": "Mensagem pública",
+      "privateHostMessage": "Mensagem privada do anfitrião"
+    }
+  }
+}

@@ -130,7 +130,7 @@
 
     "maxHealth": "Health",
     "wounds": "Wounds",
-    
+
     "fortune": {
       "hand": {
         "render": "Display the Fortune Hand",
@@ -204,14 +204,14 @@
         "diamonds": "Mental or Intellectual",
         "clubs": "Physical"
       },
-  
+
       "poor": "Poor",
       "average": "Average",
       "good": "Good",
       "great": "Great",
       "exceptional": "Exceptional",
       "extraordinary": "Extraordinary",
-  
+
       "poorAbbr": "PR",
       "averageAbbr": "AV",
       "goodAbbr": "GD",
@@ -266,8 +266,8 @@
     },
 
     "weapon": {
-      "weapons":"Weapons",
-      "weapon":"Weapon",
+      "weapons": "Weapons",
+      "weapon": "Weapon",
       "range": "Range",
       "effectiveRange": "Effective Range",
       "maxRange": "Max Range",

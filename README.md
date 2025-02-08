@@ -16,6 +16,7 @@ All notable changes to this project are documented in [CHANGELOG](./CHANGELOG.md
 The system supports localization. At this stage, the following languages are supported:
 + English
 + French<sup>(1)</sup>
++ Brazilian Portuguese<sup>(1)</sup>
 
 <sup>(1)</sup> Translations of compendium packs require the 'Babele' module to be installed and activated.
 

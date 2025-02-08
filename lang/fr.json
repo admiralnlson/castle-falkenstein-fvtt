@@ -197,7 +197,7 @@
       "level": "Niveau",
       "levelAsSentence": "{level} en {ability}",
       "name": "Nom",
-  
+
       "suitValues": {
         "spades": "sociale / liée au statut social",
         "hearts": "romantique / émotionnelle",
@@ -211,7 +211,7 @@
       "great": "Excellent",
       "exceptional": "Magistral",
       "extraordinary": "Prodigieux",
-  
+
       "poorAbbr": "PR",
       "averageAbbr": "AV",
       "goodAbbr": "GD",

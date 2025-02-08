@@ -1,5 +1,10 @@
 # Changelog
 
+## [v3.11.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.11.0) - 2025/02/08
+### Added
++ Brazilian Portuguese system translation
++ Brazilian Portuguese compendium translation: abilities & weapons
+
 ## [v3.10.1](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.10.1) - 2024/09/21
 ### Fixed
 + Resolved an issue with Foundry V11 where worlds would not launch in v3.10.0.

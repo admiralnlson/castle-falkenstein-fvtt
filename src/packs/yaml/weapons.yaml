@@ -377,7 +377,7 @@ system:
   woundsHigh: 8
   harmRank: E
 ---
-name: llmm French Chassepot Model 1866
+name: 11mm French Chassepot Model 1866
 type: weapon
 system:
   effectiveRange: 400
@@ -389,7 +389,7 @@ system:
   woundsHigh: 7
   harmRank: D
 ---
-name: llmm Prussian Mauser 1871 bolt action
+name: 11mm Prussian Mauser 1871 bolt action
 type: weapon
 system:
   effectiveRange: 600
