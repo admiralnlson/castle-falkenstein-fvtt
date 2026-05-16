@@ -1,10 +1,16 @@
-![Supported Foundry Versions](https://img.shields.io/badge/Supported%20Foundry%20Versions-9%20--%2012-orange) [![Latest release](https://img.shields.io/github/v/release/admiralnlson/castle-falkenstein-fvtt?label=Latest%20release)](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/latest)
+![Supported Foundry Versions](https://img.shields.io/badge/Supported%20Foundry%20Versions-14-blue) [![Latest release](https://img.shields.io/github/v/release/admiralnlson/castle-falkenstein-fvtt?label=Latest%20release)](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/latest)
+
+> **Foundry VTT 14 only.** Version 4.x of this system does not support Foundry 9–12. See [V14 migration plan](./doc/V14-MIGRATION.md) and [CHANGELOG](./CHANGELOG.md).
 
 # Castle Falkenstein system for Foundry Virtual Tabletop
 Enter a world of another universe just a few steps away from our own; a place where Dragons and Steampower rule the skies, Faerie Lords duel atop the battlements, and where the forces of Wizardry and Magick meet the gaslight streets of Sherlock Holmes' London. This is a place of Swashbuckling Fantasy, High Romance and Alternate History; the world of **Castle Falkenstein**!
 
 ## Installation
-To install this system in FoundryVTT, simply go to "Configuration and Setup" (startup screen) > "Game Systems" > "Install System", enter Castle Falkenstein in the top-right search bar and click the "Install" button.
+Requires **Foundry Virtual Tabletop v14** (stable) and **Node.js 24** on the host running Foundry.
+
+To install this system in FoundryVTT, go to "Configuration and Setup" (startup screen) > "Game Systems" > "Install System", search for Castle Falkenstein, and click "Install".
+
+For development from this repository, symlink or copy the folder into `{User Data}/Data/systems/castle-falkenstein` and use a Foundry 14 build; see [doc/V14-MIGRATION.md](./doc/V14-MIGRATION.md).
 
 ## User guide
 See [USERGUIDE](./doc/USERGUIDE.md)

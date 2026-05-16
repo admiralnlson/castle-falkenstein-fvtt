@@ -1,5 +1,14 @@
 # Changelog
 
+## [v4.0.0] — unreleased
+
+### Breaking
++ **Foundry VTT 14 only.** Support for Foundry 9–12 is dropped. Upgrade the application to v14 (with a world backup) before installing system v4.x.
++ `template.json` is no longer included in release packages; actor/item types are defined in `system.json` `documentTypes`.
+
+### Changed
++ Migration to Foundry 14 is tracked in [doc/V14-MIGRATION.md](./doc/V14-MIGRATION.md). Phases 1–5 (API, compendiums, ApplicationV2, modules, QA) are in progress after phase 0 (manifest and tooling).
+
 ## [v3.11.0](https://github.com/admiralnlson/castle-falkenstein-fvtt/releases/tag/v3.11.0) - 2025/02/08
 ### Added
 + Brazilian Portuguese system translation

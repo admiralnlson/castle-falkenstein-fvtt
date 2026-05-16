@@ -2,11 +2,11 @@
   "id": "castle-falkenstein",
   "title": "Castle Falkenstein",
   "description": "FoundryVTT system for Castle Falkenstein.",
-  "version": "0.0.0",
+  "version": "4.0.0-dev",
   "compatibility": {
-    "minimum": "9",
-    "verified": "12.330",
-    "maximum": "12"
+    "minimum": "14",
+    "verified": "14",
+    "maximum": "14"
   },
   "authors": [ {
       "name": "admiralnlson",
