@@ -2,7 +2,7 @@
   "id": "castle-falkenstein",
   "title": "Castle Falkenstein",
   "description": "FoundryVTT system for Castle Falkenstein.",
-  "version": "4.0.0-dev",
+  "version": "4.0.0-dev.3",
   "compatibility": {
     "minimum": "14",
     "verified": "14",
@@ -37,6 +37,7 @@
   "esmodules": [
     "src/lib/lib-wrapper-shim/shim.js",
     "src/lib/socketlib/socketlib.js",
+    "src/foundry-api.mjs",
     "src/castle-falkenstein.mjs"
   ],
   "styles": [

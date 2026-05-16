@@ -1,10 +1,9 @@
 import { CASTLE_FALKENSTEIN } from "../config.mjs";
 import { CastleFalkenstein } from "../castle-falkenstein.mjs";
+import { TextEditor } from "../foundry-api.mjs";
+const { ItemSheet } = foundry.appv1.sheets;
 
-/**
- * Sheet for the 'weapon' item type.
- * @extends {ItemSheet}
- */
+/** Sheet for the 'weapon' item type. */
 export class CastleFalkensteinWeaponSheet extends ItemSheet {
 
   /** @override */

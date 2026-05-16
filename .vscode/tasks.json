@@ -16,6 +16,16 @@
         "cwd": "${workspaceFolder}/src/packs"
       },
       "command": "gulp build"
+    },
+    {
+      "label": "Sync system to Foundry",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/sync-to-foundry.cmd",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
     }
   ]
 }

@@ -1,4 +1,6 @@
 {
+  // Installed system folder (robocopy target); see scripts/foundry-sync.json
+  "foundrySystemPath": "C:\\Users\\casa\\AppData\\Local\\FoundryVTT\\Data\\systems\\castle-falkenstein",
   // Absolute path of parent directory containing both {foundryvttNodeJS} and {foundryvttUserData}
   "foundryvttDevFolder": "D:\\FoundryVTT Dev\\",
   // Relative path where FVTT NodeJS is located (folder name under foundryvttDevFolder; match your FVTT 14 install)

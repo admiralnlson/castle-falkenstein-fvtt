@@ -1,10 +1,9 @@
 import { CASTLE_FALKENSTEIN } from "../config.mjs";
 import { CastleFalkenstein } from "../castle-falkenstein.mjs";
+import { TextEditor } from "../foundry-api.mjs";
+const { ItemSheet } = foundry.appv1.sheets;
 
-/**
- * Sheet for the 'spell' item type.
- * @extends {ItemSheet}
- */
+/** Sheet for the 'spell' item type. */
 export class CastleFalkensteinSpellSheet extends ItemSheet {
 
   /** @override */

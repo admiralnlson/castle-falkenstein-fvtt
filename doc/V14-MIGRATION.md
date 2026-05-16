@@ -63,11 +63,23 @@ Referências: [API Migration Guides](https://foundryvtt.com/article/migration/),
 - [x] Atualizar `.vscode` para Foundry 14 (ajustar pasta local conforme instalação)
 - [ ] Instalar Foundry 14 stable e validar que o mundo abre (desenvolvedor)
 
+**Deploy local:** destino configurado em `scripts/foundry-sync.json` (atualmente `C:\Users\casa\AppData\Local\FoundryVTT\Data\systems\castle-falkenstein`). Após alterar o código, rode na raiz do repo:
+
+```cmd
+scripts\sync-to-foundry.cmd
+```
+
+Ou na paleta de tarefas do VS Code/Cursor: **Sync system to Foundry**. Inclui `src/foundry-bases.mjs` (arquivo novo obrigatório no V14).
+
+Confirme no arquivo instalado que a linha 9 de `src/documents/hand-sheet.mjs` é `extends CardHandConfig`, não `CardsHand`. Se o console ainda mostrar `CardsHand is not defined`, a cópia está desatualizada.
+
 **Critério de aceite:** sistema listado como compatível só com 14 no setup; documentação e manifest alinhados.
 
 ---
 
 ### Fase 1 — API e hooks (sem migrar sheets)
+
+**Em progresso:** `src/foundry-bases.mjs` (namespaces V14); sheets de cartas usam `CardHandConfig` / `CardDeckConfig`; actor/item sheets usam `foundry.appv1.sheets`.
 
 **Objetivo:** core carrega; chat e combate funcionam com mudanças pontuais.
 

@@ -1,9 +1,8 @@
 import { CastleFalkenstein } from "../castle-falkenstein.mjs";
 
-/**
- * Extend the basic ActorSheet with some very simple modifications
- * @extends {ActorSheet}
- */
+const { ActorSheet } = foundry.appv1.sheets;
+
+/** Extend the basic ActorSheet with some very simple modifications */
 export class CastleFalkensteinLootSheet extends ActorSheet {
   /** @override */
   static get defaultOptions() {

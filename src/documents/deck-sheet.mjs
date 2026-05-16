@@ -1,15 +1,12 @@
 import { CastleFalkenstein } from "../castle-falkenstein.mjs";
+const { CardDeckConfig } = foundry.applications.sheets;
 
-/**
- * Sheet for the Cards Deck.
- * @extends {CardsConfig}
- */
-export class CastleFalkensteinDeckSheet extends CardsConfig {
+/** Sheet for the Cards Deck. */
+export class CastleFalkensteinDeckSheet extends CardDeckConfig {
 
    /** @override */
-   async getData(options) {
-    // Retrieve the data structure from the base sheet.
-    const context = await super.getData(options);
+   async _prepareContext(options) {
+    const context = await super._prepareContext(options);
 
     const deck = this.object;
 

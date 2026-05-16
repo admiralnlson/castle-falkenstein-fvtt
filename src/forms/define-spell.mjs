@@ -1,6 +1,7 @@
 import { CASTLE_FALKENSTEIN } from "../config.mjs";
 import { CastleFalkenstein } from "../castle-falkenstein.mjs";
 import { CastleFalkensteinCards } from "../documents/cards.mjs";
+const { FormApplication } = foundry.appv1.api;
 
 // A form for initiating a spell
 export class CastleFalkensteinDefineSpell extends FormApplication {

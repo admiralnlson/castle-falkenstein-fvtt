@@ -10,7 +10,13 @@ Requires **Foundry Virtual Tabletop v14** (stable) and **Node.js 24** on the hos
 
 To install this system in FoundryVTT, go to "Configuration and Setup" (startup screen) > "Game Systems" > "Install System", search for Castle Falkenstein, and click "Install".
 
-For development from this repository, symlink or copy the folder into `{User Data}/Data/systems/castle-falkenstein` and use a Foundry 14 build; see [doc/V14-MIGRATION.md](./doc/V14-MIGRATION.md).
+For development from this repository, sync into your Foundry systems folder (path in [scripts/foundry-sync.json](./scripts/foundry-sync.json)):
+
+```cmd
+scripts\sync-to-foundry.cmd
+```
+
+See [doc/V14-MIGRATION.md](./doc/V14-MIGRATION.md).
 
 ## User guide
 See [USERGUIDE](./doc/USERGUIDE.md)

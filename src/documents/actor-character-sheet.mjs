@@ -1,5 +1,6 @@
 import { CASTLE_FALKENSTEIN } from "../config.mjs";
 import { CastleFalkenstein } from "../castle-falkenstein.mjs";
+import { TextEditor } from "../foundry-api.mjs";
 import { CastleFalkensteinLootSheet } from "./actor-loot-sheet.mjs";
 
 /**

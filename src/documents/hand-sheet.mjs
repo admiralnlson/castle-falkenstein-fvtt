@@ -1,11 +1,9 @@
 import { CASTLE_FALKENSTEIN } from "../config.mjs";
 import { CastleFalkenstein } from "../castle-falkenstein.mjs";
+const { CardHandConfig } = foundry.applications.sheets;
 
-/**
- * Sheet for the Cards Hand.
- * @extends {CardsHand}
- */
-export class CastleFalkensteinHandSheet extends CardsHand {
+/** Sheet for the Cards Hand (FVTT 14). */
+export class CastleFalkensteinHandSheet extends CardHandConfig {
 
   static HEIGHT_WITHOUT_FEAT_OR_SPELL = 57;
   static HEIGHT_WITH_FEAT = 116;
@@ -13,7 +11,8 @@ export class CastleFalkensteinHandSheet extends CardsHand {
 
   /** @override */
   static get defaultOptions() {
-    return foundry.utils.mergeObject(super.defaultOptions, {
+    const parentOptions = super.defaultOptions ?? CardHandConfig.DEFAULT_OPTIONS;
+    return foundry.utils.mergeObject(parentOptions, {
       classes: [CastleFalkenstein.id, "sheet", "cards-hand", "cards-config"],
       width: 350,
       height: CastleFalkensteinHandSheet.HEIGHT_WITHOUT_FEAT_OR_SPELL,
@@ -41,7 +40,7 @@ export class CastleFalkensteinHandSheet extends CardsHand {
   }
 
   static async onPopout(app, popout) {
-    if (app?.options?.template === "systems/castle-falkenstein/src/documents/hand-sheet.hbs") {
+    if (app instanceof CastleFalkensteinHandSheet) {
       const cardWidth = CastleFalkenstein.settings.cardWidth;
 
       const hand = app.object;
@@ -84,9 +83,8 @@ export class CastleFalkensteinHandSheet extends CardsHand {
   }
 
   /** @override */
-  async getData(options) {
-    // Retrieve the data structure from the base sheet.
-    const context = await super.getData(options);
+  async _prepareContext(options) {
+    const context = await super._prepareContext(options);
 
     const hand = this.object;
 
@@ -204,29 +202,39 @@ export class CastleFalkensteinHandSheet extends CardsHand {
   }
 
   /** @override */
-  activateListeners(html) {
-    super.activateListeners(html);
+  _onRender(context, options) {
+    super._onRender(context, options);
+    this.#activateHandListeners(this.element);
+  }
+
+  #activateHandListeners(html) {
+    if (!html) return;
 
     this.rotateCards(html);
   
-    html.find(".card").click(async(event) => { await this.onClickCard(event); });
+    for (const card of html.querySelectorAll(".card")) {
+      card.addEventListener("click", async (event) => { await this.onClickCard(event); });
+    }
 
-    html.find(".divorce-button").click(async(event) => { await this.onClickDivorceSuitSelect(event); });
-    
-    let handedCards = html.find("ol.cards");
-    handedCards.on("dragenter", (e) => {
-      e.target.classList.add("draghover");
-    });
-    handedCards.on("dragleave", (e) => {
-      e.target.classList.remove("draghover");
-    });
-    handedCards.on("drop", (e) => {
-      e.target.classList.remove("draghover");
-    });
+    for (const button of html.querySelectorAll(".divorce-button")) {
+      button.addEventListener("click", async (event) => { await this.onClickDivorceSuitSelect(event); });
+    }
+
+    for (const handedCards of html.querySelectorAll("ol.cards")) {
+      handedCards.addEventListener("dragenter", (e) => {
+        e.target.classList.add("draghover");
+      });
+      handedCards.addEventListener("dragleave", (e) => {
+        e.target.classList.remove("draghover");
+      });
+      handedCards.addEventListener("drop", (e) => {
+        e.target.classList.remove("draghover");
+      });
+    }
   }
 
   rotateCards(html) {
-    let cardsAreas = html.find(".cards");
+    const cardsAreas = html.querySelectorAll(".cards");
     const halfTranslation = CastleFalkenstein.settings.cardWidth/4;
     const halfAngle = 2;
     for (let area of cardsAreas) {

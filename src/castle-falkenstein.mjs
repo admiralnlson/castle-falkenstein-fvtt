@@ -19,6 +19,7 @@ import { CastleFalkensteinPossessionSheet } from "./documents/item-sheet-possess
 import { CastleFalkensteinSpellSheet } from "./documents/item-sheet-spell.mjs";
 import { CastleFalkensteinItem } from "./documents/item.mjs";
 import { CastleFalkensteinDefineSpell } from "./forms/define-spell.mjs";
+import { Actors, Items, CardStacks, loadTemplates } from "./foundry-api.mjs";
 
 export class CastleFalkenstein {
 
@@ -302,10 +303,6 @@ export class CastleFalkenstein {
     this.checkOwnershipsOnDecks();
   }
 
-  static async onRenderPlayerList(application, html, data) {
-    this.checkOwnershipsOnDecks();
-  }
-
   static async checkOwnershipsOnDecks() {
     if (game.user.isGM) {
       game.users.contents.forEach((user) => {
@@ -578,21 +575,25 @@ export class CastleFalkenstein {
   static async onSetup() {
 
     // Unregister default sheets
+    const CoreActorSheet = foundry.appv1.sheets.ActorSheet;
+    const CoreItemSheet = foundry.appv1.sheets.ItemSheet;
+    const CoreCardDeckConfig = foundry.applications.sheets.CardDeckConfig;
+
     if (CONFIG["Actor"]?.sheetClasses?.base)
-      Actors.unregisterSheet("core", ActorSheet, {
+      Actors.unregisterSheet("core", CoreActorSheet, {
         types: ["base"]
       });
-    Actors.unregisterSheet("core", ActorSheet, {
+    Actors.unregisterSheet("core", CoreActorSheet, {
       types: ["character"]
     });
     if (CONFIG["Item"]?.sheetClasses?.base)
-      Items.unregisterSheet("core", ItemSheet, {
+      Items.unregisterSheet("core", CoreItemSheet, {
         types: ["base"]
       });
-    Items.unregisterSheet("core", ItemSheet, {
+    Items.unregisterSheet("core", CoreItemSheet, {
       types: ["ability", "possession", "weapon", "spell"]
     });
-    CardStacks.unregisterSheet("core", CardsConfig, {
+    CardStacks.unregisterSheet("core", CoreCardDeckConfig, {
       types: ["deck"]
     });
     // Default sheet still required for Duels for instance.
@@ -625,7 +626,9 @@ export class CastleFalkenstein {
       CONFIG.Actor.dataModels.character.schema.fields.hostNotes.textSearch = game.user.isGM;
     }
   
-    CONFIG.Cards.sheetClasses.hand["core.CardsHand"].canBeDefault = false;
+    for (const [key, sheetClass] of Object.entries(CONFIG.Cards.sheetClasses.hand)) {
+      if (key.startsWith("core.")) sheetClass.canBeDefault = false;
+    }
 
     await this.prepareCardStacks();
 
@@ -988,20 +991,18 @@ export class CastleFalkenstein {
     ]);
   }
 
-  static async onRenderChatMessage(chatMessage, html, messageData) {
-    // make the 'success ranges' section expand/collapse on click
-    html.find(".feat-chat-ranges-button")?.click(event => {
-      let button = event.currentTarget;
-      var content = button.nextElementSibling;
-      if (content.style.display === "block") {
-        content.style.display = "none";
-      } else {
-        content.style.display = "block";
-      }
-    });
+  static onRenderChatMessageHTML(chatMessage, html, messageData) {
+    const button = html.querySelector(".feat-chat-ranges-button");
+    if (button) {
+      button.addEventListener("click", (event) => {
+        const content = event.currentTarget.nextElementSibling;
+        if (content) content.style.display = content.style.display === "block" ? "none" : "block";
+      });
+    }
 
-    // make the overall message have the same color as its author
-    html[0].style.borderColor = messageData.author?.color.css;
+    if (messageData.author?.color?.css) {
+      html.style.borderColor = messageData.author.color.css;
+    }
   }
 
   static async addMacroAtHotbarSlot(name, img, command, slot) {
@@ -1123,7 +1124,7 @@ export class CastleFalkenstein {
   static refreshActorSheetIfDiary(sheet) {
     // if a Diary, refresh the matching (not Token) Actor's sheet if open
     const journalEntry = sheet.object;
-    if (!journalEntry.getFlag(CastleFalkenstein.id, "type") === "diary")
+    if (journalEntry.getFlag(CastleFalkenstein.id, "type") !== "diary")
       return;
     const actorId = journalEntry.getFlag(CastleFalkenstein.id, "actor");
     game.actors.get(actorId)?.sheet.render(false);
@@ -1184,7 +1185,7 @@ Hooks.on("init", () => CastleFalkenstein.onInit());
 Hooks.on("setup", () => CastleFalkenstein.onSetup());
 Hooks.on("ready", () => CastleFalkenstein.onReady());
 
-Hooks.on("renderChatMessage", (chatMessage, html, messageData) => CastleFalkenstein.onRenderChatMessage(chatMessage, html, messageData));
+Hooks.on("renderChatMessageHTML", (chatMessage, html, messageData) => CastleFalkenstein.onRenderChatMessageHTML(chatMessage, html, messageData));
 
 Hooks.on("hotbarDrop", (hotbar, data, slot) => { return CastleFalkenstein.onHotbarDrop(hotbar, data, slot) });
 
