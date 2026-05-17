@@ -8,11 +8,24 @@
     "verified": "13",
     "maximum": "14"
   },
-  "authors": [ {
-      "name": "admiralnlson",
-      "url": "https://ko-fi.com/admiralnlson",
-      "discord": "admiralnlson#2349"
-    }
+  "authors": [  {
+    "name": "admiralnlson",
+    "url": "https://ko-fi.com/admiralnlson",
+    "discord": "admiralnlson#2349"
+  },
+  {
+    "name": "Marcos",
+    "discord": "snagov"
+  },
+  {
+    "name": "Lobo Grimn",
+    "discord": "bayboy0241_37861"
+  },
+  {
+    "name": "Denis Brandao",
+    "url": "https://github.com/denisbrandao",
+    "discord": "dbrandao#9326"
+  }
   ],
   "relationships": {
     "recommends": [
