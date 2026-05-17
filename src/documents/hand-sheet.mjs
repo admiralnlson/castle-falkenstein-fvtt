@@ -1,128 +1,105 @@
 import { CASTLE_FALKENSTEIN } from "../config.mjs";
 import { CastleFalkenstein } from "../castle-falkenstein.mjs";
+
 const { CardHandConfig } = foundry.applications.sheets;
 
-/** Sheet for the Cards Hand (FVTT 14). */
+/**
+ * Sheet for a Castle Falkenstein "hand" Cards stack.
+ */
 export class CastleFalkensteinHandSheet extends CardHandConfig {
 
   static HEIGHT_WITHOUT_FEAT_OR_SPELL = 57;
   static HEIGHT_WITH_FEAT = 116;
   static HEIGHT_WITH_SPELL = 116;
 
-  /** @override */
-  static get defaultOptions() {
-    const parentOptions = super.defaultOptions ?? CardHandConfig.DEFAULT_OPTIONS;
-    return foundry.utils.mergeObject(parentOptions, {
-      classes: [CastleFalkenstein.id, "sheet", "cards-hand", "cards-config"],
-      width: 350,
-      height: CastleFalkensteinHandSheet.HEIGHT_WITHOUT_FEAT_OR_SPELL,
-      resizable: {
-        resizeX: true,
-        resizeY: false
-      },
-      template: "systems/castle-falkenstein/src/documents/hand-sheet.hbs",
-    })
-  }
-
-  /** @override */
-  render(force=false, options={}) {
-    const hand = this.object;
-    const spellActive = hand.getFlag(CastleFalkenstein.id, "spellBeingCast");
-    const featActive = hand.getFlag(CastleFalkenstein.id, "featBeingPerformed");
-
-    super.render(force, foundry.utils.mergeObject(options, {
-      height: (featActive
-               ? CastleFalkensteinHandSheet.HEIGHT_WITH_FEAT
-               : (spellActive
-                  ? CastleFalkensteinHandSheet.HEIGHT_WITH_SPELL
-                  : CastleFalkensteinHandSheet.HEIGHT_WITHOUT_FEAT_OR_SPELL))
-    }));
-  }
-
-  static async onPopout(app, popout) {
-    if (app instanceof CastleFalkensteinHandSheet) {
-      const cardWidth = CastleFalkenstein.settings.cardWidth;
-
-      const hand = app.object;
-      const deckType = hand.getFlag(CastleFalkenstein.id, "type");
-      const deck = CastleFalkenstein.deck(deckType);
-
-      const innerWidth = cardWidth * (deckType === "fortune" ? 2.5 : 3.5);
-      const innerHeight = CastleFalkenstein.computeCardHeight(deck) * (deckType === "fortune" ? 1.2 : 1.3)
-        + (deckType === "fortune" ? CastleFalkensteinHandSheet.HEIGHT_WITH_FEAT : CastleFalkensteinHandSheet.HEIGHT_WITH_SPELL) + 5;
-
-      popout.resizeTo(innerWidth + popout.outerWidth - app.options.width,
-                      innerHeight + popout.outerHeight - app.options.height);
+  static DEFAULT_OPTIONS = {
+    classes: ["castle-falkenstein", "sheet", "cards-hand", "cards-config"],
+    position: { width: 350, height: 150 },
+    window: { resizable: true },
+    actions: {
+      openActor: CastleFalkensteinHandSheet._onOpenActor,
+      refillHand: CastleFalkensteinHandSheet._onRefillHand,
+      triggerFeat: CastleFalkensteinHandSheet._onTriggerFeat,
+      cancelFeat: CastleFalkensteinHandSheet._onCancelFeat,
+      chanceCard: CastleFalkensteinHandSheet._onChanceCard,
+      gatherPower: CastleFalkensteinHandSheet._onGatherPower,
+      castSpell: CastleFalkensteinHandSheet._onCastSpell,
+      cancelSpell: CastleFalkensteinHandSheet._onCancelSpell,
+      releasePower: CastleFalkensteinHandSheet._onReleasePower,
+      playHostFortuneCard: CastleFalkensteinHandSheet._onPlayHostFortuneCard,
+      cardClick: CastleFalkensteinHandSheet._onCardClick,
+      divorceSuit: CastleFalkensteinHandSheet._onDivorceSuit
     }
-  }
+  };
+
+  static PARTS = {
+    sheet: {
+      template: "systems/castle-falkenstein/src/documents/hand-sheet.hbs",
+      root: true
+    }
+  };
+
+  /** @override */
+  static TABS = {};
+
+  /* -------------------------------------------- */
+  /*  Rendering                                   */
+  /* -------------------------------------------- */
 
   /** @override */
   get title() {
-    const hand = this.object;
-
+    const hand = this.document;
     const actorFlag = hand.getFlag(CastleFalkenstein.id, "actor");
     const feat = hand.featBeingPerformed;
-    if (actorFlag === "host" && feat && feat.actor)
-      return `${hand.name} (${feat.actor.name})`;
-    else
-      return hand.name;
+    if (actorFlag === "host" && feat && feat.actor) return `${hand.name} (${feat.actor.name})`;
+    return hand.name;
   }
 
-  /** @override */
-  _onSortCard(event, card) {
-
-    // Identify a specific card as the drop target
-    let target = null;
-    const li = event.target.closest("[data-card-id]");
-    if ( li ) target = this.object.cards.get(li.dataset.cardId) ?? null;
-
-    if (li && li.dataset.cardId === card.id)
-      return this;
-
-    return super._onSortCard(event, card);
+  static computeHeight(hand) {
+    const featActive = hand.getFlag(CastleFalkenstein.id, "featBeingPerformed");
+    const spellActive = hand.getFlag(CastleFalkenstein.id, "spellBeingCast");
+    if (featActive) return CastleFalkensteinHandSheet.HEIGHT_WITH_FEAT;
+    if (spellActive) return CastleFalkensteinHandSheet.HEIGHT_WITH_SPELL;
+    return CastleFalkensteinHandSheet.HEIGHT_WITHOUT_FEAT_OR_SPELL;
   }
 
-  /** @override */
+  /* -------------------------------------------- */
+
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
 
-    const hand = this.object;
+    const hand = this.document;
 
     CastleFalkenstein.translateCardStack(hand);
 
-    context.typeFlag =  hand.getFlag(CastleFalkenstein.id, "type");
+    context.cards = hand.cards.contents;
+    context.owner = hand.isOwner;
+    context.inCompendium = !!hand.pack;
+
+    context.typeFlag = hand.getFlag(CastleFalkenstein.id, "type");
     let deck;
-    if (context.typeFlag)
-      deck = CastleFalkenstein.deck(context.typeFlag);
+    if (context.typeFlag) deck = CastleFalkenstein.deck(context.typeFlag);
     context.cardHeight = CastleFalkenstein.computeCardHeight(deck);
     context.rtgVisuals = CastleFalkenstein.usingRTGCardVisuals(deck) ? "rtg-visuals" : "";
 
     if (context.typeFlag === "fortune") {
-
       context.hostFortune = game.user.isGM && hand.getFlag(CastleFalkenstein.id, "actor") === "host";
 
       context.featBeingPerformed = hand.featBeingPerformed;
 
-      let i18nRefillKey = (4 - hand.cards.size > 1 ? "refillPlural" : "refillSingular");
+      const i18nRefillKey = (4 - hand.cards.size > 1 ? "refillPlural" : "refillSingular");
       context.i18nRefill = game.i18n.format(`castle-falkenstein.fortune.hand.${i18nRefillKey}`, {
         nb: 4 - hand.cards.size
       });
 
       context.cards.forEach(card => {
-        if (!context.featBeingPerformed || hand.isCorrectFeatSuit(card))
-          card.correctSuit = "correct-suit";
-        else
-          card.correctSuit = "";
-
-        if (card.suit === "joker")
-          card.joker = "joker";
-        else
-          card.joker = "";
+        if (!context.featBeingPerformed || hand.isCorrectFeatSuit(card)) card.correctSuit = "correct-suit";
+        else card.correctSuit = "";
+        card.joker = card.suit === "joker" ? "joker" : "";
       });
 
       if (context.featBeingPerformed) {
         context.abilityLevelAsSentenceHtml = CastleFalkenstein.abilityLevelAsSentenceHtml(context.featBeingPerformed.ability);
-
         context.total = hand.computeFeatTotal();
 
         context.suitHTML = {
@@ -133,65 +110,48 @@ export class CastleFalkensteinHandSheet extends CardHandConfig {
         };
 
         context.cards.forEach(card => {
-          if (card.getFlag(CastleFalkenstein.id, "selected"))
-            card.selected = "selected";
-          else
-            card.selected = "";
+          card.selected = card.getFlag(CastleFalkenstein.id, "selected") ? "selected" : "";
         });
 
         context.divorceSettingEnabled = (CastleFalkenstein.settings.divorceVariation !== CastleFalkenstein.DIVORCE_VARIATION_OPTIONS.disabled);
-
         context.divorceSuit = hand.featBeingPerformed.divorceSuit;
-
         context.divorceHint = hand.isDivorceUsed()
-                              ? game.i18n.localize(`castle-falkenstein.ability.suitValues.${hand.featBeingPerformed.divorceSuit}`)
-                              : game.i18n.localize(`castle-falkenstein.settings.divorceVariation.divorceNone`);
+          ? game.i18n.localize(`castle-falkenstein.ability.suitValues.${hand.featBeingPerformed.divorceSuit}`)
+          : game.i18n.localize(`castle-falkenstein.settings.divorceVariation.divorceNone`);
 
         context.displayMaxCards = (CastleFalkenstein.settings.hardLimitVariation !== CastleFalkenstein.HARD_LIMIT_VARIATION_OPTIONS.disabled.str);
-
         const maxCards = CastleFalkenstein.HARD_LIMIT_VARIATION_OPTIONS[CastleFalkenstein.settings.hardLimitVariation].maxCards[hand.featBeingPerformed?.ability.system.level];
         const format = (maxCards === 1)
-                      ? "castle-falkenstein.settings.hardLimitVariation.maxCardsDrawableSingular"
-                      : "castle-falkenstein.settings.hardLimitVariation.maxCardsDrawablePlural";
+          ? "castle-falkenstein.settings.hardLimitVariation.maxCardsDrawableSingular"
+          : "castle-falkenstein.settings.hardLimitVariation.maxCardsDrawablePlural";
         context.maxCardsStr = game.i18n.format(format, { nb: maxCards });
       }
     } else if (context.typeFlag === "sorcery") {
-
       context.spellBeingCast = hand.spellBeingCast;
       if (context.spellBeingCast) {
         context.spellBeingCast.suitSymbol = CASTLE_FALKENSTEIN.cardSuitsSymbols[context.spellBeingCast.spell.system.suit];
-
         context.cards.forEach(card => {
-          if (card.suit === "joker" || card.suit === context.spellBeingCast.spell.system.suit)
-            card.correctSuit = "correct-suit";
-          else
-            card.correctSuit = "";
-
-          if (card.suit === "joker")
-            card.joker = "joker";
-          else
-            card.joker = "";
+          if (card.suit === "joker" || card.suit === context.spellBeingCast.spell.system.suit) card.correctSuit = "correct-suit";
+          else card.correctSuit = "";
+          card.joker = card.suit === "joker" ? "joker" : "";
         });
       }
-    
+
       context.readyToCast = context.spellBeingCast
-                            ? (context.spellBeingCast.powerGathered >= context.spellBeingCast.powerNeed || context.spellBeingCast.isWildSpell
-                              ? "ready-to-cast"
-                              : "")
-                            : "";
+        ? (context.spellBeingCast.powerGathered >= context.spellBeingCast.powerNeed || context.spellBeingCast.isWildSpell
+          ? "ready-to-cast"
+          : "")
+        : "";
     }
 
     context.disabled = {};
-
-    context.disabled.openActor =                            context.inCompendium || CastleFalkensteinHandSheet.openActorDisabled(hand);
-
-    context.disabled.refillHand =        !context.owner  || context.inCompendium || CastleFalkensteinHandSheet.refillHandDisabled(hand);
-    context.disabled.triggerFeat =       !context.owner  || context.inCompendium || CastleFalkensteinHandSheet.triggerFeatDisabled(hand);
-    context.disabled.cancelFeat =        !context.owner  || context.inCompendium || CastleFalkensteinHandSheet.cancelFeatDisabled(hand);
-    context.disabled.chanceCard =        !context.owner  || context.inCompendium || CastleFalkensteinHandSheet.chanceCardDisabled(hand);
-
+    context.disabled.openActor = context.inCompendium || CastleFalkensteinHandSheet.openActorDisabled(hand);
+    context.disabled.refillHand = !context.owner || context.inCompendium || CastleFalkensteinHandSheet.refillHandDisabled(hand);
+    context.disabled.triggerFeat = !context.owner || context.inCompendium || CastleFalkensteinHandSheet.triggerFeatDisabled(hand);
+    context.disabled.cancelFeat = !context.owner || context.inCompendium || CastleFalkensteinHandSheet.cancelFeatDisabled(hand);
+    context.disabled.chanceCard = !context.owner || context.inCompendium || CastleFalkensteinHandSheet.chanceCardDisabled(hand);
     context.disabled.gatherPower = !context.owner || context.inCompendium || CastleFalkensteinHandSheet.gatherPowerDisabled(hand);
-    context.disabled.castSpell =   !context.owner || context.inCompendium || CastleFalkensteinHandSheet.castSpellDisabled(hand);
+    context.disabled.castSpell = !context.owner || context.inCompendium || CastleFalkensteinHandSheet.castSpellDisabled(hand);
     context.disabled.cancelSpell = !context.owner || context.inCompendium || CastleFalkensteinHandSheet.cancelSpellDisabled(hand);
     context.harmonicHTML = CastleFalkensteinHandSheet.harmonicHTML(hand, true);
 
@@ -201,113 +161,176 @@ export class CastleFalkensteinHandSheet extends CardHandConfig {
     return context;
   }
 
-  /** @override */
-  _onRender(context, options) {
-    super._onRender(context, options);
-    this.#activateHandListeners(this.element);
+  /* -------------------------------------------- */
+
+  async _onRender(context, options) {
+    await super._onRender(context, options);
+
+    // Dynamic height based on feat/spell state
+    this.setPosition({ height: CastleFalkensteinHandSheet.computeHeight(this.document) });
+
+    // Hand-shaped card rotation effect
+    this.rotateCards();
+
+    // Drop-target visual feedback on the card row
+    this.element.querySelectorAll("ol.cards").forEach(ol => {
+      ol.addEventListener("dragenter", e => e.target.classList.add("draghover"));
+      ol.addEventListener("dragleave", e => e.target.classList.remove("draghover"));
+      ol.addEventListener("drop", e => e.target.classList.remove("draghover"));
+    });
   }
 
-  #activateHandListeners(html) {
-    if (!html) return;
-
-    this.rotateCards(html);
-  
-    for (const card of html.querySelectorAll(".card")) {
-      card.addEventListener("click", async (event) => { await this.onClickCard(event); });
-    }
-
-    for (const button of html.querySelectorAll(".divorce-button")) {
-      button.addEventListener("click", async (event) => { await this.onClickDivorceSuitSelect(event); });
-    }
-
-    for (const handedCards of html.querySelectorAll("ol.cards")) {
-      handedCards.addEventListener("dragenter", (e) => {
-        e.target.classList.add("draghover");
-      });
-      handedCards.addEventListener("dragleave", (e) => {
-        e.target.classList.remove("draghover");
-      });
-      handedCards.addEventListener("drop", (e) => {
-        e.target.classList.remove("draghover");
-      });
-    }
-  }
-
-  rotateCards(html) {
-    const cardsAreas = html.querySelectorAll(".cards");
-    const halfTranslation = CastleFalkenstein.settings.cardWidth/4;
+  rotateCards() {
+    const cardsAreas = this.element.querySelectorAll(".cards");
+    const halfTranslation = CastleFalkenstein.settings.cardWidth / 4;
     const halfAngle = 2;
-    for (let area of cardsAreas) {
+    for (const area of cardsAreas) {
       for (let i = 0; i < area.children.length; i++) {
-        let card = area.children[i];
-        const factor = 1 - area.children.length + 2*i;
+        const card = area.children[i];
+        const factor = 1 - area.children.length + 2 * i;
         card.style.transform = `rotateZ(${(factor * halfAngle)}deg) translateX(${factor * halfTranslation}px) translateY(var(--card-hover-translateY))`;
-        card.style["z-index"] = 302 + i*4;
+        card.style["z-index"] = 302 + i * 4;
       }
     }
   }
 
-  /** @override */
-  async _onCardControl(event) {
+  /* -------------------------------------------- */
+  /*  PopOut integration                          */
+  /* -------------------------------------------- */
 
-    super._onCardControl(event);
+  static async onPopout(app, popout) {
+    if (app instanceof CastleFalkensteinHandSheet) {
+      const cardWidth = CastleFalkenstein.settings.cardWidth;
+      const hand = app.document;
+      const deckType = hand.getFlag(CastleFalkenstein.id, "type");
+      const deck = CastleFalkenstein.deck(deckType);
 
-    const button = event.currentTarget;
-    const li = button.closest(".card");
-    const card = li ? this.object.cards.get(li.dataset.cardId) : null;
+      const innerWidth = cardWidth * (deckType === "fortune" ? 2.5 : 3.5);
+      const innerHeight = CastleFalkenstein.computeCardHeight(deck) * (deckType === "fortune" ? 1.2 : 1.3)
+        + (deckType === "fortune" ? CastleFalkensteinHandSheet.HEIGHT_WITH_FEAT : CastleFalkensteinHandSheet.HEIGHT_WITH_SPELL) + 5;
 
-    const hand = this.object;
+      popout.resizeTo(innerWidth + popout.outerWidth - app.position.width,
+        innerHeight + popout.outerHeight - app.position.height);
+    }
+  }
 
-    // Handle the control action
-    switch ( button.dataset.action ) {
-      case "openActor":
-        return CastleFalkensteinHandSheet.openActor(hand);
-      case "refillHand":
-        return CastleFalkensteinHandSheet.refillHand(hand);
-      case "playHostFortuneCard":
-        return CastleFalkensteinHandSheet.playHostFortuneCard(card, hand);
-      case "triggerFeat":
-        return CastleFalkensteinHandSheet.triggerFeat(hand);
-      case "cancelFeat":
-        return CastleFalkensteinHandSheet.cancelFeat(hand);
-      case "chanceCard":
-        return CastleFalkensteinHandSheet.chanceCard(hand);
-      case "gatherPower":
-        return CastleFalkensteinHandSheet.gatherPower(hand);
-      case "releasePower":
-        event.stopPropagation(); // prevents zoom on the card
-        return CastleFalkensteinHandSheet.releasePower(card, hand);
-      case "castSpell":
-        return CastleFalkensteinHandSheet.castSpell(hand);
-      case "cancelSpell":
-        return CastleFalkensteinHandSheet.cancelSpell(hand);
+  /* -------------------------------------------- */
+  /*  Actions                                     */
+  /* -------------------------------------------- */
+
+  static async _onOpenActor(event, target) {
+    return CastleFalkensteinHandSheet.openActor(this.document);
+  }
+
+  static async _onRefillHand(event, target) {
+    return CastleFalkensteinHandSheet.refillHand(this.document);
+  }
+
+  static async _onTriggerFeat(event, target) {
+    return CastleFalkensteinHandSheet.triggerFeat(this.document);
+  }
+
+  static async _onCancelFeat(event, target) {
+    return CastleFalkensteinHandSheet.cancelFeat(this.document);
+  }
+
+  static async _onChanceCard(event, target) {
+    return CastleFalkensteinHandSheet.chanceCard(this.document);
+  }
+
+  static async _onGatherPower(event, target) {
+    return CastleFalkensteinHandSheet.gatherPower(this.document);
+  }
+
+  static async _onCastSpell(event, target) {
+    return CastleFalkensteinHandSheet.castSpell(this.document);
+  }
+
+  static async _onCancelSpell(event, target) {
+    return CastleFalkensteinHandSheet.cancelSpell(this.document);
+  }
+
+  static async _onReleasePower(event, target) {
+    event.stopPropagation();
+    const li = target.closest(".card");
+    const card = li ? this.document.cards.get(li.dataset.cardId) : null;
+    return CastleFalkensteinHandSheet.releasePower(card, this.document);
+  }
+
+  static async _onPlayHostFortuneCard(event, target) {
+    const li = target.closest(".card");
+    const card = li ? this.document.cards.get(li.dataset.cardId) : null;
+    return CastleFalkensteinHandSheet.playHostFortuneCard(card, this.document);
+  }
+
+  static async _onCardClick(event, target) {
+    return this.onClickCard(event, target);
+  }
+
+  static async _onDivorceSuit(event, target) {
+    return this.onClickDivorceSuitSelect(event, target);
+  }
+
+  /* -------------------------------------------- */
+
+  async onClickCard(event, target) {
+    const hand = this.document;
+    const typeFlag = hand.getFlag(CastleFalkenstein.id, "type");
+
+    if (typeFlag !== "fortune") return;
+    if (!hand.featBeingPerformed && !(game.user.isGM && !hand.featBeingPerformed)) return;
+
+    const cardId = target.getAttribute("data-card-id") ?? target.closest(".card")?.dataset.cardId;
+    const card = hand.cards.find(c => c.id === cardId);
+    if (!card) return;
+
+    if (card.getFlag(CastleFalkenstein.id, "selected")) {
+      await card.unsetFlag(CastleFalkenstein.id, "selected");
+    } else {
+      const alreadySelected = hand.cards.filter(c => c.getFlag(CastleFalkenstein.id, "selected")).length;
+
+      let maxCards = 4;
+      if (hand.featBeingPerformed) {
+        maxCards = CastleFalkenstein.HARD_LIMIT_VARIATION_OPTIONS[CastleFalkenstein.settings.hardLimitVariation].maxCards[hand.featBeingPerformed.ability.system.level];
+      }
+
+      if (alreadySelected < maxCards) await card.setFlag(CastleFalkenstein.id, "selected", true);
     }
 
+    this.render();
   }
+
+  async onClickDivorceSuitSelect(event, target) {
+    const suit = target.name;
+    const hand = this.document;
+    const fbp = await hand.getFlag(CastleFalkenstein.id, "featBeingPerformed");
+    fbp.divorceSuit = suit;
+    await hand.setFlag(CastleFalkenstein.id, "featBeingPerformed", fbp);
+
+    this.render();
+  }
+
+  /* -------------------------------------------- */
+  /*  Static helpers (re-rendering / disabled)    */
+  /* -------------------------------------------- */
 
   static openActorDisabled(hand) {
     const actorFlag = hand.getFlag(CastleFalkenstein.id, "actor");
     if (actorFlag === "host") {
-
+      // intentionally empty — preserved from original
     }
   }
 
   static async openActor(hand) {
     const actorFlag = hand.getFlag(CastleFalkenstein.id, "actor");
-    if (actorFlag === "host")
-      return;
+    if (actorFlag === "host") return;
 
     const actor = game.actors.get(actorFlag);
-    if (!actor)
-      return;
+    if (!actor) return;
 
     const typeFlag = hand.getFlag(CastleFalkenstein.id, "type");
-
-    if (typeFlag === "fortune") {
-      actor.sheet.tabToOpen = "abilities";
-    } else if (typeFlag === "sorcery") {
-      actor.sheet.tabToOpen = "spells";
-    }
+    if (typeFlag === "fortune") actor.sheet.tabToOpen = "abilities";
+    else if (typeFlag === "sorcery") actor.sheet.tabToOpen = "spells";
     actor.sheet.render(true);
   }
 
@@ -335,14 +358,9 @@ export class CastleFalkensteinHandSheet extends CardHandConfig {
     const cardsPlayed = hand.cards.filter(card => card.getFlag(CastleFalkenstein.id, "selected"));
 
     if (cardsPlayed.length > 0 && !game.users.activeGM) {
-      // planning to use executeAsGM below
       CastleFalkenstein.notif.warn(game.i18n.localize("castle-falkenstein.notifications.cannotCarryOutActionWithoutHost"));
       return;
     }
-
-    //
-    // produce the chat message
-    //
 
     const flavor = `[${game.i18n.localize("castle-falkenstein.feat.perform")}]`;
     let content = CastleFalkenstein.abilityLevelAsSentenceHtml(hand.featBeingPerformed.ability);
@@ -355,7 +373,7 @@ export class CastleFalkensteinHandSheet extends CardHandConfig {
     content += "<hr/><div class=\"cards-played\">";
     if (cardsPlayed.length > 0) {
       cardsPlayed.forEach(card => {
-        const correctSuitTag = hand.isCorrectFeatSuit(card) ? "correct-suit": "";
+        const correctSuitTag = hand.isCorrectFeatSuit(card) ? "correct-suit" : "";
         content += CastleFalkenstein.smallCardImg(card, `card-played ${correctSuitTag}`);
       });
     } else {
@@ -365,131 +383,66 @@ export class CastleFalkensteinHandSheet extends CardHandConfig {
     const total = hand.computeFeatTotal();
     content += `<hr/><button type="button" class="feat-chat-ranges-button">${total}</button>`;
 
-    const highSuccessMax = Math.floor(total/2);
-    const fullSuccessMax = Math.floor(total*2/3);
-    const fumbleMin = Math.round((total+0.6)*2);
+    const highSuccessMax = Math.floor(total / 2);
+    const fullSuccessMax = Math.floor(total * 2 / 3);
+    const fumbleMin = Math.round((total + 0.6) * 2);
     content += "<div class=\"feat-chat-ranges-collapsible\">"
-          //  + "  <hr />"
-              + "  <div class=\"grid grid-2col feat-chat-ranges\">"
-              + `    <span class="feat-chat-range">0-${highSuccessMax}</span><span>${game.i18n.localize("castle-falkenstein.feat.highSuccess")}</span>`;
-    if (total > 2) { // when total is 2 (FAI with no cards), a full success is impossible
-      content += `    <span class="feat-chat-range">${highSuccessMax+1}-${fullSuccessMax}</span><span>${game.i18n.localize("castle-falkenstein.feat.fullSuccess")}</span>`
+      + "  <div class=\"grid grid-2col feat-chat-ranges\">"
+      + `    <span class="feat-chat-range">0-${highSuccessMax}</span><span>${game.i18n.localize("castle-falkenstein.feat.highSuccess")}</span>`;
+    if (total > 2) {
+      content += `    <span class="feat-chat-range">${highSuccessMax + 1}-${fullSuccessMax}</span><span>${game.i18n.localize("castle-falkenstein.feat.fullSuccess")}</span>`;
     }
-    content += `    <span class="feat-chat-range">${fullSuccessMax+1}-${total}</span><span>${game.i18n.localize("castle-falkenstein.feat.partialSuccess")}</span>`
-              + `    <span class="feat-chat-range">${total+1}-${fumbleMin-1}</span><span>${game.i18n.localize("castle-falkenstein.feat.failure")}</span>`
-              + `    <span class="feat-chat-range">${fumbleMin}+</span><span>${game.i18n.localize("castle-falkenstein.feat.fumble")}</span>`
-              + "  </div>"
-              + "</div>";
+    content += `    <span class="feat-chat-range">${fullSuccessMax + 1}-${total}</span><span>${game.i18n.localize("castle-falkenstein.feat.partialSuccess")}</span>`
+      + `    <span class="feat-chat-range">${total + 1}-${fumbleMin - 1}</span><span>${game.i18n.localize("castle-falkenstein.feat.failure")}</span>`
+      + `    <span class="feat-chat-range">${fumbleMin}+</span><span>${game.i18n.localize("castle-falkenstein.feat.fumble")}</span>`
+      + "  </div>"
+      + "</div>";
 
-    // Post message to chat
     CastleFalkenstein.createChatMessage(hand.featBeingPerformed.actor, flavor, content);
 
-    // return the cards played back into the deck
     if (cardsPlayed.length > 0) {
       await CastleFalkenstein.socket.executeAsGM("returnBackToDeck", hand.id, cardsPlayed.map(card => card.id));
     }
-    
-    // no feat being performed anymore
+
     await hand.stopPerformingFeat();
-    
-    // move the hand sheet to the top, so that the player may easily refill their hand.
     await hand.sheet.render(true);
   }
 
   static async cancelFeat(hand) {
-    // unselect cards
     hand.cards.forEach(card => {
       card.unsetFlag(CastleFalkenstein.id, "selected");
     });
-
-    // no feat being performed anymore
     await hand.stopPerformingFeat();
     await hand.sheet.render(true);
   }
 
-  async onClickDivorceSuitSelect(event) {
-    const suit = event.currentTarget.name;
-
-    const hand = this.object;
-    const fbp = await hand.getFlag(CastleFalkenstein.id, "featBeingPerformed");
-    fbp.divorceSuit = suit;
-    await hand.setFlag(CastleFalkenstein.id, "featBeingPerformed", fbp);
-
-    this.render();
-  }
-
-  async onClickCard(event) {
-
-    const hand = this.object;
-    const typeFlag = hand.getFlag(CastleFalkenstein.id, "type");
-
-    if (typeFlag === "fortune" && (hand.featBeingPerformed || (game.user.isGM && !hand.featBeingPerformed))) {
-      const cardId = event.currentTarget.getAttribute("data-card-id");
-      const card = hand.cards.find(card => {return card.id === cardId});
-
-      if (card.getFlag(CastleFalkenstein.id, "selected")) {
-        await card.unsetFlag(CastleFalkenstein.id, "selected");
-      } else {
-        const alreadySelectedCards = hand.cards.filter(card => card.getFlag(CastleFalkenstein.id, "selected")).length;
-
-        let maxCards= 4;
-        if (hand.featBeingPerformed)
-          maxCards = CastleFalkenstein.HARD_LIMIT_VARIATION_OPTIONS[CastleFalkenstein.settings.hardLimitVariation].maxCards[hand.featBeingPerformed.ability.system.level];
-
-        if (alreadySelectedCards < maxCards)
-          await card.setFlag(CastleFalkenstein.id, "selected", true);
-      }
-
-      this.render();
-    }
-
-  }
-
   static async chanceCard(hand) {
-    // pick a card out of the available ones in the deck
-
     const deck = CastleFalkenstein.fortuneDeck;
-
     if (deck.availableCards.length <= 0) {
       CastleFalkenstein.notif.error(game.i18n.localize("castle-falkenstein.notifications.cannotDraw"));
       return;
     }
-
     const card = deck.availableCards[Math.floor(Math.random() * deck.availableCards.length)];
 
-    // Post message to chat
     const flavor = `[${game.i18n.localize("castle-falkenstein.fortune.hand.chance")}]`;
-    const correctSuit = "correct-suit"; // will be grayed out otherwise
-    const content = `<div class="cards-played">${CastleFalkenstein.smallCardImg(card,`card-played ${correctSuit}`)}</div>`;
+    const correctSuit = "correct-suit";
+    const content = `<div class="cards-played">${CastleFalkenstein.smallCardImg(card, `card-played ${correctSuit}`)}</div>`;
     const actorId = hand.getFlag(CastleFalkenstein.id, "actor");
     CastleFalkenstein.createChatMessage(actorId === "host" ? "gm" : game.actors.get(actorId), flavor, content);
   }
 
   static gatherPowerDisabled(hand) {
-    //const actorId = hand.getFlag(CastleFalkenstein.id, "actor");
-    //if (actorId === "host")
-    //  return true;
-    //const actor = game.actors.get(actorId);
-
-    // TODO add "actor.isDragon" getter to allow implementation of this 5-card limit
-    //if (actor.isDragon && hand.cards.size >= 5)
-    //  return true;
-
     return !hand.spellBeingCast;
   }
 
   static async gatherPower(hand) {
     const actorId = hand.getFlag(CastleFalkenstein.id, "actor");
-    if (actorId === "host")
-      return; // should never be able to click from host hand anyway (see 'disabled' above)
+    if (actorId === "host") return;
     const actor = game.actors.get(actorId);
 
     const cards = await CastleFalkenstein.draw("sorcery", hand, 1);
     const card = cards[0];
 
-    // TODO mention whether the spell thaumic energy requirement has been reached. May not bode well with cooperation spellcasting scenarios though.
-
-    // Post message to chat
     const flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.hand.gatherPower")}]`;
     const spell = actor.items.get(hand.spellBeingCast.actorItemId);
     const correctSuit = (card.suit === spell.system.suit || card.suit === "joker") ? "correct-suit" : "";
@@ -498,80 +451,57 @@ export class CastleFalkensteinHandSheet extends CardHandConfig {
   }
 
   static async playHostFortuneCard(card, hand) {
-    if (!game.user.isGM)
-      return;
+    if (!game.user.isGM) return;
 
     const actorId = hand.getFlag(CastleFalkenstein.id, "actor");
-    if (actorId !== "host")
-      return;
+    if (actorId !== "host") return;
 
-    // Post message to chat
     const flavor = `[${game.i18n.localize("castle-falkenstein.fortune.hand.playCard")}]`;
-    const correctSuit = "correct-suit"; // will be grayed out otherwise
-    const content = `<div class="cards-played">${CastleFalkenstein.smallCardImg(card,`card-played ${correctSuit}`)}</div>`;
+    const correctSuit = "correct-suit";
+    const content = `<div class="cards-played">${CastleFalkenstein.smallCardImg(card, `card-played ${correctSuit}`)}</div>`;
     CastleFalkenstein.createChatMessage("gm", flavor, content);
-    
+
     CastleFalkenstein.returnBackToDeck(hand.id, [card.id]);
   }
 
   static async releasePower(card, hand, force = false) {
     if (!game.users.activeGM) {
-      // planning to use executeAsGM below
       CastleFalkenstein.notif.warn(game.i18n.localize("castle-falkenstein.notifications.cannotCarryOutActionWithoutHost"));
       return;
     }
 
     const actorId = hand.getFlag(CastleFalkenstein.id, "actor");
-    if (actorId === "host")
-      return; // should never be able to click from host hand anyway (see 'disabled' above)
+    if (actorId === "host") return;
 
-    if (hand.spellBeingCast?.usesThaumixology) {
+    if (hand.spellBeingCast?.usesThaumixology && !force) {
       const i18nTitle = game.i18n.localize("castle-falkenstein.dialogs.confirmTitle");
       const i18nDescription1 = game.i18n.format("castle-falkenstein.dialogs.thaumixologyReleaseAllPower.description1");
       const i18nDescription2 = game.i18n.localize("castle-falkenstein.dialogs.thaumixologyReleaseAllPower.description2");
 
-      if (!force) {
-        Dialog.confirm({
-          title: i18nTitle,
-          content: `<p>${i18nDescription1}</p><p>${i18nDescription2}</p>`,
-          yes: async () => {
-            CastleFalkensteinHandSheet.releasePower(card, hand, true);
-          },
-          defaultYes: false
-        });
-
-        return;
-      }
+      foundry.applications.api.DialogV2.confirm({
+        window: { title: i18nTitle },
+        content: `<p>${i18nDescription1}</p><p>${i18nDescription2}</p>`,
+        yes: { callback: () => CastleFalkensteinHandSheet.releasePower(card, hand, true) },
+        defaultYes: false
+      });
+      return;
     }
 
     await CastleFalkenstein.socket.executeAsGM("returnBackToDeck", hand.id, [card.id]);
-
-    // Post message to chat - TOO SPAMMY => DISABLED
-    /*const flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.hand.releasePower")}]`;
-    const content = `<div class="cards-played">${CastleFalkenstein.smallCardImg(card, "card-played")}</div>`;
-    CastleFalkenstein.createChatMessage(actor, flavor, content);*/
   }
 
   static castSpellDisabled(hand) {
-    //const actorId = hand.getFlag(CastleFalkenstein.id, "actor");
-    //if (actorId === "host")
-    //  return true;
-
-    // TODO disable if the thaumic energy requirement has not been reached? (may not bode well with cooperation spellcasting scenario though)
-
     return !hand.spellBeingCast;
   }
 
-  static async castSpell(hand, force=false) {
+  static async castSpell(hand, force = false) {
     if (!game.users.activeGM) {
-      // planning to use executeAsGM below
       CastleFalkenstein.notif.warn(game.i18n.localize("castle-falkenstein.notifications.cannotCarryOutActionWithoutHost"));
       return;
     }
 
     const actorId = hand.getFlag(CastleFalkenstein.id, "actor");
-    if (actorId === "host")
-      return; // should never be able to click from host hand anyway (see 'disabled' above)
+    if (actorId === "host") return;
 
     const spellBeingCast = hand.spellBeingCast;
     if (!spellBeingCast) return;
@@ -581,10 +511,10 @@ export class CastleFalkensteinHandSheet extends CardHandConfig {
       const i18nDescription1 = game.i18n.localize("castle-falkenstein.dialogs.notEnoughPowerGathered.description1");
       const i18nDescription2 = game.i18n.localize("castle-falkenstein.dialogs.notEnoughPowerGathered.description2");
 
-      Dialog.confirm({
-        title: i18nTitle,
+      foundry.applications.api.DialogV2.confirm({
+        window: { title: i18nTitle },
         content: `<p>${i18nDescription1}</p><p>${i18nDescription2}</p>`,
-        yes: () => CastleFalkensteinHandSheet.castSpell(hand, true),
+        yes: { callback: () => CastleFalkensteinHandSheet.castSpell(hand, true) },
         defaultYes: false
       });
       return;
@@ -593,31 +523,22 @@ export class CastleFalkensteinHandSheet extends CardHandConfig {
     const actor = game.actors.get(actorId);
     const spell = actor.items.get(hand.spellBeingCast.actorItemId);
 
-    // Chat message flavor
-    let flavor = `[${game.i18n.localize(`castle-falkenstein.sorcery.hand.castSpell${force?"Forced":""}`)}]`;
-
-    // in the chat message, display the spell name and aspect
+    let flavor = `[${game.i18n.localize(`castle-falkenstein.sorcery.hand.castSpell${force ? "Forced" : ""}`)}]`;
     let content = `<b>${spell.name}</b> ` + CastleFalkenstein.cardSuitHTML(spell.system.suit);
 
-    // TODO consider adding an expandable section which shows the original spell definitions:
-    // FIXME the corresponding code exists in define-spell.mjs
-
-    // in the chat message, display the cards played, if any
     content += `<hr/><div class="cards-played">`;
     if (hand.cards.contents.length > 0) {
-      hand.cards.contents.sort((a,b) => ((a.sort || 0) - (b.sort || 0))).forEach(card => {
-        // FIXME code duplication
+      hand.cards.contents.sort((a, b) => ((a.sort || 0) - (b.sort || 0))).forEach(card => {
         const correctSuit = (card.suit === spell.system.suit || card.suit === "joker") ? "correct-suit" : "";
-        content += CastleFalkenstein.smallCardImg(card,`card-played ${correctSuit}`);
+        content += CastleFalkenstein.smallCardImg(card, `card-played ${correctSuit}`);
       });
     } else {
       content += game.i18n.localize("castle-falkenstein.feat.noCardsPlayed");
     }
     content += `</div>`;
 
-    // in the chat message, display info about the Spell being Wild or  the Harmonics, if any
     if (spellBeingCast.isWildSpell) {
-      content += `<hr/><div class="wild-spell">`
+      content += `<hr/><div class="wild-spell">`;
       content += `<span style="--x:0;   --y:0; --xt:13; --yt:12; --xd:1; --yd:2; --w:25;  --d:1;  --o:.4;" class="pt s1"><b></b></span>`;
       content += `<span style="--x:-17; --y:0; --xt:14; --yt:10; --xd:2; --yd:1; --w:39;  --d:2;  --o:.5;" class="pt s2"><b></b></span>`;
       content += `<span style="--x:34;  --y:0; --xt:15; --yt:10; --xd:3; --yd:3; --w:28;  --d:3;  --o:.4;" class="pt s3"><b></b></span>`;
@@ -626,7 +547,6 @@ export class CastleFalkensteinHandSheet extends CardHandConfig {
       content += `<span style="--x:-35; --y:0; --xt:18; --yt:10; --xd:3; --yd:3; --w:45;  --d:6;  --o:.6;" class="pt s2"><b></b></span>`;
       content += `<span style="--x:-1;  --y:0; --xt:19; --yt:10; --xd:1; --yd:2; --w:65;  --d:7;  --o:.8;" class="pt s3"><b></b></span>`;
       content += `<span style="--x:-30; --y:0; --xt:20; --yt:12; --xd:2; --yd:1; --w:70;  --d:8;  --o:.8;" class="pt s4"><b></b></span>`;
-
       content += `<span style="--x:-8;  --y:0; --xt:21; --yt:12; --xd:3; --yd:3; --w:70;  --d:8;  --o:.8;" class="pt s1"><b></b></span>`;
       content += `<span style="--x:8;   --y:0; --xt:22; --yt:10; --xd:1; --yd:2; --w:65;  --d:7;  --o:.8;" class="pt s2"><b></b></span>`;
       content += `<span style="--x:40;  --y:0; --xt:23; --yt:10; --xd:2; --yd:1; --w:45;  --d:6;  --o:.6;" class="pt s3"><b></b></span>`;
@@ -635,46 +555,38 @@ export class CastleFalkensteinHandSheet extends CardHandConfig {
       content += `<span style="--x:-18; --y:0; --xt:26; --yt:10; --xd:2; --yd:1; --w:28;  --d:3;  --o:.4;" class="pt s2"><b></b></span>`;
       content += `<span style="--x:15;  --y:0; --xt:27; --yt:10; --xd:3; --yd:3; --w:39;  --d:2;  --o:.5;" class="pt s3"><b></b></span>`;
       content += `<span style="--x:30;  --y:0; --xt:28; --yt:12; --xd:1; --yd:2; --w:25;  --d:1;  --o:.4;" class="pt s4"><b></b></span>`;
-
       content += game.i18n.localize("castle-falkenstein.sorcery.wildSpell");
       content += "</div>";
     } else if (spellBeingCast.harmonics) {
-      // show harmonic type(s) (up to 3 for the GM to choose from in case of ex-aequo), if unaligned power was used.
-      content += `<hr/><div class="harmonics">`
+      content += `<hr/><div class="harmonics">`;
       content += CastleFalkensteinHandSheet.harmonicHTML(hand, false);
       content += "</div>";
     }
 
-    // return back the cards in the deck
     await CastleFalkenstein.socket.executeAsGM("returnBackToDeck", hand.id, hand.cards.map(c => c.id));
 
-    // Display the chat message only if the return-back was successful
     CastleFalkenstein.createChatMessage(actor, flavor, content);
 
-    // no spell being cast anymore
     await hand.stopCasting();
     hand.sheet.render();
   }
 
   static harmonicHTML(hand, short) {
-
     let content = "";
-
     content += game.i18n.localize("castle-falkenstein.sorcery.harmonics.label") + " ";
 
     if (hand.spellBeingCast?.harmonics?.length > 0) {
       let firstH = true;
-      hand.spellBeingCast.harmonics.forEach((hSuit) => {
+      hand.spellBeingCast.harmonics.forEach(hSuit => {
         const description = game.i18n.localize(`castle-falkenstein.sorcery.harmonics.${hSuit}`);
         if (!firstH) content += ", ";
-        content += `<span class="harmonics-desc">${description}</span>&nbsp;${CastleFalkenstein.cardSuitHTML(hSuit)}</li>`
+        content += `<span class="harmonics-desc">${description}</span>&nbsp;${CastleFalkenstein.cardSuitHTML(hSuit)}</li>`;
         firstH = false;
       });
     } else {
       content += " " + game.i18n.localize(`castle-falkenstein.sorcery.harmonics.none`);
     }
     content += ".";
-
     return content;
   }
 
@@ -684,26 +596,21 @@ export class CastleFalkensteinHandSheet extends CardHandConfig {
 
   static async cancelSpell(hand) {
     if (!game.users.activeGM) {
-      // planning to use executeAsGM below
       CastleFalkenstein.notif.warn(game.i18n.localize("castle-falkenstein.notifications.cannotCarryOutActionWithoutHost"));
       return;
     }
 
     const actorId = hand.getFlag(CastleFalkenstein.id, "actor");
-    if (actorId === "host")
-      return; // should never be able to click from host hand anyway (see 'disabled' above)
+    if (actorId === "host") return;
     const actor = game.actors.get(actorId);
 
     await CastleFalkenstein.socket.executeAsGM("returnBackToDeck", hand.id, hand.cards.map(c => c.id));
 
-    // Post message to chat
-    let flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.hand.cancelSpell")}]`;
-    let content = ""; // TODO add info on spell which was canceled
+    const flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.hand.cancelSpell")}]`;
+    const content = "";
     CastleFalkenstein.createChatMessage(actor, flavor, content);
 
-    // no spell being cast anymore
     await hand.stopCasting();
     hand.sheet.render();
   }
-
 }

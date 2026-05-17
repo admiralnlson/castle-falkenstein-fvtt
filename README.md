@@ -47,6 +47,8 @@ When submitting translations, please indicate whether your contribution is a one
 
 Please do not address issues you're facing with this system to R. Talsorian Games. They would not be in a position to help you.
 
+The Foundry 14 initial port was made by Lobo Grimn and denisbrandao. 
+
 ----
 
 DISCLAIMER: This [Castle Falkenstein](https://rtalsoriangames.com/castle-falkenstien/) system for [Foundry Virtual Tabletop](https://foundryvtt.com/) is unofficial content provided under the [Homebrew Content Policy of R. Talsorian Games](https://rtalsoriangames.com/homebrew-content-policy/) and is not approved or endorsed by RTG. This content references materials that are the property of R. Talsorian Games and its licensees.

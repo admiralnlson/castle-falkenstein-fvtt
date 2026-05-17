@@ -1,4 +1,5 @@
-<form class="{{cssClass}} {{typeFlag}} {{readyToCast}}" autocomplete="off">
+<div class="hand-sheet {{typeFlag}} {{readyToCast}}">
+<div class="hand-controls">
   {{#if featBeingPerformed}}
     <div class="header">
       <div class="ability-level-as-sentence">{{{abilityLevelAsSentenceHtml}}}</div>
@@ -8,13 +9,13 @@
       <div class="divorce">
         <label class="divorce-label">{{localize "castle-falkenstein.settings.divorceVariation.divorceLabel"}}</label>
         <span class="divorce-hint">&nbsp;{{divorceHint}}</span>
-        <button type="button" name="spades" class="divorce-button divorce-spades {{featBeingPerformed.divorceSuit}}">{{{suitHTML.spades}}}</button>
+        <button type="button" name="spades" data-action="divorceSuit" class="divorce-button divorce-spades {{featBeingPerformed.divorceSuit}}">{{{suitHTML.spades}}}</button>
         <span class="sep"></span>
-        <button type="button" name="hearts" class="divorce-button divorce-hearts {{featBeingPerformed.divorceSuit}}">{{{suitHTML.hearts}}}</button>
+        <button type="button" name="hearts" data-action="divorceSuit" class="divorce-button divorce-hearts {{featBeingPerformed.divorceSuit}}">{{{suitHTML.hearts}}}</button>
         <span class="sep"></span>
-        <button type="button" name="diamonds" class="divorce-button divorce-diamonds {{featBeingPerformed.divorceSuit}}">{{{suitHTML.diamonds}}}</button>
+        <button type="button" name="diamonds" data-action="divorceSuit" class="divorce-button divorce-diamonds {{featBeingPerformed.divorceSuit}}">{{{suitHTML.diamonds}}}</button>
         <span class="sep"></span>
-        <button type="button" name="clubs" class="divorce-button divorce-clubs {{featBeingPerformed.divorceSuit}}">{{{suitHTML.clubs}}}</button>
+        <button type="button" name="clubs" data-action="divorceSuit" class="divorce-button divorce-clubs {{featBeingPerformed.divorceSuit}}">{{{suitHTML.clubs}}}</button>
         <span class="sep"></span>
       </div>
     {{/if}}
@@ -77,11 +78,11 @@
         {{/ifequal}}
     </div>
   </div>
-</form>
+</div>
 <div class="handedCards {{typeFlag}}">
   <ol class="cards">
     {{#each cards as |card|}}
-      <li class="card flexrow {{../rtgVisuals}} {{card.correctSuit}} {{card.joker}} {{card.selected}}" data-card-id="{{card.id}}" style="width: {{../cardWidth}}px; height: {{../cardHeight}}px; margin-left: calc(-1/2*{{../cardWidth}}px); margin-right: calc(-1/2*{{../cardWidth}}px);">
+      <li class="card flexrow {{../rtgVisuals}} {{card.correctSuit}} {{card.joker}} {{card.selected}}" data-action="cardClick" data-card-id="{{card.id}}" style="width: {{../cardWidth}}px; height: {{../cardHeight}}px; margin-left: calc(-1/2*{{../cardWidth}}px); margin-right: calc(-1/2*{{../cardWidth}}px);">
         <img class="card-face" src="{{card.img}}" alt="{{card.name}}" style="width: {{../cardWidth}}px">
         <div class="castle-falkenstein-card-controls flexcol" style="--card-control-scale: {{../cardControlScale}}">
           {{#if ../hostFortune}}
@@ -102,4 +103,5 @@
       </li>
     {{/each}}
   </ol>
+</div>
 </div>

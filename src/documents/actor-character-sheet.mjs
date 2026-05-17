@@ -1,169 +1,158 @@
 import { CASTLE_FALKENSTEIN } from "../config.mjs";
 import { CastleFalkenstein } from "../castle-falkenstein.mjs";
-import { TextEditor } from "../foundry-api.mjs";
 import { CastleFalkensteinLootSheet } from "./actor-loot-sheet.mjs";
 
+const TextEditor = foundry.applications.ux.TextEditor.implementation;
+
 /**
- * @extends {CastleFalkensteinLootSheet}
+ * Character actor sheet.
  */
 export class CastleFalkensteinCharacterSheet extends CastleFalkensteinLootSheet {
 
-  /** @override */
-  static get defaultOptions() {
-    return foundry.utils.mergeObject(super.defaultOptions, {
-      classes: [CastleFalkenstein.id, "sheet", "actor", "character"],
-      template: "systems/castle-falkenstein/src/documents/actor-character-sheet.hbs",
-      width: 620,
-      height: 600,
-      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }],
-    });
-  }
+  static DEFAULT_OPTIONS = {
+    classes: ["castle-falkenstein", "sheet", "actor", "character"],
+    position: { width: 620, height: 600 },
+    actions: {
+      itemCreate: this._onItemCreate,
+      roll: this._onRoll,
+      diaryShow: this._onDiaryShow,
+      fortuneHandShow: this._onFortuneHandShow,
+      sorceryHandShow: this._onSorceryHandShow
+    }
+  };
+
+  static PARTS = {
+    sheet: { template: "systems/castle-falkenstein/src/documents/actor-character-sheet.hbs" }
+  };
+
+  static TABS = {
+    primary: {
+      tabs: [
+        { id: "description" },
+        { id: "abilities" },
+        { id: "possessions" },
+        { id: "spells" },
+        { id: "playerNotes" },
+        { id: "hostNotes" }
+      ],
+      initial: "description"
+    }
+  };
+
+  /** Lets external callers preselect a tab before re-rendering. */
+  tabToOpen = null;
 
   /* -------------------------------------------- */
 
-  /** @override */
-  async getData(options) {
-    // Retrieve the data structure from the base sheet.
-    let context = await super.getData(options);
+  async _prepareContext(options) {
+    const context = await super._prepareContext(options);
 
-    context.canOpenDiary = !context.actor.isToken && context.actor.isOwner;
-    context.diaryIfExists = (await context.actor.diaryIfExists());
+    context.canOpenDiary = !this.actor.isToken && this.actor.isOwner;
+    context.diaryIfExists = await this.actor.diaryIfExists();
     context.diaryVisible = context.diaryIfExists?.sheet.rendered;
     context.diaryUuid = context.diaryIfExists?.uuid;
-    context.diaryName = context.diaryIfExists ? context.diaryIfExists.name : context.actor.computeDiaryName();
+    context.diaryName = context.diaryIfExists ? context.diaryIfExists.name : this.actor.computeDiaryName();
 
-    context.enrichedDescription = await TextEditor.enrichHTML(context.system.description);
-    context.enrichedPlayerNotes = await TextEditor.enrichHTML(context.system.playerNotes);
-    context.enrichedHostNotes = await TextEditor.enrichHTML(context.system.hostNotes);
+    context.source = this.actor.toObject();
+    context.fields = this.actor.system.schema.fields;
+    const editorOptions = {
+      secrets: this.actor.isOwner, rollData: this.actor.getRollData(), relativeTo: this.actor
+    };
+    context.enrichedDescription = await TextEditor.enrichHTML(this.actor.system.description, editorOptions);
+    context.enrichedPlayerNotes = await TextEditor.enrichHTML(this.actor.system.playerNotes, editorOptions);
+    context.enrichedHostNotes = await TextEditor.enrichHTML(this.actor.system.hostNotes, editorOptions);
 
     context.concealLabels = CASTLE_FALKENSTEIN.weaponConceals;
 
     context.hideWounds = (CastleFalkenstein.settings.damageSystem === CastleFalkenstein.DAMAGE_SYSTEM_OPTIONS.harmRank);
     context.hideHarmRank = (CastleFalkenstein.settings.damageSystem === CastleFalkenstein.DAMAGE_SYSTEM_OPTIONS.wounds);
 
-    context.fortuneHandIfExists = (await context.actor.handIfExists("fortune"));
+    context.fortuneHandIfExists = await this.actor.handIfExists("fortune");
     context.fortuneHandVisible = context.fortuneHandIfExists?.sheet.rendered;
     context.fortuneHandUuid = context.fortuneHandIfExists?.uuid;
-    context.sorceryHandIfExists = (await context.actor.handIfExists("sorcery"));
+    context.sorceryHandIfExists = await this.actor.handIfExists("sorcery");
     context.sorceryHandVisible = context.sorceryHandIfExists?.sheet.rendered;
     context.sorceryHandUuid = context.sorceryHandIfExists?.uuid;
 
     return context;
   }
 
-  static async onRender(app, html, data) {
-    if (app.tabToOpen) {
-      await app.activateTab(app.tabToOpen);
-      app.tabToOpen = null;
-    }
-  }
+  /* -------------------------------------------- */
 
-  /** @override */
-  activateListeners(html) {
-    super.activateListeners(html);
- 
-    if (this.object.isOwner) {
-      html.find(".diary-show").click(async (ev) => {
-        const diary = await this.actor.diary();
-        diary.sheet.render(true);
+  async _onRender(context, options) {
+    await super._onRender(context, options);
+
+    // Switch to the preselected tab, if any
+    if (this.tabToOpen) {
+      this.changeTab(this.tabToOpen, "primary");
+      this.tabToOpen = null;
+    }
+
+    // Weapon ammunition change handler — too granular to be a static action, wire up directly
+    if (this.isEditable) {
+      this.element.querySelectorAll(".weapon-ammunition-current").forEach(input => {
+        input.addEventListener("change", ev => {
+          const li = ev.currentTarget.closest(".item");
+          const item = this.actor.items.get(li.dataset.itemId);
+          item.update({ "system.ammunition": ev.currentTarget.value });
+        });
       });
     }
-
-    html.find(".fortune-hand-show").click(async (ev) => {
-      const hand = await this.actor.hand("fortune");
-      hand.sheet.render(true);
-    });
-
-    html.find(".sorcery-hand-show").click(async (ev) => {
-      const hand = await this.actor.hand("sorcery");
-      hand.sheet.render(true);
-    });
-
-    // Rollable items
-    if (this.isEditable || game.user.isGM) {
-      html.find(".rollable").click(this._onRoll.bind(this));
-    }
-
-    // -------------------------------------------------------------
-    // Everything below here is only allowed if the sheet is editable.
-    if (!this.isEditable) return;
-
-    // Add item
-    html.find(".item-create").click(this._onItemCreate.bind(this));
-
-    // Weapon ammunition
-    html.find(".weapon-ammunition-current").change(ev => {
-      const li = $(ev.currentTarget).parents(".item");
-      const item = this.actor.items.get(li.data("itemId"));
-      item.update({
-        [`system.ammunition`]: ev.currentTarget.value 
-      });
-    });
   }
 
-  /** @override */
-  _onDragStart(event) {
-    super._onDragStart(event);
+  /* -------------------------------------------- */
+  /*  Actions                                     */
+  /* -------------------------------------------- */
 
-    event.dataTransfer.setDragImage(event.target.parentElement, 0, 0);
-    
-    const targetA = event.target.closest("a");
-
-    if (targetA?.dataset.uuid) {
-      const dragData = {
-        uuid: targetA.dataset.uuid
-      };
-      event.dataTransfer.setData("text/plain", JSON.stringify(dragData));
-    }
+  static async _onDiaryShow(event, target) {
+    if (!this.actor.isOwner) return;
+    const diary = await this.actor.diary();
+    diary?.sheet.render(true);
   }
-  
+
+  static async _onFortuneHandShow(event, target) {
+    const hand = await this.actor.hand("fortune");
+    hand?.sheet.render(true);
+  }
+
+  static async _onSorceryHandShow(event, target) {
+    const hand = await this.actor.hand("sorcery");
+    hand?.sheet.render(true);
+  }
+
   /**
-   * Handle creating a new Owned Item for the actor using initial data defined in the HTML dataset
-   * @param {Event} event   The originating click event
-   * @private
+   * Create a new Owned Item using initial data from the clicked element's dataset.
    */
-  async _onItemCreate(event) {
+  static async _onItemCreate(event, target) {
+    if (!this.isEditable) return;
     event.preventDefault();
-    const header = event.currentTarget;
-    // Get the type of item to create.
-    const type = header.dataset.type;
-    // Initialize a default name.
-    const name = `New ${type.capitalize()}`;
-    // Prepare the item object.
+    const type = target.dataset.type;
     const itemData = {
-      name: name,
-      type: type,
+      name: `New ${type.capitalize()}`,
+      type,
       sort: this.newItemSortValue()
     };
-
-    // Finally, create the item!
-    return await Item.create(itemData, {parent: this.actor});
+    return Item.create(itemData, { parent: this.actor });
   }
 
   /**
    * Handle clickable rolls.
-   * @param {Event} event   The originating click event
-   * @private
    */
-  _onRoll(event) {
+  static async _onRoll(event, target) {
+    if (!(this.isEditable || game.user.isGM)) return;
     event.preventDefault();
-    const element = event.currentTarget;
-    const dataset = element.dataset;
+    const dataset = target.dataset;
 
-    // Handle item rolls.
-    if (dataset.rollType) {
-      if (dataset.rollType === "item") {
-        const itemId = element.closest(".item").dataset.itemId;
-        const item = this.actor.items.get(itemId);
-        if (item) return item.roll();
-      }
+    if (dataset.rollType === "item") {
+      const itemId = target.closest(".item")?.dataset.itemId;
+      const item = this.actor.items.get(itemId);
+      if (item) return item.roll();
     }
 
-    // Handle rolls that supply the formula directly.
     if (dataset.roll) {
-      let label = dataset.label ? `[ability] ${dataset.label}` : "";
-      let roll = new Roll(dataset.roll, this.actor.getRollData());
-      roll.toMessage({
+      const label = dataset.label ? `[ability] ${dataset.label}` : "";
+      const roll = new Roll(dataset.roll, this.actor.getRollData());
+      await roll.toMessage({
         speaker: ChatMessage.getSpeaker({ actor: this.actor }),
         flavor: label,
         rollMode: game.settings.get("core", "rollMode"),
@@ -172,5 +161,20 @@ export class CastleFalkensteinCharacterSheet extends CastleFalkensteinLootSheet 
     }
   }
 
-}
+  /* -------------------------------------------- */
+  /*  Drag & Drop                                 */
+  /* -------------------------------------------- */
 
+  /** @override */
+  _onDragStart(event) {
+    super._onDragStart(event);
+
+    event.dataTransfer.setDragImage(event.target.parentElement, 0, 0);
+
+    const targetA = event.target.closest("a");
+    if (targetA?.dataset.uuid) {
+      const dragData = { uuid: targetA.dataset.uuid };
+      event.dataTransfer.setData("text/plain", JSON.stringify(dragData));
+    }
+  }
+}

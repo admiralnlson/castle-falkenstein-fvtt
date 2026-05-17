@@ -1,29 +1,36 @@
 import { CASTLE_FALKENSTEIN } from "../config.mjs";
 import { CastleFalkenstein } from "../castle-falkenstein.mjs";
 import { CastleFalkensteinCards } from "../documents/cards.mjs";
-const { FormApplication } = foundry.appv1.api;
 
-// A form for initiating a spell
-export class CastleFalkensteinDefineSpell extends FormApplication {
+const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
-  /** @override */
-  static get defaultOptions() {
-    return foundry.utils.mergeObject(super.defaultOptions, {
-      id: "castle-falkenstein-define-spell",
-      title: game.i18n.localize("castle-falkenstein.sorcery.defineSpell"),
-      template: "./systems/castle-falkenstein/src/forms/define-spell.hbs",
-      classes: [CastleFalkenstein.id, "castle-falkenstein-define-spell", "sheet"],
-      width: 400,
-      height: "auto",
-      closeOnSubmit: true,
-      submitOnClose: false,
-      resizable: true
-    });
-  }
+/**
+ * Form for defining a Spell prior to casting it.
+ */
+export class CastleFalkensteinDefineSpell extends HandlebarsApplicationMixin(ApplicationV2) {
 
-  /** @override */
+  static DEFAULT_OPTIONS = {
+    id: "castle-falkenstein-define-spell",
+    classes: ["castle-falkenstein", "castle-falkenstein-define-spell", "sheet"],
+    position: { width: 400, height: "auto" },
+    tag: "form",
+    window: {
+      resizable: true,
+      title: "castle-falkenstein.sorcery.defineSpell"
+    },
+    form: {
+      handler: CastleFalkensteinDefineSpell._onSubmit,
+      submitOnChange: false,
+      closeOnSubmit: true
+    }
+  };
+
+  static PARTS = {
+    form: { template: "systems/castle-falkenstein/src/forms/define-spell.hbs" }
+  };
+
   constructor(spell, options = {}) {
-    super(spell, options);
+    super(options);
     this.spell = spell;
     this.character = spell.actor;
 
@@ -39,65 +46,65 @@ export class CastleFalkensteinDefineSpell extends FormApplication {
       this.spellBeingCast.definitionLevels[key] = "-";
     }
   }
-  
+
+  /* -------------------------------------------- */
+
   computeTotal() {
     return CastleFalkensteinCards.computeTotalPowerNeed(this.character, this.spellBeingCast);
   }
 
-  /** @override */
-  async getData() {
+  /* -------------------------------------------- */
+
+  async _prepareContext(options) {
+    const context = await super._prepareContext(options);
 
     const selectedSorceryAbility = this.character.items.get(this.spellBeingCast.sorceryAbilityId);
 
-    // error if the selected sorcery ability has disappeared since
     if (!selectedSorceryAbility) {
-      if (this.character.isToken) {
-        CastleFalkenstein.notif.error(game.i18n.format("castle-falkenstein.notifications.tokenDoesNotHaveAbility", {
-          token: this.character.parent.name,
-          ability: CastleFalkenstein.i18nAbility("sorcery") // approximation since the user may have selected a specialization in the meantime
-        }));
-      } else {
-        CastleFalkenstein.notif.error(game.i18n.format("castle-falkenstein.notifications.characterDoesNotHaveAbility", {
-          character: this.character.name,
-          ability: CastleFalkenstein.i18nAbility("sorcery") // approximation since the user may have selected a specialization in the meantime
-        }));
-      }
+      const key = this.character.isToken
+        ? "castle-falkenstein.notifications.tokenDoesNotHaveAbility"
+        : "castle-falkenstein.notifications.characterDoesNotHaveAbility";
+      CastleFalkenstein.notif.error(game.i18n.format(key, {
+        token: this.character.parent?.name,
+        character: this.character.name,
+        ability: CastleFalkenstein.i18nAbility("sorcery")
+      }));
     }
 
-    let context = {};
-
     context.selectedSorceryAbilityLevel = selectedSorceryAbility ? selectedSorceryAbility.system.levelValue : "not found";
-
     context.spell = this.spell;
-
     context.spellSuitSymbol = CASTLE_FALKENSTEIN.cardSuitsSymbols[this.spell.system.suit];
-
     context.spellBeingCast = this.spellBeingCast;
-
     context.spellDefinitions = CASTLE_FALKENSTEIN.spellDefinitions;
-
     context.total = this.computeTotal();
-
-    context.availableSorceryAbilities = Object.fromEntries(this.character.sorceryAbilityAndSpecializations.map(a => [a.id, a.system.displayName]));
-
+    context.availableSorceryAbilities = Object.fromEntries(
+      this.character.sorceryAbilityAndSpecializations.map(a => [a.id, a.system.displayName])
+    );
     context.thaumixologySettingEnabled = CastleFalkenstein.settings.thaumixologyVariation === CastleFalkenstein.THAUMIXOLOGY_VARIATION_OPTIONS.enabled;
-    
+
     return context;
   }
 
-  /** @override */
-  activateListeners(html) {
-    super.activateListeners(html);
+  /* -------------------------------------------- */
 
-    html.find(".spell-definition-select").change(event => this._onDefinitionSelectChange(event));
+  async _onRender(context, options) {
+    await super._onRender(context, options);
 
-    html.find(".sorcery-ability-select").change(event => this._onAbilitySelectChange(event));
-
-    html.find(".custom-modifier-label").change(event => this._onCustomModifierLabelChange(event));
-
-    html.find(".custom-modifier-value").change(event => this._onCustomModifierValueChange(event));
-
-    html.find(".thaumixology-checkbox").change(event => this._onThaumixologyCheckboxChange(event));
+    this.element.querySelectorAll(".spell-definition-select").forEach(el => {
+      el.addEventListener("change", ev => this._onDefinitionSelectChange(ev));
+    });
+    this.element.querySelectorAll(".sorcery-ability-select").forEach(el => {
+      el.addEventListener("change", ev => this._onAbilitySelectChange(ev));
+    });
+    this.element.querySelectorAll(".custom-modifier-label").forEach(el => {
+      el.addEventListener("change", ev => this._onCustomModifierLabelChange(ev));
+    });
+    this.element.querySelectorAll(".custom-modifier-value").forEach(el => {
+      el.addEventListener("change", ev => this._onCustomModifierValueChange(ev));
+    });
+    this.element.querySelectorAll(".thaumixology-checkbox").forEach(el => {
+      el.addEventListener("change", ev => this._onThaumixologyCheckboxChange(ev));
+    });
   }
 
   _onDefinitionSelectChange(event) {
@@ -125,13 +132,13 @@ export class CastleFalkensteinDefineSpell extends FormApplication {
     this.render();
   }
 
-  /** @override */
-  async _updateObject(event, formData) {
-    
-    //
-    // produce chat message
-    //
+  /* -------------------------------------------- */
 
+  /**
+   * Form submission handler — posts the spell-definition chat message and begins casting.
+   * @this {CastleFalkensteinDefineSpell}
+   */
+  static async _onSubmit(event, form, formData) {
     const flavor = `[${game.i18n.localize("castle-falkenstein.sorcery.defineSpell")}]`;
 
     let content = `<b>${this.spell.name}</b> ` + CastleFalkenstein.cardSuitHTML(this.spell.system.suit) + `<br/>`;
@@ -139,7 +146,6 @@ export class CastleFalkensteinDefineSpell extends FormApplication {
     content += CastleFalkenstein.abilityLevelAsSentenceHtml(this.character.items.get(this.spellBeingCast.sorceryAbilityId), false);
 
     content += "<hr/><div class=\"spell-definitions\">";
-
     for (const [key, value] of Object.entries(CASTLE_FALKENSTEIN.spellDefinitions)) {
       content += `${game.i18n.localize(value.label)}: <b>${game.i18n.localize(value.levels[this.spellBeingCast.definitionLevels[key]].label)}</b><br/>`;
     }
@@ -151,21 +157,16 @@ export class CastleFalkensteinDefineSpell extends FormApplication {
     if (this.spellBeingCast.usesThaumixology) {
       content += `<b>${game.i18n.localize("castle-falkenstein.settings.thaumixologyVariation.leverageChatHint")}</b><br/>`;
     }
-    
+
     const total = this.computeTotal();
     content += `<hr /><div class="define-spell-total">${total}</div>`;
 
-    let hand = await this.character.hand("sorcery");
+    const hand = await this.character.hand("sorcery");
     await hand.startCasting(this.spellBeingCast);
 
-    // Post message to chat
     CastleFalkenstein.createChatMessage(this.character, flavor, content);
 
-    // rerenders the FormApp with the new data (will disappear soon though)
-    this.render();
-
-    // rerenders the hand to update buttons (disabled buttons such as 'Gather Power' will no longer be disabled)
+    // Refresh the hand to update its action buttons
     hand.sheet.render(true);
   }
-
 }

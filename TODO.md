@@ -7,7 +7,7 @@
 
 ## Foundry Versions
 
-+ V14 migration: see [doc/V14-MIGRATION.md](./doc/V14-MIGRATION.md) (phase 0: manifest; `template.json` removed from release zip)
++ Remove template.json from any future release which is compatible with V12 or later only (file was needed up to V12.317)
 
 ## Shortlist
 

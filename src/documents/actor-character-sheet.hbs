@@ -1,14 +1,14 @@
-<form class="{{cssClass}} {{actor.type}} {{#if actor.isToken}}token{{/if}} flexcol" autocomplete="off">
+<div class="{{cssClass}} {{actor.type}} {{#if actor.isToken}}token{{/if}} flexcol">
 
   {{!-- Sheet Header --}}
   <header class="sheet-header">
-    <img class="profile-img" src="{{actor.img}}" {{#if actor.isOwner}}data-edit="img"{{/if}} alt="{{actor.name}}"/>
+    <img class="profile-img" src="{{actor.img}}" {{#if actor.isOwner}}data-edit="img" data-action="editImage"{{/if}} alt="{{actor.name}}"/>
     <div class="header-fields">
       <div class="grid grid-3col name-and-diary">
         <h1 class="charname"><span class="token-prefix {{#unless actor.isToken}}hidden{{/unless}}">{{#if actor.isToken}}[{{localize "Token"}}]{{/if}}</span><input name="name" type="text" value="{{actor.name}}"/></h1>
         <div class="diary flexcol">
           {{#if canOpenDiary}}
-          <a class="diary-show" draggable="true" data-type="Journal" data-uuid="{{diaryUuid}}" data-tooltip="{{localize "castle-falkenstein.diary.render"}}">
+          <a class="diary-show draggable" data-action="diaryShow" data-type="Journal" data-uuid="{{diaryUuid}}" data-tooltip="{{localize "castle-falkenstein.diary.render"}}">
           {{else}}
           <a class="diary-show" disabled {{#if userHasObserverOrOwnerAccess}}{{#if actor.isToken}}data-tooltip="{{localize "castle-falkenstein.diary.cannotBeUsedOnUnlinkedTokens"}}"{{/if}}{{/if}}>
           {{/if}}
@@ -42,21 +42,21 @@
   {{!-- Sheet Tab Navigation --}}
   <nav class="sheet-tabs tabs" data-group="primary">
     {{!-- Default tab is specified in actor-character-sheet.mjs --}}
-    <a class="tab-link" data-tab="description">{{localize "castle-falkenstein.description"}}</a>
+    <a class="tab-link {{tabs.description.cssClass}}" data-action="tab" data-group="primary" data-tab="description">{{localize "castle-falkenstein.description"}}</a>
     {{#if userHasObserverOrOwnerAccess}}
-      <a class="tab-link" data-tab="abilities">{{localize "castle-falkenstein.ability.abilities"}}</a>
-      <a class="tab-link" data-tab="possessions">{{localize "castle-falkenstein.possession.possessions"}}</a>
+      <a class="tab-link {{tabs.abilities.cssClass}}" data-action="tab" data-group="primary" data-tab="abilities">{{localize "castle-falkenstein.ability.abilities"}}</a>
+      <a class="tab-link {{tabs.possessions.cssClass}}" data-action="tab" data-group="primary" data-tab="possessions">{{localize "castle-falkenstein.possession.possessions"}}</a>
       {{#if actor.isToken}}
       <a class="tab-link" disabled data-tooltip="{{localize "castle-falkenstein.sorcery.cannotBeUsedOnUnlinkedTokens"}}">{{localize "castle-falkenstein.spell.spells"}}</a>
       {{else}}
-      <a class="tab-link" data-tab="spells">{{localize "castle-falkenstein.spell.spells"}}</a>
+      <a class="tab-link {{tabs.spells.cssClass}}" data-action="tab" data-group="primary" data-tab="spells">{{localize "castle-falkenstein.spell.spells"}}</a>
       {{/if}}
       {{#if actor.hasPlayerOwner}}
-      <a class="tab-link" data-tab="player-notes">{{localize "castle-falkenstein.playerNotes"}}</a>
+      <a class="tab-link {{tabs.playerNotes.cssClass}}" data-action="tab" data-group="primary" data-tab="playerNotes">{{localize "castle-falkenstein.playerNotes"}}</a>
       {{/if}}
     {{/if}}
     {{#if userIsHost}}
-      <a class="tab-link" data-tab="host-notes" data-tooltip="{{localize "castle-falkenstein.hostNotesTooltip"}}">{{localize "castle-falkenstein.hostNotes"}}</a>
+      <a class="tab-link {{tabs.hostNotes.cssClass}}" data-action="tab" data-group="primary" data-tab="hostNotes" data-tooltip="{{localize "castle-falkenstein.hostNotesTooltip"}}">{{localize "castle-falkenstein.hostNotes"}}</a>
     {{/if}}
   </nav>
 
@@ -64,40 +64,38 @@
   <section class="sheet-body">
 
     {{!-- Description Tab --}}
-    <div class="tab description" data-group="primary" data-tab="description" spellcheck="false">
-        {{editor enrichedDescription target="system.description" button=true editable=editable engine="prosemirror"}}
-      </div>
+    <div class="tab description {{tabs.description.cssClass}}" data-group="primary" data-tab="description" spellcheck="false">
+        {{formInput fields.description value=source.system.description enriched=enrichedDescription toggled=true}}
     </div>
 
     {{#if userHasObserverOrOwnerAccess}}
       {{!-- Abilities Tab --}}
-      <div class="tab abilities" data-group="primary" data-tab="abilities">
+      <div class="tab abilities {{tabs.abilities.cssClass}}" data-group="primary" data-tab="abilities">
         {{> "systems/castle-falkenstein/src/documents/actor-character-sheet-abilities.hbs"}}
       </div>
 
       {{!-- Possessions Tab --}}
-      <div class="tab possessions" data-group="primary" data-tab="possessions">
+      <div class="tab possessions {{tabs.possessions.cssClass}}" data-group="primary" data-tab="possessions">
         {{> "systems/castle-falkenstein/src/documents/actor-character-sheet-possessions.hbs"}}
       </div>
 
       {{!-- Spells Tab --}}
-      <div class="tab spells" data-group="primary" data-tab="spells">
+      <div class="tab spells {{tabs.spells.cssClass}}" data-group="primary" data-tab="spells">
         {{> "systems/castle-falkenstein/src/documents/actor-character-sheet-spells.hbs"}}
       </div>
 
       {{!-- Host Notes Tab --}}
-      <div class="tab player-notes" data-group="primary" data-tab="player-notes" spellcheck="false">
-        {{editor enrichedPlayerNotes target="system.playerNotes" button=true editable=editable engine="prosemirror"}}
+      <div class="tab player-notes {{tabs.playerNotes.cssClass}}" data-group="primary" data-tab="playerNotes" spellcheck="false">
+        {{formInput fields.playerNotes value=source.system.playerNotes enriched=enrichedPlayerNotes toggled=true}}
       </div>
     {{/if}}
 
     {{#if userIsHost}}
       {{!-- Host Notes Tab --}}
-      <div class="tab host-notes" data-group="primary" data-tab="host-notes" spellcheck="false">
-        {{editor enrichedHostNotes target="system.hostNotes" button=true editable=editable engine="prosemirror"}}
+      <div class="tab host-notes {{tabs.hostNotes.cssClass}}" data-group="primary" data-tab="hostNotes" spellcheck="false">
+        {{formInput fields.hostNotes value=source.system.hostNotes enriched=enrichedHostNotes toggled=true}}
       </div>
     {{/if}}
 
   </section>
-</form>
-
+</div>

@@ -381,5 +381,18 @@
       "publicMessage": "Mensagem pública",
       "privateHostMessage": "Mensagem privada do anfitrião"
     }
+  },
+  "TYPES": {
+    "Actor": {
+      "character": "Personagem",
+      "loot": "Saque"
+    },
+    "Item": {
+      "ability": "Habilidade",
+      "possession": "Posse",
+      "spell": "Feitiço",
+      "weapon": "Arma",
+      "loot": "Saque"
+    }
   }
 }

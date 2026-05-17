@@ -1,31 +1,49 @@
 import { CASTLE_FALKENSTEIN } from "../config.mjs";
 import { CastleFalkenstein } from "../castle-falkenstein.mjs";
-import { TextEditor } from "../foundry-api.mjs";
-const { ItemSheet } = foundry.appv1.sheets;
 
-/** Sheet for the 'possession' item type. */
-export class CastleFalkensteinPossessionSheet extends ItemSheet {
+const { api, sheets } = foundry.applications;
+const TextEditor = foundry.applications.ux.TextEditor.implementation;
 
-  /** @override */
-  static get defaultOptions() {
-    return foundry.utils.mergeObject(super.defaultOptions, {
-      classes: [CastleFalkenstein.id, "sheet", "item"],
-      template: "systems/castle-falkenstein/src/documents/item-sheet-possession.hbs",
-      width: 460,
-      height: 300,
-      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }]
-    });
-  }
+/**
+ * Sheet for the 'possession' item type.
+ */
+export class CastleFalkensteinPossessionSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheetV2) {
 
-  /** @override */
-  async getData(options) {
-    const context = await super.getData(options);
-    // convenience so context and name/target are aligned for system properties
-    context.system = context.item.system;
-    context.enrichedDescription = await TextEditor.enrichHTML(context.system.description, {async: true});
+  static DEFAULT_OPTIONS = {
+    classes: ["castle-falkenstein", "sheet", "item"],
+    position: { width: 460, height: 300 },
+    window: { resizable: true },
+    form: { submitOnChange: true }
+  };
+
+  static PARTS = {
+    sheet: { template: "systems/castle-falkenstein/src/documents/item-sheet-possession.hbs" }
+  };
+
+  static TABS = {
+    primary: {
+      tabs: [
+        { id: "description", label: "castle-falkenstein.description" },
+        { id: "icon", label: "castle-falkenstein.icon" }
+      ],
+      initial: "description"
+    }
+  };
+
+  async _prepareContext(options) {
+    const context = await super._prepareContext(options);
+    context.item = this.item;
+    context.system = this.item.system;
+    context.source = this.item.toObject();
+    context.fields = this.item.system.schema.fields;
+    context.editable = this.isEditable;
+    context.cssClass = this.isEditable ? "editable" : "locked";
     context.CASTLE_FALKENSTEIN = CASTLE_FALKENSTEIN;
+    context.enrichedDescription = await TextEditor.enrichHTML(this.item.system.description, {
+      secrets: this.document.isOwner,
+      rollData: this.item.getRollData(),
+      relativeTo: this.item
+    });
     return context;
   }
-
-
 }

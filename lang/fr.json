@@ -381,5 +381,18 @@
       "publicMessage": "Message public",
       "privateHostMessage": "Message privé pour l'Hôte"
     }
+  },
+  "TYPES": {
+    "Actor": {
+      "character": "Personnage",
+      "loot": "Butin"
+    },
+    "Item": {
+      "ability": "Talent",
+      "possession": "Possession",
+      "spell": "Sort",
+      "weapon": "Arme",
+      "loot": "Butin"
+    }
   }
 }

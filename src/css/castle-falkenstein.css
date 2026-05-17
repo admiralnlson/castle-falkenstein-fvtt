@@ -1,5 +1,12 @@
 @import "./cf-cards.css";
 
+#pause img {
+  content: url("/systems/castle-falkenstein/src/img/logo.png");
+  animation: none;
+  width: 15em;
+  height: 13em;
+}
+
 :root {
   --grid-item-drag-width: 15px;
   --grid-item-roll-button-width: 20px;
@@ -84,7 +91,13 @@
 
 }
 
-/* Base */ 
+/* Base */
+
+.castle-falkenstein.application,
+.castle-falkenstein .window-content {
+  background: url(/ui/parchment.jpg) repeat;
+  /*var(--color-text-primary);*/
+}
 
 .castle-falkenstein .window-content {
   height: 320px;
@@ -110,6 +123,7 @@
   margin-right: 5px;
   border: 1px solid var(--color-border-light-tertiary);
   border-radius: 3px;
+  float: left;
 }
 
 .castle-falkenstein .sheet-header .header-fields {
@@ -157,6 +171,7 @@
   gap: 5px;
   align-items: center;
 }
+
 .castle-falkenstein .sheet-header h1 .token {
   vertical-align: middle;
 }
@@ -165,18 +180,19 @@
   width: 100%;
   height: 100%;
   margin: 0;
+  background: rgba(0, 0, 0, 0.1);
 }
 
-.castle-falkenstein .name-and-diary > .diary > a > img {
+.castle-falkenstein .name-and-diary>.diary>a>img {
   height: 46px;
   border: none;
 }
 
-.castle-falkenstein .name-and-diary > .diary > a > img:hover {
+.castle-falkenstein .name-and-diary>.diary>a>img:hover {
   filter: drop-shadow(0 0 5px var(--color-shadow-primary));
 }
 
-.castle-falkenstein .name-and-diary > .diary > a[disabled] > img:hover {
+.castle-falkenstein .name-and-diary>.diary>a[disabled]>img:hover {
   filter: none;
 }
 
@@ -198,6 +214,7 @@
   flex-wrap: wrap;
   border-top: 1px solid #AAA;
   border-bottom: 1px solid #AAA;
+  margin-top: 10px;
 }
 
 .castle-falkenstein .tab-link {
@@ -228,6 +245,7 @@
 .castle-falkenstein .editor,
 .castle-falkenstein .editor-content {
   height: 100%;
+  color: black;
 }
 
 /* fix for firefox obnoxiously large scrollbar. Not sure why it's so much different from Chrome's. */
@@ -268,10 +286,23 @@ html * {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid #666;
+  box-shadow: none;
+
+}
+
+.castle-falkenstein input {
+  color: black;
+}
+
+.castle-falkenstein .window-title {
+  color: white;
 }
 
 .castle-falkenstein .resource-label {
   font-weight: bold;
+  color: var(--color-cool-5-90);
 }
 
 .castle-falkenstein .sheet-tabs .active {
@@ -292,7 +323,7 @@ html * {
 .castle-falkenstein .items-list.weapons {
   flex-grow: 0;
   overflow-y: visible;
-  padding-bottom:22px;
+  padding-bottom: 22px;
 }
 
 .castle-falkenstein .items-list.loot,
@@ -301,7 +332,7 @@ html * {
   overflow-y: visible;
 }
 
-.castle-falkenstein .items-list .items-header > * {
+.castle-falkenstein .items-list .items-header>* {
   font-size: 14px;
 }
 
@@ -351,8 +382,8 @@ html * {
   font-weight: bold;
 }
 
-.castle-falkenstein .items-list .item > *:first-child {
-  margin-left:2px;
+.castle-falkenstein .items-list .item>*:first-child {
+  margin-left: 2px;
 }
 
 .castle-falkenstein .items-list .item {
@@ -386,7 +417,7 @@ html * {
 }
 
 .castle-falkenstein.cards-hand .header .max-cards {
-  margin-left: auto; 
+  margin-left: auto;
   margin-right: 0;
   text-wrap: nowrap;
 }
@@ -396,7 +427,7 @@ html * {
 }
 
 .castle-falkenstein .items-list .perform-feat,
-.castle-falkenstein .items-list .define-spell { 
+.castle-falkenstein .items-list .define-spell {
   text-align: center;
 }
 
@@ -567,7 +598,8 @@ html * {
 }
 
 .castle-falkenstein.item .sheet-body {
-  height: calc(100% - 76px); /* will need to be adjusted for either of the item sheets if their headers are no longer one-liners */
+  height: calc(100% - 76px);
+  /* will need to be adjusted for either of the item sheets if their headers are no longer one-liners */
 }
 
 .chat-message .message-sender {
@@ -645,7 +677,8 @@ div.divorce {
   background: transparent;
   cursor: pointer;
   border: 0;
-  border-bottom: 2px solid transparent; /* see suit-selected & card-selected below */
+  border-bottom: 2px solid transparent;
+  /* see suit-selected & card-selected below */
 }
 
 .castle-falkenstein .divorce-button:focus,
@@ -770,35 +803,35 @@ div.divorce {
 
 /* Card hands */
 
-.app.castle-falkenstein.cards-hand.window-app .window-header {
+.application.castle-falkenstein.cards-hand.window-app .window-header {
   width: 100%;
 }
 
-.app.castle-falkenstein.cards-hand .card-hand-controls {
+.application.castle-falkenstein.cards-hand .card-hand-controls {
   display: flex;
   justify-content: center;
 }
 
-.app.castle-falkenstein.cards-hand .harmonic {
+.application.castle-falkenstein.cards-hand .harmonic {
   min-height: 22px;
   position: relative;
 }
 
-.app.castle-falkenstein.cards-hand .harmonic-txt {
+.application.castle-falkenstein.cards-hand .harmonic-txt {
   line-height: 22px;
   position: absolute;
   bottom: 0;
 }
 
-.app.castle-falkenstein.cards-hand div.spell-being-cast {
+.application.castle-falkenstein.cards-hand div.spell-being-cast {
   display: grid;
   grid-gap: 5px;
   grid-template-columns: 1fr auto auto;
   align-items: center;
 }
 
-.app.castle-falkenstein.cards-hand div.feat-being-performed .ability-level-as-sentence,
-.app.castle-falkenstein.cards-hand div.spell-being-cast .spell-name {
+.application.castle-falkenstein.cards-hand div.feat-being-performed .ability-level-as-sentence,
+.application.castle-falkenstein.cards-hand div.spell-being-cast .spell-name {
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -807,18 +840,18 @@ div.divorce {
   font-weight: bold;
 }
 
-.app.castle-falkenstein.cards-hand hr.feat-being-performed,
-.app.castle-falkenstein.cards-hand hr.spell-being-cast {
+.application.castle-falkenstein.cards-hand hr.feat-being-performed,
+.application.castle-falkenstein.cards-hand hr.spell-being-cast {
   margin-top: 7px;
   margin-bottom: 7px;
 }
 
-.app.castle-falkenstein.cards-hand .card-hand-controls .flexrow {
-  width: 300px;
+.application.castle-falkenstein.cards-hand .card-hand-controls .flexrow {
+  width: 400px;
   justify-content: space-evenly;
 }
 
-.app.castle-falkenstein.cards-hand form {
+.application.castle-falkenstein.cards-hand form {
   max-height: 80px;
 }
 
@@ -833,7 +866,7 @@ div.divorce {
   pointer-events: none;
 }
 
-.handedCards > * {
+.handedCards>* {
   pointer-events: auto;
 }
 
@@ -855,7 +888,7 @@ div.divorce {
 .handedCards ol.cards:not(:has(> *)).draghover {
   display: block;
   /*background: linear-gradient(180deg,rgba(127,127,127,.3), rgba(0,0,0,0));*/
-  background: rgba(127,127,127,.2);
+  background: rgba(127, 127, 127, .2);
 }
 
 .handedCards ol.cards:has(> *) {
@@ -892,6 +925,15 @@ div.divorce {
 .handedCards ol.cards li.card.focusedCard img.card-face {
   cursor: zoom-out;
   box-shadow: 1px 1px 20px 5px #3a3a3a;
+}
+
+.application.sheet.cards-config.castle-falkenstein.cards-hand.hand {
+  overflow: visible;
+}
+
+.application.sheet.cards-config.castle-falkenstein.cards-hand.hand section {
+  overflow: visible;
+  background: none;
 }
 
 div.castle-falkenstein.cards-config .perform-feat-total,
@@ -961,7 +1003,8 @@ div.castle-falkenstein.cards-config a[disabled].card-control {
 
 .handedCards li.card .card-face {
   image-rendering: optimizequality;
-  will-change: transform; /* blurs the cards but removes flickering caused by cards moving while hovered */
+  will-change: transform;
+  /* blurs the cards but removes flickering caused by cards moving while hovered */
 }
 
 .handedCards.fortune .card.selected:hover,
@@ -1028,7 +1071,7 @@ div.castle-falkenstein.cards-config a[disabled].card-control {
   min-width: 15px;
 }
 
-div.gm-screen-grid-cell-content.castle-falkenstein.actor > form {
+div.gm-screen-grid-cell-content.castle-falkenstein.actor>form {
   max-width: 100%;
   max-height: 100%;
 }
@@ -1040,20 +1083,21 @@ div.gm-screen-grid-cell-content.castle-falkenstein.actor {
   --grid-item-controls-width: 20px;
 }
 
-div.gm-screen-grid-cell-content.castle-falkenstein.actor > form li.item > div.item-drag > .fa-bars::before {
+div.gm-screen-grid-cell-content.castle-falkenstein.actor>form li.item>div.item-drag>.fa-bars::before {
   display: none;
 }
 
-div.gm-screen-grid-cell-content.castle-falkenstein.actor > form li.item.items-header > div.item-controls > a {
+div.gm-screen-grid-cell-content.castle-falkenstein.actor>form li.item.items-header>div.item-controls>a {
   display: none;
 }
 
-div.gm-screen-grid-cell-content.castle-falkenstein.actor > form li.item > div.item-drag {
+div.gm-screen-grid-cell-content.castle-falkenstein.actor>form li.item>div.item-drag {
   visibility: none;
   width: 0px;
 }
-div.gm-screen-grid-cell-content.castle-falkenstein.actor > form li.item > div.item-controls > a.item-edit,
-div.gm-screen-grid-cell-content.castle-falkenstein.actor > form li.item > div.item-controls > a.item-delete {
+
+div.gm-screen-grid-cell-content.castle-falkenstein.actor>form li.item>div.item-controls>a.item-edit,
+div.gm-screen-grid-cell-content.castle-falkenstein.actor>form li.item>div.item-controls>a.item-delete {
   display: none;
 }
 
@@ -1061,7 +1105,7 @@ div.gm-screen-grid-cell-content.castle-falkenstein .window-resizable-handle {
   display: none;
 }
 
-div.gm-screen-grid-cell-content.castle-falkenstein.actor > form li.item {
+div.gm-screen-grid-cell-content.castle-falkenstein.actor>form li.item {
   column-gap: 1px;
 }
 
@@ -1075,14 +1119,14 @@ div.gm-screen-grid-cell-content.castle-falkenstein.actor > form li.item {
   display: block;
   position: absolute;
   left: calc(50% + var(--x) * 1%);
-  top: calc(-5px + -50% + var(--y) * 1% );
+  top: calc(-5px + -50% + var(--y) * 1%);
   transform-origin: 50% 50%;
   /*text-align: center;*/
   width: 40px;
   height: 5px;
   /*border:dotted thin gray;*/
-  animation: moveUpDown calc( var(--timescale) * var(--yt) ) infinite cubic-bezier(.45,.05,.55,.95) alternate;
-  animation-delay: calc( -1s * var(--d, 0) );
+  animation: moveUpDown calc(var(--timescale) * var(--yt)) infinite cubic-bezier(.45, .05, .55, .95) alternate;
+  animation-delay: calc(-1s * var(--d, 0));
 }
 
 .chat-sidebar .wild-spell .pt b {
@@ -1090,11 +1134,11 @@ div.gm-screen-grid-cell-content.castle-falkenstein.actor > form li.item {
   background-blend-mode: darken, luminosity;
   position: absolute;
   /*border: dotted 3px green;*/
-  width: calc( 0.01vw * var(--w) );
-  height: calc( 0.01vw * var(--w) );
+  width: calc(0.01vw * var(--w));
+  height: calc(0.01vw * var(--w));
   opacity: var(--o, 1);
-  animation: moveRightLeft calc(var(--timescale) * var(--xt)) infinite cubic-bezier(.45,.05,.55,.95) alternate,
-             flicker calc(var(--timescale) * var(--xt)) infinite cubic-bezier(.45,.05,.55,.95) alternate;
+  animation: moveRightLeft calc(var(--timescale) * var(--xt)) infinite cubic-bezier(.45, .05, .55, .95) alternate,
+    flicker calc(var(--timescale) * var(--xt)) infinite cubic-bezier(.45, .05, .55, .95) alternate;
   animation-delay: calc(-1s * var(--d, 0));
 }
 
@@ -1110,22 +1154,24 @@ div.gm-screen-grid-cell-content.castle-falkenstein.actor > form li.item {
 .chat-message .suit-symbol-\?,
 .castle-falkenstein .suit-select {
   font-size: 130%;
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid #666;
 }
 
 .castle-falkenstein .suit-symbol--,
 .chat-message span.suit-symbol--,
 .castle-falkenstein .suit-select *:nth-child(1),
 .castle-falkenstein .suit-select.suit-gray,
-.castle-falkenstein .suit-select > button {
+.castle-falkenstein .suit-select>button {
   color: var(--color-text-dark-primary);
 }
 
 .castle-falkenstein .suit-symbol-spades,
-.app.castle-falkenstein.cards-hand .suit-symbol-spades,
+.application.castle-falkenstein.cards-hand .suit-symbol-spades,
 .chat-message .suit-symbol-spades,
 .castle-falkenstein .suit-select *:nth-child(2),
 .castle-falkenstein .suit-symbol-clubs,
-.app.castle-falkenstein.cards-hand .suit-symbol-clubs,
+.application.castle-falkenstein.cards-hand .suit-symbol-clubs,
 .chat-message .suit-symbol-clubs,
 .castle-falkenstein .suit-select *:nth-child(5),
 .castle-falkenstein .suit-select.suit-black {
@@ -1133,11 +1179,11 @@ div.gm-screen-grid-cell-content.castle-falkenstein.actor > form li.item {
 }
 
 .castle-falkenstein .suit-symbol-hearts,
-.app.castle-falkenstein.cards-hand .suit-symbol-hearts,
+.application.castle-falkenstein.cards-hand .suit-symbol-hearts,
 .chat-message .suit-symbol-hearts,
 .castle-falkenstein .suit-select *:nth-child(3),
 .castle-falkenstein .suit-symbol-diamonds,
-.app.castle-falkenstein.cards-hand .suit-symbol-diamonds,
+.application.castle-falkenstein.cards-hand .suit-symbol-diamonds,
 .chat-message .suit-symbol-diamonds,
 .castle-falkenstein .suit-select *:nth-child(4),
 .castle-falkenstein .suit-select.suit-red {
@@ -1148,7 +1194,7 @@ div.gm-screen-grid-cell-content.castle-falkenstein.actor > form li.item {
   color: inherit;
 }
 
-.castle-falkenstein .suit-select + i.fa {
+.castle-falkenstein .suit-select+i.fa {
   display: none;
 }
 
@@ -1184,43 +1230,59 @@ div.gm-screen-grid-cell-content.castle-falkenstein.actor > form li.item {
   0% {
     transform: translateY(calc(-50% - 50% * var(--yd, 3)));
   }
+
   100% {
     transform: translateY(calc(-50% + 50% * var(--yd, 3)));
-  } 
+  }
 }
+
 @keyframes moveRightLeft {
   0% {
     transform: translateX(calc(-50% - 200% * var(--xd, 3)));
   }
+
   100% {
     transform: translateX(calc(-50% + 200% * var(--xd, 3)));
   }
 }
-@keyframes flicker{
+
+@keyframes flicker {
   0% {
-    opacity: calc( var(--o, 1) - .5);
+    opacity: calc(var(--o, 1) - .5);
   }
+
   100% {
-    opacity: calc( var(--o, 1) + .5);
+    opacity: calc(var(--o, 1) + .5);
   }
 }
 
-.app.castle-falkenstein.cards-hand section.window-content {
+.application.castle-falkenstein.cards-hand section.window-content {
   overflow: visible;
   height: calc(100% - 30px);
   max-height: calc(100% - 30px);
-  background: url(../../../../ui/parchment.jpg) repeat;
+  background: url(../ui/parchment.jpg) repeat;
   color: var(--color-text-dark-primary) !important;
   color: #191813 !important;
 }
 
-.app.castle-falkenstein.cards-hand section.window-content div.spell-being-cast,
-.app.castle-falkenstein.cards-hand section.window-content div.harmonic {
+.application.castle-falkenstein.cards-hand section.window-content div.spell-being-cast,
+.application.castle-falkenstein.cards-hand section.window-content div.harmonic {
   color: var(--color-text-dark-primary);
 }
 
-.castle-falkenstein.sheet nav.sheet-tabs > [data-tab] {
+.base-sheet {
+  background: url(/ui/parchment.jpg) repeat;
+}
+
+.base-sheet input {
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid #666;
+  color: black;
+}
+
+.castle-falkenstein.sheet nav.sheet-tabs>[data-tab] {
   padding: 0;
+  color: black;
 }
 
 .system-castle-falkenstein input.initiative-input {
@@ -1234,8 +1296,10 @@ div.gm-screen-grid-cell-content.castle-falkenstein.actor > form li.item {
 .system-castle-falkenstein .tab-link[disabled],
 .system-castle-falkenstein a.diary-show[disabled] {
   color: var(--color-text-dark-inactive);
-  pointer-events: auto; /* allows to still display the hint */
+  pointer-events: auto;
+  /* allows to still display the hint */
 }
+
 .system-castle-falkenstein a.tab-link[disabled]:hover,
 .system-castle-falkenstein a.diary-show[disabled]:hover {
   text-shadow: none;

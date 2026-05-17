@@ -12,15 +12,10 @@
   "author": "admiralnlson",
   "license": "MIT",
   "dependencies": {
-    "cb": "^0.1.0",
+    "@foundryvtt/foundryvtt-cli": "^3.0.3",
     "crypto-js": "^4.1.1",
     "gulp": "^4.0.2",
-    "gulp-clean": "^0.4.0",
-    "js-yaml": "^4.1.0",
-    "merge-stream": "^2.0.0",
-    "nedb": "^1.8.0",
-    "sort-array": "^4.1.5",
-    "through2": "^4.0.2"
+    "js-yaml": "^4.1.0"
   },
   "devDependencies": {
     "gulp-jscs": "^4.1.0",

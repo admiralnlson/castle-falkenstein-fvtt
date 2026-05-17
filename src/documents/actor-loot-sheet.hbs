@@ -1,4 +1,4 @@
-<form class="{{cssClass}} {{actor.type}} {{#if actor.isToken}}token{{/if}} flexcol" autocomplete="off">
+<div class="{{cssClass}} {{actor.type}} {{#if actor.isToken}}token{{/if}} flexcol">
 
   {{!-- Sheet Header --}}
   <header class="sheet-header">
@@ -11,7 +11,7 @@
   <nav class="sheet-tabs tabs" data-group="primary">
     {{!-- Default tab is specified in actor-loot-sheet.mjs --}}
     {{#if userHasObserverOrOwnerAccess}}
-      <a class="tab-link" data-tab="items">{{localize "castle-falkenstein.item.items"}}</a>
+      <a class="tab-link {{tabs.items.cssClass}}" data-action="tab" data-group="primary" data-tab="items">{{localize "castle-falkenstein.item.items"}}</a>
     {{/if}}
   </nav>
 
@@ -20,11 +20,10 @@
 
     {{#if userHasObserverOrOwnerAccess}}
       {{!-- Possessions Tab --}}
-      <div class="tab items" data-group="primary" data-tab="items">
+      <div class="tab items {{tabs.items.cssClass}}" data-group="primary" data-tab="items">
         {{> "systems/castle-falkenstein/src/documents/actor-loot-items-sheet.hbs"}}
       </div>
     {{/if}}
 
   </section>
-</form>
-
+</div>

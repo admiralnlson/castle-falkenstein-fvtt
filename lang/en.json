@@ -1,7 +1,6 @@
 {
   "castle-falkenstein": {
     "system": "Castle Falkenstein",
-
     "sheets": {
       "character": "Castle Falkenstein - Character",
       "loot": "Castle Falkenstein - Loot",
@@ -12,7 +11,6 @@
       "possession": "Castle Falkenstein - Possession",
       "spell": "Castle Falkenstein - Spell"
     },
-
     "settings": {
       "fortuneDeck": {
         "name": "Fortune Deck",
@@ -77,7 +75,6 @@
         "hint": "You may select your preferred size for cards here (default: 200)."
       }
     },
-
     "notifications": {
       "babeleInstallRequired": "The Babele module is not installed! Install and activate it in order for Compendiums to be translated.",
       "babeleActivationRequired": "The Babele module is installed, but it is not active! Activate it in order for Compendiums to be translated.",
@@ -102,7 +99,6 @@
       "cannotCarryOutActionWithoutHost": "Cannot carry out this action without the Host present. It would lead to errors.",
       "popoutBoundingBoxDisabled": "The 'bounding box' compatibility mode of module PopOut! is incompatible with the Castle Falkenstein system and has been disabled."
     },
-
     "dialogs": {
       "confirmTitle": "Please confirm",
       "notEnoughPowerGathered": {
@@ -114,23 +110,17 @@
         "description2": "Are you sure?"
       }
     },
-
     "cardsDirectory": {
       "decksFolder": "Decks",
       "characterHandsFolder": "Character hands"
     },
-
     "journalDirectory": {
       "characterDiariesFolder": "Character diaries"
     },
-
     "character": "Character",
-
     "showPlayers": "Show Players",
-
     "maxHealth": "Health",
     "wounds": "Wounds",
-
     "fortune": {
       "hand": {
         "render": "Display the Fortune Hand",
@@ -144,7 +134,6 @@
         "chanceHint": "Draw a Fortune card, played immediately"
       }
     },
-
     "sorcery": {
       "defineSpell": "Define Spell",
       "hand": {
@@ -167,20 +156,16 @@
       },
       "cannotBeUsedOnUnlinkedTokens": "Sorcery cannot be used from a Token which is not linked to its Actor."
     },
-
     "empty": "",
     "openCharacterSheet": "Display the character sheet",
-
     "description": "Description",
     "icon": "Icon",
-
     "diary": {
       "self": "Diary",
       "name": "Diary - {character}",
       "render": "Display the character's diary",
       "cannotBeUsedOnUnlinkedTokens": "Cannot display the diary of a Token which is not linked to its Actor."
     },
-
     "item": {
       "items": "Items",
       "item": "Item",
@@ -190,39 +175,33 @@
       "edit": "Edit",
       "delete": "Delete"
     },
-
     "ability": {
       "abilities": "Abilities",
       "ability": "Ability",
       "level": "Level",
       "levelAsSentence": "{level} {ability}",
       "name": "Name",
-
       "suitValues": {
         "spades": "Social or Status-related",
         "hearts": "Emotional or Romantic",
         "diamonds": "Mental or Intellectual",
         "clubs": "Physical"
       },
-
       "poor": "Poor",
       "average": "Average",
       "good": "Good",
       "great": "Great",
       "exceptional": "Exceptional",
       "extraordinary": "Extraordinary",
-
       "poorAbbr": "PR",
       "averageAbbr": "AV",
       "goodAbbr": "GD",
       "greatAbbr": "GR",
       "exceptionalAbbr": "EXC",
       "extraordinaryAbbr": "EXT",
-
       "specialization": "Specialization",
       "specializationDisplayName": "{rootAbility}: {specialization}"
     },
-
     "cards": {
       "suit": "Suit",
       "spades": "Spades",
@@ -232,7 +211,6 @@
       "joker": "Joker",
       "blackJoker": "Black Joker",
       "redJoker": "Red Joker",
-
       "nonJokerCardName": "{value} of {suit}",
       "2": "2",
       "3": "3",
@@ -248,7 +226,6 @@
       "13": "King",
       "14": "Ace"
     },
-
     "feat": {
       "perform": "Perform Feat",
       "noCardsPlayed": "No cards played.",
@@ -259,12 +236,10 @@
       "failure": "Failure",
       "fumble": "Fumble"
     },
-
     "possession": {
       "possessions": "Possessions",
       "possession": "Possession"
     },
-
     "weapon": {
       "weapons": "Weapons",
       "weapon": "Weapon",
@@ -292,7 +267,6 @@
       "harmRank": "Harm Rank",
       "harmRankAbbr": "Rank"
     },
-
     "spell": {
       "spells": "Spells",
       "spell": "Spell",
@@ -369,17 +343,27 @@
       },
       "customModifier": "Additional modifier..."
     },
-
     "playerNotes": "Player Notes",
-
     "host": "Host",
     "hostNotes": "Host Notes",
     "hostNotesTooltip": "Only the Host can see this tab.",
-
     "chat": {
       "messageVisibility": "Default Message Visibility",
       "publicMessage": "Public Message",
       "privateHostMessage": "Private Host Message"
+    }
+  },
+  "TYPES": {
+    "Actor": {
+      "character": "Character",
+      "loot": "Loot"
+    },
+    "Item": {
+      "ability": "Ability",
+      "possession": "Possession",
+      "spell": "Spell",
+      "weapon": "Weapon",
+      "loot": "Loot"
     }
   }
 }

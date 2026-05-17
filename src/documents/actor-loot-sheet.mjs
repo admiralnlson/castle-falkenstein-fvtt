@@ -1,122 +1,128 @@
 import { CastleFalkenstein } from "../castle-falkenstein.mjs";
 
-const { ActorSheet } = foundry.appv1.sheets;
+const { api, sheets } = foundry.applications;
 
-/** Extend the basic ActorSheet with some very simple modifications */
-export class CastleFalkensteinLootSheet extends ActorSheet {
-  /** @override */
-  static get defaultOptions() {
-    return foundry.utils.mergeObject(super.defaultOptions, {
-      classes: [CastleFalkenstein.id, "sheet", "actor", "loot"],
-      template: "systems/castle-falkenstein/src/documents/actor-loot-sheet.hbs",
-      width: 620,
-      height: 600,
-      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "items" }],
-      dragDrop: [{
-        dragSelector: ".items-list > .item > .item-drag, .diary-show, .fortune-hand-show, .sorcery-hand-show",
-        dropSelector: ".items-list"
-      }],
-      scrollY: [".items-list"]
-    });
-  }
+/**
+ * Loot actor sheet — also serves as the base for the character sheet.
+ */
+export class CastleFalkensteinLootSheet extends api.HandlebarsApplicationMixin(sheets.ActorSheetV2) {
+
+  static DEFAULT_OPTIONS = {
+    classes: ["castle-falkenstein", "sheet", "actor", "loot"],
+    position: { width: 620, height: 600 },
+    window: {
+      resizable: true,
+      controls: [
+        {
+          icon: "fas fa-eye",
+          label: "castle-falkenstein.showPlayers",
+          action: "showPlayers",
+          visible: function () { return game.user.isGM; }
+        }
+      ]
+    },
+    actions: {
+      showPlayers: this._onShowPlayers,
+      itemShow: this._onItemShow,
+      itemEdit: this._onItemEdit,
+      itemDelete: this._onItemDelete
+    },
+    form: { submitOnChange: true }
+  };
+
+  static PARTS = {
+    sheet: { template: "systems/castle-falkenstein/src/documents/actor-loot-sheet.hbs" }
+  };
+
+  static TABS = {
+    primary: {
+      tabs: [
+        { id: "items", label: "castle-falkenstein.item.items" }
+      ],
+      initial: "items"
+    }
+  };
 
   /* -------------------------------------------- */
-  
+
   newItemSortValue() {
-    const max = (this.actor.items.contents.length > 0) ? Math.max(...this.actor.items.contents.map(a => a.sort)) : 0;
+    const max = (this.actor.items.contents.length > 0)
+      ? Math.max(...this.actor.items.contents.map(a => a.sort))
+      : 0;
     return max + CONST.SORT_INTEGER_DENSITY;
   }
 
-  /** @override */
-  async _onDropItem(event, data) {
-    if ( !this.actor.isOwner ) return false;
-    const item = await Item.implementation.fromDropData(data);
-    const itemData = item.toObject();
+  /* -------------------------------------------- */
 
-    // Handle item sorting within the same Actor
-    if ( this.actor.uuid === item.parent?.uuid ) {
-      const li = event.target.closest(".items-list > .item");
-      if ( !li ) return;
-      Object.defineProperty(event, "target", {writable: false, value: li});
-      return this._onSortItem(event, itemData);
-    }
+  async _prepareContext(options) {
+    const context = await super._prepareContext(options);
+    context.actor = this.actor;
+    context.system = this.actor.system;
+    context.editable = this.isEditable;
+    context.cssClass = this.isEditable ? "editable" : "locked";
 
-    itemData.sort = this.newItemSortValue();
+    context.items = [...this.actor.items.contents].sort((a, b) => ((a.sort || 0) - (b.sort || 0)));
 
-    // Create the owned item
-    if (game.release.generation >= 12) {
-      return this._onDropItemCreate(itemData, event);
-    } else {
-      return this._onDropItemCreate(itemData);
-    }
-  }
-
-  /** @override */
-	_getHeaderButtons() {
-		const buttons = super._getHeaderButtons();
-    if (game.user.isGM) {
-      buttons.unshift({
-        class: "character-show-players",
-        icon: "fas fa-eye",
-        label: "castle-falkenstein.showPlayers",
-        onclick: () => {
-          CastleFalkenstein.socket.executeForOthers("showActor", this.actor.id);
-          CastleFalkenstein.notif.info(game.i18n.format("castle-falkenstein.notifications.characterWasShown", {
-            name: this.actor.name
-          }));
-        }
-      });
-    }
-
-		return buttons;
-	}
-
-  /** @override */
-  async getData(options) {
-
-    // Retrieve the data structure from the base sheet.
-    let context = await super.getData(options);
-
-    // convenience so context and name/target are aligned for system properties
-    context.system = context.actor.system;
-
-    context.items = [...context.actor.items.contents];
-    context.items.sort((a,b) => ((a.sort || 0) - (b.sort || 0)));
-
-    // Conditionals
     context.userHasObserverOrOwnerAccess = game.user.isGM || (this.actor.visible && !this.actor.limited);
     context.userIsHost = game.user.isGM;
 
     return context;
   }
 
-  /** @override */
-  activateListeners(html) {
-    super.activateListeners(html);
+  /* -------------------------------------------- */
+  /*  Header Controls / Actions                   */
+  /* -------------------------------------------- */
 
-    html.find(".item-show").click(ev => {
-      const li = $(ev.currentTarget).parents(".item");
-      const item = this.actor.items.get(li.data("itemId"));
-      item.sendToChat();
-    });
+  static async _onShowPlayers(event, target) {
+    CastleFalkenstein.socket.executeForOthers("showActor", this.actor.id);
+    CastleFalkenstein.notif.info(game.i18n.format("castle-falkenstein.notifications.characterWasShown", {
+      name: this.actor.name
+    }));
+  }
 
-    // Render the item sheet for viewing/editing prior to the editable check.
-    html.find(".item-edit").click(ev => {
-      const li = $(ev.currentTarget).parents(".item");
-      const item = this.actor.items.get(li.data("itemId"));
-      item.sheet.render(true);
-    });
+  static async _onItemShow(event, target) {
+    const li = target.closest(".item");
+    const item = this.actor.items.get(li.dataset.itemId);
+    item.sendToChat();
+  }
 
-    // -------------------------------------------------------------
-    // Everything below here is only allowed if the sheet is editable.
+  static async _onItemEdit(event, target) {
+    const li = target.closest(".item");
+    const item = this.actor.items.get(li.dataset.itemId);
+    item.sheet.render(true);
+  }
+
+  static async _onItemDelete(event, target) {
     if (!this.isEditable) return;
-    
-    // Delete item
-    html.find(".item-delete").click(ev => {
-      const li = $(ev.currentTarget).parents(".item");
-      const item = this.actor.items.get(li.data("itemId"));
-      item.delete();
-    });
+    const li = target.closest(".item");
+    const item = this.actor.items.get(li.dataset.itemId);
+    item.delete();
+  }
 
+  /* -------------------------------------------- */
+  /*  Drag & Drop                                 */
+  /* -------------------------------------------- */
+
+  /** @override */
+  async _onDropItem(event, item) {
+    if (!this.actor.isOwner) return false;
+    const itemData = item.toObject();
+
+    // Handle item sorting within the same Actor
+    if (this.actor.uuid === item.parent?.uuid) {
+      const li = event.target.closest(".items-list > .item");
+      if (!li) return;
+      Object.defineProperty(event, "target", { writable: false, value: li });
+      return this._onSortItem(event, itemData);
+    }
+
+    itemData.sort = this.newItemSortValue();
+
+    return this._onDropItemCreate(itemData, event);
+  }
+
+  async _onDropItemCreate(itemData, event) {
+    itemData = itemData instanceof Array ? itemData : [itemData];
+    return this.actor.createEmbeddedDocuments("Item", itemData);
   }
 }

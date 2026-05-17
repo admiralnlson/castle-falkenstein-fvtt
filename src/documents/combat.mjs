@@ -53,7 +53,7 @@ export class CastleFalkensteinCombat extends Combat {
       return;
 
 		// Turn initiative spans into initiative inputs for all combatants.
-		const combatants = html[0].querySelectorAll("li.combatant");
+		const combatants = html.querySelectorAll("li.combatant");
 		for (const li of combatants) {
  
 			const combatant = this.#getCombatant(li, options.combat);
