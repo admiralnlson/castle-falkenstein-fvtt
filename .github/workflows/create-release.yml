@@ -17,11 +17,11 @@ jobs:
       run: |
         echo "version_without_v=$(echo ${{ github.event.inputs.version }} | sed 's/^v//')" >> $GITHUB_OUTPUT
 
-    - name: Checkout master
-      id: checkout-master
+    - name: Checkout dev
+      id: checkout-dev
       uses: actions/checkout@v2
       with:
-        ref: 'master'
+        ref: 'dev'
         fetch-depth: 0
   
     - name: Get changelog entry
